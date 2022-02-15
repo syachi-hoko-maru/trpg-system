@@ -26,7 +26,7 @@ export default {
       {
         rel: "icon",
         type: "image/x-icon",
-        href: `${envSet.baseURL}/favicon.ico`,
+        href: `${envSet.baseUrl}/favicon.ico`,
       },
     ],
   },
@@ -92,7 +92,7 @@ export default {
   build: {},
 
   router: {
-    base: envSet.baseURL,
+    base: envSet.baseUrl,
   },
 
   generate: {

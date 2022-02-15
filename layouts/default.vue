@@ -54,6 +54,11 @@ export default {
           title: "Projects",
           to: "/projects",
         },
+        {
+          icon: "mdi-math-integral-box",
+          title: "SW2.5 Simulator",
+          to: "/sw25simulate",
+        },
       ],
     };
   },

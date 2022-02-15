@@ -5,6 +5,8 @@ div
     p 随時更新していきます。更新情報は
       TwitterLink(inline)
       | にて発信させていただきます。
+    p 現在はSW2.5のダメージ計算や命中する割合の計算などに使えるシミュレーターを公開しています。
+    Botton(url="/sw25simulate", text="SW2.5 判定シミュレーター")
 
   SyachiCard(title="ご挨拶")
     p.

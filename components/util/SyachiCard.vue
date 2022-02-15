@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   v-card.my-5
-    v-card-title.headline {{ title }}
+    v-card-title.headline(v-if="title") {{ title }}
     v-card-text
       slot
 </template>

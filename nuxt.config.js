@@ -1,6 +1,11 @@
 import colors from "vuetify/es5/util/colors";
 
+const environment = process.env.NODE_ENV || "dev";
+const envSet = require(`./env/${environment}.js`);
+
 export default {
+  env: envSet,
+
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -9,15 +14,21 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: "%s - trpg-system",
-    title: "trpg-system",
+    // titleTemplate: "%s - trpg-system",
+    title: "しゃちほこ丸のTRPGシステム",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [
+      {
+        rel: "icon",
+        type: "image/x-icon",
+        href: `${envSet.baseURL}/favicon.ico`,
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -81,7 +92,7 @@ export default {
   build: {},
 
   router: {
-    base: process.env.NODE_ENV === "gh" ? "/trpg-system/" : "",
+    base: envSet.baseURL,
   },
 
   generate: {

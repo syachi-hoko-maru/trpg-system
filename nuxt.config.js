@@ -81,10 +81,10 @@ export default {
   build: {},
 
   router: {
-    base: "/trpg-system/",
+    base: process.env.NODE_ENV === "gh" ? "/trpg-system/" : "",
   },
 
   generate: {
-    dir: "docs",
+    dir: process.env.NODE_ENV === "gh" ? "docs" : "dist",
   },
 };

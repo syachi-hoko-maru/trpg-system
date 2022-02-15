@@ -6,8 +6,8 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate:dev": "cross-env NODE_ENV=\"dev\" nuxt generate",
-    "generate:gh": "cross-env NODE_ENV=\"gh\" nuxt generate",
+    "generate:dev": "cross-env NODE_ENV=\"development\" nuxt generate",
+    "generate:gh": "cross-env NODE_ENV=\"githubPages\" nuxt generate",
     "test": "http-server ./dist -o -p 8888",
     "deploy": "push-dir --dir=docs --branch=gh-pages"
   },
@@ -28,6 +28,9 @@
   "devDependencies": {
     "@nuxt/types": "^2.15.8",
     "@nuxt/typescript-build": "^2.1.0",
-    "@nuxtjs/vuetify": "^1.12.3"
+    "@nuxtjs/vuetify": "^1.12.3",
+    "pug": "^3.0.2",
+    "pug-loader": "^2.4.0",
+    "pug-plain-loader": "^1.1.0"
   }
 }

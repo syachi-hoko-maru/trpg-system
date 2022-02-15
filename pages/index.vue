@@ -1,83 +1,50 @@
-<template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card class="logo py-4 d-flex justify-center">
-        <NuxtLogo />
-        <VuetifyLogo />
-      </v-card>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation
-            </a>.
-          </p>
-          <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord
-            </a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board
-            </a>.
-          </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            to="/inspire"
-          >
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+<template lang="pug">
+div
+  SyachiCard(title="しゃちほこ丸のTRPGシステムへようこそ")
+    p このサイトではTRPGに役立つシステムの提供などを行なっていく予定です。
+    p 随時更新していきます。更新情報は
+      TwitterLink(inline)
+      | にて発信させていただきます。
+
+  SyachiCard(title="ご挨拶")
+    p.
+      しゃちほこ丸という名前でTRPG、特にソード・ワールド2.5（SW2.5）などを遊んでいます。<br>
+      「ソード・ワールド2.5をしたい！」という方はぜひお気軽にTwitterにてお声がけください。未経験者も大歓迎です。
+    TwitterLink
+    p 中の人は20代の男です。良い声ではありませんがボイスセッションもテキストセッションも可能です。
+    p 僕の持っているルールブック一覧などについては以下のページをご覧ください。
+    Botton(url="/rulebooks", text="所持ルールブック一覧")
+
+  SyachiCard(title="リンク")
+    p BOOTHではセッション用素材などを、TALTOでシナリオを、カクヨムには雑記をそれぞれ投稿しています。
+    Botton(url="https://syachihokomaru.booth.pm/", text="BOOTH（しゃちほこ丸の屋台）")
+    Botton(
+      url="https://talto.cc/users/DVUC9LjUviekGgXrbqXaJWAcLCm1",
+      text="TALTO（しゃちほこ丸の屋台）"
+    )
+    Botton(
+      url="https://kakuyomu.jp/works/16816927859758100588",
+      text="カクヨム（しゃちほこ丸の雑多な置き場）"
+    )
+    p これらの情報は以下のTwitterで発信していきます。
+    TwitterLink(yti)
+    p また、現在進行中の同人活動プロジェクトは以下のページから確認することができます。
+    Botton(url="/projects", text="現在進行中の同人活動プロジェクト")
+    p 質問箱を設置しています。質問があればお気軽にどうぞ。
+    Botton(url="https://peing.net/ja/syachi_hoko_trp", text="質問箱")
 </template>
 
 <script>
+import SyachiCard from "@/components/util/SyachiCard.vue";
+import TwitterLink from "@/components/util/TwitterLink.vue";
+import Botton from "~/components/util/Button.vue";
+
 export default {
-  name: 'IndexPage'
-}
+  name: "IndexPage",
+  components: {
+    SyachiCard,
+    TwitterLink,
+    Botton,
+  },
+};
 </script>

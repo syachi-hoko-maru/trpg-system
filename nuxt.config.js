@@ -96,6 +96,6 @@ export default {
   },
 
   generate: {
-    dir: process.env.NODE_ENV === "gh" ? "docs" : "dist",
+    dir: process.env.NODE_ENV === "githubPages" ? "docs" : "dist",
   },
 };

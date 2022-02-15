@@ -34,7 +34,7 @@ div
         )
       v-btn(block, @click="simulate") シミュレート
 
-  SyachiCard(v-for="result in results", :key="result.win")
+  SyachiCard(v-for="(result, i) in results", :key="i")
     v-col
       | 能動側基準値 {{ result.nodo }}
       | & 受動側基準値 {{ result.zyudo }}
@@ -44,6 +44,7 @@ div
       | → 能動側が勝つ確率 {{ result.win }}
       template(v-if="result.damage")
         br
+        span(v-if="result.teiko == '半減' || result.teiko == '必中'") & 抵抗 {{ result.teiko }}
         | & 威力 {{ result.keyNumber }}
         | & 追加ダメージ {{ result.additionalDamage }}
         | & クリティカル値 {{ result.criticalNumber }}
@@ -51,8 +52,8 @@ div
         span(v-if="result.hissatsu") & 必殺攻撃など {{ result.hissatsu }}
         hr.my-2
         | => ダメージ期待値 {{ result.damage }}
-      br
-      | ※ 期待値 {{ result.kitaichi }}
+      //- br
+      //- | ※ 期待値 {{ result.kitaichi }}
 </template>
 
 <script lang="ts">
@@ -86,7 +87,7 @@ export default Vue.extend({
           (v: any) => !!v || "入力必須です",
           (v: any) => /\d+/.test(v) || "半角数字を入力してください",
           (v: any) => v > 0 || "0以上の数字を入力してください",
-          (v: any) => v < 100 || "100以下の数字を入力してください",
+          (v: any) => v <= 100 || "100以下の数字を入力してください",
         ],
         criticalNumberRule: [
           (v: any) => !!v || "入力必須です",
@@ -233,6 +234,7 @@ export default Vue.extend({
         // 「抵抗：必中」の場合を処理する
         if (this.teiko == "必中") {
           count++;
+          continue;
         }
 
         const zyudoDice = this.twoDice();
@@ -240,7 +242,7 @@ export default Vue.extend({
         this.diceSum += zyudoDice;
         // 受動自動成功
         if (zyudoDice == 12) {
-          countHalf++;
+          if (this.teiko == "半減") countHalf++;
           continue;
         }
         // 能動自動成功 or 受動自動失敗
@@ -252,7 +254,7 @@ export default Vue.extend({
         if (nodoDice + Number(this.nodo) > zyudoDice + Number(this.zyudo)) {
           count++;
         } else {
-          countHalf++;
+          if (this.teiko == "半減") countHalf++;
         }
       }
       let damageCount = 0;
@@ -261,13 +263,14 @@ export default Vue.extend({
           damageCount += this.damage();
         }
         for (let h = 0; h < countHalf; h++) {
-          damageCount += this.damage("half");
+          if (this.teiko == "半減") damageCount += this.damage("half");
         }
       }
       this.results.unshift({
         nodo: this.nodo,
         zyudo: this.zyudo,
         win: `${Math.round((count / trial) * 1000) / 10}%`,
+        teiko: this.teiko,
         keyNumber: this.keyNumber,
         additionalDamage: this.additionalDamage,
         criticalNumber: this.criticalNumber,

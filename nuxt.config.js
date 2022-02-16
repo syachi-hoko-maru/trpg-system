@@ -48,7 +48,7 @@ export default {
       {
         hid: "og:image",
         property: "og:image",
-        content: `${envSet.baseUrl}syachi.png`,
+        content: `https://syachi-hoko-maru.github.io/trpg-system/syachi.png`,
       },
       { name: "twitter:card", content: "summary" }, //twitterの画像サイズ
     ],

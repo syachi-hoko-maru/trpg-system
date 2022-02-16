@@ -50,7 +50,7 @@ export default {
         property: "og:image",
         content: `https://syachi-hoko-maru.github.io/trpg-system/syachi.png`,
       },
-      { name: "twitter:card", content: "summary" }, //twitterの画像サイズ
+      { name: "twitter:card", content: "summary_large_image" }, //twitterの画像サイズ
     ],
 
     link: [

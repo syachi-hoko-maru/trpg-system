@@ -3,34 +3,49 @@ div
   SyachiCard(title="SW2.5 判定シミュレーター")
     v-form
       v-switch(v-model="damageMode", label="ダメージ計算モード")
-      v-text-field(v-model="nodo", label="能動側基準値", :rules="rules.numberRule")
-      v-text-field(v-model="zyudo", label="受動側基準値", :rules="rules.numberRule")
+      v-text-field(
+        v-model="nodo",
+        label="能動側基準値",
+        :rules="rules.numberRule",
+        dense
+      )
+      v-text-field(
+        v-model="zyudo",
+        label="受動側基準値",
+        :rules="rules.numberRule",
+        dense
+      )
       template(v-if="damageMode")
-        v-select(v-model="teiko", :items="teikoList", label="抵抗")
+        v-select(v-model="teiko", :items="teikoList", label="抵抗", dense)
         v-text-field(
           v-model="keyNumber",
           label="威力",
-          :rules="rules.keyNumberRule"
+          :rules="rules.keyNumberRule",
+          dense
         )
         v-text-field(
           v-model="additionalDamage",
           label="追加ダメージ",
-          :rules="rules.numberRule"
+          :rules="rules.numberRule",
+          dense
         )
         v-text-field(
           v-model="criticalNumber",
           label="C値",
-          :rules="rules.criticalNumberRule"
+          :rules="rules.criticalNumberRule",
+          dense
         )
         v-text-field(
           v-model="criticalRay",
           label="クリティカルレイなどの出目が1回だけ+される効果",
-          :rules="rules.numberRule"
+          :rules="rules.numberRule",
+          dense
         )
         v-text-field(
           v-model="hissatsu",
           label="《必殺攻撃》などの出目がクリティカル後も+される効果",
-          :rules="rules.numberRule"
+          :rules="rules.numberRule",
+          dense
         )
       v-btn(block, @click="simulate") シミュレート
 

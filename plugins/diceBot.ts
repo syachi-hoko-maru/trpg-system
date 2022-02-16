@@ -207,6 +207,10 @@ const $damage = (
   criticalNumber: number,
   option: DamageOption
 ) => {
+  // 必殺の値が高すぎる場合やC値が小さすぎる場合は計算を行わない
+  if ((option.hissatsu && option.hissatsu > 10) || criticalNumber < 6) {
+    return 0;
+  }
   const key = keyNumberTable[keyNumber];
   let damageDice: number;
   if (option.yakushi) {
@@ -236,7 +240,6 @@ const $damage = (
       break criticalLoop;
     }
     damageDice = $twoDice();
-
     // 必殺攻撃
     if (option.hissatsu) {
       damageDice += Number(option.hissatsu);

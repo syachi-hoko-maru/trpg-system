@@ -2,25 +2,25 @@
 div
   SyachiCard(title="SW2.5 判定シミュレーター")
     v-form
-      v-select(v-model="mode", :items="modeList", label="モード", dense)
-      template(v-if="mode == 'ダメージ期待値' || mode == '判定成否'")
-        v-switch(v-model="nodoKoteichi", label="能動側で固定値を利用する", dense)
+      v-select(v-model="mode", :items="modeList", label="モード")
+      v-col(v-if="mode == 'ダメージ期待値' || mode == '判定成否'")
         v-text-field(
           v-model="nodo",
           label="能動側基準値",
           :rules="rules.numberRule",
           dense
         )
-        v-switch(v-model="zyudoKoteichi", label="受動側で固定値を利用する", dense)
         v-text-field(
           v-model="zyudo",
           label="受動側基準値",
           :rules="rules.numberRule",
           dense
         )
-      template(v-if="mode == 'ダメージ期待値'")
+        v-switch.d-inline(v-model="nodoKoteichi", label="能動側で固定値を利用する", dense)
+        v-switch.d-inline(v-model="zyudoKoteichi", label="受動側で固定値を利用する", dense)
+      v-col(v-if="mode == 'ダメージ期待値'")
         v-select(v-model="teiko", :items="teikoList", label="抵抗", dense)
-      template(v-if="mode == 'ダメージ期待値' || mode == 'ダメージ'")
+      v-col(v-if="mode == 'ダメージ期待値' || mode == 'ダメージ'")
         v-text-field(
           v-model="keyNumber",
           label="威力",
@@ -41,7 +41,7 @@ div
         )
         v-text-field(
           v-model="criticalRay",
-          label="クリティカルレイなどの出目が1回だけ+される効果",
+          label="【クリティカルレイ】などの出目が1回だけ+される効果",
           :rules="rules.numberRule",
           dense
         )
@@ -55,22 +55,25 @@ div
 
   SyachiCard(v-for="(result, i) in results", :key="i")
     v-col
-      | 能動側基準値 {{ result.nodo }}
-      | & 受動側基準値 {{ result.zyudo }}
-      template(v-if="!result.damage")
-        hr.my-2
-      |
-      | → 能動側が勝つ確率 {{ result.win }}
-      template(v-if="result.damage")
+      template(v-if="result.win")
+        | 能動側基準値 {{ result.nodo }}
+        | &nbsp;& 受動側基準値 {{ result.zyudo }}
+        template(v-if="!result.damage")
+          hr.my-2
+        |
+        | &nbsp;→&nbsp;能動側が勝つ確率 {{ result.win }}
+      template(v-if="result.win && result.damage")
         br
+        | &&nbsp;
+      template(v-if="result.damage")
         span(v-if="result.teiko == '半減' || result.teiko == '必中'") & 抵抗 {{ result.teiko }}
-        | & 威力 {{ result.keyNumber }}
-        | & 追加ダメージ {{ result.additionalDamage }}
-        | & クリティカル値 {{ result.criticalNumber }}
-        span(v-if="result.criticalRay") & クリティカルレイなど {{ result.criticalRay }}
-        span(v-if="result.hissatsu") & 必殺攻撃など {{ result.hissatsu }}
+        | 威力 {{ result.keyNumber }}
+        | &nbsp;&&nbsp;	追加ダメージ {{ result.additionalDamage }}
+        | &nbsp;&&nbsp;	クリティカル値 {{ result.criticalNumber }}
+        span(v-if="result.criticalRay") &nbsp;&&nbsp;	クリティカルレイなど {{ result.criticalRay }}
+        span(v-if="result.hissatsu") &nbsp;&&nbsp;	必殺攻撃など {{ result.hissatsu }}
         hr.my-2
-        | => ダメージ期待値 {{ result.damage }}
+        | &nbsp;=>&nbsp;ダメージ期待値 {{ result.damage }}
       //- br
       //- | ※ 期待値 {{ result.kitaichi }}
 </template>
@@ -87,11 +90,7 @@ export default Vue.extend({
       diceCount: 0,
       diceSum: 0,
       mode: "ダメージ期待値",
-      modeList: [
-        "ダメージ期待値",
-        "判定成否",
-        // "ダメージ"
-      ],
+      modeList: ["ダメージ期待値", "判定成否", "ダメージ"],
       nodo: 6,
       nodoKoteichi: false,
       zyudo: 4,
@@ -252,45 +251,54 @@ export default Vue.extend({
     },
     simulate() {
       const trial = 10 ** 5;
+      // 出目のリセット
       this.diceCount = 0;
       this.diceSum = 0;
       let count = 0;
       let countHalf = 0;
-      for (let i = 0; i < trial; i++) {
-        const nodoDice = this.twoDice();
-        this.diceCount++;
-        this.diceSum += nodoDice;
-        // 能動自動失敗
-        if (nodoDice == 2) continue;
-
-        // 「抵抗：必中」の場合を処理する
-        if (this.teiko == "必中") {
-          count++;
-          continue;
+      if (this.mode == "ダメージ期待値" || this.mode == "判定成否") {
+        for (let i = 0; i < trial; i++) {
+          const nodoDice = this.nodoKoteichi ? 0 : this.twoDice();
+          // 固定値ではない場合に処理を行う
+          if (!this.nodoKoteichi) {
+            this.diceCount++;
+            this.diceSum += nodoDice;
+            // 能動自動失敗
+            if (nodoDice == 2) continue;
+          }
+          // 「抵抗：必中」の場合を処理する
+          if (this.teiko == "必中") {
+            count++;
+            continue;
+          }
+          const zyudoDice = this.zyudoKoteichi ? 0 : this.twoDice();
+          // 固定値ではない場合に処理を行う
+          if (!this.zyudoKoteichi) {
+            this.diceCount++;
+            this.diceSum += nodoDice;
+            // 受動自動成功
+            if (zyudoDice == 12) {
+              if (this.teiko == "半減") countHalf++;
+              continue;
+            }
+            // 能動自動成功 or 受動自動失敗
+            if (nodoDice == 12 || zyudoDice == 2) {
+              count++;
+              continue;
+            }
+          }
+          // 普通に上回る
+          if (nodoDice + Number(this.nodo) > zyudoDice + Number(this.zyudo)) {
+            count++;
+          } else {
+            if (this.teiko == "半減") countHalf++;
+          }
         }
-
-        const zyudoDice = this.twoDice();
-        this.diceCount++;
-        this.diceSum += zyudoDice;
-        // 受動自動成功
-        if (zyudoDice == 12) {
-          if (this.teiko == "半減") countHalf++;
-          continue;
-        }
-        // 能動自動成功 or 受動自動失敗
-        if (nodoDice == 12 || zyudoDice == 2) {
-          count++;
-          continue;
-        }
-        // 普通に上回る
-        if (nodoDice + Number(this.nodo) > zyudoDice + Number(this.zyudo)) {
-          count++;
-        } else {
-          if (this.teiko == "半減") countHalf++;
-        }
+      } else if (this.mode == "ダメージ") {
+        count = trial;
       }
       let damageCount = 0;
-      if (this.mode == "ダメージ期待値") {
+      if (this.mode == "ダメージ期待値" || this.mode == "ダメージ") {
         for (let j = 0; j < count; j++) {
           damageCount += this.damage();
         }
@@ -298,19 +306,37 @@ export default Vue.extend({
           if (this.teiko == "半減") damageCount += this.damage("half");
         }
       }
-      this.results.unshift({
-        nodo: this.nodo,
-        zyudo: this.zyudo,
-        win: `${Math.round((count / trial) * 1000) / 10}%`,
-        teiko: this.teiko,
-        keyNumber: this.keyNumber,
-        additionalDamage: this.additionalDamage,
-        criticalNumber: this.criticalNumber,
-        criticalRay: this.criticalRay,
-        hissatsu: this.hissatsu,
-        damage: damageCount / trial,
-        kitaichi: this.diceSum / this.diceCount,
-      });
+      if (this.mode == "ダメージ期待値") {
+        this.results.unshift({
+          nodo: this.nodo,
+          zyudo: this.zyudo,
+          win: `${Math.round((count / trial) * 1000) / 10}%`,
+          teiko: this.teiko,
+          keyNumber: this.keyNumber,
+          additionalDamage: this.additionalDamage,
+          criticalNumber: this.criticalNumber,
+          criticalRay: this.criticalRay,
+          hissatsu: this.hissatsu,
+          damage: damageCount / trial,
+          kitaichi: this.diceSum / this.diceCount,
+        });
+      } else if (this.mode == "判定成否") {
+        this.results.unshift({
+          nodo: this.nodo,
+          zyudo: this.zyudo,
+          win: `${Math.round((count / trial) * 1000) / 10}%`,
+        });
+      } else if (this.mode == "ダメージ") {
+        this.results.unshift({
+          keyNumber: this.keyNumber,
+          additionalDamage: this.additionalDamage,
+          criticalNumber: this.criticalNumber,
+          criticalRay: this.criticalRay,
+          hissatsu: this.hissatsu,
+          damage: damageCount / trial,
+          kitaichi: this.diceSum / this.diceCount,
+        });
+      }
     },
     damage(half?: string) {
       const key = this.keyNumberTable[Number(this.keyNumber)];

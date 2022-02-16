@@ -2,21 +2,25 @@
 div
   SyachiCard(title="SW2.5 判定シミュレーター")
     v-form
-      v-switch(v-model="damageMode", label="ダメージ計算モード")
-      v-text-field(
-        v-model="nodo",
-        label="能動側基準値",
-        :rules="rules.numberRule",
-        dense
-      )
-      v-text-field(
-        v-model="zyudo",
-        label="受動側基準値",
-        :rules="rules.numberRule",
-        dense
-      )
-      template(v-if="damageMode")
+      v-select(v-model="mode", :items="modeList", label="モード", dense)
+      template(v-if="mode == 'ダメージ期待値' || mode == '判定成否'")
+        v-switch(v-model="nodoKoteichi", label="能動側で固定値を利用する", dense)
+        v-text-field(
+          v-model="nodo",
+          label="能動側基準値",
+          :rules="rules.numberRule",
+          dense
+        )
+        v-switch(v-model="zyudoKoteichi", label="受動側で固定値を利用する", dense)
+        v-text-field(
+          v-model="zyudo",
+          label="受動側基準値",
+          :rules="rules.numberRule",
+          dense
+        )
+      template(v-if="mode == 'ダメージ期待値'")
         v-select(v-model="teiko", :items="teikoList", label="抵抗", dense)
+      template(v-if="mode == 'ダメージ期待値' || mode == 'ダメージ'")
         v-text-field(
           v-model="keyNumber",
           label="威力",
@@ -44,7 +48,7 @@ div
         v-text-field(
           v-model="hissatsu",
           label="《必殺攻撃》などの出目がクリティカル後も+される効果",
-          :rules="rules.numberRule",
+          :rules="rules.hissatsuNumberRule",
           dense
         )
       v-btn(block, @click="simulate") シミュレート
@@ -82,9 +86,16 @@ export default Vue.extend({
     return {
       diceCount: 0,
       diceSum: 0,
-      damageMode: true,
+      mode: "ダメージ期待値",
+      modeList: [
+        "ダメージ期待値",
+        "判定成否",
+        // "ダメージ"
+      ],
       nodo: 6,
+      nodoKoteichi: false,
       zyudo: 4,
+      zyudoKoteichi: false,
       teiko: "消滅（武器による攻撃も含む）",
       teikoList: ["消滅（武器による攻撃も含む）", "半減", "必中"],
       keyNumber: 10,
@@ -101,13 +112,19 @@ export default Vue.extend({
         keyNumberRule: [
           (v: any) => !!v || "入力必須です",
           (v: any) => /\d+/.test(v) || "半角数字を入力してください",
-          (v: any) => v > 0 || "0以上の数字を入力してください",
+          (v: any) => v >= 0 || "0以上の数字を入力してください",
           (v: any) => v <= 100 || "100以下の数字を入力してください",
         ],
         criticalNumberRule: [
           (v: any) => !!v || "入力必須です",
           (v: any) => /\d+/.test(v) || "半角数字を入力してください",
           (v: any) => v >= 7 || "7以上の数字を入力してください",
+        ],
+        hissatsuNumberRule: [
+          (v: any) => !!v || "入力必須です",
+          (v: any) => /\d+/.test(v) || "半角数字を入力してください",
+          (v: any) => v >= 0 || "0以上の数字を入力してください",
+          (v: any) => v < 10 || "10未満の数字を入力してください",
         ],
       },
       keyNumberTable: [
@@ -273,7 +290,7 @@ export default Vue.extend({
         }
       }
       let damageCount = 0;
-      if (this.damageMode) {
+      if (this.mode == "ダメージ期待値") {
         for (let j = 0; j < count; j++) {
           damageCount += this.damage();
         }
@@ -311,12 +328,12 @@ export default Vue.extend({
       let tempDamage = 0;
       tempDamage += key[damageDice - 2] + Number(this.additionalDamage);
       // 半減の場合はクリティカルしないのでここで返す
-      if (!half) {
+      if (half) {
         return Math.ceil(tempDamage / 2);
       }
       // クリティカル処理
       criticalLoop: while (true) {
-        if (damageDice >= this.criticalNumber) {
+        if (damageDice >= Number(this.criticalNumber)) {
           tempDamage += key[damageDice - 2];
         } else {
           break criticalLoop;

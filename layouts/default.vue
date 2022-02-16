@@ -4,7 +4,7 @@ v-app(dark)
     v-list
       v-list-item(
         v-for="(item, i) in items",
-        :key="i",
+        :key="item.title",
         :to="item.to",
         router,
         exact

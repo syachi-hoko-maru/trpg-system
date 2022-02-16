@@ -1,6 +1,9 @@
 <template lang="pug">
 div
-  SyachiCard(title="しゃちほこ丸のTRPGシステムへようこそ")
+  SyachiCard(
+    title="しゃちほこ丸のTRPGシステムへようこそ",
+    :src="require(`~/assets/syachi.png`)"
+  )
     p このサイトではTRPGに役立つシステムの提供などを行なっていく予定です。
     p 随時更新していきます。更新情報は
       TwitterLink(inline)

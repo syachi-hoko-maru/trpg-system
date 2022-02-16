@@ -3,6 +3,8 @@ import colors from "vuetify/es5/util/colors";
 const environment = process.env.NODE_ENV || "development";
 const envSet = require(`./env/${environment}.js`);
 
+const title = "しゃちほこ丸のTRPGシステム";
+
 export default {
   env: envSet,
 
@@ -15,13 +17,42 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     // titleTemplate: "%s - trpg-system",
-    title: "しゃちほこ丸のTRPGシステム",
+    title: title,
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
+      { charset: "utf-8" },
+      {
+        hid: "description",
+        name: "description",
+        content:
+          process.env.npm_package_description ||
+          "このサイトではTRPGに役立つシステムの提供などを行なっていく予定です。",
+      },
+      { hid: "og:site_name", property: "og:site_name", content: title },
+      { hid: "og:type", property: "og:type", content: "website" },
+      {
+        hid: "og:url",
+        property: "og:url",
+        content: "https://syachi-hoko-maru.github.io/trpg-system",
+      },
+      { hid: "og:title", property: "og:title", content: title },
+      {
+        hid: "og:description",
+        property: "og:description",
+        content:
+          "このサイトではTRPGに役立つシステムの提供などを行なっていく予定です。",
+      },
+      {
+        hid: "og:image",
+        property: "og:image",
+        content: `${envSet.baseUrl}/syachi.png`,
+      },
+      { name: "twitter:card", content: "summary" }, //twitterの画像サイズ
     ],
+
     link: [
       {
         rel: "icon",

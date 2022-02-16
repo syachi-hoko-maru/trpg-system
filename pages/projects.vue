@@ -7,18 +7,18 @@ div
 
   SyachiCard(
     v-for="project in projects.filter((o) => !o.hidden)",
-    :key="project",
-    :title="project.title"
+    :key="project.title",
+    :title="project.title",
+    :src="project.src ? require(`~/assets/projects/${project.src}`) : ''"
   )
-    template(v-for="message in project.messages")
-      p(v-html="message")
+    p(v-for="message in project.messages", :key="message", v-html="message")
     v-list
       v-list-item(
         dense,
         v-for="schedule in project.schedules",
         :key="schedule"
       )
-        v-list-content {{ schedule }}
+        v-list-item-content {{ schedule }}
     template(v-for="button in project.buttons")
       Button(:url="button.url", :text="button.text")
 </template>
@@ -41,6 +41,7 @@ export default Vue.extend({
       projects: [
         {
           title: "宇宙ペンギンTRPG Bluish",
+          src: "blueish.png",
           messages: [
             "「<ruby>宇宙<rp>(</rp><rt>スペース</rt><rp>)</rp></ruby>ペンギン」となって地球を守るために戦う、オリジナルTRPGです。",
             'タイトルの<ruby>"Bluish" <rp>(</rp><rt>ブルーイッシュ</rt><rp>)</rp></ruby>は「青みがかった」といった意味の英語です。<br>これはソ連の「ヴォストーク1号」で人類初の大気圏外からの帰還を果たしたユーリ・ガガーリンの名言「地球は青かった」の英訳をもとにしています。',
@@ -61,6 +62,7 @@ export default Vue.extend({
         },
         {
           title: "ソード・ワールド2.5 同人サプリメント「コロレスアニマルム」",
+          src: "colores.png",
           messages: [
             "ソード・ワールド2.5の同人サプリメントです。<br>オリジナル種族・冒険者技能などのデータを収録する予定です。",
             "「コロレスアニマルム」は「魂の色」という意味のラテン語をもとにしており、「魂」に関係したデータが多くなっています。",
@@ -69,6 +71,7 @@ export default Vue.extend({
         },
         {
           title: "ソード・ワールド2.5 シナリオ作成",
+          src: "saborima.png",
           messages: [
             "現在TALTOにてサプリメント「魔導の学府 ユーシズ」で追加された〈ボトルドール〉を楽しむためのシナリオ「サボリ魔とトモダチと迷いの森」を無料公開しています。",
             "今後も随時シナリオを追加予定です。",
@@ -84,6 +87,7 @@ export default Vue.extend({
         },
         {
           title: "オンラインセッション素材",
+          src: "dungeon.png",
           messages: [
             "BOOTHにてオンラインセッション素材を公開しています。",
             "SW2.5の〈ボトルドール〉を楽しむための素材「ボトルドールシート素材」は現在無料配布中です。",

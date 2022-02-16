@@ -1,6 +1,7 @@
 <template lang="pug">
 div
   v-card.my-5
+    v-img(v-if="src", :src="src", :alt="title")
     v-card-title.headline(v-if="title") {{ title }}
     v-card-text
       slot
@@ -12,6 +13,9 @@ export default Vue.extend({
   name: "SyachiCard",
   props: {
     title: {
+      type: String,
+    },
+    src: {
       type: String,
     },
   },

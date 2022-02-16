@@ -6,7 +6,7 @@ v-col
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue, { PropType } from "vue";
 import FormParts from "@/components/form/FormParts.vue";
 
 export default Vue.extend({
@@ -16,7 +16,7 @@ export default Vue.extend({
   },
   props: {
     items: {
-      type: Array,
+      type: Array as PropType<FormItem[]>,
     },
   },
   data() {

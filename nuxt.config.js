@@ -48,7 +48,7 @@ export default {
       {
         hid: "og:image",
         property: "og:image",
-        content: `${envSet.baseUrl}/syachi.png`,
+        content: `${envSet.baseUrl}syachi.png`,
       },
       { name: "twitter:card", content: "summary" }, //twitterの画像サイズ
     ],
@@ -57,7 +57,7 @@ export default {
       {
         rel: "icon",
         type: "image/x-icon",
-        href: `${envSet.baseUrl}/favicon.ico`,
+        href: `${envSet.baseUrl}favicon.ico`,
       },
     ],
   },

@@ -8,7 +8,7 @@ div
 
   SyachiCard(v-for="history in histories", :key="i")
     template(v-for="d in history.data")
-      template(v-if="d.value") {{ d.label }}: {{ d.value }}<br>
+      template(v-if="d.value && d.value != 0") {{ d.label }}: {{ d.value }}<br>
     br
     template(v-for="(r, i) in history.result")
       | {{ Object.keys(r)[0] }}: {{ Object.values(r)[0] }}

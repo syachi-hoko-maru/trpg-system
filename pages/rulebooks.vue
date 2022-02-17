@@ -4,7 +4,7 @@ div
     p.
       このページではしゃちほこ丸の所持するルールブック・サプリメントをまとめています。<br>
       これらは全て遊びたいシステムですのでお誘いお待ちしております。
-  SyachiCard(v-for="group in groups", :key="group.name", :title="group.name")
+  SyachiCard(v-for="group in groups", :key="group.group", :title="group.name")
     p(v-html="group.message")
     v-list
       v-list-item(v-for="item in group.items", :key="item.rulebook")
@@ -12,15 +12,23 @@ div
           v-list-item-title {{ item.rulebook }}
           template(v-for="supplement in item.supplements")
             v-list-item-subtitle {{ supplement }}
+    template(v-if="group.group == 'SW'")
+      hr.mb-3
+      p なおカクヨムにてソード・ワールド2.5のサプリメント紹介をしているのでぜひご覧ください。
+      Botton(
+        url="https://kakuyomu.jp/works/16816927859758100588",
+        text="カクヨム（しゃちほこ丸の雑多な置き場）"
+      )
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import SyachiCard from "@/components/util/SyachiCard.vue";
+import Botton from "~/components/util/Button.vue";
 
 export default Vue.extend({
   name: "RulebooksPage",
-  components: { SyachiCard },
+  components: { SyachiCard, Botton },
   data: function () {
     return {
       groups: [

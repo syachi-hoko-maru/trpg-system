@@ -6,13 +6,13 @@ div
       FormPartsArray(:items="modeItems")
       v-btn(block, @click="simulate") シミュレート
 
-  SyachiCard(v-for="history in histories", :key="i")
+  SyachiCard(v-for="history in histories", :key="history.index")
     template(v-for="d in history.data")
       template(v-if="d.value && d.value != 0") {{ d.label }}: {{ d.value }}<br>
     br
     template(v-for="(r, i) in history.result")
       | {{ Object.keys(r)[0] }}: {{ Object.values(r)[0] }}
-      br(v-if="i !== history.result.length")
+      br(v-if="i !== history.result.length - 1")
 </template>
 
 <script lang="ts">
@@ -21,6 +21,7 @@ import SyachiCard from "@/components/util/SyachiCard.vue";
 import FormPartsArray from "@/components/form/FormPartsArray.vue";
 
 type History = {
+  index: number;
   data: {}[];
   result: {}[];
 };
@@ -281,6 +282,7 @@ export default Vue.extend({
       }
       const data = JSON.parse(JSON.stringify(this.modeItems));
       this.histories.unshift({
+        index: this.histories.length,
         data,
         result,
       });

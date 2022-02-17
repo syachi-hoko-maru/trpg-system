@@ -55,7 +55,7 @@ export default Vue.extend({
         {
           name: "nodoKoteichi",
           value: false,
-          label: "能動側で固定値を利用する",
+          label: "能動側で固定値（基準値+7）を利用する",
           type: "switch",
           group: "hantei",
           option: true,
@@ -64,7 +64,7 @@ export default Vue.extend({
         {
           name: "zyudoKoteichi",
           value: false,
-          label: "受動側で固定値を利用する",
+          label: "受動側で固定値（基準値+7）を利用する",
           type: "switch",
           group: "hantei",
           option: true,

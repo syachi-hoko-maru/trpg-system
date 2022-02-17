@@ -47,7 +47,7 @@ const $twoDice = (number?: number) => {
 
 const $hantei = (difference: number, option: HanteiOption) => {
   const nodoDice = option.nodoKoteichi
-    ? 0
+    ? 7
     : option.nodoGf
     ? $dice() * 2
     : $twoDice();
@@ -61,7 +61,7 @@ const $hantei = (difference: number, option: HanteiOption) => {
     return 2;
   }
   const zyudoDice = option.zyudoKoteichi
-    ? 0
+    ? 7
     : option.zyudoGf
     ? $dice() * 2
     : $twoDice();

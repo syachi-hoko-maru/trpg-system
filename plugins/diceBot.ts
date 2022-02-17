@@ -6,14 +6,18 @@ type TwoDice = 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 type HanteiOption = {
   nodoKoteichi?: Boolean;
   zyudoKoteichi?: Boolean;
+  nodoGf?: Boolean;
+  zyudoGf?: Boolean;
   teiko?: "必中" | "半減" | String;
 };
 
 type DamageOption = {
+  bougo?: number;
   half?: Boolean;
   criticalRay?: number;
   hissatsu?: number;
   yakushi?: number;
+  gf?: Boolean;
 };
 
 declare module "vue/types/vue" {
@@ -35,14 +39,18 @@ declare module "vue/types/vue" {
   }
 }
 
-const $dice = () => Math.ceil(Math.random() * 6) as Dice;
+const $dice = (number = 6) => Math.ceil(Math.random() * number) as Dice;
 const $twoDice = (number?: number) => {
   if (number) return ($dice() + Number(number)) as TwoDice;
   else return ($dice() + $dice()) as TwoDice;
 };
 
 const $hantei = (difference: number, option: HanteiOption) => {
-  const nodoDice = option.nodoKoteichi ? 0 : $twoDice();
+  const nodoDice = option.nodoKoteichi
+    ? 0
+    : option.nodoGf
+    ? $dice() * 2
+    : $twoDice();
   // 固定値ではない場合に処理を行う
   if (!option.nodoKoteichi) {
     // 能動自動失敗
@@ -52,7 +60,11 @@ const $hantei = (difference: number, option: HanteiOption) => {
   if (option.teiko == "必中") {
     return 2;
   }
-  const zyudoDice = option.zyudoKoteichi ? 0 : $twoDice();
+  const zyudoDice = option.zyudoKoteichi
+    ? 0
+    : option.zyudoGf
+    ? $dice() * 2
+    : $twoDice();
   // 固定値ではない場合に処理を行う
   if (!option.zyudoKoteichi) {
     // 受動自動成功
@@ -207,17 +219,25 @@ const $damage = (
   criticalNumber: number,
   option: DamageOption
 ) => {
-  // 必殺の値が高すぎる場合やC値が小さすぎる場合は計算を行わない
-  if ((option.hissatsu && option.hissatsu > 10) || criticalNumber < 6) {
+  // 以下の場合に計算を行わない
+  // 威力が範囲外
+  // C値が小さすぎる
+  // 必殺の値が高すぎる
+  if (
+    keyNumber < 0 ||
+    keyNumber > 100 ||
+    criticalNumber < 6 ||
+    (option.hissatsu && option.hissatsu + 2 >= criticalNumber)
+  ) {
     return 0;
   }
   const key = keyNumberTable[keyNumber];
   let damageDice: number;
-  if (option.yakushi) {
-    damageDice = $twoDice(option.yakushi);
-  } else {
-    damageDice = $twoDice();
-  }
+  damageDice = option.yakushi
+    ? $twoDice(option.yakushi)
+    : option.gf
+    ? $dice() * 2
+    : $twoDice();
   // クリティカルレイ or 必殺攻撃
   if (option.criticalRay || option.hissatsu) {
     damageDice += Number(option.criticalRay) + Number(option.hissatsu);
@@ -246,7 +266,9 @@ const $damage = (
       if (damageDice > 12) damageDice = 12;
     }
   }
-  return damage;
+  // 防護点を超えなかった場合
+  if (option.bougo && damage < Number(option.bougo)) return 0;
+  return damage - Number(option.bougo);
 };
 
 Vue.prototype.$dice = $dice;

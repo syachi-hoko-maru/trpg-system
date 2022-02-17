@@ -95,7 +95,7 @@ export default Vue.extend({
           type: "switch",
           group: "hantei",
           option: true,
-          hidden: true,
+          hidden: false,
         },
         {
           name: "zyudoGf",
@@ -104,9 +104,8 @@ export default Vue.extend({
           type: "switch",
           group: "hantei",
           option: true,
-          hidden: true,
+          hidden: false,
         },
-
         {
           name: "teiko",
           value: "消滅（武器による攻撃も含む）",
@@ -144,6 +143,16 @@ export default Vue.extend({
           hidden: false,
         },
         {
+          name: "bougo",
+          value: 0,
+          label: "防護点などのダメージ減少",
+          type: "number",
+          group: "damage",
+          option: false,
+          hidden: false,
+        },
+
+        {
           name: "criticalRay",
           value: 0,
           label: "【クリティカルレイ】などで1回だけ出目が+する",
@@ -177,7 +186,7 @@ export default Vue.extend({
           type: "switch",
           group: "damage",
           option: true,
-          hidden: true,
+          hidden: false,
         },
       ] as FormItem[],
     };
@@ -240,6 +249,8 @@ export default Vue.extend({
               criticalRay: Number(this.value("criticalRay")),
               hissatsu: Number(this.value("hissatsu")),
               yakushi: Number(this.value("yakushi")),
+              gf: Boolean(this.value("gf")),
+              bougo: Number(this.value("bougo")),
             }
           );
         }
@@ -254,6 +265,8 @@ export default Vue.extend({
                 criticalRay: Number(this.value("criticalRay")),
                 hissatsu: Number(this.value("hissatsu")),
                 yakushi: Number(this.value("yakushi")),
+                gf: Boolean(this.value("gf")),
+                bougo: Number(this.value("bougo")),
               }
             );
           }

@@ -274,7 +274,8 @@ const $damage = (
     } else {
       break criticalLoop;
     }
-    damageDice = $twoDice();
+    // 〈薬師道具セット〉と〈クロロ酵素〉を併用時の処理
+    damageDice = option.yakushi ? $twoDice(option.yakushi) : $twoDice();
     // 2なら終了
     if (damageDice == 2) break criticalLoop;
     // 必殺攻撃

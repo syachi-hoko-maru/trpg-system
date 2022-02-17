@@ -248,9 +248,13 @@ const $damage = (
   // 成功した場合
   let damage = 0;
   damage += key[damageDice - 2] + additionalDamage;
-  // 半減の場合とC値が13以上の場合はクリティカルしないのでここで返す
-  if (option.half || criticalNumber >= 13) {
+  // 半減の場合はクリティカルしないのでここで返す
+  if (option.half) {
     return Math.ceil(damage / 2);
+  }
+  // C値が13以上の場合はクリティカルしないのでここで返す
+  if (criticalNumber >= 13) {
+    return damage;
   }
   // クリティカル処理
   criticalLoop: while (true) {

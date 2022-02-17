@@ -6,6 +6,8 @@ type TwoDice = 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 type HanteiOption = {
   nodoKoteichi?: Boolean;
   zyudoKoteichi?: Boolean;
+  nodoYakushi?: number;
+  zyudoYakushi?: number;
   nodoGf?: Boolean;
   zyudoGf?: Boolean;
   teiko?: "必中" | "半減" | String;
@@ -46,7 +48,9 @@ const $twoDice = (number?: number) => {
 };
 
 const $hantei = (difference: number, option: HanteiOption) => {
-  const nodoDice = option.nodoKoteichi
+  const nodoDice = option.nodoYakushi
+    ? $twoDice(option.nodoYakushi)
+    : option.nodoKoteichi
     ? 7
     : option.nodoGf
     ? $dice() * 2
@@ -60,7 +64,9 @@ const $hantei = (difference: number, option: HanteiOption) => {
   if (option.teiko == "必中") {
     return 2;
   }
-  const zyudoDice = option.zyudoKoteichi
+  const zyudoDice = option.zyudoYakushi
+    ? $twoDice(option.zyudoYakushi)
+    : option.zyudoKoteichi
     ? 7
     : option.zyudoGf
     ? $dice() * 2

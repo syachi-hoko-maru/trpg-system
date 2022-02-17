@@ -77,7 +77,7 @@ export default Vue.extend({
           type: "number",
           group: "hantei",
           option: true,
-          hidden: true,
+          hidden: false,
         },
         {
           name: "zyudoYakushi",
@@ -86,7 +86,7 @@ export default Vue.extend({
           type: "number",
           group: "hantei",
           option: true,
-          hidden: true,
+          hidden: false,
         },
         {
           name: "nodoGf",
@@ -228,7 +228,11 @@ export default Vue.extend({
           {
             nodoKoteichi: Boolean(this.value("nodoKoteichi")),
             zyudoKoteichi: Boolean(this.value("zyudoKoteichi")),
+            nodoYakushi: Number(this.value("nodoYakushi")),
+            zyudoYakushi: Number(this.value("zyudoYakushi")),
             teiko: String(this.value("teiko")),
+            nodoGf: Boolean(this.value("nodoGf")),
+            zyudoGf: Boolean(this.value("zyudoGf")),
           }
         );
         result.push({

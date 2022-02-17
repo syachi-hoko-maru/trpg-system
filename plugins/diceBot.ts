@@ -244,13 +244,18 @@ const $damage = (
     : option.gf
     ? $dice() * 2
     : $twoDice();
-  // クリティカルレイ or 必殺攻撃
-  if (option.criticalRay || option.hissatsu) {
-    damageDice += Number(option.criticalRay) + Number(option.hissatsu);
+  // クリティカルレイ
+  if (option.criticalRay) {
+    damageDice += Number(option.criticalRay);
     if (damageDice > 12) damageDice = 12;
   }
   // 自動失敗
   if (damageDice == 2) return 0;
+  // 必殺攻撃
+  if (option.hissatsu) {
+    damageDice += Number(option.hissatsu);
+    if (damageDice > 12) damageDice = 12;
+  }
   // 成功した場合
   let damage = 0;
   damage += key[damageDice - 2] + additionalDamage;
@@ -270,6 +275,8 @@ const $damage = (
       break criticalLoop;
     }
     damageDice = $twoDice();
+    // 2なら終了
+    if (damageDice == 2) break criticalLoop;
     // 必殺攻撃
     if (option.hissatsu) {
       damageDice += Number(option.hissatsu);

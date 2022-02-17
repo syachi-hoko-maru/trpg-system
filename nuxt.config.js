@@ -4,6 +4,8 @@ const environment = process.env.NODE_ENV || "development";
 const envSet = require(`./env/${environment}.js`);
 
 const title = "しゃちほこ丸のTRPGシステム";
+const description =
+  "このサイトではTRPGに役立つシステムの提供などを行なっていく予定です。";
 
 export default {
   env: envSet,
@@ -21,15 +23,13 @@ export default {
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "" },
+      { hid: "description", name: "description", content: description },
       { name: "format-detection", content: "telephone=no" },
       { charset: "utf-8" },
       {
         hid: "description",
         name: "description",
-        content:
-          process.env.npm_package_description ||
-          "このサイトではTRPGに役立つシステムの提供などを行なっていく予定です。",
+        content: description,
       },
       { hid: "og:site_name", property: "og:site_name", content: title },
       { hid: "og:type", property: "og:type", content: "website" },
@@ -42,8 +42,7 @@ export default {
       {
         hid: "og:description",
         property: "og:description",
-        content:
-          "このサイトではTRPGに役立つシステムの提供などを行なっていく予定です。",
+        content: description,
       },
       {
         hid: "og:image",
@@ -97,7 +96,15 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: "en",
+      name: title,
+      lang: "ja",
+      short_name: title,
+      title: title,
+      "og:title": title,
+      description: description,
+      "og:description": description,
+      theme_color: "#1c5616",
+      background_color: "#1c5616",
     },
   },
 

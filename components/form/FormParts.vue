@@ -18,7 +18,6 @@ div
     v-else-if="item.type == 'switch'",
     v-model="item.value",
     :label="item.label",
-    :items="item.type",
     dense
   )
 </template>

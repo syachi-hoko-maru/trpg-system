@@ -74,7 +74,7 @@ export default Vue.extend({
         {
           name: "nodoYakushi",
           value: 0,
-          label: "〈強力タビットにんじん〉など能動側の出目のうち1つを固定する",
+          label: "1回だけ能動側の出目のうち1つを固定する",
           type: "number",
           group: "hantei",
           option: true,
@@ -83,7 +83,7 @@ export default Vue.extend({
         {
           name: "zyudoYakushi",
           value: 0,
-          label: "受動側の出目のうち1つを固定する",
+          label: "1回だけ受動側の出目のうち1つを固定する",
           type: "number",
           group: "hantei",
           option: true,
@@ -106,6 +106,15 @@ export default Vue.extend({
           group: "hantei",
           option: true,
           hidden: false,
+        },
+        {
+          name: "kirikaeshi",
+          value: [],
+          label: "《斬り返し》など能動側が失敗したあともう1度振る",
+          type: "form",
+          group: "hantei",
+          option: true,
+          hidden: true,
         },
         {
           name: "teiko",
@@ -231,9 +240,9 @@ export default Vue.extend({
             zyudoKoteichi: Boolean(this.value("zyudoKoteichi")),
             nodoYakushi: Number(this.value("nodoYakushi")),
             zyudoYakushi: Number(this.value("zyudoYakushi")),
-            teiko: String(this.value("teiko")),
             nodoGf: Boolean(this.value("nodoGf")),
             zyudoGf: Boolean(this.value("zyudoGf")),
+            teiko: String(this.value("teiko")),
           }
         );
         result.push({

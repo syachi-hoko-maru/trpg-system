@@ -1,7 +1,24 @@
 <template lang="pug">
 v-col
   template(v-for="item in items")
-    FormParts(v-if="!item.hidden && (!item.option || option)", :item="item")
+    //- 斬り返しなど用
+    template(v-if="item.type == 'form'")
+      v-switch.d-inline(
+        v-model="formSwitchObject[item.name]",
+        :label="item.label",
+        @change="change(item.name)",
+        dense
+      )
+      template(v-if="formSwitchObject[item.name]")
+        .mini-form.px-5.pt-2.mb-6
+          template(
+            v-for="it in items.filter((o) => o.group === item.group && o.type !== 'form')"
+          )
+            FormParts(v-if="!it.hidden && (!it.option || option)", :item="it")
+    FormParts(
+      v-else-if="!item.hidden && (!item.option || option)",
+      :item="item"
+    )
   v-checkbox(v-if="existOption", v-model="option", label="その他のオプションを表示する")
 </template>
 
@@ -21,6 +38,7 @@ export default Vue.extend({
   },
   data() {
     return {
+      formSwitchObject: {},
       option: false,
     };
   },
@@ -30,5 +48,14 @@ export default Vue.extend({
       return false;
     },
   },
+  methods: {
+    change() {},
+  },
 });
 </script>
+
+<style lang="scss" scoped>
+.mini-form {
+  border-left: 3px solid white;
+}
+</style>

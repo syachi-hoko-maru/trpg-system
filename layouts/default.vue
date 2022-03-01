@@ -21,6 +21,7 @@ v-app(dark)
       v-row(justify="center", align="center")
         v-col(cols="12", sm="8", md="6")
           Nuxt
+          SyachiCardAmazon
   v-footer(absolute, app)
     span &copy; {{ new Date().getFullYear() }} しゃちほこ丸（
       TwitterLink(inline)
@@ -29,11 +30,13 @@ v-app(dark)
 
 <script>
 import TwitterLink from "@/components/util/TwitterLink.vue";
+import SyachiCardAmazon from "@/components/util/SyachiCardAmazon.vue";
 
 export default {
   name: "DefaultLayout",
   components: {
     TwitterLink,
+    SyachiCardAmazon,
   },
   data() {
     return {

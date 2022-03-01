@@ -47,8 +47,8 @@ export default Vue.extend({
             'タイトルの<ruby>"Bluish" <rp>(</rp><rt>ブルーイッシュ</rt><rp>)</rp></ruby>は「青みがかった」といった意味の英語です。<br>これはソ連の「ヴォストーク1号」で人類初の大気圏外からの帰還を果たしたユーリ・ガガーリンの名言「地球は青かった」の英訳をもとにしています。',
           ],
           schedules: [
-            "2022年 2月中旬 1ページTRPG版 公開予定",
-            "2022年 5月 完全版 公開予定",
+            "2022年 春 1ページTRPG版 公開予定",
+            "2022年 夏 完全版 公開予定",
           ],
         },
         {
@@ -74,10 +74,11 @@ export default Vue.extend({
           src: "saborima.png",
           messages: [
             "現在TALTOにてサプリメント「魔導の学府 ユーシズ」で追加された〈ボトルドール〉を楽しむためのシナリオ「サボリ魔とトモダチと迷いの森」を無料公開しています。",
+            "<a href='https://twitter.com/talto_cal2022' target='_blank'>TALTOシナリオカレンダー2022</a>の4月18日を担当させていただき、初心者向けのシナリオ「ウォフト=ルーバの研究所跡」を公開します。僕自身が布教用として複数回回したシナリオです。<br>初心者GMの方でも回しやすいシナリオとなっています。",
             "今後も随時シナリオを追加予定です。",
             "Pixivやカクヨムでの公開やBOOTHでのPDF版の公開も予定しています。",
           ],
-          schedules: [],
+          schedules: ["2022年 4月18日 「ウォフト=ルーバの研究所跡」公開予定"],
           buttons: [
             {
               url: "https://talto.cc/users/DVUC9LjUviekGgXrbqXaJWAcLCm1",

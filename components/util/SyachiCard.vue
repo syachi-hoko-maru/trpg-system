@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+div(:id="id")
   v-card.my-5
     v-img(v-if="src", :src="src", :alt="title")
     v-card-title.headline(v-if="title") {{ title }}
@@ -16,6 +16,10 @@ export default Vue.extend({
       type: String,
     },
     src: {
+      type: String,
+    },
+    id: {
+      required: false,
       type: String,
     },
   },

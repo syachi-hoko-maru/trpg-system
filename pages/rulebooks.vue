@@ -4,7 +4,12 @@ div
     p.
       このページではしゃちほこ丸の所持するルールブック・サプリメントをまとめています。<br>
       これらは全て遊びたいシステムですのでお誘いお待ちしております。
-  SyachiCard(v-for="group in groups", :key="group.group", :title="group.name")
+  SyachiCard(
+    v-for="group in groups",
+    :key="group.group",
+    :title="group.name",
+    :id="group.group"
+  )
     p(v-html="group.message")
     v-list
       v-list-item(v-for="item in group.items", :key="item.rulebook")

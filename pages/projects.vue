@@ -9,7 +9,8 @@ div
     v-for="project in projects.filter((o) => !o.hidden)",
     :key="project.title",
     :title="project.title",
-    :src="project.src ? require(`~/assets/projects/${project.src}`) : ''"
+    :src="project.src ? require(`~/assets/projects/${project.src}`) : ''",
+    :id="project.id"
   )
     p(v-for="message in project.messages", :key="message", v-html="message")
     v-list
@@ -41,6 +42,7 @@ export default Vue.extend({
       projects: [
         {
           title: "宇宙ペンギンTRPG Bluish",
+          id: "blueish",
           src: "blueish.png",
           messages: [
             "「<ruby>宇宙<rp>(</rp><rt>スペース</rt><rp>)</rp></ruby>ペンギン」となって地球を守るために戦う、オリジナルTRPGです。",
@@ -54,6 +56,7 @@ export default Vue.extend({
         {
           title:
             "ソード・ワールド2.5 同人シナリオ集「ボイジャーズアドベンチャー」",
+          id: "sw25va",
           hidden: true,
           messages: [
             "ソード・ワールド2.5の同人シナリオ集です。<br>シナリオを7〜10本ほど収録予定です。",
@@ -62,6 +65,7 @@ export default Vue.extend({
         },
         {
           title: "ソード・ワールド2.5 同人サプリメント「コロレスアニマルム」",
+          id: "sw25ca",
           src: "colores.png",
           messages: [
             "ソード・ワールド2.5の同人サプリメントです。<br>オリジナル種族・冒険者技能などのデータを収録する予定です。",
@@ -71,6 +75,7 @@ export default Vue.extend({
         },
         {
           title: "ソード・ワールド2.5 シナリオ作成",
+          id: "sw25scenario",
           src: "saborima.png",
           messages: [
             "現在TALTOにてサプリメント「魔導の学府 ユーシズ」で追加された〈ボトルドール〉を楽しむためのシナリオ「サボリ魔とトモダチと迷いの森」を無料公開しています。",
@@ -88,6 +93,7 @@ export default Vue.extend({
         },
         {
           title: "オンラインセッション素材",
+          id: "material",
           src: "dungeon.png",
           messages: [
             "BOOTHにてオンラインセッション素材を公開しています。",

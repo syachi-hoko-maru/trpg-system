@@ -62,6 +62,11 @@ export default {
           title: "SW2.5 Simulator",
           to: "/sw25simulate",
         },
+        {
+          icon: "mdi-account",
+          title: "SW2.5 Data",
+          to: "/sw25data",
+        },
       ],
     };
   },

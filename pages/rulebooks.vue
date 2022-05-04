@@ -73,11 +73,12 @@ export default Vue.extend({
                 "鉄道の都キングスフォール",
                 "星座の町サイレックオード",
                 "魔導の学府ユーシズ",
-                "ヴァイスシティ",
-                "デモンズライン",
+                "ヴァイスシティ　‐悪徳の贄‐",
+                "デモンズライン　‐追憶の守人‐",
+                "グリフォンロード　‐黄金のキャラバン‐",
                 "剣と荒野と放浪者",
-                "冒険者たちの幻獣戦線",
                 "剣と荒野と放浪者2",
+                "冒険者たちの幻獣戦線",
               ],
             },
             {
@@ -187,12 +188,17 @@ export default Vue.extend({
         {
           group: "dozin",
           name: "同人",
-          message: "身内でのPLのみ経験があります。",
+          message: "おまじな大饗宴は身内でのPLのみ経験があります。",
           items: [
             {
               group: "dozin",
               rulebook: "TRPGおまじな大饗宴",
               supplements: [],
+            },
+            {
+              group: "dozin",
+              rulebook: "終末紀行ＲＰＧ World's End Journey",
+              supplements: ["ランダムプレイ拡張パック"],
             },
           ],
         },
@@ -204,7 +210,7 @@ export default Vue.extend({
             {
               group: "web",
               rulebook: "エモクロアTRPG",
-              supplements: [],
+              supplements: ["非公式サプリメント マギアスエイジ"],
             },
           ],
         },

@@ -43,7 +43,7 @@ export default Vue.extend({
         {
           title: "ソード・ワールド2.5 シナリオ作成",
           id: "sw25scenario",
-          src: "saborima.png",
+          src: "hukyo.png", // "saborima.png",
           messages: [
             "現在TALTOにてサプリメント『魔導の学府 ユーシズ』で追加された〈ボトルドール〉を楽しむためのシナリオ「サボリ魔とトモダチと迷いの森」を無料公開しています。",
             "<a href='https://campaign.talto.cc/talto_cal2022/calendar/' target='_blank'>TALTOシナリオカレンダー2022</a>の4月18日を担当させていただき、初心者向けのシナリオ「ウォフト=ルーバの研究所跡」を公開しました。僕自身が初心者への布教のために作って複数回回したシナリオです。<br>初心者GMの方でも回しやすいシナリオとなっていると思います。",

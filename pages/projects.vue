@@ -53,6 +53,7 @@ export default Vue.extend({
             "TALTOだけではなく、Pixivやカクヨムでの公開であったり、BOOTHでのPDF版の公開であったりも予定しています。<br>当ウェブサイトでも公開を予定しています。",
           ],
           schedules: [
+            "2022年 1月26日 「サボリ魔とトモダチと迷いの森」公開",
             "2022年 4月1日 「ウォフト=ルーバの研究所跡」公開",
             "2022年 8月8日 「Magic Steam Festival」（仮）公開予定",
           ],
@@ -68,7 +69,7 @@ export default Vue.extend({
           id: "emokloreScenario",
           src: "cancionAzul.jpeg",
           messages: [
-            "エモクロアTRPGシナリオ「Canción Azul」（カンシオン アスール）を執筆中です！　<a href='https://hydroxytrpg.booth.pm/items/3826115'>非公式サプリメント「マギアスエイジ」</a>を使ったファンタジーものです。<a href='https://twitter.com/fumidori75/status/1490988828873879553'>#海の日TRPGシナリオ企画</a>に参加させていただくつもりです！",
+            "エモクロアTRPGシナリオ「Canción Azul」（カンシオン アスール）を執筆中です！　<a href='https://hydroxytrpg.booth.pm/items/3826115'>非公式サプリメント「マギアスエイジ」</a>を使ったファンタジーものです。<br><a href='https://twitter.com/fumidori75/status/1490988828873879553'>#海の日TRPGシナリオ企画</a>に参加させていただくつもりです！",
           ],
           schedules: ["2022年 7月18日 「Canción Azul」公開予定"],
           buttons: [

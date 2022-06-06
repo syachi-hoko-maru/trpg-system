@@ -62,6 +62,10 @@ export default Vue.extend({
               url: "https://talto.cc/users/DVUC9LjUviekGgXrbqXaJWAcLCm1",
               text: "TALTO（しゃちほこ丸の屋台）",
             },
+            {
+              url: "/scenario",
+              text: "シナリオ",
+            },
           ],
         },
         {
@@ -76,6 +80,10 @@ export default Vue.extend({
             {
               url: "https://talto.cc/users/DVUC9LjUviekGgXrbqXaJWAcLCm1",
               text: "TALTO（しゃちほこ丸の屋台）",
+            },
+            {
+              url: "/scenario",
+              text: "シナリオ",
             },
           ],
         },

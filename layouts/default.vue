@@ -58,6 +58,12 @@ export default {
           to: "/projects",
         },
         {
+          icon: "mdi-book",
+          title: "Scenario",
+          to: "/scenario",
+        },
+
+        {
           icon: "mdi-math-integral-box",
           title: "SW2.5 Simulator",
           to: "/sw25simulate",

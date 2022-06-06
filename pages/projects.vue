@@ -64,6 +64,21 @@ export default Vue.extend({
           ],
         },
         {
+          title: "エモクロアTRPG シナリオ作成",
+          id: "emokloreScenario",
+          src: "cancionAzul.jpeg",
+          messages: [
+            "エモクロアTRPGシナリオ「Canción Azul」（カンシオン アスール）を執筆中です！　<a href='https://hydroxytrpg.booth.pm/items/3826115'>非公式サプリメント「マギアスエイジ」</a>を使ったファンタジーものです。<a href='https://twitter.com/fumidori75/status/1490988828873879553'>#海の日TRPGシナリオ企画</a>に参加させていただくつもりです！",
+          ],
+          schedules: ["2022年 7月18日 「Canción Azul」公開予定"],
+          buttons: [
+            {
+              url: "https://talto.cc/users/DVUC9LjUviekGgXrbqXaJWAcLCm1",
+              text: "TALTO（しゃちほこ丸の屋台）",
+            },
+          ],
+        },
+        {
           title: "オンラインセッション素材",
           id: "material",
           src: "dungeon.png",
@@ -71,6 +86,7 @@ export default Vue.extend({
             "BOOTHにてオンラインセッション素材を公開しています。",
             "SW2.5の〈ボトルドール〉を楽しむための素材「ボトルドールシート素材」は現在無料配布中です。",
             "「ダンジョンマップタイル」はSW2.5のほか、CoCのクローズドシナリオなどでも使えます。",
+            "SW2.5のココフォリア用のマップ素材を作成中です。",
           ],
           schedules: [],
           buttons: [

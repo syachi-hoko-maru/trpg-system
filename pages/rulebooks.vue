@@ -188,7 +188,8 @@ export default Vue.extend({
         {
           group: "dozin",
           name: "同人",
-          message: "おまじな大饗宴は身内でのPLのみ経験があります。",
+          message:
+            "おまじな大饗宴は身内でのPLのみ経験があります。終末紀行ＲＰＧは身内でGM兼PLの経験があります。",
           items: [
             {
               group: "dozin",

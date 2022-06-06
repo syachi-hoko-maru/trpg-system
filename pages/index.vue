@@ -6,7 +6,7 @@ div
       TwitterLink(inline)
       | にて発信させていただきます。
     p 現在はSW2.5のダメージ計算や命中する割合の計算などに使えるシミュレーターを公開しています。
-    Botton(url="/sw25simulate", text="SW2.5 判定シミュレーター")
+    Button(url="/sw25simulate", text="SW2.5 判定シミュレーター")
 
   SyachiCard(title="ご挨拶")
     p.
@@ -17,42 +17,42 @@ div
     p 現在、平日夜のテキストセッションメインで遊ばせていただいております。
     //- p 良い声ではありませんがボイスセッションもテキストセッションも可能です。
     p 僕の持っているルールブック一覧については以下のページをご覧ください。
-    Botton(url="/rulebooks", text="所持ルールブック一覧")
+    Button(url="/rulebooks", text="所持ルールブック一覧")
 
   SyachiCard(title="同人活動")
     p 現在進行中の同人活動プロジェクトは以下のページから確認することができます。
-    Botton(url="/projects", text="現在進行中の同人活動プロジェクト")
+    Button(url="/projects", text="現在進行中の同人活動プロジェクト")
     p 特にシナリオについては、以下のページに詳細を掲載しています。
-    Botton(url="/scenario", text="シナリオ")
+    Button(url="/scenario", text="シナリオ")
 
   SyachiCard(title="リンク")
     p BOOTHではセッション用素材などを、TALTOでシナリオを、カクヨムには雑記をそれぞれ投稿しています。
-    Botton(url="https://syachihokomaru.booth.pm/", text="BOOTH（しゃちほこ丸の屋台）")
-    Botton(
+    Button(url="https://syachihokomaru.booth.pm/", text="BOOTH（しゃちほこ丸の屋台）")
+    Button(
       url="https://talto.cc/users/DVUC9LjUviekGgXrbqXaJWAcLCm1",
       text="TALTO（しゃちほこ丸の屋台）"
     )
-    Botton(
+    Button(
       url="https://kakuyomu.jp/works/16816927859758100588",
       text="カクヨム（しゃちほこ丸の雑多な置き場）"
     )
     p これらの情報は以下のTwitterで発信していきます。
     TwitterLink(yti)
     p 質問箱を設置しています。質問があればお気軽にどうぞ。
-    Botton(url="https://peing.net/ja/syachi_hoko_trp", text="質問箱")
+    Button(url="https://peing.net/ja/syachi_hoko_trp", text="質問箱")
 </template>
 
 <script>
 import SyachiCard from "@/components/util/SyachiCard.vue";
 import TwitterLink from "@/components/util/TwitterLink.vue";
-import Botton from "~/components/util/Button.vue";
+import Button from "~/components/util/Button.vue";
 
 export default {
   name: "IndexPage",
   components: {
     SyachiCard,
     TwitterLink,
-    Botton,
+    Button,
   },
 };
 </script>

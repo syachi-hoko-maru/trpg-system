@@ -21,7 +21,7 @@ v-app(dark)
       v-row(justify="center", align="center")
         v-col(cols="12", sm="8", md="6")
           Nuxt
-          SyachiCardAmazon
+          SyachiCardAmazon(v-show="showAmazon")
   v-footer(absolute, app)
     span &copy; {{ new Date().getFullYear() }} しゃちほこ丸（
       TwitterLink(inline)
@@ -41,6 +41,7 @@ export default {
   data() {
     return {
       drawer: false,
+      showAmazon: true,
       items: [
         {
           icon: "mdi-apps",
@@ -62,14 +63,23 @@ export default {
           title: "Scenario",
           to: "/scenario",
         },
-
         {
           icon: "mdi-math-integral-box",
           title: "SW2.5 Simulator",
           to: "/sw25simulate",
         },
+        {
+          icon: "mdi-home",
+          title: "House Rule",
+          to: "/houseRule",
+        },
       ],
     };
+  },
+  created() {
+    this.$nuxt.$on("hiddenAmazon", (boolean) => {
+      this.showAmazon = boolean;
+    });
   },
 };
 </script>

@@ -7,7 +7,7 @@ div
       li モンストラスロア（ML）
       li アウトロープロファイルブック（OPB）
       li メイガスアーツ（MA）
-    h3.mt-5.mb-2 その他のサプリメント
+    MiniTitle その他のサプリメント
     p 以下の収録データはCPごとに、他のPL次第で可能です。
     ul
       li グランゼール・キングスフォール・サイレックオード・ユーシズ収録データ
@@ -15,7 +15,7 @@ div
       li GMウォーロック vol.1収録データ
       li リプレイ（魔神使いと影光の学舎 1,2）収録データ
       li 小魔法データ（MA収録分）
-    h3.mt-5.mb-2 SW2.0のルールブック・サプリメント
+    MiniTitle SW2.0のルールブック・サプリメント
     p SW2.0関連はセッションごとに、僕が所持しているものは他のPL次第で参照可能になりえます。<br>
       | 僕の所持するものは以下で確認してください。
     Button(url="/rulebooks#SW", text="ルールブック一覧")
@@ -111,6 +111,7 @@ import Vue from "vue";
 import SyachiCard from "@/components/util/SyachiCard.vue";
 import TwitterLink from "@/components/util/TwitterLink.vue";
 import Button from "@/components/util/Button.vue";
+import MiniTitle from "@/components/util/MiniTitle.vue";
 
 export default Vue.extend({
   name: "ScenariosPage",
@@ -118,6 +119,7 @@ export default Vue.extend({
     SyachiCard,
     TwitterLink,
     Button,
+    MiniTitle,
   },
   mounted() {
     this.$nuxt.$emit("hiddenAmazon", false);

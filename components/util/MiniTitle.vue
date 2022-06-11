@@ -1,6 +1,7 @@
 <template lang="pug">
-h3.mt-5.mb-2
-  slot
+div
+  h3.mt-5.mb-2
+    slot
 </template>
 
 

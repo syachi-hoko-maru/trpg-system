@@ -1,8 +1,8 @@
 <template lang="pug">
 div(:id="id")
   v-card.my-5
-    v-img(v-if="src", :src="src", :alt="title")
-    v-card-title.headline(v-if="title") {{ title }}
+    v-img(v-show="src", :src="src", :alt="title")
+    v-card-title.headline(v-show="title") {{ title }}
     v-card-text
       slot
 </template>

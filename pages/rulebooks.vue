@@ -18,7 +18,7 @@ div
           v-list-item-title {{ item.rulebook }}
           template(v-for="supplement in item.supplements")
             v-list-item-subtitle {{ supplement }}
-    template(v-if="group.group == 'SW'")
+    template(v-show="group.group == 'SW'")
       hr.mb-3
       p なおカクヨムにてソード・ワールド2.5のサプリメント紹介をしているのでぜひご覧ください。
       Botton(

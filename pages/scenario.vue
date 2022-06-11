@@ -102,8 +102,8 @@ export default Vue.extend({
           status: "執筆中（7/18公開予定）",
           src: "cancionAzul.jpeg",
           messages: [
-            "<a href='https://hydroxytrpg.booth.pm/items/3826115'>非公式サプリメント「マギアスエイジ」</a>を使ったファンタジーものです。<br>マギアスエイジの舞台となるスブトゥリムの南端、「南の大海」に面する港町で、漁船の失踪事件を調査するシナリオとなります。",
-            "<a href='https://twitter.com/fumidori75/status/1490988828873879553'>#海の日TRPGシナリオ企画</a>に参加させていただくつもりです！",
+            "<a href='https://hydroxytrpg.booth.pm/items/3826115'  target='_blank'>非公式サプリメント「マギアスエイジ」</a>を使ったファンタジーものです。<br>マギアスエイジの舞台となるスブトゥリムの南端、「南の大海」に面する港町で、漁船の失踪事件を調査するシナリオとなります。",
+            "<a href='https://twitter.com/fumidori75/status/1490988828873879553'  target='_blank'>#海の日TRPGシナリオ企画</a>に参加させていただくつもりです！",
           ],
           buttons: [
             {
@@ -122,7 +122,7 @@ export default Vue.extend({
           src: "kitomaho.jpeg",
           messages: [
             "『鉄道の都 キングスフォール』掲載の大鉄道祭に関するシナリオにするつもりです。",
-            "フェリシモ魔法部×二足獣企画さんによる<a href='https://www.felissimo.co.jp/mahoubu/kitomaho/'>「きっと魔法遣いだったあなたたちへ」</a>というシナリオ一斉投稿企画へ参加させていただくつもりで、準備を進めています。",
+            "フェリシモ魔法部×二足獣企画さんによる<a href='https://www.felissimo.co.jp/mahoubu/kitomaho/  target='_blank''>「きっと魔法遣いだったあなたたちへ」</a>というシナリオ一斉投稿企画へ参加させていただくつもりで、準備を進めています。",
           ],
           buttons: [
             {

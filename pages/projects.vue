@@ -49,7 +49,7 @@ export default Vue.extend({
             "<a href='https://campaign.talto.cc/talto_cal2022/calendar/' target='_blank'>TALTOシナリオカレンダー2022</a>の4月18日を担当させていただき、初心者向けのシナリオ「ウォフト=ルーバの研究所跡」を公開しました。僕自身が初心者への布教のために作って複数回回したシナリオです。<br>初心者GMの方でも回しやすいシナリオとなっていると思います。",
             "今後も随時シナリオを作成し、公開していく予定です。",
             // "<a href='https://twitter.com/talto_cal2022' target='_blank'>TALTOシナリオカレンダー2022</a>の4月18日を担当させていただき、初心者向けのシナリオ「ウォフト=ルーバの研究所跡」を公開する予定です。僕自身が布教用として複数回回したシナリオです。<br>初心者GMの方でも回しやすいシナリオとなっていると思います。",
-            "8月にはフェリシモ魔法部×二足獣企画さんによる<a href='https://www.felissimo.co.jp/mahoubu/kitomaho/'>「きっと魔法遣いだったあなたたちへ」</a>というシナリオ一斉投稿企画へ参加させていただくつもりで、準備を進めています。<br>『鉄道の都 キングスフォール』掲載の大鉄道祭に関するシナリオにするつもりです。",
+            "8月にはフェリシモ魔法部×二足獣企画さんによる<a href='https://www.felissimo.co.jp/mahoubu/kitomaho/'  target='_blank'>「きっと魔法遣いだったあなたたちへ」</a>というシナリオ一斉投稿企画へ参加させていただくつもりで、準備を進めています。<br>『鉄道の都 キングスフォール』掲載の大鉄道祭に関するシナリオにするつもりです。",
             "TALTOだけではなく、Pixivやカクヨムでの公開であったり、BOOTHでのPDF版の公開であったりも予定しています。<br>当ウェブサイトでも公開を予定しています。",
           ],
           schedules: [
@@ -73,7 +73,7 @@ export default Vue.extend({
           id: "emokloreScenario",
           src: "cancionAzul.jpeg",
           messages: [
-            "エモクロアTRPGシナリオ「Canción Azul」（カンシオン アスール）を執筆中です！　<a href='https://hydroxytrpg.booth.pm/items/3826115'>非公式サプリメント「マギアスエイジ」</a>を使ったファンタジーものです。<br><a href='https://twitter.com/fumidori75/status/1490988828873879553'>#海の日TRPGシナリオ企画</a>に参加させていただくつもりです！",
+            "エモクロアTRPGシナリオ「Canción Azul」（カンシオン アスール）を執筆中です！　<a href='https://hydroxytrpg.booth.pm/items/3826115' target='_blank'>非公式サプリメント「マギアスエイジ」</a>を使ったファンタジーものです。<br><a href='https://twitter.com/fumidori75/status/1490988828873879553'  target='_blank'>#海の日TRPGシナリオ企画</a>に参加させていただくつもりです！",
           ],
           schedules: ["2022年 7月18日 「Canción Azul」公開予定"],
           buttons: [

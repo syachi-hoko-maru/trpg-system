@@ -12,9 +12,13 @@
     "deploy": "push-dir --dir=docs --branch=gh-pages",
     "go": "cross-env NODE_ENV=\"githubPages\" nuxt generate && push-dir --dir=docs --branch=gh-pages"
   },
+  "browser": {
+    "fs": false
+  },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/pwa": "^3.3.5",
+    "@types/node": "^17.0.42",
     "core-js": "^3.19.3",
     "cross-env": "^7.0.3",
     "http-server": "^14.1.0",

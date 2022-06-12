@@ -9,16 +9,9 @@ const description =
 
 export default {
   env: envSet,
-
-  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
-
-  // Target: https://go.nuxtjs.dev/config-target
   target: "static",
-
-  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    // titleTemplate: "%s - trpg-system",
     title: title,
     meta: [
       { charset: "utf-8" },
@@ -62,38 +55,20 @@ export default {
     ],
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ["~/plugins/diceBot.ts"],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    // https://go.nuxtjs.dev/typescript
-    "@nuxt/typescript-build",
-    // https://go.nuxtjs.dev/vuetify
-    "@nuxtjs/vuetify",
-  ],
+  buildModules: ["@nuxt/typescript-build", "@nuxtjs/vuetify"],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    // https://go.nuxtjs.dev/axios
-    "@nuxtjs/axios",
-    // https://go.nuxtjs.dev/pwa
-    "@nuxtjs/pwa",
-  ],
+  modules: ["@nuxtjs/axios", "@nuxtjs/pwa"],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: "/",
   },
 
-  // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
       name: title,
@@ -108,7 +83,6 @@ export default {
     },
   },
 
-  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ["~/assets/variables.scss"],
     theme: {
@@ -127,7 +101,6 @@ export default {
     },
   },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 
   router: {

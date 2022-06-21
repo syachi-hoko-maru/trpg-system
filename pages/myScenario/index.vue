@@ -146,7 +146,7 @@ export default Vue.extend({
           ],
           buttons: [
             {
-              url: "/myScenario/pudding",
+              // url: "/myScenario/pudding",
               text: "シナリオメモ",
             },
           ],

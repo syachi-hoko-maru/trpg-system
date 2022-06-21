@@ -1,5 +1,6 @@
 <template lang="pug">
 div
+  SyachiCard#sw25(title="ソード・ワールド2.5 ハウスルール")
   SyachiCard(title="使用可能サプリ")
     p 原則、以下のサプリが使用可能です。
     ul

@@ -63,8 +63,8 @@ export default Vue.extend({
               text: "TALTO（しゃちほこ丸の屋台）",
             },
             {
-              url: "/scenario",
-              text: "シナリオ",
+              url: "/myScenario",
+              text: "マイシナリオ",
             },
           ],
         },
@@ -82,8 +82,8 @@ export default Vue.extend({
               text: "TALTO（しゃちほこ丸の屋台）",
             },
             {
-              url: "/scenario",
-              text: "シナリオ",
+              url: "/myScenario",
+              text: "マイシナリオ",
             },
           ],
         },

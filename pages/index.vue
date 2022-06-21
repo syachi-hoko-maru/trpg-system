@@ -23,7 +23,7 @@ div
     p 現在進行中の同人活動プロジェクトは以下のページから確認することができます。
     Button(url="/projects", text="現在進行中の同人活動プロジェクト")
     p 特にシナリオについては、以下のページに詳細を掲載しています。
-    Button(url="/scenario", text="シナリオ")
+    Button(url="/myScenario", text="シナリオ")
 
   SyachiCard(title="リンク")
     p BOOTHではセッション用素材などを、TALTOでシナリオを、カクヨムには雑記をそれぞれ投稿しています。

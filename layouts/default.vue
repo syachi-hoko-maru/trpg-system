@@ -60,8 +60,8 @@ export default {
         },
         {
           icon: "mdi-book",
-          title: "Scenario",
-          to: "/scenario",
+          title: "myScenario",
+          to: "/myScenario",
         },
         {
           icon: "mdi-math-integral-box",

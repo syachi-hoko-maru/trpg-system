@@ -11,6 +11,10 @@ export default {
   env: envSet,
   ssr: false,
   target: "static",
+  server: {
+    port: 3333,
+    host: "0.0.0.0",
+  },
   head: {
     title: title,
     meta: [

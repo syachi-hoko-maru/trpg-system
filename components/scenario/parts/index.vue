@@ -3,7 +3,8 @@ div
   template(v-if="line.type === ''")
     br(v-if="line.text === ''")
     div(v-else-if="line.text === 'GMInfo'") === GM向け情報 =======
-    div(v-else-if="line.text === '/GMInfo'") ====================
+    div(v-else-if="line.text === 'Info'") ==== 情報 ===========
+    div(v-else-if="(line.text === '/GMInfo') | (line.text === '/Info')") ====================
     div(v-else, v-html="line.text")
 </template>
 

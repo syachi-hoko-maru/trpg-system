@@ -70,7 +70,7 @@ export default {
   modules: ["@nuxtjs/axios", "@nuxtjs/pwa"],
 
   axios: {
-    baseURL: "/",
+    baseURL: envSet.baseURL,
   },
 
   pwa: {

@@ -1,3 +1,3 @@
 module.exports = {
-  baseUrl: "/trpg-system/",
+  baseUrl: "https://syachi-hoko-maru.github.io/trpg-system/",
 };

@@ -8,7 +8,7 @@
 
 ## 前景
 
-<a href="/scenarioMemo/pudding/front.png" target="_blank">ココフォリア等で前景として使用いただける画像</a>です。
+<a href="./scenarioMemo/pudding/front.png" target="_blank">ココフォリア等で前景として使用いただける画像</a>です。
 ご自由にお使いください。
 
 # 導入

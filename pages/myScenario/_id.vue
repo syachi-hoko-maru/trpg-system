@@ -25,8 +25,6 @@ import Scenario from "@/components/scenario/index.vue";
 
 import { scenarioById } from "@/assets/scenarios";
 
-const scenarioId = "pudding";
-
 export default Vue.extend({
   name: "PuddingScenarioPage",
   components: {
@@ -37,6 +35,7 @@ export default Vue.extend({
     return {};
   },
   data() {
+    const scenarioId = this.$route.params.id;
     const scenario = scenarioById(scenarioId);
     const src = scenario.src
       ? require(`~/assets/projects/${scenario.src}`)
@@ -72,7 +71,7 @@ export default Vue.extend({
         {
           hid: "og:url",
           property: "og:url",
-          content: `https://syachi-hoko-maru.github.io/trpg-system/myScenario/${scenarioId}`,
+          content: `https://syachi-hoko-maru.github.io/trpg-system/myScenario/${this.$data.scenarioId}`,
         },
         {
           hid: "og:title",

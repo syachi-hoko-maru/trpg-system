@@ -92,7 +92,7 @@ export const scenarios = [
     ],
     buttons: [
       {
-        url: "/myScenario/pudding",
+        url: "/myScenario/scenario/pudding",
         text: "シナリオメモ",
       },
     ],

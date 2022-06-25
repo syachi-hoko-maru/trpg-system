@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[8],{272:function(e,n,t){"use strict";t.r(n);var l=t(0).default.extend({name:"GMInfoTextComponent"}),o=t(15),component=Object(o.a)(l,(function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",[t("p",[e._v("GM向け情報："),t("br"),e._t("default")],2)])}),[],!1,null,null,null);n.default=component.exports}}]);

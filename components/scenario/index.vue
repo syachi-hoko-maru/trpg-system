@@ -48,7 +48,7 @@ export default Vue.extend({
   },
   async mounted() {
     const rowMd = (await this.$axios
-      .get(`${process.env.url}/scenarioMemo/pudding/scenario.md`)
+      .get(`${process.env.url}/scenarioMemo/${this.scenarioId}/scenario.md`)
       .then((res) => res.data)
       .catch((err) => `${err}`)) as string;
     let currentContent: ContentsArrayType = [];

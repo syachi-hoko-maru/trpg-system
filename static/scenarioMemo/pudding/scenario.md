@@ -41,7 +41,7 @@ GMInfo
 
 GMInfo
 ルドーにはかつて「最強の冒険者になる」という夢がありましたが、怪我もあって諦め、冒険者ギルド支部で働き始めた過去があります。
-詳しくは<a href="./myScenario/sw25npc#ldo">こちら</a>を参照してください。
+詳しくは<a href="./myScenario/sw25originalSetting#ldo">こちら</a>を参照してください。
 /GMInfo
 
 時間について聞かれると以下のように反応します。

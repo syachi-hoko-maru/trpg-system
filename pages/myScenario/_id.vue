@@ -35,7 +35,7 @@ export default Vue.extend({
     return {};
   },
   data() {
-    const scenarioId = "pudding";
+    const scenarioId = this.$route.params.id;
     const scenario = scenarioById(scenarioId);
     const src = scenario.src
       ? require(`~/assets/projects/${scenario.src}`)

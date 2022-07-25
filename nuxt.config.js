@@ -114,7 +114,9 @@ export default {
   generate: {
     dir: process.env.NODE_ENV === "githubPages" ? "docs" : "dist",
     routes() {
-      return ["pudding"].map((item) => `myScenario/${item}`);
+      return ["pudding", "magicSteamFestival"].map(
+        (item) => `myScenario/${item}`
+      );
     },
   },
 };

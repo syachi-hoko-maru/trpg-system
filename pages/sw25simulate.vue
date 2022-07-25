@@ -4,7 +4,7 @@ div
     v-form
       v-select(v-model="mode", :items="modeList", label="モード")
       FormPartsArray(:items="modeItems")
-      v-btn(block, @click="simulate") シミュレート
+      Button(block, @click="simulate", text="シミュレート") 
 
   SyachiCard(v-for="history in histories", :key="history.index")
     template(v-for="d in history.data")
@@ -19,6 +19,7 @@ div
 import Vue from "vue";
 import SyachiCard from "@/components/util/SyachiCard.vue";
 import FormPartsArray from "@/components/form/FormPartsArray.vue";
+import Button from "~/components/util/Button.vue";
 
 type History = {
   index: number;
@@ -28,7 +29,7 @@ type History = {
 
 export default Vue.extend({
   name: "SW25SimulatePage",
-  components: { SyachiCard, FormPartsArray },
+  components: { SyachiCard, FormPartsArray, Button },
   data() {
     return {
       mode: "ダメージ期待値",

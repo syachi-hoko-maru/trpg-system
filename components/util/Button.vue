@@ -1,9 +1,10 @@
 <template lang="pug">
 .my-3(justify="center", align="center")
-  NuxtLink(:to="url", v-if="internal")
+  NuxtLink(:to="url", v-if="type == 'internal'")
     v-btn(block) {{ text }}
-  a(:href="url", target="_blank", v-else)
+  a(:href="url", target="_blank", v-else-if="type == 'external'")
     v-btn(block, outlined) {{ text }}
+  v-btn(block, v-else) {{ text }}
 </template>
 
 <script>
@@ -18,9 +19,14 @@ export default {
     },
   },
   computed: {
-    internal() {
-      if (!this.url.match(/^http[s]+/)?.length) return true;
-      return false;
+    type() {
+      if (!this.url) {
+        return "none";
+      } else if (!this.url.match(/^http[s]+/)?.length) {
+        return "internal";
+      } else {
+        return "external";
+      }
     },
   },
 };

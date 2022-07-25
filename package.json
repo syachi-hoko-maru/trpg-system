@@ -18,9 +18,11 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/pwa": "^3.3.5",
+    "@types/html2canvas": "^1.0.0",
     "@types/node": "^17.0.42",
     "core-js": "^3.19.3",
     "cross-env": "^7.0.3",
+    "html2canvas": "^1.4.1",
     "http-server": "^14.1.0",
     "nuxt": "^2.15.8",
     "push-dir": "^0.4.1",

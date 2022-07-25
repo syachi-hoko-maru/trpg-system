@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[13],{269:function(t,e,n){"use strict";n.r(e);var l=n(0).default.extend({name:"MiniTitleComponent"}),c=n(15),component=Object(c.a)(l,(function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",[n("h3",{staticClass:"mt-5 mb-2"},[t._t("default")],2)])}),[],!1,null,null,null);e.default=component.exports}}]);

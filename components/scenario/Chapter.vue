@@ -6,7 +6,7 @@ div
         Section(:section="content")
       template(v-else-if="content.itemName")
         Item(:item="content")
-      parts(v-else, :line="content")
+      parts(v-else, :box="content")
 </template>
 
 <script lang="ts">

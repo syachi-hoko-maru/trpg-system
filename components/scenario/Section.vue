@@ -4,7 +4,7 @@ div
   template(v-for="sectionContent in section.sectionContent")
     template(v-if="sectionContent.itemName")
       Item(:item="sectionContent")
-    parts(v-else, :line="sectionContent")
+    parts(v-else, :box="sectionContent")
 </template>
 
 <script lang="ts">

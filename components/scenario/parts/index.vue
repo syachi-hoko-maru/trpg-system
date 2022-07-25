@@ -1,31 +1,42 @@
 <template lang="pug">
-div
-  template(v-if="line.type === ''")
-    br(v-if="line.text === ''")
-    div(v-else-if="line.text === 'GMInfo'") === GM向け情報 =======
-    div(v-else-if="line.text === 'Info'") ==== 情報 ===========
-    div(v-else-if="(line.text === '/GMInfo') | (line.text === '/Info')") ====================
-    div(v-else, v-html="line.text")
+.my-5
+  template(v-if="box.type === 'break'")
+    br
+  template(v-else)
+    components(:is="box.type ? box.type : 'Normal'")
+      template(v-for="line in box.lines")
+        br(v-if="line === '' && box.type !== ''")
+        div(
+          v-else,
+          v-for="string in strings(line)",
+          :class="string.class",
+          v-html="string.str"
+        )
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 
-import Scene from "~/components/scenario/parts/SceneExplainText.vue";
-import NormalText from "~/components/scenario/parts/NormalText.vue";
+import SceneExplain from "~/components/scenario/parts/SceneExplainText.vue";
+import Normal from "~/components/scenario/parts/NormalText.vue";
 import GMInfo from "~/components/scenario/parts/GMInfoText.vue";
 
 export default Vue.extend({
   name: "partsComponent",
   components: {
-    Scene,
-    NormalText,
+    SceneExplain,
+    Normal,
     GMInfo,
   },
   props: {
-    line: {
+    box: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    strings(line: string) {
+      return [{ str: line }];
     },
   },
 });

@@ -1,8 +1,8 @@
 <template lang="pug">
 div
-  h6 {{ item.itemName }}
+  .subtitle-1 {{ item.itemName }}
   template(v-for="itemContent in item.itemContent")
-    parts(:line="itemContent")
+    parts(:box="itemContent")
 </template>
 
 <script lang="ts">

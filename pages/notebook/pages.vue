@@ -46,6 +46,7 @@ div
       li ジャイアントリザード（→『I』p. 451『ML』p. 100）
       li パープルアント（→『I』p. 451『ML』p. 101）
       li エルビレア（→『I』p.469）
+      li 匪賊の雑兵（→『I』p. 471『ML』p. 211）
 </template>
 
 <script lang="ts">

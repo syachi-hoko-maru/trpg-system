@@ -60,6 +60,7 @@ export const scenarios = [
     data: ["1〜4人用", "3〜4時間程度"],
   },
   {
+    id: "magicSteamFestival",
     title: "Magic Steam Festival",
     hidden: false,
     system: "ソード・ワールド2.5",

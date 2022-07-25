@@ -30,7 +30,7 @@ div
   SyachiCard(title="同人活動")
     p 現在進行中の同人活動プロジェクトは以下のページから確認することができます。
     Button(url="/projects", text="現在進行中の同人活動プロジェクト")
-    p 特にシナリオについては、以下のページに詳細を掲載しています。
+    p SW2.5とエモクロアTRPGのシナリオを執筆・公開しています。以下のページに詳細を掲載しています。
     Button(url="/myScenario", text="シナリオ")
 
   SyachiCard(title="リンク")

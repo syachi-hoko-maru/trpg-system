@@ -44,8 +44,8 @@ div
       url="https://kakuyomu.jp/works/16816927859758100588",
       text="カクヨム（しゃちほこ丸の雑多な置き場）"
     )
-    p これらの情報は以下のTwitterで発信していきます。
-    TwitterLink(yti)
+    //- p これらの情報は以下のTwitterで発信していきます。
+    //- TwitterLink(yti)
     p 質問箱を設置しています。質問があればお気軽にどうぞ。
     Button(url="https://peing.net/ja/syachi_hoko_trp", text="質問箱")
 </template>

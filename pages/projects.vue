@@ -136,6 +136,7 @@ export default Vue.extend({
         {
           title: "ソード・ワールド2.5 同人サプリメント「コロレスアニマルム」",
           id: "sw25ca",
+          hidden: true,
           src: "colores.png",
           messages: [
             "ソード・ワールド2.5の同人サプリメントです。<br>オリジナル種族・冒険者技能などのデータを収録する予定です。",

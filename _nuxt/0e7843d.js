@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[9],{271:function(e,n,t){"use strict";t.r(n);var l=t(0).default.extend({name:"SceneTextComponent"}),c=t(15),component=Object(c.a)(l,(function(){var e=this,n=e.$createElement;return(e._self._c||n)("div",[e._t("default")],2)}),[],!1,null,null,null);n.default=component.exports}}]);

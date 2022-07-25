@@ -44,15 +44,15 @@ export const scenarios = [
     title: "Canción Azul（カンシオン アスール）",
     hidden: false,
     system: "エモクロアTRPG",
-    status: "執筆中（7/18公開予定）",
+    status: "公開中",
     src: "cancionAzul.jpeg",
     messages: [
-      "<a href='https://hydroxytrpg.booth.pm/items/3826115'  target='_blank'>非公式サプリメント「マギアスエイジ」</a>を使ったファンタジーものです。<br>マギアスエイジの舞台となるスブトゥリムの南端、「南の大海」に面する港町で、漁船の失踪事件を調査するシナリオとなります。",
-      "<a href='https://twitter.com/fumidori75/status/1490988828873879553'  target='_blank'>#海の日TRPGシナリオ企画</a>に参加させていただくつもりです！",
+      "<a href='https://hydroxytrpg.booth.pm/items/3826115'  target='_blank'>非公式サプリメント「マギアスエイジ」</a>を使ったファンタジーものです。<br>マギアスエイジの舞台となるスブトゥリムの南端、「南の大海」に面する港町で、漁船の失踪事件を調査するシナリオです。",
+      "<a href='https://twitter.com/fumidori75/status/1490988828873879553'  target='_blank'>#海の日TRPGシナリオ企画</a>に参加させていただきました。",
     ],
     buttons: [
       {
-        // url: "https://talto.cc/projects/pzrYcCZuMTZh69bbSmj3T",
+        url: "https://talto.cc/projects/Cv8Ixts-8BMMCVVAO5yVq",
         text: "TALTO",
       },
     ],

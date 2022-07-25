@@ -73,9 +73,14 @@ export default Vue.extend({
           id: "emokloreScenario",
           src: "cancionAzul.jpeg",
           messages: [
-            "エモクロアTRPGシナリオ「Canción Azul」（カンシオン アスール）を執筆中です！　<a href='https://hydroxytrpg.booth.pm/items/3826115' target='_blank'>非公式サプリメント「マギアスエイジ」</a>を使ったファンタジーものです。<br><a href='https://twitter.com/fumidori75/status/1490988828873879553'  target='_blank'>#海の日TRPGシナリオ企画</a>に参加させていただくつもりです！",
+            "エモクロアTRPGシナリオ「Canción Azul」（カンシオン アスール）を執筆しました。",
+            "<a href='https://hydroxytrpg.booth.pm/items/3826115' target='_blank'>非公式サプリメント「マギアスエイジ」</a>を使ったファンタジーものです。<br><a href='https://twitter.com/fumidori75/status/1490988828873879553'  target='_blank'>#海の日TRPGシナリオ企画</a>に参加させていただきました。",
+            "継続キャラクターで遊ぶための「異世界転生ルール」も付属しています。",
           ],
-          schedules: ["2022年 7月18日 「Canción Azul」公開予定"],
+          schedules: [
+            "2022年 7月18日 「Canción Azul」仮公開",
+            "2022年 7月29日 「Canción Azul」本公開",
+          ],
           buttons: [
             {
               url: "https://talto.cc/users/DVUC9LjUviekGgXrbqXaJWAcLCm1",

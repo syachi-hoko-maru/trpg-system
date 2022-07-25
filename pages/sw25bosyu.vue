@@ -139,7 +139,7 @@ export default Vue.extend({
     };
   },
   computed: {
-    title() {
+    title(): string {
       if (this.sessionStyle.indexOf("ボイセ") >= 0) return "SW2.5ボイセ募集";
       else if (this.sessionStyle.indexOf("半テキセ") >= 0)
         return "SW2.5半テキセ募集";
@@ -147,8 +147,7 @@ export default Vue.extend({
         return "SW2.5テキセ募集";
       else return "SW2.5オンセ募集";
     },
-    otherRulebookList() {
-      // @ts-ignore
+    otherRulebookList(): string[] {
       return this.rulebookList.filter(
         (rulebook: string) => this.rulebooks.indexOf(rulebook) === -1
       );

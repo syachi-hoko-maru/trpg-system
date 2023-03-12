@@ -1,11 +1,14 @@
 import { getBlogList } from "./src/bloggene/getBlogList";
+import { redirectList } from "./src/pages/redirect";
 
-let blogList: string[] = [];
+let routes: string[] = [];
 
-console.log(process.argv);
 if (process.argv.join().indexOf("generate") >= 0) {
   try {
-    blogList = getBlogList();
+    routes = ([] as string[]).concat(
+      getBlogList().map((blog) => `blog/${blog}`),
+      Object.keys(redirectList)
+    );
   } catch {
     console.error("error!?");
   }
@@ -62,7 +65,7 @@ export default defineNuxtConfig({
     transpile: ["vuetify"],
   },
   generate: {
-    routes: blogList.map((blog) => `blog/${blog}`),
+    routes,
   },
   vite: {
     define: {

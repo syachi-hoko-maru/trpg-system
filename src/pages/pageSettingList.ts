@@ -151,6 +151,11 @@ const normalPageSettingList: PageSetting[] = [
     specialPage: true,
     tags: [],
   },
+  {
+    title: "エラーページ",
+    to: "error",
+    tags: [],
+  },
 ];
 
 const blogPageSettingList: PageSetting[] = (blogSettingList as Blog[]).map(

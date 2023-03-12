@@ -39,6 +39,10 @@ const pageSetting = computed(() => {
       return pageSetting
     }
   }
+  const pageSetting = $pageSettingList.find(pageSetting => pageSetting.to === "error")
+  if (pageSetting) {
+    return pageSetting
+  }
   throw `[ERROR] this page ${pageUrl} is not exists`
 })
 

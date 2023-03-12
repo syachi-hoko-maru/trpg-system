@@ -2,9 +2,9 @@ name: cd
 
 on:
   push:
-    branches: [n3]
+    branches: [main]
   pull_request:
-    branches: [n3]
+    branches: [main]
   repository_dispatch:
     types:
       - my-custom-type

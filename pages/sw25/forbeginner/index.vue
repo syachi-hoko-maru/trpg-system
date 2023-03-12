@@ -1,0 +1,3 @@
+<template>
+  ああ
+</template>

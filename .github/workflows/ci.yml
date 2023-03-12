@@ -8,7 +8,7 @@ on:
   repository_dispatch:
     types:
       - my-custom-type
-  workflow_dispatch
+  workflow_dispatch:
 
 jobs:
   cd:

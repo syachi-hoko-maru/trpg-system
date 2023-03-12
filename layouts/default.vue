@@ -31,6 +31,8 @@ const pageSetting = computed(() => {
   if ($pageSettingList) {
     if (pageUrl.indexOf("/blog/") >= 0) {
       blogFlag = true
+    } else {
+      blogFlag = false
     }
     const pageSetting = $pageSettingList.find(pageSetting => pageSetting.to === pageUrl)
     if (pageSetting) {

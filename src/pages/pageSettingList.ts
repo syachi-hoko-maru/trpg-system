@@ -19,7 +19,8 @@ const normalPageSettingList: PageSetting[] = [
     to: "/sw25/tool",
     img: "page-image/tool.png",
     osusume: true,
-    explain: "このサイトで公開しているツールの一覧を掲載しています。",
+    explain:
+      "このサイトで公開しているツールの一覧を掲載しています。どれもソード・ワールド2.5などのTRPGで役立つものばかりなので、ぜひ使ってみてください。",
     tags: ["sw25", "tool"],
   },
   {
@@ -37,7 +38,7 @@ const normalPageSettingList: PageSetting[] = [
     img: "page-image/bosyu.png",
     osusume: true,
     explain:
-      "SW2.5のオンラインセッション募集時に過不足なく情報を伝えるための画像が作れるページです。",
+      "SW2.5のオンラインセッション募集時に、過不足なく情報を伝えるための画像が作れるページです。",
     tags: ["sw25", "tool"],
   },
   {
@@ -53,7 +54,8 @@ const normalPageSettingList: PageSetting[] = [
     to: "/sw25/tool/material",
     img: "page-image/material.png",
     osusume: true,
-    explain: "BOOTHで公開しているオンラインセッション用素材の紹介ページです。",
+    explain:
+      "BOOTHで公開している、ココフォリアなどで使えるオンラインセッション用素材の紹介ページです。",
     tags: ["sw25", "tool"],
   },
   {
@@ -61,7 +63,8 @@ const normalPageSettingList: PageSetting[] = [
     to: "/sw25/data",
     // osusume: true,
     hidden: true,
-    explain: "管理人のしゃちほこ丸が作ったのオリジナルデータを掲載します。",
+    explain:
+      "管理人のしゃちほこ丸が作った魔物やアイテム、騎獣などのオリジナルデータを掲載します。",
     tags: ["sw25", "me"],
   },
   {
@@ -75,17 +78,18 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 おすすめサプリメント紹介",
     to: "/sw25/forbeginner/suppliment",
-    // osusume: true,
+    osusume: true,
     hidden: true,
     explain:
-      "SW2.5のおすすめサプリメント（拡張ルールブック）の紹介ページです。",
+      "SW2.5のおすすめサプリメント（拡張ルールブック）の紹介ページです。発売済みのすべてのサプリメントについて、簡単な紹介と初心者へのおすすめ度を掲載しております。",
     tags: ["sw25"],
   },
   {
     title: "公開シナリオ一覧",
     to: "/scenario",
     img: "page-image/scenario.png",
-    explain: "管理人しゃちほこ丸が公開しているシナリオ一覧です。",
+    explain:
+      "管理人しゃちほこ丸が公開しているシナリオ一覧です。ソード・ワールド2.5やエモクロアTRPGのシナリオを公開しています。",
     tags: ["sw25", "scenario", "me"],
   },
   {
@@ -131,12 +135,14 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "ブログ",
     to: "/blog",
+    explain: "管理人しゃちほこ丸が思ったことを綴っています。",
     tags: ["me"],
   },
   {
     title: "検索",
     to: "/search",
     specialPage: true,
+    explain: "当ウェブサイトの内容を検索できます。",
     tags: [],
   },
   {
@@ -170,11 +176,13 @@ const blogPageSettingList: PageSetting[] = (blogSettingList as Blog[]).map(
         new Date(b.date + "GMT+09:00").getTime() <= new Date().getTime()
           ? false
           : true,
-      explain: b.andml
-        .replace(/&[^\s]*\s/g, "")
-        .replace(/[\s_]/g, "")
-        .replace(/\n/g, " &br ")
-        .slice(0, 120),
+      explain:
+        `「${b.title}」に関するブログ記事です。` +
+        b.andml
+          .replace(/&[^\s]*\s/g, "")
+          .replace(/[\s_]/g, "")
+          .replace(/\n/g, " &br ")
+          .slice(0, 100),
     };
   }
 );

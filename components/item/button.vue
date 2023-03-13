@@ -14,7 +14,7 @@ interface Props {
   prependIcon?: string,
   normalButton?: boolean
 }
-const Props = withDefaults(defineProps<Props>(), { url: "action", normalButton: true });
+const Props = withDefaults(defineProps<Props>(), { url: "action", normalButton: false });
 
 const externalFlag = Props.url?.startsWith("http") ? true : false
 const internalFlag = Props.url?.startsWith("/") ? true : false

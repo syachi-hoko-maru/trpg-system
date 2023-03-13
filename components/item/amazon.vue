@@ -1,6 +1,6 @@
 <template>
-  <card>
-    <template #title>
+  <card v-if="items.length">
+    <template #title v-if="!mini">
       Amazon商品リンク
     </template>
     <div class="d-flex flex-row" id="amazon-list">
@@ -10,7 +10,7 @@
           :src="item.src" />
       </div>
     </div>
-    <item-button url="https://amzn.to/3T30UvM">
+    <item-button url="https://amzn.to/3T30UvM" v-if="!mini">
       「ソード・ワールド2.5」を検索
     </item-button>
     <item-caption>
@@ -20,6 +20,13 @@
 </template>
 
 <script setup lang="ts">
+interface Props {
+  mini?: boolean,
+  item?: string[]
+}
+const Props = defineProps<Props>();
+
+
 const items = [
   {
     title: "ブルライト博物誌",
@@ -57,7 +64,14 @@ const items = [
     title: "バトルマスタリー",
     src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040747003&linkId=37cb411fa79d8c5271089bb8d071801a"
   },
-]
+].filter(item => {
+  if (Props.item) {
+    if (Props.item.indexOf(item.title) >= 0) return true
+    else return false
+  } else {
+    return true
+  }
+})
 </script>
 
 <style lang="scss" scoped>

@@ -78,8 +78,8 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 おすすめサプリメント紹介",
     to: "/sw25/forbeginner/suppliment",
+    img: "page-image/suppliment.png",
     osusume: true,
-    hidden: true,
     explain:
       "SW2.5のおすすめサプリメント（拡張ルールブック）の紹介ページです。発売済みのすべてのサプリメントについて、簡単な紹介と初心者へのおすすめ度を掲載しております。",
     tags: ["sw25"],

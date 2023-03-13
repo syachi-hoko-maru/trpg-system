@@ -1,5 +1,5 @@
 <template>
-  <item-pagecard v-if="internalFlag" :pagePath="url" />
+  <item-pagecard v-if="internalFlag && !normalButton" :pagePath="url" />
   <atom-link :to="Props.url" :button="true" v-else>
     <v-btn class="bg-background mt-4 mb-1" :prepend-icon="Props.prependIcon" block>
       <slot />
@@ -11,9 +11,10 @@
 <script setup lang="ts">
 interface Props {
   url?: string,
-  prependIcon?: string
+  prependIcon?: string,
+  normalButton?: boolean
 }
-const Props = withDefaults(defineProps<Props>(), { url: "action" });
+const Props = withDefaults(defineProps<Props>(), { url: "action", normalButton: true });
 
 const externalFlag = Props.url?.startsWith("http") ? true : false
 const internalFlag = Props.url?.startsWith("/") ? true : false

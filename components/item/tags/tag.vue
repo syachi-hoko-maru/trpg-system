@@ -19,8 +19,8 @@
             </v-list-item-action>
           </template>
         </v-list-item>
-        <v-list-item v-show="getNowPage() && getNowPage() !== `/search?tag=${Props.pageTag}`">
-          <item-button :url="`/search?tag=${Props.pageTag}`">タグのついたページを見る</item-button>
+        <v-list-item>
+          <item-button :url="`/search?tag=${Props.pageTag}`" :normalButton="true">このタグがついたページ</item-button>
         </v-list-item>
       </v-list>
     </v-card>
@@ -35,8 +35,6 @@ interface Props {
 const Props = defineProps<Props>();
 
 const menu = ref(false)
-
-const { getNowPage } = usePages()
 
 </script>
 

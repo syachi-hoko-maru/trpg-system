@@ -64,13 +64,31 @@ const items = [
     title: "バトルマスタリー",
     src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040747003&linkId=37cb411fa79d8c5271089bb8d071801a"
   },
+  {
+    title: "アウトロープロファイルブック",
+    src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040741617&linkId=c186cd01eae19a61bd222de58eb8917f"
+  },
+  {
+    title: "魔導の学府ユーシズ",
+    src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040743571&linkId=700ccbc814466b9d63db95badcf788c1"
+  },
+  {
+    title: "ヴァイスシティ",
+    src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040731581&linkId=d1f7922005cbb59b2b72244745db728a"
+  },
+  {
+    title: "デモンズライン",
+    src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040737261&linkId=2b12e3f9a5cf86ce9cd0f8cb417e5d75"
+  },
+  {
+    title: "グリフォンロード",
+    src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040744721&linkId=1df8349424f1b1ddb8ef4d06c84ef72b"
+  },
+
 ].filter(item => {
-  if (Props.item) {
-    if (Props.item.indexOf(item.title) >= 0) return true
-    else return false
-  } else {
-    return true
-  }
+  if (!Props.item) return true
+  if (Props.item.find(i => item.title.indexOf(i) >= 0)) return true
+  return false
 })
 </script>
 

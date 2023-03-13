@@ -17,6 +17,7 @@ const Props = defineProps<Props>();
 const andmlLineScriptArray: AndmlScript[] = [
   { script: "button_", component: resolveComponent("AndmlLineButton") },
   { script: "date_", component: resolveComponent("AndmlLineDate") },
+  { script: "amazon_", component: resolveComponent("AndmlLineAmazon") },
   { script: "2", component: resolveComponent("AndmlLineHead2") },
 ]
 

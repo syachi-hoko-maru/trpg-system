@@ -17,6 +17,6 @@ interface Props {
 const Props = withDefaults(defineProps<Props>(), { url: "action", normalButton: false });
 
 const externalFlag = Props.url?.startsWith("http") ? true : false
-const internalFlag = Props.url?.startsWith("/") ? true : false
+const internalFlag = (Props.url?.startsWith("/") && Props.url.indexOf("#") === -1 && Props.url.indexOf("?") === -1) ? true : false
 
 </script>

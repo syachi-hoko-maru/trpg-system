@@ -25,6 +25,17 @@ const menuList: (MenuCategory | MenuPage)[] = [
     ],
   },
   {
+    categoryName: "SW2.5 初心者向け",
+    // hidden: true,
+    pageList: [
+      {
+        icon: "mdi-star",
+        title: "おすすめサプリメント",
+        to: "/sw25/forbeginner/suppliment",
+      },
+    ],
+  },
+  {
     categoryName: "シナリオ",
     pageList: [
       {
@@ -41,9 +52,14 @@ const menuList: (MenuCategory | MenuPage)[] = [
     ],
   },
   {
-    categoryName: "SW2.5 初心者向け",
-    hidden: true,
-    pageList: [],
+    categoryName: "ブログ",
+    pageList: [
+      {
+        icon: "mdi-message-text",
+        title: "ブログ",
+        to: "/blog",
+      },
+    ],
   },
   {
     categoryName: "管理人",
@@ -53,25 +69,15 @@ const menuList: (MenuCategory | MenuPage)[] = [
         title: "管理人の自己紹介",
         to: "/me",
       },
-      {
-        icon: "mdi-book",
-        title: "所持ルールブック一覧",
-        to: "/me/rulebook",
-      },
+      // {
+      //   icon: "mdi-book",
+      //   title: "所持ルールブック一覧",
+      //   to: "/me/rulebook",
+      // },
       {
         icon: "mdi-alert-circle",
         title: "ハウスルール",
         to: "/me/houserule",
-      },
-    ],
-  },
-  {
-    categoryName: "ブログ",
-    pageList: [
-      {
-        icon: "mdi-message-text",
-        title: "ブログ",
-        to: "/blog",
       },
     ],
   },

@@ -39,7 +39,7 @@ const pageSettingData: PageSetting | undefined =
   Props.pageSetting
     ? Props.pageSetting
     : Props.pagePath
-      ? $pageSettingList.filter(({ to }) => Props.pagePath === to)[0]
+      ? $pageSettingList.filter(({ to }) => Props.pagePath?.replace(/^(.+)#.*$/, "$1").replace(/^(.+)?.*$/, "$1").replace(/^(.+)\/+$/, "$1") === to)[0]
       : undefined
 
 const mounted = ref(false)

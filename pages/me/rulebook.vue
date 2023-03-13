@@ -1,5 +1,7 @@
 <template>
-  <!-- <card-array-by-andml :andml="andml" /> -->
+  <card>
+    <andml :andmls="text" />
+  </card>
   <card v-for="group, g of groups" :key="group.group">
     <div v-for="sys, s of group.system" :key="sys.rulebook">
       <item-head2>
@@ -44,6 +46,12 @@ const showSuppliment = (g: number, s: number) => {
   }
   else show.value[g][s] = false
 }
+
+const text = `
+以下では管理人のしゃちほこ丸が所有するルールブック・サプリメントの一覧を掲載しています。
+ソード・ワールド2.5のおすすめサプリメントについては以下をご覧ください。
+&button_/sw25/forbeginner/suppliment 
+`
 
 const rulebookGroups = ["CoC", "SW", "sfic", "bouki", "FEAR", "other", "dozin", "web"] as const
 type RulebookGroup = typeof rulebookGroups[number]

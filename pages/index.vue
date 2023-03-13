@@ -25,10 +25,11 @@ const andml = `
 よろしければTwitterのフォローをお願いします。
 &1 News
 &date_today 更新作業中
-&date_2023/3/10 &link_blog/ancient1,ブログ「SW2.5新刊エンシェントブルー4/20発売！」 公開
-&date_2023/3/8 &link_sw25/tool/community,Twitterコミュニティ紹介ページ 公開
-&date_2023/3/8 &link_sw25/tool/material,オンラインセッション用素材紹介ページ 公開
-&date_2023/3/7 &link_policy,サイトポリシー 公開
+&date_2023/3/13 &link_/sw25/forbeginner/suppliment,SW2.5おすすめサプリメント 公開
+&date_2023/3/10 &link_/blog/ancient1,ブログ「SW2.5新刊エンシェントブルー4/20発売！」 公開
+&date_2023/3/8 &link_/sw25/tool/community,Twitterコミュニティ紹介ページ 公開
+&date_2023/3/8 &link_/sw25/tool/material,オンラインセッション用素材紹介ページ 公開
+&date_2023/3/7 &link_/policy,サイトポリシー 公開
 &date_2023/3/1 仮公開
 &date_2023/1/11 更新準備開始
 `

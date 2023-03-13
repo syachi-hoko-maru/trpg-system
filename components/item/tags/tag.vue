@@ -13,14 +13,14 @@
           <v-list-item-subtitle class="tagMenu">{{ pageTagSetting.explanation }}</v-list-item-subtitle>
           <template v-slot:append>
             <v-list-item-action>
-              <v-btn icon variant="text" @click="menu = false">
+              <v-btn icon variant="text" @click="() => menu = false">
                 <v-icon>mdi-close-circle</v-icon>
               </v-btn>
             </v-list-item-action>
           </template>
         </v-list-item>
         <v-list-item>
-          <item-button :url="`/search?tag=${Props.pageTag}`" :normalButton="true">このタグがついたページ</item-button>
+          <item-button @click="search" :normalButton="true">このタグがついたページ</item-button>
         </v-list-item>
       </v-list>
     </v-card>
@@ -28,6 +28,8 @@
 </template>
 
 <script setup lang="ts">
+import { f } from 'ofetch/dist/error-8a55452d';
+
 interface Props {
   pageTag: PageTag,
   pageTagSetting: PageTagSetting
@@ -35,6 +37,11 @@ interface Props {
 const Props = defineProps<Props>();
 
 const menu = ref(false)
+
+const search = () => {
+  menu.value = false
+  navigateTo(`/search?tag=${Props.pageTag}`)
+}
 
 </script>
 

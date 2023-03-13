@@ -14,7 +14,7 @@
       「ソード・ワールド2.5」を検索
     </item-button>
     <item-caption>
-      ※ アフィリエイトリンクです
+      ※ Amazonアソシエイト・プログラムに参加しています
     </item-caption>
   </card>
 </template>

@@ -63,5 +63,5 @@ const setLineComponent = (andml: string): AndmlData => {
     component: resolveComponent("AndmlLineP")
   }
 }
-const dataArray: AndmlData[] = Array.isArray(Props.andmls) ? Props.andmls.map(setLineComponent) : [setLineComponent(Props.andmls)]
+const dataArray: AndmlData[] = (Array.isArray(Props.andmls) ? Props.andmls : Props.andmls.split("\n")).map(setLineComponent)
 </script>

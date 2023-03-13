@@ -14,9 +14,8 @@
 const { $pageSettingList } = useNuxtApp()
 
 const andml = `
-&1 ブログ
 ブログでは僕が考えたことを、基本的に考えた順に書いています。
-お読みになる場合は読みやすい文章ではないことをご理解の上お読みいただければ幸いです。
+お読みになってくださる場合、読みやすい文章ではないことをご了承の上、お読みいただければ幸いです。
 `
 
 const results = $pageSettingList.filter(pageSetting => pageSetting.to.indexOf("/blog/") >= 0)

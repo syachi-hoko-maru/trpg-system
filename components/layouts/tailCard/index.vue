@@ -10,6 +10,7 @@
       </atom-link>
     </template>
     <item-share :text="shareSetting.text" :url="shareSetting.url">このページをツイート</item-share>
+    ぜひTwitterでシェアして広めてください
   </card>
   <layouts-tail-card-osusume v-if="pageSetting.to !== '/policy'" :page-setting="pageSetting" />
 </template>

@@ -35,6 +35,6 @@ export const generateImage = async (id: string, title: string) => {
       console.log(`generate ${id}.png`);
     })
     .catch((err: any) => {
-      console.log(err);
+      console.error(err);
     });
 };

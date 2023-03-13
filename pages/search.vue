@@ -64,13 +64,13 @@ const changeSetting = () => {
 
 const changeRoute = () => {
   const nowQuerys = getQuerys()
-  console.log("あああ", nowQuerys)
+  // console.log("あああ", nowQuerys)
   if (nowQuerys && querys.value !== nowQuerys) {
-    console.log("あああ")
+    // console.log("あああ")
     querys.value = nowQuerys
     querys.value.forEach((d) =>
       Object.entries(d).map(([key, value]) => {
-        console.log(key, value)
+        // console.log(key, value)
         if (key === "word") {
           searchSetting.word = value
         } else if (key === "tag" && $isPageTag(value)) {
@@ -78,7 +78,7 @@ const changeRoute = () => {
         }
       })
     )
-    console.log(searchSetting)
+    // console.log(searchSetting)
     setRouter();
     search()
   }

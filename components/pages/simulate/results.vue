@@ -83,7 +83,7 @@ const shareUrl = (result: simulateResult) => {
     })
   })
   const queryStr = Object.entries(query).map(([key, value]) => `${key}=${value}`)
-  console.log(getNowPath())
+  // console.log(getNowPath())
   return `${$templateText.baseUrl}${getNowPath()}?${queryStr.join("&")}`
 }
 const copy = (result: simulateResult) => {

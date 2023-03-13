@@ -50,7 +50,7 @@ const changePage = () => {
   savePage()
   if (!pageSetting.value) return
   if (blogFlag) {
-    console.log("blog!!")
+    // console.log("blog!!")
     return
   }
   const title = (pageSetting.value.title ? `${pageSetting.value.title} - ` : "") + $templateText.title;

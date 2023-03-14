@@ -1,5 +1,5 @@
 import blogSettingList from "../../assets/blog.json";
-import { isPageTag, pageTags } from "./pageTags";
+import { isPageTag } from "./pageTags";
 
 const normalPageSettingList: PageSetting[] = [
   {
@@ -13,7 +13,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "ソード・ワールド2.5",
     to: "/sw25",
-    lastmod: "2023/3/1",
+    lastmod: "2023/3/14",
     tags: ["sw25"],
   },
   {

@@ -191,7 +191,7 @@ const blogPageSettingList: PageSetting[] = (blogSettingList as Blog[]).map(
       title: b.title,
       to: "/blog/" + b.id,
       img: `blog-image/${b.id}.png`,
-      lastmod: b.date.replace(/\//, "-"),
+      lastmod: b.date,
       tags: b.tags.filter(isPageTag) as PageTag[],
       osusume: true,
       hidden:

@@ -20,6 +20,7 @@ declare type PageTag = "sw25" | "sw25_new" | "tool" | "scenario" | "me";
 declare type PageSetting = {
   readonly title: string;
   readonly to: string;
+  readonly lastmod: string;
   readonly img?: string;
   readonly osusume?: boolean;
   readonly explain?: string | string[];

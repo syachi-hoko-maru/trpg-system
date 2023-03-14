@@ -22,6 +22,7 @@
 
 <script setup lang="ts">
 import { Ref } from 'vue';
+import { set } from 'vue-gtag';
 
 const route = useRoute();
 const router = useRouter()
@@ -93,7 +94,10 @@ const fetch = async () => {
       console.error(err)
       return { data: ref({}) }
     })).data.value as { [key: string]: string }
-    if (json["/"]) { searchJson.value = json }
+    if (json["/"]) {
+      searchJson.value = json
+      search()
+    }
     else throw ""
   } catch {
     count++
@@ -148,12 +152,17 @@ const search = (): void => {
 
 const mounted = ref(false)
 
+const wait = async () => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, 0.1 * 1000)
+  })
+}
 onMounted(() => {
-  setTimeout(() => {
+  wait().then(() => {
     changeRoute()
     mounted.value = true
     fetch()
-  }, 0.1 * 1000)
+  })
   watch(route, changeRoute)
 })
 

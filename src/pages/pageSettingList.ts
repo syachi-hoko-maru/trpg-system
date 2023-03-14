@@ -1,4 +1,4 @@
-import blogSettingList from "assets/blog.json";
+import blogSettingList from "../../assets/blog.json";
 import { isPageTag, pageTags } from "./pageTags";
 
 const normalPageSettingList: PageSetting[] = [

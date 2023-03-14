@@ -3,8 +3,8 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "pre": "ts-node --project src/bloggene/tsconfig.json src/bloggene/pre.ts",
-    "after": "ts-node --project src/bloggene/tsconfig.json src/sitemap/index.ts",
+    "pre": "ts-node --project ba.tsconfig.jsonc src/bloggene/pre.ts",
+    "after": "ts-node --files --project ba.tsconfig.jsonc src/after/index.ts",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"

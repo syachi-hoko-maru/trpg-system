@@ -13,7 +13,7 @@
   </card>
   <card>
     <template #title>{{ setTitle }}</template>
-    <template v-if="explain">{{ explain }}</template>
+    <template #default v-if="explain">{{ explain }}</template>
     <template #pafter v-if="results.length">
       <pages-search :results="results" />
     </template>

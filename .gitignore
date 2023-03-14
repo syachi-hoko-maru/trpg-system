@@ -8,3 +8,4 @@ node_modules
 dist
 
 assets/blog.json
+public/search.json

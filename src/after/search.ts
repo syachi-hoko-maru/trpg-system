@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync, writeFileSync } from "fs";
 
 const outputDir = `${process.cwd()}/.output/public`;
+const publicDir = `${process.cwd()}/public`;
 
 const searchHTML = (dirname: string) => {
   const htmls: string[] = [];
@@ -44,7 +45,7 @@ const getData = (): { [key: string]: string } => {
     }
   });
   common.sort((a, b) => b.length - a.length);
-  console.log(common);
+  // console.log(common);
   const result: { [key: string]: string } = {};
   Object.entries(temp).forEach(([k, v]) => {
     let value = v;
@@ -57,7 +58,9 @@ const getData = (): { [key: string]: string } => {
 };
 
 export const setSearchJson = () => {
-  writeFileSync(`${outputDir}/search.json`, JSON.stringify(getData()));
+  const searchJson = JSON.stringify(getData());
+  writeFileSync(`${outputDir}/search.json`, searchJson);
+  writeFileSync(`${publicDir}/search.json`, searchJson);
 };
 
 const getCommonStr = (str1: string, str2: string): string[] => {

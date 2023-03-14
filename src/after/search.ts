@@ -22,10 +22,8 @@ const getData = (): { [key: string]: string } => {
   const htmls = searchHTML("");
   const temp: { [key: string]: string } = {};
   htmls.forEach((html) => {
-    temp[html.replace("/index.html", "")] = readFileSync(
-      outputDir + html,
-      "utf-8"
-    )
+    const path = html.replace("/index.html", "");
+    temp[path ? path : "/"] = readFileSync(outputDir + html, "utf-8")
       .replace(/<style[^<]*<\/style>/g, "")
       .replace(/<script[^<]*<\/script>/g, (str) =>
         str.replace(/[a-zA-Z\s\{\}\[\]\(\)<>\\\/\.,:;\-_'`"$&#=]/g, "")

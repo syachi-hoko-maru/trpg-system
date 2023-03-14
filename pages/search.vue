@@ -26,7 +26,7 @@ import { Ref } from 'vue';
 const route = useRoute();
 const router = useRouter()
 
-const { $pageSettingList, $isPageTag, $pageTagSettings, $pageTags } = useNuxtApp()
+const { $pageSettingList, $isPageTag, $pageTagSettings, $pageTags, $templateText } = useNuxtApp()
 const { getQuerys, getNowPath } = usePages()
 
 const form: Ref<FormSettingString> = ref({
@@ -64,17 +64,18 @@ const changeSetting = () => {
 
 const changeRoute = () => {
   const nowQuerys = getQuerys()
-  // console.log("あああ", nowQuerys)
   if (nowQuerys && querys.value !== nowQuerys) {
-    // console.log("あああ")
     querys.value = nowQuerys
     querys.value.forEach((d) =>
       Object.entries(d).map(([key, value]) => {
         // console.log(key, value)
         if (key === "word") {
-          searchSetting.word = value
+          const word = decodeURIComponent(value)
+          searchSetting.word = word
+          form.value.value = word
         } else if (key === "tag" && $isPageTag(value)) {
           searchSetting.tag = value
+          selectTag.value = value
         }
       })
     )
@@ -84,6 +85,21 @@ const changeRoute = () => {
   }
 }
 
+let searchJson: Ref<{ [key: string]: string }> = ref({});
+let count = 0
+const fetch = async () => {
+  try {
+    const json = (await useFetch($templateText.basePath + '/search.json').catch(err => {
+      console.error(err)
+      return { data: ref({}) }
+    })).data.value as { [key: string]: string }
+    if (json["/"]) { searchJson.value = json }
+    else throw ""
+  } catch {
+    count++
+    if (count < 5) setTimeout(fetch, 0.5 * count * 1000)
+  }
+}
 
 const search = (): void => {
   explain.value = "";
@@ -106,7 +122,16 @@ const search = (): void => {
     }
     if (key === "word") {
       const word = decodeURIComponent(value)
-      const lang = (pageSetting: PageSetting) => pageSetting.title + (Array.isArray(pageSetting.explain) ? pageSetting.explain.join() : pageSetting.explain) + pageSetting.tags.map(tag => $pageTagSettings[tag].label + $pageTagSettings[tag].explanation).join()
+      const lang = (pageSetting: PageSetting) => {
+        let result = "";
+        result += pageSetting.title
+        result += (Array.isArray(pageSetting.explain) ? pageSetting.explain.join() : pageSetting.explain)
+        result += pageSetting.tags.map(tag => $pageTagSettings[tag].label + $pageTagSettings[tag].explanation).join()
+        try {
+          result += searchJson.value[pageSetting.to]
+        } catch { }
+        return result
+      }
       filters.push(pageSetting => lang(pageSetting).indexOf(word) >= 0)
       if (setting.length === 1) {
         setTitle.value = `「${word}」の検索結果`
@@ -124,8 +149,11 @@ const search = (): void => {
 const mounted = ref(false)
 
 onMounted(() => {
-  setTimeout(changeRoute, 0.1 * 1000)
-  mounted.value = true
+  setTimeout(() => {
+    changeRoute()
+    mounted.value = true
+    fetch()
+  }, 0.1 * 1000)
   watch(route, changeRoute)
 })
 

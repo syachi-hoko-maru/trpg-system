@@ -21,7 +21,7 @@ const path = ref("")
 
 const redirect = () => {
   if (params.slug.length > 0) {
-    path.value = Array.isArray(params.slug) ? params.slug.join("/") : params.slug
+    path.value = (Array.isArray(params.slug) ? params.slug.join("/") : params.slug).replace(/\/$/, "")
     if (Object.entries($redirectList).length > 0) {
       Object.entries($redirectList).forEach(([key, value]) => {
         if (path.value === key) navigateTo(value)

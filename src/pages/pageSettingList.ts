@@ -193,7 +193,10 @@ const blogPageSettingList: PageSetting[] = (blogSettingList as Blog[]).map(
       img: `blog-image/${b.id}.png`,
       lastmod: b.date,
       tags: b.tags.filter(isPageTag) as PageTag[],
-      osusume: true,
+      osusume:
+        new Date(b.date + "GMT+09:00").getTime() <= new Date().getTime()
+          ? true
+          : false,
       hidden:
         new Date(b.date + "GMT+09:00").getTime() <= new Date().getTime()
           ? false

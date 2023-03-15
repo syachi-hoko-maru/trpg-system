@@ -181,6 +181,13 @@ const normalPageSettingList: PageSetting[] = [
     tags: [],
   },
   {
+    title: "コンタクト",
+    to: "/contact",
+    lastmod: "2023/3/15",
+    specialPage: false,
+    tags: [],
+  },
+  {
     title: "エラーページ",
     to: "error",
     lastmod: "2023/3/1",

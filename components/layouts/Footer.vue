@@ -10,6 +10,9 @@
       <div class="my-2">
         <atom-link color="text-textbp" to="/policy">サイトポリシー</atom-link>
       </div>
+      <div class="my-2">
+        <atom-link color="text-textbp" to="/contact">コンタクト</atom-link>
+      </div>
     </div>
     <div class="mt-5 mb-3">
       <span class="text-textbp">

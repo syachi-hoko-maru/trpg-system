@@ -3,7 +3,7 @@
   <pages-contact />
   <v-card>
     <v-card-text>
-      <item-button to="/">
+      <item-button url="/?">
         トップページへ
       </item-button>
     </v-card-text>

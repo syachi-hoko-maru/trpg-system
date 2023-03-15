@@ -23,7 +23,7 @@
 
 const { $templateText, $pageSettingList } = useNuxtApp()
 
-const toolPages = $pageSettingList.filter(page => page.to.startsWith("/sw25/tool/"))
+const toolPages = $pageSettingList.filter(page => page.to.startsWith("/sw25/tool/") && !page.hidden)
 
 const andml1 = `
 このウェブサイトでは &info_sw25 を遊ぶのに役立つツールを公開しています。

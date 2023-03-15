@@ -12,7 +12,7 @@
     <item-share :text="shareSetting.text" :url="shareSetting.url">このページをツイート</item-share>
     ぜひTwitterでシェアして広めてください
   </card>
-  <card>
+  <card id="recent">
     <template #title>
       最近更新されたページ
     </template>

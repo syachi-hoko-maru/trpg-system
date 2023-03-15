@@ -151,8 +151,9 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "ブログ",
     to: "/blog",
-    lastmod: "2023/3/10",
-    explain: "管理人しゃちほこ丸が思ったことを綴っています。",
+    lastmod: "2023/3/15",
+    explain:
+      "管理人しゃちほこ丸がソード・ワールド2.5などのTRPGで思ったことなどを綴っています。",
     tags: ["me"],
   },
   {

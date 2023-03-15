@@ -1,5 +1,5 @@
 <template>
-  <atom-link :to="pageSettingData.to" v-if="pageSettingData && mounted">
+  <atom-link :to="pageSettingData.to" v-if="pageSettingData">
     <card class="my-5">
       <template #tbefore>
         <v-container class="pa-0" v-if="pageSettingData.img">
@@ -10,14 +10,14 @@
             <v-col cols="8">
               <v-row class="pt-5">
                 <v-card-title class="search-card-title">{{ pageSettingData.title }}</v-card-title>
-                <item-tags v-if="pageSettingData.tags.length" :tags="pageSettingData.tags" class="py-0" />
+                <item-tags :tags="pageSettingData.tags" class="py-0" v-if="mounted" />
               </v-row>
             </v-col>
           </v-row>
         </v-container>
         <div v-else>
           <v-card-title class="search-card-title">{{ pageSettingData.title }}</v-card-title>
-          <item-tags :tags="pageSettingData.tags" class="py-0" />
+          <item-tags :tags="pageSettingData.tags" class="py-0" v-if="mounted" />
         </div>
         <v-card-text v-if="pageSettingData.explain && pageSettingData.explain.length">
           <andml :andmls="pageSettingData.explain" />

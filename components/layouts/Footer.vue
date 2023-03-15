@@ -7,11 +7,8 @@
           設定
         </atom-link>
       </div>
-      <div class="my-2">
-        <atom-link color="text-textbp" to="/policy">サイトポリシー</atom-link>
-      </div>
-      <div class="my-2">
-        <atom-link color="text-textbp" to="/contact">コンタクト</atom-link>
+      <div class="my-1" v-for="item of footerItemList" :key="item.to">
+        <atom-link color="text-textbp" :to="item.to">{{ item.title }}</atom-link>
       </div>
     </div>
     <div class="mt-5 mb-3">
@@ -29,6 +26,12 @@ interface Props {
 const Props = defineProps<Props>();
 
 const { $templateText } = useNuxtApp()
+
+const footerItemList = [
+  { to: "/search", title: "ページ一覧・検索" },
+  { to: "/policy", title: "サイトポリシー" },
+  { to: "/contact", title: "コンタクト" },
+]
 </script>
 
 <style lang="scss" scoped>

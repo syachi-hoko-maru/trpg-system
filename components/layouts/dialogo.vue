@@ -14,6 +14,7 @@
 </template>
 
 <script setup lang="ts">
+const route = useRoute();
 const { dialogoArray, closeDialogo } = useDialogo()
 
 const bgClass = computed(() => {
@@ -23,6 +24,9 @@ const bgClass = computed(() => {
   }
 })
 
+watch(route, () => {
+  if (dialogoArray.value.length) closeDialogo()
+})
 </script>
 
 <style scoped lang="scss">

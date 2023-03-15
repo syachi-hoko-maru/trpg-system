@@ -10,7 +10,7 @@ TRPGについて知らない方は、富士見書房公式 TRPG ONLINEの「TRPG
     title: "ソード・ワールド2.5",
     description: `
 ソード・ワールド2.5はファンタジー世界で冒険をするTRPGです。
-&button_/sw25 詳しくはこちら
+&button_/sw25? 詳しくはこちら
 `,
   },
 };

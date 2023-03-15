@@ -1,5 +1,5 @@
 <template>
-  <div id="sidemenu">
+  <div id="sidemenu" class="pb-10">
     <div id="side">
       <card>
         <layouts-menu-list />
@@ -14,7 +14,7 @@
 
   #side {
     position: sticky;
-    top: 96px
+    top: 100px;
   }
 }
 </style>

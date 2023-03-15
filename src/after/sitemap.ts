@@ -14,7 +14,9 @@ export const setSitemap = () => {
     result += `
 <url>
 <loc>
-https://syachi-hoko-maru.github.io/trpg-system${pageSetting.to}
+https://syachi-hoko-maru.github.io/trpg-system${pageSetting.to}${
+      pageSetting.to ? "/" : ""
+    }
 </loc>
 <lastmod>${(pageSetting.lastmod as string)
       .split("/")

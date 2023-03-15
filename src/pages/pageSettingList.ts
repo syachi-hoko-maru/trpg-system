@@ -5,7 +5,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "トップページ",
     to: "/",
-    lastmod: "2023/3/1",
+    lastmod: "2023/3/15",
     img: "ogp.png",
     specialPage: true,
     tags: [],

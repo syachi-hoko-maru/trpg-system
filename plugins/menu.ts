@@ -66,7 +66,7 @@ const menuList: (MenuCategory | MenuPage)[] = [
     pageList: [
       {
         icon: "mdi-account",
-        title: "管理人の自己紹介",
+        title: "管理人プロフィール",
         to: "/me",
       },
       // {

@@ -115,7 +115,7 @@ const normalPageSettingList: PageSetting[] = [
     hidden: true,
   },
   {
-    title: "管理人の自己紹介",
+    title: "管理人プロフィール",
     to: "/me",
     lastmod: "2023/3/1",
     img: "page-image/me.png",

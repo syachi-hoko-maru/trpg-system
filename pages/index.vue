@@ -17,7 +17,10 @@
 <script setup lang="ts">
 const andml = `
 &1 Welcome
-このサイトでは &info_trpg 、特に &info_sw25 （SW2.5）のシナリオの公開や、役立つツールの提供などを行なっています。
+このサイトでは &info_trpg 、特に &info_sw25 （SW2.5）のシナリオの公開や、役立つツールの提供、サプリメントの紹介などを行なっています。
+&button_/scenario 
+&button_/sw25/tool 
+&button_/sw25/forbeginner/suppliment 
 &br
 今後も随時、機能の追加等を行なっていきます。
 最新の更新情報は &itwitter にて発信します。
@@ -27,7 +30,6 @@ const andml = `
 最近更新されたページは &link_#recent,こちら
 &br
 &date_today 更新作業中
-&date_2023/3/13 &link_/sw25/forbeginner/suppliment,SW2.5おすすめサプリメント 公開
 &date_2023/3/1 仮公開
 &date_2023/1/11 更新準備開始
 `

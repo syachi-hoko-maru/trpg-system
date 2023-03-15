@@ -195,8 +195,9 @@ const normalPageSettingList: PageSetting[] = [
   },
 ];
 
-const blogPageSettingList: PageSetting[] = (blogSettingList as Blog[]).map(
-  (b) => {
+const blogPageSettingList: PageSetting[] = (blogSettingList as Blog[])
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .map((b) => {
     return {
       title: b.title,
       to: "/blog/" + b.id,
@@ -219,8 +220,7 @@ const blogPageSettingList: PageSetting[] = (blogSettingList as Blog[]).map(
           .replace(/\n/g, " &br ")
           .slice(0, 100),
     };
-  }
-);
+  });
 
 export const pageSettingList: PageSetting[] =
   normalPageSettingList.concat(blogPageSettingList);

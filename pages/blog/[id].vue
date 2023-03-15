@@ -15,6 +15,9 @@
   <card>
     駄文を最後までお読みいただきありがとうございました。<br>
     よければ他のブログやページもご覧ください。
+    <item-button url="/blog" normal-button>ブログトップへ</item-button>
+  </card>
+  <card>
   </card>
 </template>
 

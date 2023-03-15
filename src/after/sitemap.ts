@@ -10,28 +10,30 @@ export const setSitemap = () => {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 `;
 
-  pageSettingList.forEach((pageSetting) => {
-    result += `
+  pageSettingList
+    .filter((page) => !page.hidden)
+    .forEach((pageSetting) => {
+      result += `
 <url>
 <loc>
 https://syachi-hoko-maru.github.io/trpg-system${pageSetting.to}${
-      pageSetting.to ? "/" : ""
-    }
+        pageSetting.to ? "/" : ""
+      }
 </loc>
 <lastmod>${(pageSetting.lastmod as string)
-      .split("/")
-      .map((str) => (str.length < 2 ? "0" + str : str))
-      .join("-")}</lastmod>
+        .split("/")
+        .map((str) => (str.length < 2 ? "0" + str : str))
+        .join("-")}</lastmod>
     `;
-    if (pageSetting.img) {
-      result += `
+      if (pageSetting.img) {
+        result += `
 <image:image>
 <image:loc>https://syachi-hoko-maru.github.io/trpg-system/${pageSetting.img}</image:loc>
 </image:image>
 `;
-    }
-    result += "</url>";
-  });
+      }
+      result += "</url>";
+    });
   result += "</urlset>";
 
   writeFileSync(

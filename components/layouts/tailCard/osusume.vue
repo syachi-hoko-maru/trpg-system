@@ -36,17 +36,25 @@ const shuffle = <T>(array: Array<T>) => {
   }
   return array;
 }
-const osusumePageList = computed(() => {
+const osusumePageList: Ref<PageSetting[]> = computed(() => {
   const nowPath = Props.pageSetting.to
   // おすすめで、かつ今表示していないページ
-  const dataList = $pageSettingList.filter(page => page.osusume && !page.hidden && page.to !== nowPath)
+  const dataList = $pageSettingList.filter(page => !page.hidden && page.explain && page.to !== nowPath)
   // 関連ならtagの一致を調べる
   if (Props.type === "kanren") {
     if (Props.pageSetting.tags.length === 0) return []
-    dataList.filter(page => page.tags.findIndex(tag => Props.pageSetting.tags.join().indexOf(tag) >= 0) >= 0)
+    return dataList.filter(page => {
+      for (let tag of page.tags) {
+        console.log(page, tag)
+        if (Props.pageSetting.tags.indexOf(tag) >= 0) {
+          return true
+        }
+      }
+      return false
+    }).slice(0, 5)
   }
   // 作者がしゃちほこ丸のシナリオを表示する
-  if (Props.type !== "kanren" && nowPath.indexOf("scenario") === -1)
+  else if (nowPath.indexOf("scenario") === -1) {
     $scenarioData.filter(sd => sd.author === "しゃちほこ丸").forEach(sd => {
       dataList.push({
         title: sd.title,
@@ -54,10 +62,12 @@ const osusumePageList = computed(() => {
         explain: sd.explain,
         img: sd.img,
         osusume: true,
+        lastmod: "",
         tags: []
       })
     })
-  return shuffle(dataList).slice(0, 5)
+  }
+  return shuffle(dataList).filter(page => page.osusume).slice(0, 5)
 })
 </script>
 

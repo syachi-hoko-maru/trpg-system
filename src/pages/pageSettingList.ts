@@ -13,6 +13,8 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "ソード・ワールド2.5",
     to: "/sw25",
+    explain:
+      "このウェブサイトで多く扱われている「ソード・ワールド2.5」（SW2.5）というTRPGについて、簡単にその魅力を紹介するページです。",
     lastmod: "2023/3/14",
     tags: ["sw25"],
   },

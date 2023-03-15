@@ -12,9 +12,3 @@ const Props = defineProps<Props>();
 
 </script>
 
-<style lang="scss" scoped>
-.search-card-title {
-  width: 100%;
-}
-</style>
-

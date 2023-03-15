@@ -10,6 +10,9 @@
             <v-col cols="8">
               <v-row class="pt-5">
                 <v-card-title class="search-card-title">{{ pageSettingData.title }}</v-card-title>
+                <v-card-subtitle class="search-card-title" v-if="pageSettingData.to.indexOf('/blog/') === 0">
+                  {{ pageSettingData.lastmod }}
+                </v-card-subtitle>
                 <item-tags :tags="pageSettingData.tags" class="py-0" v-if="mounted" />
               </v-row>
             </v-col>
@@ -47,3 +50,10 @@ onMounted(() => {
   mounted.value = true
 })
 </script>
+
+<style lang="scss" scoped>
+.search-card-title {
+  width: 100%;
+}
+</style>
+

@@ -1,5 +1,6 @@
 <template>
-  <nuxt-link @click.stop="link" :class="`${colorClass} text-decoration-none user-select-none ${disabled?'':'pointer'}`">
+  <nuxt-link :to="to !== 'action' && !disabled ? to : ''" :target="externalFlag ? '_blank' : ''"
+    :class="`${colorClass} text-decoration-none user-select-none ${disabled ? '' : 'pointer'}`">
     <span :class="decoClass">
       <slot />
     </span>
@@ -19,19 +20,19 @@ const Props = defineProps<Props>();
 
 const externalFlag = Props.to.startsWith("http") ? true : false
 
-const router = useRouter()
-const { closeDialogo } = useDialogo()
-const { getNowPage } = usePages()
+// const router = useRouter()
+// const { closeDialogo } = useDialogo()
+// const { getNowPage } = usePages()
 
-const link = () => {
-  if (Props.disabled || Props.to === "action") return
-  else if (externalFlag) {
-    window.open(Props.to, '_blank')
-  } else if (getNowPage() !== Props.to) {
-    router.push(Props.to)
-    closeDialogo()
-  }
-}
+// const link = () => {
+//   if (Props.disabled || Props.to === "action") return
+//   else if (externalFlag) {
+//     window.open(Props.to, '_blank')
+//   } else if (getNowPage() !== Props.to) {
+//     router.push(Props.to)
+//     closeDialogo()
+//   }
+// }
 
 let colorClass: string = "text-text"
 if (Props.disabled) colorClass = "text-disabled"

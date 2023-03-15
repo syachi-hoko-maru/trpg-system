@@ -1,15 +1,17 @@
 <template>
-  <card v-if="mounted">
+  <card>
     <template #title>
       検索
     </template>
-    <item-form-input :form-setting="form" />
-    <item-tags-chip v-for="pageTag of $pageTags" :label="$pageTagSettings[pageTag].label" :key="pageTag"
-      :color="selectTag === pageTag ? 'primary' : ''"
-      @click="() => selectTag = (selectTag === pageTag ? undefined : pageTag)" />
-    <item-button @click="changeSetting">
-      検索する
-    </item-button>
+    <div v-if="mounted">
+      <item-form-input :form-setting="form" />
+      <item-tags-chip v-for="pageTag of $pageTags" :label="$pageTagSettings[pageTag].label" :key="pageTag"
+        :color="selectTag === pageTag ? 'primary' : ''"
+        @click="() => selectTag = (selectTag === pageTag ? undefined : pageTag)" />
+      <item-button @click="changeSetting">
+        検索する
+      </item-button>
+    </div>
   </card>
   <card>
     <template #title>{{ setTitle }}</template>
@@ -150,6 +152,7 @@ const search = (): void => {
   })
 }
 
+search()
 const mounted = ref(false)
 
 const wait = async () => {

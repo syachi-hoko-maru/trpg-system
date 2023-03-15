@@ -159,7 +159,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "検索",
     to: "/search",
-    lastmod: "2023/3/1",
+    lastmod: "2023/3/15",
     specialPage: true,
     explain: "当ウェブサイトの内容を検索できます。",
     tags: [],

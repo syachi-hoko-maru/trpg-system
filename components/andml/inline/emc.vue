@@ -1,6 +1,6 @@
 <template>
   <em class="em">
-    {{ props }}
+    <andml-inline-spanc :props="props" />
   </em>
 </template>
 

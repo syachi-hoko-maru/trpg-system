@@ -49,7 +49,7 @@ const setInlineComponent = (andml: string): AndmlData => {
   }
   return {
     props: andml,
-    component: resolveComponent("AndmlInlineSpan")
+    component: resolveComponent("AndmlInlineSpanc")
   }
 }
 

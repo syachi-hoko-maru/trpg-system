@@ -19,7 +19,9 @@
     <div v-for="[date, pages] of Object.entries(recent)" :key="date" class="mt-2">
       {{ date }}
       <div v-for="page of pages" :key="page.to" class="pl-3">
-        <atom-link :to="page.to" deco>{{ page.title }}</atom-link>
+        <atom-link :to="page.to" deco>
+          {{ page.to.indexOf("/blog/") === 0 ? `ブログ「${page.title}」` : page.title }}
+        </atom-link>
       </div>
     </div>
   </card>

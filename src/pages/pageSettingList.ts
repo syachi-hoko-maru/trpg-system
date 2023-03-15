@@ -195,11 +195,11 @@ const blogPageSettingList: PageSetting[] = (blogSettingList as Blog[]).map(
       lastmod: b.date,
       tags: b.tags.filter(isPageTag) as PageTag[],
       osusume:
-        new Date(b.date + "GMT+09:00").getTime() <= new Date().getTime()
+        new Date(b.date + " GMT+0900").getTime() <= new Date().getTime()
           ? true
           : false,
       hidden:
-        new Date(b.date + "GMT+09:00").getTime() <= new Date().getTime()
+        new Date(b.date + " GMT+0900").getTime() <= new Date().getTime()
           ? false
           : true,
       explain:

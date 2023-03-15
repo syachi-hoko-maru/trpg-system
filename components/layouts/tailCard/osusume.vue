@@ -45,7 +45,6 @@ const osusumePageList: Ref<PageSetting[]> = computed(() => {
     if (Props.pageSetting.tags.length === 0) return []
     return dataList.filter(page => {
       for (let tag of page.tags) {
-        console.log(page, tag)
         if (Props.pageSetting.tags.indexOf(tag) >= 0) {
           return true
         }

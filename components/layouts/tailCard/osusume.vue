@@ -4,7 +4,7 @@
       {{ type === "kanren" ? "関連するページ" : "おすすめのページ" }}
     </template>
     <template #pbefore>
-      <div id="osusume" class="d-flex flex-row">
+      <item-scrollx>
         <atom-link v-for="op of osusumePageList" :key="op.to" :to="op.to">
           <card class="mx-3 osusume-card">
             <template #tbefore>
@@ -13,7 +13,7 @@
             <andml v-if="op.explain" :andmls="Array.isArray(op.explain) ? op.explain : [op.explain]" />
           </card>
         </atom-link>
-      </div>
+      </item-scrollx>
     </template>
   </card>
 </template>
@@ -36,6 +36,7 @@ const shuffle = <T>(array: Array<T>) => {
   }
   return array;
 }
+
 const osusumePageList: Ref<PageSetting[]> = computed(() => {
   const nowPath = Props.pageSetting.to
   // おすすめで、かつ今表示していないページ
@@ -68,16 +69,10 @@ const osusumePageList: Ref<PageSetting[]> = computed(() => {
   }
   return shuffle(dataList).filter(page => page.osusume).slice(0, 5)
 })
+
 </script>
 
 <style lang="scss">
-div#osusume {
-  // width: 1800px;
-  max-height: calc(55vw + 40px);
-  height: 340px;
-  overflow-x: scroll;
-}
-
 div.osusume-card {
   max-width: 65vw;
   width: 300px;

@@ -3,14 +3,14 @@
     <template #title v-if="!mini">
       Amazon商品リンク
     </template>
-    <div class="d-flex flex-row" id="amazon-list">
+    <item-scrollx>
       <div v-for="item of items" :key="item.title" class="mx-2">
         <iframe :title="`${item.title}のAmazonリンク`" loading="lazy"
           sandbox="allow-popups allow-scripts allow-modals allow-forms allow-same-origin"
           style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"
           :src="item.src" />
       </div>
-    </div>
+    </item-scrollx>
     <item-button url="https://amzn.to/3T30UvM" v-if="!mini">
       「ソード・ワールド2.5」を検索
     </item-button>
@@ -92,10 +92,3 @@ const items = [
   return false
 })
 </script>
-
-<style lang="scss" scoped>
-#amazon-list {
-  width: 100%;
-  overflow-x: scroll;
-}
-</style>

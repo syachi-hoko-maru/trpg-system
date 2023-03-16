@@ -4,7 +4,9 @@
     <layouts-dialogo />
     <layouts-main>
       <layouts-title-card v-if="mountedPageSetting" :page-setting="mountedPageSetting" />
+      <layouts-paging v-if="mountedPageSetting && mountedPageSetting.page" :page-setting="mountedPageSetting" top />
       <slot />
+      <layouts-paging v-if="mountedPageSetting && mountedPageSetting.page" :page-setting="mountedPageSetting" />
       <layouts-tail-card v-if="mountedPageSetting" :page-setting="mountedPageSetting" />
     </layouts-main>
     <layouts-snack />

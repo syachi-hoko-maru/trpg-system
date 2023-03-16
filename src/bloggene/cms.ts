@@ -10,8 +10,8 @@ export const getCmsData = async () => {
   ).data as unknown;
   if (
     Array.isArray(data) &&
-    Array.isArray(data[1]) &&
-    typeof data[1][0] === "string"
+    Array.isArray(data[0]) &&
+    typeof data[0][0] === "string"
   ) {
     (data as string[][]).forEach((line, i) => {
       if (i === 0 || !line[1] || !line.slice(2).join("\n")) return;
@@ -22,6 +22,7 @@ export const getCmsData = async () => {
       );
     });
   } else {
+    if (Array.isArray(data) && data.length === 0) return;
     throw "cms text error!!";
   }
 };

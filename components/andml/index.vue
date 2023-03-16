@@ -1,11 +1,13 @@
 <template>
-  <component v-for="data of dataArray" :is="data.component" :props="data.props" :key="data.andml">
+  <component v-for="(data, i) of dataArray" :is="data.component" :props="data.props"
+    :key="(data.andml ? data.andml : ``) + i">
     <andml-inline :andml="data.andml" />
   </component>
 </template>
 
 
 <script setup lang="ts">
+import { Ref } from 'vue';
 import { AndmlData, AndmlScript } from '~~/types/andml';
 
 interface Props {
@@ -63,5 +65,5 @@ const setLineComponent = (andml: string): AndmlData => {
     component: resolveComponent("AndmlLineP")
   }
 }
-const dataArray: AndmlData[] = (Array.isArray(Props.andmls) ? Props.andmls : Props.andmls.split("\n")).map(setLineComponent)
+const dataArray: Ref<AndmlData[]> = computed(() => (Array.isArray(Props.andmls) ? Props.andmls : Props.andmls.split("\n")).map(setLineComponent))
 </script>

@@ -1,5 +1,6 @@
 import { getBlogList } from "./src/bloggene/getBlogList";
 import { redirectList } from "./src/pages/redirect";
+import { pageSettingList } from "./src/pages/pageSettingList";
 
 let routes: string[] = [];
 
@@ -9,6 +10,15 @@ if (process.argv.join().indexOf("generate") >= 0) {
       getBlogList().map((blog) => `blog/${blog}`),
       Object.keys(redirectList)
     );
+    pageSettingList
+      .filter((page) => page.page)
+      .forEach((page) => {
+        if (!page.page) return;
+        routes.push(page.to.replace(/^\//, ""));
+        for (let p = 1; p <= page.page; p++) {
+          routes.push((page.to + `/${p}`).replace(/^\//, ""));
+        }
+      });
   } catch {
     console.error("error!?");
   }

@@ -26,6 +26,9 @@
     </div>
   </card>
   <layouts-tail-card-osusume v-if="pageSetting.to !== '/policy'" :page-setting="pageSetting" />
+  <card>
+    <item-button @click="scrollTop">上へ戻る</item-button>
+  </card>
 </template>
 
 <script setup lang="ts">
@@ -76,6 +79,9 @@ $pageSettingList.filter(p => !p.hidden)
     recent[p.lastmod].push(p)
     count++
   })
+const scrollTop = () => {
+  scrollTo(0, 0)
+}
 
 const sourceAndml = `
 &1 ソース

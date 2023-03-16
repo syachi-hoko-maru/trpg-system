@@ -13,31 +13,56 @@ export const setSitemap = () => {
   pageSettingList
     .filter((page) => !page.hidden)
     .forEach((pageSetting) => {
-      result += `
+      if (!pageSetting.page) {
+        result += `
 <url>
 <loc>
-https://syachi-hoko-maru.github.io/trpg-system${pageSetting.to}${
-        pageSetting.to ? "/" : ""
-      }
+https://syachi-hoko-maru.github.io/trpg-system
+${pageSetting.to ? pageSetting.to : "/"}
 </loc>
-<lastmod>${(pageSetting.lastmod as string)
-        .split("/")
-        .map((str) => (str.length < 2 ? "0" + str : str))
-        .join("-")}</lastmod>
-    `;
-      if (pageSetting.img) {
-        result += `
+<lastmod>
+${(pageSetting.lastmod as string)
+  .split("/")
+  .map((str) => (str.length < 2 ? "0" + str : str))
+  .join("-")}
+</lastmod>`;
+        if (pageSetting.img) {
+          result += `
 <image:image>
 <image:loc>https://syachi-hoko-maru.github.io/trpg-system/${pageSetting.img}</image:loc>
 </image:image>
 `;
+        }
+        result += "</url>";
+      } else {
+        for (let p = 1; p <= pageSetting.page; p++) {
+          result += `
+<url>
+<loc>
+https://syachi-hoko-maru.github.io/trpg-system${pageSetting.to}/${p}
+</loc>
+<lastmod>
+${(pageSetting.lastmod as string)
+  .split("/")
+  .map((str) => (str.length < 2 ? "0" + str : str))
+  .join("-")}
+</lastmod>
+    `;
+          if (pageSetting.img) {
+            result += `
+<image:image>
+<image:loc>https://syachi-hoko-maru.github.io/trpg-system/${pageSetting.img}</image:loc>
+</image:image>
+`;
+          }
+          result += "</url>";
+        }
       }
-      result += "</url>";
     });
   result += "</urlset>";
 
   writeFileSync(
     `${outputDir}/sitemap.xml`,
-    result.replace(/[\n]/g, "").replace(/\s+/g, " ")
+    result.replace(/\n/g, "").replace(/\s+/g, " ")
   );
 };

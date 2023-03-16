@@ -1,6 +1,6 @@
 <template>
   <card v-show="!pageSetting.specialPage">
-    <template #title>{{ pageSetting.title }}</template>
+    <template #title>{{ pageSetting.title }} {{ pageSetting.page ? page : "" }}</template>
     <template #subtitle v-if="pageSetting.to.indexOf('/blog/') === 0">{{ pageSetting.lastmod }}</template>
     <template #after v-if="pageSetting.tags?.length">
       <item-tags :tags="pageSetting.tags" class="py-0" />
@@ -18,4 +18,8 @@ interface Props {
   pageSetting: PageSetting
 }
 const Props = defineProps<Props>();
+
+const { getNowPagePage } = usePages()
+const page = computed(getNowPagePage)
+
 </script>

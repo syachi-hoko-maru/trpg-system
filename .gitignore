@@ -7,5 +7,4 @@ node_modules
 .env
 dist
 
-assets/blog.json
 public/search.json

@@ -40,7 +40,7 @@
 
       #one-line {
         display:
-          block;
+          none;
       }
 
       #two-line {

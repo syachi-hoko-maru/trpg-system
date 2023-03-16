@@ -18,7 +18,7 @@
     </template>
     <div v-for="[date, pages] of Object.entries(recent)" :key="date" class="mt-2">
       {{ date }}
-      <div v-for="page of pages" :key="page.to" class="pl-3">
+      <div v-for="page of pages" :key="page.to" class="pl-3 pb-2">
         <atom-link :to="page.to" deco>
           {{ page.to.indexOf("/blog/") === 0 ? `ブログ「${page.title}」` : page.title }}
         </atom-link>
@@ -65,14 +65,17 @@ const shareSetting = computed(() => {
 
 const recent: { [date: string]: PageSetting[] } = {}
 let count = 0
-$pageSettingList.filter(p => !p.hidden).sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime()).slice(0, 15).forEach(p => {
-  if (!recent[p.lastmod] || !recent[p.lastmod].length) {
-    if (count < 10) recent[p.lastmod] = []
-    else return
-  }
-  recent[p.lastmod].push(p)
-  count++
-})
+$pageSettingList.filter(p => !p.hidden)
+  .sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime())
+  .slice(0, 15)
+  .forEach(p => {
+    if (!recent[p.lastmod] || !recent[p.lastmod].length) {
+      if (count < 10) recent[p.lastmod] = []
+      else return
+    }
+    recent[p.lastmod].push(p)
+    count++
+  })
 
 const sourceAndml = `
 &1 ソース

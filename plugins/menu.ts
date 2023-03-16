@@ -31,7 +31,7 @@ const menuList: (MenuCategory | MenuPage)[] = [
       {
         icon: "mdi-star",
         title: "おすすめサプリメント",
-        to: "/sw25/forbeginner/suppliment",
+        to: "/sw25/forbeginner/suppliment/1",
       },
     ],
   },

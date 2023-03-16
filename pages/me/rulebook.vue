@@ -50,7 +50,7 @@ const showSuppliment = (g: number, s: number) => {
 const text = `
 以下では管理人のしゃちほこ丸が所有するルールブック・サプリメントの一覧を掲載しています。
 ソード・ワールド2.5のおすすめサプリメントについては以下をご覧ください。
-&button_/sw25/forbeginner/suppliment 
+&button_/sw25/forbeginner/suppliment/1 
 `
 
 const rulebookGroups = ["CoC", "SW", "sfic", "bouki", "FEAR", "other", "dozin", "web"] as const

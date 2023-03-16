@@ -20,7 +20,7 @@ const andml = `
 このサイトでは &info_trpg 、特に &info_sw25 （SW2.5）のシナリオの公開や、役立つツールの提供、サプリメントの紹介などを行なっています。
 &button_/scenario 
 &button_/sw25/tool 
-&button_/sw25/forbeginner/suppliment 
+&button_/sw25/forbeginner/suppliment/1 
 &br
 今後も随時、機能の追加等を行なっていきます。
 最新の更新情報は &itwitter にて発信します。

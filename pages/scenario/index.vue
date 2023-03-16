@@ -2,7 +2,7 @@
   <card-list>
     <card v-for="sd of $scenarioData" :key="sd.id" :id="sd.id">
       <template #tbefore>
-        <v-img :src="`${$templateText.basePath}/${sd.img}`" :alt="`${sd.title}サムネイル画像`" />
+        <v-img :src="`${$templateText.basePath}/webp/${sd.img}`" :alt="`${sd.title}サムネイル画像`" />
       </template>
       <template #title>{{ sd.title }}</template>
       <template #subtitle>

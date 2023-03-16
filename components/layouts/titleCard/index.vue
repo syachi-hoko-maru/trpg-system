@@ -8,7 +8,7 @@
   </card>
   <card v-if="!pageSetting.specialPage && pageSetting.img">
     <template #tbefore>
-      <v-img :src="`${$templateText.basePath}/${pageSetting.img}`" alt="サムネイル画像" />
+      <v-img :src="`${$templateText.basePath}/webp/${pageSetting.img}`" alt="サムネイル画像" />
     </template>
   </card>
 </template>

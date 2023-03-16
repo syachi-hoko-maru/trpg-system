@@ -3,7 +3,7 @@
   <card-list>
     <card v-for="page of toolPages" :key="page.to">
       <template #tbefore>
-        <v-img :src="`${$templateText.basePath}/${page.img}`" />
+        <v-img :src="`${$templateText.basePath}/webp/${page.img}`" />
       </template>
       <template #title>
         {{ page.title }}

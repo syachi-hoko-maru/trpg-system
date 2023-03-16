@@ -8,7 +8,7 @@
         <atom-link v-for="op of osusumePageList" :key="op.to" :to="op.to">
           <card class="mx-3 osusume-card">
             <template #tbefore>
-              <v-img :src="`${$templateText.basePath}/${op.img}`" :alt="op.title" />
+              <v-img :src="`${$templateText.basePath}/webp/${op.img}`" :alt="op.title" />
             </template>
             <andml v-if="op.explain" :andmls="Array.isArray(op.explain) ? op.explain : [op.explain]" />
           </card>

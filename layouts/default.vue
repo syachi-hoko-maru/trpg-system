@@ -84,7 +84,7 @@ const changePage = () => {
     meta.push({
       hid: "og:image",
       name: "og:image",
-      content: $templateText.baseUrl + "/" + pageSetting.value.img
+      content: $templateText.baseUrl + "/" + pageSetting.value.img.replace(".webp", ".png")
     })
   } else {
     meta.push({

@@ -50,7 +50,9 @@ const getData = (): { [key: string]: string } => {
     common.forEach((commonStr) => {
       value = value.replaceAll(commonStr, "");
     });
-    result[k] = value;
+    const p = k.replace(/\/\d+/, "");
+    if (!result[p]) result[p] = "";
+    result[p] += value;
   });
   return result;
 };

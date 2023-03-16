@@ -34,7 +34,7 @@ const pageSetting = computed(() => {
     } else {
       blogFlag = false
     }
-    const pageSetting = $pageSettingList.find(pageSetting => pageSetting.to === pageUrl)
+    const pageSetting = $pageSettingList.find(pageSetting => pageSetting.to === pageUrl.replace(/\/\d+$/, ""))
     if (pageSetting) {
       return pageSetting
     }

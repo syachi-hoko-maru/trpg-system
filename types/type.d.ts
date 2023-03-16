@@ -20,6 +20,7 @@ declare type PageTag = "sw25" | "sw25_new" | "tool" | "scenario" | "me";
 declare type PageSetting = {
   readonly title: string;
   readonly to: string;
+  readonly page?: number;
   readonly lastmod: string;
   readonly img?: string;
   readonly osusume?: boolean;
@@ -66,4 +67,17 @@ declare type Blog = {
   tags: PageTag[];
   date: string;
   andml: string;
+};
+
+type SupplimentGroup = {
+  id: string;
+  type: string;
+  explain: string;
+  items: Suppliment[];
+};
+
+type Suppliment = {
+  name: string;
+  ossusume: number;
+  explain: string;
 };

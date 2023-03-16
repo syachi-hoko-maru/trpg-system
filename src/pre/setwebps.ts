@@ -11,20 +11,19 @@ const setwebp = (dirname: string) => {
   const pngList = readdirSync(`${pngDir}/${dirname}`).filter((str) =>
     str.endsWith(".png")
   );
-  const webpList = readdirSync(`${webpDir}/${dirname}`).filter((str) =>
-    str.endsWith(".webp")
-  );
+  const webpList = readdirSync(`${webpDir}/${dirname}`);
   const sharps: Promise<void>[] = [];
   pngList.forEach((img) => {
-    if (webpList.indexOf(img) !== -1) return;
+    const imgwebp = `${img.replace(".png", "")}.webp`;
+    if (webpList.indexOf(imgwebp) !== -1) return;
     sharps.push(
       sharp(`${pngDir}/${dirname}/${img}`)
         .webp({
           quality: 75,
         })
-        .toFile(`${webpDir}/${dirname}/${img.replace(".png", "")}.webp`)
+        .toFile(`${webpDir}/${dirname}/${imgwebp}`)
         .then(() => {
-          console.log(`generate ${img.replace(".png", "")}.webp`);
+          console.log(`generate ${imgwebp}`);
         })
         .catch((err: any) => {
           console.error(err);

@@ -24,7 +24,6 @@
 
 <script setup lang="ts">
 import { Ref } from 'vue';
-import { set } from 'vue-gtag';
 
 const route = useRoute();
 const router = useRouter()
@@ -145,6 +144,7 @@ const search = (): void => {
     }
   })
   results.value = $pageSettingList.filter(pageSetting => {
+    if (pageSetting.to === "/search") return false
     for (let filter of filters) {
       if (!filter(pageSetting)) return false
     }

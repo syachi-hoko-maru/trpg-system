@@ -22,7 +22,7 @@
           <v-card-title class="search-card-title">{{ pageSettingData.title }}</v-card-title>
           <item-tags :tags="pageSettingData.tags" class="py-0" v-if="mounted" />
         </div>
-        <v-card-text v-if="pageSettingData.explain && pageSettingData.explain.length">
+        <v-card-text class="pt-0" v-if="pageSettingData.explain && pageSettingData.explain.length">
           <andml :andmls="pageSettingData.explain" />
         </v-card-text>
       </template>
@@ -51,7 +51,7 @@ onMounted(() => {
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .search-card-title {
   width: 100%;
 }

@@ -1,5 +1,5 @@
 <template>
-  <item-button :url="shareUrl" prepend-icon="mdi-twitter">
+  <item-button :url="shareUrl" prepend-icon="mdi-twitter" color="blue">
     <slot />
   </item-button>
 </template>

@@ -10,7 +10,7 @@
       </atom-link>
     </template>
     <item-share :text="shareSetting.text" :url="shareSetting.url">このページをツイート</item-share>
-    ぜひTwitterでシェアして広めてください
+    ぜひTwitterでシェアして広めてください！ m(_ _)m
   </card>
   <card id="recent">
     <template #title>

@@ -11,7 +11,7 @@
       <div class="text">
         <andml :andmls="sd.explain" />
       </div>
-      <item-button v-for="u of sd.url" :url="u.url" :key="u.url">
+      <item-button v-for="u of sd.url" :url="u.url" :key="u.url" normal-button>
         {{ u.site }}
       </item-button>
     </card>

@@ -18,6 +18,7 @@ const Props = defineProps<Props>();
 // lineの処理
 const andmlLineScriptArray: AndmlScript[] = [
   { script: "button_", component: resolveComponent("AndmlLineButton") },
+  { script: "img_", component: resolveComponent("AndmlLineImgc") },
   { script: "date_", component: resolveComponent("AndmlLineDate") },
   { script: "amazon_", component: resolveComponent("AndmlLineAmazon") },
   { script: "2", component: resolveComponent("AndmlLineHead2") },

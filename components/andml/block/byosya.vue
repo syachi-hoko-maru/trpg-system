@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div>描写</div>
+  <andml-block-core title="描写" :color="$vuetify.theme.current.colors.primary">
     <slot />
-  </div>
+  </andml-block-core>
 </template>
+

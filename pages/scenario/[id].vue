@@ -1,6 +1,16 @@
 <template>
   <card-array-by-andml :andml="caution" />
-  <card-array-by-andml :andml="andml" />
+  <card>
+    以下にはシナリオのネタバレが含まれます。<br>
+    見る場合には以下のボタンを押してください。
+    <item-button @click="() => show = !show">{{ show ? "シナリオを閉じる" : "シナリオを見る" }}</item-button>
+  </card>
+  <card-array-by-andml :andml="andml" v-if="show" />
+  <card>
+    <template #title>他のシナリオ</template>
+    しゃちほこ丸のシナリオ一覧はこちら
+    <item-button url="/scenario" />
+  </card>
 </template>
 
 <script setup lang="ts">
@@ -21,6 +31,8 @@ if (!(
 } else {
   andml.value = blog.andml
 }
+
+const show = ref(false)
 
 const caution = `
 &1 シナリオメモについて

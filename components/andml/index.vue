@@ -19,6 +19,9 @@ const andmlArray = (Array.isArray(Props.andmls) ? Props.andmls : Props.andmls.sp
 // lineの処理
 const andmlBlockScriptArray: AndmlScript[] = [
   { script: "byosya", component: resolveComponent("AndmlBlockByosya") },
+  { script: "forgm", component: resolveComponent("AndmlBlockForgm") },
+  { script: "info", component: resolveComponent("AndmlBlockInfo") },
+
 ];
 
 const setBlockComponent = (andmls: string[]): AndmlBlockData[] => {

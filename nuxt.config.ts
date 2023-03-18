@@ -1,4 +1,4 @@
-import { getBlogList } from "./src/bloggene/getBlogList";
+import { getBlogList } from "./src/gene/getList";
 import { redirectList } from "./src/pages/redirect";
 import { pageSettingList } from "./src/pages/pageSettingList";
 

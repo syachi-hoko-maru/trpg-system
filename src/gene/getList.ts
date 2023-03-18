@@ -11,7 +11,7 @@ export const getBlogList = (): string[] => {
       .map((fileName) => fileName.replace(/\..*$/, ""));
     return blogList;
   } catch (err) {
-    console.error("getBlogList error!!\n", err);
+    console.error("getList error!!\n", err);
     return [];
   }
 };

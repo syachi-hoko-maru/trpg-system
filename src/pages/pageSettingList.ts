@@ -121,7 +121,8 @@ const normalPageSettingList: PageSetting[] = [
     img: "scenario-image/pudding.webp",
     lastmod: "2023/3/18",
     osusume: true,
-    explain: "",
+    explain:
+      "ソード・ワールド2.5の、「プリン」の素材を求めてお使いに行くシナリオです。自分で回すように書いたメモと、回した際のセリフ等を以下にまとめております。もし興味と機会があれば回してみてください。オリジナル設定：アルフレイム大陸における「プリン」は魔法生物プリン（オリジナル）を真似したもので、魔動機文明時代に作られたものです。現在では一部の人が好んで食べる高級品です。",
     tags: ["sw25", "scenario"],
   },
   {

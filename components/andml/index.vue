@@ -1,69 +1,54 @@
+
 <template>
-  <component v-for="(data, i) of dataArray" :is="data.component" :props="data.props"
-    :key="(data.andml ? data.andml : ``) + i">
-    <andml-inline :andml="data.andml" />
+  <component :is="d.component" v-for="d of dataArray">
+    <andml-line :andmls="d.andmls" />
   </component>
 </template>
 
 
 <script setup lang="ts">
-import { Ref } from 'vue';
-import { AndmlData, AndmlScript } from '~~/types/andml';
+import { AndmlBlockData, AndmlScript } from "~~/types/andml";
 
 interface Props {
   andmls: string | string[]
 }
 const Props = defineProps<Props>();
 
-// lineの処理
-const andmlLineScriptArray: AndmlScript[] = [
-  { script: "button_", component: resolveComponent("AndmlLineButton") },
-  { script: "date_", component: resolveComponent("AndmlLineDate") },
-  { script: "amazon_", component: resolveComponent("AndmlLineAmazon") },
-  { script: "2", component: resolveComponent("AndmlLineHead2") },
-]
+const andmlArray = (Array.isArray(Props.andmls) ? Props.andmls : Props.andmls.split("\n"))
 
-const setLineComponent = (andml: string): AndmlData => {
-  if (andml.startsWith("-")) {
-    const reg = new RegExp(`^(-+)\s*([^-].*)$`)
-    return {
-      props: andml.replace(reg, "$1"),
-      andml: andml.replace(reg, "$2"),
-      component: resolveComponent("AndmlLineList")
+// lineの処理
+const andmlBlockScriptArray: AndmlScript[] = [
+  { script: "byosya", component: resolveComponent("AndmlBlockByosya") },
+];
+
+const setBlockComponent = (andmls: string[]): AndmlBlockData[] => {
+  const result: AndmlBlockData[] = []
+  let blockFlag = false
+  mainLoop:
+  for (let andml of andmls) {
+    if (andml.startsWith("&&&")) {
+      blockFlag = false
+      continue mainLoop
     }
-  }
-  if (andml.startsWith(`//`)) {
-    return {
-      andml: "",
-      component: resolveComponent("AndmlLineP")
-    }
-  }
-  for (let script of andmlLineScriptArray) {
-    if (andml.startsWith(`&${script.script}`)) {
-      if (script.script.endsWith("_")) {
-        const reg = new RegExp(`^&${script.script}([^\\s]+)(\\s+(.*))?$`)
-        const matchArray = andml.match(reg)
-        if (!matchArray) throw createError(`[Error] AndmlLineScript "${andml}" is not found`)
-        return {
-          props: matchArray[1],
-          andml: matchArray[3],
-          component: script.component
-        }
-      } else {
-        const reg = new RegExp(`^&${script.script}\\s*(.*)$`)
-        const matchArray = andml.match(reg)
-        if (!matchArray) throw createError(`[Error] AndmlLineScript "${andml}" is not found`)
-        return {
-          andml: matchArray[1],
-          component: script.component
-        }
+    for (let script of andmlBlockScriptArray) {
+      if (andml.startsWith(`&&${script.script}`)) {
+        result.push({ andmls: [], component: script.component })
+        blockFlag = true
+        continue mainLoop
       }
     }
+    if (blockFlag) {
+      if (result[result.length - 1].andmls) {
+        result[result.length - 1].andmls.push(andml)
+      } else {
+        console.error("error! andml block error")
+      }
+    } else {
+      result.push({ andmls: [andml], component: resolveComponent("AndmlBlockDiv") })
+      blockFlag = true
+    }
   }
-  return {
-    andml,
-    component: resolveComponent("AndmlLineP")
-  }
+  return result
 }
-const dataArray: Ref<AndmlData[]> = computed(() => (Array.isArray(Props.andmls) ? Props.andmls : Props.andmls.split("\n")).map(setLineComponent))
+const dataArray = computed(() => setBlockComponent(andmlArray))
 </script>

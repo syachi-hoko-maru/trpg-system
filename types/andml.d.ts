@@ -1,16 +1,21 @@
 import { ComputedOptions, ConcreteComponent, MethodOptions } from "vue";
 
+type Component =
+  | string
+  | ConcreteComponent<{}, any, any, ComputedOptions, MethodOptions>;
 declare type AndmlData = {
   andml?: string;
-  component:
-    | string
-    | ConcreteComponent<{}, any, any, ComputedOptions, MethodOptions>;
+  component: Component;
+  props?: string;
+};
+
+declare type AndmlBlockData = {
+  andmls: string[];
+  component: Component;
   props?: string;
 };
 
 declare type AndmlScript = {
   script: string;
-  component:
-    | string
-    | ConcreteComponent<{}, any, any, ComputedOptions, MethodOptions>;
+  component: Component;
 };

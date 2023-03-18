@@ -4,17 +4,16 @@ import sharp from "sharp";
 const pngDir = `${process.cwd()}/public`;
 const webpDir = `${process.cwd()}/public/webp`;
 
-const pageImg = `page-image`;
-const blogImg = `blog-image`;
+const imgDirList = [`page-image`, `blog-image`, "scenario-image"];
 
 const setwebp = (dirname: string) => {
-  const pngList = readdirSync(`${pngDir}/${dirname}`).filter((str) =>
-    str.endsWith(".png")
+  const pngList = readdirSync(`${pngDir}/${dirname}`).filter(
+    (str) => str.endsWith(".png") || str.endsWith(".jpeg")
   );
   const webpList = readdirSync(`${webpDir}/${dirname}`);
   const sharps: Promise<void>[] = [];
   pngList.forEach((img) => {
-    const imgwebp = `${img.replace(".png", "")}.webp`;
+    const imgwebp = `${img.replace(".png", "").replace(".jpeg", "")}.webp`;
     if (webpList.indexOf(imgwebp) !== -1) return;
     sharps.push(
       sharp(`${pngDir}/${dirname}/${img}`)
@@ -34,5 +33,5 @@ const setwebp = (dirname: string) => {
 };
 
 export const setwebps = () => {
-  return Promise.all([...setwebp(pageImg), ...setwebp(blogImg)]);
+  return Promise.all(imgDirList.map(setwebp));
 };

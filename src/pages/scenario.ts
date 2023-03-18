@@ -12,7 +12,7 @@ export const scenarioData: ScenarioData[] = [
       "&br",
       "ココフォリアの部屋データが付属しています。",
     ],
-    img: "scenarios/hukyo.png",
+    img: "scenario-image/hukyo.webp",
     url: [
       {
         site: "TALTO",
@@ -31,7 +31,7 @@ export const scenarioData: ScenarioData[] = [
       'そしてその事件には "不思議な存在" が関わっていて……？',
       "&br フェリシモ魔法部×二足獣企画さんによる &link_https://www.felissimo.co.jp/mahoubu/kitomaho/,「きっと魔法遣いだったあなたたちへ」 というシナリオ一斉投稿企画へ参加させていただきました。",
     ],
-    img: "scenarios/kitomaho.jpeg",
+    img: "scenario-image/kitomaho.webp",
     url: [
       {
         site: "TALTO",
@@ -49,7 +49,7 @@ export const scenarioData: ScenarioData[] = [
       "&link_https://hydroxytrpg.booth.pm/items/3826115,非公式サプリメント「マギアスエイジ」 を使ったファンタジーものです。 &br マギアスエイジの舞台となるスブトゥリムの南端、「南の大海」に面する港町で、漁船の失踪事件を調査するシナリオとなっています。",
       "&link_https://twitter.com/fumidori75/status/1490988828873879553,#海の日TRPGシナリオ企画 に参加させていただきました。",
     ],
-    img: "scenarios/cancionAzul.jpeg",
+    img: "scenario-image/cancionAzul.webp",
     url: [
       {
         site: "TALTO",

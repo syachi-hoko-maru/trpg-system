@@ -1,5 +1,5 @@
 import { readdirSync, readFileSync, writeFileSync } from "fs";
-import { blogTextDir, blogImgDir, Blog, blogJSON } from "../index";
+import { blogTextDir, Blog, blogJSON, scenarioJson } from "../index";
 // import { generateImage } from "./geneImage";
 
 export const setBlogTxt = async () => {
@@ -30,6 +30,27 @@ export const setBlogTxt = async () => {
     return blogs;
   } catch (err) {
     console.error("\n[error] blog.json generate error!\n\n", err);
+    return [];
+  }
+};
+
+export const setScenarioTxt = async () => {
+  try {
+    const scenarios: { id: string; andml: string }[] = [];
+    const blogList = readdirSync(`${blogTextDir}/scenario`);
+    for (let fileName of blogList) {
+      const file = readFileSync(`${blogTextDir}/scenario/${fileName}`, "utf-8");
+      const id = fileName.replace(/\..*$/, "");
+      scenarios.push({
+        id,
+        andml: file,
+      });
+    }
+    writeFileSync(scenarioJson, JSON.stringify(scenarios), "utf-8");
+    console.log("[success] scenario.json generated!");
+    return scenarios;
+  } catch (err) {
+    console.error("\n[error] scenario.json generate error!\n\n", err);
     return [];
   }
 };

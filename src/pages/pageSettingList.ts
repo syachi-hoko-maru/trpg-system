@@ -116,6 +116,15 @@ const normalPageSettingList: PageSetting[] = [
     hidden: true,
   },
   {
+    title: "シナリオメモ「とろ〜りとした甘いやつ」",
+    to: "/scenario/pudding",
+    img: "scenario-image/pudding.webp",
+    lastmod: "2023/3/18",
+    osusume: true,
+    explain: "",
+    tags: ["sw25", "scenario"],
+  },
+  {
     title: "管理人プロフィール",
     to: "/me",
     lastmod: "2023/3/1",

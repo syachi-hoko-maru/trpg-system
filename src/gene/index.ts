@@ -7,5 +7,7 @@ export type Blog = {
 };
 
 export const blogJSON = `${process.cwd()}/assets/blog.json`;
-export const blogTextDir = `${process.cwd()}/src/bloggene/text`;
+export const scenarioJson = `${process.cwd()}/assets/scenario.json`;
+
+export const blogTextDir = `${process.cwd()}/src/gene/text`;
 export const blogImgDir = `${process.cwd()}/public/blog-image`;

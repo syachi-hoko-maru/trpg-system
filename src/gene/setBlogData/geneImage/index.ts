@@ -29,7 +29,7 @@ export const generateImage = async (id: string, title: string) => {
   const height = 630;
 
   registerFont(
-    `${process.cwd()}/src/bloggene/geneImage/BIZ_UDPMincho/BIZUDPMincho-Regular.ttf`,
+    `${process.cwd()}/src/gene/geneImage/BIZ_UDPMincho/BIZUDPMincho-Regular.ttf`,
     { family: "font" }
   );
 
@@ -79,7 +79,7 @@ export const generateImage = async (id: string, title: string) => {
 
   context.restore();
 
-  await sharp(`${process.cwd()}/src/bloggene/ogp.svg`)
+  await sharp(`${process.cwd()}/src/gene/ogp.svg`)
     .composite([{ input: canvas.toBuffer(), top: 0, left: 0 }])
     .png()
     .toFile(`${blogImgDir}/${id}.png`);

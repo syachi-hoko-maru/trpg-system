@@ -18,7 +18,7 @@ export const setSitemap = () => {
 <url>
 <loc>
 https://syachi-hoko-maru.github.io/trpg-system
-${pageSetting.to ? pageSetting.to : "/"}
+${pageSetting.to ? pageSetting.to + "/" : "/"}
 </loc>
 <lastmod>
 ${(pageSetting.lastmod as string)

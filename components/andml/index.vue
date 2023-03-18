@@ -41,12 +41,12 @@ const setLineComponent = (andml: string): AndmlData => {
   for (let script of andmlLineScriptArray) {
     if (andml.startsWith(`&${script.script}`)) {
       if (script.script.endsWith("_")) {
-        const reg = new RegExp(`^&${script.script}([^\\s]+)\\s+(.*)$`)
+        const reg = new RegExp(`^&${script.script}([^\\s]+)(\\s+(.*))?$`)
         const matchArray = andml.match(reg)
         if (!matchArray) throw createError(`[Error] AndmlLineScript "${andml}" is not found`)
         return {
           props: matchArray[1],
-          andml: matchArray[2],
+          andml: matchArray[3],
           component: script.component
         }
       } else {

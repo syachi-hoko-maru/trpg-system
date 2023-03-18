@@ -3,6 +3,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "devblog": "npx nodemon",
     "pre": "ts-node --project ba.tsconfig.jsonc src/pre/index.ts",
     "after": "ts-node --files --project ba.tsconfig.jsonc src/after/index.ts",
     "generate": "nuxt generate",
@@ -13,8 +14,10 @@
     "@nuxt/eslint-config": "^0.1.1",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@types/lodash": "^4.14.191",
+    "@types/node": "^18.15.3",
     "@types/sharp": "^0.31.1",
     "eslint": "^8.31.0",
+    "nodemon": "^2.0.21",
     "nuxt": "3.0.0",
     "sass": "^1.57.1",
     "sharp": "^0.31.3",

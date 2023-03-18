@@ -1,6 +1,6 @@
 import axios from "axios";
 import { writeFileSync } from "fs";
-import { blogTextDir } from ".";
+import { blogTextDir } from "../index";
 
 export const getCmsData = async () => {
   const data = (

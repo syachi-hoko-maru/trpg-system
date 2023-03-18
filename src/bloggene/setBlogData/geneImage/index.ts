@@ -1,8 +1,28 @@
-import { readFileSync, writeFileSync, unlinkSync } from "fs";
+import { readdirSync, readFileSync } from "fs";
 import sharp from "sharp";
-import { blogImgDir } from "..";
+import { blogImgDir, blogJSON, Blog } from "../../index";
 
 import { createCanvas, registerFont } from "canvas";
+
+export const geneImage = async () => {
+  const blogImgs = readdirSync(blogImgDir);
+  const blogs = JSON.parse(
+    readFileSync(blogJSON, "utf-8")
+  ) as unknown as Blog[];
+
+  for (let { id, title } of blogs) {
+    if (blogImgs.indexOf(`${id}.png`) === -1) {
+      console.log(`start generate image ${id}.png`);
+      try {
+        await generateImage(id, title).catch((err) => {
+          console.error(err);
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  }
+};
 
 export const generateImage = async (id: string, title: string) => {
   const width = 1200;

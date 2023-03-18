@@ -1,10 +1,9 @@
 import { readdirSync, readFileSync, writeFileSync } from "fs";
-import { blogTextDir, blogImgDir, Blog, blogJSON } from ".";
-import { generateImage } from "./geneImage";
+import { blogTextDir, blogImgDir, Blog, blogJSON } from "../index";
+// import { generateImage } from "./geneImage";
 
-export const setBlogData = async () => {
+export const setBlogTxt = async () => {
   try {
-    const blogImgs = readdirSync(blogImgDir);
     const blogs: Blog[] = [];
     for (let type of ["cms", "code"]) {
       const blogList = readdirSync(`${blogTextDir}/${type}`);
@@ -23,18 +22,14 @@ export const setBlogData = async () => {
             tags: lines[2].split(","),
             andml: lines.slice(3).join("\n"),
           });
-          if (blogImgs.indexOf(`${id}.png`) === -1) {
-            console.log(`start generate image ${id}.png`);
-            await generateImage(id, lines[0]).catch((err) => {
-              console.error(err);
-            });
-          }
         }
       }
     }
     writeFileSync(blogJSON, JSON.stringify(blogs), "utf-8");
     console.log("[success] blog.json generated!");
+    return blogs;
   } catch (err) {
     console.error("\n[error] blog.json generate error!\n\n", err);
+    return [];
   }
 };

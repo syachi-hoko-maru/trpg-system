@@ -1,0 +1,5 @@
+{
+  "watch": ["./src/bloggene/text/"],
+  "ext": "*",
+  "exec": "yarn pre"
+}

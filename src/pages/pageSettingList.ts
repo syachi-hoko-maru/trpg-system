@@ -70,9 +70,9 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 オリジナルデータ",
     to: "/sw25/data",
-    lastmod: "2023/3/1",
-    // osusume: true,
-    hidden: true,
+    img: "page-image/data.webp",
+    lastmod: "2023/3/19",
+    osusume: true,
     explain:
       "管理人のしゃちほこ丸が作った魔物やアイテム、騎獣などのオリジナルデータを掲載します。",
     tags: ["sw25", "me"],
@@ -132,6 +132,14 @@ const normalPageSettingList: PageSetting[] = [
     img: "page-image/me.webp",
     explain: "管理人しゃちほこ丸の自己紹介ページです。",
     osusume: true,
+    tags: ["me"],
+  },
+  {
+    title: "しゃちほこ丸ギャラリー",
+    to: "/me/gallery",
+    lastmod: "2023/3/19",
+    img: "page-image/me.webp",
+    explain: "管理人しゃちほこ丸のアイコン紹介ページです。",
     tags: ["me"],
   },
   {

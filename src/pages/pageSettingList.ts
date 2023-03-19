@@ -51,7 +51,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 Twitterコミュニティ紹介",
     to: "/sw25/tool/community",
-    lastmod: "2023/3/8",
+    lastmod: "2023/3/19",
     img: "page-image/community.webp",
     osusume: true,
     explain: "SW2.5に関するTwitterコミュニティの紹介ページです。",

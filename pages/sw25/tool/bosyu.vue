@@ -1,19 +1,19 @@
 <template>
+  <card-array-by-andml :andml="andmls1" />
   <card>
     <template #title>データ入力</template>
-    <andml :andmls="andmls1" />
-    <template #pafter>
+    <template #pbefore>
       <card v-for="data of bosyuSettingsWithDisable" :key="data.label">
         <template #title> {{ data.label }} </template>
         <item-forms :formSettings="data.items" />
       </card>
-      <div class="mt-10 mb-5">
-        <andml :andmls="andmls2" />
-        <item-button @click="saveSetting">
-          一時保存する
-        </item-button>
-      </div>
     </template>
+    <div class="mt-10 mb-5">
+      <andml :andmls="andmls2" />
+      <item-button @click="saveSetting">
+        一時保存する
+      </item-button>
+    </div>
   </card>
   <card>
     <item-form-select v-if="colorFormSetting.value" :form-setting="colorFormSetting" />
@@ -36,17 +36,21 @@ const { $setDisable } = useNuxtApp()
 
 const saveSec = 10
 const andmls1 = `
-以下から情報を選択して、募集を作り、下記の『画像を表示する』から入力結果を確認の上、ダウンロードしてご利用ください。 &br 
-選択式になっているものの多くは、自分で文字を書き換えることが可能です。 &br 
+&1 使い方
+以下から情報を選択して、募集を作り、下記の『画像を表示する』から入力結果を確認の上、ダウンロードしてご利用ください。
+選択式になっているものの多くは、 &br_自分で文字を書き換えることが可能 です。 
+&br
+なお、 &em_「募集しても人が集まらない……」 という方は以下のページもご覧ください。
+&button_/sw25/tool/community
 `
 const andmls2 = `
-入力内容は${saveSec}秒に1回程度、自動保存されます。 &br 
-手動で保存したい場合には以下のボタンを押してください。 &br 
+入力内容は${saveSec}秒に1回程度、自動保存されます。
+手動で保存したい場合には以下のボタンを押してください。
  &br 
-保存はブラウザに対してなされます。 &link_https://developer.mozilla.org/ja/docs/Web/API/Window/localStorage,（参考） &br 
-データがサーバーなど、あなたのPCやスマホ、タブレットなどの外部へ送られることはありません。 &br 
+保存はブラウザに対してなされます。 &link_https://developer.mozilla.org/ja/docs/Web/API/Window/localStorage,（参考）
+データがサーバーなど、あなたのPCやスマホ、タブレットなどの外部へ送られることはありません。 
  &br 
-なお、このデータは消えてしまうことがあります。 &br 
+なお、 &em_このデータは消えてしまうことがあります 。
 あらかじめご了承ください。
 `
 

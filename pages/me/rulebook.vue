@@ -231,6 +231,10 @@ const groups: Readonly<Rulebook[]> = [
     group: "other",
     system: [
       {
+        rulebook: "ふしぎもののけRPGゆうやけこやけ",
+        supplements: []
+      },
+      {
         rulebook: "常夜国騎士譚RPG ドラクルージュ",
         supplements: [
           "ヘレティカノワール",

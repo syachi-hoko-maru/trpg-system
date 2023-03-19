@@ -4,7 +4,7 @@ import sharp from "sharp";
 const pngDir = `${process.cwd()}/public`;
 const webpDir = `${process.cwd()}/public/webp`;
 
-const imgDirList = [`page-image`, `blog-image`, "scenario-image"];
+const imgDirList = [`page-image`, `blog-image`, "scenario-image", "icon-image"];
 
 const setwebp = (dirname: string) => {
   const pngList = readdirSync(`${pngDir}/${dirname}`).filter(

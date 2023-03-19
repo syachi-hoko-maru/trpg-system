@@ -29,7 +29,7 @@ export const generateImage = async (id: string, title: string) => {
   const height = 630;
 
   registerFont(
-    `${process.cwd()}/src/gene/geneImage/BIZ_UDPMincho/BIZUDPMincho-Regular.ttf`,
+    `${process.cwd()}/src/gene/setBlogData/geneImage/BIZ_UDPMincho/BIZUDPMincho-Regular.ttf`,
     { family: "font" }
   );
 

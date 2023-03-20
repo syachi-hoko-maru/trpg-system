@@ -5,10 +5,10 @@
         <v-progress-circular :size="70" :width="7" indeterminate color="primary" />
       </v-row>
       <slot name="tbefore" />
-      <div v-if="$slots.title" class="py-2">
-        <v-card-title class="py-0">
+      <div v-if="$slots.title" class="pt-3 pb-1">
+        <h2 class="text-h6 px-4 py-0 my-0">
           <slot name="title" />
-        </v-card-title>
+        </h2>
         <v-card-subtitle v-if="$slots.subtitle">
           <slot name="subtitle" />
         </v-card-subtitle>

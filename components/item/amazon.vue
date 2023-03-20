@@ -1,10 +1,23 @@
 <template>
-  <card v-if="items.length">
-    <template #title v-if="!mini">
+  <div v-if="mini" class="my-5">
+    <item-scrollx>
+      <div v-for="item of items" :key="item.title" class="mx-2">
+        <iframe :title="`${item.title}のAmazonリンク`" loading="lazy"
+          sandbox="allow-popups allow-scripts allow-modals allow-forms allow-same-origin"
+          style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"
+          :src="item.src" />
+      </div>
+    </item-scrollx>
+    <item-caption>
+      ※ Amazonアソシエイト・プログラムに参加しています
+    </item-caption>
+  </div>
+  <card v-else-if="items.length">
+    <template #title>
       Amazon商品リンク
     </template>
     <div>
-      <p v-if="!mini" class="mb-3">
+      <p class="mb-3">
         こちらから購入いただくとAmazonから紹介料をいただけます。<br>
         活動支援としてポチっていただけたら幸いです。
       </p>
@@ -16,7 +29,7 @@
             :src="item.src" />
         </div>
       </item-scrollx>
-      <item-button url="https://amzn.to/3T30UvM" v-if="!mini">
+      <item-button url="https://amzn.to/3T30UvM">
         「ソード・ワールド2.5」を検索
       </item-button>
       <item-caption>

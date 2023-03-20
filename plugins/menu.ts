@@ -30,6 +30,12 @@ const menuList: (MenuCategory | MenuPage)[] = [
     pageList: [
       {
         icon: "mdi-star",
+        title: "SW2.5 初心者向け情報",
+        to: "/sw25/forbeginner",
+      },
+
+      {
+        icon: "mdi-star",
         title: "おすすめサプリメント",
         to: "/sw25/forbeginner/suppliment/1",
       },

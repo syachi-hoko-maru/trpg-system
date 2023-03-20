@@ -80,9 +80,8 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 初心者向け情報",
     to: "/sw25/forbeginner",
-    lastmod: "2023/3/13",
-    // osusume: true,
-    hidden: true,
+    lastmod: "2023/3/20",
+    osusume: false,
     explain: "ソドワ初心者向けの、ソード・ワールド2.5情報をまとめています。",
     tags: ["sw25"],
   },

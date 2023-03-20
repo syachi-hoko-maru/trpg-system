@@ -25,5 +25,9 @@ const andml = `
 騎獣データを増やしたいと作った、シロキツネとその強化形態（？）のデータです。
 魔物データと騎獣データがあります。
 &button_https://yutorize.2-d.jp/ytsheet/sw2.5/?type=m&tag=%e3%82%b7%e3%83%ad%e3%82%ad%e3%83%84%e3%83%8d こちら
+
+&1 【ディルガッド鉱山魔動剣術】
+マギテック技能と近接戦闘技能を組み合わせるためのオリジナル流派です。
+&button_https://yutorize.2-d.jp/ytsheet/sw2.5/?id=Uahf33 こちら
 `
 </script>

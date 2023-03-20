@@ -71,10 +71,10 @@ const normalPageSettingList: PageSetting[] = [
     title: "SW2.5 オリジナルデータ",
     to: "/sw25/data",
     img: "page-image/data.webp",
-    lastmod: "2023/3/19",
+    lastmod: "2023/3/20",
     osusume: true,
     explain:
-      "管理人のしゃちほこ丸が作った魔物やアイテム、騎獣などのオリジナルデータを掲載します。",
+      "管理人のしゃちほこ丸が作ったソード・ワールド2.5のオリジナルデータ（魔物やアイテム・騎獣・流派など）を掲載します。",
     tags: ["sw25", "me"],
   },
   {

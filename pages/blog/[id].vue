@@ -17,8 +17,6 @@
     よければ他のブログやページもご覧ください。
     <item-button url="/blog" normal-button>ブログトップへ</item-button>
   </card>
-  <card>
-  </card>
 </template>
 
 <script setup lang="ts">

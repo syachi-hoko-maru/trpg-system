@@ -5,7 +5,7 @@
         <v-container class="pa-0" v-if="pageSettingData.img">
           <v-row :height="120">
             <v-col cols="3">
-              <v-img :src="`${$templateText.basePath}/webp/${pageSettingData.img}`" :height="120" cover />
+              <v-img :src="`${$templateText.basePath}/webp/${pageSettingData.img}`" :height="120" cover class="mb-2" />
             </v-col>
             <v-col cols="8">
               <v-row class="pt-5">

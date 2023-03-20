@@ -1,13 +1,11 @@
 <template>
   <card-array-by-andml :andml="andml" />
   <pages-contact />
-  <v-card>
-    <v-card-text>
-      <item-button url="/?">
-        トップページへ
-      </item-button>
-    </v-card-text>
-  </v-card>
+  <card>
+    <item-button url="/?">
+      トップページへ
+    </item-button>
+  </card>
 </template>
 
 <script setup lang="ts">

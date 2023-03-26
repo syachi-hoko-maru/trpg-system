@@ -3,6 +3,7 @@
   <card-list>
     <card v-for="image of images" v-if="images.length">
       <template #tbefore>
+        <div :id="image.title" />
         <v-img
           :src="`${$templateText.basePath}/webp/icon-image/${image.date.split('/').map(s => s.length >= 2 ? s : '0' + s).join('')}.webp`"
           :alt="image.title" />

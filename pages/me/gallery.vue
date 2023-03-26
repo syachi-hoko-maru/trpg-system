@@ -1,5 +1,5 @@
 <template>
-  <card-array-by-andml :andml="andml" />
+  <card-array-by-andml :andml="first" />
   <card-list>
     <card v-for="image of images" v-if="images.length">
       <template #tbefore>
@@ -9,7 +9,7 @@
       </template>
       <template #title>{{ image.title }}</template>
       <template #subtitle>{{ image.date }}</template>
-      {{ image.explain }}
+      <andml :andmls="image.explain" v-if="image.explain" />
     </card>
   </card-list>
   <card>
@@ -30,7 +30,7 @@
 <script setup lang="ts">
 const { $templateText } = useNuxtApp()
 
-const andml = `
+const first = `
 しゃちほこ丸と申します。
 &br
 &em_「しゃち」模様で「ほこ」を持った「丸」い「しゃちほこ」 です。
@@ -46,6 +46,12 @@ const images = [
     date: "2025/1/1",
     explain: ""
   },
+  {
+    title: "WBC 侍ジャパン",
+    date: "2023/3/21",
+    explain: "準決勝メキシコ戦の逆転勝利祝い。翌日はアメリカに勝って優勝。最高でした。"
+  },
+
   {
     title: "桜",
     date: "2023/3/15",

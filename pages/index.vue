@@ -37,11 +37,10 @@ const andml = `
 よろしければTwitterのフォローをお願いします。
 
 &1 News
-最近更新されたページは &link_#recent,こちら
-&br
 &date_today 更新作業中
 &date_2023/3/1 仮公開
 &date_2023/1/11 更新準備開始
+&button_#recent 最近更新されたページはこちら
 `
 
 const recentBlog = $pageSettingList.filter(page => !page.hidden && page.to.indexOf('/blog/') === 0).slice(0, 2)

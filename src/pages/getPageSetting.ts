@@ -9,7 +9,7 @@ export const getPageSetting = (url: string): PageSetting => {
         .replace(/\?.*$/, "")
         .replace(/\d+\/?$/, "")
         .replace(/index\.html$/, "")
-        .replace(/\/$/, "")
+        .replace(/^(.+)\/$/, "$1")
   );
   if (!pageSetting) {
     pageSetting = pageSettingList.find(
@@ -19,5 +19,6 @@ export const getPageSetting = (url: string): PageSetting => {
   if (!pageSetting) {
     throw `[ERROR] this page ${url} is not exists`;
   }
+  console.log(url, pageSetting.to);
   return pageSetting;
 };

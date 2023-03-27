@@ -87,3 +87,5 @@ type Suppliment = {
   ossusume: number;
   explain: string;
 };
+
+type WordList = { [key: string]: string };

@@ -19,6 +19,6 @@ export const getPageSetting = (url: string): PageSetting => {
   if (!pageSetting) {
     throw `[ERROR] this page ${url} is not exists`;
   }
-  console.log(url, pageSetting.to);
+  // console.log(url, pageSetting.to);
   return pageSetting;
 };

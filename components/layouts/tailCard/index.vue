@@ -58,7 +58,7 @@ const pageTrees = computed(() => {
   return result
 })
 const shareSetting = computed(() => {
-  const text = Props.pageSetting.title
+  const text = Props.pageSetting.to.indexOf("blog/") >= 0 ? `ブログ「${Props.pageSetting.title}」` : Props.pageSetting.title
   const url = $templateText.baseUrl + Props.pageSetting.to
   return {
     text,

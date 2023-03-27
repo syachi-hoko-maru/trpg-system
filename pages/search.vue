@@ -14,9 +14,12 @@
     </div>
   </card>
   <card>
-    <template #title>{{ setTitle }}</template>
+    <template #title> {{ setTitle }} </template>
     <template #default v-if="explain">{{ explain }}</template>
+    <template #default v-else-if="!results.length">検索結果はありません。</template>
     <template #pafter v-if="results.length">
+      <v-select label="並び順" prepend-inner-icon="mdi-sort" v-model="sortValue" :items="sortValues" density="comfortable"
+        v-if="mounted" />
       <pages-search :results="results" />
     </template>
   </card>
@@ -38,7 +41,7 @@ const form: Ref<FormSettingString> = ref({
   value: "",
 } as FormSettingString)
 
-const selectTag: Ref<PageTag | undefined> = ref(undefined)
+const selectTag: Ref<PageTag | undefined> = ref(undefined);
 
 const querys: Ref<{
   [key: string]: string;
@@ -47,6 +50,11 @@ const querys: Ref<{
 const results: Ref<PageSetting[]> = ref([])
 const setTitle = ref("ページ一覧")
 const explain = ref("")
+
+const sortValues = ["デフォルト", "更新日が新しい順", "更新日が古い順"] as const
+const sortValue = ref("デフォルト" as typeof sortValues[number])
+
+const mounted = ref(false)
 
 const searchSetting: {
   word?: string,
@@ -143,17 +151,28 @@ const search = (): void => {
       }
     }
   })
-  results.value = $pageSettingList.filter(pageSetting => {
-    if (pageSetting.to === "/search") return false
-    for (let filter of filters) {
-      if (!filter(pageSetting)) return false
-    }
-    return true
+  results.value = $pageSettingList
+    .filter(pageSetting => {
+      if (pageSetting.to === "/search") return false
+      for (let filter of filters) {
+        if (!filter(pageSetting)) return false
+      }
+      return true
+    })
+  sort()
+}
+
+const sort = () => {
+  if (sortValue.value === "デフォルト") return;
+  results.value.sort((a, b) => {
+    if (sortValue.value === "デフォルト") return 0;
+    if (sortValue.value === "更新日が古い順") return - new Date(b.lastmod).getTime() + new Date(a.lastmod).getTime()
+    if (sortValue.value === "更新日が新しい順") return new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime()
+    else return 0
   })
 }
 
 search()
-const mounted = ref(false)
 
 const wait = async () => {
   return new Promise((resolve) => {
@@ -167,6 +186,7 @@ onMounted(() => {
     fetch()
   })
   watch(route, changeRoute)
+  watch(sortValue, sort)
 })
 
 </script>

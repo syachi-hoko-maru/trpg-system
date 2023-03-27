@@ -5,8 +5,8 @@
         <v-progress-circular :size="70" :width="7" indeterminate color="primary" />
       </v-row>
       <slot name="tbefore" />
-      <div v-if="$slots.title" class="pt-3 pb-1">
-        <h2 class="text-h6 px-4 py-0 my-0">
+      <div v-if="$slots.title" class="pt-4 pb-1">
+        <h2 class="text-h5 px-4 py-0 my-0">
           <slot name="title" />
         </h2>
         <v-card-subtitle v-if="$slots.subtitle">
@@ -17,7 +17,7 @@
       <div class="px-4" v-if="$slots.pbefore">
         <slot name="pbefore" />
       </div>
-      <v-card-text v-if="$slots.default">
+      <v-card-text v-if="$slots.default" class="pt-1">
         <slot name="default" />
       </v-card-text>
       <div class="px-4" v-if="$slots.pafter">

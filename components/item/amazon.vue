@@ -1,5 +1,5 @@
 <template>
-  <div v-if="mini" class="my-5">
+  <div v-if="mini && items.length" class="my-5">
     <item-scrollx>
       <div v-for="item of items" :key="item.title" class="mx-2">
         <iframe :title="`${item.title}のAmazonリンク`" loading="lazy"

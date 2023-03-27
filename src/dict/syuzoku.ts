@@ -1,5 +1,3 @@
-import { values } from "lodash";
-
 const syuzoku: { [key: string]: { explain: string; debut: string } } = {
   人間: {
     explain:
@@ -76,6 +74,7 @@ const syuzoku: { [key: string]: { explain: string; debut: string } } = {
     debut: "アウトロープロファイルブック",
   },
 };
+
 const wordList: WordList = {};
 Object.entries(syuzoku).forEach(([key, value]) => {
   wordList[

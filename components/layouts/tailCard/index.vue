@@ -37,7 +37,7 @@ interface Props {
 }
 const Props = defineProps<Props>();
 
-const { $pageSettingList, $templateText } = useNuxtApp()
+const { $pageSettingList, $getPageSetting, $templateText } = useNuxtApp()
 
 const pageTrees = computed(() => {
   const result: {
@@ -48,7 +48,7 @@ const pageTrees = computed(() => {
   Props.pageSetting.to.split("/").filter(u => u).forEach(u => {
     urls.push(u)
     const to = "/" + urls.join("/")
-    const pageSetting = $pageSettingList.find(p => p.to === to)
+    const pageSetting = $getPageSetting(to)
     if (!pageSetting) throw `[ERROR] page ${to} not found`
     result.push({
       title: pageSetting.title,

@@ -37,12 +37,12 @@ interface Props {
 }
 const Props = defineProps<Props>();
 
-const { $pageSettingList, $templateText } = useNuxtApp()
+const { $getPageSetting, $templateText } = useNuxtApp()
 const pageSettingData: PageSetting | undefined =
   Props.pageSetting
     ? Props.pageSetting
     : Props.pagePath
-      ? $pageSettingList.filter(({ to }) => Props.pagePath?.replace(/^(.+)#.*$/, "$1").replace(/^(.+)?.*$/, "$1").replace(/^(.+)\/\d+$/, "$1").replace(/^(.+)\/+$/, "$1") === to)[0]
+      ? $getPageSetting(Props.pagePath)
       : undefined
 
 const mounted = ref(false)

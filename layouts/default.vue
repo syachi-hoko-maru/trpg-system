@@ -22,7 +22,7 @@ const route = useRoute();
 const theme = useTheme()
 
 const { getNowPath, savePage } = usePages()
-const { $pageSettingList, $templateText } = useNuxtApp()
+const { $getPageSetting, $templateText } = useNuxtApp()
 
 const mountedPageSetting: Ref<PageSetting | undefined> = ref(undefined)
 
@@ -30,22 +30,13 @@ let blogFlag = false
 const pageSetting = computed(() => {
   const pageUrl = getNowPath()
   if (!pageUrl && pageUrl !== "") return
-  if ($pageSettingList) {
-    if (pageUrl.indexOf("/blog/") >= 0) {
-      blogFlag = true
-    } else {
-      blogFlag = false
-    }
-    const pageSetting = $pageSettingList.find(pageSetting => pageSetting.to === pageUrl.replace(/\/\d+$/, ""))
-    if (pageSetting) {
-      return pageSetting
-    }
+  if (pageUrl.indexOf("/blog/") >= 0) {
+    blogFlag = true
+  } else {
+    blogFlag = false
   }
-  const pageSetting = $pageSettingList.find(pageSetting => pageSetting.to === "error")
-  if (pageSetting) {
-    return pageSetting
-  }
-  throw `[ERROR] this page ${pageUrl} is not exists`
+  const pageSetting = $getPageSetting(pageUrl)
+  return pageSetting
 })
 
 const changePage = () => {

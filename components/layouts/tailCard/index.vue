@@ -9,7 +9,7 @@
         {{ pageTree.title }}
       </atom-link>
     </template>
-    <item-share :text="shareSetting.text" :url="shareSetting.url">このページをツイート</item-share>
+    <item-share-page :page-setting="pageSetting">このページをツイート</item-share-page>
     ぜひTwitterでシェアして広めてください！ m(_ _)m
   </card>
   <card id="recent">

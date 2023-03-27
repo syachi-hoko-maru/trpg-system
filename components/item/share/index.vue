@@ -1,7 +1,10 @@
 <template>
-  <item-button :url="shareUrl" prepend-icon="mdi-twitter" color="blue">
+  <item-button v-if="!icon" :url="shareUrl" prepend-icon="mdi-twitter" color="blue">
     <slot />
   </item-button>
+  <atom-link v-else :to="shareUrl" button>
+    <v-icon icon="mdi-twitter" class="pa-1" color="blue" />
+  </atom-link>
 </template>
 
 <script setup lang="ts">
@@ -9,7 +12,8 @@ const { $templateText } = useNuxtApp()
 
 interface Props {
   url?: string,
-  text: string
+  text: string,
+  icon?: boolean
 }
 const Props = defineProps<Props>();
 

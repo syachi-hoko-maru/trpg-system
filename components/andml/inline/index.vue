@@ -22,7 +22,8 @@ const andmlInlineScriptArray: AndmlScript[] = [
   { script: "br", component: resolveComponent("AndmlInlineBr") },
   { script: "info_", component: resolveComponent("AndmlInlineInfo") },
   { script: "link_", component: resolveComponent("AndmlInlineLink") },
-  { script: "em_", component: resolveComponent("AndmlInlineEmc") }
+  { script: "em_", component: resolveComponent("AndmlInlineEmc") },
+  { script: "strike_", component: resolveComponent("AndmlInlineStrike") }
 ]
 
 const setInlineComponent = (andml: string): AndmlData => {

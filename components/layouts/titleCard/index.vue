@@ -1,6 +1,12 @@
 <template>
   <card v-show="!pageSetting.specialPage">
-    <template #title>{{ pageSetting.title }} {{ pageSetting.page ? page : "" }}</template>
+    <template #title>
+      <div class="d-flex align-end">
+        <span>{{ pageSetting.title }} {{ pageSetting.page ? page : "" }}</span>
+        <v-spacer />
+        <item-share-page :page-setting="pageSetting" icon />
+      </div>
+    </template>
     <template #subtitle v-if="pageSetting.to.indexOf('/blog/') === 0">{{ pageSetting.lastmod }}</template>
     <template #after v-if="pageSetting.tags?.length">
       <item-tags :tags="pageSetting.tags" class="py-0" />
@@ -23,3 +29,9 @@ const { getNowPagePage } = usePages()
 const page = computed(getNowPagePage)
 
 </script>
+
+<style lang="scss" scoped>
+.share-icon {
+  display: inline;
+}
+</style>

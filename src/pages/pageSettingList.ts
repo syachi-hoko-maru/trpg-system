@@ -75,7 +75,7 @@ const normalPageSettingList: PageSetting[] = [
     osusume: true,
     explain:
       "管理人のしゃちほこ丸が作ったソード・ワールド2.5のオリジナルデータ（魔物やアイテム・騎獣・流派など）を掲載します。",
-    tags: ["sw25", "me"],
+    tags: ["sw25_moso", "me"],
   },
   {
     title: "SW2.5 初心者向け情報",
@@ -122,7 +122,7 @@ const normalPageSettingList: PageSetting[] = [
     osusume: true,
     explain:
       "ソード・ワールド2.5の、「プリン」の素材を求めてお使いに行くシナリオです。自分で回すように書いたメモと、回した際のセリフ等を以下にまとめております。もし興味と機会があれば回してみてください。オリジナル設定：アルフレイム大陸における「プリン」は魔法生物プリン（オリジナル）を真似したもので、魔動機文明時代に作られたものです。現在では一部の人が好んで食べる高級品です。",
-    tags: ["sw25", "scenario"],
+    tags: ["sw25", "sw25_moso", "scenario"],
   },
   {
     title: "管理人プロフィール",

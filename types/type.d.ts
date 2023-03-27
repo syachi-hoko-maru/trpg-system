@@ -16,7 +16,13 @@ declare type MenuPage = {
   readonly hidden?: boolean;
 };
 
-declare type PageTag = "sw25" | "sw25_new" | "tool" | "scenario" | "me";
+declare type PageTag =
+  | "sw25"
+  | "sw25_new"
+  | "sw25_moso"
+  | "tool"
+  | "scenario"
+  | "me";
 declare type PageSetting = {
   readonly title: string;
   readonly to: string;

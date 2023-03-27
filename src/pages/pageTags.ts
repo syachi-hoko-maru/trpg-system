@@ -7,6 +7,11 @@ export const pageTagSettings: PageTagSettings = {
     label: "ソード・ワールド2.5 新刊情報",
     explanation: "TRPG「ソード・ワールド2.5」の新刊情報に関するタグ",
   },
+  sw25_moso: {
+    label: "ソード・ワールド2.5 妄想",
+    explanation:
+      "TRPG「ソード・ワールド2.5」のオリジナルデータ、オリジナル設定など",
+  },
   scenario: {
     label: "シナリオ",
     explanation: "TRPGのシナリオに関するタグ",
@@ -23,6 +28,7 @@ export const pageTagSettings: PageTagSettings = {
 export const pageTags: PageTag[] = [
   "sw25",
   "sw25_new",
+  "sw25_moso",
   "scenario",
   "tool",
   "me",

@@ -5,7 +5,7 @@ import { blogTextDir, Blog, blogJSON, scenarioJson } from "../index";
 export const setBlogTxt = async () => {
   try {
     const blogs: Blog[] = [];
-    for (let type of ["cms", "code"]) {
+    for (let type of ["code", "cms"]) {
       const blogList = readdirSync(`${blogTextDir}/${type}`);
       for (let fileName of blogList) {
         const file = readFileSync(

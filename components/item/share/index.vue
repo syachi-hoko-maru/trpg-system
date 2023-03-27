@@ -3,7 +3,7 @@
     <slot />
   </item-button>
   <atom-link v-else :to="shareUrl" button>
-    <v-icon icon="mdi-twitter" class="pa-1" color="blue" />
+    <v-icon icon="mdi-twitter" class="pa-1" color="blue" size="small" />
   </atom-link>
 </template>
 

@@ -7,7 +7,7 @@ export const getPageSetting = (url: string): PageSetting => {
     .replace(/\/\d+\/?$/, "")
     .replace(/index\.html$/, "")
     .replace(/^(.+)\/$/, "$1");
-  console.log(path);
+  // console.log(path);
   let pageSetting = pageSettingList.find(
     (pageSetting) => pageSetting.to === path
   );

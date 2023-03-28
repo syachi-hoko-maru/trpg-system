@@ -21,6 +21,9 @@
       {{ w }}
     </span>
   </template>
+  <template v-if="words.length === 0">
+    {{ props }}
+  </template>
 </template>
 
 <script setup lang="ts">

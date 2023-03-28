@@ -65,7 +65,7 @@ const setRouter = () => {
   router.replace(getNowPath() + "?" + Object.entries(searchSetting).filter(([key, value]) => value).map(([key, value]) => `${key}=${value}`).join("&"))
 }
 const changeSetting = () => {
-  searchSetting.word = form.value.value
+  searchSetting.word = form.value.value.replace(/[,、\s+]/g, "and")
   searchSetting.tag = selectTag.value
   // form.value.value = ""
   // selectTag.value = undefined
@@ -82,7 +82,7 @@ const changeRoute = () => {
         if (key === "word") {
           const word = decodeURIComponent(value)
           searchSetting.word = word
-          form.value.value = word
+          form.value.value = word.replace(/and/g, " ")
         } else if (key === "tag" && $isPageTag(value)) {
           searchSetting.tag = value
           selectTag.value = value
@@ -134,7 +134,7 @@ const search = (): void => {
       }
     }
     if (key === "word") {
-      const word = decodeURIComponent(value)
+      const words = decodeURIComponent(value).split("and")
       const lang = (pageSetting: PageSetting) => {
         let result = "";
         result += pageSetting.title
@@ -145,21 +145,33 @@ const search = (): void => {
         } catch { }
         return result
       }
-      filters.push(pageSetting => lang(pageSetting).indexOf(word) >= 0)
+      filters.push(pageSetting => {
+        for (let word of words) {
+          if (lang(pageSetting).indexOf(word) === -1) return false
+        }
+        return true
+      })
       if (setting.length === 1) {
-        setTitle.value = `「${word}」の検索結果`
+        setTitle.value = `「${words.join(" ")}」の検索結果`
       }
     }
   })
   results.value = $pageSettingList
     .filter(pageSetting => {
       if (pageSetting.to === "/search") return false
+      if (pageSetting.to === "error") return false
       for (let filter of filters) {
         if (!filter(pageSetting)) return false
       }
       return true
     })
   sort()
+  const description = explain.value ? explain.value : `${setTitle.value}です。ページ：${results.value.slice(0, 5).map(page => `「${page.title}」`).join("・")}など。このページではサイト内検索ができます。`
+  useHead({
+    title: setTitle.value, meta: [
+      { hid: "description", name: "description", content: description },
+    ]
+  })
 }
 
 const sort = () => {

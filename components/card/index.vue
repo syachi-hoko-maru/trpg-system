@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :id="id">
     <v-card class="my-5" :class="Props.class ? Props.class : 'bg-background text-text'" elevation="3">
       <v-row v-if="Props.loading" class="cardLoading align-center justify-center">
         <v-progress-circular :size="70" :width="7" indeterminate color="primary" />
@@ -31,6 +31,7 @@
 
 <script setup lang="ts">
 interface Props {
+  id?: string
   class?: string
   loading?: boolean
 }

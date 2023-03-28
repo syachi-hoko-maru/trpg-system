@@ -11,7 +11,7 @@
         {{ syuzoku }}
       </template>
       <template #subtitle>
-        {{ debut }}
+        初出：{{ debut }}
       </template>
       <andml :andmls="explain" />
     </card>
@@ -25,7 +25,10 @@ const { $syuzoku } = useNuxtApp()
 let currentDebut = ""
 const syuzokuAndml = `
 以下はソード・ワールド2.5（SW2.5）に登場する種族の一覧です。
+「ソドワにはどんな種族がいるの？」「〇〇って種族はどのルルブ（ルールブック）に載っているの？」という方向けに情報まとめています。
+&br
 ソード・ワールド2.5については &link_/sw25,こちら をご覧ください。
+またソード・ワールド2.5初心者向け情報は &link_/sw25/forbeginner,こちら にまとめてありますので合わせてご覧ください。
 ` + Object.entries($syuzoku).map(([syuzoku, { debut }]) => {
   let str = ""
   if (debut !== currentDebut) {

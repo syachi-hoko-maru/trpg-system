@@ -39,7 +39,7 @@ ${(pageSetting.lastmod as string)
           result += `
 <url>
 <loc>
-https://syachi-hoko-maru.github.io/trpg-system${pageSetting.to}/${p}
+https://syachi-hoko-maru.github.io/trpg-system${pageSetting.to}/${p}/
 </loc>
 <lastmod>
 ${(pageSetting.lastmod as string)

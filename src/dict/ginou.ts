@@ -1,4 +1,4 @@
-const ginou: {
+export const ginou: {
   [key: string]: {
     explain: string;
     debut: string;

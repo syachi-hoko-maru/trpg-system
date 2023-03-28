@@ -5,7 +5,7 @@
     </template>
     <andml v-model:andmls="explain" v-if="explain" />
     <template #pafter>
-      <card v-for="item of group.items" :key="item.name">
+      <card v-for="item of group.items" :key="item.name" :id="item.name">
         <template #title>
           {{ item.name }}
         </template>

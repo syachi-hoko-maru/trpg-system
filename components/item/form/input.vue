@@ -1,6 +1,6 @@
 <template>
   <v-text-field :label="Props.formSetting.label" v-model="Props.formSetting.value" :rules="rule()" density="comfortable"
-    :hint="Props.formSetting.hint" :disabled="disabled" />
+    :hint="Props.formSetting.hint" :disabled="disabled" clearable />
 </template>
 
 <script setup lang="ts">

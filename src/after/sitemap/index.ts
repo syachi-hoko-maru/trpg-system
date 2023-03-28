@@ -1,14 +1,15 @@
 import { writeFileSync } from "fs";
-import { pageSettingList } from "../pages/pageSettingList";
+import { pageTags } from "../../pages/pageTags";
+import { pageSettingList } from "../../pages/pageSettingList";
+import { searchWordList } from "./searchWordList";
 
 const outputDir = `${process.cwd()}/.output/public`;
 
+const searchWordLastmod = "2023-03-28";
+const searchTagLastmod = "2023-03-28";
+
 export const setSitemap = () => {
   let result = "";
-  result += `
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-`;
 
   pageSettingList
     .filter((page) => !page.hidden)
@@ -59,7 +60,37 @@ ${(pageSetting.lastmod as string)
         }
       }
     });
-  result += "</urlset>";
+
+  searchWordList.forEach((word) => {
+    result += `
+<url>
+    <loc>
+    https://syachi-hoko-maru.github.io/trpg-system/search/?word=${encodeURIComponent(
+      word
+    )}
+    </loc>
+    <lastmod>${searchWordLastmod}</lastmod>
+</url>
+    `;
+  });
+
+  pageTags.forEach((tag) => {
+    result += `
+<url>
+    <loc>
+    https://syachi-hoko-maru.github.io/trpg-system/search/?tag=${encodeURIComponent(
+      tag
+    )}
+    </loc>
+    <lastmod>${searchTagLastmod}</lastmod>
+</url>
+    `;
+  });
+
+  result =
+    '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">' +
+    result.replace(/\s+/g, "") +
+    "</urlset>";
 
   writeFileSync(
     `${outputDir}/sitemap.xml`,

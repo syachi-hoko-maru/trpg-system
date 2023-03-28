@@ -16,11 +16,21 @@
   <card>
     <template #title> {{ setTitle }} </template>
     <template #default v-if="explain">{{ explain }}</template>
-    <template #default v-else-if="!results.length">検索結果はありません。</template>
+    <template #default v-else-if="!results.length">
+      検索結果はありません。
+      <div class="my-2" v-if="sortValue!=='デフォルト（関連度順）'">
+        デフォルト（関連度順）では、関連が少しでもあるものが表示されます。<br>
+        他の順序の場合、関連が薄いものは除外され、「検索結果はありません。」と表示されることがあります。
+        <item-button @click="sortValue='デフォルト（関連度順）'">デフォルト（関連度順）で表示</item-button>
+      </div>
+      <div v-else>
+        他のキーワードで検索してください。
+      </div>
+    </template>
     <template #pafter v-if="results.length">
       <v-select label="並び順" prepend-inner-icon="mdi-sort" v-model="sortValue" :items="sortValues" density="comfortable"
         v-if="mounted" />
-      <pages-search :results="results" />
+      <pages-search :results="results.map(d => d.pageSetting)" />
     </template>
   </card>
 </template>
@@ -47,12 +57,12 @@ const querys: Ref<{
   [key: string]: string;
 }[]> = ref([])
 
-const results: Ref<PageSetting[]> = ref([])
+const results: Ref<{ pageSetting: PageSetting, kanren: number }[]> = ref([])
 const setTitle = ref("ページ一覧")
 const explain = ref("")
 
-const sortValues = ["デフォルト", "更新日が新しい順", "更新日が古い順"] as const
-const sortValue = ref("デフォルト" as typeof sortValues[number])
+const sortValues = ["デフォルト（関連度順）", "更新日が新しい順", "更新日が古い順"] as const
+const sortValue = ref("デフォルト（関連度順）" as typeof sortValues[number])
 
 const mounted = ref(false)
 
@@ -114,7 +124,9 @@ const fetch = async () => {
   }
 }
 
+let searchFlag = false
 const search = (): void => {
+  searchFlag = true
   explain.value = "";
 
   const setting = Object.entries(searchSetting).filter(([key, value]) => value)
@@ -124,10 +136,13 @@ const search = (): void => {
     setTitle.value = "検索結果"
   }
 
-  const filters: ((ps: PageSetting) => boolean)[] = []
+  const filters: ((ps: PageSetting) => number)[] = []
   setting.map(([key, value]) => {
     if (key === "tag" && $isPageTag(value)) {
-      filters.push(pageSetting => pageSetting.tags.findIndex(tag => tag.indexOf(value) >= 0) >= 0)
+      filters.push(pageSetting => {
+        if (pageSetting.tags.findIndex(tag => tag.indexOf(value) >= 0) >= 0) return 1
+        else return 0
+      })
       if (setting.length === 1) {
         setTitle.value = `タグ「${$pageTagSettings[value].label}」がついたページ`
         explain.value = $pageTagSettings[value].explanation
@@ -137,7 +152,13 @@ const search = (): void => {
       const words = decodeURIComponent(value).split("and")
       const lang = (pageSetting: PageSetting) => {
         let result = "";
+        // 足す数を変えて重要度を変化させている
         result += pageSetting.title
+        result += pageSetting.title
+        result += pageSetting.title
+        result += pageSetting.title
+        result += pageSetting.title
+        result += (Array.isArray(pageSetting.explain) ? pageSetting.explain.join() : pageSetting.explain)
         result += (Array.isArray(pageSetting.explain) ? pageSetting.explain.join() : pageSetting.explain)
         result += pageSetting.tags.map(tag => $pageTagSettings[tag].label + $pageTagSettings[tag].explanation).join()
         try {
@@ -146,10 +167,14 @@ const search = (): void => {
         return result
       }
       filters.push(pageSetting => {
+        let count = 1 * words.length
         for (let word of words) {
-          if (lang(pageSetting).indexOf(word) === -1) return false
+          // 一致しなければ0を返す
+          if (lang(pageSetting).indexOf(word) === -1) count -= 1
+          // countには「マッチ度」を入れる
+          count += ((lang(pageSetting).match(new RegExp(word, "g")) || []).length / (lang(pageSetting).length / word.length)) * words.length
         }
-        return true
+        return count / words.length
       })
       if (setting.length === 1) {
         setTitle.value = `「${words.join(" ")}」の検索結果`
@@ -160,27 +185,44 @@ const search = (): void => {
     .filter(pageSetting => {
       if (pageSetting.to === "/search") return false
       if (pageSetting.to === "error") return false
-      for (let filter of filters) {
-        if (!filter(pageSetting)) return false
-      }
       return true
     })
+    .map(pageSetting => {
+      let kanren = 0
+      for (let filter of filters) {
+        kanren += filter(pageSetting) / filters.length
+      }
+      return { pageSetting, kanren }
+    })
+    .filter(({ kanren }) => kanren > 0)
+    .sort((a, b) => -a.kanren + b.kanren)
+  console.log(results.value)
   sort()
-  const description = explain.value ? explain.value : `${setTitle.value}です。ページ：${results.value.slice(0, 5).map(page => `「${page.title}」`).join("・")}など。このページではサイト内検索ができます。`
+  const description = explain.value ? explain.value : `${setTitle.value}です。ページ：${results.value.slice(0, 5).map(page => `「${page.pageSetting.title}」`).join("・")}など。このページではサイト内検索ができます。`
   useHead({
     title: setTitle.value, meta: [
       { hid: "description", name: "description", content: description },
     ]
   })
+  searchFlag = false
 }
 
 const sort = () => {
-  results.value.sort((a, b) => {
-    if (sortValue.value === "デフォルト") return 0;
-    if (sortValue.value === "更新日が古い順") return - new Date(b.lastmod).getTime() + new Date(a.lastmod).getTime()
-    if (sortValue.value === "更新日が新しい順") return new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime()
-    else return 0
-  })
+  if (searchFlag) {
+    if (sortValue.value !== "デフォルト（関連度順）") sortValue.value = "デフォルト（関連度順）"
+    return
+  }
+  if (sortValue.value === "デフォルト（関連度順）") {
+    search()
+    return
+  }
+  results.value = results.value
+    .filter(({ kanren }) => kanren > 1)
+    .sort((a, b) => {
+      if (sortValue.value === "更新日が古い順") return - new Date(b.pageSetting.lastmod).getTime() + new Date(a.pageSetting.lastmod).getTime()
+      if (sortValue.value === "更新日が新しい順") return new Date(b.pageSetting.lastmod).getTime() - new Date(a.pageSetting.lastmod).getTime()
+      else return 0
+    })
 }
 
 search()

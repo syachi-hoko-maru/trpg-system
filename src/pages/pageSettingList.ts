@@ -82,7 +82,8 @@ const normalPageSettingList: PageSetting[] = [
     to: "/sw25/forbeginner",
     lastmod: "2023/3/20",
     osusume: false,
-    explain: "ソドワ初心者向けの、ソード・ワールド2.5情報をまとめています。",
+    explain:
+      "ソドワ初心者向けの、ソード・ワールド2.5（SW2.5）情報をまとめています。FAQや便利なリンクを掲載中です。",
     tags: ["sw25"],
   },
   {
@@ -93,9 +94,20 @@ const normalPageSettingList: PageSetting[] = [
     img: "page-image/suppliment.webp",
     osusume: true,
     explain:
-      "SW2.5のおすすめサプリメント（拡張ルールブック）の紹介ページです。発売済みのすべてのサプリメントについて、簡単な紹介と初心者へのおすすめ度を掲載しております。",
+      "ソード・ワールド2.5（SW2.5）のおすすめサプリメント（拡張ルールブック）の紹介ページです。発売済みのすべてのサプリメントについて、簡単な紹介と初心者へのおすすめ度を掲載しております。どれを買えばいいのか困っている方はご覧ください。",
     tags: ["sw25"],
   },
+  {
+    title: "SW2.5 種族の一覧と紹介",
+    to: "/sw25/forbeginner/syuzoku",
+    lastmod: "2023/3/28",
+    // img: "page-image/suppliment.webp",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5）でキャラクターとして使える種族の一覧と、その紹介をしています。どのルールブック・サプリメントに載っているかも掲載しています。",
+    tags: ["sw25"],
+  },
+
   {
     title: "公開シナリオ一覧",
     to: "/scenario",

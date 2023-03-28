@@ -1,4 +1,4 @@
-const syuzoku: { [key: string]: { explain: string; debut: string } } = {
+export const syuzoku: { [key: string]: { explain: string; debut: string } } = {
   人間: {
     explain:
       "我々とほぼ同じ「人間」。運命に強く愛されており、1日に1回、ダイスの出目を反転させられる。",

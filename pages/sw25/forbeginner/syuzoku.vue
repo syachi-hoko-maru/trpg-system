@@ -16,6 +16,7 @@
       <andml :andmls="explain" />
     </card>
   </div>
+  <card-array-by-andml :andml="syuzokuAndml2" />
 </template>
 
 <script setup lang="ts">
@@ -38,5 +39,15 @@ const syuzokuAndml = `
 以下では &em_各種族について 簡単にですが紹介します。
 なお、サプリメントについては以下をご覧ください。
 &button_/sw25/forbeginner/suppliment/1 
+`
+
+const syuzokuAndml2 = `
+&1 サプリメントについて
+シャドウ・ソレイユ・アルヴ・ウィークリングが掲載されているサプリメント（拡張ルールブック） &em_『アウトロープロファイルブック』 については以下で紹介しています。
+&button_/sw25/forbeginner/suppliment/3#${encodeURIComponent("アウトロープロファイルブック")} こちら
+&1 関連リンク
+公式サイトでは &em_イラスト付き で各種族を紹介してくれていますので、こちらもご確認ください。
+&button_https://fujimi-trpg-online.jp/game/sw25-character.html こちら
+
 `
 </script>

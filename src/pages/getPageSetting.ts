@@ -1,15 +1,15 @@
 import { pageSettingList } from "./pageSettingList";
 
 export const getPageSetting = (url: string): PageSetting => {
+  const path = url
+    .replace(/#.*$/, "")
+    .replace(/\?.*$/, "")
+    .replace(/\/\d+\/?$/, "")
+    .replace(/index\.html$/, "")
+    .replace(/^(.+)\/$/, "$1");
+  console.log(path);
   let pageSetting = pageSettingList.find(
-    (pageSetting) =>
-      pageSetting.to ===
-      url
-        .replace(/#.*$/, "")
-        .replace(/\?.*$/, "")
-        .replace(/\d+\/?$/, "")
-        .replace(/index\.html$/, "")
-        .replace(/^(.+)\/$/, "$1")
+    (pageSetting) => pageSetting.to === path
   );
   if (!pageSetting) {
     pageSetting = pageSettingList.find(

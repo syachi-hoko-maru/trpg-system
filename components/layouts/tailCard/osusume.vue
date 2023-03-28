@@ -3,18 +3,17 @@
     <template #title>
       {{ type === "kanren" ? "関連するページ" : "おすすめのページ" }}
     </template>
-    <template #pbefore>
-      <item-scrollx>
-        <atom-link v-for="op of osusumePageList" :key="op.to" :to="op.to">
-          <card class="mx-3 osusume-card">
-            <template #tbefore>
-              <v-img :src="`${$templateText.basePath}/webp/${op.img}`" :alt="op.title" />
-            </template>
-            <andml v-if="op.explain" :andmls="Array.isArray(op.explain) ? op.explain : [op.explain]" />
-          </card>
-        </atom-link>
-      </item-scrollx>
-    </template>
+    <item-scrollx>
+      <atom-link v-for="op of osusumePageList" :key="op.to" :to="op.to">
+        <card class="mx-3 osusume-card">
+          <template #tbefore>
+            <v-img :src="`${$templateText.basePath}/webp/${op.img}`" :alt="op.title" />
+          </template>
+          <andml v-if="op.explain" :andmls="Array.isArray(op.explain) ? op.explain : [op.explain]" />
+        </card>
+      </atom-link>
+    </item-scrollx>
+    <item-button v-if="type !== 'kanren'" url="/search" normal-button>ページ一覧はこちら</item-button>
   </card>
 </template>
 

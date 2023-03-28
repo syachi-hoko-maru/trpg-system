@@ -28,6 +28,8 @@
   <layouts-tail-card-osusume v-if="pageSetting.to !== '/policy'" :page-setting="pageSetting" />
   <card>
     <item-button @click="scrollTop">上へ戻る</item-button>
+    <item-button v-if="pageSetting.to.indexOf('/blog/') === 0" url="/blog" normal-button>ブログトップへ</item-button>
+    <item-button v-if="pageSetting.to !== '/'" url="/" normal-button>トップページへ</item-button>
   </card>
 </template>
 

@@ -1,6 +1,7 @@
 <template>
   <card-array-by-andml v-if="pageSetting.tags.indexOf('sw25_new') >= 0" :andml="sourceAndml" />
-  <layouts-tail-card-osusume v-if="pageSetting.to !== '/policy'" :page-setting="pageSetting" type="kanren" />
+  <layouts-tail-card-osusume v-if="pageSetting.to !== '/policy' && pageSetting.to !== '/'" :page-setting="pageSetting"
+    type="kanren" />
   <item-amazon v-if="pageSetting.tags.findIndex(tag => tag.indexOf('sw25') >= 0) >= 0" />
   <card>
     <template v-for="(pageTree, i) of pageTrees" :key="pageTree.to">

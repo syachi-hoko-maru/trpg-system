@@ -175,7 +175,6 @@ const search = (): void => {
 }
 
 const sort = () => {
-  if (sortValue.value === "デフォルト") return;
   results.value.sort((a, b) => {
     if (sortValue.value === "デフォルト") return 0;
     if (sortValue.value === "更新日が古い順") return - new Date(b.lastmod).getTime() + new Date(a.lastmod).getTime()

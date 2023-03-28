@@ -8,13 +8,17 @@
           </v-col>
           <v-col cols="8">
             <v-row class="pt-5">
-              <atom-link :to="pageSettingData.to">
-                <v-card-title class="search-card-title">{{ pageSettingData.title }}</v-card-title>
-                <v-card-subtitle class="search-card-title" v-if="pageSettingData.to.indexOf('/blog/') === 0">
-                  {{ pageSettingData.lastmod }}
-                </v-card-subtitle>
-              </atom-link>
-              <item-tags :tags="pageSettingData.tags" class="py-0" v-if="mounted" />
+              <v-col cols="12" class="pa-0">
+                <atom-link :to="pageSettingData.to">
+                  <v-card-title class="search-card-title">{{ pageSettingData.title }}</v-card-title>
+                  <v-card-subtitle class="search-card-title" v-if="pageSettingData.to.indexOf('/blog/') === 0">
+                    {{ pageSettingData.lastmod }}
+                  </v-card-subtitle>
+                </atom-link>
+              </v-col>
+              <v-col cols="12" class="pa-0 mt-1">
+                <item-tags :tags="pageSettingData.tags" class="py-0" v-if="mounted" />
+              </v-col>
             </v-row>
           </v-col>
         </v-row>

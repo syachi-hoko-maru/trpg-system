@@ -4,8 +4,11 @@
       <v-row justify="space-around" align="stretch">
         <v-col cols="12" xs="12" sm="11" lg="10" xl="9">
           <v-row justify="space-around" align="stretch">
+
             <v-col cols="12" md="4" xl="3" class="hidden-sm-and-down" v-if="!error">
-              <layouts-menu-side />
+              <nav>
+                <layouts-menu-side />
+              </nav>
             </v-col>
             <v-col cols="12" md="8">
               <v-row justify="center" align="stretch">
@@ -19,9 +22,11 @@
       </v-row>
     </v-container>
   </v-main>
-  <div class="hidden-md-and-up" v-if="!error">
-    <layouts-menu-nav />
-  </div>
+  <nav>
+    <div class="hidden-md-and-up" v-if="!error">
+      <layouts-menu-nav />
+    </div>
+  </nav>
 </template>
 
 <script setup lang="ts">

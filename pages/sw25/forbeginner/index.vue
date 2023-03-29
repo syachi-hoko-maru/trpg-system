@@ -16,11 +16,9 @@
 
   </card>
 
-  <card>
+  <card id="links">
     <template #title>
-      <div id="links">
-        便利なリンク
-      </div>
+      便利なリンク
     </template>
     <andml :andmls="andmlll" />
     <card v-for="link of links" :key="link.title">

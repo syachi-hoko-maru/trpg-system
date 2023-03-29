@@ -6,8 +6,11 @@
     <item-scrollx>
       <atom-link v-for="op of osusumePageList" :key="op.to" :to="op.to">
         <card class="mx-3 osusume-card">
-          <template #tbefore>
+          <template #tbefore v-if="op.img">
             <v-img :src="`${$templateText.basePath}/webp/${op.img}`" :alt="op.title" />
+          </template>
+          <template #title v-else>
+            {{ op.title }}
           </template>
           <andml v-if="op.explain" :andmls="Array.isArray(op.explain) ? op.explain : [op.explain]" />
         </card>

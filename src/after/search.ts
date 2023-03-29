@@ -24,30 +24,39 @@ const getData = (): { [key: string]: string } => {
   htmls.forEach((html) => {
     const path = html.replace("/index.html", "");
     temp[path ? path : "/"] = readFileSync(outputDir + html, "utf-8")
-      .replace(/<style[^<]*<\/style>/g, "")
-      .replace(/<script[^<]*<\/script>/g, (str) =>
-        str.replace(/[a-zA-Z\s\{\}\[\]\(\)<>\\\/\.,:;\-_'`"$&#=]/g, "")
-      )
+      .replace(/<a href.+?\/a>/g, "")
+      .replace(/\<style[^\<]*\<\/style\>/g, "")
+      .replace(/<script[^<]*<\/script>/g, (str) => str.replace(/[a-zA-Z]/g, ""))
       .replace(/<[^>]+>/g, "")
-      .replace(/"/g, "")
-      .replace(/\s/g, "");
+      .replace(/[\s\{\}\[\]\(\)<>\\\/\.,:;\-_'`"$&=]/g, "")
+      .replace(/Rating/g, "")
+      .replace(/of/g, "");
   });
   const values = Object.values(temp);
-  let common: string[] = [];
+  let common: { str: string; count: number }[] = [];
   values.forEach((value, i) => {
-    if (i === 0) return;
-    if (i === 1) {
-      common = getCommonStr(values[0], value);
-    } else {
-      common = getCommonStr(common.join(" "), value);
-    }
+    const strArray: string[] = [];
+    values.forEach((v, j) => {
+      if (i >= j) return;
+      getCommonStr(v, value).forEach((commonStr) => {
+        if (strArray.indexOf(commonStr) === -1) strArray.push(commonStr);
+      });
+    });
+    strArray.forEach((commonStr) => {
+      const index = common.findIndex(({ str }) => str === commonStr);
+      if (index >= 0) common[index].count++;
+      else common.push({ str: commonStr, count: 1 });
+    });
   });
-  common.sort((a, b) => b.length - a.length);
-  // console.log(common);
+  const commonStrArray: string[] = common
+    .filter((co) => co.count + co.str.length / 3 > htmls.length / 2)
+    .map((co) => co.str)
+    .sort((a, b) => b.length - a.length);
+  console.log(commonStrArray);
   const result: { [key: string]: string } = {};
   Object.entries(temp).forEach(([k, v]) => {
     let value = v;
-    common.forEach((commonStr) => {
+    commonStrArray.forEach((commonStr) => {
       value = value.replaceAll(commonStr, "");
     });
     const p = k.replace(/\/\d+/, "");
@@ -78,5 +87,5 @@ const getCommonStr = (str1: string, str2: string): string[] => {
       str += c;
     }
   });
-  return common;
+  return common.sort((a, b) => b.length - a.length);
 };

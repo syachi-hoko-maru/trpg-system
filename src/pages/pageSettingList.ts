@@ -14,7 +14,7 @@ const normalPageSettingList: PageSetting[] = [
     title: "ソード・ワールド2.5",
     to: "/sw25",
     explain:
-      "このウェブサイトで多く扱われている「ソード・ワールド2.5」（SW2.5）というTRPGについて、簡単にその魅力を紹介するページです。",
+      "ソード・ワールド2.5（SW2.5）というTRPGについて、簡潔にその魅力を紹介するページです。初心者向け情報やその他ソドワに役立つツール・情報へのリンクもあります。",
     lastmod: "2023/3/14",
     tags: ["sw25"],
   },
@@ -25,7 +25,7 @@ const normalPageSettingList: PageSetting[] = [
     img: "page-image/tool.webp",
     osusume: true,
     explain:
-      "このサイトで公開しているツールの一覧を掲載しています。どれもソード・ワールド2.5などのTRPGで役立つものばかりなので、ぜひ使ってみてください。",
+      "このサイトで公開しているTRPG用ツールの一覧を掲載しるぺーじです。どれもソード・ワールド2.5（SW2.5）などのTRPGで役立つものです。判定シミュレータやオンラインセッション募集用画像作成ツールなど。",
     tags: ["sw25", "tool"],
   },
   {
@@ -35,7 +35,7 @@ const normalPageSettingList: PageSetting[] = [
     img: "page-image/simulate.webp",
     osusume: true,
     explain:
-      "SW2.5の判定や達成値の比べ合い、ダメージをシミュレートできるページです。",
+      "ソード・ワールド2.5（SW2.5）のシミュレートできるページです。判定や達成値の比べ合い、ダメージの期待値がわかります。クリティカル（C値）にも対応しています。",
     tags: ["sw25", "tool"],
   },
   {
@@ -45,7 +45,7 @@ const normalPageSettingList: PageSetting[] = [
     img: "page-image/bosyu.webp",
     osusume: true,
     explain:
-      "SW2.5のオンラインセッション募集時に、過不足なく情報を伝えるための画像が作れるページです。",
+      "ソード・ワールド2.5（SW2.5）のオンラインセッション募集時に、過不足なく情報を伝えるための画像が作れるページです。過不足のない情報には応募者を増やす効果が期待できます。",
     tags: ["sw25", "tool"],
   },
   {
@@ -54,7 +54,8 @@ const normalPageSettingList: PageSetting[] = [
     lastmod: "2023/3/19",
     img: "page-image/community.webp",
     osusume: true,
-    explain: "SW2.5に関するTwitterコミュニティの紹介ページです。",
+    explain:
+      "ソード・ワールド2.5（SW2.5）に関するTwitterコミュニティの紹介ページです。ソドワを一緒に遊んでくれる人を探している方向けのものと、ソドワ雑談がしたい方向けのものがあります。",
     tags: ["sw25", "tool"],
   },
   {
@@ -64,7 +65,7 @@ const normalPageSettingList: PageSetting[] = [
     img: "page-image/material.webp",
     osusume: true,
     explain:
-      "BOOTHで公開している、ココフォリアなどで使えるオンラインセッション用素材の紹介ページです。",
+      "TRPG、特にソード・ワールド2.5（SW2.5）で遊ぶ際にココフォリアなどで使えるオンラインセッション用素材の紹介ページです。",
     tags: ["sw25", "tool"],
   },
   {
@@ -74,7 +75,7 @@ const normalPageSettingList: PageSetting[] = [
     lastmod: "2023/3/20",
     osusume: true,
     explain:
-      "管理人のしゃちほこ丸が作ったソード・ワールド2.5のオリジナルデータ（魔物やアイテム・騎獣・流派など）を掲載します。",
+      "ソード・ワールド2.5（SW2.5）のオリジナルデータを掲載しているページです。管理人のしゃちほこ丸が作った魔物・アイテム・騎獣・流派などのデータがあります。",
     tags: ["sw25_moso", "me"],
   },
   {
@@ -83,7 +84,7 @@ const normalPageSettingList: PageSetting[] = [
     lastmod: "2023/3/20",
     osusume: false,
     explain:
-      "ソドワ初心者向けの、ソード・ワールド2.5（SW2.5）情報をまとめています。FAQや便利なリンクを掲載中です。",
+      "ソドワ初心者やTRPG初心者向けにソード・ワールド2.5（SW2.5）情報をまとめているページです。FAQや便利なリンクを掲載中です。",
     tags: ["sw25"],
   },
   {
@@ -94,7 +95,7 @@ const normalPageSettingList: PageSetting[] = [
     img: "page-image/suppliment.webp",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5）のおすすめサプリメント（拡張ルールブック）の紹介ページです。発売済みのすべてのサプリメントについて、簡単な紹介と初心者へのおすすめ度を掲載しております。どれを買えばいいのか困っている方はご覧ください。",
+      "ソード・ワールド2.5（SW2.5）のおすすめサプリメント（拡張ルールブック）の紹介ページです。発売済みの全てのサプリメントについて、簡単な紹介と初心者へのおすすめ度を掲載しております。どれを・どれから買えばいいのか困っている方はご覧ください。",
     tags: ["sw25"],
   },
   {
@@ -104,7 +105,7 @@ const normalPageSettingList: PageSetting[] = [
     // img: "page-image/suppliment.webp",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5）でキャラクターとして使える種族の一覧と、その紹介をしています。どのルールブック・サプリメントに載っているかも掲載しています。",
+      "ソード・ワールド2.5（SW2.5）でキャラクターとして使える種族の一覧と、その紹介をしているページです。どのルールブック・サプリメントに載っているかも掲載しています。",
     tags: ["sw25"],
   },
 
@@ -114,7 +115,7 @@ const normalPageSettingList: PageSetting[] = [
     lastmod: "2023/3/1",
     img: "page-image/scenario.webp",
     explain:
-      "管理人しゃちほこ丸が公開しているシナリオ一覧です。ソード・ワールド2.5やエモクロアTRPGのシナリオを公開しています。",
+      "管理人しゃちほこ丸が公開しているTRPGシナリオの一覧です。ソード・ワールド2.5（SW2.5）やエモクロアTRPGのシナリオを公開しています。",
     tags: ["sw25", "scenario", "me"],
   },
   {
@@ -122,7 +123,8 @@ const normalPageSettingList: PageSetting[] = [
     to: "/scenario/osusume",
     lastmod: "2023/3/1",
     osusume: true,
-    explain: "管理人しゃちほこ丸がおすすめのSW2.5シナリオ一覧です。",
+    explain:
+      "管理人しゃちほこ丸がおすすめのSW2.5シナリオをまとめているページです。",
     tags: ["sw25", "scenario"],
     hidden: true,
   },
@@ -133,7 +135,7 @@ const normalPageSettingList: PageSetting[] = [
     lastmod: "2023/3/18",
     osusume: true,
     explain:
-      "ソード・ワールド2.5の、「プリン」の素材を求めてお使いに行くシナリオです。自分で回すように書いたメモと、回した際のセリフ等を以下にまとめております。もし興味と機会があれば回してみてください。オリジナル設定：アルフレイム大陸における「プリン」は魔法生物プリン（オリジナル）を真似したもので、魔動機文明時代に作られたものです。現在では一部の人が好んで食べる高級品です。",
+      "ソード・ワールド2.5（SW2.5）のシナリオを公開しているページです。「プリン」の素材を求めてお使いに行きます。自分で回すように書いたメモと、回した際のセリフ等を以下にまとめております。",
     tags: ["sw25", "sw25_moso", "scenario"],
   },
   {
@@ -141,7 +143,8 @@ const normalPageSettingList: PageSetting[] = [
     to: "/me",
     lastmod: "2023/3/1",
     img: "page-image/me.webp",
-    explain: "管理人しゃちほこ丸の自己紹介ページです。",
+    explain:
+      "管理人しゃちほこ丸の自己紹介ページです。TRPGについてやTRPG以外の趣味（海外サッカー観戦やアニメ鑑賞など）をまとめています。",
     osusume: true,
     tags: ["me"],
   },
@@ -159,7 +162,7 @@ const normalPageSettingList: PageSetting[] = [
     lastmod: "2023/3/1",
     img: "page-image/rulebook.webp",
     explain:
-      "管理人しゃちほこ丸が所持しているルールブック、サプリメントの一覧ページです。",
+      "管理人しゃちほこ丸が所持しているルールブック・サプリメントの一覧ページです。クトゥルフ神話TRPGやソード・ワールドなどのルールブックを所持しています。",
     tags: ["sw25", "me"],
   },
   {
@@ -168,7 +171,7 @@ const normalPageSettingList: PageSetting[] = [
     lastmod: "2023/3/1",
     img: "page-image/house.webp",
     explain:
-      "管理人しゃちほこ丸が主催するセッションでのハウスルールを掲示しているページです。",
+      "管理人しゃちほこ丸が主催するTRPGセッションでのハウスルールを掲示しているページです。",
     tags: ["me"],
   },
   {
@@ -177,7 +180,7 @@ const normalPageSettingList: PageSetting[] = [
     lastmod: "2023/3/1",
     img: "page-image/house.webp",
     explain:
-      "管理人しゃちほこ丸が主催するSW2.5のセッションでのハウスルールを掲示しているページです。",
+      "管理人しゃちほこ丸が主催するソード・ワールド2.5（SW2.5）のセッションでのハウスルールを掲示しているページです。",
     tags: ["sw25", "me"],
   },
   {
@@ -185,15 +188,16 @@ const normalPageSettingList: PageSetting[] = [
     to: "/blog",
     lastmod: "2023/3/15",
     explain:
-      "管理人しゃちほこ丸がソード・ワールド2.5などのTRPGで思ったことなどを綴っています。",
+      "ブログのトップページです。ブログでは管理人しゃちほこ丸がソード・ワールド2.5（SW2.5）などのTRPGの知見や感想、最新情報などを公開していきます。",
     tags: ["me"],
   },
   {
-    title: "検索",
+    title: "検索・ページ一覧",
     to: "/search",
     lastmod: "2023/3/28",
     specialPage: true,
-    explain: "当ウェブサイトの内容を検索できます。",
+    explain:
+      "当ウェブサイトのページ一覧の確認や、サイト内検索ができるページです。",
     tags: [],
   },
   {
@@ -201,6 +205,8 @@ const normalPageSettingList: PageSetting[] = [
     to: "/setting",
     lastmod: "2023/3/1",
     specialPage: true,
+    explain:
+      "当ウェブサイトのライトモード/ダークモードの切り替え設定ができるページです。",
     tags: [],
   },
   {
@@ -208,6 +214,8 @@ const normalPageSettingList: PageSetting[] = [
     to: "/policy",
     lastmod: "2023/3/7",
     specialPage: true,
+    explain:
+      "当ウェブサイトのサイトポリシーを掲載しています。本サイトはTRPGのファンサイトです。本サイトへのリンクは自由に掲載できます。Googleアナリティクスを使用しています。",
     tags: [],
   },
   {
@@ -215,12 +223,16 @@ const normalPageSettingList: PageSetting[] = [
     to: "/contact",
     lastmod: "2023/3/15",
     specialPage: false,
+    explain:
+      "管理人しゃちほこ丸の連絡先メールアドレス及びTwitterアカウントを掲載しています。",
     tags: [],
   },
   {
     title: "エラーページ",
     to: "error",
     lastmod: "2023/3/1",
+    hidden: true,
+    explain: "エラーが発生した際に表示されるページです。",
     tags: [],
   },
 ];

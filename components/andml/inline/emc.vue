@@ -1,5 +1,5 @@
 <template>
-  <em class="em">
+  <em class="em" :style="`background: linear-gradient(transparent 50%, ${$vuetify.theme.current.colors.accent} 50%);`">
     <andml-inline-spanc :props="props" />
   </em>
 </template>
@@ -14,7 +14,7 @@ const Props = defineProps<Props>();
 
 <style scoped lang="scss">
 em.em {
-  background: linear-gradient(transparent 80%, rgb(236, 154, 96) 20%);
   font-style: normal;
+  font-weight: bold;
 }
 </style>

@@ -4,7 +4,7 @@
       検索
     </template>
     <div v-if="mounted">
-      <item-form-input :form-setting="form" />
+      <item-form-input :form-setting="form" @keydown.enter="changeSetting" />
       <item-tags-chip v-for="pageTag of $pageTags" :label="$pageTagSettings[pageTag].label" :key="pageTag"
         :color="selectTag === pageTag ? 'primary' : ''"
         @click="() => selectTag = (selectTag === pageTag ? undefined : pageTag)" />

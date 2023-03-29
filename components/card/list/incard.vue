@@ -1,7 +1,9 @@
 <template>
   <card>
     <template #pbefore>
-      <slot />
+      <div class="pt-5">
+        <slot />
+      </div>
     </template>
   </card>
 </template>

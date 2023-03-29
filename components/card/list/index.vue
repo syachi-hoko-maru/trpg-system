@@ -1,6 +1,5 @@
 <template>
   <component :is="component">
-
     <slot />
   </component>
 </template>

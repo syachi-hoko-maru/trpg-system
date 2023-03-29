@@ -1,9 +1,11 @@
 <template>
   <div id="sidemenu" class="pb-10">
     <div id="side">
-      <card>
-        <layouts-menu-list />
-      </card>
+      <nav>
+        <card>
+          <layouts-menu-list />
+        </card>
+      </nav>
     </div>
   </div>
 </template>

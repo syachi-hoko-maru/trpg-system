@@ -26,9 +26,6 @@ const andml = `
 &1 動作環境
 本サイトは &link_https://www.google.com/intl/ja_jp/chrome/,GoogleChrome の最新版で動作確認をしています。
 
-&1 Googleアナリティクス
-本サイトは &link_https://marketingplatform.google.com/intl/ja/about/analytics/,Googleアナリティクス を使用しています。
-
 &1 著作権
 本サイトおよび本サイトに掲載されている画像等のコンテンツは、特記されているものを除いて${$templateText.name}に帰属します。
 著作権法によって認められる場合を除き、許可なくこれらを利用することはできません。
@@ -39,6 +36,11 @@ const andml = `
 &br
 ウェブサイトのフレーム内に本サイトを表示することは禁止します。
 
+&1 Googleアナリティクス
+本サイトは &link_https://marketingplatform.google.com/intl/ja/about/analytics/,Googleアナリティクス を使用しています。
+
+&1 Amazonアソシエイト
+Amazonのアソシエイトとして、しゃちほこ丸は適格販売により収入を得ています。
 `
 </script>
 

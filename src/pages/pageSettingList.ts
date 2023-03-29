@@ -212,7 +212,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "サイトポリシー",
     to: "/policy",
-    lastmod: "2023/3/7",
+    lastmod: "2023/3/29",
     specialPage: true,
     explain:
       "当ウェブサイトのサイトポリシーを掲載しています。本サイトはTRPGのファンサイトです。本サイトへのリンクは自由に掲載できます。Googleアナリティクスを使用しています。",

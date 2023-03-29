@@ -194,7 +194,7 @@ const search = (): void => {
       }
       return { pageSetting, kanren }
     })
-    .filter(({ kanren }) => kanren > 0)
+    .filter(({ kanren }) => filters.length ? kanren > 0 : kanren >= 0)
     .sort((a, b) => -a.kanren + b.kanren)
   console.log(results.value)
   sort()
@@ -216,8 +216,9 @@ const sort = () => {
     search()
     return
   }
-  results.value = results.value
-    .filter(({ kanren }) => kanren > 1)
+  const kanrenResult = results.value
+    .filter(({ kanren }) => kanren >= 1)
+  results.value = (kanrenResult.length ? kanrenResult : results.value)
     .sort((a, b) => {
       if (sortValue.value === "更新日が古い順") return - new Date(b.pageSetting.lastmod).getTime() + new Date(a.pageSetting.lastmod).getTime()
       if (sortValue.value === "更新日が新しい順") return new Date(b.pageSetting.lastmod).getTime() - new Date(a.pageSetting.lastmod).getTime()

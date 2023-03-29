@@ -75,7 +75,7 @@ const setRouter = () => {
   router.replace(getNowPath() + "?" + Object.entries(searchSetting).filter(([key, value]) => value).map(([key, value]) => `${key}=${value}`).join("&"))
 }
 const changeSetting = () => {
-  searchSetting.word = form.value.value.replace(/[,、\s+]/g, "and")
+  searchSetting.word = form.value.value?.replace(/[,、\s+]/g, "and") || ""
   searchSetting.tag = selectTag.value
   // form.value.value = ""
   // selectTag.value = undefined
@@ -92,7 +92,7 @@ const changeRoute = () => {
         if (key === "word") {
           const word = decodeURIComponent(value)
           searchSetting.word = word
-          form.value.value = word.replace(/and/g, " ")
+          form.value.value = word ? word.replace(/and/g, " ") : ""
         } else if (key === "tag" && $isPageTag(value)) {
           searchSetting.tag = value
           selectTag.value = value
@@ -150,31 +150,38 @@ const search = (): void => {
     }
     if (key === "word") {
       const words = decodeURIComponent(value).split("and")
-      const lang = (pageSetting: PageSetting) => {
+      const lang = (pageSetting: PageSetting): [string, string] => {
         let result = "";
-        // 足す数を変えて重要度を変化させている
-        result += pageSetting.title
-        result += pageSetting.title
-        result += pageSetting.title
-        result += pageSetting.title
-        result += pageSetting.title
-        result += (Array.isArray(pageSetting.explain) ? pageSetting.explain.join() : pageSetting.explain)
         result += (Array.isArray(pageSetting.explain) ? pageSetting.explain.join() : pageSetting.explain)
         result += pageSetting.tags.map(tag => $pageTagSettings[tag].label + $pageTagSettings[tag].explanation).join()
         try {
           result += searchJson.value[pageSetting.to]
         } catch { }
-        return result
+        return [pageSetting.title, result]
       }
       filters.push(pageSetting => {
-        let count = 1 * words.length
+        let count = 0
+        let point = 0
+        // だいたいの単語数
+        const [title, str] = lang(pageSetting)
+        const wordCount = str.length / words.join("").length
         for (let word of words) {
-          // 一致しなければ0を返す
-          if (lang(pageSetting).indexOf(word) === -1) count -= 1
-          // countには「マッチ度」を入れる
-          count += ((lang(pageSetting).match(new RegExp(word, "g")) || []).length / (lang(pageSetting).length / word.length)) * words.length
+          if (title.indexOf(word) >= 0) {
+            // タイトルに一致するものがあれば1を返す
+            point += 1
+          } else if (str.indexOf(word) >= 0) {
+            // pointには「マッチ度」（=マッチした数/だいたいの単語数）を入れる
+            point += Math.min((str.match(new RegExp(word, "g")) || []).length / wordCount, 1)
+          } else {
+            // 一致するものがなければcountを-1する
+            count -= 1
+          }
         }
-        return count / words.length
+        if (count >= 0) {
+          return 1 + point / words.length
+        } else {
+          return point / words.length
+        }
       })
       if (setting.length === 1) {
         setTitle.value = `「${words.join(" ")}」の検索結果`
@@ -196,7 +203,7 @@ const search = (): void => {
     })
     .filter(({ kanren }) => filters.length ? kanren > 0 : kanren >= 0)
     .sort((a, b) => -a.kanren + b.kanren)
-  // console.log(results.value)
+  console.log(results.value)
   sort()
   const description = explain.value ? explain.value : `${setTitle.value}です。ページ：${results.value.slice(0, 5).map(page => `「${page.pageSetting.title}」`).join("・")}など。このページではサイト内検索ができます。`
   useHead({

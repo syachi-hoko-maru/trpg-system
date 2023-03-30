@@ -20,7 +20,7 @@ const Props = defineProps<Props>();
 
 const externalFlag = Props.to.startsWith("http") ? true : false
 
-const link = Props.to !== 'action' && !Props.disabled ? Props.to : ''
+const link = computed(() => Props.to !== 'action' && !Props.disabled ? Props.to : '')
 
 let colorClass: string = "text-text"
 if (Props.disabled) colorClass = "text-disabled"

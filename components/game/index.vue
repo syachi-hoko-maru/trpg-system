@@ -327,12 +327,15 @@ const doCanvas = () => {
           || entity.x < entity.size || entity.x > width - entity.size
           || entity.y < entity.size || entity.y > width * 2 / 3 - entity.size
         ) {
-          entityArray.splice(i, 1)
-          if (entity.name === "enemy") {
-            score.value += entity.score()
-          }
           if (entity.name === "mine") {
-            gameover()
+            if (mine.realHp <= 0) {
+              gameover()
+            }
+          } else {
+            entityArray.splice(i, 1)
+            if (entity.name === "enemy") {
+              score.value += entity.score()
+            }
           }
         }
       })

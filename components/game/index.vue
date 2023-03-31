@@ -193,13 +193,32 @@ class Mine extends Machine {
   name = "mine"
   fullHp = 10
   hp = this.fullHp
+  realHp = this.fullHp
+  muteki = 0
   constructor(width: number) {
-    super("royalblue", 10)
+    super("#366bff", 10)
     this.x = width / 2
     this.y = width * 2 / 3 - this.size * 2
   }
   auto(): void {
     this.shooting(10)
+    if (this.muteki) {
+      this.color = "#8aa9ff"
+      this.muteki--
+    } else {
+      this.color = "#366bff"
+    }
+    if (this.hp > this.realHp) {
+      this.realHp = this.hp
+    } else if (this.hp < this.realHp) {
+      if (this.muteki <= 0) {
+        this.realHp--
+        this.hp = this.realHp
+        this.muteki = 15
+      } else {
+        this.hp = this.realHp
+      }
+    }
   }
 }
 class Enemy extends Machine {
@@ -264,7 +283,7 @@ const doCanvas = () => {
     const drawHp = () => {
       if (!mine) return
       ctx.beginPath();
-      ctx.rect(0, width * 2 / 3 - 10, width * mine.hp / mine.fullHp, 10);
+      ctx.rect(0, width * 2 / 3 - 10, width * mine.realHp / mine.fullHp, 10);
       ctx.fillStyle = "royalblue";
       ctx.fill();
       ctx.closePath();

@@ -48,13 +48,15 @@ export const generateImage = async (id: string, title: string) => {
   const lines = [];
   for (let i = 0; i < title.length; i++) {
     line += title[i];
-    if (lines.length < 3) {
+    console.log(line, lines.length);
+
+    if (lines.length < 2) {
       const lineWidth = context.measureText(line).width;
       if (lineWidth > width - 300 || i == title.length - 1) {
         lines.push({ text: line, width: lineWidth });
         line = "";
       }
-    } else {
+    } else if (lines.length === 2) {
       if (i == title.length - 1) {
         lines.push({ text: line, width: context.measureText(line).width });
       } else {
@@ -63,6 +65,8 @@ export const generateImage = async (id: string, title: string) => {
           lines.push({ text: line + "...", width: lineWidth });
         }
       }
+    } else {
+      break;
     }
   }
 

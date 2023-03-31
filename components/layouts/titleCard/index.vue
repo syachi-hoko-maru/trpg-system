@@ -17,6 +17,7 @@
       <v-img :src="`${$templateText.basePath}/webp/${pageSetting.img}`" :alt="`${pageSetting.title}サムネイル画像`" />
     </template>
   </card>
+  <game v-if="pageSetting.osusume && !pageSetting.page && rand < 0.3" />
 </template>
 
 <script setup lang="ts">
@@ -28,6 +29,10 @@ const Props = defineProps<Props>();
 const { getNowPagePage } = usePages()
 const page = computed(getNowPagePage)
 
+const rand = ref(Math.random())
+watch(Props, () => {
+  rand.value = Math.random()
+})
 </script>
 
 <style lang="scss" scoped>

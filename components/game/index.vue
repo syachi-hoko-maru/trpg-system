@@ -1,29 +1,31 @@
 <template>
-  <card>
-    <template #title>
-      2Dシューティングゲーム
-    </template>
-    <div v-if="!canvasError">
-      <div class="pb-2">
-        <div>score {{ score }}</div>
-        <div>your high score {{ highscore }}</div>
+  <div data-nosnippet>
+    <card>
+      <template #title>
+        2Dシューティングゲーム
+      </template>
+      <div v-if="!canvasError">
+        <div class="pb-2">
+          <div>score {{ score }}</div>
+          <div>your high score {{ highscore }}</div>
+        </div>
+        <canvas id="game" :width="width" :height="width * 2 / 3" />
+        <div class="d-flex">
+          <item-button id="leftButton"> ← </item-button>
+          <v-spacer />
+          <item-button id="rightButton"> → </item-button>
+        </div>
+        <div v-if="mounted">
+          <item-button @click="() => showRule = !showRule">{{ showRule ? "遊び方を閉じる" : "遊び方を読む" }}</item-button>
+          <andml :andmls="rule" v-if="showRule" />
+          <item-button v-if="!gaming" @click="doCanvas">ゲームを始める</item-button>
+        </div>
       </div>
-      <canvas id="game" :width="width" :height="width * 2 / 3" />
-      <div class="d-flex">
-        <item-button id="leftButton"> ← </item-button>
-        <v-spacer />
-        <item-button id="rightButton"> → </item-button>
+      <div v-else>
+        エラーが発生しました。
       </div>
-      <div v-if="mounted">
-        <item-button @click="() => showRule = !showRule">{{ showRule ? "遊び方を閉じる" : "遊び方を読む" }}</item-button>
-        <andml :andmls="rule" v-if="showRule" />
-        <item-button v-if="!gaming" @click="doCanvas">ゲームを始める</item-button>
-      </div>
-    </div>
-    <div v-else>
-      エラーが発生しました。
-    </div>
-  </card>
+    </card>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -193,13 +195,32 @@ class Mine extends Machine {
   name = "mine"
   fullHp = 10
   hp = this.fullHp
+  realHp = this.fullHp
+  muteki = 0
   constructor(width: number) {
-    super("royalblue", 10)
+    super("#366bff", 10)
     this.x = width / 2
     this.y = width * 2 / 3 - this.size * 2
   }
   auto(): void {
     this.shooting(10)
+    if (this.muteki) {
+      this.color = "#8aa9ff"
+      this.muteki--
+    } else {
+      this.color = "#366bff"
+    }
+    if (this.hp > this.realHp) {
+      this.realHp = this.hp
+    } else if (this.hp < this.realHp) {
+      if (this.muteki <= 0) {
+        this.realHp--
+        this.hp = this.realHp
+        this.muteki = 15
+      } else {
+        this.hp = this.realHp
+      }
+    }
   }
 }
 class Enemy extends Machine {
@@ -264,7 +285,7 @@ const doCanvas = () => {
     const drawHp = () => {
       if (!mine) return
       ctx.beginPath();
-      ctx.rect(0, width * 2 / 3 - 10, width * mine.hp / mine.fullHp, 10);
+      ctx.rect(0, width * 2 / 3 - 10, width * mine.realHp / mine.fullHp, 10);
       ctx.fillStyle = "royalblue";
       ctx.fill();
       ctx.closePath();
@@ -308,12 +329,15 @@ const doCanvas = () => {
           || entity.x < entity.size || entity.x > width - entity.size
           || entity.y < entity.size || entity.y > width * 2 / 3 - entity.size
         ) {
-          entityArray.splice(i, 1)
-          if (entity.name === "enemy") {
-            score.value += entity.score()
-          }
           if (entity.name === "mine") {
-            gameover()
+            if (mine.realHp <= 0) {
+              gameover()
+            }
+          } else {
+            entityArray.splice(i, 1)
+            if (entity.name === "enemy") {
+              score.value += entity.score()
+            }
           }
         }
       })
@@ -339,6 +363,7 @@ const doCanvas = () => {
 }
 
 const keyHandler = (key: string, mode: "down" | "up") => {
+  console.log(key, mode)
   if (key === "Right" || key === "ArrowRight") {
     leftPressed = false
     if (mode === "down") rightPressed = true;
@@ -357,10 +382,14 @@ onMounted(() => {
     document.addEventListener("keyup", (e) => keyHandler(e.key, "up"), false);
     const rightButton = document.getElementById("rightButton")
     rightButton?.addEventListener("touchstart", () => keyHandler("Right", "down"))
+    rightButton?.addEventListener("mousedown", () => keyHandler("Right", "down"))
+    rightButton?.addEventListener("mouseup", () => keyHandler("Right", "up"))
     rightButton?.addEventListener("touchend", () => keyHandler("Right", "up"))
     rightButton?.addEventListener("touchcancel", () => keyHandler("Right", "up"))
     const leftButton = document.getElementById("leftButton")
     leftButton?.addEventListener("touchstart", () => keyHandler("Left", "down"))
+    leftButton?.addEventListener("mousedown", () => keyHandler("Left", "down"))
+    leftButton?.addEventListener("mouseup", () => keyHandler("Left", "up"))
     leftButton?.addEventListener("touchend", () => keyHandler("Left", "up"))
     leftButton?.addEventListener("touchcancel", () => keyHandler("Left", "up"))
     mounted.value = true

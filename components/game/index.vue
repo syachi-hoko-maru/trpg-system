@@ -1,29 +1,31 @@
 <template>
-  <card>
-    <template #title>
-      2Dシューティングゲーム
-    </template>
-    <div v-if="!canvasError">
-      <div class="pb-2">
-        <div>score {{ score }}</div>
-        <div>your high score {{ highscore }}</div>
+  <div data-nosnippet>
+    <card>
+      <template #title>
+        2Dシューティングゲーム
+      </template>
+      <div v-if="!canvasError">
+        <div class="pb-2">
+          <div>score {{ score }}</div>
+          <div>your high score {{ highscore }}</div>
+        </div>
+        <canvas id="game" :width="width" :height="width * 2 / 3" />
+        <div class="d-flex">
+          <item-button id="leftButton"> ← </item-button>
+          <v-spacer />
+          <item-button id="rightButton"> → </item-button>
+        </div>
+        <div v-if="mounted">
+          <item-button @click="() => showRule = !showRule">{{ showRule ? "遊び方を閉じる" : "遊び方を読む" }}</item-button>
+          <andml :andmls="rule" v-if="showRule" />
+          <item-button v-if="!gaming" @click="doCanvas">ゲームを始める</item-button>
+        </div>
       </div>
-      <canvas id="game" :width="width" :height="width * 2 / 3" />
-      <div class="d-flex">
-        <item-button id="leftButton"> ← </item-button>
-        <v-spacer />
-        <item-button id="rightButton"> → </item-button>
+      <div v-else>
+        エラーが発生しました。
       </div>
-      <div v-if="mounted">
-        <item-button @click="() => showRule = !showRule">{{ showRule ? "遊び方を閉じる" : "遊び方を読む" }}</item-button>
-        <andml :andmls="rule" v-if="showRule" />
-        <item-button v-if="!gaming" @click="doCanvas">ゲームを始める</item-button>
-      </div>
-    </div>
-    <div v-else>
-      エラーが発生しました。
-    </div>
-  </card>
+    </card>
+  </div>
 </template>
 
 <script setup lang="ts">

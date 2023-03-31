@@ -361,6 +361,7 @@ const doCanvas = () => {
 }
 
 const keyHandler = (key: string, mode: "down" | "up") => {
+  console.log(key, mode)
   if (key === "Right" || key === "ArrowRight") {
     leftPressed = false
     if (mode === "down") rightPressed = true;
@@ -379,10 +380,14 @@ onMounted(() => {
     document.addEventListener("keyup", (e) => keyHandler(e.key, "up"), false);
     const rightButton = document.getElementById("rightButton")
     rightButton?.addEventListener("touchstart", () => keyHandler("Right", "down"))
+    rightButton?.addEventListener("mousedown", () => keyHandler("Right", "down"))
+    rightButton?.addEventListener("mouseup", () => keyHandler("Right", "up"))
     rightButton?.addEventListener("touchend", () => keyHandler("Right", "up"))
     rightButton?.addEventListener("touchcancel", () => keyHandler("Right", "up"))
     const leftButton = document.getElementById("leftButton")
     leftButton?.addEventListener("touchstart", () => keyHandler("Left", "down"))
+    leftButton?.addEventListener("mousedown", () => keyHandler("Left", "down"))
+    leftButton?.addEventListener("mouseup", () => keyHandler("Left", "up"))
     leftButton?.addEventListener("touchend", () => keyHandler("Left", "up"))
     leftButton?.addEventListener("touchcancel", () => keyHandler("Left", "up"))
     mounted.value = true

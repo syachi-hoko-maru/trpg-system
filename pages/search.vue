@@ -203,7 +203,7 @@ const search = (): void => {
     })
     .filter(({ kanren }) => filters.length ? kanren > 0 : kanren >= 0)
     .sort((a, b) => -a.kanren + b.kanren)
-  console.log(results.value)
+  // console.log(results.value)
   sort()
   const description = explain.value ? explain.value : `${setTitle.value}です。ページ：${results.value.slice(0, 5).map(page => `「${page.pageSetting.title}」`).join("・")}など。このページではサイト内検索ができます。`
   useHead({

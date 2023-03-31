@@ -52,7 +52,7 @@ const getData = (): { [key: string]: string } => {
     .filter((co) => co.count + co.str.length / 3 > htmls.length / 2)
     .map((co) => co.str)
     .sort((a, b) => b.length - a.length);
-  console.log(commonStrArray);
+  // console.log(commonStrArray);
   const result: { [key: string]: string } = {};
   Object.entries(temp).forEach(([k, v]) => {
     let value = v;

@@ -28,10 +28,6 @@ const toolPages = $pageSettingList.filter(page => page.to.startsWith("/sw25/tool
 const andml1 = `
 このウェブサイトでは &info_sw25 を遊ぶのに役立つツールを公開しています。
 
-&2 権利表示
-これらのツールは、「北沢慶」「グループSNE」及び「株式会社KADOKAWA」が権利を有する『ソード・ワールド2.5』の二次創作物です。
-（C）北沢慶／グループSNE
-
 &2 利用にあたって
 利用にあたって特に連絡など不要です。
 &link_http://www.arclight.co.jp/trpg-rights/,二次創作活動のガイドライン など、 &em_SW2.5の規約に沿う限りにおいて 、自由に使用してください。

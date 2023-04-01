@@ -17,7 +17,14 @@
       <v-img :src="`${$templateText.basePath}/webp/${pageSetting.img}`" :alt="`${pageSetting.title}サムネイル画像`" />
     </template>
   </card>
-  <!-- <game v-if="pageSetting.osusume && !pageSetting.page && rand < 0.3" /> -->
+  <card v-if="pageSetting.tags.join('').indexOf('sw25') >= 0">
+    <template #pbefore>
+      <div class="text-caption text-medium-emphasis py-3" data-nosnippet>
+        当ページの全てまたは一部のコンテンツは、「北沢慶」「グループSNE」及び「株式会社KADOKAWA」が権利を有する『ソード・ワールド2.5』の二次創作物です。<br>
+        （C）北沢慶／グループSNE
+      </div>
+    </template>
+  </card>
 </template>
 
 <script setup lang="ts">

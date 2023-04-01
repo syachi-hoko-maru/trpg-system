@@ -10,7 +10,7 @@
       1つ前のページへ戻る
     </item-button>
   </card>
-  <game />
+  <!-- <game /> -->
 </template>
 
 <script setup lang="ts">

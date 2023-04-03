@@ -1,7 +1,6 @@
 <template>
   <span>
-    <atom-link to="https://twitter.com/syachi_hoko_trp" :color="color"
-      :deco="deco">Twitter（@syachi_hoko_trp）</atom-link>
+    <atom-link to="https://twitter.com/syachi_hoko_trp" :color="color" :deco="deco">Twitter（@syachi_hoko_trp）</atom-link>
   </span>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
-  <atom-link :to="arr[0]" :deco="true">
+  <item-textlink :to="arr[0]">
     {{ arr[1] }}
-  </atom-link>
+  </item-textlink>
 </template>
 
 <script setup lang="ts">

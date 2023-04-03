@@ -4,9 +4,9 @@
       <v-img src="./webp/page-image/main.webp" alt="ヘッダー" />
       <item-caption>
         背景画像は
-        <atom-link to="https://gakaisozai.seesaa.net/">
+        <item-textlink to="https://gakaisozai.seesaa.net/">
           きまぐれアフター背景素材置き場様
-        </atom-link>
+        </item-textlink>
         より使用しております
       </item-caption>
     </template>

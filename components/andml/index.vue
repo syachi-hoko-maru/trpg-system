@@ -1,6 +1,6 @@
 
 <template>
-  <component :is="d.component" v-for="d of dataArray">
+  <component :is="d.component" v-for="d of dataArray" :props="d.props">
     <andml-line :andmls="d.andmls" />
   </component>
 </template>
@@ -21,7 +21,7 @@ const andmlBlockScriptArray: AndmlScript[] = [
   { script: "byosya", component: resolveComponent("AndmlBlockByosya") },
   { script: "forgm", component: resolveComponent("AndmlBlockForgm") },
   { script: "info", component: resolveComponent("AndmlBlockInfo") },
-
+  { script: "faq_", component: resolveComponent("AndmlBlockFaq") },
 ];
 
 const setBlockComponent = (andmls: string[]): AndmlBlockData[] => {
@@ -35,8 +35,10 @@ const setBlockComponent = (andmls: string[]): AndmlBlockData[] => {
     }
     for (let script of andmlBlockScriptArray) {
       if (andml.startsWith(`&&${script.script}`)) {
-        result.push({ andmls: [], component: script.component })
+        const props: string = script.script.endsWith("_") ? andml.replace(`&&${script.script}`, "") : ""
+        result.push({ andmls: [], component: script.component, props })
         blockFlag = true
+
         continue mainLoop
       }
     }

@@ -1,6 +1,6 @@
 <template>
-  <andml-block-core title="描写" :color="$vuetify.theme.current.colors.primary">
+  <item-block title="描写" :color="$vuetify.theme.current.colors.primary">
     <slot />
-  </andml-block-core>
+  </item-block>
 </template>
 

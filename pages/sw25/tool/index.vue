@@ -1,22 +1,8 @@
 <template>
   <card-array-by-andml :andml="andml1" />
-  <card-list>
-    <card v-for="page of toolPages" :key="page.to">
-      <template #tbefore>
-        <v-img :src="`${$templateText.basePath}/webp/${page.img}`" />
-      </template>
-      <template #title>
-        {{ page.title }}
-      </template>
-      <div class="text">
-        {{ page.explain }}
-      </div>
-      <item-button :to="page.to">
-        こちら
-      </item-button>
-    </card>
+  <item-pageindex :page-setting-list="toolPages">
     <card-array-by-andml :andml="andml2" />
-  </card-list>
+  </item-pageindex>
 </template>
 
 <script setup lang="ts">

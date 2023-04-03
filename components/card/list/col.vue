@@ -9,10 +9,10 @@
   width: 100%;
   align-items: stretch;
 
-  >div {
+  section.card-div {
     width: calc(50% - 8px);
 
-    >div.v-card {
+    div.v-card {
       width: 100%;
       height: calc(100% - 40px);
       display: flex;

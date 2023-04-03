@@ -170,7 +170,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "管理人プロフィール",
     to: "/me",
-    lastmod: "2023/3/1",
+    lastmod: "2023/4/3",
     img: "page-image/me.webp",
     explain:
       "管理人しゃちほこ丸の自己紹介ページです。TRPGについてやTRPG以外の趣味（海外サッカー観戦やアニメ鑑賞など）をまとめています。",

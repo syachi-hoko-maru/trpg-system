@@ -1,5 +1,5 @@
 <template>
-  <div class="area pa-2 mt-5 mb-3" :style="`border: solid 2px ${color};`">
+  <div class="area pa-2 mt-10 mb-5" :style="`border: solid 2px ${color};`">
     <item-head2 class="title px-2"
       :style="`background-color: ${$vuetify.theme.current.colors.background}; color: ${color};`">
       <slot name="title" />
@@ -26,6 +26,6 @@ const Props = defineProps<Props>();
   position: absolute;
   display: inline-block;
   top: -30px;
-  left: 10px;
+  left: 5px;
 }
 </style>

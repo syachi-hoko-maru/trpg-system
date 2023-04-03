@@ -1,5 +1,6 @@
 <template>
-  <item-block title="描写" :color="$vuetify.theme.current.colors.primary">
+  <item-block :color="$vuetify.theme.current.colors.primary">
+    <template #title>描写</template>
     <slot />
   </item-block>
 </template>

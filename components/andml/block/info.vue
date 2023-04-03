@@ -1,5 +1,6 @@
 <template>
-  <item-block title="情報" :color="$vuetify.theme.current.colors.info">
+  <item-block :color="$vuetify.theme.current.colors.info">
+    <template #title>情報</template>
     <slot />
   </item-block>
 </template>

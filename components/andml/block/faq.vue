@@ -1,5 +1,5 @@
 <template>
-  <item-block-faq :color="$vuetify.theme.current.colors.primary" :title="props">
+  <item-block-faq :title="props">
     <slot />
   </item-block-faq>
 </template>

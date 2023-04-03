@@ -11,11 +11,11 @@ const normalPageSettingList: PageSetting[] = [
     tags: [],
   },
   {
-    title: "ソード・ワールド2.5",
+    title: "ソード・ワールド2.5とは",
     to: "/sw25",
     explain:
       "ソード・ワールド2.5（SW2.5）というTRPGについて、簡潔にその魅力を紹介するページです。初心者向け情報やその他ソドワに役立つツール・情報へのリンクもあります。",
-    lastmod: "2023/3/14",
+    lastmod: "2023/4/3",
     tags: ["sw25"],
   },
   {
@@ -81,10 +81,20 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 初心者向け情報",
     to: "/sw25/forbeginner",
-    lastmod: "2023/3/20",
+    lastmod: "2023/4/3",
     osusume: false,
     explain:
-      "ソドワ初心者やTRPG初心者向けにソード・ワールド2.5（SW2.5）情報をまとめているページです。FAQや便利なリンクを掲載中です。",
+      "ソドワ初心者やTRPG初心者向けにソード・ワールド2.5（SW2.5）情報をまとめているページです。種族や技能の紹介、おすすめサプリメントの紹介、FAQや便利なリンクを掲載中です。",
+    tags: ["sw25"],
+  },
+  {
+    title: "SW2.5 種族の一覧と紹介",
+    to: "/sw25/forbeginner/syuzoku",
+    lastmod: "2023/3/28",
+    // img: "page-image/suppliment.webp",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5）でキャラクターとして使える種族の一覧と、その紹介をしているページです。どのルールブック・サプリメントに載っているかも掲載しています。",
     tags: ["sw25"],
   },
   {
@@ -99,16 +109,25 @@ const normalPageSettingList: PageSetting[] = [
     tags: ["sw25"],
   },
   {
-    title: "SW2.5 種族の一覧と紹介",
-    to: "/sw25/forbeginner/syuzoku",
-    lastmod: "2023/3/28",
+    title: "SW2.5 初心者向けFAQ",
+    to: "/sw25/forbeginner/faq",
+    lastmod: "2023/4/3",
     // img: "page-image/suppliment.webp",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5）でキャラクターとして使える種族の一覧と、その紹介をしているページです。どのルールブック・サプリメントに載っているかも掲載しています。",
+      "ソード・ワールド2.5（SW2.5）の初心者の方がよく抱くだろう疑問に対する回答を載せています。",
     tags: ["sw25"],
   },
-
+  {
+    title: "SW2.5 初心者向け便利なリンク集",
+    to: "/sw25/forbeginner/links",
+    lastmod: "2023/4/3",
+    // img: "page-image/suppliment.webp",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5）の初心者の方へ役立つだろうリンクを掲載しています。",
+    tags: ["sw25"],
+  },
   {
     title: "公開シナリオ一覧",
     to: "/scenario",

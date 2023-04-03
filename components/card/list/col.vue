@@ -11,11 +11,13 @@
 
   section.card-div {
     width: calc(50% - 8px);
+    margin-bottom: 20px;
 
     div.v-card {
       width: 100%;
-      height: calc(100% - 40px);
+      height: 100%;
       display: flex;
+      top: 0;
       flex-direction: column;
 
       >div.v-card-text {

@@ -1,4 +1,5 @@
 import { wordList } from "~~/src/dict";
+import { ginou } from "~~/src/dict/ginou";
 import { syuzoku } from "~~/src/dict/syuzoku";
 
 export default defineNuxtPlugin(() => {
@@ -6,6 +7,7 @@ export default defineNuxtPlugin(() => {
     provide: {
       wordList,
       syuzoku,
+      ginou,
     },
   };
 });

@@ -90,11 +90,21 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 種族の一覧と紹介",
     to: "/sw25/forbeginner/syuzoku",
-    lastmod: "2023/3/28",
+    lastmod: "2023/4/3",
     // img: "page-image/suppliment.webp",
     osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5）でキャラクターとして使える種族の一覧と、その紹介をしているページです。どのルールブック・サプリメントに載っているかも掲載しています。",
+    tags: ["sw25"],
+  },
+  {
+    title: "SW2.5 技能の一覧と紹介",
+    to: "/sw25/forbeginner/ginou",
+    lastmod: "2023/4/3",
+    // img: "page-image/suppliment.webp",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5）でキャラクターが使える技能の一覧と、その紹介をしているページです。どのルールブック・サプリメントに載っているかも掲載しています。",
     tags: ["sw25"],
   },
   {

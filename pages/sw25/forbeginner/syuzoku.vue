@@ -42,6 +42,9 @@ const syuzokuAndml = `
 以下では &em_各種族について 簡単にですが紹介します。
 なお、サプリメントについては以下をご覧ください。
 &button_/sw25/forbeginner/suppliment/1 
+&br
+ソード・ワールド2.5に登場する &em_技能 については以下をご覧ください。
+&button_/sw25/forbeginner/ginou
 `
 
 const syuzokuAndml2 = `

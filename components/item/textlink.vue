@@ -13,7 +13,7 @@ interface Props {
 }
 const Props = defineProps<Props>();
 
-const colorClass = Props.color ? Props.color : "text-info"
+const colorClass = Props.color ? Props.color : "text-link"
 </script>
 
 <style lang="scss" scoped>

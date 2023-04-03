@@ -9,7 +9,9 @@
       </template>
       <template #title>{{ image.title }}</template>
       <template #subtitle>{{ image.date }}</template>
-      <andml :andmls="image.explain" v-if="image.explain" />
+      <template #pbefore>
+        <andml :andmls="image.explain" v-if="image.explain" />
+      </template>
     </card>
   </card-list>
   <card>

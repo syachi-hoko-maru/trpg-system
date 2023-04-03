@@ -1,6 +1,6 @@
 <template>
   <section class="card-div" :id="id">
-    <v-card class="my-5 pb-5" :class="Props.class ? Props.class : 'bg-background text-text'" elevation="3">
+    <v-card class="my-5" :class="Props.class ? Props.class : 'bg-background text-text'" elevation="3">
       <v-row v-if="Props.loading" class="cardLoading align-center justify-center">
         <v-progress-circular :size="70" :width="7" indeterminate color="primary" />
       </v-row>
@@ -17,7 +17,7 @@
       <div class="px-4" v-if="$slots.pbefore">
         <slot name="pbefore" />
       </div>
-      <v-card-text v-if="$slots.default" class="pt-1 pb-0">
+      <v-card-text v-if="$slots.default" class="pt-1 pb-5">
         <slot name="default" />
       </v-card-text>
       <div class="px-4" v-if="$slots.pafter">

@@ -1,12 +1,12 @@
 <template>
   <v-app-bar color="primary" app id="header">
     <v-app-bar-title>
-      <div id="title" class="title">
+      <h1 id="title" class="text-h5 ma-0">
         <atom-link v-if="!error" to="/" color="text-textbp">
           {{ titleprefix }}<br class="hidden-sm-and-up">{{ titlemain }}
         </atom-link>
         <template v-else>{{ titleprefix }}<br class="hidden-sm-and-up">{{ titlemain }}</template>
-      </div>
+      </h1>
     </v-app-bar-title>
     <div class="hidden-sm-and-down">
       <v-spacer />
@@ -34,7 +34,9 @@ const titlemain = $templateText.title.replace(/^.*〈/, "〈")
   width: 100vw;
 }
 
-#title {
-  white-space: normal
+h1#title {
+  white-space: normal;
+  display: block;
+  font-weight: normal;
 }
 </style>

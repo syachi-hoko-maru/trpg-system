@@ -31,7 +31,7 @@ const Props = defineProps<Props>();
 const loading = ref(true)
 const index: Ref<string[]> = ref([])
 
-const route = useRoute();
+const { ok } = useLoad();
 
 const setIndex = () => {
   loading.value = true
@@ -48,11 +48,12 @@ const setIndex = () => {
 onMounted(() => {
   setIndex()
   watch(Props, setIndex)
-  watch(route, () => {
-    loading.value = true
-    setTimeout(setIndex, 0.5 * 1000)
-  })
 })
+watch(ok, () => {
+  if (ok.value) loading.value = true
+  setIndex()
+})
+
 </script>
 
 <style lang="scss" scoped>

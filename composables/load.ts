@@ -1,6 +1,6 @@
 export const useLoad = () => {
   const load = useState("load", () => [] as boolean[]);
-  const ok = ref(false);
+  const ok = useState("ok", () => false);
   const setLoad = () => {
     const i = load.value.push(false) - 1;
     // console.log("set load", i);
@@ -14,6 +14,7 @@ export const useLoad = () => {
   const route = useRoute();
   watch(route, () => {
     load.value = [];
+    ok.value = false;
   });
   watch(load.value, () => {
     if (load.value.filter((l) => !l).length === 0) {

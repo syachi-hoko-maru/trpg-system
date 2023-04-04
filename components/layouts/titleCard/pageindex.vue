@@ -34,6 +34,7 @@ const index: Ref<string[]> = ref([])
 const route = useRoute();
 
 const setIndex = () => {
+  loading.value = true
   index.value = []
   const documents = document.getElementById("page")?.querySelectorAll(".card-div .card-title:not(.card-div .card-div .card-title)")
   if (documents) {
@@ -46,7 +47,11 @@ const setIndex = () => {
 
 onMounted(() => {
   setIndex()
-  watch(route, setIndex)
+  watch(Props, setIndex)
+  watch(route, () => {
+    loading.value = true
+    setTimeout(setIndex, 0.5 * 1000)
+  })
 })
 </script>
 

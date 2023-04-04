@@ -11,6 +11,16 @@
       </item-caption>
     </template>
   </card>
+  <v-responsive :aspect-ratio="40 / 21" class="my-5">
+    <v-carousel show-arrows="hover" hide-delimiter-background cycle height="100%">
+      <v-carousel-item width="100%"
+        v-for="pageSetting of $pageSettingList.filter(p => p.osusume && p.img).sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime()).splice(0, 10)">
+        <atom-link :to="pageSetting.to">
+          <v-img :src="$templateText.basePath + '/webp/' + pageSetting.img" cover />
+        </atom-link>
+      </v-carousel-item>
+    </v-carousel>
+  </v-responsive>
   <card-array-by-andml :andml="andml1" />
   <card>
     <template #title>
@@ -34,12 +44,6 @@ const andml1 = `
 また、ご意見ご要望などもお待ちしております。
 よろしければTwitterのフォローをお願いします。
 
-&1 News
-&date_today 更新作業中
-&date_2023/3/1 仮公開
-&date_2023/1/11 更新準備開始
-&button_#最近更新されたページ 最近更新されたページはこちら
-
 &1 Contents
 おすすめのコンテンツを3つ紹介します。
 ページ一覧は &link_/search,こちら からご覧ください。
@@ -51,6 +55,12 @@ const andml1 = `
 ソード・ワールド2.5初心者向けの情報は以下にまとめてあります。
 初心者向けの &em_よくある質問（FAQ） やSW2.5に限らずTRPG初心者がTRPGを始める際に &em_役立つリンク などを掲載しています。
 &button_/sw25/forbeginner
+
+&1 News
+&date_today 更新作業中
+&date_2023/3/1 仮公開
+&date_2023/1/11 更新準備開始
+&button_#最近更新されたページ 最近更新されたページはこちら
 `
 
 const andml2 = `

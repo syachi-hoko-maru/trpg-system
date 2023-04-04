@@ -3,7 +3,7 @@
     <template #title>このページについて</template>
     <andml :andmls="first" />
   </card>
-  <itemPageindex :pageSettingList="forbeginnerPages" />
+  <itemPagesindex :pageSettingList="forbeginnerPages" />
 </template>
 
 <script setup lang="ts">

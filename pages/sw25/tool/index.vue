@@ -1,8 +1,8 @@
 <template>
   <card-array-by-andml :andml="andml1" />
-  <item-pageindex :page-setting-list="toolPages">
+  <item-pagesindex :page-setting-list="toolPages">
     <card-array-by-andml :andml="andml2" />
-  </item-pageindex>
+  </item-pagesindex>
 </template>
 
 <script setup lang="ts">

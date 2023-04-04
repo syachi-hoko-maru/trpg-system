@@ -1,5 +1,5 @@
 <template>
-  <card :loading="loading" v-if="index.length">
+  <card :loading="loading" v-if="index.length && index.length > 1">
     <template #title>
       目次
     </template>

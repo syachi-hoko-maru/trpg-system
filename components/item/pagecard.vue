@@ -4,11 +4,11 @@
       <template #tbefore>
         <v-container class="pa-0" v-if="pageSettingData.img">
           <v-row :height="120">
-            <v-col cols="3">
+            <v-col cols="4">
               <v-img :src="`${$templateText.basePath}/webp/${pageSettingData.img}`" :height="120" cover class="mb-2" />
             </v-col>
             <v-col cols="8">
-              <v-row class="pt-5">
+              <v-row class="pt-4">
                 <v-col cols="12" class="pa-0">
                   <atom-link :to="pageSettingData.to">
                     <v-card-title class="search-card-title">{{ pageSettingData.title }}</v-card-title>

@@ -8,6 +8,7 @@
     </aside>
     <layouts-main>
       <article>
+        {{ nowPageSetting }}
         <layouts-title-card v-if="mountedPageSetting" :page-setting="mountedPageSetting" />
         <div id="page">
           <slot />
@@ -35,7 +36,7 @@ const route = useRoute();
 const router = useRouter();
 const theme = useTheme()
 
-const { getNowPath, savePage } = usePages()
+const { getNowPath, nowPageSetting } = usePages()
 const { $getPageSetting, $templateText } = useNuxtApp()
 
 const mountedPageSetting: Ref<PageSetting | undefined> = ref(undefined)
@@ -54,7 +55,6 @@ const pageSetting = computed(() => {
 })
 
 const changePage = () => {
-  savePage()
   if (!pageSetting.value) return
   if (blogFlag) {
     // console.log("blog!!")
@@ -117,7 +117,6 @@ onMounted(() => {
     console.log(ok.value)
     if (ok.value) router.replace(route.fullPath.replace(route.fullPath, decodeURI(route.fullPath)))
   })
-
   watch(route, () => {
     changePage()
     mountedPageSetting.value = pageSetting.value

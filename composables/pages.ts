@@ -1,9 +1,15 @@
+import { Ref } from "vue";
+
 export const usePages = () => {
   const route = useRoute();
+  const { $getPageSetting } = useNuxtApp();
 
   const pageArray = useState("pageArray", () => [] as string[]);
 
   const getNowPage = () => route.fullPath;
+
+  const nowPageSetting: Ref<PageSetting | undefined> = ref(undefined);
+
   const getNowPagePage = (): number => {
     const qp = Number(
       Array.isArray(route.params.page)
@@ -32,17 +38,25 @@ export const usePages = () => {
     const p = path ? path : route.fullPath;
     if (!p) return;
     const pageUrl = p.replace(/(.+)\/+$/, "$1");
-    if (pageUrl !== pageArray.value[0]) pageArray.value.unshift(pageUrl);
-    console.log("save page", pageArray.value);
+    if (pageUrl !== pageArray.value[0]) {
+      pageArray.value.unshift(pageUrl);
+      console.log("save page", pageArray.value);
+    }
   };
+
+  watch(route, () => {
+    nowPageSetting.value = $getPageSetting(route.fullPath);
+    savePage();
+    console.log(nowPageSetting.value);
+  });
 
   return {
     pageArray,
+    nowPageSetting,
     getNowPage,
     getNowPagePage,
     getNowPath,
     getQuerys,
     getQueryValue,
-    savePage,
   };
 };

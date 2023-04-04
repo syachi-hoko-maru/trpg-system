@@ -1,5 +1,5 @@
 <template>
-  <card :id="group.id" v-if="group && group.id">
+  <card v-if="group && group.id">
     <template #title>
       {{ group.type }}
     </template>

@@ -10,7 +10,9 @@
       <article>
         <layouts-title-card v-if="mountedPageSetting" :page-setting="mountedPageSetting" />
         <layouts-paging v-if="mountedPageSetting && mountedPageSetting.page" :page-setting="mountedPageSetting" top />
-        <slot />
+        <div id="page">
+          <slot />
+        </div>
         <layouts-paging v-if="mountedPageSetting && mountedPageSetting.page" :page-setting="mountedPageSetting" />
       </article>
       <aside>

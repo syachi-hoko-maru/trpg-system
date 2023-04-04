@@ -17,6 +17,7 @@
       <v-img :src="`${$templateText.basePath}/webp/${pageSetting.img}`" :alt="`${pageSetting.title}サムネイル画像`" />
     </template>
   </card>
+  <layouts-title-card-pageindex :page-setting="pageSetting" v-if="!pageSetting.specialPage" />
   <card v-if="pageSetting.tags.join('').indexOf('sw25') >= 0">
     <template #pbefore>
       <div class="text-caption text-medium-emphasis py-3" data-nosnippet>

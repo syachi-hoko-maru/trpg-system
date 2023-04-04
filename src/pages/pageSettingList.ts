@@ -13,6 +13,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "ソード・ワールド2.5とは",
     to: "/sw25",
+    img: "page-image/about.webp",
     explain:
       "ソード・ワールド2.5（SW2.5）というTRPGについて、簡潔にその魅力を紹介するページです。初心者向け情報やその他ソドワに役立つツール・情報へのリンクもあります。",
     lastmod: "2023/4/3",
@@ -81,6 +82,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 初心者向け情報",
     to: "/sw25/forbeginner",
+    img: "page-image/forbeginner.webp",
     lastmod: "2023/4/3",
     osusume: false,
     explain:
@@ -91,7 +93,7 @@ const normalPageSettingList: PageSetting[] = [
     title: "SW2.5 種族の一覧と紹介",
     to: "/sw25/forbeginner/syuzoku",
     lastmod: "2023/4/3",
-    // img: "page-image/suppliment.webp",
+    img: "page-image/syuzoku.webp",
     osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5）でキャラクターとして使える種族の一覧と、その紹介をしているページです。どのルールブック・サプリメントに載っているかも掲載しています。",
@@ -101,7 +103,7 @@ const normalPageSettingList: PageSetting[] = [
     title: "SW2.5 技能の一覧と紹介",
     to: "/sw25/forbeginner/ginou",
     lastmod: "2023/4/3",
-    // img: "page-image/suppliment.webp",
+    img: "page-image/ginou.webp",
     osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5）でキャラクターが使える技能の一覧と、その紹介をしているページです。どのルールブック・サプリメントに載っているかも掲載しています。",
@@ -122,7 +124,7 @@ const normalPageSettingList: PageSetting[] = [
     title: "SW2.5 初心者向けFAQ",
     to: "/sw25/forbeginner/faq",
     lastmod: "2023/4/3",
-    // img: "page-image/suppliment.webp",
+    img: "page-image/faq.webp",
     osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5）の初心者の方がよく抱くだろう疑問に対する回答を載せています。",
@@ -132,7 +134,7 @@ const normalPageSettingList: PageSetting[] = [
     title: "SW2.5 初心者向け便利なリンク集",
     to: "/sw25/forbeginner/links",
     lastmod: "2023/4/3",
-    // img: "page-image/suppliment.webp",
+    img: "page-image/links.webp",
     osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5）の初心者の方へ役立つだろうリンクを掲載しています。",

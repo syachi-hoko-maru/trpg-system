@@ -6,16 +6,16 @@
 
 <script setup lang="ts">
 interface Props {
-  pageSetting: PageSetting,
   icon?: boolean
 }
 const Props = defineProps<Props>();
 
+const { nowPageSetting } = usePages()
 const { $templateText } = useNuxtApp()
 
 const shareSetting = computed(() => {
-  const text = Props.pageSetting.to.indexOf("blog/") >= 0 ? `ブログ「${Props.pageSetting.title}」` : Props.pageSetting.title
-  const url = $templateText.baseUrl + Props.pageSetting.to
+  const text = nowPageSetting.value.to.indexOf("blog/") >= 0 ? `ブログ「${nowPageSetting.value.title}」` : nowPageSetting.value.title
+  const url = $templateText.baseUrl + nowPageSetting.value.to
   return {
     text,
     url

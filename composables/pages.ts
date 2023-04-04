@@ -8,7 +8,7 @@ export const usePages = () => {
 
   const getNowPage = () => route.fullPath;
 
-  const nowPageSetting: Ref<PageSetting | undefined> = ref(undefined);
+  const nowPageSetting: Ref<PageSetting> = ref($getPageSetting(route.fullPath));
 
   const getNowPagePage = (): number => {
     const qp = Number(
@@ -44,11 +44,12 @@ export const usePages = () => {
     }
   };
 
-  watch(route, () => {
+  const changeRoute = () => {
     nowPageSetting.value = $getPageSetting(route.fullPath);
     savePage();
-    console.log(nowPageSetting.value);
-  });
+  };
+  changeRoute();
+  watch(route, changeRoute);
 
   return {
     pageArray,

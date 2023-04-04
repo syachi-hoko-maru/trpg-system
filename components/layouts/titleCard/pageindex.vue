@@ -31,6 +31,8 @@ const Props = defineProps<Props>();
 const loading = ref(true)
 const index: Ref<string[]> = ref([])
 
+const route = useRoute();
+
 const setIndex = () => {
   index.value = []
   const documents = document.getElementById("page")?.querySelectorAll(".card-div .card-title:not(.card-div .card-div .card-title)")
@@ -44,7 +46,7 @@ const setIndex = () => {
 
 onMounted(() => {
   setIndex()
-  watch(Props, setIndex)
+  watch(route, setIndex)
 })
 </script>
 

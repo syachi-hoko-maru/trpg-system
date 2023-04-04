@@ -150,16 +150,6 @@ const normalPageSettingList: PageSetting[] = [
     tags: ["sw25", "scenario", "me"],
   },
   {
-    title: "おすすめシナリオ",
-    to: "/scenario/osusume",
-    lastmod: "2023/3/1",
-    osusume: true,
-    explain:
-      "管理人しゃちほこ丸がおすすめのSW2.5シナリオをまとめているページです。",
-    tags: ["sw25", "scenario"],
-    hidden: true,
-  },
-  {
     title: "シナリオメモ「とろ〜りとした甘いやつ」",
     to: "/scenario/pudding",
     img: "scenario-image/pudding.webp",

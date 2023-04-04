@@ -26,7 +26,7 @@ const normalPageSettingList: PageSetting[] = [
     img: "page-image/tool.webp",
     osusume: true,
     explain:
-      "このサイトで公開しているTRPG用ツールの一覧を掲載しるぺーじです。どれもソード・ワールド2.5（SW2.5）などのTRPGで役立つものです。判定シミュレータやオンラインセッション募集用画像作成ツールなど。",
+      "このサイトで公開しているTRPG用ツールの一覧を掲載しるページです。どれもソード・ワールド2.5（SW2.5）などのTRPGで役立つものです。判定シミュレータやオンラインセッション募集用画像作成ツールなど。",
     tags: ["sw25", "tool"],
   },
   {

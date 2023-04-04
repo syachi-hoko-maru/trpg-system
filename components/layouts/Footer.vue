@@ -1,5 +1,5 @@
 <template>
-  <v-footer absolute app class="bg-secondary d-block" id="footer">
+  <v-footer absolute app class="bg-secondary d-block" id="footer" :class="fixed ? 'fixed' : ''">
     <div class="my-5" v-if="!error">
       <div class="my-2">
         <atom-link color="text-textbp" to="/setting">
@@ -26,6 +26,7 @@ interface Props {
 const Props = defineProps<Props>();
 
 const { $templateText } = useNuxtApp()
+const { fixed } = useDialogo()
 
 const footerItemList = [
   { to: "/search", title: "ページ一覧・検索" },
@@ -37,5 +38,9 @@ const footerItemList = [
 <style lang="scss" scoped>
 #footer {
   width: 100vw;
+
+  &.fixed {
+    z-index: -1 !important;
+  }
 }
 </style>

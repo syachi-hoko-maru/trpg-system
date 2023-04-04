@@ -18,12 +18,16 @@
 </template>
 
 <script setup lang="ts">
-
 const route = useRoute()
-let drawer = ref(false)
+const { fixed } = useDialogo()
+
+const drawer = ref(false)
 
 watch(route, () => {
   drawer.value = false
+})
+watch(drawer, () => {
+  fixed.value = drawer.value
 })
 </script>
 

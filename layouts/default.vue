@@ -44,6 +44,7 @@ const { $getPageSetting, $templateText } = useNuxtApp()
 const mountedPageSetting: Ref<PageSetting | undefined> = ref(undefined)
 
 const top = ref(0)
+const path = ref("")
 
 let blogFlag = false
 const pageSetting = computed(() => {
@@ -126,9 +127,18 @@ onMounted(() => {
     mountedPageSetting.value = pageSetting.value
   })
   watch(fixed, () => {
-    if (fixed.value) top.value = window.scrollY
+    if (fixed.value) {
+      top.value = window.scrollY
+      path.value = route.fullPath
+    }
     else {
-      setTimeout(() => window.scrollTo(0, top.value), 0.1 * 1000)
+      setTimeout(() => {
+        if (path.value === route.fullPath) {
+          window.scrollTo(0, top.value)
+        } else {
+          window.scrollTo(0, 0)
+        }
+      }, 0.01 * 1000)
     }
     console.log(top.value)
   })

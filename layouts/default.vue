@@ -6,18 +6,20 @@
     <aside>
       <layouts-dialogo />
     </aside>
-    <layouts-main>
-      <article>
-        <layouts-title-card v-if="mountedPageSetting" :page-setting="mountedPageSetting" />
-        <div id="page">
-          <slot />
-        </div>
-        <layouts-paging v-if="mountedPageSetting && mountedPageSetting.page" :page-setting="mountedPageSetting" />
-      </article>
-      <aside>
-        <layouts-tail-card v-if="mountedPageSetting" :page-setting="mountedPageSetting" />
-      </aside>
-    </layouts-main>
+    <div id="app" :class="fixed ? 'fixed' : ''" :style="fixed ? `top: -${top}px` : ''">
+      <layouts-main>
+        <article>
+          <layouts-title-card v-if="mountedPageSetting" :page-setting="mountedPageSetting" />
+          <div id="page">
+            <slot />
+          </div>
+          <layouts-paging v-if="mountedPageSetting && mountedPageSetting.page" :page-setting="mountedPageSetting" />
+        </article>
+        <aside>
+          <layouts-tail-card v-if="mountedPageSetting" :page-setting="mountedPageSetting" />
+        </aside>
+      </layouts-main>
+    </div>
     <aside>
       <layouts-snack />
     </aside>
@@ -35,10 +37,13 @@ const route = useRoute();
 const router = useRouter();
 const theme = useTheme()
 
+const { fixed } = useDialogo()
 const { getNowPath, nowPageSetting } = usePages()
 const { $getPageSetting, $templateText } = useNuxtApp()
 
 const mountedPageSetting: Ref<PageSetting | undefined> = ref(undefined)
+
+const top = ref(0)
 
 let blogFlag = false
 const pageSetting = computed(() => {
@@ -120,12 +125,23 @@ onMounted(() => {
     changePage()
     mountedPageSetting.value = pageSetting.value
   })
+  watch(fixed, () => {
+    if (fixed.value) top.value = window.scrollY
+    else {
+      setTimeout(() => window.scrollTo(0, top.value), 0.1 * 1000)
+    }
+    console.log(top.value)
+  })
 })
 </script>
 
-<style scoped>
-#mainContainer {
-  max-width: 100vw;
-  width: 100vw
+<style lang="scss" scoped>
+#app {
+  width: 100vw;
+
+  &.fixed {
+    position: fixed;
+    height: 100vh;
+  }
 }
 </style>

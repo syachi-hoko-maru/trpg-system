@@ -1,10 +1,10 @@
 <template>
-  <div id="sidemenu" class="pb-10">
+  <div id="sidemenu" class="pb-5">
     <div id="side">
       <nav>
-        <card>
+        <v-card class="px-3 py-2">
           <layouts-menu-list />
-        </card>
+        </v-card>
       </nav>
     </div>
   </div>
@@ -16,7 +16,7 @@
 
   #side {
     position: sticky;
-    top: 100px;
+    top: 80px;
   }
 }
 </style>

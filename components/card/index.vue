@@ -1,12 +1,12 @@
 <template>
-  <section class="card-div" :id="id">
+  <section class="card-div" :id="title">
     <v-card class="my-5" :class="Props.class ? Props.class : 'bg-background text-text'" elevation="3">
       <v-row v-if="Props.loading" class="cardLoading align-center justify-center">
         <v-progress-circular :size="70" :width="7" indeterminate color="primary" />
       </v-row>
       <slot name="tbefore" />
       <div v-if="$slots.title" class="pt-4 pb-1">
-        <h2 class="text-h5 px-4 py-0 my-0">
+        <h2 class="text-h5 px-4 py-0 my-0 card-title">
           <slot name="title" />
         </h2>
         <v-card-subtitle v-if="$slots.subtitle">
@@ -29,12 +29,36 @@
 </template>
 
 <script setup lang="ts">
+import { VNode, VNodeNormalizedChildren } from 'vue';
+
 interface Props {
-  id?: string
   class?: string
   loading?: boolean
 }
 const Props = defineProps<Props>()
+
+const slots = useSlots()
+
+type VNodeChildAtom = VNode | string | number | boolean | null | undefined | void
+
+function extractChildString(target: VNodeNormalizedChildren | VNodeChildAtom): string {
+  if (typeof target === "string" || typeof target === "number" || typeof target === "boolean") {
+    return target.toString()
+  } else if (Array.isArray(target)) {
+    return target.map(extractChildString).join(' ')
+  } else {
+    return ''
+  }
+}
+
+const title = computed(() => {
+  if (!slots.title) return ""
+  const nodes = slots.title!()
+  return nodes.filter(({ type }) => type.toString() === 'Symbol(Text)')
+    .reduce((p, n) => `${p} ${extractChildString(n.children)}`, '')
+    .replace(/^\s*([^\s].*[^\s])\s*$/, "$1")
+})
+
 </script>
 
 <style scoped>

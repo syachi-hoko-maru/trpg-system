@@ -38,7 +38,7 @@ const andml1 = `
 &date_today 更新作業中
 &date_2023/3/1 仮公開
 &date_2023/1/11 更新準備開始
-&button_#recent 最近更新されたページはこちら
+&button_#最近更新されたページ 最近更新されたページはこちら
 
 &1 Contents
 おすすめのコンテンツを3つ紹介します。

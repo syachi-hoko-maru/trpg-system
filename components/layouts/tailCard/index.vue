@@ -13,7 +13,7 @@
     <item-share-page :page-setting="pageSetting">このページをツイート</item-share-page>
     ぜひTwitterでシェアして広めてください！ m(_ _)m
   </card>
-  <card id="recent">
+  <card>
     <template #title>
       最近更新されたページ
     </template>

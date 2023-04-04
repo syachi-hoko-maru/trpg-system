@@ -6,7 +6,7 @@
     <andml :andmls="syuzokuAndml" />
   </card>
   <div v-if="Object.entries($syuzoku).length" id="各種族の紹介">
-    <card v-for="[syuzoku, { explain, debut }] of Object.entries($syuzoku)" :key="syuzoku" :id="syuzoku">
+    <card v-for="[syuzoku, { explain, debut }] of Object.entries($syuzoku)" :key="syuzoku">
       <template #title>
         {{ syuzoku }}
       </template>

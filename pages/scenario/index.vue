@@ -1,6 +1,6 @@
 <template>
   <card-list>
-    <card v-for="sd of $scenarioData" :key="sd.id" :id="sd.id">
+    <card v-for="sd of $scenarioData" :key="sd.id">
       <template #tbefore>
         <v-img :src="`${$templateText.basePath}/webp/${sd.img}`" :alt="`${sd.title}サムネイル画像`" />
       </template>
@@ -18,6 +18,6 @@
   </card-list>
 </template>
 
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 const { $templateText, $scenarioData } = useNuxtApp()
-</script>
+</script> -->

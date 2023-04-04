@@ -8,7 +8,6 @@
     </aside>
     <layouts-main>
       <article>
-        {{ nowPageSetting }}
         <layouts-title-card v-if="mountedPageSetting" :page-setting="mountedPageSetting" />
         <div id="page">
           <slot />

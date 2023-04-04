@@ -51,14 +51,22 @@ function extractChildString(target: VNodeNormalizedChildren | VNodeChildAtom): s
   }
 }
 
-const title = computed(() => {
-  if (!slots.title) return ""
+const title = ref("")
+const setTitle = () => {
+  if (!slots.title) title.value = ""
   const nodes = slots.title!()
-  return nodes.filter(({ type }) => type.toString() === 'Symbol(Text)')
+  const str = nodes
+    .filter(({ type }) => type.toString() === 'Symbol(Text)')
     .reduce((p, n) => `${p} ${extractChildString(n.children)}`, '')
     .replace(/^\s*([^\s].*[^\s])\s*$/, "$1")
-})
+  console.log("slot", nodes[0])
+  title.value = str
+}
 
+onMounted(() => {
+  setTitle()
+  watch(slots, setTitle)
+})
 </script>
 
 <style scoped>

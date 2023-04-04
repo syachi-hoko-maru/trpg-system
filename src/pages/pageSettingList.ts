@@ -111,7 +111,7 @@ const normalPageSettingList: PageSetting[] = [
     title: "SW2.5 おすすめサプリメント紹介",
     to: "/sw25/forbeginner/suppliment",
     page: 5,
-    lastmod: "2023/3/16",
+    lastmod: "2023/4/4",
     img: "page-image/suppliment.webp",
     osusume: true,
     explain:

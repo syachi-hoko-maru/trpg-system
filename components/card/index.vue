@@ -6,7 +6,7 @@
       </v-row>
       <slot name="tbefore" />
       <div v-if="$slots.title" class="pt-4 pb-1">
-        <h2 class="text-h5 px-4 py-0 my-0 card-title">
+        <h2 class="text-h5 px-4 py-0 my-0 card-title" :id="id">
           <slot name="title" />
         </h2>
         <v-card-subtitle v-if="$slots.subtitle">
@@ -29,8 +29,6 @@
 </template>
 
 <script setup lang="ts">
-import { VNode, VNodeNormalizedChildren } from 'vue';
-
 interface Props {
   class?: string
   loading?: boolean
@@ -38,31 +36,39 @@ interface Props {
 const Props = defineProps<Props>()
 
 const slots = useSlots()
-const router = useRouter()
+const { setLoad } = useLoad()
 
-type VNodeChildAtom = VNode | string | number | boolean | null | undefined | void
+const id = ref("")
+const title = ref("")
 
-function extractChildString(target: VNodeNormalizedChildren | VNodeChildAtom): string {
-  if (typeof target === "string" || typeof target === "number" || typeof target === "boolean") {
-    return target.toString()
-  } else if (Array.isArray(target)) {
-    return target.map(extractChildString).join(' ')
-  } else {
-    return ''
+let count = 0
+
+const setTitle = (finish: () => void) => {
+  try {
+    if (!slots.title) throw 0
+    const element = document.getElementById(id.value)
+    if (!element) throw 1
+    const rowtext = element.textContent
+    if (!rowtext) throw 0
+    const text = rowtext?.replace(/^\s*([^\s].*[^\s])\s*$/, "$1")
+    // console.log(count, text)
+    title.value = text
+    finish()
+  } catch (err) {
+    if (err === 0 || count >= 10) {
+      finish()
+      return
+    }
+    // console.log("error", count, err, id.value)
+    setTimeout(() => setTitle(finish), 0.5 * count * 1000)
+    count++
   }
 }
 
-const title = computed(() => {
-  if (!slots.title) {
-    return ""
-  }
-  const nodes = slots.title!()
-  const str = nodes
-    .filter(({ type }) => type.toString() === 'Symbol(Text)')
-    .reduce((p, n) => `${p} ${extractChildString(n.children)}`, '')
-    .replace(/^\s*([^\s].*[^\s])\s*$/, "$1")
-  console.log("slot", str)
-  return str
+onMounted(() => {
+  const finish = setLoad()
+  id.value = `randId_${String(Math.floor(Math.random() * 10 ** 6))}`
+  setTitle(finish)
 })
 </script>
 

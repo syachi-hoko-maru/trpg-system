@@ -32,6 +32,7 @@ import { Ref } from 'vue';
 import { useTheme } from 'vuetify'
 
 const route = useRoute();
+const router = useRouter();
 const theme = useTheme()
 
 const { getNowPath, savePage } = usePages()
@@ -105,10 +106,17 @@ const changePage = () => {
 
 changePage()
 
+const { ok } = useLoad()
+
 onMounted(() => {
   changePage()
   mountedPageSetting.value = pageSetting.value
   theme.global.name.value = localStorage.getItem('theme') !== "dark" ? "myCustomLightTheme" : "myCustomDarkTheme"
+  console.log(ok.value)
+  watch(ok, () => {
+    console.log(ok.value)
+    if (ok.value) router.replace(route.fullPath.replace(route.fullPath, decodeURI(route.fullPath)))
+  })
 
   watch(route, () => {
     changePage()

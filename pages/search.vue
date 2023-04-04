@@ -42,7 +42,8 @@ const route = useRoute();
 const router = useRouter()
 
 const { $pageSettingList, $isPageTag, $pageTagSettings, $pageTags, $templateText } = useNuxtApp()
-const { getQuerys, getNowPath } = usePages()
+const { getNowPage, getQuerys, getNowPath } = usePages()
+const { ok, setLoad } = useLoad()
 
 const form: Ref<FormSettingString> = ref({
   name: "search",
@@ -61,6 +62,17 @@ const results: Ref<{ pageSetting: PageSetting, kanren: number }[]> = ref([])
 const setTitle = ref("ページ一覧")
 const explain = ref("")
 
+const changeHead = () => {
+  const description = explain.value ? explain.value : `${setTitle.value}です。ページ：${results.value.slice(0, 5).map(page => `「${page.pageSetting.title}」`).join("・")}など。このページではサイト内検索ができます。`
+  useHead({
+    title: setTitle.value, meta: [
+      { hid: "description", name: "description", content: description },
+    ]
+  })
+}
+watch(explain, changeHead)
+watch(setTitle, changeHead)
+
 const sortValues = ["デフォルト（関連度順）", "更新日が新しい順", "更新日が古い順"] as const
 const sortValue = ref("デフォルト（関連度順）" as typeof sortValues[number])
 
@@ -71,41 +83,37 @@ const searchSetting: {
   tag?: PageTag,
 } = {}
 
-const setRouter = () => {
-  router.replace(getNowPath() + "?" + Object.entries(searchSetting).filter(([key, value]) => value).map(([key, value]) => `${key}=${value}`).join("&"))
-}
+
 const changeSetting = () => {
   searchSetting.word = form.value.value?.replace(/[,、\s+]/g, "and") || ""
   searchSetting.tag = selectTag.value
-  // form.value.value = ""
-  // selectTag.value = undefined
-  setRouter()
+  const newPath = getNowPath() + "?" + Object.entries(searchSetting).filter(([key, value]) => value).map(([key, value]) => `${key}=${value}`).join("&")
+  if (newPath !== getNowPage()) {
+    router.replace(newPath)
+  }
+  search()
 }
 
 const changeRoute = () => {
   const nowQuerys = getQuerys()
-  if (nowQuerys && querys.value !== nowQuerys) {
-    querys.value = nowQuerys
-    querys.value.forEach((d) =>
-      Object.entries(d).map(([key, value]) => {
-        // console.log(key, value)
-        if (key === "word") {
-          const word = decodeURIComponent(value)
-          searchSetting.word = word
-          form.value.value = word ? word.replace(/and/g, " ") : ""
-        } else if (key === "tag" && $isPageTag(value)) {
-          searchSetting.tag = value
-          selectTag.value = value
-        }
-      })
-    )
-    // console.log(searchSetting)
-    setRouter();
-    search()
-  }
+  if (!nowQuerys || querys.value === nowQuerys) return
+  querys.value = nowQuerys
+  querys.value.forEach((query) =>
+    Object.entries(query).map(([key, value]) => {
+      if (key === "word") {
+        const word = decodeURIComponent(value)
+        searchSetting.word = word
+        form.value.value = word ? word.replace(/and/g, " ") : ""
+      } else if (key === "tag" && $isPageTag(value)) {
+        searchSetting.tag = value
+        selectTag.value = value
+      }
+    })
+  )
+  search
 }
 
-let searchJson: Ref<{ [key: string]: string }> = ref({});
+const searchJson: Ref<{ [key: string]: string }> = ref({});
 let count = 0
 const fetch = async () => {
   try {
@@ -205,14 +213,9 @@ const search = (): void => {
     .sort((a, b) => -a.kanren + b.kanren)
   // console.log(results.value)
   sort()
-  const description = explain.value ? explain.value : `${setTitle.value}です。ページ：${results.value.slice(0, 5).map(page => `「${page.pageSetting.title}」`).join("・")}など。このページではサイト内検索ができます。`
-  useHead({
-    title: setTitle.value, meta: [
-      { hid: "description", name: "description", content: description },
-    ]
-  })
   searchFlag = false
 }
+
 
 const sort = () => {
   if (searchFlag) {
@@ -235,19 +238,13 @@ const sort = () => {
 
 search()
 
-const wait = async () => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, 0.1 * 1000)
-  })
-}
 onMounted(() => {
-  wait().then(() => {
-    changeRoute()
-    mounted.value = true
-    fetch()
-  })
+  changeRoute()
+  mounted.value = true
+  fetch()
   watch(route, changeRoute)
   watch(sortValue, sort)
+  watch(ok, search)
 })
 
 </script>

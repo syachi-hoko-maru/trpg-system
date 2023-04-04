@@ -3,7 +3,7 @@ export const usePages = () => {
 
   const pageArray = useState("pageArray", () => [] as string[]);
 
-  const getNowPage = () => pageArray.value[0];
+  const getNowPage = () => route.fullPath;
   const getNowPagePage = (): number => {
     const qp = Number(
       Array.isArray(route.params.page)
@@ -13,23 +13,19 @@ export const usePages = () => {
     if (Number.isNaN(qp)) return 1;
     else return qp;
   };
-  const getNowPath = () =>
-    getNowPage()?.replace(/\?.*$/, "").replace(/#.*$/, "");
-  const getQuerys = () => {
-    const queryStr = getNowPage().match(/^.*\?([^:\/]+)$/);
-    if (!queryStr) return [];
-    return queryStr[1].split("&").map((str) => {
+  const getNowPath = () => route.path;
+  const getQuerys = () =>
+    Object.entries(route.query).map(([key, value]) => {
       const result: { [key: string]: string } = {};
-      const [key, value] = str.split("=");
-      result[key] = value;
+      if (Array.isArray(value)) result[key] = value.join("");
+      else if (value) result[key] = value;
       return result;
     });
-    // .filter(({ value }) => value);
-  };
+
   const getQueryValue = (query: string) => {
-    const find = getQuerys().find((a) => Object.keys(a)[0] === query);
-    if (!find) return null;
-    else return find[query];
+    const foundObj = getQuerys().find((a) => Object.keys(a)[0] === query);
+    if (!foundObj) return null;
+    else return foundObj[query];
   };
 
   const savePage = (path?: string) => {

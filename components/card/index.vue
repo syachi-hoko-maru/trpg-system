@@ -38,6 +38,7 @@ interface Props {
 const Props = defineProps<Props>()
 
 const slots = useSlots()
+const router = useRouter()
 
 type VNodeChildAtom = VNode | string | number | boolean | null | undefined | void
 
@@ -51,21 +52,17 @@ function extractChildString(target: VNodeNormalizedChildren | VNodeChildAtom): s
   }
 }
 
-const title = ref("")
-const setTitle = () => {
-  if (!slots.title) title.value = ""
+const title = computed(() => {
+  if (!slots.title) {
+    return ""
+  }
   const nodes = slots.title!()
   const str = nodes
     .filter(({ type }) => type.toString() === 'Symbol(Text)')
     .reduce((p, n) => `${p} ${extractChildString(n.children)}`, '')
     .replace(/^\s*([^\s].*[^\s])\s*$/, "$1")
-  console.log("slot", nodes[0])
-  title.value = str
-}
-
-onMounted(() => {
-  setTitle()
-  watch(slots, setTitle)
+  console.log("slot", str)
+  return str
 })
 </script>
 

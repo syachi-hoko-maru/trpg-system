@@ -5,7 +5,6 @@ import { searchWordList } from "./searchWordList";
 
 const outputDir = `${process.cwd()}/.output/public`;
 
-const searchWordLastmod = "2023-03-28";
 const searchTagLastmod = "2023-03-28";
 
 export const setSitemap = () => {
@@ -61,7 +60,7 @@ ${(pageSetting.lastmod as string)
       }
     });
 
-  searchWordList.forEach((word) => {
+  searchWordList.forEach(([word, lastmod]) => {
     result += `
 <url>
     <loc>
@@ -69,7 +68,7 @@ ${(pageSetting.lastmod as string)
       word
     )}
     </loc>
-    <lastmod>${searchWordLastmod}</lastmod>
+    <lastmod>${lastmod}</lastmod>
 </url>
     `;
   });

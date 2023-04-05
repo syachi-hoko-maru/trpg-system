@@ -102,7 +102,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 技能の一覧と紹介",
     to: "/sw25/forbeginner/ginou",
-    lastmod: "2023/4/3",
+    lastmod: "2023/4/5",
     img: "page-image/ginou.webp",
     osusume: true,
     explain:

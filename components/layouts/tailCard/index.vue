@@ -60,14 +60,14 @@ const pageTrees = computed(() => {
   })
   return result
 })
-const shareSetting = computed(() => {
-  const text = Props.pageSetting.to.indexOf("blog/") >= 0 ? `ブログ「${Props.pageSetting.title}」` : Props.pageSetting.title
-  const url = $templateText.baseUrl + Props.pageSetting.to
-  return {
-    text,
-    url
-  }
-})
+// const shareSetting = computed(() => {
+//   const text = Props.pageSetting.to.indexOf("blog/") >= 0 ? `ブログ「${Props.pageSetting.title}」` : Props.pageSetting.title
+//   const url = $templateText.baseUrl + Props.pageSetting.to
+//   return {
+//     text,
+//     url
+//   }
+// })
 
 const recent: { [date: string]: PageSetting[] } = {}
 let count = 0
@@ -86,15 +86,29 @@ const scrollTop = () => {
   scrollTo(0, 0)
 }
 
-const sourceAndml = `
+const sourceAndml = computed(() => `
 &1 ソース
 SW2.5の新刊情報は主に以下より入手しています。
+&br
 - &link_http://www.groupsne.co.jp/news/book.html,グループSNEオフィシャルサイト「新刊情報」
+-- 毎月上旬にだいたい2か月後までの新刊情報が更新されます。
 - ＧＭウォーロック
+-- 本誌
+--- &link_https://www.fujisan.co.jp/product/1281702551/,定期購読の申し込みはこちら
+--- &link_https://sne-ec.com/category/item/supportmagazine/gm_warlock/,購入はこちら（グループSNE公式アンテナショップ「SNE-EC」） 
 -- &link_http://www.groupsne.co.jp/news/book.html,公式Twitter
 -- &link_http://www.groupsne.co.jp/products/magazine/GMW/index.html,グループSNEオフィシャルサイト「製品案内」
 - &link_https://twitter.com/dragonbook_game,富士見ドラゴンブック編集部Twitter
-`
+-- 書影の公開はここ（かAmazon）が最初になることが多いです。
+
+&2 リンク
+` + (Props.pageSetting.to !== "/sw25/new" ? `
+ソード・ワールド2.5の新刊情報は以下のページでまとめています。
+あわせてご覧ください。
+&button_/sw25/new
+`: "") + `
+&button_/search?tag=sw25_new 新刊情報の一覧はこちら
+`)
 </script>
 
 <style scoped>

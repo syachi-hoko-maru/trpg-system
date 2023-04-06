@@ -20,6 +20,15 @@ const normalPageSettingList: PageSetting[] = [
     tags: ["sw25"],
   },
   {
+    title: "ソード・ワールド2.5 新刊情報と刊行予想",
+    to: "/sw25/new",
+    img: "page-image/new.webp",
+    explain:
+      "ソード・ワールド2.5（SW2.5）のサプリメントやリプレイなど関連書籍の新刊情報と刊行予想をまとめています。「ソドワの新刊っていつ出るの？」「今後はどんなサプリが出そうなの？」って方、必見です。",
+    lastmod: "2023/4/6",
+    tags: ["sw25_new", "sw25_moso"],
+  },
+  {
     title: "ソード・ワールド2.5 ツール一覧",
     to: "/sw25/tool",
     lastmod: "2023/3/1",

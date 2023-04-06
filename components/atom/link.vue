@@ -27,7 +27,7 @@ const link = computed(() =>
       ? Props.to
       : Props.to.replace(/\?.*$/, "").replace(/#.*$/, "").endsWith("/")
         ? Props.to
-        : Props.to + "/"
+        : Props.to.replace(/\?.*$/, "").replace(/#.*$/, "") + "/" + Props.to.replace(/^.*([\?#].*)$/, "$1")
 )
 
 let colorClass: string = "text-text"

@@ -36,7 +36,7 @@ const aboutThisPage = `
 こちらのページから &em_初心者向け情報 へ飛ぶことも可能です。
 &button_/sw25
 
-&2 期間情報
+&2 既刊情報
 現在発売中のサプリメントについては、 &em_初心者向けのおすすめ度 と共に以下で紹介しています。
 &button_/sw25/forbeginner/suppliment
 `

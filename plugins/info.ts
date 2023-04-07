@@ -2,7 +2,10 @@ const infoData: { [key: string]: { title: string; description: string } } = {
   trpg: {
     title: "TRPG",
     description: `
-TRPGについて知らない方は、富士見書房公式 TRPG ONLINEの「TRPGとは」に掲載されている説明をご覧ください。
+「TRPGって何？」って方はまず以下のページをご覧ください。
+&button_/trpg? こちら
+&br
+また、富士見書房公式 TRPG ONLINEの「TRPGとは」に掲載されている説明を見るのもおすすめです。
 &button_https://fujimi-trpg-online.jp/about/trpg.html こちら
 `,
   },

@@ -15,6 +15,8 @@ const first = `
 &br
 &em_「ソード・ワールド2.5って何？」 という方は以下のページを読んでください……！
 &button_/sw25
+「TRPGって何？」って方はまず以下のページをご覧ください。
+&button_/trpg
 `
 const { $pageSettingList } = useNuxtApp()
 

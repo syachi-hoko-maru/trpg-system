@@ -10,6 +10,8 @@ const andml = `
 
 &1 ソード・ワールド2.5の概要
 ソード・ワールド2.5（SW2.5）は &em_ファンタジー世界 「ラクシア」で冒険を繰り広げる、 &link_http://www.groupsne.co.jp/index.html,グループSNE による &info_trpg です。
+「TRPGって何？」って方はまず以下のページをご覧ください。
+&button_/trpg
 
 &&faq_ファンタジーとは
 幻想的なフィクション（創作）です。

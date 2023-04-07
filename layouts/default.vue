@@ -1,4 +1,5 @@
 <template>
+  <Html lang="ja" />
   <v-app>
     <header>
       <layouts-header />

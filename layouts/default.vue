@@ -78,19 +78,19 @@ const changePage = () => {
       content: title,
     }
   ]
-  if (pageSetting.value.explain?.length) {
-    meta.push({
-      hid: "og:description",
-      name: "og:description",
-      content: Array.isArray(pageSetting.value.explain) ? pageSetting.value.explain.join("\n") : pageSetting.value.explain
-    })
-  } else {
-    meta.push({
-      hid: "og:description",
-      name: "og:description",
-      content: "このサイトではTRPG、特にSW2.5のシナリオの公開や、役立つツールの提供などを行なっています。"
-    })
-  }
+  const description = pageSetting.value.explain?.length
+    ? (Array.isArray(pageSetting.value.explain) ? pageSetting.value.explain.join("\n") : pageSetting.value.explain)
+    : "このサイトではTRPG、特にSW2.5のシナリオの公開や、役立つツールの提供などを行なっています。"
+  meta.push({
+    hid: "og:description",
+    name: "og:description",
+    content: description
+  })
+  meta.push({
+    hid: "description",
+    name: "description",
+    content: description
+  })
   if (pageSetting.value.img) {
     meta.push({
       hid: "og:image",

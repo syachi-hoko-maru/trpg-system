@@ -22,6 +22,7 @@ const andmlLineScriptArray: AndmlScript[] = [
   { script: "date_", component: resolveComponent("AndmlLineDate") },
   { script: "amazon_", component: resolveComponent("AndmlLineAmazon") },
   { script: "2", component: resolveComponent("AndmlLineHead2") },
+  { script: "3", component: resolveComponent("AndmlLineHead3") },
   { script: "game", component: resolveComponent("Game") },
 ]
 

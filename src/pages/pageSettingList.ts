@@ -14,6 +14,7 @@ const normalPageSettingList: PageSetting[] = [
     title: "TRPGって何？　TRPGの始め方まで詳しく解説",
     to: "/trpg",
     lastmod: "2023/4/7",
+    osusume: true,
     img: "page-image/trpg.webp",
     tags: ["trpg"],
   },

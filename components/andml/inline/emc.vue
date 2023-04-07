@@ -1,8 +1,8 @@
 <template>
-  {{ prelinktext }}<em class="em"
+  {{ preemtext }}<em class="em"
     :style="`background: linear-gradient(transparent 50%, ${$vuetify.theme.current.colors.accent} 50%);`">
-    <andml-inline-spanc :props="linktext" />
-  </em>{{ postlinktext }}
+    <andml-inline-spanc :props="emtext" />
+  </em>{{ postemtext }}
 </template>
 
 <script setup lang="ts">
@@ -11,24 +11,24 @@ interface Props {
 }
 const Props = defineProps<Props>();
 
-const linktext = ref(Props.props)
-const prelinktext = ref("")
-const postlinktext = ref("")
+const emtext = ref(Props.props)
+const preemtext = ref("")
+const postemtext = ref("")
 
 const notEmWords = ["。", "、"]
 for (let w of notEmWords) {
   if (Props.props.endsWith(w)) {
-    linktext.value = Props.props.replace(new RegExp(`${w}$`), "")
-    postlinktext.value = w
+    emtext.value = Props.props.replace(new RegExp(`${w}$`), "")
+    postemtext.value = w
   }
 }
 
 const kakomiWords = [["「", "」"]]
 for (let w of kakomiWords) {
   if (Props.props.startsWith(w[0]) && Props.props.endsWith(w[1])) {
-    linktext.value = Props.props.replace(new RegExp(`^${w[0]}(.*)${w[1]}$`), "$1")
-    prelinktext.value = w[0]
-    postlinktext.value = w[1]
+    emtext.value = Props.props.replace(new RegExp(`^${w[0]}(.*)${w[1]}$`), "$1")
+    preemtext.value = w[0]
+    postemtext.value = w[1]
   }
 }
 

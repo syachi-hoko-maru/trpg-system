@@ -29,8 +29,19 @@ ${(pageSetting.lastmod as string)
         if (pageSetting.img) {
           result += `
 <image:image>
-<image:loc>https://syachi-hoko-maru.github.io/trpg-system/webp/${pageSetting.img}</image:loc>
+<image:loc>
+https://syachi-hoko-maru.github.io/trpg-system/webp/${pageSetting.img}
+</image:loc>
 </image:image>
+<image:image>
+<image:loc>
+https://syachi-hoko-maru.github.io/trpg-system/${pageSetting.img.replace(
+            /webp$/,
+            "png"
+          )}
+</image:loc>
+</image:image>
+
 `;
         }
         result += "</url>";
@@ -51,7 +62,16 @@ ${(pageSetting.lastmod as string)
           if (pageSetting.img) {
             result += `
 <image:image>
-<image:loc>https://syachi-hoko-maru.github.io/trpg-system/${pageSetting.img}</image:loc>
+<image:loc>
+https://syachi-hoko-maru.github.io/trpg-system/webp/${pageSetting.img}
+</image:loc>
+</image:image>
+<image:loc>
+https://syachi-hoko-maru.github.io/trpg-system/${pageSetting.img.replace(
+              /webp$/,
+              "png"
+            )}
+</image:loc>
 </image:image>
 `;
           }

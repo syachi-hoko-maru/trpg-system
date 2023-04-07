@@ -4,7 +4,7 @@
       <v-menu open-on-hover v-if="mounted">
         <template v-slot:activator="{ props }">
           <span v-bind="props" class="word">
-            {{ w.replace(/^&/, "") }}
+            {{ w.replace(/¥s/g, " ").replace(/^&/, "") }}
           </span>
         </template>
         <div class="word-card">
@@ -14,15 +14,15 @@
         </div>
       </v-menu>
       <span v-else>
-        {{ w.replace(/^&/, "") }} {{ wordList[w.replace(/^&/, "")] }}
+        {{ w.replace(/¥s/g, " ").replace(/^&/, "") }} {{ wordList[w.replace(/^&/, "")] }}
       </span>
     </template>
     <span v-else>
-      {{ w }}
+      {{ w.replace(/¥s/g, " ") }}
     </span>
   </template>
   <template v-if="words.length === 0">
-    {{ props }}
+    {{ props.replace(/¥s/g, " ") }}
   </template>
 </template>
 

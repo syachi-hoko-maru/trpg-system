@@ -10,7 +10,7 @@ export const pageTagSettings: PageTagSettings = {
   sw25_moso: {
     label: "ソード・ワールド2.5 妄想",
     explanation:
-      "TRPG「ソード・ワールド2.5」のオリジナルデータ、オリジナル設定など",
+      "TRPG「ソード・ワールド2.5」のオリジナルデータ、オリジナル設定などのタグ",
   },
   scenario: {
     label: "シナリオ",
@@ -19,6 +19,10 @@ export const pageTagSettings: PageTagSettings = {
   tool: {
     label: "ツール",
     explanation: "TRPGに役立つツールのタグ",
+  },
+  trpg: {
+    label: "TRPG全般",
+    explanation: "TRPG全般に関するタグ",
   },
   me: {
     label: "しゃちほこ丸",
@@ -32,6 +36,7 @@ export const pageTags: PageTag[] = [
   "scenario",
   "tool",
   "me",
+  "trpg",
 ];
 export const isPageTag = (a: unknown): a is PageTag => {
   return pageTags.some((pageTag) => pageTag === a);

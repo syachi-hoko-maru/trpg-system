@@ -22,7 +22,8 @@ declare type PageTag =
   | "sw25_moso"
   | "tool"
   | "scenario"
-  | "me";
+  | "me"
+  | "trpg";
 declare type PageSetting = {
   readonly title: string;
   readonly to: string;

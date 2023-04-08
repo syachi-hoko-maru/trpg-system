@@ -5,6 +5,11 @@ const menuList: (MenuCategory | MenuPage)[] = [
     to: "/",
   },
   {
+    icon: "mdi-star",
+    title: "TRPGとは？",
+    to: "/trpg",
+  },
+  {
     categoryName: "SW2.5 ツール",
     pageList: [
       {
@@ -39,6 +44,12 @@ const menuList: (MenuCategory | MenuPage)[] = [
         title: "おすすめサプリメント",
         to: "/sw25/forbeginner/suppliment/1",
       },
+      {
+        icon: "mdi-star",
+        title: "シナリオの探し方",
+        to: "/sw25/forbeginner/scenario",
+        // disabled: true,
+      },
     ],
   },
   {
@@ -49,44 +60,38 @@ const menuList: (MenuCategory | MenuPage)[] = [
         title: "公開シナリオ一覧",
         to: "/scenario",
       },
-      {
-        icon: "mdi-star",
-        title: "おすすめシナリオ",
-        to: "/scenario/osusume",
-        disabled: true,
-      },
     ],
   },
   {
-    categoryName: "ブログ",
+    categoryName: "ブログ＆管理人",
     pageList: [
       {
         icon: "mdi-message-text",
         title: "ブログ",
         to: "/blog",
       },
-    ],
-  },
-  {
-    categoryName: "管理人",
-    pageList: [
       {
         icon: "mdi-account",
         title: "管理人プロフィール",
         to: "/me",
       },
-      // {
-      //   icon: "mdi-book",
-      //   title: "所持ルールブック一覧",
-      //   to: "/me/rulebook",
-      // },
-      {
-        icon: "mdi-alert-circle",
-        title: "ハウスルール",
-        to: "/me/houserule",
-      },
     ],
   },
+  // {
+  //   categoryName: "管理人",
+  //   pageList: [
+  //     // {
+  //     //   icon: "mdi-book",
+  //     //   title: "所持ルールブック一覧",
+  //     //   to: "/me/rulebook",
+  //     // },
+  //     {
+  //       icon: "mdi-alert-circle",
+  //       title: "ハウスルール",
+  //       to: "/me/houserule",
+  //     },
+  //   ],
+  // },
 ];
 
 export default defineNuxtPlugin(() => {

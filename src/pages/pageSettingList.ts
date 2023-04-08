@@ -160,9 +160,19 @@ const normalPageSettingList: PageSetting[] = [
     tags: ["sw25"],
   },
   {
+    title: "SW2.5 シナリオの探し方とおすすめシナリオ【初心者GM向け】",
+    to: "/sw25/forbeginner/scenario",
+    lastmod: "2023/4/8",
+    img: "page-image/osusume-scenario.webp",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5）の初心者GMの方向けに、シナリオを探す方法を掲載しています。また、ソード・ワールド2.5の無料公開されているおすすめシナリオを紹介しています。",
+    tags: ["sw25", "scenario"],
+  },
+  {
     title: "公開シナリオ一覧",
     to: "/scenario",
-    lastmod: "2023/3/1",
+    lastmod: "2023/4/8",
     img: "page-image/scenario.webp",
     explain:
       "管理人しゃちほこ丸が公開しているTRPGシナリオの一覧です。ソード・ワールド2.5（SW2.5）やエモクロアTRPGのシナリオを公開しています。",

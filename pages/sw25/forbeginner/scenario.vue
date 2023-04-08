@@ -208,6 +208,16 @@ const scenarioList: s[] = [
     ],
     link: "https://talto.cc/projects/jAQ1NWeq69ggbihahUTBg"
   },
+  {
+    scenario: "「ようじょわーるどへようこそ」",
+    author: "ジルニィさん",
+    // twitter: "",
+    explain: [
+      "「ようじょわーるどへようこそ」は「わちゃわちゃ遊びたい人向け。」と書いてあるように、戦闘メインではなく、ロールプレイをとにかく楽しむ、そんなソード・ワールド2.5を遊びたい人におすすめです。僕自身、作者さんGMで遊ばせてもらったのですが、めちゃくちゃ楽しかったです。",
+      "処理が多めですが、仲良い人とわちゃわちゃ遊びたい人にはおすすめです。"
+    ],
+    link: "https://talto.cc/projects/jAQ1NWeq69ggbihahUTBg"
+  },
 
 ]
 

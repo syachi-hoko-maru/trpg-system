@@ -198,6 +198,16 @@ const scenarioList: s[] = [
     ],
     link: "https://talto.cc/projects/uRujkoZrTWYvks_nMeM5g"
   },
+  {
+    scenario: "「21グラムの後日譚」",
+    author: "殻付飛鳥さん",
+    twitter: "karatuki_egg",
+    explain: [
+      "殻付飛鳥さんは同人TRPG「イフ・イフ・イフ」を作ったり、「ストリテラ」ルルブ収録シナリオを書いたりしているすごい人です。",
+      "「21グラムの後日譚」は「PC全員、冒険者でありながら死者（幽霊、データ的には『ゴースト』）」という特殊なシナリオです。ただ、それで複雑になるということはなく、遊びやすいシナリオです。"
+    ],
+    link: "https://talto.cc/projects/jAQ1NWeq69ggbihahUTBg"
+  },
 
 ]
 

@@ -218,6 +218,16 @@ const scenarioList: s[] = [
     ],
     link: "https://talto.cc/projects/jAQ1NWeq69ggbihahUTBg"
   },
+  {
+    scenario: "「水路の迷子を追いかけて」",
+    author: "綾取カラムさん",
+    twitter: "ayatori_krm",
+    explain: [
+      "綾取カラムさんはTwitterでよく初心者向けのセッションを開催しており、「水路の迷子を追いかけて」はその際に使っているシナリオでもあるようです。",
+      "このシナリオはGMもルールブックIのみで遊ぶことができます。さらに、キャンペーンを続ける場合のきっかけも載っています。"
+    ],
+    link: "https://talto.cc/projects/FrAFRLXjNCkf0Yojx5bZR"
+  },
 
 ]
 

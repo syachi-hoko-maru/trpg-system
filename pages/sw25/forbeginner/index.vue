@@ -4,6 +4,7 @@
     <andml :andmls="first" />
   </card>
   <itemPagesindex :pageSettingList="forbeginnerPages" />
+  <CardArrayByAndml :andml="andml2" />
 </template>
 
 <script setup lang="ts">
@@ -17,6 +18,14 @@ const first = `
 &button_/sw25
 「TRPGって何？」って方はまず以下のページをご覧ください。
 &button_/trpg
+`
+
+const andml2 = `
+&1 共有のお願い
+このページはソード・ワールド2.5の紹介用にバンバン使ってください！
+&br
+このページの内容が「分かりやすかった」「役に立った」という方は、ぜひ知り合いに伝えたり、Twitterでシェアしたり、してください！
+Twitterでのシェアはもう少し下へスクロールしたところにボタンがあります。
 `
 const { $pageSettingList } = useNuxtApp()
 

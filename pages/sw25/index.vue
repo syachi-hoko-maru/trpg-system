@@ -113,6 +113,12 @@ const andml = `
 他にも役立つ情報などをまとめたページがあります。
 &button_/search?tag=sw25 こちら
 
+&2 共有のお願い
+このページはソード・ワールド2.5の紹介用にバンバン使ってください！
+&br
+このページの内容が「分かりやすかった」「役に立った」という方は、ぜひ知り合いに伝えたり、Twitterでシェアしたり、してください！
+Twitterでのシェアはもう少し下へスクロールしたところにボタンがあります。
+
 &1 公式リンク
 &button_https://fujimi-trpg-online.jp/game/sw25.html 富士見書房公式 TRPG ONLINE
 &button_http://www.groupsne.co.jp/products/sw/index.html 株式会社グループＳＮＥ

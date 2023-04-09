@@ -13,9 +13,11 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "TRPGって何？　TRPGの始め方まで詳しく解説",
     to: "/trpg",
-    lastmod: "2023/4/7",
+    lastmod: "2023/4/9",
     osusume: true,
     img: "page-image/trpg.webp",
+    explain:
+      "TRPG初心者向けに「TRPGとは何か」「TRPGの魅力」「TRPGの始め方」を詳しく解説しています。クトゥルフ神話TRPGなどのおすすめのTRPGシステムを5つ比較しながら解説します。「TRPGって何だろう？」「ルールブックを買ってみたけど誰と遊ぼう……」という方向けです。TRPG経験者も「TRPGとは」を解説する際の参考に、ぜひみていってください。",
     tags: ["trpg"],
   },
   {
@@ -24,7 +26,7 @@ const normalPageSettingList: PageSetting[] = [
     img: "page-image/about.webp",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5）というTRPGについて、簡潔にその魅力を紹介するページです。初心者向け情報やその他ソドワに役立つツール・情報へのリンクもあります。",
+      "ソード・ワールド2.5（SW2.5）というTRPGについて、簡潔にその魅力を紹介するページです。ファンタジーが好きな方、ソード・ワールド2.5でTRPGをしてみましょう。TRPG初心者向け情報やその他ソドワに役立つツール・情報へのリンクもあります。",
     lastmod: "2023/4/3",
     tags: ["sw25"],
   },
@@ -162,11 +164,11 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 シナリオの探し方とおすすめシナリオ【初心者GM向け】",
     to: "/sw25/forbeginner/scenario",
-    lastmod: "2023/4/8",
+    lastmod: "2023/4/9",
     img: "page-image/osusume-scenario.webp",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5）の初心者GMの方向けに、シナリオを探す方法を掲載しています。また、ソード・ワールド2.5の無料公開されているおすすめシナリオを紹介しています。",
+      "ソード・ワールド2.5（SW2.5）の初心者GMの方向けに、シナリオを探す方法と無料公開されているおすすめシナリオを掲載しています。おすすめシナリオは初心者に限らず、経験者でも参考になるシナリオばかりです。「ソード・ワールド2.5のGMをやってみたい」「ソード・ワールド2.5のおすすめシナリオが知りたい」という方は必見です。",
     tags: ["sw25", "scenario"],
   },
   {
@@ -175,7 +177,7 @@ const normalPageSettingList: PageSetting[] = [
     lastmod: "2023/4/8",
     img: "page-image/scenario.webp",
     explain:
-      "管理人しゃちほこ丸が公開しているTRPGシナリオの一覧です。ソード・ワールド2.5（SW2.5）やエモクロアTRPGのシナリオを公開しています。",
+      "管理人しゃちほこ丸が公開しているTRPGのシナリオの一覧です。ソード・ワールド2.5（SW2.5）やエモクロアTRPGのシナリオを公開しています。TRPGでファンタジーな冒険をしましょう。",
     tags: ["sw25", "scenario", "me"],
   },
   {

@@ -66,6 +66,7 @@ ${(pageSetting.lastmod as string)
 https://syachi-hoko-maru.github.io/trpg-system/webp/${pageSetting.img}
 </image:loc>
 </image:image>
+<image:image>
 <image:loc>
 https://syachi-hoko-maru.github.io/trpg-system/${pageSetting.img.replace(
               /webp$/,

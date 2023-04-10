@@ -2,9 +2,17 @@ import { Ref } from "vue";
 
 export const usePages = () => {
   const route = useRoute();
-  const { $getPageSetting } = useNuxtApp();
+  const { $getPageSetting, $getOsusumePageList } = useNuxtApp();
 
   const pageArray = useState("pageArray", () => [] as string[]);
+  const osusumePageArray = useState(
+    "osusumePageArray",
+    () => [] as PageSetting[]
+  );
+  const kanrenPageArray = useState(
+    "kanrenPageArray",
+    () => [] as PageSetting[]
+  );
 
   const getNowPage = () => route.fullPath;
 
@@ -47,12 +55,24 @@ export const usePages = () => {
   const changeRoute = () => {
     nowPageSetting.value = $getPageSetting(route.fullPath);
     savePage();
+    osusumePageArray.value = $getOsusumePageList(
+      nowPageSetting.value,
+      "osusume",
+      pageArray.value
+    );
+    kanrenPageArray.value = $getOsusumePageList(
+      nowPageSetting.value,
+      "kanren",
+      pageArray.value
+    );
   };
   changeRoute();
   watch(route, changeRoute);
 
   return {
     pageArray,
+    osusumePageArray,
+    kanrenPageArray,
     nowPageSetting,
     getNowPage,
     getNowPagePage,

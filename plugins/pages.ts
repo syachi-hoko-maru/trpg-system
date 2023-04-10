@@ -1,3 +1,4 @@
+import { getOsusumePageList } from "~~/src/pages/getOsusumePageList";
 import { getPageSetting } from "~~/src/pages/getPageSetting";
 import { pageSettingList } from "~~/src/pages/pageSettingList";
 import { isPageTag, pageTags, pageTagSettings } from "~~/src/pages/pageTags";
@@ -9,6 +10,7 @@ export default defineNuxtPlugin(() => {
     provide: {
       pageSettingList,
       getPageSetting,
+      getOsusumePageList,
       pageTagSettings,
       isPageTag,
       scenarioData,

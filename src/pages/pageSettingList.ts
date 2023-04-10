@@ -87,7 +87,7 @@ const normalPageSettingList: PageSetting[] = [
     img: "page-image/material.webp",
     osusume: true,
     explain:
-      "TRPG、特にソード・ワールド2.5（SW2.5）で遊ぶ際にココフォリアなどで使えるオンラインセッション用素材の紹介ページです。",
+      "TRPG、特にソード・ワールド2.5（SW2.5）で遊ぶ際にココフォリアなどで使えるオンラインセッション用素材を紹介するページです。現在、RPG用のマップ素材と『ユーシズ』サプリのボトルドールシートを公開しています。",
     tags: ["sw25", "tool"],
   },
   {

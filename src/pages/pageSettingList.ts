@@ -176,6 +176,7 @@ const normalPageSettingList: PageSetting[] = [
     to: "/scenario",
     lastmod: "2023/4/8",
     img: "page-image/scenario.webp",
+    osusume: true,
     explain:
       "管理人しゃちほこ丸が公開しているTRPGのシナリオの一覧です。ソード・ワールド2.5（SW2.5）やエモクロアTRPGのシナリオを公開しています。TRPGでファンタジーな冒険をしましょう。",
     tags: ["sw25", "scenario", "me"],

@@ -49,22 +49,22 @@ export const getOsusumePageList = (
   } else {
     // おすすめ
     const osusumeDataList = dataList.filter((page) => page.img && page.osusume);
-    // 作者がしゃちほこ丸のシナリオを表示する
-    if (pageSetting.to.indexOf("scenario") === -1) {
-      scenarioData
-        .filter((sd) => sd.author === "しゃちほこ丸")
-        .forEach((sd) => {
-          osusumeDataList.push({
-            title: sd.title,
-            to: `/scenario#${sd.id}`,
-            explain: sd.explain,
-            img: sd.img,
-            osusume: true,
-            lastmod: "",
-            tags: [],
-          });
-        });
-    }
+    // // 作者がしゃちほこ丸のシナリオを表示する
+    // if (pageSetting.to.indexOf("scenario") === -1) {
+    //   scenarioData
+    //     .filter((sd) => sd.author === "しゃちほこ丸")
+    //     .forEach((sd) => {
+    //       osusumeDataList.push({
+    //         title: sd.title,
+    //         to: `/scenario#${sd.id}`,
+    //         explain: sd.explain,
+    //         img: sd.img,
+    //         osusume: true,
+    //         lastmod: "",
+    //         tags: [],
+    //       });
+    //     });
+    // }
     return shuffle(osusumeDataList)
       .filter((page) =>
         pageArray.slice(0, osusumeDataList.length - 9).indexOf(page.to)

@@ -311,7 +311,8 @@ const blogPageSettingList: PageSetting[] = (blogSettingList as Blog[])
           .replace(/&[^\s]*\s/g, "")
           .replace(/[\s_]/g, "")
           .replace(/\n/g, " &br ")
-          .slice(0, 100),
+          .slice(0, 100) +
+        `（公開日：${b.date}）`,
     };
   });
 

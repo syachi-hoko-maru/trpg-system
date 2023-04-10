@@ -51,7 +51,6 @@ let originalHheadFlag = false
 const pageSetting = computed(() => {
   const pageUrl = getNowPath()
   if (!pageUrl && pageUrl !== "") return
-  console.log(pageUrl)
   if (pageUrl.indexOf("/blog/") >= 0 || pageUrl === "/search") {
     originalHheadFlag = true
   } else {

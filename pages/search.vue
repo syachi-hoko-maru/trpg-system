@@ -65,9 +65,9 @@ const setTitle = ref(defaultPageName)
 const explain = ref("")
 
 const changeHead = () => {
-  const description = (explain.value
-    ? explain.value
-    : `${setTitle.value === defaultPageName ? "このウェブサイトのページ" : setTitle.value}の一覧です。`
+  const description = (
+    `${setTitle.value === defaultPageName ? "このウェブサイトのページ" : setTitle.value}の一覧です。`
+    + (explain.value ? `${explain.value}です。` : "")
     + `ページ：${results.value.slice(0, 3).map(page => `「${page.pageSetting.title}」`).join("・")}など。`)
     + `このページではサイト内検索ができます。`
   useHead({

@@ -4,14 +4,24 @@
     type="kanren" />
   <item-amazon v-if="pageSetting.tags.findIndex(tag => tag.indexOf('sw25') >= 0) >= 0" />
   <card>
-    <template v-for="(pageTree, i) of pageTrees" :key="pageTree.to">
-      <span v-if="i" class="user-select-none"> &gt; </span>
-      <atom-link :to="pageTree.to" deco>
-        {{ pageTree.title }}
-      </atom-link>
-    </template>
+    <div class="mt-3" v-if="pageTrees.length">
+      <atom-link to="/" deco>トップ</atom-link>
+      <template v-for="(pageTree, i) of pageTrees" :key="pageTree.to">
+        <span class="user-select-none"> &gt; </span>
+        <atom-link :to="pageTree.to" deco>{{ pageTree.title }}</atom-link>
+      </template>
+      <span class="user-select-none">
+        &gt; <br>
+        {{ pageSetting.title }}
+      </span>
+    </div>
     <item-share-page :page-setting="pageSetting">このページをツイート</item-share-page>
-    ぜひTwitterでシェアして広めてください！ m(_ _)m
+    <item-button prepend-icon="mdi-content-copy" @click.stop="() => $copy($templateText.baseUrl + pageSetting.to)">
+      このページのURLをコピー
+    </item-button>
+    <div class="mt-3">
+      ぜひTwitterなどでシェアしてこのウェブサイトを広めてください！
+    </div>
   </card>
   <card>
     <template #title>
@@ -53,6 +63,7 @@ const pageTrees = computed(() => {
   Props.pageSetting.to.split("/").filter(u => u).forEach(u => {
     urls.push(u)
     const to = "/" + urls.join("/")
+    if (to === Props.pageSetting.to) return
     const pageSetting = $getPageSetting(to)
     if (!pageSetting) throw `[ERROR] page ${to} not found`
     result.push({

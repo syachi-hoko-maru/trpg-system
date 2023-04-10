@@ -35,8 +35,8 @@ export const pageTags: PageTag[] = [
   "sw25_moso",
   "scenario",
   "tool",
-  "me",
   "trpg",
+  "me",
 ];
 export const isPageTag = (a: unknown): a is PageTag => {
   return pageTags.some((pageTag) => pageTag === a);

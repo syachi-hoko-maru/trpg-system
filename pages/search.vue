@@ -118,6 +118,7 @@ const changeRoute = () => {
       }
     })
   )
+  search()
 }
 
 const searchJson: Ref<{ [key: string]: string }> = ref({});

@@ -4,7 +4,7 @@
       <template #title>おすすめのページ</template>
       <div v-for="op of osusumePageArray" class="mb-3">
         <atom-link :to="op.to">
-          <v-img :src="`${$templateText.basePath}/webp/${op.img}`" width="100%" cover />
+          <v-img :src="`${$templateText.basePath}/webp/${op.img}`" width="100%" aspect-ratio="40/21" />
         </atom-link>
       </div>
     </card>

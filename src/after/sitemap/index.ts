@@ -5,7 +5,7 @@ import { searchWordList } from "./searchWordList";
 
 const outputDir = `${process.cwd()}/.output/public`;
 
-const searchTagLastmod = "2023-03-28";
+const searchTagLastmod = "2023-04-10";
 
 export const setSitemap = () => {
   let result = "";

@@ -63,9 +63,15 @@ const setTitle = ref("ページ一覧")
 const explain = ref("")
 
 const changeHead = () => {
-  const description = explain.value ? explain.value : `${setTitle.value}です。ページ：${results.value.slice(0, 5).map(page => `「${page.pageSetting.title}」`).join("・")}など。このページではサイト内検索ができます。`
+  const description = (explain.value
+    ? explain.value
+    : `${setTitle.value}の一覧です。ページ：${results.value.slice(0, 3).map(page => `「${page.pageSetting.title}」`).join("・")}など。`) + `このページではサイト内検索ができます。`
   useHead({
     title: setTitle.value, meta: [
+      { hid: "og:url", name: 'og:url', content: $templateText.baseUrl + getNowPage(), },
+      { hid: "og:title", name: 'og:title', content: setTitle.value, },
+      { hid: "og:description", name: "og:description", content: description },
+      { hid: "og:image", name: "og:image", content: $templateText.baseUrl + "/ogp.png" },
       { hid: "description", name: "description", content: description },
     ]
   })
@@ -110,7 +116,6 @@ const changeRoute = () => {
       }
     })
   )
-  search
 }
 
 const searchJson: Ref<{ [key: string]: string }> = ref({});
@@ -192,7 +197,7 @@ const search = (): void => {
         }
       })
       if (setting.length === 1) {
-        setTitle.value = `「${words.join(" ")}」の検索結果`
+        setTitle.value = `「${words.join(" ")}」に関連するページ`
       }
     }
   })
@@ -213,6 +218,7 @@ const search = (): void => {
     .sort((a, b) => -a.kanren + b.kanren)
   // console.log(results.value)
   sort()
+  changeHead()
   searchFlag = false
 }
 
@@ -236,12 +242,14 @@ const sort = () => {
     })
 }
 
+changeRoute()
+fetch()
 search()
 
 onMounted(() => {
   changeRoute()
   mounted.value = true
-  fetch()
+
   watch(route, changeRoute)
   watch(sortValue, sort)
   watch(ok, search)

@@ -19,7 +19,7 @@ export const usePages = () => {
     if (Number.isNaN(qp)) return 1;
     else return qp;
   };
-  const getNowPath = () => route.path;
+  const getNowPath = () => route.path.replace(/^(.+)\/$/, "$1");
   const getQuerys = () =>
     Object.entries(route.query).map(([key, value]) => {
       const result: { [key: string]: string } = {};

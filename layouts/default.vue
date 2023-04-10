@@ -47,14 +47,15 @@ const mountedPageSetting: Ref<PageSetting | undefined> = ref(undefined)
 const top = ref(0)
 const path = ref("")
 
-let blogFlag = false
+let originalHheadFlag = false
 const pageSetting = computed(() => {
   const pageUrl = getNowPath()
   if (!pageUrl && pageUrl !== "") return
-  if (pageUrl.indexOf("/blog/") >= 0) {
-    blogFlag = true
+  console.log(pageUrl)
+  if (pageUrl.indexOf("/blog/") >= 0 || pageUrl === "/search") {
+    originalHheadFlag = true
   } else {
-    blogFlag = false
+    originalHheadFlag = false
   }
   const pageSetting = $getPageSetting(pageUrl)
   return pageSetting
@@ -62,7 +63,7 @@ const pageSetting = computed(() => {
 
 const changePage = () => {
   if (!pageSetting.value) return
-  if (blogFlag) {
+  if (originalHheadFlag) {
     // console.log("blog!!")
     return
   }

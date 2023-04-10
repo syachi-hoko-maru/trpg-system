@@ -1,7 +1,8 @@
 <template>
   <item-pagecard v-if="internalFlag && !normalButton" :pagePath="url" />
-  <atom-link :to="Props.url" :button="true" v-else>
-    <v-btn class="bg-background mt-4 mb-1" :prepend-icon="Props.prependIcon" :color="Props.color" block>
+  <atom-link :to="Props.url" :button="true" v-else :disabled="disabled">
+    <v-btn class="bg-background mt-4 mb-1" :prepend-icon="Props.prependIcon" :color="Props.color" block
+      :disabled="disabled">
       <slot />
       <v-icon v-if="externalFlag" icon="mdi-open-in-new" size="x-small" />
     </v-btn>
@@ -14,6 +15,7 @@ interface Props {
   prependIcon?: string,
   normalButton?: boolean
   color?: string
+  disabled?: boolean
 }
 const Props = withDefaults(defineProps<Props>(), { url: "action", normalButton: false });
 

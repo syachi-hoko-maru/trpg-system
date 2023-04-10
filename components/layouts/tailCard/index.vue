@@ -17,14 +17,16 @@
     <template #title>
       最近更新されたページ
     </template>
-    <div v-for="[date, pages] of Object.entries(recent)" :key="date" class="mt-2">
+    最近更新されたページ{{ recent.length }}件を表示中
+    <item-pagecard v-for="r of recent" :page-setting="r" />
+    <!-- <div v-for="[date, pages] of Object.entries(recent)" :key="date" class="mt-2">
       {{ date }}
       <div v-for="page of pages" :key="page.to" class="pl-3 pb-2">
         <item-textlink :to="page.to" deco>
           {{ page.to.indexOf("/blog/") === 0 ? `ブログ「${page.title}」` : page.title }}
         </item-textlink>
       </div>
-    </div>
+    </div> -->
   </card>
   <layouts-tail-card-osusume v-if="pageSetting.to !== '/policy'" :page-setting="pageSetting" />
   <card>
@@ -69,19 +71,24 @@ const pageTrees = computed(() => {
 //   }
 // })
 
-const recent: { [date: string]: PageSetting[] } = {}
+// const recent: { [date: string]: PageSetting[] } = {}
 let count = 0
-$pageSettingList.filter(p => !p.hidden)
+// $pageSettingList.filter(p => !p.hidden)
+//   .sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime())
+//   .slice(0, 15)
+//   .forEach(p => {
+//     if (!recent[p.lastmod] || !recent[p.lastmod].length) {
+//       if (count < 10) recent[p.lastmod] = []
+//       else return
+//     }
+//     recent[p.lastmod].push(p)
+//     count++
+//   })
+const recent = $pageSettingList
+  .filter(p => !p.hidden)
   .sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime())
-  .slice(0, 15)
-  .forEach(p => {
-    if (!recent[p.lastmod] || !recent[p.lastmod].length) {
-      if (count < 10) recent[p.lastmod] = []
-      else return
-    }
-    recent[p.lastmod].push(p)
-    count++
-  })
+  .slice(0, 10)
+
 const scrollTop = () => {
   scrollTo(0, 0)
 }

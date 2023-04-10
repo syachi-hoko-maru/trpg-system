@@ -290,23 +290,21 @@ const normalPageSettingList: PageSetting[] = [
   },
 ];
 
+let count = 0;
 const blogPageSettingList: PageSetting[] = (blogSettingList as Blog[])
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-  .map((b) => {
+  .map((b, i) => {
+    const dateFlag =
+      new Date(b.date + " GMT+0900").getTime() <= new Date().getTime();
+    if (dateFlag) count++;
     return {
       title: b.title,
       to: "/blog/" + b.id,
       img: `blog-image/${b.id}\.webp`,
       lastmod: b.date,
       tags: b.tags.filter(isPageTag) as PageTag[],
-      osusume:
-        new Date(b.date + " GMT+0900").getTime() <= new Date().getTime()
-          ? true
-          : false,
-      hidden:
-        new Date(b.date + " GMT+0900").getTime() <= new Date().getTime()
-          ? false
-          : true,
+      osusume: count <= 10 && dateFlag ? true : false,
+      hidden: dateFlag ? false : true,
       explain:
         `「${b.title}」に関するブログ記事です。` +
         b.andml

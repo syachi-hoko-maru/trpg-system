@@ -1,5 +1,5 @@
 <template>
-  <section class="card-div" :id="title">
+  <section class="card-div" :class="nobefore ? '' : 'before'" :id="title">
     <v-card class="my-5" :class="Props.class ? Props.class : 'bg-background text-text'" elevation="3">
       <v-row v-if="Props.loading" class="cardLoading align-center justify-center">
         <v-progress-circular :size="70" :width="7" indeterminate color="primary" />
@@ -32,6 +32,7 @@
 interface Props {
   class?: string
   loading?: boolean
+  nobefore?: boolean
 }
 const Props = defineProps<Props>()
 
@@ -83,7 +84,7 @@ onMounted(() => {
   background-color: rgba(128, 128, 128, 0.5);
 }
 
-section.card-div[id]::before {
+section.card-div[id].before::before {
   display: block;
   height: 55px;
   margin-top: -75px;

@@ -58,14 +58,18 @@ const querys: Ref<{
   [key: string]: string;
 }[]> = ref([])
 
+const defaultPageName = "ページ一覧"
+
 const results: Ref<{ pageSetting: PageSetting, kanren: number }[]> = ref([])
-const setTitle = ref("ページ一覧")
+const setTitle = ref(defaultPageName)
 const explain = ref("")
 
 const changeHead = () => {
   const description = (explain.value
     ? explain.value
-    : `${setTitle.value}の一覧です。ページ：${results.value.slice(0, 3).map(page => `「${page.pageSetting.title}」`).join("・")}など。`) + `このページではサイト内検索ができます。`
+    : `${setTitle.value === defaultPageName ? "このウェブサイトのページ" : setTitle.value}の一覧です。`
+    + `ページ：${results.value.slice(0, 3).map(page => `「${page.pageSetting.title}」`).join("・")}など。`)
+    + `このページではサイト内検索ができます。`
   useHead({
     title: setTitle.value, meta: [
       { hid: "og:url", name: 'og:url', content: $templateText.baseUrl + getNowPage(), },
@@ -76,8 +80,6 @@ const changeHead = () => {
     ]
   })
 }
-watch(explain, changeHead)
-watch(setTitle, changeHead)
 
 const sortValues = ["デフォルト（関連度順）", "更新日が新しい順", "更新日が古い順"] as const
 const sortValue = ref("デフォルト（関連度順）" as typeof sortValues[number])
@@ -144,7 +146,7 @@ const search = (): void => {
 
   const setting = Object.entries(searchSetting).filter(([key, value]) => value)
   if (!setting.length) {
-    setTitle.value = "ページ一覧"
+    setTitle.value = defaultPageName
   } else {
     setTitle.value = "検索結果"
   }

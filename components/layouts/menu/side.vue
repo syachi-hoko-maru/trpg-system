@@ -1,5 +1,5 @@
 <template>
-  <layouts-menu-sideframe>
+  <layouts-menu-sideframe side="left">
     <card nobefore class="mt-0">
       <template #pbefore>
         <layouts-menu-list />

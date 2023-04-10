@@ -3,19 +3,11 @@
     <template #title>
       {{ type === "kanren" ? "関連するページ" : "あなたにオススメのページ" }}
     </template>
-    <item-scrollx>
-      <atom-link v-for="op of osusumePageList" :key="op.to" :to="op.to">
-        <card class="mx-3 osusume-card">
-          <template #tbefore v-if="op.img">
-            <v-img :src="`${$templateText.basePath}/webp/${op.img}`" :alt="op.title" />
-          </template>
-          <template #title v-else>
-            {{ op.title }}
-          </template>
-          <andml v-if="op.explain" :andmls="Array.isArray(op.explain) ? op.explain : [op.explain]" />
-        </card>
-      </atom-link>
-    </item-scrollx>
+    <template #pbefore>
+      <item-scrollx>
+        <item-pagecard v-for="op of osusumePageList" :page-setting="op" virtical />
+      </item-scrollx>
+    </template>
     <item-button v-if="type !== 'kanren'" url="/search" normal-button>ページ一覧はこちら</item-button>
   </card>
 </template>
@@ -94,12 +86,3 @@ const osusumePageList: Ref<PageSetting[]> = computed(() => {
 
 </script>
 
-<style lang="scss">
-div.osusume-card {
-  max-width: 65vw;
-  width: 300px;
-  max-height: 55vw;
-  height: 300px;
-  overflow: hidden;
-}
-</style>

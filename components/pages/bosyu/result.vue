@@ -3,39 +3,13 @@
     <template #title>
       <div class="pb-0">入力結果</div>
     </template>
-    <template #pbefore>
+    <template #pbefore v-if="mounted">
       <div id="frame">
-        <div id="output" :class="color">
+        <div id="output" :class="color" v-if="bosyuSettingsWithDisable.length">
           <item-head2>SW2.5{{ bosyuType }}募集</item-head2>
           <div v-for="data of bosyuSettingsWithDisable" :key="data.label">
             <div class="mt-2">◇ {{ data.label }}</div>
-            <div v-for="item of $setDisable(data.items).filter(i => !i.disabled)" :key="item.label">
-              <template v-if="item.type === 'boolean'">
-                <template v-if="item.name === 'nitteiType' && item.value">
-                  {{ item.label }}
-                </template>
-                <template v-else-if="item.name !== 'nitteiType'">
-                  {{ item.label }}: {{ item.value ? "可" : "不可" }}
-                </template>
-              </template>
-              <template v-else-if="item.type === 'slider'">{{ item.label }}: {{ item.value.join("〜") }}</template>
-              <template v-else-if="item.type === 'parent'">エラー</template>
-              <template v-else-if="item.type === 'textarea' && item.value !== ''">
-                <div>{{ item.label }}: </div>
-                <div class="pl-6 pre-wrap">
-                  {{ item.value }}
-                </div>
-              </template>
-              <template v-else-if="item.value && item.value !== '0'">
-                <template v-if="String(item.value).length < 15">
-                  {{ item.label }}: {{ item.value }}
-                </template>
-                <template v-else>
-                  <div>{{ item.label }}: </div>
-                  <div class="pl-6 text-right">{{ item.value }}</div>
-                </template>
-              </template>
-            </div>
+            <pages-bosyu-resultofaform :items="data.items" />
           </div>
           <item-sign />
         </div>
@@ -60,6 +34,7 @@ const { openDialogo } = useDialogo()
 const { setSnack } = useSnack()
 
 const loading = ref(false)
+const mounted = ref(false)
 
 const getFormSetting = (itemName: string): FormSetting | null => {
   let result: FormSetting | null = null
@@ -115,6 +90,10 @@ const captureImage = () => {
     }
   );
 }
+
+onMounted(() => {
+  mounted.value = true
+})
 </script>
 
 <style scoped lang="scss">

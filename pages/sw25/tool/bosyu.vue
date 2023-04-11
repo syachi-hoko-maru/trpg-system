@@ -25,9 +25,8 @@
 </template>
 
 <script setup lang="ts">
-import * as lodash from "lodash";
 import { Ref } from "vue";
-const { cloneDeep } = lodash;
+// const { cloneDeep } = lodash;
 
 const { bosyuSettings } = useBosyu()
 const { setSnack } = useSnack()
@@ -81,8 +80,7 @@ const colorFormSetting: Ref<FormSettingSelect> = ref({
 
 const result = ref([] as BosyuSetting);
 const showResult = () => {
-  result.value = cloneDeep(bosyuSettingsWithDisable.value)
-
+  result.value = JSON.parse(JSON.stringify(bosyuSettingsWithDisable.value))
   const index = Object.values(colorData).indexOf(colorFormSetting.value.value as any)
   if (index < 0) return
   else color.value = Object.keys(colorData)[index]

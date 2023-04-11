@@ -31,10 +31,14 @@ declare type FormSettingCombo<N = string, S = string> = FormSettingCore<N> & {
   readonly hint?: string;
   readonly multiple?: boolean;
 };
-declare type FormSettingSlider<N = string, S = string> = FormSettingCore<N> & {
+declare type FormSettingSlider<
+  N = string,
+  S = string | number
+> = FormSettingCore<N> & {
   readonly type: "slider";
-  value: [number, number];
+  value: number | [number, number];
   readonly selects: S[];
+  tickCount?: number;
 };
 declare type FormSettingTextarea<N = string> = FormSettingCore<N> & {
   readonly type: "textarea";

@@ -3,6 +3,7 @@
     <template #title>
       プレビュー
     </template>
+    確認の上、保存してください。PCなら右クリック、スマホなら長押しで保存ができます。
     <canvas id="canvas" :width="canvasWidth" :height="canvasHeight" style="width: 100%;" />
   </card>
 </template>
@@ -20,6 +21,23 @@ const canvasWidth = 1200
 const canvasHeight = 1600
 
 const imageUrl = ref("")
+
+const drawImage = async (ctx: CanvasRenderingContext2D, src: string, x1: number, y1: number, x2: number, y2: number, circle?: boolean): Promise<void> => {
+  ctx.save()
+  if (circle) {
+    ctx.arc((x1 + x2) / 2, (y1 + y2) / 2, (x2 - x1) / 2, 0, 360 * Math.PI / 180);
+    ctx.clip();
+  }
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.src = src
+    img.onload = function () {
+      ctx.drawImage(img, x1, y1, x2 - x1, y2 - y1);
+      ctx.restore()
+      resolve()
+    }
+  })
+}
 
 type SetTextOption = {
   right?: boolean
@@ -122,7 +140,7 @@ const setCheck = (ctx: CanvasRenderingContext2D) => {
   })
 }
 
-const setImage = () => {
+const setImage = async () => {
   try {
     // 準備
     const canvas = document.getElementById("canvas") as HTMLCanvasElement
@@ -131,33 +149,32 @@ const setImage = () => {
     if (!ctx) throw "no ctx"
     ctx.textBaseline = "bottom"
     ctx.fillStyle = "#222";
+    // 準備ここまで
 
-    // 画像の読み込み
-    const img = new Image();
-    img.src = `${$templateText.basePath}/sw25intro/intro.svg`
-    img.onload = function () {
-      ctx.drawImage(img, 0, 0, canvasWidth, canvasHeight);
-      imageUrl.value = canvas.toDataURL();
+    await drawImage(ctx, `${$templateText.basePath}/sw25intro/intro.svg`, 0, 0, canvasWidth, canvasHeight)
 
-      set3(ctx)
-      setCheck(ctx)
+    const iconSrc = Props.formSettings.find((form) => form.name === "icon")?.value
+    if (iconSrc && typeof iconSrc === "string") await drawImage(ctx, iconSrc, 92.07, 195.04, 92.07 + 291.58, 195.04 + 291.5, true)
 
-      setText(ctx, "name", 518, 304, 1105, 200, { defaultFontSize: 55 })
-      setText(ctx, "twitter", 1105, 310, 515, 360, { top: true, right: true, defaultFontSize: 30 })
-      setText(ctx, "rulebooks", 150, 600, 1105, 880, { top: true })
-      setText(ctx, "tools", 150, 920, 1105, 1000, { top: true })
-      setText(ctx, "other", 150, 1070, 1105, 1150, { top: true })
+    set3(ctx)
+    setCheck(ctx)
 
-      const qax = 420
-      const qafontSize = 45
-      const qay = 1225
-      const qady = 80
-      setText(ctx, "rp", qax, qay, 1105, qay - qady, { defaultFontSize: qafontSize })
-      setText(ctx, "battle", qax, qay + qady, 1105, qay, { defaultFontSize: qafontSize })
-      setText(ctx, "syuzoku", qax, qay + qady * 2, 1085, qay + qady, { defaultFontSize: qafontSize })
-      setText(ctx, "ginou", qax, qay + qady * 3, 1055, qay + qady * 2, { defaultFontSize: qafontSize })
-    }
+    setText(ctx, "name", 518, 304, 1105, 200, { defaultFontSize: 55 })
+    setText(ctx, "twitter", 1105, 310, 515, 360, { top: true, right: true, defaultFontSize: 30 })
+    setText(ctx, "rulebooks", 150, 600, 1105, 880, { top: true })
+    setText(ctx, "tools", 150, 920, 1105, 1000, { top: true })
+    setText(ctx, "other", 150, 1070, 1105, 1150, { top: true })
 
+    const qax = 420
+    const qafontSize = 45
+    const qay = 1225
+    const qady = 80
+    setText(ctx, "rp", qax, qay, 1105, qay - qady, { defaultFontSize: qafontSize })
+    setText(ctx, "battle", qax, qay + qady, 1105, qay, { defaultFontSize: qafontSize })
+    setText(ctx, "syuzoku", qax, qay + qady * 2, 1085, qay + qady, { defaultFontSize: qafontSize })
+    setText(ctx, "ginou", qax, qay + qady * 3, 1055, qay + qady * 2, { defaultFontSize: qafontSize })
+
+    imageUrl.value = canvas.toDataURL();
     // const link = document.createElement("a");
     // link.href = canvasUrl
     // link.download = `result.png`;

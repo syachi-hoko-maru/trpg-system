@@ -15,6 +15,12 @@ const { setSnack } = useSnack()
 
 const formSettings = ref([
   {
+    name: "icon",
+    label: "icon",
+    type: "file",
+    value: ""
+  },
+  {
     name: "name",
     label: "name",
     type: "string",
@@ -103,19 +109,20 @@ const saveSetting = () => {
     if (!mounted) {
       return
     }
-    const result: { [key: string]: string | number | boolean | [number, number] | string[] | null } = {}
+    const result: { [key: string]: unknown } = {}
     formSettings.value.forEach(item => {
+      if (item.type === "file") return
       result[item.name] = item.value
     })
     const str = JSON.stringify(result);
-    localStorage.setItem("bosyu", str)
+    localStorage.setItem("intro", str)
     setSnack("データを一時保存しました")
   } catch {
     setSnack("データの一時保存に失敗しました")
   }
 }
 onMounted(() => {
-  const valueText = localStorage.getItem("bosyu")
+  const valueText = localStorage.getItem("intro")
   if (valueText) {
     const valueObj = JSON.parse(valueText) as { [key: string]: string | number | boolean | [number, number] | null }
     Object.entries(valueObj).forEach(([key, value]) => {

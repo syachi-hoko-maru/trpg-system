@@ -1,17 +1,5 @@
 <template>
-  <card v-show="!pageSetting.specialPage">
-    <template #title>
-      <div class="d-flex align-end">
-        <span>{{ pageSetting.title }} {{ pageSetting.page ? page : "" }}</span>
-        <v-spacer />
-        <item-share-page :page-setting="pageSetting" icon />
-      </div>
-    </template>
-    <template #subtitle v-if="pageSetting.to.indexOf('/blog/') === 0">{{ pageSetting.lastmod }}</template>
-    <template #after v-if="pageSetting.tags?.length">
-      <item-tags :tags="pageSetting.tags" class="py-0" />
-    </template>
-  </card>
+  <layouts-title-card-titlecard :page-setting="pageSetting" />
   <v-alert v-if="pageSetting.hidden && pageSetting.to !== 'error'" class="my-5" type="error"
     :text="`このページは動作実験中の未公開ページです。見つけた方はそっと閉じてください。`" />
   <card v-if="!pageSetting.specialPage && pageSetting.img">
@@ -36,14 +24,6 @@ interface Props {
   pageSetting: PageSetting
 }
 const Props = defineProps<Props>();
-
-const { getNowPagePage } = usePages()
-const page = computed(getNowPagePage)
-
-// const rand = ref(Math.random())
-// watch(Props, () => {
-//   rand.value = Math.random()
-// })
 </script>
 
 <style lang="scss" scoped>

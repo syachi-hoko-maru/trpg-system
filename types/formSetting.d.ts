@@ -24,6 +24,11 @@ declare type FormSettingSelect<N = string, S = string> = FormSettingCore<N> & {
   selects: S[];
   readonly hint?: string;
 };
+declare type FormSettingCheck<N = string, S = string> = FormSettingCore<N> & {
+  readonly type: "check";
+  value: S[];
+  selects: S[];
+};
 declare type FormSettingCombo<N = string, S = string> = FormSettingCore<N> & {
   readonly type: "combo";
   value: S;
@@ -62,6 +67,7 @@ declare type FormSetting<N = string, S = string> =
   | FormSettingBoolean<N>
   | FormSettingTextarea<N>
   | FormSettingSelect<N, S>
+  | FormSettingCheck<N, S>
   | FormSettingCombo<N, S>
   | FormSettingSlider<N, S>
   | FormSettingDate<N>

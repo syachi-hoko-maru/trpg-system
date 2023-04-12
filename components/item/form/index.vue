@@ -12,6 +12,8 @@
       :disabled="disabled" />
     <item-form-textarea v-else-if="Props.formSetting.type === 'textarea'" :formSetting="Props.formSetting"
       :disabled="disabled" />
+    <item-form-check v-else-if="Props.formSetting.type === 'check'" :formSetting="Props.formSetting"
+      :disabled="disabled" />
     <item-form-date v-else-if="Props.formSetting.type === 'date'" :formSetting="Props.formSetting" />
     <item-form-parent v-else-if="Props.formSetting.type === 'parent'" :formSetting="Props.formSetting"
       :disabled="disabled" />

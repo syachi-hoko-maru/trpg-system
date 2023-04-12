@@ -91,7 +91,7 @@ const saveSetting = () => {
     if (!mounted) {
       return
     }
-    const result: { [key: string]: string | number | boolean | [number, number] | null } = {}
+    const result: { [key: string]: string | number | boolean | string[] | [number, number] | null } = {}
     bosyuSettingsWithDisable.value.forEach(obj => {
       obj.items.map(item => {
         result[obj.name + "_" + item.name] = item.value

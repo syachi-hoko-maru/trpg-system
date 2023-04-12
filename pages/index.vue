@@ -43,8 +43,9 @@ const andml1 = `
 &button_/sw25/forbeginner/suppliment/1
 
 &1 For Beginner
-ソード・ワールド2.5初心者向けの情報は以下にまとめてあります。
-初心者向けの &em_よくある質問（FAQ） やSW2.5に限らずTRPG初心者がTRPGを始める際に &em_役立つリンク などを掲載しています。
+ソード・ワールド2.5初心者向けの情報やTRPG初心者向けの情報は以下にまとめてあります。
+ぜひご確認ください。
+&button_/trpg
 &button_/sw25/forbeginner
 
 &1 News

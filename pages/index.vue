@@ -11,16 +11,7 @@
       </item-caption>
     </template>
   </card>
-  <v-responsive :aspect-ratio="40 / 21" class="my-5">
-    <v-carousel show-arrows="hover" hide-delimiter-background cycle height="100%">
-      <v-carousel-item width="100%"
-        v-for="pageSetting of $pageSettingList.filter(p => p.osusume && p.img).sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime()).splice(0, 10)">
-        <atom-link :to="pageSetting.to">
-          <v-img :src="$templateText.basePath + '/webp/' + pageSetting.img" cover />
-        </atom-link>
-      </v-carousel-item>
-    </v-carousel>
-  </v-responsive>
+  <item-carousel />
   <card-array-by-andml :andml="andml1" />
   <card>
     <template #title>

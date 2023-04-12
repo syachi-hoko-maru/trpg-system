@@ -3,7 +3,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "devblog:once": "ts-node --project ba.tsconfig.jsonc src/pre/index.ts",
+    "devblog:once": "ts-node --project ba.tsconfig.jsonc src/pre/index.ts onlyblog",
     "devblog": "npx nodemon",
     "pre": "ts-node --project ba.tsconfig.jsonc src/pre/index.ts",
     "after": "ts-node --files --project ba.tsconfig.jsonc src/after/index.ts",

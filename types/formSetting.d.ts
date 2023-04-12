@@ -44,6 +44,7 @@ declare type FormSettingTextarea<N = string> = FormSettingCore<N> & {
   readonly type: "textarea";
   value: string;
   readonly hint?: string;
+  rows?: number;
 };
 declare type FormSettingDate<N = string> = FormSettingCore<N> & {
   readonly type: "date";

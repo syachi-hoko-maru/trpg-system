@@ -92,13 +92,13 @@ const normalPageSettingList: PageSetting[] = [
     tags: ["sw25", "tool"],
   },
   {
-    title: "オンラインセッション用素材",
+    title: "TRPG オンラインセッション用素材",
     to: "/sw25/tool/material",
-    lastmod: "2023/3/8",
+    lastmod: "2023/4/12",
     img: "page-image/material.webp",
     osusume: true,
     explain:
-      "TRPG、特にソード・ワールド2.5（SW2.5）で遊ぶ際にココフォリアなどで使えるオンラインセッション用素材を紹介するページです。現在、RPG用のマップ素材と『ユーシズ』サプリのボトルドールシートを公開しています。",
+      "TRPG、特にソード・ワールド2.5（SW2.5）で遊ぶ際、ココフォリアなどで使えるイラスト素材を無料公開しています。現在公開しているもの：ダンジョンマップ素材・SW2.5冒険登録証・依頼書・『ユーシズ』サプリのボトルドールシート・冒険者ギルド支部のランチメニュー",
     tags: ["sw25", "tool"],
   },
   {

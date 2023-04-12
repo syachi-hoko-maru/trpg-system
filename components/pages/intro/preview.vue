@@ -31,8 +31,9 @@ const setText = (ctx: CanvasRenderingContext2D, name: string, x1: number, y1: nu
   const form = Props.formSettings.find((form) => form.name === name)
   if (!form) return
   let text = ""
-  if (form.name === "twitter") text += "@"
   if (form.type === "string" || form.type === "textarea") text += form.value
+  if (form.name === "twitter" && !text.startsWith("@")) text = "@" + text
+
 
   if (option?.right) ctx.textAlign = "right"
   if (option?.top) ctx.textBaseline = "top"
@@ -66,7 +67,61 @@ const setText = (ctx: CanvasRenderingContext2D, name: string, x1: number, y1: nu
     ctx.fillText(line, x1, y1 + i * (dy - fontSize) / lines.length);
   })
   console.log(text, fontSize)
+
   ctx.restore()
+}
+
+const set3 = (ctx: CanvasRenderingContext2D) => {
+  ctx.save()
+  const x1 = 470.07
+  const x2 = 1025.07
+  const dx = Math.abs(x2 - x1)
+  const y = 464.84
+
+  const form = Props.formSettings.find((form) => form.name === "plgm")
+  if (!form) return
+
+  let value = 0
+  if (!Number.isNaN(Number(form.value))) value = Number(form.value)
+
+  const basePoint = x1 + dx / 4 * value
+  ctx.beginPath();
+  ctx.moveTo(basePoint, y);
+  ctx.lineTo(basePoint - 15, y + 40);
+  ctx.lineTo(basePoint + 15, y + 40);
+  ctx.closePath();
+  ctx.fill()
+  ctx.restore()
+  console.log(form.value)
+}
+
+const setCheck = (ctx: CanvasRenderingContext2D) => {
+  const drawCheck = (sx: number) => {
+    const x = sx + 10
+    const y = 391.45 + 20
+    const size = 1.2
+    ctx.save()
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x - 15 * size, y - 15 * size);
+    ctx.lineTo(x - 9 * size, y - 21 * size);
+    ctx.lineTo(x + 1 * size, y - 11 * size);
+    ctx.lineTo(x + 25 * size, y - 30 * size);
+    ctx.closePath();
+    ctx.fill()
+    ctx.restore()
+  }
+
+  const form = Props.formSettings.find((form) => form.name === "session")
+  if (!form || !Array.isArray(form.value)) return
+
+  const x = 100
+  const y = 100
+  form.value.forEach((v) => {
+    if (v === "ボイセ") drawCheck(410.37)
+    if (v === "テキセ") drawCheck(698.04)
+    if (v === "半テキセ") drawCheck(990.47)
+  })
 }
 
 const setImage = () => {
@@ -85,6 +140,9 @@ const setImage = () => {
     img.onload = function () {
       ctx.drawImage(img, 0, 0, canvasWidth, canvasHeight);
       imageUrl.value = canvas.toDataURL();
+
+      set3(ctx)
+      setCheck(ctx)
 
       setText(ctx, "name", 518, 304, 1105, 200, { defaultFontSize: 55 })
       setText(ctx, "twitter", 1105, 310, 515, 360, { top: true, right: true, defaultFontSize: 30 })

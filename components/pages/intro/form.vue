@@ -27,6 +27,13 @@ const formSettings = ref([
     value: ""
   },
   {
+    name: "session",
+    label: "セッション形式",
+    type: "check",
+    value: [],
+    selects: ["ボイセ", "テキセ", "半テキセ"],
+  },
+  {
     name: "plgm",
     label: "PL・GMの割合",
     type: "slider",
@@ -96,7 +103,7 @@ const saveSetting = () => {
     if (!mounted) {
       return
     }
-    const result: { [key: string]: string | number | boolean | [number, number] | null } = {}
+    const result: { [key: string]: string | number | boolean | [number, number] | string[] | null } = {}
     formSettings.value.forEach(item => {
       result[item.name] = item.value
     })
@@ -115,9 +122,9 @@ onMounted(() => {
       const group = formSettings.value.find(i => i.name === key)
       if (group) group.value = value
     })
-    intervalId = setInterval(saveSetting, saveSec * 1000)
-    mounted = true
   }
+  intervalId = setInterval(saveSetting, saveSec * 1000)
+  mounted = true
 })
 onUnmounted(() => {
   if (intervalId) clearInterval(intervalId)

@@ -53,10 +53,10 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 自己紹介シート",
     to: "/sw25/tool/intro",
-    lastmod: "2023/3/1",
+    lastmod: "2023/4/15",
     // img: "page-image/simulate.webp",
-    // osusume: true,
-    hidden: true,
+    osusume: true,
+    hidden: false,
     explain:
       "ソード・ワールド2.5（SW2.5）の自己紹介シートを作ることができるページです。Twitterでシェアして自己紹介をするのに使えます。ぜひ活用してください。",
     tags: ["sw25", "tool"],
@@ -299,7 +299,13 @@ const normalPageSettingList: PageSetting[] = [
     explain: "エラーが発生した際に表示されるページです。",
     tags: [],
   },
-];
+].map((page) => {
+  if (new Date(page.lastmod + " GMT+0900").getTime() > new Date().getTime()) {
+    page.osusume = false;
+    page.hidden = true;
+  }
+  return page as PageSetting;
+});
 
 let count = 0;
 const blogPageSettingList: PageSetting[] = (blogSettingList as Blog[])

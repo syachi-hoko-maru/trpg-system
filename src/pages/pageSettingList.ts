@@ -54,7 +54,7 @@ const normalPageSettingList: PageSetting[] = [
     title: "SW2.5 自己紹介シート",
     to: "/sw25/tool/intro",
     lastmod: "2023/4/15",
-    // img: "page-image/simulate.webp",
+    img: "page-image/intro.webp",
     osusume: true,
     hidden: false,
     explain:

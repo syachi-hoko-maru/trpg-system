@@ -55,6 +55,10 @@ declare type FormSettingDate<N = string> = FormSettingCore<N> & {
   readonly type: "date";
   value: string;
 };
+declare type FormSettingFile<N = string, S = string> = FormSettingCore<N> & {
+  readonly type: "file";
+  value: string;
+};
 
 declare type FormSettingParent<N = string, S = string> = FormSettingCore<N> & {
   readonly type: "parent";
@@ -71,6 +75,7 @@ declare type FormSetting<N = string, S = string> =
   | FormSettingCombo<N, S>
   | FormSettingSlider<N, S>
   | FormSettingDate<N>
+  | FormSettingFile<N>
   | FormSettingParent<N, S>;
 declare type FormSettingsWithDisable<> = FormSetting & {
   disabled?: boolean;

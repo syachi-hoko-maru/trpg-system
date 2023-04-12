@@ -2,7 +2,8 @@
   <layouts-menu-sideframe bottom side="right">
     <card nobefore class="mt-0" v-if="nowPageSetting.to !== '/search'">
       <template #title>検索</template>
-      <v-text-field label="検索キーワード" v-model="word" density="comfortable" />
+      「ソード・ワールド2.5」「初心者」「エンシェントブルー」など気になるワードを検索してみてください。
+      <v-text-field label="検索キーワード" v-model="word" density="comfortable" class="mt-3" />
       <item-button :url="`/search?word=${word}`" :disabled="!word">
         検索する
       </item-button>
@@ -19,7 +20,10 @@
     </card>
     <card nobefore class="mt-0">
       <template #title>タグ一覧</template>
-      <template #before>
+      <template #pbefore>
+        クリックでタグのついたページ一覧を見ることができます。
+      </template>
+      <template #after>
         <v-list density="compact" nav class="bg-background text-text">
           <template v-for="(tag, i) in $pageTags" :key="tag">
             <atom-link :to="`/search?tag=${tag}`">
@@ -41,16 +45,22 @@
           <template
             v-for="page in $pageSettingList.filter(p => !p.hidden).sort((a, b) => -new Date(a.lastmod).getTime() + new Date(b.lastmod).getTime()).slice(0, 10)"
             :key="page.to">
-            <atom-link :to="page.to">
+            <item-textlink :to="page.to">
               <v-list-item>
                 <v-list-item-title v-text="page.title" />
               </v-list-item>
-            </atom-link>
+            </item-textlink>
           </template>
         </v-list>
       </template>
     </card>
-
+    <card nobefore class="mt-0">
+      <template #title>シェア</template>
+      <item-share-page>ツイート</item-share-page>
+      <item-button prepend-icon="mdi-content-copy" @click.stop="() => $copy($templateText.baseUrl + nowPageSetting.to)">
+        このページのURLをコピー
+      </item-button>
+    </card>
   </layouts-menu-sideframe>
 </template>
 

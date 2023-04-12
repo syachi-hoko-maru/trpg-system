@@ -12,6 +12,7 @@
       <item-tags :tags="pageSetting.tags" class="py-0" />
     </template>
   </card>
+  <v-alert v-if="pageSetting.hidden" class="my-5" type="error" :text="`このページは動作実験中の未公開ページです。見つけた方はそっと閉じてください。`" />
   <card v-if="!pageSetting.specialPage && pageSetting.img">
     <template #tbefore>
       <v-img :src="`${$templateText.basePath}/webp/${pageSetting.img}`" :alt="`${pageSetting.title}サムネイル画像`" />

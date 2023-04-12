@@ -32,7 +32,7 @@ const setText = (ctx: CanvasRenderingContext2D, name: string, x1: number, y1: nu
   if (!form) return
   let text = ""
   if (form.type === "string" || form.type === "textarea") text += form.value
-  if (form.name === "twitter" && !text.startsWith("@")) text = "@" + text
+  if (form.name === "twitter" && text && !text.startsWith("@")) text = "@" + text
 
 
   if (option?.right) ctx.textAlign = "right"
@@ -96,6 +96,9 @@ const set3 = (ctx: CanvasRenderingContext2D) => {
 }
 
 const setCheck = (ctx: CanvasRenderingContext2D) => {
+  const form = Props.formSettings.find((form) => form.name === "session")
+  if (!form || !Array.isArray(form.value) || form.value.length === 0) return
+
   const drawCheck = (sx: number) => {
     const x = sx + 10
     const y = 391.45 + 20
@@ -112,11 +115,6 @@ const setCheck = (ctx: CanvasRenderingContext2D) => {
     ctx.restore()
   }
 
-  const form = Props.formSettings.find((form) => form.name === "session")
-  if (!form || !Array.isArray(form.value)) return
-
-  const x = 100
-  const y = 100
   form.value.forEach((v) => {
     if (v === "ボイセ") drawCheck(410.37)
     if (v === "テキセ") drawCheck(698.04)

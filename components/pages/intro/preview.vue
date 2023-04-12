@@ -13,7 +13,7 @@ interface Props {
 }
 const Props = defineProps<Props>();
 
-const { setSnack } = useSnack()
+const { openDialogo } = useDialogo()
 const { $templateText } = useNuxtApp()
 
 const canvasWidth = 1200
@@ -164,7 +164,7 @@ const setImage = () => {
     // link.click();
     // setSnack("画像をダウンロードしました")
   } catch (err) {
-    console.error(err)
+    openDialogo(`予期せぬエラーが発生しました。 &itwitter まで報告いただければ幸いです。 ERROR: ${String(err).replace(/\s/g, "¥s")}`, "error")
   }
 }
 

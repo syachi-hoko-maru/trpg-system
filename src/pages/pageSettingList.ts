@@ -51,6 +51,17 @@ const normalPageSettingList: PageSetting[] = [
     tags: ["sw25", "tool"],
   },
   {
+    title: "SW2.5 自己紹介シート",
+    to: "/sw25/tool/intro",
+    lastmod: "2023/3/1",
+    // img: "page-image/simulate.webp",
+    // osusume: true,
+    hidden: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5）の自己紹介シートを作ることができるページです。Twitterでシェアして自己紹介をするのに使えます。ぜひ活用してください。",
+    tags: ["sw25", "tool"],
+  },
+  {
     title: "SW2.5 判定シミュレータ",
     to: "/sw25/tool/simulate",
     lastmod: "2023/3/1",

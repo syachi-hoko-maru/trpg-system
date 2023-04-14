@@ -4,7 +4,7 @@
       目次
     </template>
     <div v-for="title, i of index" :key="title" class="index-item-border">
-      <atom-link :to="`#${title}`" :title="`ページ内の見出し「${title}」へのリンク`">
+      <atom-link :to="`#${title}`" :title="`ページ内の見出し「${title}」へのリンク`" type="pageindex">
         <div class="index-item">
           <span class="circle">
             <span class="number">

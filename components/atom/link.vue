@@ -1,6 +1,7 @@
 <template>
   <nuxt-link :to="link" :target="externalFlag ? '_blank' : ''"
-    :class="`${colorClass} text-decoration-none user-select-none ${disabled ? '' : 'pointer'}`" :title="title">
+    :class="`${colorClass} text-decoration-none user-select-none ${disabled ? '' : 'pointer'}`" :title="title"
+    @click="click">
     <span :class="decoClass">
       <slot />
     </span>
@@ -9,6 +10,8 @@
 </template>
 
 <script setup lang="ts">
+import { event } from "vue-gtag";
+
 interface Props {
   to: string
   disabled?: boolean
@@ -16,6 +19,7 @@ interface Props {
   deco?: boolean
   button?: boolean
   title: string
+  type?: LinkType
 }
 const Props = defineProps<Props>();
 
@@ -37,6 +41,14 @@ else if (Props.color) colorClass = Props.color
 
 let decoClass: string = "text-decoration-none"
 if (Props.deco) decoClass = "text-decoration-underline"
+
+const click = () => {
+  event("link_click", {
+    link: link.value,
+    title: Props.title,
+    type: Props.type
+  })
+}
 
 </script>
 

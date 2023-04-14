@@ -1,6 +1,7 @@
 <template>
   <item-pagecard v-if="internalFlag && !normalButton" :pagePath="url" />
-  <atom-link :to="Props.url" :button="true" v-else :disabled="disabled" :title="`リンク${Props.url}へのボタン`">
+  <atom-link :to="Props.url" :button="true" v-else :disabled="disabled" :title="`リンク${Props.url}へのボタン`"
+    :type="type ? type : 'button'">
     <v-btn class="bg-background mt-4 mb-1" :prepend-icon="Props.prependIcon" :color="Props.color" block
       :disabled="disabled">
       <slot />
@@ -16,6 +17,7 @@ interface Props {
   normalButton?: boolean
   color?: string
   disabled?: boolean
+  type?: LinkType
 }
 const Props = withDefaults(defineProps<Props>(), { url: "action", normalButton: false });
 

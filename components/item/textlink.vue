@@ -1,6 +1,6 @@
 <template>
   <span class="textlink">
-    <atom-link :to="to" :deco="true" :color="colorClass" :title="''">
+    <atom-link :to="to" :deco="true" :color="colorClass" :title="''" type="text">
       <slot />
     </atom-link>
   </span>

@@ -4,14 +4,14 @@
       <template #title>検索</template>
       「ソード・ワールド2.5」「初心者」「エンシェントブルー」など気になるワードを検索してみてください。
       <v-text-field label="検索キーワード" v-model="word" density="comfortable" class="mt-3" />
-      <item-button :url="`/search?word=${word}`" :disabled="!word">
+      <item-button :url="`/search?word=${word}`" :disabled="!word" type="right">
         検索する
       </item-button>
     </card>
     <card nobefore class="mt-0">
       <template #title>おすすめのページ</template>
       <div v-for="op of osusumePageArray" class="mb-3">
-        <atom-link :to="op.to" :title="`ページ「${op.title}」へのリンク`">
+        <atom-link :to="op.to" :title="`ページ「${op.title}」へのリンク`" type="right">
           <v-responsive :aspect-ratio="40 / 21">
             <v-img :src="`${$templateText.basePath}/webp/${op.img}`" height="100%" cover />
           </v-responsive>
@@ -26,7 +26,8 @@
       <template #after>
         <v-list density="compact" nav class="bg-background text-text">
           <template v-for="(tag, i) in $pageTags" :key="tag">
-            <atom-link :to="`/search?tag=${tag}`" :title="`タグ「${$pageTagSettings[tag].label}」がついたページ一覧へのリンク`">
+            <atom-link :to="`/search?tag=${tag}`" :title="`タグ「${$pageTagSettings[tag].label}」がついたページ一覧へのリンク`"
+              type="right">
               <v-list-item>
                 <template v-slot:prepend>
                   <v-icon icon="mdi-label" />

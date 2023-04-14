@@ -90,3 +90,15 @@ type Suppliment = {
 };
 
 type WordList = { [key: string]: string };
+
+type LinkType =
+  | "menu"
+  | "right"
+  | "tailcard"
+  | "pageindex"
+  | "pagecard"
+  | "button"
+  | "text"
+  | "share"
+  | "twitter_account"
+  | "carousel";

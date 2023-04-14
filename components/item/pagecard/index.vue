@@ -1,6 +1,7 @@
 <template>
   <div :class="virtical ? 'ma-2' : 'my-5'">
-    <atom-link v-if="pageSettingData" :to="pageSettingData.to" :title="`ページ「${pageSettingData.title}」へのリンク`">
+    <atom-link v-if="pageSettingData" :to="pageSettingData.to" :title="`ページ「${pageSettingData.title}」へのリンク`"
+      type="pagecard">
       <card>
         <template #tbefore>
           <div class="pagecard d-flex justify-start"

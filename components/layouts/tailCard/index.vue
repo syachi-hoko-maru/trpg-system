@@ -5,10 +5,11 @@
   <item-amazon v-if="pageSetting.tags.findIndex(tag => tag.indexOf('sw25') >= 0) >= 0" />
   <card>
     <div class="mt-3" v-if="pageTrees.length">
-      <atom-link to="/" deco title="トップページへのリンク">トップ</atom-link>
+      <atom-link to="/" deco title="トップページへのリンク" type="tailcard">トップ</atom-link>
       <template v-for="(pageTree, i) of pageTrees" :key="pageTree.to">
         <span class="user-select-none"> &gt; </span>
-        <atom-link :to="pageTree.to" deco :title="`ページ「${pageTree.title}」へのリンク`">{{ pageTree.title }}</atom-link>
+        <atom-link :to="pageTree.to" deco :title="`ページ「${pageTree.title}」へのリンク`" type="tailcard">{{ pageTree.title
+        }}</atom-link>
       </template>
       <span class="user-select-none">
         &gt; <br>

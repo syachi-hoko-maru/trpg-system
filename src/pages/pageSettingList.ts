@@ -58,7 +58,7 @@ const normalPageSettingList: PageSetting[] = [
     osusume: true,
     hidden: false,
     explain:
-      "ソード・ワールド2.5（SW2.5）の自己紹介シートを作ることができるページです。Twitterでシェアして自己紹介をするのに使えます。ぜひ活用してください。",
+      "ソード・ワールド2.5（SW2.5）の自己紹介シートを作ることができるページです。TwitterなどのSNSでシェアしてソドワに関する自己紹介をするのに使えます。ぜひ活用してください。",
     tags: ["sw25", "tool"],
   },
   {

@@ -4,7 +4,8 @@
       プレビュー
     </template>
     確認の上、保存してください。PCなら右クリック、スマホなら長押しで保存ができます。
-    <canvas id="canvas" :width="canvasWidth" :height="canvasHeight" style="width: 100%;" />
+    <canvas id="canvas" :width="canvasWidth" :height="canvasHeight" style="display: none;" />
+    <v-img v-if="imageUrl" :src="imageUrl" />
   </card>
 </template>
 

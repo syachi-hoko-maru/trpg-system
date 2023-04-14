@@ -24,6 +24,7 @@
       ぜひTwitterなどでシェアしてこのウェブサイトを広めてください！
     </div>
   </card>
+  <layouts-tail-card-amazon />
   <card>
     <template #title>
       最近更新されたページ

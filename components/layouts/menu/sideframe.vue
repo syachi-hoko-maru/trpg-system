@@ -9,11 +9,14 @@
 </template>
 
 <script setup lang="ts">
+import { event } from "vue-gtag";
+
 interface Props {
   side: "left" | "right",
 }
 const Props = defineProps<Props>();
 
+const route = useRoute()
 const { ok } = useLoad()
 
 const cl = ref("sticky")
@@ -39,9 +42,17 @@ const set = (el: HTMLElement, centerEl: HTMLElement) => {
     if (cl.value === "fixed" && scrollY > centerHeight.value - windowHeight + 120) {
       cl.value = "absolute"
     }
-    return
+  }
+  if (Props.side === "right" && scrollCount.value < scrollList.length && scrollY > centerHeight.value * scrollList[scrollCount.value] / 100) {
+    event("scrolls", {
+      url: route.fullPath,
+      scroll: scrollList[scrollCount.value]
+    })
+    scrollCount.value++
   }
 }
+const scrollList = [15, 30, 45, 60, 75] as const
+const scrollCount = ref(0)
 onMounted(() => {
   const el = document.getElementById(Props.side)
   const centerEl = document.getElementById("center")
@@ -50,6 +61,7 @@ onMounted(() => {
   windowHeight = window.innerHeight
   set(el, centerEl)
   watch(ok, () => set(el, centerEl))
+  watch(route, () => scrollCount.value = 0)
   window.addEventListener("resize", () => {
     width.value = el.offsetWidth
   });

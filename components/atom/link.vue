@@ -1,6 +1,6 @@
 <template>
   <nuxt-link :to="link" :target="externalFlag ? '_blank' : ''"
-    :class="`${colorClass} text-decoration-none user-select-none ${disabled ? '' : 'pointer'}`">
+    :class="`${colorClass} text-decoration-none user-select-none ${disabled ? '' : 'pointer'}`" :title="title">
     <span :class="decoClass">
       <slot />
     </span>
@@ -15,6 +15,7 @@ interface Props {
   color?: string
   deco?: boolean
   button?: boolean
+  title: string
 }
 const Props = defineProps<Props>();
 

@@ -11,7 +11,7 @@
     <card nobefore class="mt-0">
       <template #title>おすすめのページ</template>
       <div v-for="op of osusumePageArray" class="mb-3">
-        <atom-link :to="op.to">
+        <atom-link :to="op.to" :title="`ページ「${op.title}」へのリンク`">
           <v-responsive :aspect-ratio="40 / 21">
             <v-img :src="`${$templateText.basePath}/webp/${op.img}`" height="100%" cover />
           </v-responsive>
@@ -26,7 +26,7 @@
       <template #after>
         <v-list density="compact" nav class="bg-background text-text">
           <template v-for="(tag, i) in $pageTags" :key="tag">
-            <atom-link :to="`/search?tag=${tag}`">
+            <atom-link :to="`/search?tag=${tag}`" :title="`タグ「${$pageTagSettings[tag].label}」がついたページ一覧へのリンク`">
               <v-list-item>
                 <template v-slot:prepend>
                   <v-icon icon="mdi-label" />

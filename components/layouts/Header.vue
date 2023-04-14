@@ -2,7 +2,7 @@
   <v-app-bar color="primary" app id="header">
     <v-app-bar-title>
       <h1 id="title" class="text-h5 ma-0">
-        <atom-link v-if="!error" to="/" color="text-textbp">
+        <atom-link v-if="!error" to="/" color="text-textbp" title="トップページへのリンク">
           {{ titleprefix }}<br class="hidden-sm-and-up">{{ titlemain }}
         </atom-link>
         <template v-else>{{ titleprefix }}<br class="hidden-sm-and-up">{{ titlemain }}</template>
@@ -10,7 +10,7 @@
     </v-app-bar-title>
     <div class="hidden-sm-and-down">
       <v-spacer />
-      <atom-link :to="'/search'">
+      <atom-link :to="'/search'" title="検索ページへのリンク">
         <v-icon icon="mdi-magnify" class="px-10 text-textbp" />
       </atom-link>
     </div>

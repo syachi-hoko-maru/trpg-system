@@ -2,13 +2,13 @@
   <v-footer absolute app class="bg-secondary d-block" id="footer" :class="fixed ? 'fixed' : ''">
     <div class="my-5" v-if="!error">
       <div class="my-2">
-        <atom-link color="text-textbp" to="/setting">
+        <atom-link color="text-textbp" to="/setting" title="設定ページへのリンク">
           <v-icon icon="mdi-wrench" size="small" class="px-3" />
           設定
         </atom-link>
       </div>
       <div class="my-1" v-for="item of footerItemList" :key="item.to">
-        <atom-link color="text-textbp" :to="item.to">{{ item.title }}</atom-link>
+        <atom-link color="text-textbp" :to="item.to" :title="`ページ「${item.title}」へのリンク`">{{ item.title }}</atom-link>
       </div>
     </div>
     <div class="mt-5 mb-3">

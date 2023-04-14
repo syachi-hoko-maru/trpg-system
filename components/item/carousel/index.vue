@@ -8,7 +8,7 @@
     </template>
     <v-carousel-item width="100%"
       v-for="pageSetting of $pageSettingList.filter(p => p.osusume && p.img).sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime()).splice(0, 10)">
-      <atom-link :to="pageSetting.to">
+      <atom-link :to="pageSetting.to" :title="`ページ「${pageSetting.title}」へのリンク`">
         <card class="ma-2" nobefore>
           <template #tbefore>
             <v-responsive :aspect-ratio="40 / 21">

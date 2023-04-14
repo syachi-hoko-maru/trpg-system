@@ -1,6 +1,6 @@
 <template>
   <item-pagecard v-if="internalFlag && !normalButton" :pagePath="url" />
-  <atom-link :to="Props.url" :button="true" v-else :disabled="disabled">
+  <atom-link :to="Props.url" :button="true" v-else :disabled="disabled" :title="`リンク${Props.url}へのボタン`">
     <v-btn class="bg-background mt-4 mb-1" :prepend-icon="Props.prependIcon" :color="Props.color" block
       :disabled="disabled">
       <slot />

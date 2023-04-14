@@ -5,7 +5,7 @@
     <layouts-menu-list />
     <!-- </v-navigation-drawer> -->
   </div>
-  <atom-link :to="'/search'">
+  <atom-link :to="'/search'" title="ページ「検索・ページ一覧」へのボタン">
     <v-btn v-show="drawer" depressed elevation="2" fab size="large" icon id="navSettingButton"
       class="navButton bg-secondary">
       <v-icon icon="mdi-magnify" size="large" />

@@ -1,7 +1,7 @@
 <template>
   <div>
     <template v-for="(page, i) in Props.pages" :key="page.title">
-      <atom-link v-if="!page.hidden" :to="page.to" :disabled="page.disabled">
+      <atom-link v-if="!page.hidden" :to="page.to" :disabled="page.disabled" :title="`ページ「${page.title}」へのリンク`">
         <v-list-item :value="page.to" :disabled="page.disabled" :class="getNowPage() === page.to ? 'bg-primary' : ''">
           <template v-slot:prepend>
             <v-icon :icon="page.icon" />

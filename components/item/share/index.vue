@@ -2,7 +2,7 @@
   <item-button v-if="!icon" :url="shareUrl" prepend-icon="mdi-twitter" color="blue">
     <slot />
   </item-button>
-  <atom-link v-else :to="shareUrl" button>
+  <atom-link v-else :to="shareUrl" button title="ページをTwitterでシェア">
     <v-icon icon="mdi-twitter" class="pa-1" color="blue" size="small" />
   </atom-link>
 </template>

@@ -24,7 +24,7 @@ const andml1 = `
 ※ TRPGセッションでしたら、収益化された配信での使用なども問題ありません。
 
 &1 TRPG ダンジョンマップタイル
-&img_/material/map_tile.jpeg
+&img_/material/map_tile.jpeg,TRPGダンジョンマップタイル
 TRPGでダンジョンマップを簡単に作れる画像素材です。
 &em_一本道からT字路・十字路や部屋など を並べるだけで簡単に配置し、自分だけのマップを作ることができます。
 &br
@@ -34,14 +34,14 @@ TRPGでダンジョンマップを簡単に作れる画像素材です。
 &button_https://syachihokomaru.booth.pm/items/3401321 こちら
 
 &1 SW2.5 冒険者登録証
-&img_/material/sheet_sample.png
+&img_/material/sheet_sample.png,SW2.5冒険者登録証
 冒険者ギルド支部に登録する際の「冒険者登録証」をオリジナルデザインで作成してみました。
 自分のキャラクターを紹介するのに使ったり、シナリオを遊んだ記念に作ったり、してみてください！
 &button_${$templateText.baseUrl}/material/sheet_empty.png 未記入画像（PNG）はこちら
 &button_${$templateText.baseUrl}/material/sheet_empty.svg 未記入画像（SVG）はこちら
 
 &1 TRPG 依頼書
-&img_/material/quest_sample.png
+&img_/material/quest_sample.png,TRPG依頼書
 ソード・ワールド2.5など &em_ファンタジー系のTRPGで役立つであろう「依頼書」 を作成してみました。
 &&byosya
 冒険者ギルド支部の酒場にいるあなたたちは壁にかかっているちょうど良い依頼を見つけます。
@@ -52,7 +52,7 @@ TRPGでダンジョンマップを簡単に作れる画像素材です。
 &button_${$templateText.baseUrl}/material/quest_empty2.png 未記入画像（PNG、「その他」記載あり）はこちら
 
 &1 SW2.5 ボトルドールシート
-&img_/material/bottle_doll.jpg
+&img_/material/bottle_doll.jpg,SW2.5ボトルドールシート
 「ソードワールド2.5サプリメント『魔導の学府ユーシズ』」（ &link_/sw25/forbeginner/suppliment/4,こちらで紹介しています ）に掲載されている、 &em_ボトルドール で遊ぶためのシートをオリジナルデザインで作成しました。
 &em_サプリメントにない5レベル以上のデータ も、p.101掲載のコラム「5レベル以上」を参考に作成しました。
 &br
@@ -63,7 +63,7 @@ TRPGでダンジョンマップを簡単に作れる画像素材です。
 &button_/sw25/forbeginner/suppliment/1
 
 &1 冒険者ギルド支部のランチメニュー
-&img_/material/lunch.png
+&img_/material/lunch.png,冒険者ギルド支部のランチメニュー
 ソード・ワールド2.5で冒険者ギルド支部のランチメニューとして使った画像です。
 &br
 &em_TRPG初心者でもロールプレイをしやすくする ための一手として、最初の導入シーンに「キャラクターの選ぶメニューをロールプレイで教えてください」という質問をする際に使いました。

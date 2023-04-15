@@ -100,6 +100,10 @@ const andml = `
 よければご覧ください。
 &button_/sw25/forbeginner 
 
+「ソドワをやってる人と繋がりたい！」って方はこちらもご覧ください。
+&button_/sw25/tool/intro
+&button_/sw25/tool/community
+
 &2 役立つツールを公開中！
 ソード・ワールド2.5で役立つ &em_様々なツール を公開しています。
 関連ページは以下からご覧下さい！

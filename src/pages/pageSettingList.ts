@@ -17,7 +17,7 @@ const normalPageSettingList: PageSetting[] = [
     osusume: true,
     img: "page-image/trpg.webp",
     explain:
-      "TRPG初心者向けに「TRPGとは何か」「TRPGの魅力」「TRPGの始め方」を詳しく解説しています。クトゥルフ神話TRPGなどのおすすめのTRPGシステムを5つ比較しながら解説します。「TRPGって何だろう？」「ルールブックを買ってみたけど誰と遊ぼう……」という方向けです。TRPG経験者も「TRPGとは」を解説する際の参考に、ぜひみていってください。",
+      "TRPG初心者向けに「TRPGとは何か」「TRPGの魅力」「TRPGの始め方」を詳しく解説しています。クトゥルフ神話TRPGなどのおすすめのTRPGシステムを5つ比較しながら解説します。「TRPGって何だろう？」「ルールブックを買ってみたけど誰と遊ぼう……」という方向け。TRPG経験者も「TRPGとは」を解説する際の参考に、ぜひみていってください。",
     tags: ["trpg"],
   },
   {
@@ -26,8 +26,8 @@ const normalPageSettingList: PageSetting[] = [
     img: "page-image/about.webp",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5）というTRPGについて、簡潔にその魅力を紹介するページです。ファンタジーが好きな方、ソード・ワールド2.5でTRPGをしてみましょう。TRPG初心者向け情報やその他ソドワに役立つツール・情報へのリンクもあります。",
-    lastmod: "2023/4/3",
+      "ソード・ワールド2.5（SW2.5）というTRPGについて、簡潔にその魅力を紹介するページです。ソドワ初心者の方必見です。ファンタジーが好きな方、ソード・ワールド2.5で遊びましょう！　TRPG初心者向け情報やその他ソドワに役立つツール・情報へのリンクもあります。",
+    lastmod: "2023/4/15",
     tags: ["sw25"],
   },
   {
@@ -43,15 +43,15 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "ソード・ワールド2.5 ツール一覧",
     to: "/sw25/tool",
-    lastmod: "2023/3/1",
+    lastmod: "2023/4/15",
     img: "page-image/tool.webp",
     osusume: true,
     explain:
-      "このサイトで公開しているTRPG用ツールの一覧を掲載しるページです。どれもソード・ワールド2.5（SW2.5）などのTRPGで役立つものです。判定シミュレータやオンラインセッション募集用画像作成ツールなど。",
+      "このサイトで公開しているTRPG用ツールの一覧を掲載しるページです。どれもソード・ワールド2.5（SW2.5）などのTRPGで役立つものです。公開中のツール：SW2.5自己紹介シート（画像メイカー）・SW2.5判定期待値&ダメージ期待値シミュレータ・オンラインセッション募集用画像作成ツール、など。",
     tags: ["sw25", "tool"],
   },
   {
-    title: "SW2.5 自己紹介シート",
+    title: "SW2.5 自己紹介シート 画像メイカー&配布",
     to: "/sw25/tool/intro",
     lastmod: "2023/4/15",
     img: "page-image/intro.webp",
@@ -108,17 +108,17 @@ const normalPageSettingList: PageSetting[] = [
     lastmod: "2023/3/20",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5）のオリジナルデータを掲載しているページです。管理人のしゃちほこ丸が作った魔物・アイテム・騎獣・流派などのデータがあります。",
+      "ソード・ワールド2.5（SW2.5・ソドワ）のオリジナルデータを掲載しているページです。管理人のしゃちほこ丸が作った魔物・アイテム・騎獣・流派などのデータがあります。",
     tags: ["sw25_moso", "me"],
   },
   {
     title: "SW2.5 初心者向け情報",
     to: "/sw25/forbeginner",
     img: "page-image/forbeginner.webp",
-    lastmod: "2023/4/3",
+    lastmod: "2023/4/15",
     osusume: false,
     explain:
-      "ソドワ初心者やTRPG初心者向けにソード・ワールド2.5（SW2.5）情報をまとめているページです。種族や技能の紹介、おすすめサプリメントの紹介、FAQや便利なリンクを掲載中です。",
+      "ソドワ初心者・TRPG初心者向けのソード・ワールド2.5（SW2.5）情報をまとめているページです。種族や技能の一覧と紹介、おすすめサプリメントの紹介、FAQや便利なリンクを掲載中です。",
     tags: ["sw25"],
   },
   {
@@ -165,11 +165,11 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 初心者向け便利なリンク集",
     to: "/sw25/forbeginner/links",
-    lastmod: "2023/4/3",
+    lastmod: "2023/4/15",
     img: "page-image/links.webp",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5）の初心者の方へ役立つだろうリンクを掲載しています。",
+      "ソード・ワールド2.5（SW2.5）の初心者の方へ役立つだろうリンクを多数掲載しています。ソドワ初心者の方はぜひご覧ください！",
     tags: ["sw25"],
   },
   {

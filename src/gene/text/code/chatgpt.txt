@@ -1,6 +1,6 @@
 ChatGPTを使ってシナリオを書いてみる
 2023/3/18
-sw25,me
+sw25,trpg
 &1 ChatGPTとは
 最近（？）話題の対話可能なAIです。
 &link_https://chat.openai.com/auth/login,こちら から使うことができます。

@@ -1,10 +1,8 @@
 <template>
-  <v-img :src="`${$templateText.basePath}${src}`" :alt="alt" class="my-2" />
+  <v-img :src="`${$templateText.basePath}${src}`" :alt="alt.replace(/¥s/g, ' ')" class="my-2" />
 </template>
 
 <script setup lang="ts">
-import { useNuxt } from '@nuxt/kit';
-
 interface Props {
   props: string
 }

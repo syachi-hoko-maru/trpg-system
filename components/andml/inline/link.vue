@@ -1,6 +1,6 @@
 <template>
   <item-textlink :to="arr[0]">
-    {{ arr[1] }}
+    {{ arr[1].replace(/¥s/g, " ") }}
   </item-textlink>
 </template>
 

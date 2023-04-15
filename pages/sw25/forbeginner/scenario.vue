@@ -228,6 +228,16 @@ const scenarioList: s[] = [
     ],
     link: "https://talto.cc/projects/FrAFRLXjNCkf0Yojx5bZR"
   },
+  {
+    scenario: "「消えた海賊船を追え！」",
+    author: "SONEさん",
+    twitter: "SONE_99",
+    explain: [
+      "SONEさんは同人TRPG「終末紀行RPG」を作っている人でもあります。",
+      "「消えた海賊船を追え！」はソード・ワールド2.5では珍しい海洋冒険シナリオです。海賊船を追うストーリとその間のイベント、個性豊かなフェローと、ドキドキワクワク要素が盛りだくさんです。PDFになっているので印刷しておくにも最適です。また、ユドナリウム用ルームパックがついているので、準備がすぐできます。"
+    ],
+    link: "https://sone-trpg.booth.pm/items/2107630"
+  },
 
 ]
 

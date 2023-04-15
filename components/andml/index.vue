@@ -14,7 +14,7 @@ interface Props {
 }
 const Props = defineProps<Props>();
 
-const andmlArray = (Array.isArray(Props.andmls) ? Props.andmls : Props.andmls.split("\n"))
+const andmlArray = computed(() => Array.isArray(Props.andmls) ? Props.andmls : Props.andmls.split("\n"))
 
 // lineの処理
 const andmlBlockScriptArray: AndmlScript[] = [
@@ -55,5 +55,5 @@ const setBlockComponent = (andmls: string[]): AndmlBlockData[] => {
   }
   return result
 }
-const dataArray = computed(() => setBlockComponent(andmlArray))
+const dataArray = computed(() => setBlockComponent(andmlArray.value))
 </script>

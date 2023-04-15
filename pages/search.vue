@@ -15,13 +15,13 @@
   </card>
   <card>
     <template #title> {{ setTitle }} </template>
-    <template #default v-if="explain">{{ explain }}</template>
-    <template #default v-else-if="!results.length">
+    <div v-if="explain" v-html="explain" />
+    <template #default v-if="!results.length">
       検索結果はありません。
-      <div class="my-2" v-if="sortValue!=='デフォルト（関連度順）'">
+      <div class="my-2" v-if="sortValue !== 'デフォルト（関連度順）'">
         デフォルト（関連度順）では、関連が少しでもあるものが表示されます。<br>
         他の順序の場合、関連が薄いものは除外され、「検索結果はありません。」と表示されることがあります。
-        <item-button @click="sortValue='デフォルト（関連度順）'">デフォルト（関連度順）で表示</item-button>
+        <item-button @click="sortValue = 'デフォルト（関連度順）'">デフォルト（関連度順）で表示</item-button>
       </div>
       <div v-else>
         他のキーワードで検索してください。
@@ -41,9 +41,11 @@ import { Ref } from 'vue';
 const route = useRoute();
 const router = useRouter()
 
-const { $pageSettingList, $isPageTag, $pageTagSettings, $pageTags, $templateText } = useNuxtApp()
+const { $pageSettingList, $isPageTag, $pageTagSettings, $pageTags, $templateText, $wordList } = useNuxtApp()
 const { getNowPage, getQuerys, getNowPath } = usePages()
 const { ok, setLoad } = useLoad()
+
+const wordList = $wordList()
 
 const form: Ref<FormSettingString> = ref({
   name: "search",
@@ -67,8 +69,8 @@ const explain = ref("")
 const changeHead = () => {
   const description = (
     `${setTitle.value === defaultPageName ? "このウェブサイトのページ" : setTitle.value}の一覧です。`
-    + (explain.value ? `${explain.value}です。` : "")
-    + `ページ：${results.value.slice(0, 3).map(page => `「${page.pageSetting.title}」`).join("・")}など。`)
+    + (explain.value ? `${explain.value.replace(/<[^>]*>/g, "")}です。` : "")
+    + `${setTitle.value === defaultPageName ? "ページ" : "検索結果"}：${results.value.slice(0, 3).map(page => `「${page.pageSetting.title}」`).join("・")}など。`)
     + `このページではサイト内検索ができます。`
   useHead({
     title: setTitle.value, meta: [
@@ -144,6 +146,7 @@ let searchFlag = false
 const search = (): void => {
   searchFlag = true
   explain.value = "";
+  const explains = [] as string[]
 
   const setting = Object.entries(searchSetting).filter(([key, value]) => value)
   if (!setting.length) {
@@ -161,11 +164,16 @@ const search = (): void => {
       })
       if (setting.length === 1) {
         setTitle.value = `タグ「${$pageTagSettings[value].label}」がついたページ`
-        explain.value = $pageTagSettings[value].explanation
       }
+      explains.unshift($pageTagSettings[value].explanation)
     }
     if (key === "word") {
       const words = decodeURIComponent(value).split("and")
+      words.forEach(word => {
+        if (wordList[word]) {
+          explains.push(wordList[word])
+        }
+      })
       const lang = (pageSetting: PageSetting): [string, string] => {
         let result = "";
         result += (Array.isArray(pageSetting.explain) ? pageSetting.explain.join() : pageSetting.explain)
@@ -204,6 +212,7 @@ const search = (): void => {
       }
     }
   })
+  explain.value = explains.join("<br><br>")
   results.value = $pageSettingList
     .filter(pageSetting => {
       if (pageSetting.to === "/search") return false

@@ -5,6 +5,11 @@ const menuList: (MenuCategory | MenuPage)[] = [
     to: "/",
   },
   {
+    icon: "mdi-magnify",
+    title: "ページ一覧・検索",
+    to: "/search",
+  },
+  {
     icon: "mdi-star",
     title: "TRPGとは？",
     to: "/trpg",

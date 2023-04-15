@@ -18,13 +18,18 @@ const menuList: (MenuCategory | MenuPage)[] = [
         to: "/sw25/tool",
       },
       {
+        icon: "mdi-account-box",
+        title: "自己紹介シート作成",
+        to: "/sw25/tool/intro",
+      },
+      {
         icon: "mdi-function-variant",
         title: "判定シミュレータ",
         to: "/sw25/tool/simulate",
       },
       {
         icon: "mdi-image-multiple",
-        title: "募集画像作成",
+        title: "卓募集画像作成",
         to: "/sw25/tool/bosyu",
       },
     ],

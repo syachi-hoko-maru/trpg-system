@@ -18,6 +18,7 @@
       </item-button>
       <item-amazon :item="[book.title || '']" mini />
     </div>
+    <andml :andmls="blogs" />
   </card>
   <CardArrayByAndml :andml="yosou" />
 </template>
@@ -48,6 +49,13 @@ const aboutgmw = `
 &link_https://sne-ec.com/category/item/supportmagazine/gm_warlock/,購入はこちら（グループSNE公式アンテナショップ「SNE-EC」）
 `
 
+const blogs = `
+&2 ブログに最新情報があるかも！？
+こちらのページもなるべく最新情報を掲載するようにしていますが、 &em_ブログの方が更新が早かったり、詳しかったりする場合 があります。
+以下からタグ「ソード・ワールド2.5¥s最新情報」のついたページ一覧を見てみてください！
+&button_/search?tag=sw25_new こちら
+`
+
 const attr = ["title", "long", "date", "type", "explain"] as const
 type Attr = typeof attr[number]
 
@@ -74,7 +82,7 @@ const bookList: {
       title: "GMウォーロック Vol.9",
       date: "2023/4/28",
       type: "GMウォーロック",
-      explain: "今回のテーマは「ビヨンド・ザ・ＲＰＧ」、ソドワに関してはソロアドベンチャーが掲載予定とのこと。",
+      explain: "今回のテーマは「ビヨンド・ザ・ＲＰＧ」、ソドワに関しては「夏の大型サプリに関する情報」やソロアドベンチャーが掲載予定とのこと。",
     },
     {
       title: "異世界冒険ガイド きみならどうする!?　街での冒険",

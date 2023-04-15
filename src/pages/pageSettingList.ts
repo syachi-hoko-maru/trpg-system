@@ -37,7 +37,7 @@ const normalPageSettingList: PageSetting[] = [
     osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5）のサプリメントやリプレイなど関連書籍の新刊情報と刊行予想をまとめています。「ソドワの新刊っていつ出るの？」「今後はどんなサプリが出そうなの？」って方、必見です。",
-    lastmod: "2023/4/6",
+    lastmod: "2023/4/15",
     tags: ["sw25_new", "sw25_moso"],
   },
   {

@@ -5,7 +5,7 @@
       <template #tbefore>
         <v-img
           :src="`${$templateText.basePath}/webp/icon-image/${image.date.split('/').map(s => s.length >= 2 ? s : '0' + s).join('')}.webp`"
-          :alt="image.title" />
+          :alt="`${image.title}をイメージしたアイコン画像`" />
       </template>
       <template #title>{{ image.title }}</template>
       <template #subtitle>{{ image.date }}</template>
@@ -19,7 +19,7 @@
     <template #pbefore>
       <card>
         <template #tbefore>
-          <v-img :src="`${$templateText.basePath}/webp/icon-image/syachi.webp`" alt="シャリタツ風" />
+          <v-img :src="`${$templateText.basePath}/webp/icon-image/syachi.webp`" alt="シャリタツ風しゃちほこ丸画像" />
         </template>
         <template #title>
           シャリタツ（しゃちほこ丸のすがた）

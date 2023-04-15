@@ -4,7 +4,7 @@
     :text="`このページは動作実験中の未公開ページです。見つけた方はそっと閉じてください。`" />
   <card v-if="!pageSetting.specialPage && pageSetting.img">
     <template #tbefore>
-      <v-img :src="`${$templateText.basePath}/webp/${pageSetting.img}`" :alt="`${pageSetting.title}サムネイル画像`" />
+      <v-img :src="`${$templateText.basePath}/webp/${pageSetting.img}`" :alt="`「${pageSetting.title}」ページのサムネイル画像`" />
     </template>
   </card>
   <layouts-paging v-if="pageSetting && pageSetting.page" :page-setting="pageSetting" top />

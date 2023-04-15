@@ -2,7 +2,7 @@
   <card-list>
     <card v-for="page of pageSettingList" :key="page.to">
       <template #tbefore>
-        <v-img :src="`${$templateText.basePath}/webp/${page.img}`" />
+        <v-img :src="`${$templateText.basePath}/webp/${page.img}`" :alt="`ページ「${page.title}」のサムネイル画像`" />
       </template>
       <template #title>
         {{ page.title }}

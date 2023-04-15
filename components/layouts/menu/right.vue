@@ -13,7 +13,8 @@
       <div v-for="op of osusumePageArray" class="mb-3">
         <atom-link :to="op.to" :title="`ページ「${op.title}」へのリンク`" type="right">
           <v-responsive :aspect-ratio="40 / 21">
-            <v-img :src="`${$templateText.basePath}/webp/${op.img}`" height="100%" cover />
+            <v-img :src="`${$templateText.basePath}/webp/${op.img}`" :alt="`ページ「${op.title}」のサムネイル画像`" height="100%"
+              cover />
           </v-responsive>
         </atom-link>
       </div>

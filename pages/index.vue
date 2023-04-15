@@ -1,7 +1,7 @@
 <template>
   <card>
     <template #before>
-      <v-img src="./webp/page-image/main.webp" alt="ヘッダー" />
+      <v-img src="./webp/page-image/main.webp" alt="ヘッダー画像" />
       <item-caption>
         背景画像は
         <item-textlink to="https://gakaisozai.seesaa.net/">

@@ -12,7 +12,8 @@
         <card class="ma-2" nobefore>
           <template #tbefore>
             <v-responsive :aspect-ratio="40 / 21">
-              <v-img :src="$templateText.basePath + '/webp/' + pageSetting.img" height="100%" cover />
+              <v-img :src="$templateText.basePath + '/webp/' + pageSetting.img" :alt="`ページ「${pageSetting.title}」のサムネイル画像`"
+                height="100%" cover />
             </v-responsive>
             <div class="text text-caption text-medium-emphasis ma-3">
               {{ pageSetting.explain }}

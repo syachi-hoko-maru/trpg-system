@@ -5,7 +5,7 @@
     </template>
     確認の上、保存してください。PCなら右クリック、スマホなら長押しで保存ができます。
     <canvas id="canvas" :width="canvasWidth" :height="canvasHeight" style="display: none;" />
-    <v-img v-if="imageUrl" :src="imageUrl" />
+    <v-img v-if="imageUrl" alt="ソード・ワールド2.5自己紹介シート" :src="imageUrl" />
   </card>
 </template>
 

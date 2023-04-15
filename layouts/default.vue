@@ -17,7 +17,7 @@
           <layouts-paging v-if="mountedPageSetting && mountedPageSetting.page" :page-setting="mountedPageSetting" />
         </article>
         <aside>
-          <layouts-tail-card v-if="mountedPageSetting" :page-setting="mountedPageSetting" />
+          <lazy-layouts-tail-card v-if="mountedPageSetting" :page-setting="mountedPageSetting" />
         </aside>
       </layouts-main>
     </div>
@@ -25,7 +25,7 @@
       <layouts-snack />
     </aside>
     <footer>
-      <layouts-footer />
+      <lazy-layouts-footer />
     </footer>
   </v-app>
 </template>

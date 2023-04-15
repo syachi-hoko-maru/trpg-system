@@ -10,11 +10,14 @@ export const geneImage = async () => {
     readFileSync(blogJSON, "utf-8")
   ) as unknown as Blog[];
 
-  for (let { id, title } of blogs) {
+  for (let { id, title, tags } of blogs) {
     if (blogImgs.indexOf(`${id}.png`) === -1) {
       console.log(`start generate image ${id}.png`);
       try {
-        await generateImage(id, title).catch((err) => {
+        const img =
+          `${process.cwd()}/src/gene/setBlogData/geneImage/` +
+          (tags.join("").indexOf("sw25") >= 0 ? "sw25.svg" : "ogp.svg");
+        await generateImage(id, title, img).catch((err) => {
           console.error(err);
         });
       } catch (err) {
@@ -24,7 +27,7 @@ export const geneImage = async () => {
   }
 };
 
-export const generateImage = async (id: string, title: string) => {
+const generateImage = async (id: string, title: string, img: string) => {
   const width = 1200;
   const height = 630;
 
@@ -83,7 +86,7 @@ export const generateImage = async (id: string, title: string) => {
 
   context.restore();
 
-  await sharp(`${process.cwd()}/src/gene/ogp.svg`)
+  await sharp(img)
     .composite([{ input: canvas.toBuffer(), top: 0, left: 0 }])
     .png()
     .toFile(`${blogImgDir}/${id}.png`);

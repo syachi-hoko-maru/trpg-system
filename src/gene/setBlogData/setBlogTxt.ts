@@ -1,6 +1,5 @@
 import { readdirSync, readFileSync, writeFileSync } from "fs";
 import { blogTextDir, Blog, blogJSON, scenarioJson } from "../index";
-// import { generateImage } from "./geneImage";
 
 export const setBlogTxt = async () => {
   try {

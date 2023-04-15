@@ -93,7 +93,7 @@ const searchSetting: {
 
 
 const changeSetting = () => {
-  searchSetting.word = form.value.value?.replace(/[,、\s+]/g, "and") || ""
+  searchSetting.word = form.value.value?.replace(/[,、・\s+]/g, "and") || ""
   searchSetting.tag = selectTag.value
   const newPath = getNowPath() + "?" + Object.entries(searchSetting).filter(([key, value]) => value).map(([key, value]) => `${key}=${value}`).join("&")
   if (newPath !== getNowPage()) {

@@ -153,6 +153,16 @@ const normalPageSettingList: PageSetting[] = [
     tags: ["sw25"],
   },
   {
+    title: "SW2.5 おすすめサプリメントランキング",
+    to: "/sw25/forbeginner/suppliment/ranking",
+    lastmod: "2023/4/17",
+    img: "page-image/ranking.webp",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5・ソドワ）のサプリメントの初心者向けおすすめ度ランキングを紹介！　4位：デモンズライン・3位：メイガスアーツ・2位：モンストラスロア。気になる1位は……？　どのサプリを買えばいいか迷っている人、必見です！",
+    tags: ["sw25"],
+  },
+  {
     title: "SW2.5 初心者向けFAQ",
     to: "/sw25/forbeginner/faq",
     lastmod: "2023/4/3",

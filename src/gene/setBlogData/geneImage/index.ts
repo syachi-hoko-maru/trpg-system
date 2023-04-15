@@ -10,14 +10,14 @@ export const geneImage = async () => {
     readFileSync(blogJSON, "utf-8")
   ) as unknown as Blog[];
 
-  for (let { id, title, tags } of blogs) {
+  for (let { id, title, tags, date } of blogs) {
     if (blogImgs.indexOf(`${id}.png`) === -1) {
       console.log(`start generate image ${id}.png`);
       try {
         const img =
           `${process.cwd()}/src/gene/setBlogData/geneImage/` +
           (tags.join("").indexOf("sw25") >= 0 ? "sw25.svg" : "ogp.svg");
-        await generateImage(id, title, img).catch((err) => {
+        await generateImage(id, title, img, date).catch((err) => {
           console.error(err);
         });
       } catch (err) {
@@ -27,7 +27,12 @@ export const geneImage = async () => {
   }
 };
 
-const generateImage = async (id: string, title: string, img: string) => {
+const generateImage = async (
+  id: string,
+  title: string,
+  img: string,
+  date: string
+) => {
   const width = 1200;
   const height = 630;
 
@@ -41,49 +46,69 @@ const generateImage = async (id: string, title: string, img: string) => {
   context.textBaseline = "middle";
   context.fillStyle = "#222";
 
-  const fontSize = 90;
+  const fontSize = 80;
 
   context.save();
 
   context.font = `${fontSize}px font`;
 
-  let line = "";
-  const lines = [];
-  for (let i = 0; i < title.length; i++) {
-    line += title[i];
-    console.log(line, lines.length);
+  const baseWidth = width - 250;
+  let countOverLine = 0;
+  const lines = title
+    .replace(/([！!？?]+)/g, "$1 ")
+    .split(" ")
+    .filter((line) => line)
+    .map((line) => {
+      const length = context.measureText(line).width;
+      countOverLine += Math.floor(length / baseWidth);
+      return { text: line, length };
+    });
 
-    if (lines.length < 2) {
-      const lineWidth = context.measureText(line).width;
-      if (lineWidth > width - 300 || i == title.length - 1) {
-        lines.push({ text: line, width: lineWidth });
-        line = "";
-      }
-    } else if (lines.length === 2) {
-      if (i == title.length - 1) {
-        lines.push({ text: line, width: context.measureText(line).width });
-      } else {
-        const lineWidth = context.measureText(line + "...").width;
-        if (lineWidth > width - 300) {
-          lines.push({ text: line + "...", width: lineWidth });
+  const resultLines: string[] = [];
+  lines.forEach((line, i) => {
+    if (resultLines.length > 2) return;
+    if (line.length <= baseWidth) {
+      resultLines.push(line.text);
+    } else {
+      let text = "";
+      for (let i = 0; i < line.text.length; i++) {
+        if (resultLines.length > 2) return;
+        text += line.text[i];
+        if (
+          context.measureText(text + (resultLines.length === 2 ? "......" : ""))
+            .width > baseWidth
+        ) {
+          resultLines.push(
+            text.slice(0, -1) + (resultLines.length === 2 ? "......" : "")
+          );
+          text = line.text[i];
+        } else if (i === line.text.length - 1) {
+          resultLines.push(text);
+          text = "";
         }
       }
-    } else {
-      break;
     }
-  }
+  });
 
   const lineHeight = fontSize * 1.2;
 
   const x = width / 2;
   context.textAlign = "center";
 
-  lines.forEach((line, index) => {
+  resultLines.forEach((line, index) => {
     const y =
-      index * lineHeight + height / 2 - (lineHeight / 2) * (lines.length - 1);
-    context.fillText(line.text, x, y);
+      index * lineHeight +
+      height / 2 -
+      (lineHeight / 2) * (resultLines.length - 1);
+    context.fillText(line, x, y);
   });
+  context.restore();
 
+  context.save();
+  context.font = `20px font`;
+  context.fillStyle = "#5e3012";
+  context.textAlign = "center";
+  context.fillText(date, x, 105);
   context.restore();
 
   await sharp(img)

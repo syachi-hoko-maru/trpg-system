@@ -9,9 +9,7 @@
       </template>
       <template #title>{{ image.title }}</template>
       <template #subtitle>{{ image.date }}</template>
-      <template #pbefore>
-        <andml :andmls="image.explain" v-if="image.explain" />
-      </template>
+      <andml :andmls="image.explain" v-if="image.explain" />
     </card>
   </card-list>
   <card>
@@ -45,15 +43,19 @@ const first = `
 const images = [
   {
     title: "通常",
-    date: "2025/1/1",
+    date: "2022/12/14",
     explain: ""
+  },
+  {
+    title: "Misskey（TRPGがすきー！）",
+    date: "2023/4/16",
+    explain: "&link_https://trpger.us/@syachi_hoko_trp,MisskeyのTRPGがすきー！(TRPGer.us) に参加したのでその際のデフォルトアイコンの色を使ってアイコンを作りました。"
   },
   {
     title: "夜桜",
     date: "2023/4/2",
     explain: "桜の一部色換えです。"
   },
-
   {
     title: "WBC 侍ジャパン",
     date: "2023/3/21",

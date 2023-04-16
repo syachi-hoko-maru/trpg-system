@@ -92,6 +92,9 @@ TRPG自己紹介シートは &link_https://create-now.vercel.app/trpg-manual,こ
 
 &1 リンク
 -&itwitter
+-- このウェブサイトへのご意見・ご感想等もこちらへお願いします
+-&link_https://trpger.us/@syachi_hoko_trp,Misskey（@syachi_hoko_trp@trpger.us）
+--Misskey（TRPGがすきー！）に参加しました
 -&link_https://talto.cc/users/DVUC9LjUviekGgXrbqXaJWAcLCm1,TALTO
 --シナリオを公開しています
 -&link_https://kakuyomu.jp/works/16816927859758100588,カクヨム

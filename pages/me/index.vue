@@ -31,8 +31,20 @@ CoCなども遊びます。
 持っているルールブックやサプリメントについては以下を参照してください。
 &button_/me/rulebook 所持ルールブック一覧
 
+&2 TRPG自己紹介シート
+TRPG自己紹介シートは &link_https://create-now.vercel.app/trpg-manual,こちら で作成させていただきました。
+ウェブサイト上で作れて便利なのでぜひ使ってください！
+&img_/material/prof.png,TRPG自己紹介シート
+&br
+
+&2 SW2.5自己紹介シート
+こちらの &em_SW2.5自己紹介シート は以下のページから作成できます！
+ウェブサイト上で簡単5分（最速1分、入力内容に迷って5分）で作成可能です！
+&button_/sw25/tool/intro
+&img_/material/profsw25.png,SW2.5自己紹介シート
+&br
 &2 プレイ環境
-現在はオンラインのテキストセッションがメインです。
+現在はオンラインのテキストセッションがメインで、たまにボイスセッションも遊びます。
 オンラインセッションの際は主に &link_https://discord.com/,Discord と &link_https://ccfolia.com,ココフォリア を使っています。
 
 &2 シナリオ&セッション用素材公開中

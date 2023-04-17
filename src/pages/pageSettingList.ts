@@ -153,7 +153,7 @@ const normalPageSettingList: PageSetting[] = [
     tags: ["sw25"],
   },
   {
-    title: "SW2.5 おすすめサプリメントランキング",
+    title: "SW2.5 おすすめサプリメントをランキング形式で紹介！",
     to: "/sw25/forbeginner/suppliment/ranking",
     lastmod: "2023/4/17",
     img: "page-image/ranking.webp",

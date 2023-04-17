@@ -82,6 +82,25 @@ const andml2 = `
 それぞれのサプリについて &em_「詳しく知りたい！」 って方はそれぞれのリンクへ飛ぶか、以下のページをご覧ください。
 &button_/sw25/forbeginner/suppliment/1/
 
+&1 終わりに
+なお、繰り返しますが、 &em_全て私見 ですのでご注意ください。
+これを見て購入して何らかの不利益を被ったとしても、責任を取れません。
+&em_相談は大歓迎 です。 &itwitter へ、 &em_お気軽にリプとかDM してください。
+&amazon_${ranking.filter(r => r.rank <= 5).map(r => r.name).join("・")}
+あと、すごく大事なことですが、サプリなんて持ってなくても遊べます。
+&em_ルルブIだけでも遊べます 。
+&br
+遊ぶ人を探す際は以下も参考にしてみてください。
+&button_/sw25/tool/intro
+&button_/sw25/tool/community
+
+種族・技能についてはこちらをチェックしてください。
+&button_/sw25/forbeginner/syuzoku
+&button_/sw25/forbeginner/ginou
+
+また、 &em_新刊情報と刊行予想 については以下のページをご覧ください。
+&button_/sw25/new
+
 他にもこのウェブサイトには初心者向けの情報や、ソード・ワールド2.5用のツールを公開しているのでぜひご覧ください。
 &button_/sw25/forbeginner
 &button_/sw25/tool

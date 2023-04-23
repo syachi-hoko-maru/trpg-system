@@ -49,12 +49,15 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
-  pageSetting: PageSetting
-}
-const Props = defineProps<Props>();
+// interface Props {
+//   pageSetting: PageSetting
+// }
+// const Props = defineProps<Props>();
 
 const { $pageSettingList, $getPageSetting, $templateText } = useNuxtApp()
+const { nowPageSetting } = usePages()
+const pageSetting = nowPageSetting
+
 
 const pageTrees = computed(() => {
   const result: {
@@ -62,15 +65,15 @@ const pageTrees = computed(() => {
     to: string
   }[] = []
   const urls: string[] = []
-  Props.pageSetting.to.split("/").filter(u => u).forEach(u => {
+  pageSetting.value.to.split("/").filter(u => u).forEach(u => {
     urls.push(u)
     const to = "/" + urls.join("/")
-    if (to === Props.pageSetting.to) return
-    const pageSetting = $getPageSetting(to)
-    if (!pageSetting) throw `[ERROR] page ${to} not found`
+    if (to === pageSetting.value.to) return
+    const ps = $getPageSetting(to)
+    if (!ps) throw `[ERROR] page ${to} not found`
     result.push({
-      title: pageSetting.title,
-      to: pageSetting.to
+      title: ps.title,
+      to: ps.to
     })
   })
   return result
@@ -122,7 +125,7 @@ SW2.5の新刊情報は主に以下より入手しています。
 -- 書影の公開はここ（かAmazon）が最初になることが多いです。
 
 &2 リンク
-` + (Props.pageSetting.to !== "/sw25/new" ? `
+` + (pageSetting.value.to !== "/sw25/new" ? `
 ソード・ワールド2.5の新刊情報は以下のページでまとめています。
 あわせてご覧ください。
 &button_/sw25/new

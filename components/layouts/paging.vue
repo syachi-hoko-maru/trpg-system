@@ -10,12 +10,13 @@
 
 <script setup lang="ts">
 interface Props {
-  pageSetting: PageSetting,
+  // pageSetting: PageSetting,
   top?: boolean
 }
 const Props = defineProps<Props>();
 
-const { getNowPagePage } = usePages()
+const { nowPageSetting, getNowPagePage } = usePages()
+const pageSetting = nowPageSetting
 
 const mpage = ref(1)
 const page = computed(() => {
@@ -29,7 +30,7 @@ const mounted = ref(false)
 onMounted(() => {
   mounted.value = true
   watch(mpage, () => {
-    navigateTo(`${Props.pageSetting.to}/${mpage.value}`)
+    navigateTo(`${pageSetting.value.to}/${mpage.value}`)
   })
 })
 </script>

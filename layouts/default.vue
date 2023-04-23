@@ -10,14 +10,14 @@
     <div id="app" :class="fixed ? 'fixed' : ''" :style="fixed ? `top: -${top}px` : ''">
       <layouts-main>
         <article>
-          <layouts-title-card v-if="mountedPageSetting" :page-setting="mountedPageSetting" />
+          <layouts-title-card />
           <div id="page">
             <slot />
           </div>
-          <layouts-paging v-if="mountedPageSetting && mountedPageSetting.page" :page-setting="mountedPageSetting" />
+          <layouts-paging />
         </article>
         <aside>
-          <lazy-layouts-tail-card v-if="mountedPageSetting" :page-setting="mountedPageSetting" />
+          <lazy-layouts-tail-card />
         </aside>
       </layouts-main>
     </div>
@@ -31,7 +31,6 @@
 </template>
 
 <script setup lang="ts">
-import { Ref } from 'vue';
 import { useTheme } from 'vuetify'
 
 const route = useRoute();
@@ -42,7 +41,7 @@ const { fixed } = useDialogo()
 const { getNowPath, nowPageSetting } = usePages()
 const { $getPageSetting, $templateText } = useNuxtApp()
 
-const mountedPageSetting: Ref<PageSetting | undefined> = ref(undefined)
+// const mountedPageSetting: Ref<PageSetting | undefined> = ref(undefined)
 
 const top = ref(0)
 const path = ref("")
@@ -116,7 +115,7 @@ const { ok } = useLoad()
 
 onMounted(() => {
   changePage()
-  mountedPageSetting.value = pageSetting.value
+  // mountedPageSetting.value = pageSetting.value
   theme.global.name.value = localStorage.getItem('theme') !== "dark" ? "myCustomLightTheme" : "myCustomDarkTheme"
   console.log(ok.value)
   watch(ok, () => {
@@ -125,7 +124,7 @@ onMounted(() => {
   })
   watch(route, () => {
     changePage()
-    mountedPageSetting.value = pageSetting.value
+    // mountedPageSetting.value = pageSetting.value
   })
   watch(fixed, () => {
     if (fixed.value) {

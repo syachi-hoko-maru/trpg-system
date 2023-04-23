@@ -4,7 +4,7 @@
       {{ type === "kanren" ? "関連するページ" : "あなたにオススメのページ" }}
     </template>
     <template #pbefore>
-      <item-scrollx>
+      <item-scrollx v-if="mounted">
         <item-pagecard v-for="op of osusumePageList" :page-setting="op" virtical />
       </item-scrollx>
     </template>
@@ -25,5 +25,10 @@ const { osusumePageArray, kanrenPageArray } = usePages()
 
 const osusumePageList = Props.type === "kanren" ? kanrenPageArray : osusumePageArray
 
+const mounted = ref(false)
+
+onMounted(() => {
+  mounted.value = true
+})
 </script>
 

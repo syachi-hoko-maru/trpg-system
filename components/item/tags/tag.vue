@@ -28,8 +28,6 @@
 </template>
 
 <script setup lang="ts">
-import { f } from 'ofetch/dist/error-8a55452d';
-
 interface Props {
   pageTag: PageTag,
   pageTagSetting: PageTagSetting

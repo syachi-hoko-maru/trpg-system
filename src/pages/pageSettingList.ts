@@ -145,17 +145,17 @@ const normalPageSettingList: PageSetting[] = [
     title: "SW2.5 おすすめサプリメント紹介",
     to: "/sw25/forbeginner/suppliment",
     page: 5,
-    lastmod: "2023/4/4",
+    lastmod: "2023/4/23",
     img: "page-image/suppliment.webp",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5）のおすすめサプリメント（拡張ルールブック）の紹介ページです。発売済みの全てのサプリメントについて、簡単な紹介と初心者へのおすすめ度を掲載しております。どれを・どれから買えばいいのか困っている方はご覧ください。",
+      "ソード・ワールド2.5（SW2.5・ソドワ）のおすすめサプリメント（拡張ルールブック）の紹介ページです。発売済みの全サプリメントについて、簡単な紹介と初心者へのおすすめ度を掲載しております。どれを・どれから買えばいいのか困っている方はご覧ください。",
     tags: ["sw25"],
   },
   {
     title: "SW2.5 おすすめサプリメントをランキング形式で紹介！",
     to: "/sw25/forbeginner/suppliment/ranking",
-    lastmod: "2023/4/17",
+    lastmod: "2023/4/23",
     img: "page-image/ranking.webp",
     osusume: true,
     explain:

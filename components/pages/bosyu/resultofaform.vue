@@ -1,5 +1,5 @@
 <template>
-  <div v-if="mounted" v-for="item of $setDisable(items).filter(i => !i.disabled)" :key="item.label">
+  <div v-if="mounted" v-for="item of $setDisable(items).filter(i => !i.disabled)" :key="item.label" contenteditable>
     <template v-if="item.type === 'boolean'">
       <template v-if="item.name === 'nitteiType' && item.value">
         {{ item.label }}

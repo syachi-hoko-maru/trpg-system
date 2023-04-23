@@ -14,7 +14,7 @@
           <div id="page">
             <slot />
           </div>
-          <layouts-paging />
+          <lazy-layouts-paging />
         </article>
         <aside>
           <lazy-layouts-tail-card />

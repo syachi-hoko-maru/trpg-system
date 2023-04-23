@@ -7,7 +7,7 @@
           <div class="pagecard d-flex justify-start"
             :class="virtical ? 'pagecard-virtical flex-column' : 'pagecard-side'">
             <div class="pagecard-image" v-if="pageSettingData.img">
-              <v-img :src="`${$templateText.basePath}/webp/${pageSettingData.img}`"
+              <item-img :src="`${$templateText.basePath}/webp/${pageSettingData.img}`"
                 :alt="`ページ「${pageSettingData.title}」のサムネイル画像`" height="100%" cover class="ma-0" />
             </div>
             <div class="pagecard-text ma-2" :class="!pageSettingData.img ? 'no-image' : ''">

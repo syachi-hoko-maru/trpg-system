@@ -5,7 +5,7 @@
   <card v-if="pageSetting && !pageSetting.specialPage && pageSetting.img">
     <template #tbefore>
       <!-- <v-responsive width="100%" aspect-ratio="40/21"> -->
-      <v-img :src="`${$templateText.basePath}/webp/${pageSetting.img}`" :alt="`「${pageSetting.title}」ページのサムネイル画像`" />
+      <item-img :src="`${$templateText.basePath}/webp/${pageSetting.img}`" :alt="`「${pageSetting.title}」ページのサムネイル画像`" />
       <!-- </v-responsive> -->
     </template>
   </card>

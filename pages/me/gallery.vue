@@ -3,7 +3,7 @@
   <card-list v-if="images.length">
     <card v-for="image of images" :id="image.title">
       <template #tbefore>
-        <v-img
+        <item-img
           :src="`${$templateText.basePath}/webp/icon-image/${image.date.split('/').map(s => s.length >= 2 ? s : '0' + s).join('')}.webp`"
           :alt="`${image.title}をイメージしたアイコン画像`" />
       </template>
@@ -17,7 +17,7 @@
     <template #pbefore>
       <card>
         <template #tbefore>
-          <v-img :src="`${$templateText.basePath}/webp/icon-image/syachi.webp`" alt="シャリタツ風しゃちほこ丸画像" />
+          <item-img :src="`${$templateText.basePath}/webp/icon-image/syachi.webp`" alt="シャリタツ風しゃちほこ丸画像" />
         </template>
         <template #title>
           シャリタツ（しゃちほこ丸のすがた）

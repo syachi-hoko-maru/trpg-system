@@ -1,5 +1,5 @@
 <template>
-  <v-img :src="`${$templateText.basePath}${src}`" :alt="alt.replace(/¥s/g, ' ')" class="my-2" />
+  <item-img :src="`${$templateText.basePath}${src}`" :alt="alt.replace(/¥s/g, ' ')" class="my-2" />
 </template>
 
 <script setup lang="ts">

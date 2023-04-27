@@ -36,7 +36,7 @@ const { ok } = useLoad();
 const setIndex = () => {
   loading.value = true
   index.value = []
-  const documents = document.getElementById("page")?.querySelectorAll(".card-div .card-title:not(.card-div .card-div .card-title)")
+  const documents = document.getElementById("page")?.querySelectorAll(".card-div .card-title:not(.card-list .card-title)")
   if (documents) {
     for (let d of documents) {
       if (d.textContent) index.value.push(d.textContent.replace(/^\s*([^\s].*[^\s])\s*$/, "$1"))

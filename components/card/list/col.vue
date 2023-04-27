@@ -1,11 +1,11 @@
 <template>
-  <div class="d-flex justify-space-between flex-wrap" id="flex-card-list">
+  <div class="d-flex justify-space-between flex-wrap card-list flex-card-list">
     <slot />
   </div>
 </template>
 
 <style lang="scss">
-#flex-card-list {
+div.card-list.flex-card-list {
   width: 100%;
   align-items: stretch;
 

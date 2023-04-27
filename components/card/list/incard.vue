@@ -1,5 +1,5 @@
 <template>
-  <card>
+  <card class="card-list">
     <template #pbefore>
       <div class="pt-5">
         <slot />

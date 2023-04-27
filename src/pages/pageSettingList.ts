@@ -189,7 +189,7 @@ const normalPageSettingList: PageSetting[] = [
     img: "page-image/osusume-scenario.webp",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5・ソドワ）の初心者GMの方向けに、シナリオを探す方法と無料公開されているおすすめシナリオを掲載しています。おすすめシナリオは初心者に限らず、経験者でも参考になるシナリオばかりです。「ソード・ワールド2.5のGMをやってみたい」「ソード・ワールド2.5のおすすめシナリオが知りたい」という方は必見です。",
+      "ソード・ワールド2.5（SW2.5・ソドワ）の初心者GM向けに、シナリオを探す方法と無料公開されているおすすめシナリオを紹介しています。おすすめシナリオは初心者に限らず、経験者でも参考になるシナリオばかりです。「ソード・ワールド2.5のGMをやってみたい」「ソドワのおすすめシナリオが知りたい」という方は必見です。",
     tags: ["sw25", "scenario"],
   },
   {
@@ -229,6 +229,25 @@ const normalPageSettingList: PageSetting[] = [
     img: "page-image/gallery.webp",
     explain: "管理人しゃちほこ丸の歴代アイコンを紹介するページです。",
     tags: ["me"],
+  },
+  {
+    title: "セッション",
+    to: "/me/session",
+    lastmod: "2023/4/28",
+    // img: "page-image/me.webp",
+    explain: "管理人しゃちほこ丸が主催するTRPGセッションに関するページです。",
+    osusume: false,
+    tags: ["me", "trpg"],
+  },
+  {
+    title: "SW2.5マダミス『断ち切られるべき呪い』概要・募集要項",
+    to: "/me/session/sw25murder",
+    lastmod: "2023/4/28",
+    img: "page-image/sw25murder.webp",
+    explain:
+      "ネタバレ無。ソード・ワールド2.5（SW2.5・ソドワ）×マーダーミステリー（マダミス）という最強の掛け算、『断ち切られるべき呪い』（ゲームマスタリーマガジン VOL.10 付録）をしゃちほこ丸が主催する際に確認していただくページです。",
+    osusume: false,
+    tags: ["me", "sw25"],
   },
   {
     title: "所持ルールブック一覧",

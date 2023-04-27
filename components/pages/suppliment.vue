@@ -15,7 +15,7 @@
           </div>
         </template>
         <andml :andmls="item.explain.split('\n')" />
-        <item-amazon mini :item="[item.name]" />
+        <item-amazon-sw25 mini :item="[item.name]" />
       </card>
     </template>
   </card>

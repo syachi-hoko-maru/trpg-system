@@ -16,7 +16,7 @@
       <item-button v-if="!book.explain" :url="`/search/?word=${book.title}&tag=sw25_new`">
         詳細・紹介はこちら
       </item-button>
-      <item-amazon :item="[book.title || '']" mini />
+      <item-amazon-sw25 :item="[book.title || '']" mini />
     </div>
     <andml :andmls="blogs" />
   </card>

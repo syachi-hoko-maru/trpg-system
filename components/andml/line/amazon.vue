@@ -1,5 +1,5 @@
 <template>
-  <item-amazon mini :item="item" />
+  <item-amazon-sw25 mini :item="item" />
 </template>
 
 <script setup lang="ts">

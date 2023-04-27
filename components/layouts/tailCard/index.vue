@@ -2,7 +2,7 @@
   <card-array-by-andml v-if="pageSetting.tags.indexOf('sw25_new') >= 0" :andml="sourceAndml" />
   <layouts-tail-card-osusume v-if="pageSetting.to !== '/policy' && pageSetting.to !== '/'" :page-setting="pageSetting"
     type="kanren" />
-  <item-amazon v-if="!pageSetting.noamazon && pageSetting.tags.findIndex(tag => tag.indexOf('sw25') >= 0) >= 0" />
+  <item-amazon-sw25 v-if="!pageSetting.noamazon && pageSetting.tags.findIndex(tag => tag.indexOf('sw25') >= 0) >= 0" />
   <card>
     <div class="mt-3" v-if="pageTrees.length">
       <atom-link to="/" deco title="トップページへのリンク" type="tailcard">トップ</atom-link>

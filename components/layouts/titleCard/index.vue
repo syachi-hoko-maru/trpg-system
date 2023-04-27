@@ -2,6 +2,7 @@
   <layouts-title-card-titlecard :page-setting="pageSetting" />
   <v-alert v-if="pageSetting && pageSetting.hidden && pageSetting.to !== 'error'" class="my-5" type="error"
     :text="`このページは動作実験中の未公開ページです。見つけた方はそっと閉じてください。`" />
+  <layouts-title-card-infodarkmode v-if="!pageSetting.specialPage" />
   <card v-if="pageSetting && !pageSetting.specialPage && pageSetting.img">
     <template #tbefore>
       <!-- <v-responsive width="100%" aspect-ratio="40/21"> -->

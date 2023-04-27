@@ -13,6 +13,8 @@
   </card>
   <item-carousel />
   <card-array-by-andml :andml="andml1" />
+  <layouts-title-card-infodarkmode />
+  <card-array-by-andml :andml="andml2" />
   <card>
     <template #title>
       Blog
@@ -21,7 +23,7 @@
     <pages-search :results="recentBlog" />
     <item-button url="/blog" normal-button>ブログはこちら</item-button>
   </card>
-  <card-array-by-andml :andml="andml2" />
+  <card-array-by-andml :andml="andml3" />
 </template>
 
 <script setup lang="ts">
@@ -34,7 +36,8 @@ const andml1 = `
 最新の更新情報は &itwitter にて発信します。
 また、ご意見ご要望などもお待ちしております。
 よろしければTwitterのフォローをお願いします。
-
+`
+const andml2 = `
 &1 Contents
 おすすめのコンテンツを3つ紹介します。
 ページ一覧は &link_/search,こちら からご覧ください。
@@ -59,7 +62,7 @@ const andml1 = `
 &button_/sw25/new
 `
 
-const andml2 = `
+const andml3 = `
 &1 About Me
 管理人のしゃちほこ丸については以下をご覧ください。
 &button_/me

@@ -116,7 +116,7 @@ const { ok } = useLoad()
 onMounted(() => {
   changePage()
   // mountedPageSetting.value = pageSetting.value
-  theme.global.name.value = localStorage.getItem('theme') !== "dark" ? "myCustomLightTheme" : "myCustomDarkTheme"
+  theme.global.name.value = localStorage.getItem('theme') === "light" ? "myCustomLightTheme" : "myCustomDarkTheme"
   console.log(ok.value)
   watch(ok, () => {
     console.log(ok.value)

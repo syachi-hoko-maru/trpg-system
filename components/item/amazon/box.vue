@@ -1,9 +1,5 @@
 <template>
   <div id="div-amazon" class="align-center">
-    <!-- <iframe
-      src="https://rcm-fe.amazon-adsystem.com/e/cm?o=9&p=12&l=ur1&category=monthlydealevent&banner=140Z9CGTRPHE20SMKXR2&f=ifr&linkID=ee2c29e44c1bafe3501c352230bdb1aa&t=syachihokotrp-22&tracking_id=syachihokotrp-22"
-      width="300" height="250" scrolling="no" border="0" marginwidth="0" id="amazon" style="border:none;" frameborder="0"
-      sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe> -->
     <iframe
       src="https://rcm-fe.amazon-adsystem.com/e/cm?o=9&p=12&l=ur1&category=mothersday23&banner=0EBJTC10YSKTZX6VN6R2&f=ifr&linkID=94052bee623c691e558744d3276339e6&t=syachihokotrp-22&tracking_id=syachihokotrp-22"
       width="300" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"
@@ -37,7 +33,7 @@ onMounted(() => {
 div#div-amazon {
   position: relative;
 
-  iframe#amazon {
+  iframe {
     position: absolute;
     transform-origin: 0 0;
   }

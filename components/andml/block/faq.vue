@@ -1,5 +1,5 @@
 <template>
-  <item-block-faq :title="props">
+  <item-block-faq :title="props ? props : ''">
     <slot />
   </item-block-faq>
 </template>

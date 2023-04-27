@@ -19,6 +19,7 @@
         </atom-link>
       </div>
     </card>
+    <!-- <item-amazon-box /> -->
     <card nobefore class="mt-0">
       <template #title>タグ一覧</template>
       <template #pbefore>

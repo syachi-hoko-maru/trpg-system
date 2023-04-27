@@ -68,7 +68,7 @@ if (!(
     {
       hid: "og:image",
       name: "og:image",
-      content: `${$templateText.baseUrl}/blog-image/${id}.png`
+      content: `${$templateText.baseUrl}/image/blog-image/${id}.png`
     }
   ]
   useHead({

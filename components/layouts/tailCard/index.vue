@@ -24,7 +24,7 @@
       ぜひTwitterなどでシェアしてこのウェブサイトを広めてください！
     </div>
   </card>
-  <layouts-tail-card-amazon v-if="!pageSetting.noamazon" />
+  <item-amazon-box v-if="!pageSetting.noamazon" />
   <card>
     <template #title>
       最近更新されたページ

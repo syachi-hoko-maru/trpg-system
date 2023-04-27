@@ -35,6 +35,7 @@ declare type PageSetting = {
   readonly hidden?: boolean;
   readonly specialPage?: boolean;
   readonly tags: PageTag[];
+  readonly noamazon?: boolean;
 };
 declare type PageTagSetting = {
   readonly label: string;

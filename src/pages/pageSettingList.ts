@@ -9,6 +9,7 @@ const normalPageSettingList: PageSetting[] = [
     img: "page-image/main.webp",
     specialPage: true,
     tags: [],
+    noamazon: true,
   },
   {
     title: "TRPGって何？　TRPGの始め方まで詳しく解説",
@@ -181,6 +182,7 @@ const normalPageSettingList: PageSetting[] = [
     explain:
       "ソード・ワールド2.5（SW2.5）の初心者の方へ役立つだろうリンクを多数掲載しています。ソドワ初心者の方はぜひご覧ください！",
     tags: ["sw25"],
+    noamazon: true,
   },
   {
     title: "SW2.5 シナリオの探し方とおすすめシナリオ【初心者GM向け】",
@@ -191,6 +193,7 @@ const normalPageSettingList: PageSetting[] = [
     explain:
       "ソード・ワールド2.5（SW2.5・ソドワ）の初心者GM向けに、シナリオを探す方法と無料公開されているおすすめシナリオを紹介しています。おすすめシナリオは初心者に限らず、経験者でも参考になるシナリオばかりです。「ソード・ワールド2.5のGMをやってみたい」「ソドワのおすすめシナリオが知りたい」という方は必見です。",
     tags: ["sw25", "scenario"],
+    noamazon: true,
   },
   {
     title: "公開シナリオ一覧",
@@ -266,6 +269,7 @@ const normalPageSettingList: PageSetting[] = [
     explain:
       "管理人しゃちほこ丸が主催するTRPGセッションでのハウスルールを掲示しているページです。TRPGにおけるトラブル防止のためのルールになっているのでよければ参考にしてください。",
     tags: ["me"],
+    noamazon: true,
   },
   {
     title: "SW2.5 ハウスルール",
@@ -275,6 +279,7 @@ const normalPageSettingList: PageSetting[] = [
     explain:
       "管理人しゃちほこ丸が主催するソード・ワールド2.5（SW2.5）のセッションでのハウスルールを掲示しているページです。ソード・ワールド2.5におけるトラブル防止のためのルールになっているのでよければ参考にしてください。",
     tags: ["sw25", "me"],
+    noamazon: true,
   },
   {
     title: "ブログ",
@@ -310,6 +315,7 @@ const normalPageSettingList: PageSetting[] = [
     explain:
       "当ウェブサイトのサイトポリシーを掲載しています。本サイトはTRPGのファンサイトです。本サイトへのリンクは自由に掲載できます。Googleアナリティクスを使用しています。",
     tags: [],
+    noamazon: true,
   },
   {
     title: "コンタクト",
@@ -319,6 +325,7 @@ const normalPageSettingList: PageSetting[] = [
     explain:
       "管理人しゃちほこ丸の連絡先メールアドレス及びTwitterアカウントを掲載しています。",
     tags: [],
+    noamazon: true,
   },
   {
     title: "エラーページ",
@@ -327,6 +334,7 @@ const normalPageSettingList: PageSetting[] = [
     hidden: true,
     explain: "エラーが発生した際に表示されるページです。",
     tags: [],
+    noamazon: true,
   },
 ].map((page) => {
   if (new Date(page.lastmod + " GMT+0900").getTime() > new Date().getTime()) {

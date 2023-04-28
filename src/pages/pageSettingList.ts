@@ -164,13 +164,13 @@ const normalPageSettingList: PageSetting[] = [
     tags: ["sw25"],
   },
   {
-    title: "SW2.5 ゆとシートの使い方",
+    title: "SW2.5 ゆとシートの使い方をわかりやすく解説",
     to: "/sw25/forbeginner/ytsheet",
     lastmod: "2023/4/29",
-    // img: "page-image/faq.webp",
+    img: "page-image/ytsheet.webp",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5）の初心者の方がよく抱くだろう疑問に対する回答を載せています。",
+      "ソード・ワールド2.5（SW2.5・ソドワ）の初心者向けにキャラクターシートを作れるサービス「ゆとシート」の使い方を画像を使いながら紹介します。キャラクターシートの作り方をルールブックに添いながら説明していきます。またココフォリア（CCFOLIA）へのコマ出力やテキスト整形の仕方も説明します。",
     noamazon: true,
     tags: ["sw25"],
   },

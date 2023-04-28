@@ -164,6 +164,17 @@ const normalPageSettingList: PageSetting[] = [
     tags: ["sw25"],
   },
   {
+    title: "SW2.5 ゆとシートの使い方",
+    to: "/sw25/forbeginner/ytsheet",
+    lastmod: "2023/4/29",
+    // img: "page-image/faq.webp",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5）の初心者の方がよく抱くだろう疑問に対する回答を載せています。",
+    noamazon: true,
+    tags: ["sw25"],
+  },
+  {
     title: "SW2.5 初心者向けFAQ",
     to: "/sw25/forbeginner/faq",
     lastmod: "2023/4/3",

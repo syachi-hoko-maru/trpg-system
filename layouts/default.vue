@@ -1,6 +1,7 @@
 <template>
   <Html lang="ja" />
   <v-app>
+    <game-balloons v-if="new Date().getDate() === 23 && new Date().getMonth() === 4" />
     <header>
       <layouts-header />
     </header>

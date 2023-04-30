@@ -57,14 +57,18 @@ const andml2 = `
 
 `
 
-const items = [
+const items: { title: string, src: string }[] = [
   {
-    title: "ブルライト博物誌",
-    src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=404074876X&linkId=5dd76d077ddec9f2e9c0737ca601d36d"
+    title: "GMウォーロック",
+    src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4775320904&linkId=5d472c4b9250a8e37f3a06425f193214"
   },
   {
     title: "エンシェントブルー",
     src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040749146&linkId=531153ff4d2e8cfb3ae449814ab8dd12"
+  },
+  {
+    title: "ブルライト博物誌",
+    src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=404074876X&linkId=5dd76d077ddec9f2e9c0737ca601d36d"
   },
   {
     title: "ルールブックI",

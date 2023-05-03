@@ -1,5 +1,5 @@
 <template>
-  <component :is="component">
+  <component :is="component" :title="title">
     <slot />
   </component>
 </template>
@@ -7,6 +7,11 @@
 <script setup lang="ts">
 import { resolveComponent, onMounted, watch, shallowRef } from 'vue';
 import { useDisplay } from 'vuetify/lib/framework.mjs';
+
+interface Props {
+  title?: string
+}
+const Props = defineProps<Props>();
 
 const component = shallowRef(resolveComponent('card-list-incard'))
 

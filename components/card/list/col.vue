@@ -1,8 +1,20 @@
 <template>
+  <card v-if="title">
+    <template #title>
+      {{ title }}
+    </template>
+  </card>
   <div class="d-flex justify-space-between flex-wrap card-list flex-card-list">
     <slot />
   </div>
 </template>
+
+<script setup lang="ts">
+interface Props {
+  title?: string
+}
+const Props = defineProps<Props>();
+</script>
 
 <style lang="scss">
 div.card-list.flex-card-list {

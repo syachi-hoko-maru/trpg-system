@@ -47,6 +47,18 @@ const images = [
     explain: ""
   },
   {
+    title: "海老天",
+    date: "2023/5/3",
+    explain: "金色が海老天に見えてしまったので、海老天カラーも作ってみました。"
+  },
+
+  {
+    title: "ゴールデンウィーク",
+    date: "2023/5/2",
+    explain: "GWなので金色に。2023年のGWは「2日休めば最大9連休」です。"
+  },
+
+  {
     title: "Misskey（TRPGがすきー！）",
     date: "2023/4/16",
     explain: "&link_https://trpger.us/@syachi_hoko_trp,MisskeyのTRPGがすきー！(TRPGer.us) に参加したのでその際のデフォルトアイコンの色を使ってアイコンを作りました。"

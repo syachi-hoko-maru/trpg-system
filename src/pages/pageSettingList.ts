@@ -123,6 +123,16 @@ const normalPageSettingList: PageSetting[] = [
     tags: ["sw25"],
   },
   {
+    title: "SW2.5 キャラビルドの作り方をわかりやすく解説",
+    to: "/sw25/forbeginner/build",
+    lastmod: "2023/5/4",
+    // img: "page-image/syuzoku.webp",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5・ソドワ）でキャラクターのビルド（データ構成）の作り方を初心者向けにわかりやすく解説していきます。",
+    tags: ["sw25"],
+  },
+  {
     title: "SW2.5 種族の一覧と紹介",
     to: "/sw25/forbeginner/syuzoku",
     lastmod: "2023/4/3",
@@ -239,7 +249,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "しゃちほこ丸ギャラリー",
     to: "/me/gallery",
-    lastmod: "2023/3/21",
+    lastmod: "2023/5/3",
     img: "page-image/gallery.webp",
     explain: "管理人しゃちほこ丸の歴代アイコンを紹介するページです。",
     tags: ["me"],

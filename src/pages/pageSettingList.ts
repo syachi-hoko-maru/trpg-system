@@ -37,8 +37,8 @@ const normalPageSettingList: PageSetting[] = [
     img: "page-image/new.webp",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5）のサプリメントやリプレイなど関連書籍の新刊情報と刊行予想をまとめています。「ソドワの新刊っていつ出るの？」「今後はどんなサプリが出そうなの？」って方、必見です。",
-    lastmod: "2023/4/15",
+      "ソード・ワールド2.5（SW2.5/ソドワ）のサプリメントやリプレイなど関連書籍の新刊情報と刊行予想をまとめています。5月異世界冒険ガイド・6月リプレイ・7月大型サプリ（種族&秘宝）。「ソドワの新刊っていつ出るの？」「今後はどんなサプリが出そうなの？」って方、必見です。",
+    lastmod: "2023/5/3",
     tags: ["sw25_new", "sw25_moso"],
   },
   {
@@ -123,15 +123,26 @@ const normalPageSettingList: PageSetting[] = [
     tags: ["sw25"],
   },
   {
-    title: "SW2.5 キャラビルドの作り方をわかりやすく解説",
+    title: "SW2.5 キャラビルドのやり方をわかりやすく解説",
     to: "/sw25/forbeginner/build",
-    lastmod: "2023/5/4",
+    lastmod: "2023/5/30",
     // img: "page-image/syuzoku.webp",
     osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5・ソドワ）でキャラクターのビルド（データ構成）の作り方を初心者向けにわかりやすく解説していきます。",
     tags: ["sw25"],
   },
+  {
+    title: "SW2.5 魔法使い系技能の使い方",
+    to: "/sw25/forbeginner/build/magic",
+    lastmod: "2023/5/30",
+    // img: "page-image/syuzoku.webp",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5・ソドワ）で魔法使い系技能（ソーサラー・コンジャラー・プリースト・マギテック・フェアリーテイマー・ドルイド・デーモンルーラー）の使い方を初心者向けにわかりやすく解説していきます。もちろんマギシューやウィザードについても解説します。",
+    tags: ["sw25"],
+  },
+
   {
     title: "SW2.5 種族の一覧と紹介",
     to: "/sw25/forbeginner/syuzoku",

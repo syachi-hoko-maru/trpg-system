@@ -1,5 +1,5 @@
 <template>
-  <card-list>
+  <card-list :title="title">
     <card v-for="page of pageSettingList" :key="page.to">
       <template #tbefore>
         <item-img :src="`${$templateText.basePath}/webp/${page.img}`" :alt="`ページ「${page.title}」のサムネイル画像`" />
@@ -21,6 +21,7 @@
 <script setup lang="ts">
 interface Props {
   pageSettingList: PageSetting[]
+  title?: string
 }
 const Props = defineProps<Props>();
 </script>

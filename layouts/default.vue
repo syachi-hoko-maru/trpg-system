@@ -1,7 +1,9 @@
 <template>
   <Html lang="ja" />
   <v-app>
-    <game-balloons v-if="new Date().getDate() === 23 && new Date().getMonth() === 4" />
+    <game-balloons
+      v-if="pageSetting?.to === '/blog/matome' || new Date().getDate() === 23 && new Date().getMonth() === 4" />
+    {{ pageSetting?.to }}
     <layouts-header />
     <aside>
       <layouts-dialogo />

@@ -1,6 +1,8 @@
 <template>
   <div v-if="pageSetting.page">
-    <v-pagination v-model="mpage" :length="pageSetting.page" rounded="circle" v-if="mounted" />
+    <div style="height:58px">
+      <v-pagination v-model="mpage" :length="pageSetting.page" rounded="circle" v-if="mounted" />
+    </div>
     <v-alert class="my-5" type="info" :text="`「${pageSetting.title}」は長くなってしまったため、複数ページに分けております。`" />
     <card v-if="pageSetting.page && !top">
       <item-button v-if="page < pageSetting.page" :url="`${pageSetting.to}/${page + 1}`"

@@ -11,7 +11,7 @@ const count = ref(20)
 
 const set = () => {
   if (show.value) return
-  if (nowPageSetting.value.to === "/me") {
+  if (nowPageSetting.value.to === "/me" || nowPageSetting.value.to === "/blog/matome") {
     count.value = 30
   }
   show.value = true
@@ -24,7 +24,7 @@ const set = () => {
 onMounted(() => {
   set()
   watch(nowPageSetting, () => {
-    if (nowPageSetting.value.to === "/me") {
+    if (nowPageSetting.value.to === "/me" || nowPageSetting.value.to === "/blog/matome") {
       set()
     }
   })

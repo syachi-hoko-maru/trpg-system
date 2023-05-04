@@ -31,16 +31,9 @@
     </template>
     最近更新されたページ{{ recent.length }}件を表示中
     <item-pagecard v-for="r of recent" :page-setting="r" />
-    <!-- <div v-for="[date, pages] of Object.entries(recent)" :key="date" class="mt-2">
-      {{ date }}
-      <div v-for="page of pages" :key="page.to" class="pl-3 pb-2">
-        <item-textlink :to="page.to" deco>
-          {{ page.to.indexOf("/blog/") === 0 ? `ブログ「${page.title}」` : page.title }}
-        </item-textlink>
-      </div>
-    </div> -->
   </card>
-  <layouts-tail-card-osusume v-if="pageSetting.to !== '/policy'" :page-setting="pageSetting" />
+  <layouts-tail-card-aboutme />
+  <layouts-tail-card-osusume :page-setting="pageSetting" />
   <card>
     <item-button @click="scrollTop">上へ戻る</item-button>
     <item-button v-if="pageSetting.to.indexOf('/blog/') === 0" url="/blog" normal-button>ブログトップへ</item-button>

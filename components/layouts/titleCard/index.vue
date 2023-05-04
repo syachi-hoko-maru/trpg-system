@@ -4,9 +4,12 @@
     :text="`このページは動作実験中の未公開ページです。見つけた方はそっと閉じてください。`" />
   <card v-if="pageSetting && !pageSetting.specialPage && pageSetting.img">
     <template #tbefore>
-      <!-- <v-responsive width="100%" aspect-ratio="40/21"> -->
-      <item-img :src="`${$templateText.basePath}/webp/${pageSetting.img}`" :alt="`「${pageSetting.title}」ページのサムネイル画像`" />
-      <!-- </v-responsive> -->
+      <div class="thumbnail-div">
+        <div class="thumbnail-img">
+          <item-img :src="`${$templateText.basePath}/webp/${pageSetting.img}`"
+            :alt="`「${pageSetting.title}」ページのサムネイル画像`" />
+        </div>
+      </div>
     </template>
   </card>
   <layouts-title-card-infodarkmode v-if="!pageSetting.specialPage" />
@@ -35,5 +38,24 @@ const pageSetting = nowPageSetting
 <style lang="scss" scoped>
 .share-icon {
   display: inline;
+}
+
+div.thumbnail-div {
+  width: 100%;
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    padding-top: 52.5396%;
+  }
+
+  .thumbnail-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
 }
 </style>

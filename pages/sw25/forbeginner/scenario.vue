@@ -239,6 +239,16 @@ const scenarioList: s[] = [
     ],
     link: "https://sone-trpg.booth.pm/items/2107630"
   },
+  {
+    scenario: "「掘り返された街道！」",
+    author: "文盲のDagonさん",
+    twitter: "DagonUnder6Feet",
+    explain: [
+      "文盲のDagonさんは &link_/sw25/tool/community,「ソード・ワールド2.5雑談コミュニティ」 を作ってくださった方です。",
+      "「掘り返された街道！」は文盲のDagonさんが作った独自設定の大陸「クレメリア大陸」を舞台としたシナリオで、最初の冒険におすすめな、シンプルに楽しめるシナリオです。キャンペーンを続ける場合のきっかけも載っています。補足資料として、クレメリア大陸についての解説も載っているので、オリジナル設定が好きな方にもおすすめです。"
+    ],
+    link: "https://talto.cc/projects/HLQ5sAnyxTa7Dp2LJsyhn"
+  },
 
 ]
 

@@ -1,7 +1,11 @@
 <template>
   <card>
     <template #before>
-      <item-img src="./webp/page-image/main.webp" alt="ヘッダー画像" />
+      <div class="thumbnail-div">
+        <div class="thumbnail-img">
+          <item-img src="./webp/page-image/main.webp" alt="ヘッダー画像" />
+        </div>
+      </div>
       <item-caption>
         背景画像は
         <item-textlink to="https://gakaisozai.seesaa.net/">
@@ -72,3 +76,23 @@ const andml3 = `
 const recentBlog = $pageSettingList.filter(page => !page.hidden && page.to.indexOf('/blog/') === 0).slice(0, 2)
 </script>
 
+<style lang="scss" scoped>
+div.thumbnail-div {
+  width: 100%;
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    padding-top: 50%;
+  }
+
+  .thumbnail-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
+</style>

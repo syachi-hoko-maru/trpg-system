@@ -71,6 +71,7 @@ const andml2 = `
 
 「サプリメントってどんなのがあったっけ？」って方はこちらをどうぞ〜
 &button_/sw25/forbeginner/suppliment
+&button_/sw25/forbeginner/suppliment/ranking
 
 他にもソード・ワールド2.5（SW2.5）さまざまなツールを公開しています。
 ぜひご活用ください。

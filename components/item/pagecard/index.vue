@@ -10,7 +10,7 @@
               <item-img :src="`${$templateText.basePath}/webp/${pageSettingData.img}`"
                 :alt="`ページ「${pageSettingData.title}」のサムネイル画像`" height="100%" cover class="ma-0" />
             </div>
-            <div class="pagecard-text ma-2" :class="!pageSettingData.img ? 'no-image' : ''">
+            <div class="pagecard-text" :class="!pageSettingData.img ? 'no-image' : ''">
               <div class="pagecard-title">
                 {{ pageSettingData.title }}
               </div>
@@ -57,6 +57,12 @@ onMounted(() => {
 .pagecard {
   .pagecard-text {
     overflow: hidden;
+    margin: 8px;
+
+    &.no-image {
+      width: calc(100% - 16px) !important;
+      height: calc(100% - 16px) !important;
+    }
 
     .pagecard-title {
       font-size: 1rem;
@@ -64,11 +70,10 @@ onMounted(() => {
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
-    }
 
-    &.no-image {
-      width: calc(100% - 16px) !important;
-      height: calc(100% - 16px) !important;
+      @media screen and (max-width: 600px) {
+        font-size: 0.8rem;
+      }
     }
   }
 
@@ -83,6 +88,12 @@ onMounted(() => {
     .pagecard-text {
       width: calc(60% - 16px);
       height: calc(100% - 16px);
+
+      @media screen and (max-width: 600px) {
+        margin: 4px;
+        width: calc(60% - 8px);
+        height: calc(100% - 8px);
+      }
     }
   }
 

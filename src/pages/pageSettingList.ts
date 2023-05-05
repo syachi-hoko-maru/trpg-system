@@ -103,6 +103,17 @@ const normalPageSettingList: PageSetting[] = [
     tags: ["sw25", "tool"],
   },
   {
+    title: "「祝5周年！　SW2.5フレーム」をアイコンにつけよう",
+    to: "/sw25/tool/5anni",
+    lastmod: "2023/7/10",
+    img: "page-image/5anni.webp",
+    osusume: true,
+    hidden: false,
+    explain:
+      "ソード・ワールド2.5（SW2.5/ソドワ）が2023年7月20日に5周年を迎えることを記念するフレームをTwitterなどの丸型アイコンに付けることができるページです。ウェブサイト上でつけることもできますし、ダウンロードして使うこともできます。",
+    tags: ["sw25", "tool"],
+  },
+  {
     title: "SW2.5 オリジナルデータ",
     to: "/sw25/data",
     img: "page-image/data.webp",

@@ -36,6 +36,7 @@ const andml1 = `
 最新の更新情報は &itwitter にて発信します。
 また、ご意見ご要望などもお待ちしております。
 よろしければTwitterのフォローをお願いします。
+&ltwitter
 `
 const andml2 = `
 &1 Contents

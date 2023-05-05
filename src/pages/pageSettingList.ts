@@ -126,17 +126,37 @@ const normalPageSettingList: PageSetting[] = [
     title: "SW2.5 キャラビルドのやり方をわかりやすく解説",
     to: "/sw25/forbeginner/build",
     lastmod: "2023/5/30",
-    // img: "page-image/syuzoku.webp",
+    img: "page-image/build.webp",
     osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5・ソドワ）でキャラクターのビルド（データ構成）の作り方を初心者向けにわかりやすく解説していきます。",
     tags: ["sw25"],
   },
   {
+    title: "SW2.5 近接タイプの「考え方」",
+    to: "/sw25/forbeginner/build/warrior",
+    lastmod: "2023/5/30",
+    img: "page-image/warrior.webp",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5・ソドワ）において、前線に出て敵と近い距離で戦うキャラクターを作る際に気をつけるべきことについて解説します。",
+    tags: ["sw25"],
+  },
+  {
+    title: "SW2.5 前衛に立つキャラクターについて",
+    to: "/sw25/forbeginner/build/front",
+    lastmod: "2023/5/30",
+    img: "page-image/front.webp",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5・ソドワ）において、戦士以外も含む、前線に出るキャラクターを作る際に気をつけるべきことについて解説します。",
+    tags: ["sw25"],
+  },
+  {
     title: "SW2.5 魔法使い系技能の使い方",
     to: "/sw25/forbeginner/build/magic",
     lastmod: "2023/5/30",
-    // img: "page-image/syuzoku.webp",
+    img: "page-image/magic.webp",
     osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5・ソドワ）で魔法使い系技能（ソーサラー・コンジャラー・プリースト・マギテック・フェアリーテイマー・ドルイド・デーモンルーラー）の使い方を初心者向けにわかりやすく解説していきます。もちろんマギシューやウィザードについても解説します。",

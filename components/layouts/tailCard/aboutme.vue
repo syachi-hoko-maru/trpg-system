@@ -12,7 +12,7 @@
         <p class="my-1">
           ウェブサイト運営やブログは初心者です。
         </p>
-        <item-button url=" https://twitter.com/syachi_hoko_trp">Twitter</item-button>
+        <item-button url="https://twitter.com/syachi_hoko_trp">Twitter</item-button>
         <item-button url="/me" normal-button>プロフィールページ</item-button>
       </div>
     </div>
@@ -29,9 +29,9 @@
   align-items: center;
 
   .left {
-    width: 30%;
-    min-width: 150px;
-    max-width: 200px;
+    width: 33%;
+    min-width: 200px;
+    max-width: 250px;
     padding: 1rem;
 
     .radius {
@@ -40,7 +40,7 @@
   }
 
   .right {
-    width: 70%;
+    width: 67%;
     flex-grow: 1;
     flex-shrink: 2;
   }

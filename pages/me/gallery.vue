@@ -1,6 +1,6 @@
 <template>
   <card-array-by-andml :andml="first" />
-  <card-list v-if="images.length">
+  <card-list v-if="images.length" title="歴代Twitterアイコン">
     <card
       v-for="image of images.filter(({ date }) => new Date().getTime() >= new Date(date.split('/').map(s => s.length >= 2 ? s : '0' + s).join('-')).getTime())"
       :id="image.title">
@@ -14,19 +14,26 @@
       <andml :andmls="image.explain" v-if="image.explain" />
     </card>
   </card-list>
-  <card>
-    <template #title>その他</template>
-    <template #pbefore>
-      <card>
-        <template #tbefore>
-          <item-img :src="`${$templateText.basePath}/webp/icon-image/syachi.webp`" alt="シャリタツ風しゃちほこ丸画像" />
-        </template>
-        <template #title>
-          シャリタツ（しゃちほこ丸のすがた）
-        </template>
-      </card>
-    </template>
-  </card>
+  <card-list v-if="miimages.length" title="Twitter未公開アイコン">
+    <card v-for="image of miimages" :id="image.title">
+      <template #tbefore>
+        <item-img :src="`${$templateText.basePath}/webp/icon-image/mi_${image.src}.webp`"
+          :alt="`${image.title}をイメージしたアイコン画像`" />
+      </template>
+      <template #title>{{ image.title }}</template>
+      <andml :andmls="image.explain" v-if="image.explain" />
+    </card>
+  </card-list>
+  <card-list title="その他">
+    <card>
+      <template #tbefore>
+        <item-img :src="`${$templateText.basePath}/webp/icon-image/syachi.webp`" alt="シャリタツ風しゃちほこ丸画像" />
+      </template>
+      <template #title>
+        シャリタツ（しゃちほこ丸のすがた）
+      </template>
+    </card>
+  </card-list>
 </template>
 
 <script setup lang="ts">
@@ -57,12 +64,6 @@ const images = [
     title: "こどもの日",
     date: "2023/5/5",
     explain: "こどもの日なので鯉のぼりバージョンになってみました。"
-  },
-
-  {
-    title: "海老天",
-    date: "2023/5/3",
-    explain: "金色が海老天に見えてしまったので、海老天カラーも作ってみました。"
   },
   {
     title: "ゴールデンウィーク",
@@ -131,5 +132,23 @@ const images = [
     explain: "冬っぽい色と、クリスマスツリーな「ほこ」"
   },
 
+]
+
+const miimages = [
+  {
+    title: "ダルマ",
+    src: "daruma",
+    explain: ""
+  },
+  {
+    title: "海老天",
+    src: "ebi",
+    explain: "金色が海老天に見えてしまったので、海老天カラーも作ってみました。"
+  },
+  {
+    title: "柏餅",
+    src: "kashiwa",
+    explain: ""
+  },
 ]
 </script>

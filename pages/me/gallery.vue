@@ -1,7 +1,9 @@
 <template>
   <card-array-by-andml :andml="first" />
   <card-list v-if="images.length">
-    <card v-for="image of images" :id="image.title">
+    <card
+      v-for="image of images.filter(({ date }) => new Date().getTime() >= new Date(date.split('/').map(s => s.length >= 2 ? s : '0' + s).join('-')).getTime())"
+      :id="image.title">
       <template #tbefore>
         <item-img
           :src="`${$templateText.basePath}/webp/icon-image/${image.date.split('/').map(s => s.length >= 2 ? s : '0' + s).join('')}.webp`"
@@ -44,6 +46,11 @@ const images = [
   {
     title: "通常",
     date: "2022/12/14",
+    explain: ""
+  },
+  {
+    title: "誕生日",
+    date: "2023/5/23",
     explain: ""
   },
   {

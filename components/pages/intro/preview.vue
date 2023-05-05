@@ -154,7 +154,7 @@ const setImage = async () => {
     ctx.fillStyle = "#222";
     // 準備ここまで
 
-    await drawImage(ctx, `${$templateText.basePath}/sw25intro/intro.svg`, 0, 0, canvasWidth, canvasHeight)
+    await drawImage(ctx, `${$templateText.basePath}/image/sw25intro/intro.svg`, 0, 0, canvasWidth, canvasHeight)
 
     const iconSrc = Props.formSettings.find((form) => form.name === "icon")?.value
     if (iconSrc && typeof iconSrc === "string") await drawImage(ctx, iconSrc, 92.07, 195.04, 92.07 + 291.58, 195.04 + 291.5, true)

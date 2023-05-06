@@ -1,5 +1,5 @@
 <template>
-  <card v-if="title">
+  <card v-if="title" class="pb-2">
     <template #title>
       {{ title }}
     </template>

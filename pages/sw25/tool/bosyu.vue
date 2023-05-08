@@ -45,10 +45,10 @@ const andmls1 = `
 const andmls2 = `
 入力内容は${saveSec}秒に1回程度、自動保存されます。
 手動で保存したい場合には以下のボタンを押してください。
- &br 
+&br 
 保存はブラウザに対してなされます。 &link_https://developer.mozilla.org/ja/docs/Web/API/Window/localStorage,（参考）
 データがサーバーなど、あなたのPCやスマホ、タブレットなどの外部へ送られることはありません。 
- &br 
+&br 
 なお、 &em_このデータは消えてしまうことがあります 。
 あらかじめご了承ください。
 `

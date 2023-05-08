@@ -1,7 +1,7 @@
 <template>
   <card :loading="loading">
     <template #title>
-      <div class="pb-0">入力結果</div>
+      <div class="pb-0">プレビュー</div>
     </template>
     <template #pbefore v-if="mounted">
       <div id="frame">

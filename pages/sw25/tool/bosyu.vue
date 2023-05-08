@@ -22,11 +22,11 @@
     </item-button>
   </card>
   <pages-bosyu-result v-if="result.length" :bosyuSettingsWithDisable="result" :color="color" />
+  <pages-bosyu-text v-if="bosyuSettingsWithDisable.length" :bosyuSettingsWithDisable="bosyuSettingsWithDisable" />
 </template>
 
 <script setup lang="ts">
 import { Ref } from "vue";
-// const { cloneDeep } = lodash;
 
 const { bosyuSettings } = useBosyu()
 const { setSnack } = useSnack()
@@ -35,13 +35,36 @@ const { $setDisable } = useNuxtApp()
 
 const saveSec = 10
 const andmls1 = `
-&1 使い方
-以下から情報を選択して、募集を作り、下記の『画像を表示する』から入力結果を確認の上、ダウンロードしてご利用ください。
-選択式になっているものの多くは、 &br_自分で文字を書き換えることが可能 です。 
+&1 このページについて
+ソード・ワールド2.5（SW2.5）のオンラインセッション募集時に、 &em_過不足なく情報を伝える ための画像・テキストが作れるページです。
+&br
+過不足のない情報には &em_応募者を増やす効果が期待 できます。
 &br
 なお、 &em_「募集しても人が集まらない……」 という方は以下のページもご覧ください。
 &button_/sw25/tool/community
+
+&2 使い方
+&3 フォーム入力
+まずは以下のフォームで情報を選択・入力し、募集情報を完成させてください。
+&br
+なお、選択式になっているものの多くは、 &br_自分で文字を書き換えることが可能 です。 
+書き換えられないものも、後述の『プレビュー』にて変更が可能です。
+
+&3 プレビューと画像出力
+下記の『画像を表示する』ボタンを押すと、『プレビュー』が表示されます。
+&br
+『プレビュー』表示を書き換えると、画像出力も変化します。
+&br
+『プレビュー』下部にある『ダウンロード』ボタンを押すことで &em_画像として保存 することができます。
+
+&3 テキスト出力
+Discordなど、文字数制限がない場所では、テキスト出力も便利です。
+『プレビュー』の下にあるので、こちらも活用してください。
+&br
+なお、『プレビュー』で書き換えた内容は、こちらには &em_反映されません。
+あらかじめご了承いただき、送信前に書き換えをお願いします。
 `
+
 const andmls2 = `
 入力内容は${saveSec}秒に1回程度、自動保存されます。
 手動で保存したい場合には以下のボタンを押してください。

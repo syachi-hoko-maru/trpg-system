@@ -1,5 +1,5 @@
 <template>
-  <v-main style="--v-layout-left:0px; --v-layout-right:0px; --v-layout-top:64px; --v-layout-bottom:204px;">
+  <v-main style="--v-layout-left:0px; --v-layout-right:0px; --v-layout-top:64px; --v-layout-bottom:292px;">
     <v-container id="mainContainer">
       <v-row justify="space-around" align="stretch">
         <v-col cols="12" xs="12" sm="11" lg="12" xl="10">

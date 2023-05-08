@@ -164,6 +164,16 @@ const normalPageSettingList: PageSetting[] = [
     tags: ["sw25"],
   },
   {
+    title: "SW2.5 遠隔アタッカータイプの「考え方」",
+    to: "/sw25/forbeginner/build/remote_attacker",
+    lastmod: "2023/5/30",
+    img: "page-image/remote_attacker.webp",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5・ソドワ）において、前線に出て敵と近い距離で戦うキャラクターを作る際に気をつけるべきことについて解説します。",
+    tags: ["sw25"],
+  },
+  {
     title: "SW2.5 魔法使い系技能の使い方",
     to: "/sw25/forbeginner/build/magic",
     lastmod: "2023/5/30",
@@ -171,6 +181,16 @@ const normalPageSettingList: PageSetting[] = [
     osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5・ソドワ）で魔法使い系技能（ソーサラー・コンジャラー・プリースト・マギテック・フェアリーテイマー・ドルイド・デーモンルーラー）の使い方を初心者向けにわかりやすく解説していきます。もちろんマギシューやウィザードについても解説します。",
+    tags: ["sw25"],
+  },
+  {
+    title: "SW2.5 魔法アタッカータイプの「考え方」",
+    to: "/sw25/forbeginner/build/magic_attacker",
+    lastmod: "2023/5/30",
+    img: "page-image/magic_attacker.webp",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5・ソドワ）において、前線に出て敵と近い距離で戦うキャラクターを作る際に気をつけるべきことについて解説します。",
     tags: ["sw25"],
   },
 

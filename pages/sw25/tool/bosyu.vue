@@ -21,7 +21,7 @@
       画像を表示する
     </item-button>
   </card>
-  <pages-bosyu-result v-if="result.length" :bosyuSettingsWithDisable="result" :color="color" />
+  <pages-bosyu-result :bosyuSettingsWithDisable="result" :color="color" />
   <pages-bosyu-text v-if="bosyuSettingsWithDisable.length" :bosyuSettingsWithDisable="bosyuSettingsWithDisable" />
 </template>
 

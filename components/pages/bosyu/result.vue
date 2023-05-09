@@ -4,8 +4,8 @@
       <div class="pb-0">プレビュー</div>
     </template>
     <template #pbefore v-if="mounted">
-      <div id="frame">
-        <div id="output" :class="color" v-if="bosyuSettingsWithDisable.length">
+      <div id="frame" v-if="bosyuSettingsWithDisable.length">
+        <div id="output" :class="color">
           <item-head2>SW2.5{{ bosyuType }}募集</item-head2>
           <div v-for="data of bosyuSettingsWithDisable" :key="data.label">
             <div class="mt-2">◇ {{ data.label }}</div>
@@ -15,7 +15,8 @@
         </div>
       </div>
     </template>
-    <item-button prepend-icon="mdi-arrow-down-bold-circle" @click.stop="captureImage">ダウンロード</item-button>
+    <item-button v-if="bosyuSettingsWithDisable.length" prepend-icon="mdi-arrow-down-bold-circle"
+      @click.stop="captureImage">ダウンロード</item-button>
   </card>
 </template>
 

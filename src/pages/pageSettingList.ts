@@ -236,6 +236,16 @@ const normalPageSettingList: PageSetting[] = [
     tags: ["sw25"],
   },
   {
+    title: "「異世界冒険者ガイド」ってどんな本？",
+    to: "/sw25/forbeginner/isekai",
+    lastmod: "2023/5/11",
+    img: "page-image/isekai.webp",
+    osusume: true,
+    explain:
+      "グループSNEから出ている「異世界冒険者ガイド」シリーズについて、「どんな人におすすめ？」「どう役立つの？」を紹介します。ソード・ワールド2.5（SW2.5・ソドワ）に興味ある人にはとにかくおすすめです！　シリーズ3冊（「異世界冒険ガイド きみならどうする!?　はじめての冒険」「異世界武器ペディア ウェポンストーリーズ」「異世界冒険ガイド きみならどうする!?　街での冒険」）を全て紹介します。",
+    tags: ["sw25"],
+  },
+  {
     title: "SW2.5 ゆとシートの使い方をわかりやすく解説",
     to: "/sw25/forbeginner/ytsheet",
     lastmod: "2023/4/29",

@@ -1,5 +1,5 @@
 <template>
-  <h4 class="head3 mt-3 mb-1">
+  <h4 class="head3 mt-4 mb-2">
     ◆
     <slot />
   </h4>
@@ -7,7 +7,7 @@
 
 <style lang="scss" scoped>
 h4.head3 {
-  font-size: 1.1em;
+  font-size: 1.25em;
   font-weight: bold;
 }
 </style>

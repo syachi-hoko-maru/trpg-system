@@ -6,8 +6,8 @@
         <v-progress-circular :size="70" :width="7" indeterminate color="primary" />
       </v-row>
       <slot name="tbefore" />
-      <div v-if="$slots.title" class="pt-4 pb-1">
-        <h2 class="text-h5 px-4 py-0 my-0 card-title" :id="id">
+      <div v-if="$slots.title" class="pt-5 pb-3">
+        <h2 class="head1 px-4 py-0 my-0 card-title" :id="id">
           <slot name="title" />
         </h2>
         <v-card-subtitle v-if="$slots.subtitle">
@@ -75,6 +75,12 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.head1 {
+  font-size: 1.75em;
+  line-height: 1.3em;
+  font-weight: normal;
+}
+
 .cardLoading {
   position: absolute;
   z-index: 1020;

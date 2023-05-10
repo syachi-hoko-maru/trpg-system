@@ -367,7 +367,8 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "ブログ",
     to: "/blog",
-    lastmod: "2023/3/15",
+    img: "page-image/blog.webp",
+    lastmod: "2023/5/10",
     explain:
       "ブログのトップページです。ブログでは管理人しゃちほこ丸がソード・ワールド2.5（SW2.5）などのTRPGの知見や感想、最新情報などを公開していきます。",
     tags: ["me"],

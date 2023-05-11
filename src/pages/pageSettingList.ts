@@ -124,6 +124,17 @@ const normalPageSettingList: PageSetting[] = [
     tags: ["sw25_moso", "me"],
   },
   {
+    title: "SW2.5 オリジナルサプリメント「シナノシマ」（仮）",
+    to: "/sw25/data/shinano",
+    // img: "page-image/data.webp",
+    lastmod: "2023/5/30",
+    // osusume: true,
+    hidden: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5・ソドワ）のオリジナルデータ群を掲載しています。「シナノシマ」は和風ファンタジーをソード・ワールド2.5で遊ぶために管理人が考えた舞台で、オリジナル技能・オリジナル種族・オリジナル流派があります。",
+    tags: ["sw25_moso", "me"],
+  },
+  {
     title: "SW2.5 初心者向け情報",
     to: "/sw25/forbeginner",
     img: "page-image/forbeginner.webp",

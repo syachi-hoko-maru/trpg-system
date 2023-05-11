@@ -38,7 +38,7 @@ const normalPageSettingList: PageSetting[] = [
     osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5/ソドワ）のサプリメントやリプレイなど関連書籍の新刊情報と刊行予想をまとめています。5月異世界冒険ガイド・6月リプレイ・7月大型サプリ（種族&秘宝）。「ソドワの新刊っていつ出るの？」「今後はどんなサプリが出そうなの？」って方、必見です。",
-    lastmod: "2023/5/3",
+    lastmod: "2023/5/11",
     tags: ["sw25_new", "sw25_moso"],
   },
   {
@@ -130,7 +130,7 @@ const normalPageSettingList: PageSetting[] = [
     lastmod: "2023/4/15",
     osusume: false,
     explain:
-      "ソドワ初心者・TRPG初心者向けのソード・ワールド2.5（SW2.5）情報をまとめているページです。種族や技能の一覧と紹介、おすすめサプリメントの紹介、FAQや便利なリンクを掲載中です。",
+      "ソドワ初心者・TRPG初心者向けのソード・ワールド2.5（SW2.5）情報をまとめているページです。種族や技能の一覧と紹介、おすすめサプリメントの紹介、シナリオの準備の仕方などGM向けの情報もあります。FAQや便利なリンクも掲載してます。",
     tags: ["sw25"],
   },
   {
@@ -193,7 +193,6 @@ const normalPageSettingList: PageSetting[] = [
       "ソード・ワールド2.5（SW2.5・ソドワ）において、前線に出て敵と近い距離で戦うキャラクターを作る際に気をつけるべきことについて解説します。",
     tags: ["sw25"],
   },
-
   {
     title: "SW2.5 種族の一覧と紹介",
     to: "/sw25/forbeginner/syuzoku",
@@ -259,11 +258,11 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 初心者向けFAQ",
     to: "/sw25/forbeginner/faq",
-    lastmod: "2023/4/3",
+    lastmod: "2023/5/11",
     img: "page-image/faq.webp",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5）の初心者の方がよく抱くだろう疑問に対する回答を載せています。",
+      "ソード・ワールド2.5（SW2.5/ソドワ）の初心者の方がよく抱くだろう疑問に対する回答を載せています。「クトゥルフ神話TRPG（CoC）とは関係がありますか？」「ルールブックは必須ですか？」「他のファンタジーTRPGとの違いはなんですか？」など",
     tags: ["sw25"],
   },
   {

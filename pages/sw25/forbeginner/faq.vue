@@ -16,6 +16,7 @@ const faqs = [
     explain: [
       "SW2.5はTRPG「ソード・ワールド2.5」の略称の1つです。",
       "他にも「sw25」や「ソドワ」「そどわ」などが使われます。",
+      "関連して、 &link_https://twitter.com/syachi_hoko_trp/status/1651153511491715074,こんなツイート もしました。"
     ],
   },
   {
@@ -53,8 +54,9 @@ const faqs = [
       "まずは &em_ルールブックIだけで大丈夫 です。",
       "&amazon_ルールブック",
       "&br",
-      "もし &em_〇〇という種族が使いたいけどどのルールブックに載っているの……？ 　という方がいれば、以下のページをご覧ください。",
-      "&button_/sw25/forbeginner/syuzoku"
+      "もし &em_〇〇という種族/技能を使いたいけどどのルールブックに載っているの……？ 　という方がいれば、以下のページをご覧ください。",
+      "&button_/sw25/forbeginner/syuzoku",
+      "&button_/sw25/forbeginner/ginou"
     ],
   },
   {
@@ -64,8 +66,9 @@ const faqs = [
       "&em_990円とお手軽価格 なので買うことを強くお勧めします。",
       "&br",
       "「1回遊んでから買いたい」という方はルールブック未所持でも参加可能なセッションを探しましょう。",
-      "特に記述がない募集を見つけた場合、 &em_トラブル防止のため、必ず確認 しましょう。",
-      "なお、僕がGMをする場合、 &link_https://fujimi-trpg-online.jp/download/sw25.html#sample,サンプルキャラクター を使っての参加をお願いしています。",
+      "特に記述がない募集を見つけた場合、 &em_トラブル防止のため、必ず主催者に確認 しましょう。",
+      "&br",
+      "なお、僕がGMをする場合、ルールブックを持っていない方には &link_https://fujimi-trpg-online.jp/download/sw25.html#sample,サンプルキャラクター を使っての参加をお願いしています。",
       "&br",
       "ただ、ルールブックを「ワールド」だけでも読んで臨んだほうが &em_よりソード・ワールド2.5を楽しめると思う ので、買っておくことをお勧めです。"
     ],
@@ -75,16 +78,17 @@ const faqs = [
     explain: [
       "まずは &em_ルールブックIだけで大丈夫 です。",
       "&br",
-      "その上で、「サプリメントを買うぜ！」という場合には以下を参照ください。",
-      "&button_/sw25/forbeginner/suppliment/1"
+      "その上で、「俺はサプリメントを買うぜ！」という場合には以下を参照ください。",
+      "&button_/sw25/forbeginner/suppliment/1",
+      "&button_/sw25/forbeginner/suppliment/ranking"
     ],
   },
   {
     title: "SW2.5と他のファンタジーTRPGとの違いはなんですか？",
     explain: [
-      "日本のファンタジー系TRPGの中では、まずわかりやすく &em_「手軽さ」と毎年複数冊のサプリメントが出る「サポートの手厚さ」 によって差別化されます。",
+      "日本のファンタジー系TRPGの中では、比較すると、わかりやすい違いは、ルールブックが安いという &em_「手軽さ」と、毎年複数冊のサプリメントが出る「サポートの手厚さ」 です。",
       "&br",
-      "さまざまなルールの違いに関しては &link_https://www.youtube.com/@Baketsusan,バケツさん（YouTube） のシリーズ「ファンタジーTRPGを比べてみよう！」がおすすめです。",
+      "さまざまなルールの違いに関しては &link_https://www.youtube.com/@Baketsusan,バケツさん（YouTube） のシリーズ「ファンタジーTRPGを比べてみよう！」がおすすめです。ぜひみて見てください！",
       "&button_https://www.youtube.com/watch?v=2ibJQwxapyE&list=PLKNsDN1V6QW66JwABhpATxu9uySNjOP-1&index=1 YouTube"
     ],
   },

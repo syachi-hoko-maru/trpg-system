@@ -217,7 +217,7 @@ const scenarioList: s[] = [
       "「ようじょわーるどへようこそ」は「わちゃわちゃ遊びたい人向け。」と書いてあるように、戦闘メインではなく、ロールプレイをとにかく楽しむ、そんなソード・ワールド2.5を遊びたい人におすすめです。僕自身、作者さんGMで遊ばせてもらったのですが、めちゃくちゃ楽しかったです。",
       "処理が多めですが、仲良い人とわちゃわちゃ遊びたい人にはおすすめです。"
     ],
-    link: "https://talto.cc/projects/jAQ1NWeq69ggbihahUTBg"
+    link: "https://talto.cc/projects/_Vw6w4tkDYBGBU23pgU-d"
   },
   {
     scenario: "「水路の迷子を追いかけて」",

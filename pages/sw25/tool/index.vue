@@ -1,6 +1,6 @@
 <template>
   <card-array-by-andml :andml="andml1" />
-  <item-pagesindex :page-setting-list="toolPages">
+  <item-pagesindex title="SW2.5 ツール一覧" :page-setting-list="toolPages">
     <card-array-by-andml :andml="andml2" />
   </item-pagesindex>
   <card-array-by-andml :andml="andml3" />

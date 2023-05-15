@@ -4,11 +4,13 @@
       <template #tbefore>
         <item-img :src="`${$templateText.basePath}/webp/${page.img}`" :alt="`ページ「${page.title}」のサムネイル画像`" />
       </template>
-      <template #title>
-        {{ page.title }}
-      </template>
       <div class="text">
-        {{ page.explain }}
+        <div class="pagesindex-explain">
+          <item-head2>
+            {{ page.title }}
+          </item-head2>
+          {{ page.explain }}
+        </div>
       </div>
       <item-button :to="page.to">
         こちら
@@ -25,3 +27,12 @@ interface Props {
 }
 const Props = defineProps<Props>();
 </script>
+
+<style lang="scss" scoped>
+div.text {
+  .pagesindex-explain {
+    max-height: 218px;
+    overflow: hidden;
+  }
+}
+</style>

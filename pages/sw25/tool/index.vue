@@ -1,7 +1,7 @@
 <template>
   <card-array-by-andml :andml="andml1" />
   <item-pagesindex title="SW2.5 ツール一覧" :page-setting-list="toolPages">
-    <card-array-by-andml :andml="andml2" />
+    <!-- <card-array-by-andml :andml="andml2" /> -->
   </item-pagesindex>
   <card-array-by-andml :andml="andml3" />
 </template>
@@ -24,14 +24,6 @@ const andml1 = `
 &link_http://www.arclight.co.jp/trpg-rights/,二次創作活動のガイドライン など、 &em_SW2.5の規約に沿う限りにおいて 、自由に使用してください。
 ただし、これらのツールの自作発言はおやめください。
 `
-
-const andml2 = `
-&1 SW2.5ランダムシナリオメイカー
-診断メイカーの診断です。
-TRPG「ソード・ワールド2.5」のシナリオを自動生成します。
-&button_https://shindanmaker.com/1123981 こちら
-`
-
 const andml3 = `
 &1 その他のページ
 このウェブサイトにはツール以外でもソード・ワールド2.5に関連するページがあります。

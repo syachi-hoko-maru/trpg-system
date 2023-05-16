@@ -103,6 +103,17 @@ const normalPageSettingList: PageSetting[] = [
     tags: ["sw25", "tool"],
   },
   {
+    title: "診断メイカーまとめ",
+    to: "/sw25/tool/shindan",
+    lastmod: "2023/5/16",
+    img: "page-image/shindan.webp",
+    osusume: true,
+    explain:
+      "TRPG、特にソード・ワールド2.5（SW2.5/ソドワ）関連の「診断メイカー」をいろいろ作ってきたので、これらをまとめて紹介します！　ランダムシナリオメイカーや異世界転生診断など。",
+    tags: ["sw25", "tool"],
+  },
+
+  {
     title: "「祝5周年！　SW2.5フレーム」をアイコンにつけよう",
     to: "/sw25/tool/5anni",
     lastmod: "2023/7/10",
@@ -181,7 +192,7 @@ const normalPageSettingList: PageSetting[] = [
     img: "page-image/remote_attacker.webp",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5・ソドワ）において、前線に出て敵と近い距離で戦うキャラクターを作る際に気をつけるべきことについて解説します。",
+      "",
     tags: ["sw25"],
   },
   {
@@ -201,7 +212,17 @@ const normalPageSettingList: PageSetting[] = [
     img: "page-image/magic_attacker.webp",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5・ソドワ）において、前線に出て敵と近い距離で戦うキャラクターを作る際に気をつけるべきことについて解説します。",
+      "",
+    tags: ["sw25"],
+  },
+  {
+    title: "SW2.5 ヒーラータイプの「考え方」",
+    to: "/sw25/forbeginner/build/healer",
+    lastmod: "2023/5/30",
+    img: "page-image/healer.webp",
+    osusume: true,
+    explain:
+      "",
     tags: ["sw25"],
   },
   {

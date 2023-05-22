@@ -45,8 +45,8 @@ const setText = () => {
       if (formSetting.value) {
         if (formSetting.value === true) {
           arr.push(`${formSetting.label}`)
-        } else if (Array.isArray(formSetting.value) && formSetting.name === "count") {
-          arr.push(`${formSetting.label}: ${formSetting.value.join("〜")}`)
+        } else if (Array.isArray(formSetting.value) && formSetting.type==="slider" && formSetting.name === "count") {
+          arr.push(`${formSetting.label}: ${formSetting.selects[formSetting.value[0]]}〜${formSetting.selects[formSetting.value[1]]}`)
         } else if (typeof formSetting.value === "string" && (formSetting.value.length > 10 || formSetting.value.indexOf("\n") >= 0)) {
           arr.push(`${formSetting.label}: \n${formSetting.value}`)
         } else {

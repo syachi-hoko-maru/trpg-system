@@ -9,7 +9,7 @@
       </template>
     </template>
     <template v-else-if="item.type === 'slider'">
-      {{ item.label }}: {{ Array.isArray(item.value) ? item.value.join("〜") : item.value }}
+      {{ item.label }}: {{ Array.isArray(item.value) ? `${item.selects[item.value[0]]}〜${item.selects[item.value[1]]}` : item.value }}
     </template>
     <template v-else-if="item.type === 'parent'">エラー</template>
     <template v-else-if="item.type === 'textarea' && item.value !== ''">

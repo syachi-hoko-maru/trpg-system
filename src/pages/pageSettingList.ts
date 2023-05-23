@@ -191,8 +191,7 @@ const normalPageSettingList: PageSetting[] = [
     lastmod: "2023/5/30",
     img: "page-image/remote_attacker.webp",
     osusume: true,
-    explain:
-      "",
+    explain: "",
     tags: ["sw25"],
   },
   {
@@ -211,8 +210,7 @@ const normalPageSettingList: PageSetting[] = [
     lastmod: "2023/5/30",
     img: "page-image/magic_attacker.webp",
     osusume: true,
-    explain:
-      "",
+    explain: "",
     tags: ["sw25"],
   },
   {
@@ -221,8 +219,7 @@ const normalPageSettingList: PageSetting[] = [
     lastmod: "2023/5/30",
     img: "page-image/healer.webp",
     osusume: true,
-    explain:
-      "",
+    explain: "",
     tags: ["sw25"],
   },
   {
@@ -352,7 +349,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "しゃちほこ丸ギャラリー",
     to: "/me/gallery",
-    lastmod: "2023/5/5",
+    lastmod: "2023/5/23",
     img: "page-image/gallery.webp",
     explain: "管理人しゃちほこ丸の歴代アイコンを紹介するページです。",
     tags: ["me"],

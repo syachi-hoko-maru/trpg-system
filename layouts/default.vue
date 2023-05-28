@@ -1,5 +1,8 @@
 <template>
   <Html lang="ja" />
+  <noscript>
+    当サイトはjavascriptの実行が許可されていることが前提となっていますが、あなたが現在使用しているブラウザではjavascriptの実行が許可されていません。
+  </noscript>
   <v-app>
     <game-balloons
       v-if="pageSetting?.to === '/blog/matome' || new Date().getDate() === 23 && new Date().getMonth() === 4" />

@@ -21,7 +21,7 @@ const andml1 = `
 なお「TRPGセッション以外での使用」と「加工したものの二次配布」の2つに関しては相談いただければ許可する場合もございます。
 お気軽に &itwitter までご相談ください。
 &br
-※ TRPGセッションでしたら、 &em?収益化された配信での使用 なども問題ありません。
+※ TRPGセッションでしたら、 &em_収益化された配信での使用 なども問題ありません。
 
 &1 TRPG ダンジョンマップタイル
 &img_/material/map_tile.webp,TRPGダンジョンマップタイル
@@ -31,14 +31,14 @@ TRPGでダンジョンマップを簡単に作れる画像素材です。
 ソード・ワールド2.5はもちろん、クトゥルフ神話TRPGなどの他のTRPGでも、 &em_ダンジョンやフィールドのマップ として使えます！
 &br
 画像はココフォリアにスクリーンパネルとしておいたものですが、png画像ですので他のサービスでも使用可能です。
-&button_https://syachihokomaru.booth.pm/items/3401321 こちら
+&button_https://syachihokomaru.booth.pm/items/3401321 こちら（Booth）
 
 &1 SW2.5 冒険者登録証
 &img_/material/sheet_sample.webp,SW2.5冒険者登録証
 冒険者ギルド支部に登録する際の「冒険者登録証」をオリジナルデザインで作成してみました。
 自分のキャラクターを紹介するのに使ったり、シナリオを遊んだ記念に作ったり、してみてください！
-&button_${$templateText.baseUrl}/material/sheet_empty.webp 未記入画像（PNG）はこちら
-&button_${$templateText.baseUrl}/material/sheet_empty.svg 未記入画像（SVG）はこちら
+&button_${$templateText.baseUrl}/image/material/sheet_empty.png 未記入画像（PNG）はこちら
+&button_${$templateText.baseUrl}/image/material/sheet_empty.svg 未記入画像（SVG）はこちら
 
 &1 TRPG 依頼書
 &img_/material/quest_sample.webp,TRPG依頼書
@@ -48,8 +48,8 @@ TRPGでダンジョンマップを簡単に作れる画像素材です。
 &&&
 のようなシーンを演出するためにいかがでしょうか？
 ぜひ使ってください。
-&button_${$templateText.baseUrl}/material/quest_empty1.webp 未記入画像（PNG、「その他」記載なし）はこちら
-&button_${$templateText.baseUrl}/material/quest_empty2.webp 未記入画像（PNG、「その他」記載あり）はこちら
+&button_${$templateText.baseUrl}/image/material/quest_empty1.png 未記入画像（PNG、「その他」記載なし）はこちら
+&button_${$templateText.baseUrl}/image/material/quest_empty2.png 未記入画像（PNG、「その他」記載あり）はこちら
 
 &1 SW2.5 ボトルドールシート
 &img_/material/bottle_doll.webp,SW2.5ボトルドールシート
@@ -57,7 +57,7 @@ TRPGでダンジョンマップを簡単に作れる画像素材です。
 &em_サプリメントにない5レベル以上のデータ も、p.101掲載のコラム「5レベル以上」を参考に作成しました。
 &br
 画像はココフォリアにスクリーンパネルとしておいたものですが、pngファイルですので他のサービスでも使用可能です。印刷して使用いただくこともできます。
-&button_https://syachihokomaru.booth.pm/items/3516274 こちら
+&button_https://syachihokomaru.booth.pm/items/3516274 こちら（Booth）
 &br
 サプリメント紹介は以下からどうぞ。
 &button_/sw25/forbeginner/suppliment/1
@@ -70,8 +70,9 @@ TRPGでダンジョンマップを簡単に作れる画像素材です。
 ロールプレイする気分になりつつ、 &em_キャラクターをつかむ一環にもなる と思うので、おすすめです。
 &br
 元はソード・ワールド2.5用に作りましたが、他のTRPGで使用いただいても構いません。
+&button_${$templateText.baseUrl}/image/material/lunch.png PNGはこちら
 &br
-なお、このような &em_GMをする際の小技 は同人誌「ハルーラガイド」に多く載っています。
+なお、このような &em_GMをする際の小技は同人誌「ハルーラガイド」に多く載っています！
 ハルーラガイドの感想と「自分ならどうする」は以下のページからどうぞ。
 &button_/blog/harula
 `

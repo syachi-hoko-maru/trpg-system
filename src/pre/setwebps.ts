@@ -1,4 +1,4 @@
-import { readdirSync } from "fs";
+import { mkdirSync, readdirSync, statSync } from "fs";
 import sharp from "sharp";
 
 const imageDir = `${process.cwd()}/public/image`;
@@ -7,11 +7,33 @@ const webpDir = `${process.cwd()}/public/webp`;
 const imgDirList = readdirSync(imageDir);
 
 const setwebp = (dirname: string) => {
-  const imageList = readdirSync(`${imageDir}/${dirname}`).filter(
-    (str) =>
-      str.endsWith(".png") || str.endsWith(".jpeg") || str.endsWith(".jpg")
-  );
-  const webpList = readdirSync(`${webpDir}/${dirname}`);
+  const itemList = readdirSync(`${imageDir}/${dirname}`);
+  const imageList: string[] = [];
+
+  itemList.forEach((itemName) => {
+    // 画像ファイルの場合、imageListにぶち込む
+    if (
+      itemName.endsWith(".png") ||
+      itemName.endsWith(".jpeg") ||
+      itemName.endsWith(".jpg")
+    ) {
+      imageList.push(itemName);
+    } else {
+      // ディレクトリならその階層に対してsetwebpをする
+      const itemStat = statSync(`${imageDir}/${dirname}/${itemName}`);
+      if (itemStat.isDirectory()) {
+        setwebp(`${dirname}/${itemName}`);
+      }
+    }
+  });
+
+  let webpList: string[];
+  try {
+    webpList = readdirSync(`${webpDir}/${dirname}`);
+  } catch {
+    mkdirSync(`${webpDir}/${dirname}`);
+    webpList = [];
+  }
 
   const sharps: Promise<void>[] = [];
 

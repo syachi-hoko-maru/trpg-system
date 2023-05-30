@@ -1,4 +1,5 @@
 import blogSettingList from "../../assets/blog.json";
+import { setBlogExplain } from "./blogExplain";
 import { isPageTag } from "./pageTags";
 
 const normalPageSettingList: PageSetting[] = [
@@ -481,14 +482,7 @@ const blogPageSettingList: PageSetting[] = (blogSettingList as Blog[])
       tags: b.tags.filter(isPageTag) as PageTag[],
       osusume: count <= 10 && dateFlag ? true : false,
       hidden: dateFlag ? false : true,
-      explain:
-        `「${b.title}」に関するブログ記事です。` +
-        b.andml
-          .replace(/&[^\s]*\s/g, "")
-          .replace(/[\s_]/g, "")
-          .replace(/\n/g, " &br ")
-          .slice(0, 100) +
-        `（公開日：${b.date}）`,
+      explain: setBlogExplain(b, 100),
     };
   });
 

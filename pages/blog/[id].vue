@@ -22,6 +22,7 @@
 
 <script setup lang="ts">
 import blogs from "@/assets/blog.json"
+import { setBlogExplain } from "~~/src/pages/blogExplain";
 
 const { $templateText, $pageSettingList } = useNuxtApp()
 const { params } = useRoute()
@@ -46,6 +47,7 @@ if (!(
   mainandml.value = blog.andml
 
   const title = `${blog.title} - ブログ@${$templateText.title}`;
+  const description = setBlogExplain(blog, 140)
   const meta = [
     {
       hid: "og:url",
@@ -57,13 +59,14 @@ if (!(
       content: title,
     },
     {
+      hid: "description",
+      name: "description",
+      content: description
+    },
+    {
       hid: "og:description",
       name: "og:description",
-      content: blog.andml
-        .replace(/&[^\s]*\s/g, "")
-        .replace(/[\s_]/g, "")
-        .replace(/\n/g, " &br ")
-        .slice(0, 120),
+      content: description
     },
     {
       hid: "og:image",

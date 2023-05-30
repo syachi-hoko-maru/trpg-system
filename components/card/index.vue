@@ -2,8 +2,11 @@
   <section class="card-div" :class="nobefore ? '' : 'before'" :id="title">
     <v-card class="my-5" :class="Props.class ? Props.class : 'bg-background text-text'"
       :elevation="$vuetify.theme.current.dark ? 5 : 3">
-      <v-row v-if="Props.loading" class="cardLoading align-center justify-center">
-        <v-progress-circular :size="70" :width="7" indeterminate color="primary" />
+      <v-row v-if="Props.loading || Props.comingsoon" class="card-cover align-center justify-center">
+        <v-progress-circular v-if="Props.loading" :size="70" :width="7" indeterminate color="primary"
+          class="card-cover-item" />
+        <div v-if="Props.comingsoon" class="comingsoon card-cover-item">Coming Soon</div>
+        <div class="background" :style="`background-color: ${$vuetify.theme.current.colors.background};`" />
       </v-row>
       <slot name="tbefore" />
       <div v-if="$slots.title" class="pt-5 pb-3">
@@ -32,6 +35,7 @@
 <script setup lang="ts">
 interface Props {
   class?: string
+  comingsoon?: boolean
   loading?: boolean
   nobefore?: boolean
 }
@@ -74,21 +78,39 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .head1 {
   font-size: 1.75em;
   line-height: 1.3em;
   font-weight: normal;
 }
 
-.cardLoading {
+.card-cover {
   position: absolute;
-  z-index: 1020;
+  z-index: 1021;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(128, 128, 128, 0.5);
+
+  .card-cover-item {
+    z-index: 1021;
+
+    &.comingsoon {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+  }
+
+  div.background {
+    position: absolute;
+    z-index: 1020;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 67%;
+  }
 }
 
 section.card-div[id].before::before {

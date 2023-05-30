@@ -1,8 +1,8 @@
 <template>
   <div :class="virtical ? 'ma-2' : 'my-5'">
     <atom-link v-if="pageSettingData" :to="pageSettingData.to + (pageSettingData.page ? '/1/' : '')"
-      :title="`ページ「${pageSettingData.title}」へのリンク`" type="pagecard">
-      <card>
+      :title="`ページ「${pageSettingData.title}」へのリンク（ページカード）`" type="pagecard" :disabled="pageSettingData.hidden">
+      <card :comingsoon="pageSettingData.hidden">
         <template #tbefore>
           <div class="pagecard d-flex justify-start"
             :class="virtical ? 'pagecard-virtical flex-column' : 'pagecard-side'">
@@ -15,7 +15,12 @@
                 {{ pageSettingData.title }}
               </div>
               <div class="text-caption text-medium-emphasis">
-                最終更新日：{{ pageSettingData.lastmod }}
+                <template v-if="!pageSettingData.hidden">
+                  最終更新日：{{ pageSettingData.lastmod }}
+                </template>
+                <template v-else>
+                  公開予定日：{{ pageSettingData.lastmod }}
+                </template>
               </div>
               <div class="text-caption text-medium-emphasis my-1">
                 {{ (Array.isArray(pageSettingData.explain) ? pageSettingData.explain.join() : pageSettingData.explain) }}

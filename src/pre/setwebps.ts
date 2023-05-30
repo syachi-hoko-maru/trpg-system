@@ -1,32 +1,34 @@
 import { readdirSync } from "fs";
 import sharp from "sharp";
 
-const pngDir = `${process.cwd()}/public/image`;
+const imageDir = `${process.cwd()}/public/image`;
 const webpDir = `${process.cwd()}/public/webp`;
 
-const imgDirList = readdirSync(pngDir);
+const imgDirList = readdirSync(imageDir);
 
 const setwebp = (dirname: string) => {
-  const pngList = readdirSync(`${pngDir}/${dirname}`).filter(
+  const imageList = readdirSync(`${imageDir}/${dirname}`).filter(
     (str) =>
       str.endsWith(".png") || str.endsWith(".jpeg") || str.endsWith(".jpg")
   );
   const webpList = readdirSync(`${webpDir}/${dirname}`);
+
   const sharps: Promise<void>[] = [];
-  pngList.forEach((img) => {
-    const imgwebp = `${img
+
+  imageList.forEach((imageFileName) => {
+    const webpFileName = `${imageFileName
       .replace(".png", "")
       .replace(".jpeg", "")
       .replace(".jpg", "")}.webp`;
-    if (webpList.indexOf(imgwebp) !== -1) return;
+    if (webpList.indexOf(webpFileName) !== -1) return;
     sharps.push(
-      sharp(`${pngDir}/${dirname}/${img}`)
+      sharp(`${imageDir}/${dirname}/${imageFileName}`)
         .webp({
           quality: 75,
         })
-        .toFile(`${webpDir}/${dirname}/${imgwebp}`)
+        .toFile(`${webpDir}/${dirname}/${webpFileName}`)
         .then(() => {
-          console.log(`generate ${imgwebp}`);
+          console.log(`generate ${webpFileName}`);
         })
         .catch((err: any) => {
           console.error(err);

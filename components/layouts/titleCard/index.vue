@@ -12,7 +12,6 @@
       </div>
     </template>
   </card>
-  <layouts-title-card-infodarkmode v-if="!pageSetting.specialPage" />
   <layouts-paging v-if="pageSetting && pageSetting.page" :page-setting="pageSetting" top />
   <layouts-title-card-pageindex v-if="pageSetting && !pageSetting.specialPage" :page-setting="pageSetting" />
   <card v-if="pageSetting && pageSetting.tags.join('').indexOf('sw25') >= 0">

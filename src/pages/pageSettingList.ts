@@ -6,7 +6,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "トップページ",
     to: "/",
-    lastmod: "2023/3/28",
+    lastmod: "2023/5/30",
     img: "page-image/main.webp",
     specialPage: true,
     tags: [],
@@ -113,7 +113,6 @@ const normalPageSettingList: PageSetting[] = [
       "TRPG、特にソード・ワールド2.5（SW2.5/ソドワ）関連の「診断メイカー」をいろいろ作ってきたので、これらをまとめて紹介します！　ランダムシナリオメイカーや異世界転生診断など。",
     tags: ["sw25", "tool"],
   },
-
   {
     title: "「祝5周年！　SW2.5フレーム」をアイコンにつけよう",
     to: "/sw25/tool/5anni",

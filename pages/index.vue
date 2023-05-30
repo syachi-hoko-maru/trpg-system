@@ -23,6 +23,7 @@
     <template #title>
       Blog
     </template>
+    ブログにはソード・ワールド2.5などのTRPGで思ったことなどを書いています。<br>
     最新のブログ記事{{ recentBlog.length }}件を表示中
     <pages-search :results="recentBlog" />
     <item-button url="/blog" normal-button>ブログはこちら</item-button>
@@ -39,16 +40,19 @@ const andml1 = `
 今後も随時、 &em_機能や情報の追加・改良を行なっていきます。
 最新の更新情報は &itwitter にて発信します。
 また、ご意見ご要望などもお待ちしております。
+&br
 よろしければTwitterのフォローをお願いします。
 &ltwitter
 `
 const andml2 = `
 &1 Contents
-おすすめのコンテンツを3つ紹介します。
+おすすめのコンテンツを4つ紹介します。
 ページ一覧は &link_/search,こちら からご覧ください。
 &button_/sw25/tool
-&button_/scenario
+&button_/sw25/tool/intro
+&button_/sw25/forbeginner/scenario
 &button_/sw25/forbeginner/suppliment/1
+&button_/search? ページ一覧はこちら
 
 &1 For Beginner
 ソード・ワールド2.5初心者向けの情報やTRPG初心者向けの情報は以下にまとめてあります。
@@ -63,17 +67,18 @@ const andml2 = `
 &button_#最近更新されたページ 最近更新されたページはこちら
 
 &2 SW2.5
-ソード・ワールド2.5の新刊情報はこちら。刊行予想もしています。
+ソード・ワールド2.5の新刊情報はこちら。
+刊行予想もしています。
 &button_/sw25/new
 `
 
 const andml3 = `
 &1 About Me
-管理人のしゃちほこ丸については以下をご覧ください。
+管理人のしゃちほこ丸については以下のページをご覧ください。
 &button_/me
 `
 
-const recentBlog = $pageSettingList.filter(page => !page.hidden && page.to.indexOf('/blog/') === 0).slice(0, 2)
+const recentBlog = $pageSettingList.filter(page => !page.hidden && page.to.indexOf('/blog/') === 0).slice(0, 3)
 </script>
 
 <style lang="scss" scoped>

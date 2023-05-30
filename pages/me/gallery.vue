@@ -58,7 +58,7 @@ const images = [
   {
     title: "誕生日",
     date: "2023/5/23",
-    explain: ""
+    explain: "誕生日ブログは &link_/blog/matome,こちら 。風船が飛びます。割って遊んでください。"
   },
   {
     title: "こどもの日",
@@ -89,7 +89,7 @@ const images = [
   {
     title: "桜",
     date: "2023/3/15",
-    explain: ""
+    explain: "背景には &link_https://haikei.app/,こちら を使用させていただきました。"
   },
   {
     title: "ホワイトデー",

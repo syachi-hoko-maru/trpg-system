@@ -96,7 +96,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "TRPG オンラインセッション用素材",
     to: "/sw25/tool/material",
-    lastmod: "2023/4/15",
+    lastmod: "2023/5/30",
     img: "page-image/material.webp",
     osusume: true,
     explain:
@@ -129,21 +129,20 @@ const normalPageSettingList: PageSetting[] = [
     title: "SW2.5 オリジナルデータ",
     to: "/sw25/data",
     img: "page-image/data.webp",
-    lastmod: "2023/3/20",
+    lastmod: "2023/5/30",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5・ソドワ）のオリジナルデータを掲載しているページです。管理人のしゃちほこ丸が作った魔物・アイテム・騎獣・流派などのデータがあります。",
+      "ソード・ワールド2.5（SW2.5/ソドワ）のオリジナルデータを掲載しているページです。管理人のしゃちほこ丸が作った魔物・アイテム・騎獣・流派・技能・魔法……などのデータがあります。",
     tags: ["sw25_moso", "me"],
   },
   {
-    title: "SW2.5 オリジナルサプリメント「シナノシマ」（仮）",
+    title: "SW2.5 同人サプリメント「シナノシマ 妖との戦い」（仮）",
     to: "/sw25/data/shinano",
-    // img: "page-image/data.webp",
-    lastmod: "2023/5/30",
+    img: "page-image/shinano.webp",
+    lastmod: "2023/6/3",
     // osusume: true,
-    hidden: true,
     explain:
-      "ソード・ワールド2.5（SW2.5・ソドワ）のオリジナルデータ群を掲載しています。「シナノシマ」は和風ファンタジーをソード・ワールド2.5で遊ぶために管理人が考えた舞台で、オリジナル技能・オリジナル種族・オリジナル流派があります。",
+      "ソード・ワールド2.5（SW2.5・ソドワ）で和風ファンタジーを遊ぶために管理人が考えた舞台「シナノシマ」（いわゆるオリジナル大陸）と、そのオリジナル技能・オリジナル種族・オリジナル流派を紹介します。",
     tags: ["sw25_moso", "me"],
   },
   {

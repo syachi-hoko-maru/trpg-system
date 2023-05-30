@@ -2,11 +2,15 @@
   <item-share :text="shareSetting.text" :url="shareSetting.url" :icon="icon">
     <slot />
   </item-share>
+  <item-button v-if="withcopy" prepend-icon="mdi-content-copy" @click.stop="() => $copy(shareSetting.url)">
+    このページのURLをコピー
+  </item-button>
 </template>
 
 <script setup lang="ts">
 interface Props {
   icon?: boolean
+  withcopy?: boolean
 }
 const Props = defineProps<Props>();
 

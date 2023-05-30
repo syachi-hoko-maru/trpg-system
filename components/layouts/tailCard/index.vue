@@ -16,10 +16,7 @@
         {{ pageSetting.title }}
       </span>
     </div>
-    <item-share-page :page-setting="pageSetting">このページをツイート</item-share-page>
-    <item-button prepend-icon="mdi-content-copy" @click.stop="() => $copy($templateText.baseUrl + pageSetting.to)">
-      このページのURLをコピー
-    </item-button>
+    <item-share-page withcopy>このページをツイート</item-share-page>
     <div class="mt-3">
       ぜひTwitterなどでシェアしてこのウェブサイトを広めてください！
     </div>

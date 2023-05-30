@@ -1,6 +1,6 @@
 <template>
   <card-list :title="title">
-    <card v-for="page of pageSettingList" :key="page.to">
+    <card v-for="page of pageSettingList" :key="page.to" :comingsoon="page.hidden">
       <template #tbefore>
         <item-img :src="`${$templateText.basePath}/webp/${page.img}`" :alt="`ページ「${page.title}」のサムネイル画像`" />
       </template>

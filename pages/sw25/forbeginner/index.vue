@@ -30,14 +30,13 @@ const andml2 = `
 このページはソード・ワールド2.5の紹介用にバンバン使ってください！
 &br
 このページの内容が「分かりやすかった」「役に立った」という方は、ぜひ知り合いに伝えたり、Twitterでシェアしたり、してください！
-Twitterでのシェアはもう少し下へスクロールしたところにボタンがあります。
+&button-share
 `
 const { $pageSettingList } = useNuxtApp()
 
 const forbeginnerPages = $pageSettingList.filter(page =>
   page.to.startsWith("/sw25/forbeginner/")
   && !page.to.startsWith("/sw25/forbeginner/build/")
-  && !page.hidden
 )
 
 </script>

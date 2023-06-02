@@ -12,7 +12,6 @@
       || new Date().getDate() === 20 && new Date().getMonth() + 1 === 7
       // SW2.0の誕生日
       || new Date().getDate() === 18 && new Date().getMonth() + 1 === 4" />
-    {{ pageSetting?.to }}
     <layouts-header />
     <aside>
       <layouts-dialogo />

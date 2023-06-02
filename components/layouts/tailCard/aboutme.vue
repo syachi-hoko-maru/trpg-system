@@ -17,6 +17,7 @@
           しゃちほこ丸のTwitter
         </item-button>
         <item-button url="/me" />
+        <item-button url="https://giftee.com/u/syachi_hoko_trp">欲しいものリスト（giftee）</item-button>
       </div>
     </div>
 

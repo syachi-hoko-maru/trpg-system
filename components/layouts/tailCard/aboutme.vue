@@ -3,7 +3,7 @@
     <template #title>About Me</template>
     <div class="flex">
       <div class="left">
-        <item-img :src="`${$templateText.basePath}/webp/icon-image/20250101.webp`" class="radius" alt="アイコン" />
+        <item-img :src="`${$templateText.basePath}/webp/icon-image/20221214.webp`" class="radius" alt="アイコン" />
       </div>
       <div class="right">
         <p class="my-1">

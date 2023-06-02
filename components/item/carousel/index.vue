@@ -6,8 +6,7 @@
     <template v-slot:next="{ props }">
       <v-btn icon="mdi-chevron-right" size="small" @click="props.onClick" />
     </template>
-    <v-carousel-item width="100%"
-      v-for="pageSetting of $pageSettingList.filter(p => p.osusume && p.img).sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime()).splice(0, 10)">
+    <v-carousel-item width="100%" v-for="pageSetting of pageSettingList">
       <atom-link :to="pageSetting.to" :title="`ページ「${pageSetting.title}」へのリンク`" type="carousel">
         <card class="ma-2" nobefore>
           <template #tbefore>
@@ -26,8 +25,13 @@
 </template>
 
 <script setup lang="ts">
+interface Props {
+  pageSettingList: PageSetting[]
+}
+const Props = defineProps<Props>()
+
 const item = ref(0)
-const itemCount = 10
+const itemCount = Props.pageSettingList.length
 
 const scrollCarousel = () => {
   if (item.value === itemCount - 1) item.value = 0

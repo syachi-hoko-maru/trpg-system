@@ -19,7 +19,7 @@ const { $templateText } = useNuxtApp()
 
 const shareSetting = computed(() => {
   const text = nowPageSetting.value.to.indexOf("blog/") >= 0 ? `ブログ「${nowPageSetting.value.title}」` : nowPageSetting.value.title
-  const url = $templateText.baseUrl + nowPageSetting.value.to
+  const url = $templateText.baseUrl + (nowPageSetting.value.to !== "/" ? nowPageSetting.value.to + "/" : "/")
   return {
     text,
     url

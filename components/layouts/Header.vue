@@ -1,7 +1,7 @@
 <template>
   <v-app-bar color="primary" app id="header">
     <v-app-bar-title>
-      <h1 id="title" class="text-h5 ma-0">
+      <h1 id="title" class="text-h6 ma-0">
         <atom-link v-if="!error" to="/" color="text-textbp" title="トップページへのリンク（タイトル）">
           {{ titleprefix }}<br class="hidden-sm-and-up">{{ titlemain }}
         </atom-link>

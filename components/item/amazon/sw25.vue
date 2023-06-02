@@ -59,6 +59,14 @@ const andml2 = `
 
 const items: { title: string, src: string }[] = [
   {
+    title: "リプレイ 時の魔域と秘宝の守り人",
+    src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040750241&linkId=6d2bf0e7dbf9aaf6f8fa577e14236b7e"
+  },
+  {
+    title: "アーケインレリック",
+    src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040750640&linkId=a2dbb02933e972a78fbe9abd89190817"
+  },
+  {
     title: "異世界冒険ガイド2",
     src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B0C3ZHJ68W&linkId=30059ced40c6b20087ec994b0ed8a53b"
   },
@@ -131,12 +139,12 @@ const items: { title: string, src: string }[] = [
     src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040748549&linkId=13191204b52e8df9727f5079c4d977fe"
   },
   {
-    title: "リプレイ 時の魔域と秘宝の守り人",
-    src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040750241&linkId=6d2bf0e7dbf9aaf6f8fa577e14236b7e"
-  },
-  {
     title: "GMウォーロック",
     src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4775320904&linkId=5d472c4b9250a8e37f3a06425f193214"
+  },
+  {
+    title: "TRPGのデザイン",
+    src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B0C4TFYGF6&linkId=7b6e37a646ee45449ad904f81b603455"
   },
 ].filter((item, i) => {
   if (!Props.item)

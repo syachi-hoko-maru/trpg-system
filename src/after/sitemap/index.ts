@@ -1,11 +1,11 @@
 import { writeFileSync } from "fs";
 import { pageTags } from "../../pages/pageTags";
 import { pageSettingList } from "../../pages/pageSettingList";
-import { searchWordList } from "./searchWordList";
+// import { searchWordList } from "./searchWordList";
 
 const outputDir = `${process.cwd()}/.output/public`;
 
-const searchTagLastmod = "2023-04-10";
+// const searchTagLastmod = "2023-04-10";
 
 export const setSitemap = () => {
   let result = "";
@@ -81,31 +81,31 @@ https://syachi-hoko-maru.github.io/trpg-system/${pageSetting.img.replace(
       }
     });
 
-  searchWordList.forEach(([word, lastmod]) => {
-    result += `
-<url>
-    <loc>
-    https://syachi-hoko-maru.github.io/trpg-system/search/?word=${encodeURIComponent(
-      word
-    )}
-    </loc>
-    <lastmod>${lastmod}</lastmod>
-</url>
-    `;
-  });
+  //   searchWordList.forEach(([word, lastmod]) => {
+  //     result += `
+  // <url>
+  //     <loc>
+  //     https://syachi-hoko-maru.github.io/trpg-system/search/?word=${encodeURIComponent(
+  //       word
+  //     )}
+  //     </loc>
+  //     <lastmod>${lastmod}</lastmod>
+  // </url>
+  //     `;
+  //   });
 
-  pageTags.forEach((tag) => {
-    result += `
-<url>
-    <loc>
-    https://syachi-hoko-maru.github.io/trpg-system/search/?tag=${encodeURIComponent(
-      tag
-    )}
-    </loc>
-    <lastmod>${searchTagLastmod}</lastmod>
-</url>
-    `;
-  });
+  //   pageTags.forEach((tag) => {
+  //     result += `
+  // <url>
+  //     <loc>
+  //     https://syachi-hoko-maru.github.io/trpg-system/search/?tag=${encodeURIComponent(
+  //       tag
+  //     )}
+  //     </loc>
+  //     <lastmod>${searchTagLastmod}</lastmod>
+  // </url>
+  //     `;
+  //   });
 
   result =
     '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">' +

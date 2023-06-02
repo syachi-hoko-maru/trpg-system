@@ -418,6 +418,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "検索・ページ一覧",
     to: "/search",
+    img: "page-image/search.webp",
     lastmod: "2023/3/28",
     specialPage: true,
     explain:

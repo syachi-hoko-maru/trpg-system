@@ -148,7 +148,7 @@ ${$pageSettingList.filter(page => !page.hidden && page.to.indexOf('/blog/') === 
 &&noandml
 This site also has a variety of other TRPG-related contents!
 &&&
-&button_/search? ページ一覧はこちら
+&button_/search
 `
 
 const andml4 = `

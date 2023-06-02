@@ -15,73 +15,166 @@
       </item-caption>
     </template>
   </card>
-  <item-carousel />
-  <card-array-by-andml :andml="andml1" />
-  <layouts-title-card-infodarkmode />
-  <card-array-by-andml :andml="andml2" />
-  <card>
-    <template #title>
-      Blog
-    </template>
-    ブログにはソード・ワールド2.5などのTRPGで思ったことなどを書いています。<br>
-    最新のブログ記事{{ recentBlog.length }}件を表示中
-    <pages-search :results="recentBlog" />
-    <item-button url="/blog" normal-button>ブログはこちら</item-button>
-  </card>
-  <card-array-by-andml :andml="andml3" />
+
+  <div class="grid">
+    <card-array-by-andml :andml="andml1" nobefore />
+    <card nobefore>
+      <template #title>
+        Recent Updates
+      </template>
+      <template #pbefore>
+        <item-carousel
+          :page-setting-list="$pageSettingList.filter(p => p.osusume && p.img).sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime()).splice(0, 10)" />
+      </template>
+    </card>
+  </div>
+
+  <div class="grid contents">
+    <card-array-by-andml :andml="andml2" nobefore />
+    <card nobefore v-if="osusumePageArray.length">
+      <template #title>
+        Pick Up Pages
+      </template>
+      <template #pbefore>
+        <item-carousel :page-setting-list="osusumePageArray.filter(pageSetting => pageSetting.img)" />
+      </template>
+    </card>
+
+  </div>
+
+  <div class="grid">
+    <card nobefore>
+      <template #title>
+        Search & Tags
+      </template>
+      <item-searchbox />
+      <template #pafter>
+        <item-head2>Tags</item-head2>
+        クリックでタグのついたページ一覧を見ることができます。
+      </template>
+      <template #after>
+        <item-tags-list />
+      </template>
+    </card>
+    <card-array-by-andml :andml="andml4" nobefore />
+    <layouts-tail-card-aboutme nobefore />
+  </div>
 </template>
 
 <script setup lang="ts">
 const { $pageSettingList } = useNuxtApp()
+const { osusumePageArray } = usePages()
+
 const andml1 = `
-&1 Welcome
-このサイトでは &info_trpg 、特に &info_sw25 （SW2.5）の &link_/scenario,シナリオの公開 や、 &link_,役立つツールの提供 、 &link_/sw25/forbeginner/suppliment/1,サプリメントの紹介 などを行なっています。
+&1 Welcome!!
+このサイトはTRPGのファンサイトです！
+特にソード・ワールド2.5（SW2.5/ソドワ）をメインに扱っています！
 &br
-今後も随時、 &em_機能や情報の追加・改良を行なっていきます。
-最新の更新情報は &itwitter にて発信します。
+&&noandml
+This site is a fan site for TRPGs, especially Sword World 2.5!
+I'm sorry but most of the content on this website is written only in Japanese.
+Please use translations to read this website.
+&&&
+`
+
+const andml2 = `
+&1 For Beginner
+TRPG初心者の方向けに、TRPGやソード・ワールド2.5の紹介を行っています。
+「TRPGって何？」「SW2.5って何？」って方はぜひご覧ください。
+&br
+&&noandml
+This site introduces TRPGs and Sword World 2.5 for TRPG beginners!
+&&&
+&button_/trpg
+&button_/sw25
+&button_/sw25/forbeginner
+
+&1 Scenario
+ソード・ワールド2.5などのTRPGシナリオを公開しています。
+また、ソード・ワールド2.5のおすすめシナリオを紹介しています。
+&br
+&&noandml
+I release TRPG scenarios for Sword World 2.5 and other TRPG scenarios.
+And, I present recommended scenarios for Sword World 2.5.
+&&&
+&button_/scenario
+&button_/sw25/forbeginner/scenario
+
+&1 Tools for SW2.5
+ソード・ワールド2.5を遊ぶ際に役立つ様々なツールを公開しています。
+ぜひお役立てください。
+&br
+&&noandml
+This site has useful tools for Sword World 2.5.
+&&&
+&button_/sw25/tool
+&button_/sw25/tool/intro
+// &button_/sw25/tool/simulate
+// &button_/sw25/tool/bosyu
+&button_/sw25/tool/material
+&button_/sw25/tool? ツール一覧はこちら
+
+&1 SW2.5 infomation
+ソード・ワールド2.5のお役立ち情報・最新情報も掲載しています。
+&br
+&&noandml
+This site provides useful information and updates on Sword World 2.5.
+&&&
+&button_/sw25/forbeginner/suppliment/1
+&button_/sw25/new
+
+&1 SW2.5 FANMADE Data
+ソード・ワールド2.5のオリジナルデータを作成・公開しています。
+&br
+&&noandml
+This website offers Sword World 2.5 fanmade data.
+&&&
+&button_/sw25/data
+&button_/search?tag=sw25_moso タグ「SW2.5妄想」がついたページ
+
+&1 Blog
+ブログにはTRPGで思ったことなどを書いています。
+&br
+&&noandml
+I write about my thoughts on TRPGs on my blog.
+&&&
+${$pageSettingList.filter(page => !page.hidden && page.to.indexOf('/blog/') === 0).slice(0, 3).map(page => `&button_${page.to}`).join("\n")}
+&button_/blog? ブログ一覧はこちら
+
+&1 And More Contents
+他にもTRPGに関する様々なコンテンツを用意しています！
+色々と見てみてください！
+&br
+&&noandml
+This site also has a variety of other TRPG-related contents!
+&&&
+&button_/search? ページ一覧はこちら
+`
+
+const andml4 = `
+&1 History & News
+&date_today 随時更新中
+&date_2023/6/2 本公開
+&date_2023/3/1 仮公開
+// &date_2023/1/11 更新準備開始
+&br
+最新の更新情報はTwitterにて発信します！
 また、ご意見ご要望などもお待ちしております。
 &br
 よろしければTwitterのフォローをお願いします。
+&br
+&&noandml
+The latest updates will be sent out via twitter!
+We also welcome your comments and requests.
+Please follow me on twitter!
+&&&
 &ltwitter
-`
-const andml2 = `
-&1 Contents
-おすすめのコンテンツを4つ紹介します。
-ページ一覧は &link_/search,こちら からご覧ください。
-&button_/sw25/tool
-&button_/sw25/tool/intro
-&button_/sw25/forbeginner/scenario
-&button_/sw25/forbeginner/suppliment/1
-&button_/search? ページ一覧はこちら
-
-&1 For Beginner
-ソード・ワールド2.5初心者向けの情報やTRPG初心者向けの情報は以下にまとめてあります。
-ぜひご確認ください。
-&button_/trpg
-&button_/sw25/forbeginner
-
-&1 News
-&date_today 更新作業中
-&date_2023/3/1 仮公開
-&date_2023/1/11 更新準備開始
-&button_#最近更新されたページ 最近更新されたページはこちら
-
-&2 SW2.5
-ソード・ワールド2.5の新刊情報はこちら。
-刊行予想もしています。
-&button_/sw25/new
-`
-
-const andml3 = `
-&1 About Me
-管理人のしゃちほこ丸については以下のページをご覧ください。
-&button_/me
 `
 
 const recentBlog = $pageSettingList.filter(page => !page.hidden && page.to.indexOf('/blog/') === 0).slice(0, 3)
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 div.thumbnail-div {
   width: 100%;
   position: relative;
@@ -98,6 +191,54 @@ div.thumbnail-div {
     top: 0;
     height: 100%;
     width: 100%;
+  }
+}
+
+.grid {
+  margin: 20px auto;
+  padding: 0;
+  width: 100%;
+  column-count: 3;
+  column-gap: 20px;
+
+  @media screen and (max-width: 1920px) {
+    column-count: 2;
+  }
+
+  @media screen and (max-width: 600px) {
+    column-count: 1;
+  }
+
+
+
+  >section.card-div {
+    margin-bottom: 20px;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+
+    >div.v-card {
+      margin: 0 !important;
+    }
+  }
+
+  &.contents {
+    div.page-card-div {
+      margin: 20px;
+
+      div.page-card-incard {
+        aspect-ratio: 40/21;
+
+        .pagecard-image {
+          width: 100%;
+          height: 100%;
+        }
+
+        .pagecard-text {
+          display: none;
+        }
+      }
+    }
   }
 }
 </style>

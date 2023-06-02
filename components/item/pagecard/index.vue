@@ -1,10 +1,10 @@
 <template>
-  <div :class="virtical ? 'ma-2' : 'my-5'">
+  <div class="page-card-div" :class="virtical ? 'ma-2' : 'my-5'">
     <atom-link v-if="pageSettingData" :to="pageSettingData.to + (pageSettingData.page ? '/1/' : '')"
       :title="`ページ「${pageSettingData.title}」へのリンク（ページカード）`" type="pagecard" :disabled="pageSettingData.hidden">
       <card :comingsoon="pageSettingData.hidden">
         <template #tbefore>
-          <div class="pagecard d-flex justify-start"
+          <div class="pagecard d-flex justify-start page-card-incard"
             :class="virtical ? 'pagecard-virtical flex-column' : 'pagecard-side'">
             <div class="pagecard-image" v-if="pageSettingData.img">
               <item-img :src="`${$templateText.basePath}/webp/${pageSettingData.img}`"

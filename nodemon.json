@@ -1,5 +1,5 @@
 {
-  "watch": ["./src/pre/gene/text/"],
+  "watch": ["./text/"],
   "ext": "*",
   "exec": "yarn devblog:once"
 }

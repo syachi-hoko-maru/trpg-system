@@ -15,7 +15,7 @@ export const geneImage = async () => {
       console.log(`start generate image ${id}.png`);
       try {
         const img =
-          `${process.cwd()}/src/gene/setBlogData/geneImage/` +
+          `${process.cwd()}/src/pre/gene/setBlogData/geneImage/` +
           (tags.join("").indexOf("sw25") >= 0 ? "ogp_sw25.svg" : "ogp.svg");
         await generateImage(id, title, img, date).catch((err) => {
           console.error(err);
@@ -37,7 +37,7 @@ const generateImage = async (
   const height = 630;
 
   registerFont(
-    `${process.cwd()}/src/gene/setBlogData/geneImage/BIZ_UDPMincho/BIZUDPMincho-Regular.ttf`,
+    `${process.cwd()}/src/pre/gene/setBlogData/geneImage/BIZ_UDPMincho/BIZUDPMincho-Regular.ttf`,
     { family: "font" }
   );
 

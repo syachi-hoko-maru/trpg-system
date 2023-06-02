@@ -1,5 +1,5 @@
 <template>
-  <card class="pt-4">
+  <card class="pt-4" :nobefore="nobefore">
     <!-- <template #title>このウェブサイトの管理人</template> -->
     <div class="flex">
       <div class="left">
@@ -19,6 +19,13 @@
 
   </card>
 </template>
+
+<script setup lang="ts">
+interface Props {
+  nobefore?: boolean
+}
+const Props = defineProps<Props>();
+</script>
 
 <style lang="scss" scoped>
 .flex {

@@ -1,5 +1,5 @@
 <template>
-  <card-array-by-data :cardDataArray="cardDataArray" :class="Props.class" />
+  <card-array-by-data :cardDataArray="cardDataArray" :class="Props.class" :nobefore="nobefore" />
 </template>
 
 
@@ -7,6 +7,7 @@
 interface Props {
   andml: string
   class?: string
+  nobefore?: boolean
 }
 const Props = defineProps<Props>()
 

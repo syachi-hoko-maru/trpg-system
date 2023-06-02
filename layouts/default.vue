@@ -1,8 +1,8 @@
 <template>
   <Html lang="ja" />
   <noscript>
-    当サイトはjavascriptの実行が許可されていることが前提となっています！<br>
-    あなたが現在使用しているブラウザではjavascriptの実行が許可されていませんので、許可してからご覧いただければ幸いです。<br>
+    当サイトはjavascriptの実行が許可されていることが前提となっています！
+    あなたが現在使用しているブラウザではjavascriptの実行が許可されていませんので、許可してからご覧いただければ幸いです。
     よろしくお願いいたします。
   </noscript>
   <v-app>
@@ -26,7 +26,7 @@
           <lazy-layouts-paging />
         </article>
         <aside>
-          <lazy-layouts-tail-card />
+          <lazy-layouts-tail-card v-if="pageSetting?.to !== '/'" />
         </aside>
       </layouts-main>
     </div>

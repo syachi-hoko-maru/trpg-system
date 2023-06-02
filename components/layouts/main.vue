@@ -3,7 +3,8 @@
     <v-container id="mainContainer">
       <v-row justify="space-around" align="stretch">
         <v-col cols="12" xs="12" sm="11" lg="12" xl="10">
-          <v-row justify="space-around" align="stretch">
+          <slot v-if="nowPageSetting.to === '/'" />
+          <v-row justify="space-around" align="stretch" v-else>
             <v-col cols="3" md="4" lg="3" class="hidden-sm-and-down" v-if="!error">
               <layouts-menu-side />
             </v-col>
@@ -31,5 +32,7 @@ interface Props {
   error?: boolean
 }
 const Props = defineProps<Props>();
+
+const { nowPageSetting } = usePages()
 
 </script>

@@ -1,6 +1,6 @@
 <template>
   <card class="pt-4" :nobefore="nobefore">
-    <!-- <template #title>このウェブサイトの管理人</template> -->
+    <template #title>About Me</template>
     <div class="flex">
       <div class="left">
         <item-img :src="`${$templateText.basePath}/webp/icon-image/20250101.webp`" class="radius" alt="アイコン" />
@@ -10,10 +10,13 @@
           しゃちほこ丸と申します。ソード・ワールド2.5でファンタジー世界を冒険するのが大好きです。他にもいろいろなTRPGが好きです。
         </p>
         <p class="my-1">
-          ウェブサイト運営やブログは初心者です。ご意見ご要望をお待ちしております！
+          ウェブサイト運営やブログは初心者です。ご感想をいただければ幸いです。<br>
+          ご意見ご要望もお待ちしております！
         </p>
-        <item-button url="https://twitter.com/syachi_hoko_trp" color="blue">Twitter</item-button>
-        <item-button url="/me" normal-button>プロフィールページ</item-button>
+        <item-button url="https://twitter.com/syachi_hoko_trp" color="blue" prepend-icon="mdi-twitter">
+          しゃちほこ丸のTwitter
+        </item-button>
+        <item-button url="/me" />
       </div>
     </div>
 

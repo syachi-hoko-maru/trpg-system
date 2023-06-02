@@ -6,8 +6,12 @@
     よろしくお願いいたします。
   </noscript>
   <v-app>
-    <game-balloons
-      v-if="pageSetting?.to === '/blog/matome' || new Date().getDate() === 23 && new Date().getMonth() === 4" />
+    <game-balloons v-if="pageSetting?.to === '/blog/matome'
+      || new Date().getDate() === 23 && new Date().getMonth() + 1 === 5
+      // SW2.5の誕生日
+      || new Date().getDate() === 20 && new Date().getMonth() + 1 === 7
+      // SW2.0の誕生日
+      || new Date().getDate() === 18 && new Date().getMonth() + 1 === 4" />
     {{ pageSetting?.to }}
     <layouts-header />
     <aside>

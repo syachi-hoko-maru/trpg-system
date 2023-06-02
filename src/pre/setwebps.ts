@@ -31,7 +31,7 @@ const setwebp = (dirname: string) => {
   try {
     webpList = readdirSync(`${webpDir}/${dirname}`);
   } catch {
-    mkdirSync(`${webpDir}/${dirname}`);
+    mkdirSync(`${webpDir}/${dirname}`, { recursive: true });
     webpList = [];
   }
 

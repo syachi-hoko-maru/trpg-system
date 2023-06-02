@@ -30,6 +30,7 @@ declare type PageSetting = {
   readonly page?: number;
   readonly lastmod: string;
   readonly img?: string;
+  readonly imgdirs?: string[];
   readonly osusume?: boolean;
   readonly explain?: string | string[];
   readonly hidden?: boolean;

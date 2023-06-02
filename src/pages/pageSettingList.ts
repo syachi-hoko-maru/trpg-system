@@ -6,7 +6,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "トップページ",
     to: "/",
-    lastmod: "2023/5/30",
+    lastmod: "2023/6/2",
     img: "page-image/main.webp",
     specialPage: true,
     tags: [],
@@ -98,6 +98,7 @@ const normalPageSettingList: PageSetting[] = [
     to: "/sw25/tool/material",
     lastmod: "2023/5/30",
     img: "page-image/material.webp",
+    imgdirs: ["material"],
     osusume: true,
     explain:
       "TRPG、特にソード・ワールド2.5（SW2.5）で遊ぶ際、ココフォリアなどで使えるイラスト素材を無料公開しています。現在公開しているもの：ダンジョンマップ素材・SW2.5冒険登録証・依頼書・『ユーシズ』サプリのボトルドールシート・冒険者ギルド支部のランチメニュー。基本オンセ用ですが、オフセでも使用できます。",
@@ -277,9 +278,10 @@ const normalPageSettingList: PageSetting[] = [
     to: "/sw25/forbeginner/ytsheet",
     lastmod: "2023/5/23",
     img: "page-image/ytsheet.webp",
+    imgdirs: ["ytsheet"],
     osusume: true,
     explain:
-      "キャラクターシートを作れるサービス「ゆとシート」の使い方を画像を使いながら紹介します。キャラクターシートの作り方をルールブックに添いながら説明していきます。ココフォリア（CCFOLIA）へのコマ出力の仕方やテキスト整形の仕方も説明します。ソード・ワールド2.5（SW2.5・ソドワ）の初心者必見です。",
+      "キャラクターシートを作れるサービス「ゆとシート」の使い方を画像を使いながら紹介します。キャラクターシートの作り方をルールブックに添いながら説明していきます。ココフォリア（CCFOLIA）へのコマ出力の仕方やテキスト整形の仕方も説明します。ソード・ワールド2.5（SW2.5/ソドワ）の初心者必見です。",
     noamazon: true,
     tags: ["sw25"],
   },
@@ -320,6 +322,7 @@ const normalPageSettingList: PageSetting[] = [
     to: "/scenario",
     lastmod: "2023/4/8",
     img: "page-image/scenario.webp",
+    imddirs: ["scenario-image"],
     osusume: true,
     explain:
       "管理人しゃちほこ丸が公開しているTRPGのシナリオの一覧です。ソード・ワールド2.5（SW2.5）やエモクロアTRPGのシナリオを公開しています。TRPGでファンタジーな冒険をしましょう。",
@@ -329,6 +332,7 @@ const normalPageSettingList: PageSetting[] = [
     title: "シナリオメモ「とろ〜りとした甘いやつ」",
     to: "/scenario/pudding",
     img: "scenario-image/pudding.webp",
+    imddirs: ["scenario-image/pudding"],
     lastmod: "2023/3/18",
     osusume: true,
     explain:
@@ -350,6 +354,7 @@ const normalPageSettingList: PageSetting[] = [
     to: "/me/gallery",
     lastmod: "2023/5/23",
     img: "page-image/gallery.webp",
+    imgdirs: ["icon-image"],
     explain: "管理人しゃちほこ丸の歴代アイコンを紹介するページです。",
     tags: ["me"],
   },

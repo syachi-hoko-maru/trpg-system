@@ -1,4 +1,4 @@
-import { writeFileSync } from "fs";
+import { readdirSync, statSync, writeFileSync } from "fs";
 import { pageTags } from "../../pages/pageTags";
 import { pageSettingList } from "../../pages/pageSettingList";
 // import { searchWordList } from "./searchWordList";
@@ -11,74 +11,9 @@ export const setSitemap = () => {
   let result = "";
 
   pageSettingList
-    .filter((page) => !page.hidden)
+    .filter((pageSetting) => !pageSetting.hidden)
     .forEach((pageSetting) => {
-      if (!pageSetting.page) {
-        result += `
-<url>
-<loc>
-https://syachi-hoko-maru.github.io/trpg-system
-${pageSetting.to ? pageSetting.to + "/" : "/"}
-</loc>
-<lastmod>
-${(pageSetting.lastmod as string)
-  .split("/")
-  .map((str) => (str.length < 2 ? "0" + str : str))
-  .join("-")}
-</lastmod>`;
-        if (pageSetting.img) {
-          result += `
-<image:image>
-<image:loc>
-https://syachi-hoko-maru.github.io/trpg-system/webp/${pageSetting.img}
-</image:loc>
-</image:image>
-<image:image>
-<image:loc>
-https://syachi-hoko-maru.github.io/trpg-system/${pageSetting.img.replace(
-            /webp$/,
-            "png"
-          )}
-</image:loc>
-</image:image>
-
-`;
-        }
-        result += "</url>";
-      } else {
-        for (let p = 1; p <= pageSetting.page; p++) {
-          result += `
-<url>
-<loc>
-https://syachi-hoko-maru.github.io/trpg-system${pageSetting.to}/${p}/
-</loc>
-<lastmod>
-${(pageSetting.lastmod as string)
-  .split("/")
-  .map((str) => (str.length < 2 ? "0" + str : str))
-  .join("-")}
-</lastmod>
-    `;
-          if (pageSetting.img) {
-            result += `
-<image:image>
-<image:loc>
-https://syachi-hoko-maru.github.io/trpg-system/webp/${pageSetting.img}
-</image:loc>
-</image:image>
-<image:image>
-<image:loc>
-https://syachi-hoko-maru.github.io/trpg-system/${pageSetting.img.replace(
-              /webp$/,
-              "png"
-            )}
-</image:loc>
-</image:image>
-`;
-          }
-          result += "</url>";
-        }
-      }
+      result += setUrlBlock(pageSetting);
     });
 
   //   searchWordList.forEach(([word, lastmod]) => {
@@ -107,13 +42,78 @@ https://syachi-hoko-maru.github.io/trpg-system/${pageSetting.img.replace(
   //     `;
   //   });
 
-  result =
-    '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">' +
-    result.replace(/\s+/g, "") +
-    "</urlset>";
+  result = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  ${result.replace(/\s+/g, "")}
+  </urlset>`;
 
   writeFileSync(
     `${outputDir}/sitemap.xml`,
     result.replace(/\n/g, "").replace(/\s+/g, " ")
   );
+};
+
+const setUrlBlock = (pageSetting: PageSetting): string => {
+  if (!pageSetting.page) {
+    return setLocAndLastmod(pageSetting);
+  } else {
+    let result = "";
+    for (let page = 0; page < pageSetting.page; page++) {
+      result += setLocAndLastmod(pageSetting, page);
+    }
+    return result;
+  }
+};
+
+const setLocAndLastmod = (pageSetting: PageSetting, page?: number): string => {
+  const url = `https://syachi-hoko-maru.github.io/trpg-system
+  ${pageSetting.to !== "/" ? pageSetting.to + "/" : "/"}
+  ${page ? page + "/" : ""}`;
+
+  const lastmod = (pageSetting.lastmod as string)
+    .split("/")
+    .map((str) => (str.length < 2 ? "0" + str : str))
+    .join("-");
+  return `
+  <url>
+    <loc>${url}</loc><lastmod>${lastmod}</lastmod>
+    ${setImages(pageSetting)}
+  </url>`;
+};
+
+const publicPath = `${process.cwd()}/public/`;
+
+const setImages = (pageSetting: PageSetting): string => {
+  let result = "";
+  if (pageSetting.img) {
+    const webpUrl = `https://syachi-hoko-maru.github.io/trpg-system/webp/${pageSetting.img}`;
+    const pngUrl = `https://syachi-hoko-maru.github.io/trpg-system/image/${pageSetting.img.replace(
+      /webp$/,
+      "png"
+    )}`;
+    result += setImage(webpUrl) + setImage(pngUrl);
+  }
+  pageSetting.imgdirs?.forEach((dir) => {
+    const images = readdirSync(publicPath + "image/" + dir);
+    const webps = readdirSync(publicPath + "webp/" + dir);
+
+    [
+      images.map((n) => "image/" + dir + "/" + n),
+      webps.map((n) => "webp/" + dir + "/" + n),
+    ]
+      .flat()
+      .filter((path) => {
+        const itemStat = statSync(publicPath + path);
+        if (!itemStat.isDirectory()) {
+          // ディレクトリではない→画像として追加する
+          result += setImage(
+            `https://syachi-hoko-maru.github.io/trpg-system/${path}`
+          );
+        }
+      });
+  });
+  return result;
+};
+
+const setImage = (url: string): string => {
+  return `<image:image><image:loc>${url}</image:loc></image:image>`;
 };

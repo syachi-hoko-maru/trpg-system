@@ -1,7 +1,9 @@
 <template>
   <Html lang="ja" />
   <noscript>
-    当サイトはjavascriptの実行が許可されていることが前提となっていますが、あなたが現在使用しているブラウザではjavascriptの実行が許可されていません。
+    当サイトはjavascriptの実行が許可されていることが前提となっています！<br>
+    あなたが現在使用しているブラウザではjavascriptの実行が許可されていませんので、許可してからご覧いただければ幸いです。<br>
+    よろしくお願いいたします。
   </noscript>
   <v-app>
     <game-balloons

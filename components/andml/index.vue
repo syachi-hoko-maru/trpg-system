@@ -23,6 +23,7 @@ const andmlBlockScriptArray: AndmlScript[] = [
   { script: "forgm", component: resolveComponent("AndmlBlockForgm") },
   { script: "info", component: resolveComponent("AndmlBlockInfo") },
   { script: "faq_", component: resolveComponent("AndmlBlockFaq") },
+  { script: "gray", component: resolveComponent("AndmlBlockGray") },
 ];
 
 const setBlockComponent = (andmls: string[]): AndmlBlockData[] => {

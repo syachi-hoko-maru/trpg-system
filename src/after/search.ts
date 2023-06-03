@@ -1,4 +1,5 @@
 import { readdirSync, readFileSync, writeFileSync } from "fs";
+import { word4search } from "./word4search";
 
 const outputDir = `${process.cwd()}/.output/public`;
 const publicDir = `${process.cwd()}/public`;
@@ -18,21 +19,28 @@ const searchHTML = (dirname: string) => {
   return htmls;
 };
 
+const deleteTags = (str: string) =>
+  str
+    // リンクを削除
+    .replace(/<a href.+?\/a>/g, "")
+    // CSS・JS・HTMLタグを削除
+    .replace(/\<style[^\<]*\<\/style\>/g, "")
+    .replace(/<script[^<]*<\/script>/g, (str) => str.replace(/[a-zA-Z]/g, ""))
+    .replace(/<[^>]+>/g, "")
+    // おすすめ度の星関係のコードを削除
+    .replace(/Rating/g, "")
+    .replace(/of/g, "");
+
 const getData = (): { [key: string]: string } => {
   const htmls = searchHTML("");
   const temp: { [key: string]: string } = {};
   htmls.forEach((html) => {
     const path = html.replace("/index.html", "");
-    temp[path ? path : "/"] = readFileSync(outputDir + html, "utf-8")
-      .replace(/<a href.+?\/a>/g, "")
-      .replace(/\<style[^\<]*\<\/style\>/g, "")
-      .replace(/<script[^<]*<\/script>/g, (str) => str.replace(/[a-zA-Z]/g, ""))
-      .replace(/<[^>]+>/g, "")
-      .replace(/[\s\{\}\[\]\(\)<>\\\/\.,:;\-_'`"$&=]/g, "")
-      .replace(/Rating/g, "")
-      .replace(/of/g, "");
+    const fileData = readFileSync(outputDir + html, "utf-8");
+    temp[path ? path : "/"] = word4search(deleteTags(fileData));
   });
   const values = Object.values(temp);
+
   let common: { str: string; count: number }[] = [];
   values.forEach((value, i) => {
     const strArray: string[] = [];
@@ -49,10 +57,12 @@ const getData = (): { [key: string]: string } => {
     });
   });
   const commonStrArray: string[] = common
-    .filter((co) => co.count + co.str.length / 3 > htmls.length / 2)
+    .filter((co) => co.count > 3)
+    .filter((co) => co.count + co.str.length / 5 > htmls.length / 2)
     .map((co) => co.str)
     .sort((a, b) => b.length - a.length);
-  // console.log(commonStrArray);
+  console.log(commonStrArray);
+
   const result: { [key: string]: string } = {};
   Object.entries(temp).forEach(([k, v]) => {
     let value = v;
@@ -79,7 +89,7 @@ const getCommonStr = (str1: string, str2: string): string[] => {
   charArr.forEach((c, j) => {
     const index = str2.indexOf(str + c);
     if (index === -1 || j === charArr.length - 1) {
-      if (str.length >= 3 && common.indexOf(str) === -1) {
+      if (str.length >= 8 && common.indexOf(str) === -1) {
         common.push(str);
       }
       str = c;

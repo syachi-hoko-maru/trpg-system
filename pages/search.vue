@@ -37,6 +37,7 @@
 
 <script setup lang="ts">
 import { Ref } from 'vue';
+import { word4search } from '~/src/after/word4search';
 
 const route = useRoute();
 const router = useRouter()
@@ -174,22 +175,37 @@ const search = (): void => {
           explains.push(wordList[word])
         }
       })
+      const wordsForSearch = words.map(w =>
+        word4search(
+          // カタカナを分離する
+          w.replace(/([\u30A1-\u30FAー]+)/g, " $1 ")
+        )
+          // 英語を分離する
+          .replace(/([a-zA-Z]+)/g, " $1 ")
+          // 数字を分離する
+          .replace(/([0-9]+)/g, " $1 ")
+          .split(" ")
+          .filter(w => w.length)
+      ).flat()
+      console.log(wordsForSearch)
       const lang = (pageSetting: PageSetting): [string, string] => {
         let result = "";
         result += (Array.isArray(pageSetting.explain) ? pageSetting.explain.join() : pageSetting.explain)
         result += pageSetting.tags.map(tag => $pageTagSettings[tag].label + $pageTagSettings[tag].explanation).join()
+        result = word4search(result)
         try {
           result += searchJson.value[pageSetting.to]
         } catch { }
-        return [pageSetting.title, result]
+        const title = word4search(pageSetting.title)
+        return [title, result]
       }
       filters.push(pageSetting => {
         let count = 0
         let point = 0
         // だいたいの単語数
         const [title, str] = lang(pageSetting)
-        const wordCount = str.length / words.join("").length
-        for (let word of words) {
+        const wordCount = str.length / wordsForSearch.join("").length
+        for (let word of wordsForSearch) {
           if (title.indexOf(word) >= 0) {
             // タイトルに一致するものがあれば1を返す
             point += 1
@@ -202,9 +218,9 @@ const search = (): void => {
           }
         }
         if (count >= 0) {
-          return 1 + point / words.length
+          return 1 + point / wordsForSearch.length
         } else {
-          return point / words.length
+          return point / wordsForSearch.length
         }
       })
       if (setting.length === 1) {

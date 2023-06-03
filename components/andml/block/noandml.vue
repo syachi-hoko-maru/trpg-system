@@ -7,6 +7,7 @@
 <script setup lang="ts">
 interface Props {
     lines?: string[]
+    props?: string
 }
 const Props = defineProps<Props>();
 </script>

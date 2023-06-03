@@ -4,7 +4,7 @@
       {{ type === "kanren" ? "関連するページ" : "あなたにオススメのページ" }}
     </template>
     <template #pbefore>
-      <item-scrollx v-if="mounted">
+      <item-scrollx v-if="mounted && osusumePageList.length">
         <item-pagecard v-for="op of osusumePageList" :page-setting="op" virtical />
       </item-scrollx>
     </template>
@@ -13,8 +13,6 @@
 </template>
 
 <script setup lang="ts">
-import { Ref } from 'vue';
-
 interface Props {
   pageSetting: PageSetting
   type?: "osusume" | "kanren"

@@ -22,7 +22,7 @@
     </div>
   </card>
   <item-amazon-box v-if="!pageSetting.noamazon" />
-  <card>
+  <card v-if="recent.length && mounted">
     <template #title>
       最近更新されたページ
     </template>
@@ -122,6 +122,11 @@ SW2.5の新刊情報は主に以下より入手しています。
 `: "") + `
 &button_/search?tag=sw25_new 新刊情報の一覧はこちら
 `)
+
+const mounted = ref(false)
+onMounted(() => {
+  mounted.value = true
+})
 </script>
 
 <style scoped>

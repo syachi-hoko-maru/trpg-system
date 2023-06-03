@@ -31,7 +31,7 @@
 
   <div class="grid contents">
     <card-array-by-andml :andml="andml2" nobefore />
-    <card nobefore v-if="osusumePageArray.length">
+    <card nobefore v-if="mounted && osusumePageArray.length">
       <template #title>
         Pick Up Pages
       </template>
@@ -171,7 +171,11 @@ Please follow me on twitter!
 &ltwitter
 `
 
-const recentBlog = $pageSettingList.filter(page => !page.hidden && page.to.indexOf('/blog/') === 0).slice(0, 3)
+
+const mounted = ref(false)
+onMounted(() => {
+  mounted.value = true
+})
 </script>
 
 <style lang="scss">

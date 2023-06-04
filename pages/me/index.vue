@@ -67,6 +67,7 @@ TRPG自己紹介シートは &link_https://create-now.vercel.app/trpg-manual,こ
 -海外サッカー観戦
 --スペインのチーム、 &link_https://www.realmadrid.com/ja,レアル・マドリード のファンです
 -Webプログラミング
+-- 主にNode.js¥s+¥sTypescript¥s+¥sVueの構成です
 &br
 好きなもの
 -Minecraft
@@ -90,7 +91,7 @@ TRPG自己紹介シートは &link_https://create-now.vercel.app/trpg-manual,こ
 &br
 最近はまっているもの
 -仮面ライダーギーツ
---倖田來未と湘南乃風が歌うオープニング曲「Trust・Last」がかっこいいのでぜひ聞いてください！（ &link_https://www.youtube.com/watch?v=xpN7rNcm5Vc,YouTube）
+--倖田來未と湘南乃風が歌うオープニング曲「Trust・Last」がかっこいいのでぜひ聞いてください！（ &link_https://www.youtube.com/watch?v=xpN7rNcm5Vc,YouTube ）
 // -ドンブラザーズ
 
 &1 リンク

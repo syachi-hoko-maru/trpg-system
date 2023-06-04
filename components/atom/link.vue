@@ -5,7 +5,8 @@
     <span :class="decoClass">
       <slot />
     </span>
-    <v-icon v-if="!Props.disabled && !Props.button && externalFlag" icon="mdi-open-in-new" size="x-small" />
+    <v-icon v-if="!Props.disabled && !Props.button && externalFlag" icon="mdi-open-in-new" size="x-small"
+      class="ml-1 mr-2" />
   </nuxt-link>
 </template>
 

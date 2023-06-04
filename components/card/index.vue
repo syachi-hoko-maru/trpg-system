@@ -1,7 +1,7 @@
 <template>
   <section class="card-div" :class="nobefore ? '' : 'before'" :id="title">
     <v-card class="my-5" :class="Props.class ? Props.class : 'bg-background text-text'"
-      :elevation="$vuetify.theme.current.dark ? 5 : 3">
+      :elevation="elevation ? elevation : $vuetify.theme.current.dark ? 5 : 3">
       <v-row v-if="Props.loading || Props.comingsoon" class="card-cover align-center justify-center">
         <v-progress-circular v-if="Props.loading" :size="70" :width="7" indeterminate color="primary"
           class="card-cover-item" />
@@ -38,6 +38,7 @@ interface Props {
   comingsoon?: boolean
   loading?: boolean
   nobefore?: boolean
+  elevation?: number
 }
 const Props = defineProps<Props>()
 

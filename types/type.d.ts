@@ -22,6 +22,7 @@ declare type PageTag =
   | "sw25_moso"
   | "tool"
   | "scenario"
+  | "rm"
   | "me"
   | "trpg";
 declare type PageSetting = {

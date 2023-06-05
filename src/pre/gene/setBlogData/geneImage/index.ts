@@ -16,7 +16,11 @@ export const geneImage = async () => {
       try {
         const img =
           `${process.cwd()}/src/pre/gene/setBlogData/geneImage/` +
-          (tags.join("").indexOf("sw25") >= 0 ? "ogp_sw25.svg" : "ogp.svg");
+          (tags.join("").indexOf("rm") >= 0
+            ? "ogp_rm.svg"
+            : tags.join("").indexOf("sw25") >= 0
+            ? "ogp_sw25.svg"
+            : "ogp.svg");
         await generateImage(id, title, img, date).catch((err) => {
           console.error(err);
         });

@@ -24,6 +24,10 @@ export const pageTagSettings: PageTagSettings = {
     label: "TRPG全般",
     explanation: "TRPG全般に関するタグ",
   },
+  rm: {
+    label: "レアル・マドリード",
+    explanation: "スペインのサッカークラブ「レアル・マドリード」に関するタグ",
+  },
   me: {
     label: "しゃちほこ丸",
     explanation: "管理人のしゃちほこ丸に関するタグ",
@@ -36,6 +40,7 @@ export const pageTags: PageTag[] = [
   "scenario",
   "tool",
   "trpg",
+  "rm",
   "me",
 ];
 export const isPageTag = (a: unknown): a is PageTag => {

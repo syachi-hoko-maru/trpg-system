@@ -472,19 +472,22 @@ const normalPageSettingList: PageSetting[] = [
 });
 
 let count = 0;
+
 const blogPageSettingList: PageSetting[] = (blogSettingList as Blog[])
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   .map((b, i) => {
     const dateFlag =
       new Date(b.date + " GMT+0900").getTime() <= new Date().getTime();
-    if (dateFlag) count++;
+    const osusumeFlag =
+      b.tags.filter((tag) => tag !== "me" && tag !== "rm").length > 0;
+    if (dateFlag && osusumeFlag) count++;
     return {
       title: b.title,
       to: "/blog/" + b.id,
       img: `blog-image/${b.id}\.webp`,
       lastmod: b.date,
       tags: b.tags.filter(isPageTag) as PageTag[],
-      osusume: count <= 10 && dateFlag ? true : false,
+      osusume: count <= 10 && dateFlag && osusumeFlag ? true : false,
       hidden: dateFlag ? false : true,
       explain: setBlogExplain(b, 100),
     };

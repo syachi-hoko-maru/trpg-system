@@ -4,18 +4,7 @@
     type="kanren" />
   <item-amazon-sw25 v-if="!pageSetting.noamazon && pageSetting.tags.findIndex(tag => tag.indexOf('sw25') >= 0) >= 0" />
   <card>
-    <div class="mt-3" v-if="pageTrees.length">
-      <atom-link to="/" deco title="トップページへのリンク" type="tailcard">トップ</atom-link>
-      <template v-for="(pageTree, i) of pageTrees" :key="pageTree.to">
-        <span class="user-select-none"> &gt; </span>
-        <atom-link :to="pageTree.to" deco :title="`ページ「${pageTree.title}」へのリンク`" type="tailcard">{{ pageTree.title
-        }}</atom-link>
-      </template>
-      <span class="user-select-none">
-        &gt; <br>
-        {{ pageSetting.title }}
-      </span>
-    </div>
+    <item-pagetree class="mt-3" />
     <item-share-page withcopy>このページをツイート</item-share-page>
     <div class="mt-3">
       ぜひTwitterなどでシェアしてこのウェブサイトを広めてください！
@@ -39,57 +28,10 @@
 </template>
 
 <script setup lang="ts">
-// interface Props {
-//   pageSetting: PageSetting
-// }
-// const Props = defineProps<Props>();
-
-const { $pageSettingList, $getPageSetting, $templateText } = useNuxtApp()
+const { $pageSettingList } = useNuxtApp()
 const { nowPageSetting } = usePages()
 const pageSetting = nowPageSetting
 
-
-const pageTrees = computed(() => {
-  const result: {
-    title: string,
-    to: string
-  }[] = []
-  const urls: string[] = []
-  pageSetting.value.to.split("/").filter(u => u).forEach(u => {
-    urls.push(u)
-    const to = "/" + urls.join("/")
-    if (to === pageSetting.value.to) return
-    const ps = $getPageSetting(to)
-    if (!ps) throw `[ERROR] page ${to} not found`
-    result.push({
-      title: ps.title,
-      to: ps.to
-    })
-  })
-  return result
-})
-// const shareSetting = computed(() => {
-//   const text = Props.pageSetting.to.indexOf("blog/") >= 0 ? `ブログ「${Props.pageSetting.title}」` : Props.pageSetting.title
-//   const url = $templateText.baseUrl + Props.pageSetting.to
-//   return {
-//     text,
-//     url
-//   }
-// })
-
-// const recent: { [date: string]: PageSetting[] } = {}
-let count = 0
-// $pageSettingList.filter(p => !p.hidden)
-//   .sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime())
-//   .slice(0, 15)
-//   .forEach(p => {
-//     if (!recent[p.lastmod] || !recent[p.lastmod].length) {
-//       if (count < 10) recent[p.lastmod] = []
-//       else return
-//     }
-//     recent[p.lastmod].push(p)
-//     count++
-//   })
 const recent = $pageSettingList
   .filter(p => !p.hidden)
   .sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime())

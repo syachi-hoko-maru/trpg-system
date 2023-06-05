@@ -25,11 +25,6 @@
 </template>
 
 <script setup lang="ts">
-// interface Props {
-//   pageSetting?: PageSetting
-// }
-// const Props = defineProps<Props>();
-
 const { nowPageSetting } = usePages()
 const pageSetting = nowPageSetting
 </script>

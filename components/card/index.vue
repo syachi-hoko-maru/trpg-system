@@ -9,7 +9,13 @@
         <div class="background" :style="`background-color: ${$vuetify.theme.current.colors.background};`" />
       </v-row>
       <slot name="tbefore" />
+      <div class="px-4" v-if="$slots.ptbefore">
+        <slot name="ptbefore" />
+      </div>
       <div v-if="$slots.title" class="pt-5 pb-3">
+        <v-card-subtitle v-if="$slots.usubtitle">
+          <slot name="usubtitle" />
+        </v-card-subtitle>
         <h2 class="head1 px-4 py-0 my-0 card-title" :id="id">
           <slot name="title" />
         </h2>

@@ -1,7 +1,7 @@
 <template>
     <andml :andmls="andml1" />
     <v-text-field label="検索キーワード" v-model="word" density="comfortable" class="mt-3" />
-    <item-button :url="`/search?word=${word}`" :disabled="!word" type="right">
+    <item-button :url="`/search?word=${word}`" prepend-icon="mdi-magnify" :disabled="!word" type="right">
         検索する
     </item-button>
 </template>

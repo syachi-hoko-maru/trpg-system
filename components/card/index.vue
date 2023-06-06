@@ -13,9 +13,9 @@
         <slot name="ptbefore" />
       </div>
       <div v-if="$slots.title" class="pt-5 pb-3">
-        <v-card-subtitle v-if="$slots.usubtitle">
+        <div v-if="$slots.usubtitle">
           <slot name="usubtitle" />
-        </v-card-subtitle>
+        </div>
         <h2 class="head1 px-4 py-0 my-0 card-title" :id="id">
           <slot name="title" />
         </h2>

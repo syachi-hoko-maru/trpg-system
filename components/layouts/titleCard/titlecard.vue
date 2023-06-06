@@ -1,7 +1,7 @@
 <template>
   <card v-show="pageSetting && !pageSetting.specialPage" nobefore class="mt-0">
     <template #usubtitle>
-      <item-pagetree :for-title="true" class="mt-0 mb-2" />
+      <item-pagetree :for-title="true" class="mt-0 mb-3 px-4" />
     </template>
     <template #title>
       <div class="d-flex align-end">

@@ -43,7 +43,7 @@ const scrollTop = () => {
 
 const sourceAndml = computed(() => `
 &1 ソース
-SW2.5の新刊情報は主に以下より入手しています。
+ソード・ワールド2.5（SW2.5/ソドワ）の新刊情報は主に以下より入手しています。
 &br
 - &link_http://www.groupsne.co.jp/news/book.html,グループSNEオフィシャルサイト「新刊情報」
 -- 毎月上旬にだいたい2か月後までの新刊情報が更新されます。
@@ -55,6 +55,8 @@ SW2.5の新刊情報は主に以下より入手しています。
 -- &link_http://www.groupsne.co.jp/products/magazine/GMW/index.html,グループSNEオフィシャルサイト「製品案内」
 - &link_https://twitter.com/dragonbook_game,富士見ドラゴンブック編集部Twitter
 -- 書影の公開はここ（かAmazon）が最初になることが多いです。
+- &link_https://www.kadokawa.co.jp/calendar/,KADOKAWA新刊カレンダー
+-- 毎月初めに来月分の新刊情報が公開されます。
 
 &2 リンク
 ` + (pageSetting.value.to !== "/sw25/new" ? `
@@ -63,6 +65,15 @@ SW2.5の新刊情報は主に以下より入手しています。
 &button_/sw25/new
 `: "") + `
 &button_/search?tag=sw25_new 新刊情報の一覧はこちら
+&br
+最近更新されたソード・ワールド2.5の新刊情報に関するページ3件
+${$pageSettingList
+    .filter(page => !page.hidden && page.tags.indexOf("sw25_new") >= 0)
+    .sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime())
+    .slice(0, 3)
+    .map(page => `&button_${page.to}`)
+    .join("\n")
+  }
 `)
 
 const mounted = ref(false)

@@ -107,11 +107,11 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "診断メイカーまとめ",
     to: "/sw25/tool/shindan",
-    lastmod: "2023/5/16",
+    lastmod: "2023/6/7",
     img: "page-image/shindan.webp",
     osusume: true,
     explain:
-      "TRPG、特にソード・ワールド2.5（SW2.5/ソドワ）関連の「診断メイカー」をいろいろ作ってきたので、これらをまとめて紹介します！　ランダムシナリオメイカーや異世界転生診断など。",
+      "TRPG、特にソード・ワールド2.5（SW2.5/ソドワ）関連の「診断メイカー」をいろいろ作ってきたので、これらをまとめて紹介します！　ランダムシナリオメイカーや異世界転生診断、ChatGPTを使ったTRPGシステムのアイデアなど。",
     tags: ["sw25", "tool"],
   },
   {

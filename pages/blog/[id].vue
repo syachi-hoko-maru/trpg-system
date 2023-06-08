@@ -1,5 +1,5 @@
 <template>
-  <card>
+  <card class="pt-5">
     ブログでは僕が考えたことを、基本的に考えた順に書いています。<br>
     お読みになってくださる場合、読みやすい文章ではないことをご了承の上、お読みいただければ幸いです。
   </card>
@@ -13,7 +13,7 @@
       <pages-search :results="results" />
     </template>
   </card>
-  <card>
+  <card class="pt-1">
     駄文を最後までお読みいただきありがとうございました。<br>
     よければ他のブログやページもご覧ください。
     <item-button url="/blog" normal-button>ブログトップへ</item-button>

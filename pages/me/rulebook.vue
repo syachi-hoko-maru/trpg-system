@@ -1,5 +1,8 @@
 <template>
   <card>
+    <template #title>
+      ルールブック一覧
+    </template>
     <andml :andmls="text" />
   </card>
   <card v-for="group, g of groups" :key="group.group">
@@ -49,8 +52,10 @@ const showSuppliment = (g: number, s: number) => {
 
 const text = `
 以下では管理人のしゃちほこ丸が所有するルールブック・サプリメントの一覧を掲載しています。
-ソード・ワールド2.5のおすすめサプリメントについては以下をご覧ください。
+&br
+ソード・ワールド2.5のおすすめサプリメントや新刊情報については以下をご覧ください。
 &button_/sw25/forbeginner/suppliment/1 
+&button_/sw25/new
 `
 
 const rulebookGroups = ["CoC", "SW", "sfic", "bouki", "FEAR", "other", "dozin", "web"] as const
@@ -113,6 +118,7 @@ const groups: Readonly<Rulebook[]> = [
               "ヴァイスシティ　‐悪徳の贄‐",
               "デモンズライン　‐追憶の守人‐",
               "グリフォンロード　‐黄金のキャラバン‐",
+              "エンシェントブルー -七王群島の夜明け-",
               "煌日の姫と冴月の王子",
               "ストーリーフラグメンツ",
             ]

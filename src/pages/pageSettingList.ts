@@ -380,7 +380,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "所持ルールブック一覧",
     to: "/me/rulebook",
-    lastmod: "2023/3/1",
+    lastmod: "2023/6/10",
     img: "page-image/rulebook.webp",
     explain:
       "管理人しゃちほこ丸が所持しているルールブック・サプリメントの一覧ページです。クトゥルフ神話TRPGやソード・ワールドなどのルールブックを所持しています。",

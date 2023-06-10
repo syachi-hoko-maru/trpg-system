@@ -62,6 +62,8 @@
 </template>
 
 <script setup lang="ts">
+import { sortPagesByDate } from '~/src/util/date';
+
 const { $pageSettingList } = useNuxtApp()
 const { osusumePageArray } = usePages()
 
@@ -124,7 +126,7 @@ This site provides useful information and updates on Sword World 2.5.
 &button_/sw25/new
 &button_${$pageSettingList
     .filter(page => !page.hidden && page.tags.indexOf("sw25_new") >= 0 && page.to !== "/sw25/new")
-    .sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime())[0].to
+    .sort(sortPagesByDate(true))[0].to
   }
 
 &1 SW2.5 FANMADE Data

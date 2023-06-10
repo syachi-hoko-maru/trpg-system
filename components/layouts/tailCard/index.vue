@@ -10,8 +10,8 @@
       ぜひTwitterなどでシェアしてこのウェブサイトを広めてください！
     </div>
   </card>
-  <item-amazon-box v-if="!pageSetting.noamazon" />
   <item-notice title="しゃちほこ丸からのお知らせ" />
+  <item-amazon-box v-if="!pageSetting.noamazon" />
   <card v-if="recent.length && mounted">
     <template #title>
       最近更新されたページ

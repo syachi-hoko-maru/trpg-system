@@ -30,7 +30,6 @@
     <template #pafter v-if="results.length">
       <v-select label="並び順" prepend-inner-icon="mdi-sort" v-model="sortSetting" :items="sortValues" item-title="label"
         item-value="value" density="comfortable" v-if="mounted" />
-      {{ sortSetting }}
       <pages-search :results="results.map(d => d.pageSetting)" />
     </template>
   </card>

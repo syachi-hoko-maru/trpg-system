@@ -18,18 +18,19 @@
     <div v-if="explain" v-html="explain" />
     <template #default v-if="!results.length">
       検索結果はありません。
-      <div class="my-2" v-if="sortValue !== 'デフォルト（関連度順）'">
+      <div class="my-2" v-if="sortSetting !== 'default'">
         デフォルト（関連度順）では、関連が少しでもあるものが表示されます。<br>
         他の順序の場合、関連が薄いものは除外され、「検索結果はありません。」と表示されることがあります。
-        <item-button @click="sortValue = 'デフォルト（関連度順）'">デフォルト（関連度順）で表示</item-button>
+        <item-button @click="() => sortSetting = 'default'">デフォルト（関連度順）で表示</item-button>
       </div>
       <div v-else>
         他のキーワードで検索してください。
       </div>
     </template>
     <template #pafter v-if="results.length">
-      <v-select label="並び順" prepend-inner-icon="mdi-sort" v-model="sortValue" :items="sortValues" density="comfortable"
-        v-if="mounted" />
+      <v-select label="並び順" prepend-inner-icon="mdi-sort" v-model="sortSetting" :items="sortValues" item-title="label"
+        item-value="value" density="comfortable" v-if="mounted" />
+      {{ sortSetting }}
       <pages-search :results="results.map(d => d.pageSetting)" />
     </template>
   </card>
@@ -85,8 +86,20 @@ const changeHead = () => {
   })
 }
 
-const sortValues = ["デフォルト（関連度順）", "更新日が新しい順", "更新日が古い順"] as const
-const sortValue = ref("デフォルト（関連度順）" as typeof sortValues[number])
+const sortTypes = ["default", "recent", "old"] as const
+const sortValues = [
+  { label: "デフォルト（関連度順）", value: "default" },
+  { label: "更新日が新しい順", value: "recent" },
+  { label: "更新日が古い順", value: "old" }
+] as const
+
+type SortType = typeof sortTypes[number]
+const isSortType = (str: string): str is SortType => {
+  return sortTypes.indexOf(str as SortType) >= 0
+}
+
+const sortSetting = ref("default" as SortType)
+
 
 const mounted = ref(false)
 
@@ -96,17 +109,25 @@ const searchSetting: {
 } = {}
 
 
+/**
+ * 設定が変わった時にURLを変える
+ */
 const changeSetting = () => {
   searchSetting.word = form.value.value?.replace(/[,、・\s+]/g, "and") || ""
   searchSetting.tag = selectTag.value
-  const newPath = getNowPath() + "?" + Object.entries(searchSetting).filter(([key, value]) => value).map(([key, value]) => `${key}=${value}`).join("&")
+  const newPath = getNowPath() + "?" + Object.entries(searchSetting).filter(([_, value]) => value).map(([key, value]) => `${key}=${value}`).join("&")
   if (newPath !== getNowPage()) {
+    console.log(`change route ${getNowPath()} to ${newPath}`)
     router.replace(newPath)
   }
   search()
 }
 
-const changeRoute = () => {
+/**
+ * URLが変わった時に設定を反映し、検索を行う
+ */
+const routeChangeHandler = () => {
+  let sortFlag = false
   const nowQuerys = getQuerys()
   if (!nowQuerys || querys.value === nowQuerys) return
   querys.value = nowQuerys
@@ -119,12 +140,19 @@ const changeRoute = () => {
       } else if (key === "tag" && $isPageTag(value)) {
         searchSetting.tag = value
         selectTag.value = value
+      } else if (key === "sort" && isSortType(value)) {
+        sortFlag = true
+        sortSetting.value = value
       }
     })
   )
+  if (!sortFlag) sortSetting.value = "default"
   search()
 }
 
+/**
+ * 検索ワードの書いてあるJSONを用意する
+ */
 const searchJson: Ref<{ [key: string]: string }> = ref({});
 let count = 0
 const fetch = async () => {
@@ -253,34 +281,36 @@ const search = (): void => {
 
 
 const sort = () => {
-  if (searchFlag) {
-    if (sortValue.value !== "デフォルト（関連度順）") sortValue.value = "デフォルト（関連度順）"
-    return
-  }
-  if (sortValue.value === "デフォルト（関連度順）") {
-    search()
+  // // 検索中なら
+  // if (searchFlag) {
+  //   if (sortSetting.value !== "default") sortSetting.value = "default"
+  //   return
+  // }
+  // 検索中以外なら
+  if (sortSetting.value === "default") {
+    if (!searchFlag) search()
     return
   }
   const kanrenResult = results.value
     .filter(({ kanren }) => kanren >= 1)
   results.value = (kanrenResult.length ? kanrenResult : results.value)
     .sort((a, b) =>
-      sortValue.value === "更新日が新しい順" ? sortPagesByDate(true)(a.pageSetting, b.pageSetting) :
-        sortValue.value === "更新日が古い順" ? sortPagesByDate(false)(a.pageSetting, b.pageSetting) :
+      sortSetting.value === "recent" ? sortPagesByDate(true)(a.pageSetting, b.pageSetting) :
+        sortSetting.value === "old" ? sortPagesByDate(false)(a.pageSetting, b.pageSetting) :
           0
     )
 }
 
-changeRoute()
+routeChangeHandler()
 fetch()
 search()
 
 onMounted(() => {
-  changeRoute()
+  routeChangeHandler()
   mounted.value = true
 
-  watch(route, changeRoute)
-  watch(sortValue, sort)
+  watch(route, routeChangeHandler)
+  watch(sortSetting, sort)
   watch(ok, search)
 })
 

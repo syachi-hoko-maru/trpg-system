@@ -24,7 +24,7 @@ sw25_new
 
 &2 追記
 最新のニュースは以下からご覧ください。
-&button_/search?tag=sw25_new こちら！
+&button_/search?tag=sw25_new&sort=recent こちら！
 
 amazonで予約が始まっています！
 &amazon_アーケインレリック

@@ -65,7 +65,7 @@ const sourceAndml = computed(() => `
 あわせてご覧ください。
 &button_/sw25/new
 `: "") + `
-&button_/search?tag=sw25_new 新刊情報の一覧はこちら
+&button_/search?tag=sw25_new&sort=recent 新刊情報の一覧はこちら
 &br
 最近更新されたソード・ワールド2.5の新刊情報に関するページ3件
 ${$pageSettingList

@@ -136,7 +136,7 @@ This site provides useful information and updates on Sword World 2.5.
 This website offers Sword World 2.5 fanmade data.
 &&&
 &button_/sw25/data
-&button_/search?tag=sw25_moso タグ「SW2.5妄想」がついたページ
+&button_/search?tag=sw25_moso&sort=recent タグ「SW2.5妄想」がついたページ
 
 &1 Blog
 ブログにはTRPGで思ったことなどを書いています。

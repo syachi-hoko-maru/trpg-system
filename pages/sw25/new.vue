@@ -59,7 +59,7 @@ const blogs = `
 &2 ブログに最新情報があるかも！？
 こちらのページもなるべく最新情報を掲載するようにしていますが、 &em_ブログの方が更新が早かったり、詳しかったりする場合 があります。
 以下からタグ「ソード・ワールド2.5¥s最新情報」のついたページ一覧を見てみてください！
-&button_/search?tag=sw25_new こちら
+&button_/search?tag=sw25_new&sort=recent こちら
 `
 
 const attr = ["title", "long", "date", "type", "explain", "amazon"] as const

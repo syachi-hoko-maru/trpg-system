@@ -82,7 +82,7 @@ Twitterで一緒に遊ぶ人を集める場合に便利なTwitterコミュニテ
 
 さらに &em_ソード・ワールド2.5に関する情報をまとめたり考察をしたり しているページは多々あります。
 ぜひご覧ください。
-&button_/search?word=ソード・ワールド2.5 こちら
+&button_/search?word=sw25 こちら
 `
 
 </script>

@@ -13,7 +13,7 @@ interface Props {
 }
 const Props = defineProps<Props>();
 
-const getDateText = (date: Date) => formatToTimeZone(new Date(date), "YYYY年M月D日", {
+const getDateText = (date: Date) => formatToTimeZone(date, "YYYY年M月D日", {
   timeZone: "Asia/Tokyo",
 });
 let dateText: string

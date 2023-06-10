@@ -1,6 +1,7 @@
 import { readdirSync, statSync, writeFileSync } from "fs";
-import { pageTags } from "../../pages/pageTags";
+// import { pageTags } from "../../pages/pageTags";
 import { pageSettingList } from "../../pages/pageSettingList";
+import { formatDateString } from "../../util/date";
 // import { searchWordList } from "./searchWordList";
 
 const outputDir = `${process.cwd()}/.output/public`;
@@ -69,10 +70,7 @@ const setLocAndLastmod = (pageSetting: PageSetting, page?: number): string => {
   ${pageSetting.to !== "/" ? pageSetting.to + "/" : "/"}
   ${page ? page + "/" : ""}`;
 
-  const lastmod = (pageSetting.lastmod as string)
-    .split("/")
-    .map((str) => (str.length < 2 ? "0" + str : str))
-    .join("-");
+  const lastmod = formatDateString(pageSetting.lastmod as string);
   return `
   <url>
     <loc>${url}</loc><lastmod>${lastmod}</lastmod>

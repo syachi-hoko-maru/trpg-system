@@ -26,6 +26,7 @@
         <item-carousel
           :page-setting-list="$pageSettingList.filter(p => p.osusume && p.img).sort(sortPagesByDate(true)).splice(0, 10)" />
       </template>
+      <item-button to="/search?sort=recent">最近更新されたページ一覧はこちら</item-button>
     </card>
     <item-notice title="Notice" nobefore />
   </div>

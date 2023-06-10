@@ -18,6 +18,7 @@
     </template>
     最近更新されたページ{{ recent.length }}件を表示中
     <item-pagecard v-for="r of recent" :page-setting="r" />
+    <item-button to="/search?sort=recent">最近更新されたページ一覧はこちら</item-button>
   </card>
   <layouts-tail-card-aboutme />
   <layouts-tail-card-osusume :page-setting="pageSetting" />

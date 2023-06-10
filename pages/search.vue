@@ -38,6 +38,7 @@
 <script setup lang="ts">
 import { Ref } from 'vue';
 import { word4search } from '~/src/after/word4search';
+import { sortPagesByDate } from '~/src/util/date';
 
 const route = useRoute();
 const router = useRouter()
@@ -263,11 +264,11 @@ const sort = () => {
   const kanrenResult = results.value
     .filter(({ kanren }) => kanren >= 1)
   results.value = (kanrenResult.length ? kanrenResult : results.value)
-    .sort((a, b) => {
-      if (sortValue.value === "更新日が古い順") return - new Date(b.pageSetting.lastmod).getTime() + new Date(a.pageSetting.lastmod).getTime()
-      if (sortValue.value === "更新日が新しい順") return new Date(b.pageSetting.lastmod).getTime() - new Date(a.pageSetting.lastmod).getTime()
-      else return 0
-    })
+    .sort((a, b) =>
+      sortValue.value === "更新日が新しい順" ? sortPagesByDate(true)(a.pageSetting, b.pageSetting) :
+        sortValue.value === "更新日が古い順" ? sortPagesByDate(false)(a.pageSetting, b.pageSetting) :
+          0
+    )
 }
 
 changeRoute()

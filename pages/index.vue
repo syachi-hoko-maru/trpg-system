@@ -27,6 +27,7 @@
           :page-setting-list="$pageSettingList.filter(p => p.osusume && p.img).sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime()).splice(0, 10)" />
       </template>
     </card>
+    <item-notice title="Notice" nobefore />
   </div>
 
   <div class="grid contents">
@@ -39,7 +40,6 @@
         <item-carousel :page-setting-list="osusumePageArray.filter(pageSetting => pageSetting.img)" />
       </template>
     </card>
-
   </div>
 
   <div class="grid">

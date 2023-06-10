@@ -12,10 +12,12 @@
           <template #tbefore>
             <v-responsive :aspect-ratio="40 / 21">
               <item-img :src="$templateText.basePath + '/webp/' + pageSetting.img"
-                :alt="`ページ「${pageSetting.title}」のサムネイル画像`" height="100%" cover />
+                :alt="`ページ「${pageSetting.title}」のサムネイル画像`" height="100%" cover v-if="!hidden" />
             </v-responsive>
             <div class="text text-caption text-medium-emphasis ma-3">
-              {{ pageSetting.explain }}
+              <template v-if="!hidden">
+                {{ pageSetting.explain }}
+              </template>
             </div>
           </template>
         </card>
@@ -27,6 +29,7 @@
 <script setup lang="ts">
 interface Props {
   pageSettingList: PageSetting[]
+  hidden?: boolean
 }
 const Props = defineProps<Props>()
 

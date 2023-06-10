@@ -24,7 +24,7 @@
       </template>
       <template #pbefore>
         <item-carousel
-          :page-setting-list="$pageSettingList.filter(p => p.osusume && p.img).sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime()).splice(0, 10)" />
+          :page-setting-list="$pageSettingList.filter(p => p.osusume && p.img).sort(sortPagesByDate(true)).splice(0, 10)" />
       </template>
     </card>
     <item-notice title="Notice" nobefore />
@@ -32,12 +32,13 @@
 
   <div class="grid contents">
     <card-array-by-andml :andml="andml2" nobefore />
-    <card nobefore v-if="mounted && osusumePageArray.length">
+    <card nobefore>
       <template #title>
         Pick Up Pages
       </template>
       <template #pbefore>
-        <item-carousel :page-setting-list="osusumePageArray.filter(pageSetting => pageSetting.img)" />
+        <item-carousel :page-setting-list="osusumePageArray.filter(pageSetting => pageSetting.img)"
+          :hidden="!mounted || !osusumePageArray.length" />
       </template>
     </card>
   </div>

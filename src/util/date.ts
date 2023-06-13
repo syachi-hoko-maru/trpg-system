@@ -5,12 +5,12 @@ type DateLike = string | Date | number;
  * @param str 元となる時間文字列
  * @returns
  */
-export const formatDateString = (str: string): string => {
+export const formatDateString = (str: string, gmt: boolean = true): string => {
   const formatDate = str
     .split("/")
     .map((str) => (str.length < 2 ? "0" + str : str))
     .join("-");
-  if (formatDate.endsWith(" GMT+0900")) {
+  if (!gmt || formatDate.endsWith(" GMT+0900")) {
     return formatDate;
   } else {
     return formatDate + " GMT+0900";

@@ -70,7 +70,7 @@ const setLocAndLastmod = (pageSetting: PageSetting, page?: number): string => {
   ${pageSetting.to !== "/" ? pageSetting.to + "/" : "/"}
   ${page ? page + "/" : ""}`;
 
-  const lastmod = formatDateString(pageSetting.lastmod as string);
+  const lastmod = formatDateString(pageSetting.lastmod as string, false);
   return `
   <url>
     <loc>${url}</loc><lastmod>${lastmod}</lastmod>

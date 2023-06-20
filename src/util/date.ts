@@ -10,10 +10,10 @@ export const formatDateString = (str: string, gmt: boolean = true): string => {
     .split("/")
     .map((str) => (str.length < 2 ? "0" + str : str))
     .join("-");
-  if (!gmt || formatDate.endsWith(" GMT+0900")) {
+  if (!gmt || formatDate.endsWith("+0900")) {
     return formatDate;
   } else {
-    return formatDate + " GMT+0900";
+    return `${formatDate}T00:00:00+0900`;
   }
 };
 
@@ -33,6 +33,7 @@ const getTimeNumber = (date: DateLike): number => {
 
 /**
  * 対象の日付が比較対象の日付より過去かどうかを調べる
+ * aが（bよりも）昔なら true を返し、aが（bよりも）未来なら false を返します
  * @param a 対象の日付
  * @param b 比較対象の日付（入力しない場合は今）
  */

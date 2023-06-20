@@ -1,4 +1,5 @@
 import blogSettingList from "../../assets/blog.json";
+import { isPast } from "../util/date";
 import { setBlogExplain } from "./blogExplain";
 import { isPageTag } from "./pageTags";
 
@@ -484,7 +485,8 @@ const normalPageSettingList: PageSetting[] = [
     noamazon: true,
   },
 ].map((page) => {
-  if (new Date(page.lastmod + " GMT+0900").getTime() > new Date().getTime()) {
+  // 未来に公開予定のページはおすすめにせず、hiddenにする
+  if (!isPast(page.lastmod)) {
     page.osusume = false;
     page.hidden = true;
   }

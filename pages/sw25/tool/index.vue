@@ -7,6 +7,7 @@
 </template>
 
 <script setup lang="ts">
+import zlib from "zlib"
 
 const { $pageSettingList } = useNuxtApp()
 
@@ -30,5 +31,10 @@ const andml3 = `
 よければご覧ください。
 &button_/search?tag=sw25 こちら
 `
+onMounted(() => {
+  const buffer = zlib.gzipSync("aaa")
+  const b = zlib.gunzipSync(buffer)
+  console.log(buffer, b)
+})
 </script>
 

@@ -179,7 +179,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 キャラビルドのやり方をわかりやすく解説",
     to: "/sw25/forbeginner/build",
-    lastmod: "2023/6/30",
+    lastmod: "2023/12/30",
     img: "page-image/build.webp",
     osusume: true,
     explain:
@@ -189,7 +189,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 近接タイプの「考え方」",
     to: "/sw25/forbeginner/build/warrior",
-    lastmod: "2023/6/30",
+    lastmod: "2023/12/30",
     img: "page-image/warrior.webp",
     osusume: true,
     explain:
@@ -199,7 +199,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 前衛に立つキャラクターについて",
     to: "/sw25/forbeginner/build/front",
-    lastmod: "2023/6/30",
+    lastmod: "2023/12/30",
     img: "page-image/front.webp",
     osusume: true,
     explain:
@@ -209,7 +209,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 遠隔アタッカータイプの「考え方」",
     to: "/sw25/forbeginner/build/remote_attacker",
-    lastmod: "2023/6/30",
+    lastmod: "2023/12/30",
     img: "page-image/remote_attacker.webp",
     osusume: true,
     explain: "",
@@ -218,7 +218,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 魔法使い系技能の使い方",
     to: "/sw25/forbeginner/build/magic",
-    lastmod: "2023/6/30",
+    lastmod: "2023/12/30",
     img: "page-image/magic.webp",
     osusume: true,
     explain:
@@ -228,7 +228,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 魔法アタッカータイプの「考え方」",
     to: "/sw25/forbeginner/build/magic_attacker",
-    lastmod: "2023/6/30",
+    lastmod: "2023/12/30",
     img: "page-image/magic_attacker.webp",
     osusume: true,
     explain: "",
@@ -237,7 +237,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 ヒーラータイプの「考え方」",
     to: "/sw25/forbeginner/build/healer",
-    lastmod: "2023/6/30",
+    lastmod: "2023/12/30",
     img: "page-image/healer.webp",
     osusume: true,
     explain: "",

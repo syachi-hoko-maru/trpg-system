@@ -34,6 +34,15 @@
       </template>
     </card>
   </card-list>
+  <card-list v-if="miimages.length" title="おともだち（？）">
+    <card v-for="image of friends" :id="image.title">
+      <template #tbefore>
+        <item-img :src="`${$templateText.basePath}/webp/icon-image/${image.src}.webp`" :alt="`${image.title}のイメージ画像`" />
+      </template>
+      <template #title>{{ image.title }}</template>
+      <andml :andmls="image.explain" v-if="image.explain" />
+    </card>
+  </card-list>
 </template>
 
 <script setup lang="ts">
@@ -43,7 +52,7 @@ const first = `
 しゃちほこ丸と申します。
 &br
 &em_「しゃち」模様で「ほこ」を持った「丸」い「しゃちほこ」 です。
-色とときどき模様が変わることがあるので、それを記録としてここに残します。
+色と模様がときどき変わることがあるので、それを記録としてここに残します。
 &br
 自己紹介はこちら。
 &button_/me
@@ -54,6 +63,21 @@ const images = [
     title: "通常",
     date: "2022/12/14",
     explain: ""
+  },
+  {
+    title: "夏",
+    date: "2023/7/1",
+    explain: "みなさん、熱中症には気をつけてください。"
+  },
+  {
+    title: "梅雨",
+    date: "2023/6/24",
+    explain: "とりあえず折り畳み傘を持っておくと幸せになれる季節。"
+  },
+  {
+    title: "白いシャチ",
+    date: "2023/6/14",
+    explain: "知床に現れたという「白いシャチ」カラーです。"
   },
   {
     title: "誕生日",
@@ -151,4 +175,18 @@ const miimages = [
     explain: ""
   },
 ]
+
+const friends = [
+  {
+    title: "サカバンバスピス",
+    src: "sacabambaspis",
+    explain: "フィンランドのヘルシンキ自然史博物館に展示されているという復元模型の写真がバズりました"
+  },
+  {
+    title: "サカバンバスピス",
+    src: "sacabambaspis2",
+    explain: "&link_http://paleontology.sakura.ne.jp/sakabanbasupisu.html,古世界の住人 さんを参考にしたデザイン"
+  },
+]
+
 </script>

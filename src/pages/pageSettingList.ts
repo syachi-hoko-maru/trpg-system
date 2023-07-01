@@ -373,7 +373,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "しゃちほこ丸ギャラリー",
     to: "/me/gallery",
-    lastmod: "2023/5/23",
+    lastmod: "2023/7/1",
     img: "page-image/gallery.webp",
     imgdirs: ["icon-image"],
     explain: "管理人しゃちほこ丸の歴代アイコンを紹介するページです。",

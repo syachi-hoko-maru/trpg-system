@@ -6,13 +6,17 @@
     <item-forms :formSettings="formSettings" />
     <item-button @click="setImage">画像を作る</item-button>
   </card>
-  <card v-show="imageUrl">
+  <card v-show="imageUrls.length">
     <template #title>
       プレビュー
     </template>
     確認の上、保存してください。PCなら右クリック、スマホなら長押しで保存ができます。
-    <canvas id="canvas" :width="canvasWidth" :height="canvasHeight" style="display: none;" />
-    <item-img v-if="imageUrl" alt="ソード・ワールド2.5自己紹介シート" :src="imageUrl" />
+    <canvas id="canvas_1" :width="canvasWidth" :height="canvasHeight" style="display: none;" />
+    <canvas id="canvas_2" :width="canvasWidth" :height="canvasHeight" style="display: none;" />
+    <canvas id="canvas_3" :width="canvasWidth" :height="canvasHeight" style="display: none;" />
+    <div class="px-2 py-5" v-for="imageUrl of imageUrls">
+      <item-img alt="祝5周年！　SW2.5フレーム" :src="imageUrl" />
+    </div>
   </card>
 </template>
 
@@ -27,12 +31,19 @@ const formSettings = ref([
     type: "file",
     value: ""
   },
+  {
+    name: "fit",
+    label: "合わせ",
+    type: "select",
+    selects: ["外側に合わせる", "内側に合わせる"],
+    value: "内側に合わせる"
+  },
 ] as FormSetting[])
 
 const canvasWidth = 600
 const canvasHeight = 600
 
-const imageUrl = ref("")
+const imageUrls = ref([] as string[])
 
 const drawImage = async (ctx: CanvasRenderingContext2D, src: string, x1: number, y1: number, x2: number, y2: number, circle?: boolean): Promise<void> => {
   ctx.save()
@@ -55,31 +66,40 @@ const drawImage = async (ctx: CanvasRenderingContext2D, src: string, x1: number,
 const setImage = async () => {
   console.log("start")
   try {
-    // 準備
-    const canvas = document.getElementById("canvas") as HTMLCanvasElement
-    if (!canvas) throw "no canvas"
-    const ctx = canvas.getContext('2d');
-    if (!ctx) throw "no ctx"
-    ctx.textBaseline = "bottom"
-    ctx.fillStyle = "#222";
-    // 準備ここまで
+    for (let i = 0; i < 3; i++) {
+      // 準備
+      const canvas = document.getElementById(`canvas_${i + 1}`) as HTMLCanvasElement | null
+      if (!canvas) throw "no canvas"
+      const ctx = canvas.getContext('2d');
+      if (!ctx) throw "no ctx"
+      ctx.textBaseline = "bottom"
+      ctx.fillStyle = "#222";
+      // 準備ここまで
 
-    const iconSrc = formSettings.value.find((form) => form.name === "icon")?.value
-    if (iconSrc && typeof iconSrc === "string") {
-      await drawImage(ctx, iconSrc, 50, 50, 550, 550, true).catch(() => {
-        throw "cannot get input file image"
-      })
+      const iconSrc = formSettings.value.find((form) => form.name === "icon")?.value
+      const fit = formSettings.value.find((form) => form.name === "fit")?.value
+
+      if (iconSrc && typeof iconSrc === "string") {
+        if (fit === "外側に合わせる") {
+          await drawImage(ctx, iconSrc, 0, 0, 600, 600, true).catch(() => {
+            throw "cannot get input file image"
+          })
+        } else {
+          await drawImage(ctx, iconSrc, 50, 50, 550, 550, true).catch(() => {
+            throw "cannot get input file image"
+          })
+        }
+      }
+
+      await drawImage(ctx, `${$templateText.basePath}/image/sw25intro/5anni_${i + 1}.svg`, 0, 0, canvasWidth, canvasHeight, true)
+        .catch(() => {
+          throw "cannot get svg image"
+        })
+
+
+      imageUrls.value[i] = canvas.toDataURL();
+      console.log(`frame ${i + 1} ok, name: ${imageUrls.value[i]}`)
     }
-
-    await drawImage(ctx, `${$templateText.basePath}/image/sw25intro/5anni.svg`, 0, 0, canvasWidth, canvasHeight, true)
-      .catch(() => {
-        throw "cannot get svg simage"
-      })
-
-
-    imageUrl.value = canvas.toDataURL();
-    console.log(imageUrl.value)
-    console.log("ok")
   } catch (err) {
     openDialogo(`予期せぬエラーが発生しました。 &itwitter まで報告いただければ幸いです。 &br ERROR: ${String(err).replace(/\s/g, "¥s")}`, "error")
   }

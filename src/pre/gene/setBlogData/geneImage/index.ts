@@ -59,7 +59,7 @@ const generateImage = async (
   const baseWidth = width - 250;
   let countOverLine = 0;
   const lines = title
-    .replace(/([！!？?]+)/g, "$1 ")
+    // .replace(/([！!？?]+)/g, "$1 ")
     .split(" ")
     .filter((line) => line)
     .map((line) => {

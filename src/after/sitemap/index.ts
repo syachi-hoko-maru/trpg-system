@@ -59,7 +59,7 @@ const setUrlBlock = (pageSetting: PageSetting): string => {
   } else {
     let result = "";
     for (let page = 0; page < pageSetting.page; page++) {
-      result += setLocAndLastmod(pageSetting, page);
+      result += setLocAndLastmod(pageSetting, page + 1);
     }
     return result;
   }

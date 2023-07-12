@@ -341,17 +341,16 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "公開シナリオ一覧",
     to: "/scenario",
-    lastmod: "2023/4/8",
-    img: "page-image/scenario.webp",
+    lastmod: "2023/7/12",
+    img: "page-image/scenario2.webp",
     imddirs: ["scenario-image"],
     osusume: true,
     explain:
-      "管理人しゃちほこ丸が公開しているTRPGのシナリオの一覧です。ソード・ワールド2.5（SW2.5）やエモクロアTRPGのシナリオを公開しています。TRPGでファンタジーな冒険をしましょう。",
+      "管理人しゃちほこ丸が公開しているTRPGのシナリオの一覧です。ソード・ワールド2.5（SW2.5/ソドワ）やエモクロアTRPGのシナリオを無料で公開しています。TRPGでファンタジーな冒険をしましょう。",
     tags: ["sw25", "scenario", "me"],
   },
   {
-    title:
-      "シナリオメモ「ふきのとうを採りに」from 同人シナリオ集「冒険者の旅路」",
+    title: "シナリオ「ふきのとうを採りに」from 同人シナリオ集「冒険者の旅路」",
     to: "/scenario/fukinotou",
     img: "scenario-image/fukinotou.webp",
     lastmod: "2023/7/12",

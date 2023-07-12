@@ -155,6 +155,7 @@
 &img_scenario-image/fukinotou/tb.webp,時間について
 
 &2 各エリアについて
+★エリアは以下の7つに分けられる
 &img_scenario-image/fukinotou/area.webp,エリア図
 - 広葉樹林東
 -- 移動可能：村・針葉樹林東

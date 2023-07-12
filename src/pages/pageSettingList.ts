@@ -350,6 +350,18 @@ const normalPageSettingList: PageSetting[] = [
     tags: ["sw25", "scenario", "me"],
   },
   {
+    title:
+      "シナリオメモ「ふきのとうを採りに」from 同人シナリオ集「冒険者の旅路」",
+    to: "/scenario/fukinotou",
+    img: "scenario-image/fukinotou.webp",
+    lastmod: "2023/7/12",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5/ソドワ）のシナリオ『ふきのとうを採りに』を無料公開中です。初心者向けシナリオで、2023年の夏コミ（C102）で頒布する同人誌『冒険者の旅路』のサンプルとなっています。ネタバレフィルターあり。",
+    tags: ["sw25", "scenario"],
+  },
+
+  {
     title: "シナリオメモ「とろ〜りとした甘いやつ」",
     to: "/scenario/pudding",
     img: "scenario-image/pudding.webp",

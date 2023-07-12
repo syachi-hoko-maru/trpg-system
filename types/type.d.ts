@@ -54,7 +54,7 @@ declare type ScenarioData = {
   system: "ソード・ワールド2.5" | "エモクロアTRPG";
   explain: string[];
   img: string;
-  url: { site: "TALTO" | "シナリオメモ"; url: string }[];
+  url: { site: "TALTO" | "シナリオメモ" | "シナリオ"; url: string }[];
 } & (
   | {
       system: "ソード・ワールド2.5";

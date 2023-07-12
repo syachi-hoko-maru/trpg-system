@@ -22,6 +22,29 @@ export const scenarioData: ScenarioData[] = [
     regulation: "初期作成",
   },
   {
+    title: "ふきのとうを採りに",
+    id: "fukinotou",
+    author: "しゃちほこ丸",
+    system: "ソード・ワールド2.5",
+    explain: [
+      "「冬の山には薬草がいっぱいあるんだ」",
+      "「ある意味、宝の山だな」",
+      "「でも、油断したら、だめだ」",
+      "&br",
+      "駆け出しの冒険者たちは冬山の冒険へ出ることになる",
+      "&br",
+      "このシナリオはC102で頒布する同人誌「冒険者の旅路」のサンプルです。",
+    ],
+    img: "scenario-image/fukinotou.webp",
+    url: [
+      {
+        site: "シナリオ",
+        url: "/scenario/fukinotou",
+      },
+    ],
+    regulation: "3〜4レベル想定",
+  },
+  {
     title: "Magic Steam Festival",
     id: "kitomaho",
     author: "しゃちほこ丸",

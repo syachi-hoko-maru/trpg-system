@@ -1,7 +1,8 @@
 <template>
   <card class="pt-5">
     ブログでは僕が考えたことを、基本的に考えた順に書いています。<br>
-    お読みになってくださる場合、読みやすい文章ではないことをご了承の上、お読みいただければ幸いです。
+    他のページよりも気軽に書かせてもらってます。<br>
+    読みやすい文章ではないことをご了承の上、お読みいただければ幸いです。
   </card>
   <card-array-by-andml :andml="aboutswnews" v-if="pagetitle.indexOf('ソドワニュース！') === 0" />
   <card-array-by-andml :andml="mainandml" />
@@ -9,13 +10,21 @@
     <template #title>
       他のブログ記事
     </template>
+    ソード・ワールド2.5などのTRPGについて、いろいろと書いてます！<br>
+    ぜひ他のブログ記事も見ていってください！
     <template #pafter>
       <pages-search :results="results" />
     </template>
   </card>
-  <card class="pt-1">
-    駄文を最後までお読みいただきありがとうございました。<br>
+  <card class="pt-5">
+    最後までお読みいただきありがとうございました。<br>
     よければ他のブログやページもご覧ください。
+    <template v-if="blog?.tags.find(tag => tag.indexOf('sw25') >= 0)">
+      <br>
+      <br>
+      それでは、良きソード・ワールド2.5ライフを！<br>
+      そどわわわ！（挨拶）
+    </template>
     <item-button url="/blog" normal-button>ブログトップへ</item-button>
   </card>
 </template>

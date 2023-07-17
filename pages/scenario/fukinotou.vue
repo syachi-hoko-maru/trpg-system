@@ -20,6 +20,7 @@
   
 <script setup lang="ts">
 import scenario from "@/assets/scenario.json"
+import { isPast } from "~/src/util/date";
 
 const { params } = useRoute()
 
@@ -62,6 +63,13 @@ const setsumei = `
 場所は &em_東地区¥s"Ｖ"¥sブロック¥s36b です。
 詳しくは以下の「コミケWebカタログ」をご覧ください。
 &button_https://webcatalog-free.circle.ms/Circle/17321634 コミケWebカタログ
+
+&2 通販もあります！
+C102に行けないよって方のために、通販もあります！
+ソード・ワールド2.5をしていらっしゃるハリィさん（ &link_https://twitter.com/swrpglove,Twitter ）のお店「HarryHarry」での通販です。
+&br
+${isPast("2023-07-20") ? "ぜひぜひご予約ください。" : "7月20日（木）12時予約開始予定です！"}
+&button_https://harryharry.base.shop/items/76512992 通販はこちら
 
 
 &1 シナリオスペック

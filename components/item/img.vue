@@ -17,7 +17,7 @@ const Props = defineProps<Props>();
 
 const { $templateText } = useNuxtApp()
 
-const imgsrc: string | null = Props.src.startsWith("http")
+const imgsrc = computed(() => Props.src.startsWith("http")
   ? Props.src
   : Props.src.startsWith("/")
     ? Props.src.endsWith(".webp")
@@ -26,4 +26,5 @@ const imgsrc: string | null = Props.src.startsWith("http")
     : Props.src.endsWith(".webp")
       ? `${$templateText.basePath}/webp/${Props.src}`
       : `${$templateText.basePath}/image/${Props.src}`
+)
 </script>

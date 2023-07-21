@@ -3,7 +3,7 @@
     <template #before>
       <div class="thumbnail-div">
         <div class="thumbnail-img">
-          <item-img src="./webp/page-image/main.webp" alt="ヘッダー画像" />
+          <item-img src="/page-image/main.webp" alt="ヘッダー画像" />
         </div>
       </div>
       <item-caption>

@@ -1,8 +1,8 @@
 <template>
   <card-list :title="title">
     <card v-for="page of pageSettingList" :key="page.to" :comingsoon="page.hidden">
-      <template #tbefore>
-        <item-img :src="`${$templateText.basePath}/webp/${page.img}`" :alt="`ページ「${page.title}」のサムネイル画像`" />
+      <template #tbefore v-if="page.img">
+        <item-img :src="page.img" :alt="`ページ「${page.title}」のサムネイル画像`" />
       </template>
       <div class="text">
         <div class="pagesindex-explain">

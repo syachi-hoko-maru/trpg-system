@@ -78,7 +78,7 @@
 ファーベルトの湯は3階建ての煉瓦造りの建物で、村役場やモンテスの家も兼ねている。
 建物の横には温泉が湧いている。もくもくと白い湯気が立ち上り、周囲は雪が溶けている。
 &br
-&img_scenario-image/fukinotou/hotel.webp,ファーベルトの湯
+&img_/scenario-image/fukinotou/hotel.webp,ファーベルトの湯
 &br
 - ファーベルトの湯は玄関前に受付と階段があり、左に曲がれば食堂とその先に温泉が、右に曲がれば村役場がある
 - 食堂の上は3階建となっており、2階と3階は宿となっている
@@ -152,11 +152,11 @@
 1tb（1日目の朝）はエリア「村」から開始となります
 19tb（5日目の夜）に行われる後夜祭までに村へ移動できない場合、救出隊が派遣され、報酬が1人あたり50G減ります
 &br
-&img_scenario-image/fukinotou/tb.webp,時間について
+&img_/scenario-image/fukinotou/tb.webp,時間について
 
 &2 各エリアについて
 ★エリアは以下の7つに分けられる
-&img_scenario-image/fukinotou/area.webp,エリア図
+&img_/scenario-image/fukinotou/area.webp,エリア図
 - 広葉樹林東
 -- 移動可能：村・針葉樹林東
 -- ふきのとう採取可能
@@ -217,7 +217,7 @@
 - 5・6：山伏ノア・アスター（人間／男／30）と再び会い、盛り上がる。 &br 次に「戦闘になる」か「主のクマが襲ってくる」のイベントが発生するまで、山伏と共に行動する。 &br 「主のクマが襲ってくる」が起きた場合、クマを追い払ってくれるため、イベントを無視する。
 
 &3 1tbの行動まとめ
-&img_scenario-image/fukinotou/actions.webp,1tbの流れ
+&img_/scenario-image/fukinotou/actions.webp,1tbの流れ
 
 &2 全滅した場合
 依頼失敗となり、一切報酬はもらえない

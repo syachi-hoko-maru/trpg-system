@@ -8,9 +8,8 @@
       <template #title>おすすめのページ</template>
       <div v-for="op of osusumePageArray" class="mb-3">
         <atom-link :to="op.to" :title="`ページ「${op.title}」へのリンク`" type="right">
-          <v-responsive :aspect-ratio="40 / 21">
-            <item-img :src="`${$templateText.basePath}/webp/${op.img}`" :alt="`ページ「${op.title}」のサムネイル画像`" height="100%"
-              cover />
+          <v-responsive :aspect-ratio="40 / 21" v-if="op.img">
+            <item-img :src="op.img" :alt="`ページ「${op.title}」のサムネイル画像`" height="100%" cover />
           </v-responsive>
         </atom-link>
       </div>

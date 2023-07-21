@@ -10,9 +10,9 @@
       <atom-link :to="pageSetting.to" :title="`ページ「${pageSetting.title}」へのリンク`" type="carousel">
         <card class="ma-2" nobefore>
           <template #tbefore>
-            <v-responsive :aspect-ratio="40 / 21">
-              <item-img :src="$templateText.basePath + '/webp/' + pageSetting.img"
-                :alt="`ページ「${pageSetting.title}」のサムネイル画像`" height="100%" cover v-if="!hidden" />
+            <v-responsive :aspect-ratio="40 / 21" v-if="pageSetting.img">
+              <item-img :src="pageSetting.img" :alt="`ページ「${pageSetting.title}」のサムネイル画像`" height="100%" cover
+                v-if="!hidden" />
             </v-responsive>
             <div class="text text-caption text-medium-emphasis ma-3">
               <template v-if="!hidden">

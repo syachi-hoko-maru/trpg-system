@@ -5,8 +5,7 @@
       v-for="image of images.filter(({ date }) => new Date().getTime() >= new Date(date.split('/').map(s => s.length >= 2 ? s : '0' + s).join('-')).getTime())"
       :id="image.title">
       <template #tbefore>
-        <item-img
-          :src="`${$templateText.basePath}/webp/icon-image/${image.date.split('/').map(s => s.length >= 2 ? s : '0' + s).join('')}.webp`"
+        <item-img :src="`/icon-image/${image.date.split('/').map(s => s.length >= 2 ? s : '0' + s).join('')}.webp`"
           :alt="`${image.title}をイメージしたアイコン画像`" />
       </template>
       <template #title>{{ image.title }}</template>
@@ -17,8 +16,7 @@
   <card-list v-if="miimages.length" title="Twitter未公開アイコン">
     <card v-for="image of miimages" :id="image.title">
       <template #tbefore>
-        <item-img :src="`${$templateText.basePath}/webp/icon-image/mi_${image.src}.webp`"
-          :alt="`${image.title}をイメージしたアイコン画像`" />
+        <item-img :src="`/icon-image/mi_${image.src}.webp`" :alt="`${image.title}をイメージしたアイコン画像`" />
       </template>
       <template #title>{{ image.title }}</template>
       <andml :andmls="image.explain" v-if="image.explain" />
@@ -27,7 +25,7 @@
   <card-list title="その他">
     <card>
       <template #tbefore>
-        <item-img :src="`${$templateText.basePath}/webp/icon-image/syachi.webp`" alt="シャリタツ風しゃちほこ丸画像" />
+        <item-img :src="`/icon-image/syachi.webp`" alt="シャリタツ風しゃちほこ丸画像" />
       </template>
       <template #title>
         シャリタツ（しゃちほこ丸のすがた）
@@ -37,7 +35,7 @@
   <card-list v-if="miimages.length" title="おともだち（？）">
     <card v-for="image of friends" :id="image.title">
       <template #tbefore>
-        <item-img :src="`${$templateText.basePath}/webp/icon-image/${image.src}.webp`" :alt="`${image.title}のイメージ画像`" />
+        <item-img :src="`/icon-image/${image.src}.webp`" :alt="`${image.title}のイメージ画像`" />
       </template>
       <template #title>{{ image.title }}</template>
       <andml :andmls="image.explain" v-if="image.explain" />

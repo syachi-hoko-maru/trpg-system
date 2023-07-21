@@ -3,12 +3,10 @@
     <template #tbefore>
       <div class="meishi-div" :class="clicked">
         <div class="meishi" :class="omote ? 'front' : 'back'">
-          <item-img :src="`${$templateText.basePath}/webp/other/me/card1.webp`" alt="名刺（表）" width="100%"
-            aspect-ratio="91/55" />
+          <item-img src="/other/me/card1.webp" alt="名刺（表）" width="100%" aspect-ratio="91/55" />
         </div>
         <div class="meishi" :class="omote ? 'back' : 'front'">
-          <item-img :src="`${$templateText.basePath}/webp/other/me/card2.webp`" alt="名刺（裏）" width="100%"
-            aspect-ratio="91/55" />
+          <item-img src="/other/me/card2.webp" alt="名刺（裏）" width="100%" aspect-ratio="91/55" />
         </div>
       </div>
       <p class="ma-1">

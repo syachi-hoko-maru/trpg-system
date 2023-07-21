@@ -6,8 +6,7 @@
     <template #tbefore>
       <div class="thumbnail-div">
         <div class="thumbnail-img">
-          <item-img :src="`${$templateText.basePath}/webp/${pageSetting.img}`"
-            :alt="`「${pageSetting.title}」ページのサムネイル画像`" />
+          <item-img :src="pageSetting.img" :alt="`「${pageSetting.title}」ページのサムネイル画像`" />
         </div>
       </div>
     </template>

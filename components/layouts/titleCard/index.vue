@@ -21,6 +21,7 @@
       </div>
     </template>
   </card>
+  <item-banner-c102 />
 </template>
 
 <script setup lang="ts">

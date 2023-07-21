@@ -10,6 +10,7 @@
       ぜひTwitterなどでシェアしてこのウェブサイトを広めてください！
     </div>
   </card>
+  <item-banner-c102 />
   <item-notice title="しゃちほこ丸からのお知らせ" />
   <item-amazon-box v-if="!pageSetting.noamazon" />
   <card v-if="recent.length && mounted">
@@ -22,6 +23,7 @@
   </card>
   <layouts-tail-card-aboutme />
   <layouts-tail-card-osusume :page-setting="pageSetting" />
+  <item-banner-c102 />
   <card>
     <item-button @click="scrollTop">上へ戻る</item-button>
     <item-button v-if="pageSetting.to.indexOf('/blog/') === 0" url="/blog" normal-button>ブログトップへ</item-button>

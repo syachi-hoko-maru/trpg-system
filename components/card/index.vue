@@ -22,6 +22,7 @@
         <v-card-subtitle v-if="$slots.subtitle">
           <slot name="subtitle" />
         </v-card-subtitle>
+        <v-divider class="mt-2" />
       </div>
       <slot name="before" />
       <div class="px-4" v-if="$slots.pbefore">

@@ -2,7 +2,7 @@
   <CardArrayByAndml :andml="andml1" />
   <card v-for="(suppliment, i) of ranking.filter(r => r.rank <= 5).sort((a, b) => - a.rank + b.rank)">
     <template #title>
-      {{ suppliment.rank }}位 {{ suppliment.name }}
+      第{{ suppliment.rank }}位{{ checkTie(suppliment) }} {{ suppliment.name }}
     </template>
     <template #before>
       <div class="d-flex flex-column align-center">
@@ -37,10 +37,12 @@ const ranking: RankingData[] = $suppliments
     return Object.assign(s, { rank: nowRank })
   })
 
+const checkTie = (rankingData: RankingData): "タイ" | "" => $suppliments.flatMap(({ items }) => items).filter(({ ossusume }) => ossusume === rankingData.ossusume).length > 1 ? "タイ" : ""
+
 const setExplainAndml = (rankingData: RankingData) => {
   const top = rankingData.rank === 1
   return `
-  ${top ? "そして、" : ""}おすすめサプリメントランキングの${top ? "栄えある" : ""}第${rankingData.rank}位は &em_「おすすめ度：${rankingData.ossusume}」 の『 &em_${rankingData.name} 』です！
+  ${top ? "そして、" : ""}おすすめサプリメントランキングの${top ? "栄えある" : ""}第${rankingData.rank}位${checkTie(rankingData)}は &em_「おすすめ度：${rankingData.ossusume}」 の『 &em_${rankingData.name} 』です！
   サプリメント『${rankingData.name}』は &em_「${rankingData.gname}」に分類されるサプリ です。
   &br
   ${top ? "1位に輝いた" : ""}『${rankingData.name}』の &em_内容やおすすめのポイント は以下のページで紹介しています！
@@ -50,16 +52,24 @@ const setExplainAndml = (rankingData: RankingData) => {
   `
 }
 
+
 const andml1 = `
 &1 このページについて
-このページではソード・ワールド2.5の初心者向けに、 &em_おすすめのサプリメントをランキング形式で紹介 します。
-まずはトップ5を紹介し、その後、全てのサプリメントのランキングも掲載しています！
-「どのサプリメントがおすすめなのか知りたい！」「ルールブックを買ったけど、次は何を買えばいいの？」って方、ぜひご覧ください。
+この記事ではソード・ワールド2.5（SW2.5/ソドワ）の初心者向けに、 &em_おすすめのサプリメントをランキング形式で紹介 します。
+&br
+まずは &em_トップ5を紹介 し、その後、 &em_全てのサプリメントのランキング も掲載しています！
+&br
+- 「ソード・ワールド2.5のサプリメントいっぱいあって、どれから買えばいいかわからない……」
+- 「どのサプリメントに欲しい情報が載っているかわからない……」
+- 「サプリメントって何？」
+&br
+という方はぜひご覧ください！
+&br
 &br
 「全てのサプリメントについて知りたい！」って方は以下のページも併せてご覧ください。
 &button_/sw25/forbeginner/suppliment
 
-&2 注意
+&3 注意
 なお、あくまでもこれは個人のつけた初心者向けおすすめ度のランキングです。
 これを見て購入して何らかの不利益を被ったとしても、責任を取れません。
 ご注意ください。
@@ -77,10 +87,11 @@ const andml2 = `
 では、ソード・ワールド2.5の全${ranking.length}つのサプリのおすすめ度順位表を紹介します。
 &br
 なお、これはあくまでの個人のつけた &em_初心者向けおすすめ度 です。
+&br
 順位が低いものも &em_初心者におすすめではないだけ でとても良いサプリメントなので、ぜひ最終的には全部揃えてください！
 最初はルールブックだけで十分楽しめますが、ハマって揃えていくのも楽しいですよ……。
 &br
-` + ranking.map(r => `第${r.rank}位¥s &link_/sw25/forbeginner/suppliment/${r.gnum + 2}/#${r.name},${r.name}（${r.gname}）`).join("\n")
+` + ranking.map(r => `第${r.rank}位${checkTie(r)}¥s &link_/sw25/forbeginner/suppliment/${r.gnum + 2}/#${r.name},${r.name}（${r.gname}）`).join("\n")
   + `
 &br
 それぞれのサプリについて &em_「詳しく知りたい！」 って方はそれぞれのリンクへ飛ぶか、以下のページをご覧ください。
@@ -89,6 +100,7 @@ const andml2 = `
 &1 終わりに
 なお、繰り返しますが、 &em_全て私見 ですのでご注意ください。
 これを見て購入して何らかの不利益を被ったとしても、責任を取れません。
+&br
 &em_相談は大歓迎 です。 &itwitter へ、 &em_お気軽にリプとかDM してください。
 &amazon_${ranking.filter(r => r.rank <= 5).map(r => r.name).join("・")}
 あと、すごく大事なことですが、サプリなんて持ってなくても遊べます。
@@ -96,6 +108,7 @@ const andml2 = `
 &br
 まずはルールブックIを読み込んでみるのもおすすめです。
 特に「ワールド」の部分は読み応えがありますよ。
+&br
 &br
 遊ぶ人を探す際は以下も参考にしてみてください。
 &button_/sw25/tool/intro

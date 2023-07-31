@@ -267,7 +267,7 @@ const normalPageSettingList: PageSetting[] = [
     title: "SW2.5 おすすめサプリメント紹介",
     to: "/sw25/forbeginner/suppliment",
     page: 5,
-    lastmod: "2023/4/23",
+    lastmod: "2023/7/31",
     img: "page-image/suppliment.webp",
     osusume: true,
     explain:
@@ -277,7 +277,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5のおすすめサプリメントをランキング形式で紹介！",
     to: "/sw25/forbeginner/suppliment/ranking",
-    lastmod: "2023/5/26",
+    lastmod: "2023/7/31",
     img: "page-image/ranking.webp",
     osusume: true,
     explain:

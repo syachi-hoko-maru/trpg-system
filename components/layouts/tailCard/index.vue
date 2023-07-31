@@ -1,7 +1,6 @@
 <template>
   <card-array-by-andml v-if="pageSetting.tags.indexOf('sw25_new') >= 0" :andml="sourceAndml" />
-  <layouts-tail-card-osusume v-if="pageSetting.to !== '/policy' && pageSetting.to !== '/'" :page-setting="pageSetting"
-    type="kanren" />
+  <layouts-tail-card-osusume v-if="pageSetting.to !== '/policy' && pageSetting.to !== '/'" type="kanren" />
   <item-amazon-sw25 v-if="!pageSetting.noamazon && pageSetting.tags.findIndex(tag => tag.indexOf('sw25') >= 0) >= 0" />
   <card>
     <item-pagetree class="mt-3" />
@@ -22,7 +21,8 @@
     <item-button to="/search?sort=recent">最近更新されたページ一覧はこちら</item-button>
   </card>
   <layouts-tail-card-aboutme />
-  <layouts-tail-card-osusume :page-setting="pageSetting" />
+  <layouts-tail-card-osusume type="osusume" />
+  <layouts-tail-card-osusume type="popular" />
   <item-banner-c102 />
   <card>
     <item-button @click="scrollTop">上へ戻る</item-button>

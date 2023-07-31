@@ -1,3 +1,4 @@
+import { getPageSetting } from "./getPageSetting";
 import { pageSettingList } from "./pageSettingList";
 import { scenarioData } from "./scenario";
 
@@ -11,7 +12,7 @@ const shuffle = <T>(array: Array<T>) => {
 
 export const getOsusumePageList = (
   pageSetting: PageSetting,
-  type: "kanren" | "osusume",
+  type: "kanren" | "osusume" | "popular",
   pageArray: string[]
 ) => {
   // 隠しページでなく説明があり、かつ今表示していないページ
@@ -46,25 +47,25 @@ export const getOsusumePageList = (
         .slice(0, 10);
     // console.log(kanrenDataList);
     return kanrenDataList.map((d) => d.pageSetting).slice(0, 5);
+  } else if (type === "popular") {
+    // 人気
+    const popularPageArray = shuffle(
+      [
+        "/sw25/forbeginner/suppliment",
+        "/sw25/tool/simulate",
+        "/sw25/forbeginner/scenario",
+        "/sw25/tool",
+        "/sw25/forbeginner/syuzoku",
+        "/sw25/tool/intro",
+      ]
+        .filter((str) => str !== pageSetting.to)
+        .map((url) => getPageSetting(url))
+        .slice(0, 5)
+    );
+    return popularPageArray;
   } else {
     // おすすめ
     const osusumeDataList = dataList.filter((page) => page.img && page.osusume);
-    // // 作者がしゃちほこ丸のシナリオを表示する
-    // if (pageSetting.to.indexOf("scenario") === -1) {
-    //   scenarioData
-    //     .filter((sd) => sd.author === "しゃちほこ丸")
-    //     .forEach((sd) => {
-    //       osusumeDataList.push({
-    //         title: sd.title,
-    //         to: `/scenario#${sd.id}`,
-    //         explain: sd.explain,
-    //         img: sd.img,
-    //         osusume: true,
-    //         lastmod: "",
-    //         tags: [],
-    //       });
-    //     });
-    // }
     return shuffle(osusumeDataList)
       .filter((page) =>
         pageArray.slice(0, osusumeDataList.length - 9).indexOf(page.to)

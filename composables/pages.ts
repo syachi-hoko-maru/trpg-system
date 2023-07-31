@@ -13,6 +13,10 @@ export const usePages = () => {
     "kanrenPageArray",
     () => [] as PageSetting[]
   );
+  const popularPageArray = useState(
+    "popularPageArray",
+    () => [] as PageSetting[]
+  );
 
   const getNowPage = () => route.fullPath;
 
@@ -65,6 +69,11 @@ export const usePages = () => {
       "kanren",
       pageArray.value
     );
+    popularPageArray.value = $getOsusumePageList(
+      nowPageSetting.value,
+      "popular",
+      pageArray.value
+    );
   };
   changeRoute();
   watch(route, changeRoute);
@@ -73,6 +82,7 @@ export const usePages = () => {
     pageArray,
     osusumePageArray,
     kanrenPageArray,
+    popularPageArray,
     nowPageSetting,
     getNowPage,
     getNowPagePage,

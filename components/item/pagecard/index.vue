@@ -15,7 +15,10 @@
                 {{ pageSettingData.title }}
               </div>
               <div class="text-caption text-medium-emphasis">
-                <template v-if="!pageSettingData.hidden">
+                <template v-if="!pageSettingData.hidden && pageSettingData.to.indexOf('/blog/') === 0">
+                  投稿日：{{ pageSettingData.lastmod }}
+                </template>
+                <template v-else-if="!pageSettingData.hidden">
                   最終更新日：{{ pageSettingData.lastmod }}
                 </template>
                 <template v-else>

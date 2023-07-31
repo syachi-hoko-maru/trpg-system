@@ -330,7 +330,7 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 シナリオの探し方とおすすめシナリオ【初心者GM向け】",
     to: "/sw25/forbeginner/scenario",
-    lastmod: "2023/5/5",
+    lastmod: "2023/7/31",
     img: "page-image/osusume-scenario.webp",
     osusume: true,
     explain:

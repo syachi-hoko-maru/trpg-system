@@ -28,7 +28,7 @@ declare type PageTag =
 declare type PageSetting = {
   readonly title: string;
   readonly to: string;
-  readonly page?: number;
+  readonly page?: string[];
   readonly lastmod: string;
   readonly img?: string;
   readonly imgdirs?: string[];

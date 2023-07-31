@@ -37,7 +37,7 @@ const redirect = () => {
     }
     if ($pageSettingList.length > 0) {
       $pageSettingList
-        .filter(pageSetting => pageSetting.page)
+        .filter(pageSetting => pageSetting.page?.length)
         .forEach((page) => {
           if ("/" + path.value === page.to) replace(page.to + "/1")
         })

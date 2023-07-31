@@ -54,11 +54,11 @@ export const setSitemap = () => {
 };
 
 const setUrlBlock = (pageSetting: PageSetting): string => {
-  if (!pageSetting.page) {
+  if (!pageSetting.page?.length) {
     return setLocAndLastmod(pageSetting);
   } else {
     let result = "";
-    for (let page = 0; page < pageSetting.page; page++) {
+    for (let page = 0; page < pageSetting.page.length; page++) {
       result += setLocAndLastmod(pageSetting, page + 1);
     }
     return result;

@@ -11,11 +11,11 @@ if (process.argv.join().indexOf("generate") >= 0) {
       Object.keys(redirectList)
     );
     pageSettingList
-      .filter((page) => page.page)
+      .filter((page) => page.page?.length)
       .forEach((page) => {
-        if (!page.page) return;
+        if (!page.page?.length) return;
         routes.push(page.to.replace(/^\//, ""));
-        for (let p = 1; p <= page.page; p++) {
+        for (let p = 1; p <= page.page.length; p++) {
           routes.push((page.to + `/${p}`).replace(/^\//, ""));
         }
       });

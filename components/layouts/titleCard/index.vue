@@ -11,7 +11,7 @@
       </div>
     </template>
   </card>
-  <layouts-paging v-if="pageSetting && pageSetting.page" :page-setting="pageSetting" top />
+  <layouts-paging v-if="pageSetting && pageSetting.page?.length" :page-setting="pageSetting" top />
   <layouts-title-card-pageindex v-if="pageSetting && !pageSetting.specialPage" :page-setting="pageSetting" />
   <card v-if="pageSetting && pageSetting.tags.join('').indexOf('sw25') >= 0">
     <template #pbefore>

@@ -266,7 +266,13 @@ const normalPageSettingList: PageSetting[] = [
   {
     title: "SW2.5 おすすめサプリメント紹介",
     to: "/sw25/forbeginner/suppliment",
-    page: 5,
+    page: [
+      "はじめに",
+      "大型サプリ",
+      "キャラビルドサプリ",
+      "ツアーサプリ",
+      "バトルブックサプリ",
+    ],
     lastmod: "2023/7/31",
     img: "page-image/suppliment.webp",
     osusume: true,

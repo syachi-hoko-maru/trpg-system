@@ -1,6 +1,6 @@
 <template>
   <div class="page-card-div" :class="virtical ? 'ma-2' : 'my-5'">
-    <atom-link v-if="pageSettingData" :to="pageSettingData.to + (pageSettingData.page ? '/1/' : '')"
+    <atom-link v-if="pageSettingData" :to="pageSettingData.to + (pageSettingData.page?.length ? '/1/' : '')"
       :title="`ページ「${pageSettingData.title}」へのリンク（ページカード）`" type="pagecard" :disabled="pageSettingData.hidden">
       <card :comingsoon="pageSettingData.hidden" :elevation="6">
         <template #tbefore>

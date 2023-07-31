@@ -5,7 +5,12 @@
     </template>
     <template #title>
       <div class="d-flex align-end">
-        <span v-if="pageSetting">{{ pageSetting.title }} {{ pageSetting.page ? page : "" }}</span>
+        <span v-if="pageSetting">{{ pageSetting.title }}
+          <template v-if="pageSetting.page?.length">
+            <br>
+            {{ pageSetting.page[page - 1] }}
+          </template>
+        </span>
         <v-spacer />
         <item-share-page :page-setting="pageSetting" icon />
       </div>

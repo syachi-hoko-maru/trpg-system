@@ -47,13 +47,14 @@ const router = useRouter();
 const theme = useTheme()
 
 const { fixed } = useDialogo()
-const { getNowPath, nowPageSetting } = usePages()
+const { getNowPath, nowPageSetting, getNowPagePage } = usePages()
 const { $getPageSetting, $templateText } = useNuxtApp()
 
 // const mountedPageSetting: Ref<PageSetting | undefined> = ref(undefined)
 
 const top = ref(0)
 const path = ref("")
+
 
 let originalHheadFlag = false
 const pageSetting = computed(() => {
@@ -64,7 +65,7 @@ const pageSetting = computed(() => {
   } else {
     originalHheadFlag = false
   }
-  const pageSetting = $getPageSetting(pageUrl)
+  const pageSetting: PageSetting & { pageUrl: string } = Object.assign($getPageSetting(pageUrl), { pageUrl })
   return pageSetting
 })
 
@@ -74,7 +75,10 @@ const changePage = () => {
     // console.log("blog!!")
     return
   }
-  const title = (pageSetting.value.title ? `${pageSetting.value.title} - ` : "") + $templateText.title;
+
+  let pageSubTitle = (pageSetting.value.page?.length && pageSetting.value.page[getNowPagePage() - 1] ? pageSetting.value.page[getNowPagePage() - 1] : "")
+  const title = (pageSetting.value.title ? `${pageSetting.value.title} ${pageSubTitle} - ` : "") + $templateText.title;
+
   const meta = [
     {
       hid: "og:url",
@@ -88,7 +92,7 @@ const changePage = () => {
   ]
   const description = pageSetting.value.explain?.length
     ? (Array.isArray(pageSetting.value.explain) ? pageSetting.value.explain.join("\n") : pageSetting.value.explain)
-    : "このサイトではTRPG、特にSW2.5のシナリオの公開や、役立つツールの提供などを行なっています。"
+    : "このサイトではTRPG、特にソード・ワールド2.5（SW2.5/ソドワ）で役立つツールの提供や、最新情報の掲載、シナリオの公開などを行なっています。"
   meta.push({
     hid: "og:description",
     name: "og:description",

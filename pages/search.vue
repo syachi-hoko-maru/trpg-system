@@ -27,11 +27,19 @@
         他のキーワードで検索してください。
       </div>
     </template>
-    <template #pafter v-if="results.length">
+    <template #default v-else>
+      <v-select label="並び順" prepend-inner-icon="mdi-sort" v-model="sortSetting" :items="sortValues" item-title="label"
+        item-value="value" density="comfortable" v-if="mounted" />
+      <pages-search :results="results.slice(0,10*(moreShowFlag+1)).map(d => d.pageSetting)" />
+      <item-head2>{{results.length}}件中{{Math.min(results.length,10*(moreShowFlag+1))}}件を表示中</item-head2>
+      <item-button v-if="results.length>10*(moreShowFlag+1)" @click="moreShowFlag++">もっと見る</item-button>
+    </template>
+
+    <!-- <template #pafter v-else>
       <v-select label="並び順" prepend-inner-icon="mdi-sort" v-model="sortSetting" :items="sortValues" item-title="label"
         item-value="value" density="comfortable" v-if="mounted" />
       <pages-search :results="results.map(d => d.pageSetting)" />
-    </template>
+    </template> -->
   </card>
 </template>
 
@@ -48,6 +56,7 @@ const { getNowPage, getQuerys, getNowPath } = usePages()
 const { ok, setLoad } = useLoad()
 
 const wordList = $wordList()
+const moreShowFlag = ref(0)
 
 const form: Ref<FormSettingString> = ref({
   name: "search",
@@ -174,6 +183,7 @@ const fetch = async () => {
 let searchFlag = false
 const search = (): void => {
   searchFlag = true
+  moreShowFlag.value = 0
   explain.value = "";
   const explains = [] as string[]
 

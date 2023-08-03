@@ -5,12 +5,10 @@
     </template>
     <template #title>
       <div class="d-flex align-end">
-        <span v-if="pageSetting">{{ pageSetting.title }}
-          <template v-if="pageSetting.page?.length">
-            <br>
-            {{ pageSetting.page[page - 1] }}
-          </template>
-        </span>
+        <template v-for="t, i in titleArr">
+          {{ t }}
+          <br v-if="i !== titleArr.length - 1">
+        </template>
         <v-spacer />
         <item-share-page :page-setting="pageSetting" icon />
       </div>
@@ -34,6 +32,17 @@ const Props = defineProps<Props>();
 
 const { getNowPagePage } = usePages()
 const page = computed(getNowPagePage)
+
+const titleArr: ComputedRef<string[]> = computed(() => {
+  const result: string[] = []
+  if (Props.pageSetting) {
+    result.push(...Props.pageSetting.title.split("  "))
+    if (Props.pageSetting.page?.length) {
+      result.push(Props.pageSetting.page[page.value - 1])
+    }
+  }
+  return result
+})
 </script>
 
 <style scoped lang="scss">

@@ -16,6 +16,10 @@
     </template>
   </card>
 
+  <!-- <card>
+    <game-fireworks />
+  </card> -->
+
   <div class="grid">
     <card-array-by-andml :andml="andml1" nobefore />
     <card nobefore>

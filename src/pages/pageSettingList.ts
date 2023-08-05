@@ -56,7 +56,7 @@ export const pageSettingList: PageSetting[] = (
       title: "ここが好き！ SW2.5  ゲスト：DKPさん",
       to: "/sw25/fav/dkp",
       img: "page-image/fav_dkp.webp",
-      osusume: false,
+      osusume: true,
       explain:
         "ソード・ワールド2.5（SW2.5/ソドワ）というTRPGのさまざまな魅力を伝えるべく、「ナラティブTRPGとして遊ぶ」「オンラインコンベンションを開催」「シナリオを無料公開＆シナリオ集頒布」「世界観を深める」などなどいろいろな活動をしていらっしゃるDKPさんにインタビューしました。",
       lastmod: "2023/8/5",

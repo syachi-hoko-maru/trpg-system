@@ -26,7 +26,7 @@ span.questionQ {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin: 1.2rem 0;
+    margin: 1.5rem 0;
 
     .left {
         width: 45px;

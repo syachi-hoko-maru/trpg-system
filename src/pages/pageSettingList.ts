@@ -59,7 +59,7 @@ export const pageSettingList: PageSetting[] = (
       osusume: false,
       explain:
         "ソード・ワールド2.5（SW2.5/ソドワ）というTRPGのさまざまな魅力を伝えるべく、「ナラティブTRPGとして遊ぶ」「オンラインコンベンションを開催」「シナリオを無料公開＆シナリオ集頒布」「世界観を深める」などなどいろいろな活動をしていらっしゃるDKPさんにインタビューしました。",
-      lastmod: "2023/8/6",
+      lastmod: "2023/8/5",
       tags: ["sw25"],
     },
 

@@ -62,7 +62,16 @@ export const pageSettingList: PageSetting[] = (
       lastmod: "2023/8/5",
       tags: ["sw25"],
     },
-
+    {
+      title: "ここが好き！ SW2.5  ゲスト：ハリィさん",
+      to: "/sw25/fav/harry",
+      img: "page-image/fav_harry.webp",
+      osusume: true,
+      explain:
+        "ソード・ワールド2.5（SW2.5/ソドワ）というTRPGのさまざまな魅力を伝えるべく、「ルールブックを買うとGMをしてくれる」「ハルーラガイドの作成」などの活動をしていらっしゃるハリィさんにインタビューしました。",
+      lastmod: "2023/8/9",
+      tags: ["sw25"],
+    },
     {
       title: "ソード・ワールド2.5とは",
       to: "/sw25/fav/dkp",

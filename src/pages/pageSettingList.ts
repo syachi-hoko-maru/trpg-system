@@ -73,17 +73,6 @@ export const pageSettingList: PageSetting[] = (
       tags: ["sw25"],
     },
     {
-      title: "ソード・ワールド2.5とは",
-      to: "/sw25/fav/dkp",
-      img: "page-image/about.webp",
-      osusume: true,
-      explain:
-        "ソード・ワールド2.5（SW2.5）というTRPGについて、簡潔にその魅力を紹介するページです。ソドワ初心者の方必見です。ファンタジーが好きな方、ソード・ワールド2.5で遊びましょう！　TRPG初心者向け情報やその他ソドワに役立つツール・情報へのリンクもあります。",
-      lastmod: "2023/4/15",
-      tags: ["sw25"],
-    },
-
-    {
       title: "ソード・ワールド2.5 ツール一覧",
       to: "/sw25/tool",
       lastmod: "2023/4/15",

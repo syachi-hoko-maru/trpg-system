@@ -25,7 +25,7 @@ const andml0 = `
 
 &1 ゲスト一覧
 現在${guestPageList.length}人のゲストにインタビューしています！
-${guestPageList.map((page) => `&button_${page.to}`)}
+${guestPageList.map((page) => `&button_${page.to}`).join("\n")}
 
 &1 ゲスト募集
 ソード・ワールド2.5でいろんな遊び方・楽しみ方をしている方を募集しています！

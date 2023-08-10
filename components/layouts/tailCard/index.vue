@@ -1,7 +1,6 @@
 <template>
   <card-array-by-andml v-if="pageSetting.tags.indexOf('sw25_new') >= 0" :andml="sourceAndml" />
   <layouts-tail-card-osusume v-if="pageSetting.to !== '/policy' && pageSetting.to !== '/'" type="kanren" />
-  <item-amazon-sw25 v-if="!pageSetting.noamazon && pageSetting.tags.findIndex(tag => tag.indexOf('sw25') >= 0) >= 0" />
   <card>
     <item-pagetree class="mt-3" />
     <item-share-page withcopy>このページをツイート</item-share-page>
@@ -11,6 +10,15 @@
   </card>
   <item-banner-c102 />
   <item-notice title="しゃちほこ丸からのお知らせ" />
+  <template v-if="!pageSetting.noamazon && pageSetting.tags.findIndex(tag => tag.indexOf('sw25') >= 0) >= 0">
+    <card>
+      <template #title>
+        ルールブックを買うならHarry Harry
+      </template>
+      <andml :andmls="andml1" />
+    </card>
+    <item-amazon-sw25 />
+  </template>
   <item-amazon-box v-if="!pageSetting.noamazon" />
   <card v-if="recent.length && mounted">
     <template #title>
@@ -44,6 +52,15 @@ const recent = $pageSettingList
 const scrollTop = () => {
   scrollTo(0, 0)
 }
+
+const andml1 = `
+ソード・ワールド2.5（SW2.5/ソドワ）のルールブックを購入する際はぜひ「HarryHarry」をご利用ください！
+&br
+ルールブックを購入するとオーナーのハリィさんがGMをしてくださるため、 &em_「ルールブックを買ったのに遊ぶ人がいない……」って状況を回避 できます！
+&harry
+ハリィさんについて詳しくは以下のページをご覧ください。
+&button_/sw25/fav/harry
+`
 
 const sourceAndml = computed(() => `
 &1 ソース

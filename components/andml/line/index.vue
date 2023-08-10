@@ -29,6 +29,7 @@ const andmlLineScriptArray: AndmlScript[] = [
   { script: "ltwitter", component: resolveComponent("AndmlLineTwitter") },
   { script: "c102", component: resolveComponent("ItemNoticeC102") },
   { script: "syachi", component: resolveComponent("AndmlLineSyachi") },
+  { script: "harry", component: resolveComponent("AndmlLineHarry") },
 ]
 
 const setLineComponent = (andml: string): AndmlData => {

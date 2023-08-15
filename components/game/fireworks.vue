@@ -19,7 +19,7 @@ const soundCount = 5
 const toggleSound = () => {
     if (!soundArr.length) {
         for (let i = 0; i < soundCount; i++) {
-            soundArr.push(new Audio('/sound/fireworks.mp3'))
+            soundArr.push(new Audio('/trpg-system/sound/fireworks.mp3'))
         }
     }
     sound.value = !sound.value

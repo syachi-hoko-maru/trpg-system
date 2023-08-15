@@ -1,6 +1,7 @@
 <template>
     <v-card>
         <canvas id="fireworks" :width="width" :height="height" />
+        <v-icon :icon="sound ? 'mdi-volume-high' : 'mdi-volume-off'" size="x-large" class="ma-2" @click="sound = !sound" />
     </v-card>
 </template>
 
@@ -9,6 +10,9 @@ const width = 900
 const height = width * 2 / 3
 const canvas: Ref<HTMLCanvasElement | null> = ref(null)
 const ctx: Ref<CanvasRenderingContext2D | null> = ref(null)
+
+const sound: Ref<boolean> = ref(false)
+
 const g = 0.03
 
 let lightArr: Light[] = []
@@ -130,6 +134,10 @@ class Ball extends Particle {
             if (lightArr.length < 10 ** 5) {
                 console.log("burst!", this.x, this.y)
                 this.burst(this.x, this.y)
+                if (sound.value) {
+                    new Audio('/sound/fireworks.mp3').play()
+                    console.log("sound!")
+                }
                 this.life = 0
                 return
             } else {

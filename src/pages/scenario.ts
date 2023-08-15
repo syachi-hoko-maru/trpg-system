@@ -79,7 +79,6 @@ export const scenarioData: ScenarioData[] = [
         url: "https://talto.cc/projects/Cv8Ixts-8BMMCVVAO5yVq",
       },
     ],
-    regulation: "初期作成",
   },
   {
     title: "とろ〜りとした甘いやつ",

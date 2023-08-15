@@ -25,6 +25,7 @@ const andmlBlockScriptArray: AndmlScript[] = [
   { script: "info", component: resolveComponent("AndmlBlockInfo") },
   { script: "faq_", component: resolveComponent("AndmlBlockFaq") },
   { script: "chatgpt", component: resolveComponent("AndmlBlockChatgpt") },
+  { script: "npc", component: resolveComponent("AndmlBlockNpc") },
   // その他
   { script: "gray", component: resolveComponent("AndmlBlockGray") },
 ];

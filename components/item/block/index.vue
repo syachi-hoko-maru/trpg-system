@@ -1,9 +1,8 @@
 <template>
-  <div class="area pa-2 mt-10 mb-5" :style="`border: solid 2px ${color};`">
-    <item-head2 class="title px-2"
-      :style="`background-color: ${$vuetify.theme.current.colors.background}; color: ${color};`">
+  <div class="area pa-3 mt-10 mb-5 ml-5 mr-2" :style="`border: solid 3px ${color};`">
+    <h4 class="title pa-2 pb-1" :style="`background-color: ${color}; color: ${$vuetify.theme.current.colors.text};`">
       <slot name="title" />
-    </item-head2>
+    </h4>
     <div class="text-area pt-2">
       <slot />
     </div>
@@ -20,12 +19,14 @@ const Props = defineProps<Props>();
 <style lang="scss" scoped>
 .area {
   position: relative;
-}
 
-.area .title {
-  position: absolute;
-  display: inline-block;
-  top: -30px;
-  left: 5px;
+  .title {
+    position: absolute;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1.1rem;
+    top: -17px;
+    left: -20px;
+  }
 }
 </style>

@@ -7,6 +7,11 @@ me
 &1 花火大会の様子
 &fireworks
 
+&1 効果音について
+効果音ラボさんの「打ち上げ花火2」を使用しております。
+&button_https://soundeffect-lab.info/sound/search.php?s=%E8%8A%B1%E7%81%AB 効果音ラボ
+
 &1 とってもテキトーに技術的な話
 canvasを使用しています。
 ……詳しくはコードを読んでください。
+

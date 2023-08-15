@@ -16,9 +16,7 @@
     </template>
   </card>
 
-  <!-- <card>
-    <game-fireworks />
-  </card> -->
+  <game-fireworks v-if="holdingFireworks" />
 
   <div class="grid">
     <card-array-by-andml :andml="andml1" nobefore />
@@ -72,6 +70,23 @@ import { sortPagesByDate } from '~/src/util/date';
 
 const { $pageSettingList } = useNuxtApp()
 const { osusumePageArray } = usePages()
+
+// 花火関連ここから
+const now = new Date()
+const month = now.getMonth() + 1
+const date = now.getDate()
+const hour = now.getHours()
+const holdingFireworks: boolean =
+  month === 8
+    ? [15, 16, 16, 18, 19, 20, 26, 27].indexOf(date) >= 0
+      ? hour === 19 || hour === 20
+      : hour === 19
+    : month === 9
+      ? [2, 3, 9, 10, 16, 17, 18].indexOf(date) >= 0
+        ? hour === 19 || hour === 20
+        : hour === 19
+      : false
+// 花火関連ここまで
 
 const andml1 = `
 &1 Welcome!!

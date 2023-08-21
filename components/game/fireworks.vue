@@ -6,11 +6,13 @@
 </template>
 
 <script setup lang="ts">
+// canvas初期設定
 const width = 900
 const height = width * 2 / 3
 const canvas: Ref<HTMLCanvasElement | null> = ref(null)
 const ctx: Ref<CanvasRenderingContext2D | null> = ref(null)
 
+// 音関連
 const sound: Ref<boolean> = ref(false)
 const soundArr: HTMLAudioElement[] = []
 
@@ -25,10 +27,12 @@ const toggleSound = () => {
     sound.value = !sound.value
 }
 const playSound = () => {
-    soundArr[soundIndex % soundCount].play()
+    soundArr[soundIndex % soundArr.length].play()
     soundIndex++
 }
+// 音関連ここまで
 
+/** 重力加速度的なの */
 const g = 0.03
 
 let lightArr: Light[] = []
@@ -176,8 +180,10 @@ class Ball extends Particle {
     }
 }
 
+// 色関連
 const colorList = ["#fabe48", "#ff00ff", "#7b28e0", "#f564a8", "#68adf7", "#ff3e29"]
 const getColor = () => colorList[Math.floor(Math.random() * colorList.length)]
+
 const color: BurstFunction = (x: number, y: number) => {
     const color = getColor()
     for (let i = 0; i < 75; i++) {
@@ -274,9 +280,10 @@ const program: Program[] = [
     { fireworks: [], interval: 10, count: 1 },
     { fireworks: [[big]], interval: 8, count: 3 },
     { fireworks: [], interval: 10, count: 1 },
-    { fireworks: [[chiruno, chiruno, chiruno, chiruno]], interval: 3, count: 3 },
+    { fireworks: [[chiruno, chiruno, chiruno, chiruno]], interval: 3, count: 1 },
     { fireworks: [], interval: 5, count: 1 },
-    { fireworks: [[chiruno, chiruno, chiruno, chiruno]], interval: 2, count: 3 },
+    { fireworks: [[big, chiruno, chiruno, chiruno, chiruno]], interval: 3, count: 4 },
+    { fireworks: [[chiruno, chiruno, chiruno, chiruno]], interval: 3, count: 1 },
     { fireworks: [], interval: 20, count: 1 },
 ]
 const programArr: (BurstFunction[] | null)[] = []

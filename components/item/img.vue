@@ -19,12 +19,14 @@ const { $templateText } = useNuxtApp()
 
 const imgsrc = computed(() => Props.src.startsWith("http")
   ? Props.src
-  : Props.src.startsWith("/")
-    ? Props.src.endsWith(".webp")
-      ? `${$templateText.basePath}/webp${Props.src}`
-      : `${$templateText.basePath}/image${Props.src}`
-    : Props.src.endsWith(".webp")
-      ? `${$templateText.basePath}/webp/${Props.src}`
-      : `${$templateText.basePath}/image/${Props.src}`
+  : Props.src.startsWith("data:image")
+    ? Props.src
+    : Props.src.startsWith("/")
+      ? Props.src.endsWith(".webp")
+        ? `${$templateText.basePath}/webp${Props.src}`
+        : `${$templateText.basePath}/image${Props.src}`
+      : Props.src.endsWith(".webp")
+        ? `${$templateText.basePath}/webp/${Props.src}`
+        : `${$templateText.basePath}/image/${Props.src}`
 )
 </script>

@@ -396,6 +396,15 @@ export const pageSettingList: PageSetting[] = (
       tags: ["sw25", "scenario", "me"],
     },
     {
+      title: "シナリオ「ウォフト=ルーバの研究所跡」",
+      to: "/scenario/uoht",
+      // img: "scenario-image/.webp",
+      lastmod: "2023/10/1",
+      osusume: true,
+      explain: "",
+      tags: ["sw25", "scenario"],
+    },
+    {
       title:
         "シナリオ「ふきのとうを採りに」from 同人シナリオ集「冒険者の旅路」",
       to: "/scenario/fukinotou",
@@ -406,7 +415,6 @@ export const pageSettingList: PageSetting[] = (
         "ソード・ワールド2.5（SW2.5/ソドワ）のシナリオ『ふきのとうを採りに』を無料公開中です。初心者向けシナリオで、2023年の夏コミ（C102）で頒布する同人誌『冒険者の旅路』のサンプルとなっています。ネタバレフィルターあり。",
       tags: ["sw25", "scenario"],
     },
-
     {
       title: "シナリオメモ「とろ〜りとした甘いやつ」",
       to: "/scenario/pudding",

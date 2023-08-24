@@ -6,6 +6,30 @@
 </template>
 
 <script setup lang="ts">
+type BurstFunction = (x: number, y: number) => void
+type Program = {
+    fireworks: BurstFunction[][]
+    interval: number
+    count: number
+}
+type Mode = 'normal' | 'pink' | 'blue'
+
+const { nowPageSetting } = usePages()
+const today = new Date()
+const dayOfTheWeek = today.getDay()
+const mode: Mode =
+    nowPageSetting.value.to === '/'
+        ? dayOfTheWeek === 3
+            ? 'blue'
+            : dayOfTheWeek === 5
+                ? 'pink'
+                : 'normal'
+        : Math.random() < 0.6
+            ? 'normal'
+            : Math.random() < 0.5
+                ? 'pink'
+                : 'blue'
+
 // canvas初期設定
 const width = 900
 const height = width * 2 / 3
@@ -39,6 +63,9 @@ let lightArr: Light[] = []
 let particleArr: Ball[] = []
 let timeCount = 0
 let fireballCount = 0
+
+const programArr: (BurstFunction[] | null)[] = []
+
 
 class Light {
     x: number
@@ -78,9 +105,6 @@ class Light {
         this.life--
     }
 }
-
-type BurstFunction = (x: number, y: number) => void
-
 class Particle {
     x: number
     y: number
@@ -166,25 +190,69 @@ class Ball extends Particle {
 }
 
 // 色関連
-const colorList = [
-    // オレンジ
-    "#fabe48",
-    "#ff3e29",
-    // 赤
-    "#ff4f58",
-    // ピンク
-    "#ff00ff",
-    "#eba7da",
-    "#f564a8",
-    // 紫
-    "#7b28e0",
-    // 水色
-    "#68adf7",
-    // うす緑色
-    "#7ec480",
-    // 黄色
-    "#f4f78d"
-]
+let colorList: string[] = []
+
+switch (mode) {
+    case 'normal':
+        colorList = [
+            // オレンジ
+            "#fabe48",
+            "#ff3e29",
+            // 赤
+            "#ff4f58",
+            // ピンク
+            "#ff00ff",
+            "#eba7da",
+            "#f564a8",
+            // 紫
+            "#7b28e0",
+            // 青
+            "#9383f7",
+            // 水色
+            "#68adf7",
+            // うす緑色
+            "#7ec480",
+            // 黄色
+            "#f4f78d"
+        ]
+        break
+    case 'pink':
+        colorList = [
+            // 赤
+            "#ff4f81",
+            "#f07392",
+            // ピンク
+            "#ff00ff",
+            "#f05485",
+            "#eba7da",
+            "#f0cce7",
+            "#f564a8",
+            "#f364f5",
+            // 紫
+            "#7b28e0",
+            "#cb7bed"
+        ]
+        break
+    case 'blue':
+        colorList = [
+            // 紫
+            "#7b28e0",
+            "#5a2aeb",
+            // 青
+            "#9383f7",
+            "#3737f0",
+            "#2f63d4",
+            "#228ce3",
+            "#3f7ae0",
+            // 水色
+            "#68adf7",
+            "#5df0e1",
+            // うす緑色
+            "#7ec480",
+        ]
+        break
+}
+
 const getColor = () => colorList[Math.floor(Math.random() * colorList.length)]
 const getColors = (count: number): string[] => {
     if (count >= colorList.length) return colorList
@@ -311,7 +379,6 @@ const three: BurstFunction = (x: number, y: number) => {
         }))
     }
 }
-
 const four: BurstFunction = (x: number, y: number) => {
     const colors = getColors(4)
     for (let i = 0; i < 80; i++) {
@@ -326,13 +393,8 @@ const four: BurstFunction = (x: number, y: number) => {
 }
 
 
-type Program = {
-    fireworks: BurstFunction[][]
-    interval: number
-    count: number
-}
 const rest = (count: number): Program => ({ fireworks: [], interval: count, count: 1 })
-const program: Program[] = [
+const program: Program[] = mode === 'normal' ? [
     // { fireworks: [[three], [three]], interval: 5, count: 6 },
     { fireworks: [[twoColor], [twoColor], [twoColor], [three]], interval: 3, count: 6 },
     rest(5),
@@ -348,8 +410,9 @@ const program: Program[] = [
     { fireworks: [[chiruno, chiruno, chiruno, chiruno]], interval: 3, count: 1 },
     rest(10),
     { fireworks: [[twoColor]], interval: 0, count: 1 },
+] : [
+    { fireworks: [[twoColor, twoColor, twoColor], [twoColor, twoColor, twoColor], [twoColor, three, three], [twoColor, three, three], [twoColorBig, twoColorBig], [twoColorBig, three], [three, three]], interval: 5, count: 15 },
 ]
-const programArr: (BurstFunction[] | null)[] = []
 program.forEach(p => {
     let i = 0
     while (i < p.count) {

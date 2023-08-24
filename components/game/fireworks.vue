@@ -66,6 +66,7 @@ let fireballCount = 0
 
 const programArr: (BurstFunction[] | null)[] = []
 
+let wind: number = 0
 
 class Light {
     x: number
@@ -129,7 +130,7 @@ class Particle {
     }
     move = () => {
         this.vy = this.vy + g
-        this.x = this.x + this.vx
+        this.x = this.x + this.vx + wind
         this.y = this.y + this.vy
         this.life--
         if (this.burst && this.life <= 0) {
@@ -165,7 +166,7 @@ class Ball extends Particle {
                 this.burst(this.x, this.y)
                 if (sound.value) {
                     playSound()
-                    console.log("sound!")
+                    // console.log("sound!")
                 }
                 this.life = 0
                 return
@@ -306,11 +307,11 @@ const chiruno: BurstFunction = (x: number, y: number) => {
     for (let i = 0; i < 45; i++) {
         const rad = Math.random() * Math.PI * 2
         const v = Math.floor((5 + 15 * i / 45) * 10) / 10
-        particleArr.push(new Particle(x, y, Math.cos(rad) * v, Math.sin(rad) * v, null, 10, (x, y) => {
+        particleArr.push(new Particle(x, y, Math.cos(rad) * v, Math.sin(rad) * v, null, 7 + i % 45, (x, y) => {
             for (let i = 0; i < 10; i++) {
                 const rad = Math.random() * Math.PI * 2
                 const v = 3
-                particleArr.push(new Particle(x, y, Math.cos(rad) * v, Math.sin(rad) * v, "#ffebc4", 15, null))
+                particleArr.push(new Particle(x, y, Math.cos(rad) * v, Math.sin(rad) * v, "#ffebc4", 20, null))
             }
 
         }))
@@ -395,7 +396,7 @@ const four: BurstFunction = (x: number, y: number) => {
 
 const rest = (count: number): Program => ({ fireworks: [], interval: count, count: 1 })
 const program: Program[] = mode === 'normal' ? [
-    // { fireworks: [[three], [three]], interval: 5, count: 6 },
+    // { fireworks: [[chiruno], [chiruno]], interval: 5, count: 6 },
     { fireworks: [[twoColor], [twoColor], [twoColor], [three]], interval: 3, count: 6 },
     rest(5),
     { fireworks: [[twoColor, twoColor], [twoColor, three], [three], [twoColorBig]], interval: 5, count: 6 },
@@ -411,7 +412,7 @@ const program: Program[] = mode === 'normal' ? [
     rest(10),
     { fireworks: [[twoColor]], interval: 0, count: 1 },
 ] : [
-    { fireworks: [[twoColor, twoColor, twoColor], [twoColor, twoColor, twoColor], [twoColor, three, three], [twoColor, three, three], [twoColorBig, twoColorBig], [twoColorBig, three], [three, three]], interval: 5, count: 15 },
+    { fireworks: [[twoColor, twoColor, twoColor], [twoColor, twoColor, twoColor], [twoColor, three, three], [twoColor, three, three], [twoColorBig, twoColorBig], [twoColorBig, three, three], [big, big], [big, four], [four, four]], interval: 5, count: 15 },
 ]
 program.forEach(p => {
     let i = 0
@@ -429,6 +430,23 @@ program.forEach(p => {
         i++
     }
 })
+
+// 風が変わるギミック
+const limitSpeed = 0.5
+const chngeRate = limitSpeed / 2
+const changeWind = () => {
+    const changeSpeed = Math.floor(Math.random() * chngeRate * 1000) / 1000
+    let temp: number
+    if (wind > limitSpeed) {
+        temp = wind - changeSpeed
+    } else if (wind < -limitSpeed) {
+        temp = wind + changeSpeed
+    } else {
+        temp = wind + (changeSpeed - chngeRate / 2) * 2
+    }
+    wind = Math.floor(temp * 100) / 100
+}
+// 風終わり
 
 const mainLoop = () => {
     timeCount++
@@ -451,7 +469,10 @@ const mainLoop = () => {
     particleArr = particleArr.filter(({ life }) => life > 0)
 
     if (timeCount % 100 === 0) {
-        console.log(particleArr.length, lightArr.length)
+        console.log(particleArr.length, lightArr.length, wind)
+    }
+    if (timeCount % 300 === 0) {
+        changeWind()
     }
 
     setTimeout(mainLoop, 20)

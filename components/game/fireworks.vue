@@ -40,19 +40,6 @@ let particleArr: Ball[] = []
 let timeCount = 0
 let fireballCount = 0
 
-// function* randomGen(): Generator<number> {
-//     let rand = String(Math.floor(Math.random() * 10 ** 12))
-//     let i = 0
-//     while (true) {
-//         let num = Number(rand.slice(i % 4, i % 4 + 3)) / 1000
-//         yield num
-//         console.log(num)
-//         i++
-//     }
-//     return 0
-// }
-// const random: Generator<number, number, number> = randomGen()
-
 class Light {
     x: number
     y: number
@@ -122,7 +109,6 @@ class Particle {
         this.y = this.y + this.vy
         this.life--
         if (this.burst && this.life <= 0) {
-            // console.log("burst!", this.x, this.y)
             this.burst(this.x, this.y)
             this.life = 0
             return
@@ -152,7 +138,6 @@ class Ball extends Particle {
         this.life--
         if (this.burst && (this.life <= 0 || this.vy > -0.5)) {
             if (lightArr.length < 10 ** 5) {
-                console.log("burst!", this.x, this.y)
                 this.burst(this.x, this.y)
                 if (sound.value) {
                     playSound()
@@ -181,70 +166,69 @@ class Ball extends Particle {
 }
 
 // 色関連
-const colorList = ["#fabe48", "#ff00ff", "#7b28e0", "#f564a8", "#68adf7", "#ff3e29"]
+const colorList = [
+    // オレンジ
+    "#fabe48",
+    "#ff3e29",
+    // 赤
+    "#ff4f58",
+    // ピンク
+    "#ff00ff",
+    "#eba7da",
+    "#f564a8",
+    // 紫
+    "#7b28e0",
+    // 水色
+    "#68adf7",
+    // うす緑色
+    "#7ec480",
+    // 黄色
+    "#f4f78d"
+]
 const getColor = () => colorList[Math.floor(Math.random() * colorList.length)]
-
-const color: BurstFunction = (x: number, y: number) => {
-    const color = getColor()
-    for (let i = 0; i < 75; i++) {
-        const rad = Math.random() * Math.PI * 2
-        const v = Math.floor((2 + 0.3 * i / 75) * 10) / 10
-        particleArr.push(new Particle(x, y, Math.cos(rad) * v, Math.sin(rad) * v, color, 50 + 20 * Math.random(), null))
+const getColors = (count: number): string[] => {
+    if (count >= colorList.length) return colorList
+    const colors: string[] = []
+    for (let i = 0; i < count; i++) {
+        let color = getColor()
+        while (colors.indexOf(color) !== -1) {
+            color = getColor()
+        }
+        colors.push(color)
     }
+    return colors
 }
-const flower: BurstFunction = (x: number, y: number) => {
-    const color1 = getColor()
-    let color2 = getColor()
-    while (color2 === color1) {
-        color2 = getColor()
-    }
-    for (let i = 0; i < 45; i++) {
-        const rad = Math.random() * Math.PI * 2
-        const v = Math.floor((2.5 + 0.3 * i / 45) * 10) / 10
-        particleArr.push(new Particle(x, y, Math.cos(rad) * v, Math.sin(rad) * v, color1, 50 + 20 * Math.random(), null))
-    }
-    for (let i = 0; i < 45; i++) {
-        const rad = Math.random() * Math.PI * 2
-        const v = Math.floor((2 + 0.3 * i / 45) * 5) / 10
-        particleArr.push(new Particle(x, y, Math.cos(rad) * v, Math.sin(rad) * v, color2, 60 + 20 * Math.random(), null, 30))
-    }
 
-}
 const big: BurstFunction = (x: number, y: number) => {
-    const color1 = getColor()
-    let color2 = getColor()
-    let color3 = getColor()
-    while (color2 === color1) {
-        color2 = getColor()
-    }
-    while (color3 === color1 || color3 === color2) {
-        color3 = getColor()
-    }
-    for (let i = 0; i < 50; i++) {
-        const rad = Math.random() * Math.PI * 2
+    const [color1, color2, color3] = getColors(3)
+    for (let i = 0; i < 20; i++) {
+        const rad = (i % 20) / 20 * Math.PI * 2
         const v = 3
         particleArr.push(new Particle(x, y, Math.cos(rad) * v, Math.sin(rad) * v, color1, 150 + 20 * Math.random(), null))
     }
-    for (let i = 0; i < 35; i++) {
-        const rad = Math.random() * Math.PI * 2
+    for (let i = 0; i < 15; i++) {
+        const rad = (i % 15) / 15 * Math.PI * 2
         const v = 2.8
         particleArr.push(new Particle(x, y, Math.cos(rad) * v, Math.sin(rad) * v, color2, 120 + 20 * Math.random(), null, 20))
     }
     particleArr.push(new Particle(x, y, 0, 0, null, 20, (x, y) => {
         for (let i = 0; i < 30; i++) {
-            const rad = Math.random() * Math.PI * 2
+            const rad = (i % 30) / 30 * Math.PI * 2
             const v = 2
             particleArr.push(new Particle(x, y, Math.cos(rad) * v, Math.sin(rad) * v, color3, 80 + 20 * Math.random(), null, 70))
         }
     }))
-    for (let i = 0; i < 48; i++) {
-        const rad = Math.PI * 2 * (i % 16) / 16
-        const v = 2.8
-        particleArr.push(new Particle(x, y, Math.cos(rad) * v, Math.sin(rad) * v, null, i / 16 < 1 ? 40 : i / 16 < 2 ? 60 : 80, (x, y) => {
-            for (let i = 0; i < 10; i++) {
+    // 散るところ
+    const countInGroup = 12
+    for (let i = 0; i < countInGroup * 5; i++) {
+        const group = Math.floor(i / countInGroup)
+        const rad = Math.PI * 2 * (i % countInGroup + (group % 2) / 2) / countInGroup
+        const v = 3
+        particleArr.push(new Particle(x, y, Math.cos(rad) * v, Math.sin(rad) * v, null, [70, 80, 90, 100, 110][group], (x, y) => {
+            for (let i = 0; i < 20; i++) {
                 const rad = Math.random() * Math.PI * 2
-                const v = 3
-                particleArr.push(new Particle(x, y, Math.cos(rad) * v, Math.sin(rad) * v, i % 2 ? color1 : color2, 25, null))
+                const v = 3 + 0.2 * group
+                particleArr.push(new Particle(x, y, Math.cos(rad) * v, Math.sin(rad) * v, i % 2 ? color1 : color2, 25 - group * 2, null))
             }
 
         }))
@@ -264,27 +248,106 @@ const chiruno: BurstFunction = (x: number, y: number) => {
         }))
     }
 }
+const twoColor: BurstFunction = (x: number, y: number) => {
+    const [color1, color2] = getColors(2)
+    for (let i = 0; i < 20; i++) {
+        const group = Math.floor(i / 10)
+        const rad = Math.PI * 2 * ((i % 10) / 10 + group / 20)
+        const v1 = 4.5
+        const v2 = 1.5
+        particleArr.push(new Particle(x, y, Math.cos(rad) * v1, Math.sin(rad) * v1, null, 23, (x, y) => {
+            particleArr.push(new Particle(x, y, Math.cos(rad) * v2, Math.sin(rad) * v2, group ? color1 : color2, 60, null))
+        }))
+    }
+    for (let i = 0; i < 20; i++) {
+        const group = Math.floor(i / 10)
+        const rad = Math.PI * 2 * ((i % 10) / 10 + group / 20)
+        const v1 = 1
+        const v2 = 2.5
+        particleArr.push(new Particle(x, y, Math.cos(rad) * v1, Math.sin(rad) * v1, null, 15, (x, y) => {
+            particleArr.push(new Particle(x, y, Math.cos(rad) * v2, Math.sin(rad) * v2, group ? color2 : color1, 60, null))
+        }))
+    }
+}
+const twoColorBig: BurstFunction = (x: number, y: number) => {
+    const [color1, color2] = getColors(2)
+    for (let i = 0; i < 20; i++) {
+        const group = Math.floor(i / 10)
+        const rad = Math.PI * 2 * ((i % 10) / 10 + group / 20)
+        const v1 = 4.5
+        const v2 = 1.5
+        particleArr.push(new Particle(x, y, Math.cos(rad) * v1, Math.sin(rad) * v1, null, 35, (x, y) => {
+            particleArr.push(new Particle(x, y, Math.cos(rad) * v2, Math.sin(rad) * v2, group ? color2 : color1, 60, null))
+        }))
+    }
+    for (let i = 0; i < 20; i++) {
+        const group = Math.floor(i / 10)
+        const rad = Math.PI * 2 * ((i % 10) / 10 + group / 20)
+        const v1 = 4.5
+        const v2 = 1.5
+        particleArr.push(new Particle(x, y, Math.cos(rad) * v1, Math.sin(rad) * v1, null, 23, (x, y) => {
+            particleArr.push(new Particle(x, y, Math.cos(rad) * v2, Math.sin(rad) * v2, group ? color1 : color2, 60, null))
+        }))
+    }
+    for (let i = 0; i < 20; i++) {
+        const group = Math.floor(i / 10)
+        const rad = Math.PI * 2 * ((i % 10) / 10 + group / 20)
+        const v1 = 1
+        const v2 = 2.5
+        particleArr.push(new Particle(x, y, Math.cos(rad) * v1, Math.sin(rad) * v1, null, 15, (x, y) => {
+            particleArr.push(new Particle(x, y, Math.cos(rad) * v2, Math.sin(rad) * v2, group ? color2 : color1, 60, null))
+        }))
+    }
+}
+const three: BurstFunction = (x: number, y: number) => {
+    const colors = getColors(3)
+    for (let i = 0; i < 60; i++) {
+        const group = Math.floor(i / 20)
+        const rad = Math.PI * 2 * ((i % 20) + (group % 2) / 2) / 20
+        const v1 = 1 + group * 1.5
+        const v2 = 2.5 - group / 4
+        particleArr.push(new Particle(x, y, Math.cos(rad) * v1, Math.sin(rad) * v1, null, 10 + group * 6, (x, y) => {
+            particleArr.push(new Particle(x, y, Math.cos(rad) * v2, Math.sin(rad) * v2, colors[group], 80 + group * 3, null))
+        }))
+    }
+}
+
+const four: BurstFunction = (x: number, y: number) => {
+    const colors = getColors(4)
+    for (let i = 0; i < 80; i++) {
+        const group = Math.floor(i / 20)
+        const rad = Math.PI * 2 * ((i % 20) + (group % 2) / 2) / 20
+        const v1 = 1 + group * 1.5
+        const v2 = 2.5 - group / 4
+        particleArr.push(new Particle(x, y, Math.cos(rad) * v1, Math.sin(rad) * v1, null, 10 + group * 6, (x, y) => {
+            particleArr.push(new Particle(x, y, Math.cos(rad) * v2, Math.sin(rad) * v2, colors[group], 80 + group * 3, null))
+        }))
+    }
+}
+
 
 type Program = {
     fireworks: BurstFunction[][]
     interval: number
     count: number
 }
+const rest = (count: number): Program => ({ fireworks: [], interval: count, count: 1 })
 const program: Program[] = [
-    { fireworks: [[flower], [color, color]], interval: 3, count: 6 },
-    { fireworks: [[flower, flower, color], [flower, color, color], [color, color, color, color]], interval: 5, count: 6 },
-    { fireworks: [], interval: 15, count: 1 },
-    { fireworks: [[flower, flower, color], [flower, color, color], [color, color, color, color]], interval: 5, count: 6 },
-    { fireworks: [], interval: 10, count: 1 },
-    { fireworks: [[big]], interval: 0, count: 1 },
-    { fireworks: [], interval: 10, count: 1 },
-    { fireworks: [[big]], interval: 8, count: 3 },
-    { fireworks: [], interval: 10, count: 1 },
+    // { fireworks: [[three], [three]], interval: 5, count: 6 },
+    { fireworks: [[twoColor], [twoColor], [twoColor], [three]], interval: 3, count: 6 },
+    rest(5),
+    { fireworks: [[twoColor, twoColor], [twoColor, three], [three], [twoColorBig]], interval: 5, count: 6 },
+    rest(5),
+    { fireworks: [[twoColor, twoColor, twoColor], [twoColor, three], [three, three], [twoColorBig, twoColorBig], [twoColorBig, three]], interval: 5, count: 6 },
+    rest(5),
+    { fireworks: [[big], [four]], interval: 4, count: 3 },
+    rest(5),
     { fireworks: [[chiruno, chiruno, chiruno, chiruno]], interval: 3, count: 1 },
-    { fireworks: [], interval: 5, count: 1 },
-    { fireworks: [[big, chiruno, chiruno, chiruno, chiruno]], interval: 3, count: 4 },
+    rest(5),
+    { fireworks: [[big, chiruno, chiruno, chiruno, chiruno], [four, chiruno, chiruno, chiruno, chiruno], [chiruno, chiruno, chiruno, chiruno]], interval: 3, count: 6 },
     { fireworks: [[chiruno, chiruno, chiruno, chiruno]], interval: 3, count: 1 },
-    { fireworks: [], interval: 20, count: 1 },
+    rest(10),
+    { fireworks: [[twoColor]], interval: 0, count: 1 },
 ]
 const programArr: (BurstFunction[] | null)[] = []
 program.forEach(p => {
@@ -306,8 +369,8 @@ program.forEach(p => {
 
 const mainLoop = () => {
     timeCount++
-    // ランダムなタイミングで花火を打ち上げる（花火がなければ常に、多すぎればなし）
-    if (!particleArr.length || (lightArr.length < 10 ** 2 && Math.random() < 0.02)) {
+    // 花火が多すぎなければ打ち上げを行う
+    if (lightArr.length < 10 ** 2 && timeCount % 20 === 0) {
         const fireworks = programArr[fireballCount]
         fireworks?.forEach(burstFunction => {
             Ball.launch(burstFunction)
@@ -324,13 +387,20 @@ const mainLoop = () => {
     // ボールの整理
     particleArr = particleArr.filter(({ life }) => life > 0)
 
+    if (timeCount % 100 === 0) {
+        console.log(particleArr.length, lightArr.length)
+    }
+
     setTimeout(mainLoop, 20)
 }
 
 let drawing = false
 const drawLoop = () => {
     setTimeout(drawLoop, 20)
-    if (drawing) return
+    if (drawing) {
+        console.log("skip draw")
+        return
+    }
     drawing = true
     // クリア
     if (ctx.value) {

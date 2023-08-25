@@ -40,6 +40,24 @@ const myCustomDarkTheme: ThemeDefinition = {
     success: "#2196f3",
   },
 };
+const myCustomHalloweenTheme: ThemeDefinition = {
+  dark: true,
+  colors: {
+    background: "#4b3c5c",
+    primary: "#c75e08",
+    secondary: "#eba050",
+    link: "#fff",
+    textbp: "#250b4a",
+    text: "#fff",
+    disabled: "#4d4854",
+    error: "#910f31",
+    info: info,
+    surface: "#4b3c5c",
+    accent: "#c73808",
+    warning: "#ffeb3b",
+    success: "#2196f3",
+  },
+};
 
 export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
@@ -47,7 +65,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     directives,
     theme: {
       defaultTheme: "myCustomDarkTheme",
-      themes: { myCustomLightTheme, myCustomDarkTheme },
+      themes: { myCustomLightTheme, myCustomDarkTheme, myCustomHalloweenTheme },
     },
   });
 

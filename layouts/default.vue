@@ -129,7 +129,12 @@ const { ok } = useLoad()
 onMounted(() => {
   changePage()
   // mountedPageSetting.value = pageSetting.value
-  theme.global.name.value = localStorage.getItem('theme') === "light" ? "myCustomLightTheme" : "myCustomDarkTheme"
+  theme.global.name.value =
+    localStorage.getItem('theme') === "light"
+      ? "myCustomLightTheme"
+      : localStorage.getItem('theme') === "halloween"
+        ? "myCustomHalloweenTheme"
+        : "myCustomDarkTheme"
   console.log(ok.value)
   watch(ok, () => {
     console.log(ok.value)

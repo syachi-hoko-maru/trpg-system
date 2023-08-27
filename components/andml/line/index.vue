@@ -19,17 +19,24 @@ const Props = defineProps<Props>();
 const andmlLineScriptArray: AndmlScript[] = [
   { script: "button_", component: resolveComponent("AndmlLineButton") },
   { script: "button-share", component: resolveComponent("AndmlLineButtonShare") },
-  { script: "img_", component: resolveComponent("AndmlLineImgc") },
-  { script: "date_", component: resolveComponent("AndmlLineDate") },
-  { script: "amazon_", component: resolveComponent("AndmlLineAmazon") },
+  // 見出し
   { script: "2", component: resolveComponent("AndmlLineHead2") },
   { script: "3", component: resolveComponent("AndmlLineHead3") },
-  { script: "game", component: resolveComponent("Game") },
-  { script: "meishi", component: resolveComponent("AndmlLineMeishi") },
-  { script: "ltwitter", component: resolveComponent("AndmlLineTwitter") },
-  { script: "c102", component: resolveComponent("ItemNoticeC102") },
+  // インタビュー用
   { script: "syachi", component: resolveComponent("AndmlLineSyachi") },
+  // 画像
+  { script: "img_", component: resolveComponent("AndmlLineImgc") },
+  // 更新日時用
+  { script: "date_", component: resolveComponent("AndmlLineDate") },
+  // 告知・宣伝
+  { script: "ltwitter", component: resolveComponent("AndmlLineTwitter") },
+  { script: "amazon_", component: resolveComponent("AndmlLineAmazon") },
   { script: "harry", component: resolveComponent("AndmlLineHarry") },
+  { script: "c102", component: resolveComponent("ItemNoticeC102") },
+  // 名刺
+  { script: "meishi", component: resolveComponent("AndmlLineMeishi") },
+  // ゲーム関連
+  { script: "game", component: resolveComponent("Game") },
   { script: "fireworks", component: resolveComponent("GameFireworks") },
 ]
 

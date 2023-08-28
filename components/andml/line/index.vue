@@ -17,13 +17,16 @@ const Props = defineProps<Props>();
 
 // lineの処理
 const andmlLineScriptArray: AndmlScript[] = [
-  { script: "button_", component: resolveComponent("AndmlLineButton") },
-  { script: "button-share", component: resolveComponent("AndmlLineButtonShare") },
   // 見出し
   { script: "2", component: resolveComponent("AndmlLineHead2") },
   { script: "3", component: resolveComponent("AndmlLineHead3") },
   // インタビュー用
   { script: "syachi", component: resolveComponent("AndmlLineSyachi") },
+  // ボタン
+  { script: "button_", component: resolveComponent("AndmlLineButton") },
+  { script: "button-share", component: resolveComponent("AndmlLineButtonShare") },
+  { script: "button-dark", component: resolveComponent("PagesSettingDarkmode") },
+  { script: "button-halloween", component: resolveComponent("PagesSettingHalloween") },
   // 画像
   { script: "img_", component: resolveComponent("AndmlLineImgc") },
   // 更新日時用

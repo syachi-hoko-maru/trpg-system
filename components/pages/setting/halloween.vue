@@ -1,5 +1,5 @@
 <template>
-  <template v-if="new Date().getMonth() === 9">
+  <template v-if="new Date().getMonth() === 9 || nowPageSetting.to === '/blog/halloween'">
     <item-button @click="toggleTheme" v-if="!icon" prepend-icon="mdi-ghost">
       {{ nowTheme === "halloween" ? "ダークモード" : "ハロウィーンモード" }}に切り替える
     </item-button>
@@ -20,6 +20,8 @@ const Props = defineProps<Props>();
 
 const theme = useTheme()
 const { setSnack } = useSnack()
+
+const { nowPageSetting } = usePages()
 
 let nowTheme: string | null = null
 

@@ -73,6 +73,16 @@ export const pageSettingList: PageSetting[] = (
       tags: ["sw25"],
     },
     {
+      title: "ここが好き！ SW2.5  ゲスト：Dagonさん",
+      to: "/sw25/fav/dagon",
+      img: "page-image/fav_dagon.webp",
+      osusume: true,
+      explain:
+        "ソード・ワールド2.5（SW2.5/ソドワ）というTRPGのさまざまな魅力を伝えるべく、「オリジナル大陸」「ソード・ワールド2.5雑談コミュニティ」などなどいろいろな活動をしていらっしゃる、アルヴを愛してやまないDagonさんにインタビューしました。",
+      lastmod: "2023/9/15",
+      tags: ["sw25"],
+    },
+    {
       title: "ソード・ワールド2.5 ツール一覧",
       to: "/sw25/tool",
       lastmod: "2023/4/15",

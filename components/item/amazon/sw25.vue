@@ -58,6 +58,10 @@ const andml2 = `
 
 const items: { title: string, src: string }[] = [
   {
+    title: "ラクシアライフ",
+    src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040751868&linkId=267fd8a2abcbf8e95f134363fbf2dc72"
+  },
+  {
     title: "リプレイ 時の魔域と秘宝の守り人",
     src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040750241&linkId=6d2bf0e7dbf9aaf6f8fa577e14236b7e"
   },

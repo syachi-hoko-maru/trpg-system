@@ -4,6 +4,8 @@ import { blogImgDir, blogJSON, Blog } from "../../index";
 
 import { createCanvas, registerFont } from "canvas";
 
+type OGPType = "normal" | "sw25" | "rm" | "rugby";
+
 export const geneImage = async () => {
   const blogImgs = readdirSync(blogImgDir);
   const blogs = JSON.parse(
@@ -14,14 +16,16 @@ export const geneImage = async () => {
     if (blogImgs.indexOf(`${id}.png`) === -1) {
       console.log(`start generate image ${id}.png`);
       try {
-        const img =
-          `${process.cwd()}/src/pre/gene/setBlogData/geneImage/` +
-          (tags.join("").indexOf("rm") >= 0
-            ? "ogp_rm.svg"
-            : tags.join("").indexOf("sw25") >= 0
-            ? "ogp_sw25.svg"
-            : "ogp.svg");
-        await generateImage(id, title, img, date).catch((err) => {
+        const tagList = tags.join("");
+        const ogpType: OGPType =
+          tagList.indexOf("rugby") >= 0
+            ? "rugby"
+            : tagList.indexOf("rm") >= 0
+            ? "rm"
+            : tagList.indexOf("sw25") >= 0
+            ? "sw25"
+            : "normal";
+        await generateImage(id, title, ogpType, date).catch((err) => {
           console.error(err);
         });
       } catch (err) {
@@ -31,10 +35,17 @@ export const geneImage = async () => {
   }
 };
 
+const imageDict: { [key in OGPType]: string } = {
+  normal: "ogp.svg",
+  sw25: "ogp_sw25.svg",
+  rm: "ogp_rm.svg",
+  rugby: "ogp_rugby.svg",
+};
+
 const generateImage = async (
   id: string,
   title: string,
-  img: string,
+  ogpType: OGPType,
   date: string
 ) => {
   const width = 1200;
@@ -48,7 +59,7 @@ const generateImage = async (
   const canvas = createCanvas(width, height);
   const context = canvas.getContext("2d");
   context.textBaseline = "middle";
-  context.fillStyle = "#222";
+  context.fillStyle = ogpType === "rugby" ? "#fff" : "#222";
 
   const fontSize = 80;
 
@@ -110,10 +121,14 @@ const generateImage = async (
 
   context.save();
   context.font = `20px font`;
-  context.fillStyle = "#5e3012";
+  context.fillStyle = ogpType === "rugby" ? "#fff" : "#5e3012";
   context.textAlign = "center";
   context.fillText(date, x, 105);
   context.restore();
+
+  const img = `${process.cwd()}/src/pre/gene/setBlogData/geneImage/${
+    imageDict[ogpType]
+  }`;
 
   await sharp(img)
     .composite([{ input: canvas.toBuffer(), top: 0, left: 0 }])

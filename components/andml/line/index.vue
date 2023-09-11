@@ -27,8 +27,9 @@ const andmlLineScriptArray: AndmlScript[] = [
   { script: "button-share", component: resolveComponent("AndmlLineButtonShare") },
   { script: "button-dark", component: resolveComponent("PagesSettingDarkmode") },
   { script: "button-halloween", component: resolveComponent("PagesSettingHalloween") },
-  // 画像
+  // 画像・動画
   { script: "img_", component: resolveComponent("AndmlLineImgc") },
+  { script: "youtube_", component: resolveComponent("AndmlLineYoutube") },
   // 更新日時用
   { script: "date_", component: resolveComponent("AndmlLineDate") },
   // 告知・宣伝

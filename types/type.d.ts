@@ -23,6 +23,7 @@ declare type PageTag =
   | "tool"
   | "scenario"
   | "rm"
+  | "rugby"
   | "me"
   | "trpg";
 declare type PageSetting = {

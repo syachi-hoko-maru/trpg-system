@@ -28,6 +28,10 @@ export const pageTagSettings: PageTagSettings = {
     label: "レアル・マドリード",
     explanation: "スペインのサッカークラブ「レアル・マドリード」に関するタグ",
   },
+  rugby: {
+    label: "ラグビー",
+    explanation: "ラグビー、特にラグビー日本代表に関するタグ",
+  },
   me: {
     label: "しゃちほこ丸",
     explanation: "管理人のしゃちほこ丸に関するタグ",
@@ -41,6 +45,7 @@ export const pageTags: PageTag[] = [
   "tool",
   "trpg",
   "rm",
+  "rugby",
   "me",
 ];
 export const isPageTag = (a: unknown): a is PageTag => {

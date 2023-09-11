@@ -32,7 +32,6 @@ const urlPatterns: {
   ]
 
 for (let urlPattern of urlPatterns) {
-  console.log(urlPattern.reg.test(Props.props))
   if (urlPattern.reg.test(Props.props)) {
     embedId.value = Props.props.replace(urlPattern.reg, urlPattern.id)
   }

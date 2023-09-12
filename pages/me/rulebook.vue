@@ -94,6 +94,7 @@ const groups: Readonly<Rulebook[]> = [
               "モンストラスロア",
               "メイガスアーツ",
               "バトルマスタリー",
+              "アーケインレリック"
             ]
           },
           {
@@ -121,6 +122,7 @@ const groups: Readonly<Rulebook[]> = [
               "エンシェントブルー -七王群島の夜明け-",
               "煌日の姫と冴月の王子",
               "ストーリーフラグメンツ",
+              "猫と星と秘宝"
             ]
           },
           {
@@ -249,6 +251,10 @@ const groups: Readonly<Rulebook[]> = [
           "ノブレスストーリア",
           "サングトラヴェリア",
         ],
+      },
+      {
+        rulebook: "マモノスクランブル",
+        supplements: []
       },
       {
         rulebook: "ログ・ホライズンTRPG",

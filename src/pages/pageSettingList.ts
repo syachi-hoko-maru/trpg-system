@@ -449,7 +449,7 @@ export const pageSettingList: PageSetting[] = (
     {
       title: "管理人プロフィール",
       to: "/me",
-      lastmod: "2023/4/12",
+      lastmod: "2023/9/12",
       img: "page-image/me.webp",
       explain:
         "管理人しゃちほこ丸の自己紹介ページです。TRPGについてやTRPG以外の趣味（海外サッカー観戦やアニメ鑑賞など）をまとめています。",
@@ -487,7 +487,7 @@ export const pageSettingList: PageSetting[] = (
     {
       title: "所持ルールブック一覧",
       to: "/me/rulebook",
-      lastmod: "2023/7/17",
+      lastmod: "2023/9/12",
       img: "page-image/rulebook.webp",
       explain:
         "管理人しゃちほこ丸が所持しているルールブック・サプリメントの一覧ページです。クトゥルフ神話TRPG（CoC）やソード・ワールド（SW/ソドワ）、シノビガミやインセイン、アリアンロッドやダブルクロス（DX）などのルールブックを所持しています。",

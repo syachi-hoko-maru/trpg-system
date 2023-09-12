@@ -14,11 +14,11 @@ export const geneImage = async () => {
 
   for (let { id, title, tags, date, img } of blogs) {
     // imgがあるか調べる
-    const imgPath = `${process.cwd()}/public/image${img.replace(
+    const imgPath = `${process.cwd()}/public/image/${img.replace(
       /\.webp$/,
       ".png"
     )}`;
-    if (existsSync(imgPath)) {
+    if (!existsSync(imgPath)) {
       console.log(`start generate image ${id}.png`);
       try {
         const tagList = tags.join("");
@@ -40,11 +40,13 @@ export const geneImage = async () => {
   }
 };
 
-const imageDict: { [key in OGPType]: string } = {
-  normal: "ogp.svg",
-  sw25: "ogp_sw25.svg",
-  rm: "ogp_rm.svg",
-  rugby: "ogp_rugby.svg",
+const typeDict: {
+  [key in OGPType]: { image: string; color: string; lineColor: string };
+} = {
+  normal: { image: "ogp.svg", color: "#222", lineColor: "#5e3012" },
+  sw25: { image: "ogp_sw25.svg", color: "#222", lineColor: "#5e3012" },
+  rm: { image: "ogp_rm.svg", color: "#004B98", lineColor: "#FFD700" },
+  rugby: { image: "ogp_rugby.svg", color: "#fff", lineColor: "#fff" },
 };
 
 const generateImage = async (
@@ -56,6 +58,8 @@ const generateImage = async (
   const width = 1200;
   const height = 630;
 
+  const dict = typeDict[ogpType];
+
   registerFont(
     `${process.cwd()}/src/pre/gene/setBlogData/geneImage/BIZ_UDPMincho/BIZUDPMincho-Regular.ttf`,
     { family: "font" }
@@ -64,7 +68,7 @@ const generateImage = async (
   const canvas = createCanvas(width, height);
   const context = canvas.getContext("2d");
   context.textBaseline = "middle";
-  context.fillStyle = ogpType === "rugby" ? "#fff" : "#222";
+  context.fillStyle = dict.color;
 
   const fontSize = 80;
 
@@ -126,13 +130,13 @@ const generateImage = async (
 
   context.save();
   context.font = `20px font`;
-  context.fillStyle = ogpType === "rugby" ? "#fff" : "#5e3012";
+  context.fillStyle = dict.lineColor;
   context.textAlign = "center";
   context.fillText(date, x, 105);
   context.restore();
 
   const img = `${process.cwd()}/src/pre/gene/setBlogData/geneImage/${
-    imageDict[ogpType]
+    dict.image
   }`;
 
   await sharp(img)

@@ -445,6 +445,7 @@ export const pageSettingList: PageSetting[] = (
         "ブログのトップページです。ブログでは管理人しゃちほこ丸がソード・ワールド2.5（SW2.5）などのTRPGの知見や感想、最新情報などを公開していきます。",
       tags: ["me"],
     },
+    // ここにブログ記事をぶち込む
     ...blogPageSettingList,
     {
       title: "管理人プロフィール",

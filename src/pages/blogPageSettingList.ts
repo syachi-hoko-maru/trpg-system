@@ -12,7 +12,6 @@ export const blogPageSettingList: PageSetting[] = (blogSettingList as Blog[])
     const osusumeTagFlag =
       b.tags.filter((tag) => tag !== "me" && tag !== "rm").length > 0;
     if (dateFlag && osusumeTagFlag) count++;
-    console.log(b.img);
     return {
       title: b.title,
       to: "/blog/" + b.id,

@@ -68,7 +68,7 @@ const setsumei = `
 C102に行けないよって方のために、通販もあります！
 ソード・ワールド2.5をしていらっしゃるハリィさん（ &link_https://twitter.com/swrpglove,Twitter ）のお店「HarryHarry」での通販です。
 &br
-${isPast("2023-07-20") ? "ぜひぜひご予約ください。" : "7月20日（木）12時予約開始予定です！"}
+${isPast("2023/7/20") ? "ぜひぜひご予約ください。" : "7月20日（木）12時予約開始予定です！"}
 &button_https://harryharry.base.shop/items/76512992 通販はこちら
 
 

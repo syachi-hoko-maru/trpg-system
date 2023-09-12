@@ -6,11 +6,17 @@ type DateLike = string | Date | number;
  * @returns
  */
 export const formatDateString = (str: string, gmt: boolean = true): string => {
-  const formatDate = str
-    .split("/")
+  const splitedStr: string[] = str.split("/");
+  const formatDate: string = splitedStr
     .map((str) => (str.length < 2 ? "0" + str : str))
     .join("-");
+  // 9/12追加分、9/31をエラーにする
+  if (new Date(formatDate).getMonth() + 1 !== Number(splitedStr[1])) {
+    console.error(`ERROR: ${str}/${formatDate} is invalid date string!`);
+    throw `ERROR: ${str}/${formatDate} is invalid date string!`;
+  }
   if (!gmt || formatDate.endsWith("+0900")) {
+    // 追加分ここまで
     return formatDate;
   } else {
     return `${formatDate}T00:00:00+0900`;

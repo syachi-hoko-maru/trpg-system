@@ -78,6 +78,7 @@ declare type Blog = {
   tags: PageTag[];
   date: string;
   andml: string;
+  img: string;
 };
 
 type SupplimentGroup = {

@@ -1,19 +1,24 @@
-import { readdirSync, readFileSync } from "fs";
+import { existsSync, readdirSync, readFileSync } from "fs";
 import sharp from "sharp";
-import { blogImgDir, blogJSON, Blog } from "../../index";
+import { blogImgDir, blogJSON, RawBlog } from "../../index";
 
 import { createCanvas, registerFont } from "canvas";
 
 type OGPType = "normal" | "sw25" | "rm" | "rugby";
 
 export const geneImage = async () => {
-  const blogImgs = readdirSync(blogImgDir);
+  // const blogImgs = readdirSync(blogImgDir);
   const blogs = JSON.parse(
     readFileSync(blogJSON, "utf-8")
-  ) as unknown as Blog[];
+  ) as unknown as RawBlog[];
 
-  for (let { id, title, tags, date } of blogs) {
-    if (blogImgs.indexOf(`${id}.png`) === -1) {
+  for (let { id, title, tags, date, img } of blogs) {
+    // imgがあるか調べる
+    const imgPath = `${process.cwd()}/public/image${img.replace(
+      /\.webp$/,
+      ".png"
+    )}`;
+    if (existsSync(imgPath)) {
       console.log(`start generate image ${id}.png`);
       try {
         const tagList = tags.join("");

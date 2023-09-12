@@ -1,9 +1,9 @@
 import { readdirSync, readFileSync, writeFileSync } from "fs";
-import { blogTextDir, Blog, blogJSON, scenarioJson } from "../index";
+import { blogTextDir, RawBlog, blogJSON, scenarioJson } from "../index";
 
-export const setBlogTxt = async () => {
+export const setBlogTxt = async (): Promise<RawBlog[]> => {
   try {
-    const blogs: Blog[] = [];
+    const blogs: RawBlog[] = [];
     for (let type of ["code", "cms"]) {
       const blogList = readdirSync(`${blogTextDir}/${type}`);
       for (let fileName of blogList) {
@@ -13,14 +13,25 @@ export const setBlogTxt = async () => {
         );
         const lines = file.split("\n");
         const id = fileName.replace(/\..*$/, "");
-        if (lines.length >= 3) {
+        if (lines.length >= 4) {
+          // OGPを指定する場合の処理
+          let bodyStratLine = 3;
+          let img: string = `blog-image/${id}\.webp`;
+          if (lines[3].startsWith("ogp=")) {
+            bodyStratLine = 4;
+            img = `page-image/${lines[3].replace("ogp=", "")}\.webp`;
+          }
+          // OGP処理ここまで
           blogs.push({
             id,
             title: lines[0],
             date: lines[1],
             tags: lines[2].split(","),
-            andml: lines.slice(3).join("\n"),
+            andml: lines.slice(bodyStratLine).join("\n"),
+            img,
           });
+        } else {
+          console.error(`\n[error] id=${id} is too short!`);
         }
       }
     }

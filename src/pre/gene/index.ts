@@ -1,9 +1,10 @@
-export type Blog = {
+export type RawBlog = {
   id: string;
   title: string;
   date: string;
   tags: string[];
   andml: string;
+  img: string;
 };
 
 export const blogJSON = `${process.cwd()}/assets/blog.json`;

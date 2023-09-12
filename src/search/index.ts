@@ -149,6 +149,10 @@ export const search = (
       for (let searchFilter of searchFilters) {
         kanren += searchFilter(pageSetting) / lineScore;
       }
+      if (pageSetting.osusume) {
+        // おすすめページは関連度合いを高めにする
+        kanren *= 1.1;
+      }
       return { pageSetting, kanren };
     })
     .filter(({ kanren }) => {

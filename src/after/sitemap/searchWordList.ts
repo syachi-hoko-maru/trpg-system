@@ -1,15 +1,23 @@
+import { sampleWords } from "../../search/sampleWords";
+import { pageTags } from "../../pages/pageTags";
 import { ginou } from "../../dict/ginou";
 import { syuzoku } from "../../dict/syuzoku";
 
-export const searchWordList: [string, string][] = [
-  ["しゃちほこ丸 アイコン", "2023-03-28"],
-  ["エンシェントブルー", "2023-04-10"],
-  ["ソード・ワールド2.5 流派", "2023-04-10"],
-  ["ソード・ワールド2.5 オリジナル", "2023-04-10"],
-  ["ソード・ワールド2.5 シナリオ", "2023-04-10"],
-  ["ソドワ 初心者", "2023-04-10"],
-  ["ソドワ シナリオ", "2023-04-10"],
-  ["TRPG 初心者", "2023-04-10"],
-  // ...Object.keys(syuzoku),
-  // ...Object.keys(ginou),
+export const searchWordList: { searchWord: string[]; lastmod: string }[] = [
+  ...sampleWords.map((word) => ({
+    searchWord: word.split(" "),
+    lastmod: "2023-09-12",
+  })),
+  // ...pageTags.map((tag) => ({
+  //   searchWord: [tag],
+  //   lastmod: "2023-09-??",
+  // })),
+  // ...Object.keys(syuzoku).map((w) => ({
+  //   searchWord: [w],
+  //   lastmod: "2023-09-??",
+  // })),
+  // ...Object.keys(ginou).map((w) => ({
+  //   searchWord: [w],
+  //   lastmod: "2023-09-??",
+  // })),
 ];

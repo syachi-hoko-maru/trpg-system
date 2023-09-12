@@ -26,9 +26,8 @@ export const search = (
   const querys: string[] = [];
   const arr: string[] = Array.isArray(params) ? params : [params];
   arr.forEach((str) => {
-    // TODO:ここにandなどの処理を書く
     if (!str) return;
-    querys.push(str);
+    querys.push(decodeURIComponent(str));
   });
 
   // 検索クエリがあるならタイトルはallFlagがfalseになり、titleが「検索結果」になる

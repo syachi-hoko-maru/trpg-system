@@ -1,10 +1,12 @@
 import { readdirSync, statSync, writeFileSync } from "fs";
-// import { pageTags } from "../../pages/pageTags";
 import { pageSettingList } from "../../pages/pageSettingList";
 import { formatDateString } from "../../util/date";
-// import { searchWordList } from "./searchWordList";
+import { searchWordList } from "./searchWordList";
 
-const outputDir = `${process.cwd()}/.output/public`;
+const outputDirs = [
+  `${process.cwd()}/.output/public`,
+  `${process.cwd()}/public`,
+];
 
 // const searchTagLastmod = "2023-04-10";
 
@@ -17,40 +19,24 @@ export const setSitemap = () => {
       result += setUrlBlock(pageSetting);
     });
 
-  //   searchWordList.forEach(([word, lastmod]) => {
-  //     result += `
-  // <url>
-  //     <loc>
-  //     https://syachi-hoko-maru.github.io/trpg-system/search/?word=${encodeURIComponent(
-  //       word
-  //     )}
-  //     </loc>
-  //     <lastmod>${lastmod}</lastmod>
-  // </url>
-  //     `;
-  //   });
-
-  //   pageTags.forEach((tag) => {
-  //     result += `
-  // <url>
-  //     <loc>
-  //     https://syachi-hoko-maru.github.io/trpg-system/search/?tag=${encodeURIComponent(
-  //       tag
-  //     )}
-  //     </loc>
-  //     <lastmod>${searchTagLastmod}</lastmod>
-  // </url>
-  //     `;
-  //   });
+  // 検索関連
+  searchWordList.forEach(({ searchWord, lastmod }) => {
+    const url = `https://syachi-hoko-maru.github.io/trpg-system/search/${searchWord
+      .map(encodeURIComponent)
+      .join("/")}`;
+    result += `<url><loc>${url}</loc><lastmod>${lastmod}</lastmod></url>`;
+  });
 
   result = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   ${result.replace(/\s+/g, "")}
   </urlset>`;
 
-  writeFileSync(
-    `${outputDir}/sitemap.xml`,
-    result.replace(/\n/g, "").replace(/\s+/g, " ")
-  );
+  outputDirs.forEach((outputDir) => {
+    writeFileSync(
+      `${outputDir}/sitemap.xml`,
+      result.replace(/\n/g, "").replace(/\s+/g, " ")
+    );
+  });
 };
 
 const setUrlBlock = (pageSetting: PageSetting): string => {

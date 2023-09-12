@@ -1,15 +1,23 @@
 import { getBlogList } from "./src/pre/gene/getList";
 import { redirectList } from "./src/pages/redirect";
 import { pageSettingList } from "./src/pages/pageSettingList";
-
+import { searchWordList } from "./src/after/sitemap/searchWordList";
 let routes: string[] = [];
 
 if (process.argv.join().indexOf("generate") >= 0) {
   try {
     routes = ([] as string[]).concat(
+      // ブログ
       getBlogList().map((blog) => `blog/${blog}`),
+      // 検索
+      searchWordList.map(
+        ({ searchWord }) =>
+          `search/${searchWord.map(encodeURIComponent).join("/")}`
+      ),
+      // リダイレクト関連
       Object.keys(redirectList)
     );
+    // 複数ページあるページ関連
     pageSettingList
       .filter((page) => page.page?.length)
       .forEach((page) => {

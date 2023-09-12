@@ -13,7 +13,10 @@ const searchHTML = (dirname: string) => {
     } else if (/.+\..+/.test(name)) {
       if (name.endsWith(".html")) htmls.push(dirname + "/" + name);
     } else {
-      searchHTML(dirname + "/" + name).forEach((html) => htmls.push(html));
+      if (name.indexOf("search") < 0) {
+        // 検索以外であれば再起的に深い階層を確認する
+        searchHTML(dirname + "/" + name).forEach((html) => htmls.push(html));
+      }
     }
   });
   return htmls;

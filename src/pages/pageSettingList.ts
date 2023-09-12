@@ -6,7 +6,7 @@ export const pageSettingList: PageSetting[] = (
     {
       title: "トップページ",
       to: "/",
-      lastmod: "2023/6/2",
+      lastmod: "2023/9/12",
       img: "page-image/main.webp",
       specialPage: true,
       tags: [],
@@ -518,7 +518,7 @@ export const pageSettingList: PageSetting[] = (
       title: "検索・ページ一覧",
       to: "/search",
       img: "page-image/search.webp",
-      lastmod: "2023/3/28",
+      lastmod: "2023/9/12",
       specialPage: true,
       explain: "",
       tags: [],

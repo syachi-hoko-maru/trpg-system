@@ -1,7 +1,10 @@
 <template>
     <andml :andmls="andml1" />
     <v-text-field label="検索キーワード" v-model="word" density="comfortable" class="mt-3" />
-    <item-button :url="`/search/${searchParams}`" prepend-icon="mdi-magnify" :disabled="!word" type="right" normal-button>
+    <item-tags-chip v-for="pageTag of $pageTags" :label="$pageTagSettings[pageTag].label" :key="pageTag"
+        :color="selectTags.indexOf(pageTag) >= 0 ? 'primary' : ''" @click="() => clickTag(pageTag)" />
+    <item-button :url="`/search/${searchParams}`" prepend-icon="mdi-magnify" :disabled="!searchParams" type="right"
+        normal-button>
         検索する
     </item-button>
 </template>
@@ -11,12 +14,14 @@ import { sampleWords } from "~/src/search/sampleWords"
 
 interface Props {
     word?: string,
-    title?: string
+    tag?: PageTag[]
 }
 const Props = defineProps<Props>()
 
 const word = ref(Props.word ? Props.word : "")
-const searchParams = computed(() => word.value.replace(/\s/g, "/"))
+const selectTags = ref(Array.isArray(Props.tag) ? Props.tag : []);
+
+const searchParams = computed(() => [...selectTags.value, ...word.value.split(" ")].join("/"))
 
 const andml1 = ref("")
 
@@ -33,6 +38,15 @@ const setSampleAndml = (words: string[]) => {
     andml1.value = `${(words).slice(0, 3).map(setAndmlLink).join()}など気になるワードを検索してみてください。`
 }
 setSampleAndml(shuffle(sampleWords))
+
+const clickTag = (pageTag: PageTag) => {
+    const index = selectTags.value.indexOf(pageTag)
+    if (index >= 0) {
+        selectTags.value.splice(index, 1)
+    } else {
+        selectTags.value.push(pageTag)
+    }
+}
 
 const route = useRoute()
 onMounted(() => {

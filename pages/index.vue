@@ -52,13 +52,13 @@
         Search & Tags
       </template>
       <item-searchbox />
-      <template #pafter>
+      <!-- <template #pafter>
         <item-head2>Tags</item-head2>
         クリックでタグのついたページ一覧を見ることができます。
       </template>
       <template #after>
         <item-tags-list />
-      </template>
+      </template> -->
     </card>
     <card-array-by-andml :andml="andml4" nobefore />
     <layouts-tail-card-aboutme nobefore />

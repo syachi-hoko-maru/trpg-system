@@ -20,7 +20,7 @@ export const search = (
 } => {
   let title: string = defaultAllPageName;
   let allFlag: boolean = true;
-  const explains = [] as string[];
+  const explains = [] as [string, string][];
 
   // 検索クエリを作成する
   const querys: string[] = [];
@@ -77,7 +77,10 @@ export const search = (
       }
     });
     // 説明を追加
-    explains.unshift(pageTagSettings[tag].explanation);
+    explains.unshift([
+      pageTagSettings[tag].label,
+      pageTagSettings[tag].explanation,
+    ]);
   });
 
   const wordDict = wordList();
@@ -119,7 +122,7 @@ export const search = (
     // 説明を追加
     const explain: string | undefined = wordDict[searchWord];
     if (explain) {
-      explains.push(explain);
+      explains.push([searchWord, explain]);
     }
   });
 
@@ -170,7 +173,9 @@ export const search = (
   if (tagsForSearch.length > 0 || wordsForSearch.length > 0) {
     title =
       (tagsForSearch.length
-        ? `タグ${tagsForSearch.map((tag) => `「${tag}」`).join("")}がついた`
+        ? `タグ${tagsForSearch
+            .map((tag) => `「${pageTagSettings[tag].label}」`)
+            .join("")}がついた`
         : "") +
       (wordsForTitle.length ? `「${wordsForTitle.join(" ")}」に関連する` : "") +
       `ページ`;
@@ -180,20 +185,29 @@ export const search = (
     title === defaultAllPageName
       ? `当ウェブサイトのページ一覧の確認や、サイト内検索ができるページです。サイト内検索ではタグとフリーワードを組み合わせて検索することができます。`
       : title === defaultSearchPageName
-      ? `サイト内検索結果です。${explains.join("")}\n主な検索結果${results
+      ? `サイト内検索結果です。${explains
+          .map(([_, e]) => e)
+          .join("")}\n主な検索結果${results
           .slice(0, 3)
           .map(({ pageSetting }) => `「${pageSetting.title}」`)
           .join(
             ", "
           )}サイト内検索ではタグとフリーワードを組み合わせて検索することができます。`
-      : `${title}です。${explains.join("")}\n主な検索結果${results
+      : `${title}です。${explains
+          .map(([_, e]) => e)
+          .join("")}\n主な検索結果${results
           .slice(0, 5)
           .map(({ pageSetting }) => `「${pageSetting.title}」`)
           .join(",")}`;
 
+  const explain =
+    "<dl>" +
+    explains.map(([w, e]) => `<dt>${w}:</dt><dd>${e}</dd>`).join("") +
+    "<dl>";
+
   return {
     title,
-    explain: explains.join("<br><br>"),
+    explain,
     results,
     allFlag,
     description,

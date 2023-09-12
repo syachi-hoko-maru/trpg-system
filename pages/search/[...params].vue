@@ -3,16 +3,7 @@
         <template #title>
             検索
         </template>
-        <!-- <div v-if="mounted">
-            <item-form-input :form-setting="form" @keydown.enter="changeSetting" />
-            <item-tags-chip v-for="pageTag of $pageTags" :label="$pageTagSettings[pageTag].label" :key="pageTag"
-                :color="selectTag === pageTag ? 'primary' : ''"
-                @click="() => selectTag = (selectTag === pageTag ? undefined : pageTag)" />
-            <item-button @click="changeSetting">
-                検索する
-            </item-button>
-        </div> -->
-        <item-searchbox :word="words.join(' ')" />
+        <item-searchbox :word="words.join(' ')" :tags="tags" />
     </card>
     <card>
         <template #title> {{ title }} </template>
@@ -64,7 +55,6 @@ const words = ref([] as string[])
 const sortedResults = ref([] as SearchResult[])
 const showCount = ref(0)
 
-// const selectTag: Ref<PageTag | undefined> = ref(undefined);
 
 const showPageSettings = computed(() => sortedResults.value.map(({ pageSetting }) => pageSetting).slice(0, (showCount.value + 1) * 10))
 

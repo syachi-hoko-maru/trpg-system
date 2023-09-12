@@ -23,7 +23,7 @@ const setFrame = () => {
   if (!frame) return
   frame.style.display = "block"
   if (div.clientWidth < 300) {
-    console.log(div.clientWidth, frame.clientWidth)
+    // console.log(div.clientWidth, frame.clientWidth)
     frame.style.transform = `scale(${div.clientWidth / frame.clientWidth})`
     div.style.height = `${div.clientWidth * 250 / 300 + 20}px`
   } else {

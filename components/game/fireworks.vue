@@ -469,7 +469,7 @@ const mainLoop = () => {
     particleArr = particleArr.filter(({ life }) => life > 0)
 
     if (timeCount % 100 === 0) {
-        console.log(particleArr.length, lightArr.length, wind)
+        // console.log(particleArr.length, lightArr.length, wind)
     }
     if (timeCount % 300 === 0) {
         changeWind()

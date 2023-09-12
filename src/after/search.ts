@@ -21,6 +21,8 @@ const searchHTML = (dirname: string) => {
 
 const deleteTags = (str: string) =>
   str
+    // コメントアウトを削除
+    .replace(/\/\/.*$/g, "")
     // リンクを削除
     .replace(/<a href.+?\/a>/g, "")
     // CSS・JS・HTMLタグを削除
@@ -32,15 +34,18 @@ const deleteTags = (str: string) =>
     .replace(/of/g, "");
 
 const getData = (): { [key: string]: string } => {
-  const htmls = searchHTML("");
-  const temp: { [key: string]: string } = {};
-  htmls.forEach((html) => {
+  // htmlを全て取得する
+  const htmlList = searchHTML("");
+  // htmlの中身を取得する
+  const temp: { [pageTo: string]: string } = {};
+  htmlList.forEach((html) => {
     const path = html.replace("/index.html", "");
     const fileData = readFileSync(outputDir + html, "utf-8");
     temp[path ? path : "/"] = word4search(deleteTags(fileData));
   });
-  const values = Object.values(temp);
 
+  // 内容の被りを消していく
+  const values = Object.values(temp);
   let common: { str: string; count: number }[] = [];
   values.forEach((value, i) => {
     const strArray: string[] = [];
@@ -58,11 +63,11 @@ const getData = (): { [key: string]: string } => {
   });
   const commonStrArray: string[] = common
     .filter((co) => co.count > 3)
-    .filter((co) => co.count + co.str.length / 5 > htmls.length / 2)
+    .filter((co) => co.count + co.str.length / 5 > htmlList.length / 2)
     .map((co) => co.str)
     .sort((a, b) => b.length - a.length);
-  console.log(commonStrArray);
 
+  // 整形する
   const result: { [key: string]: string } = {};
   Object.entries(temp).forEach(([k, v]) => {
     let value = v;

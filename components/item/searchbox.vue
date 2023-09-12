@@ -1,13 +1,21 @@
 <template>
     <andml :andmls="andml1" />
     <v-text-field label="検索キーワード" v-model="word" density="comfortable" class="mt-3" />
-    <item-button :url="`/search?word=${word}`" prepend-icon="mdi-magnify" :disabled="!word" type="right">
+    <item-button :url="`/search/${searchParams}`" prepend-icon="mdi-magnify" :disabled="!word" type="right" normal-button>
         検索する
     </item-button>
 </template>
 
 <script setup lang="ts">
-const word = ref("")
+
+interface Props {
+    word?: string,
+    title?: string
+}
+const Props = defineProps<Props>()
+
+const word = ref(Props.word ? Props.word : "")
+const searchParams = computed(() => word.value.replace(/\s/g, "/"))
 
 const samplewords = [
     "ソード・ワールド2.5",
@@ -21,6 +29,7 @@ const samplewords = [
     "ココフォリア",
     "自己紹介シート",
     // シナリオ
+    "シナリオ",
     "おすすめシナリオ",
     "初心者向けシナリオ",
     "ウォフトルーバの研究所跡",
@@ -29,6 +38,9 @@ const samplewords = [
     "ふきのとうを採りに",
     "C102",
     "夏コミ",
+    // ラクシアライフ
+    "ラクシアライフ",
+    "一般技能",
     // アーケインレリック関連
     "アーケインレリック",
     "SW2.5 5周年",
@@ -36,6 +48,7 @@ const samplewords = [
     // エンシェントブルー
     "エンシェントブルー",
     // おすすめサプリメント
+    "おすすめサプリメント",
     "エピックトレジャリー",
     "デモンズライン",
     // アルケリンガ
@@ -50,18 +63,17 @@ const shuffle = <T>(array: Array<T>) => {
     return array;
 }
 
-const setAndml = (word: string) => `「 &link_/search?word=${word.replace(/\s/g, "and")},${word.replace(/\s/g, "¥s")} 」`
+const setAndmlLink = (word: string) => `「 &link_/search/${word.replace(/\s/g, "/")},${word.replace(/\s/g, "¥s")} 」`
+const setSampleAndml = (words: string[]) => `
+${(words).slice(0, 3).map(setAndmlLink).join()}など気になるワードを検索してみてください。
+`
 
-const andml1 = ref(`
-${(samplewords).slice(0, 3).map(setAndml).join()}など気になるワードを検索してみてください。
-`)
+const andml1 = ref(setSampleAndml(shuffle(samplewords)))
 
 const route = useRoute()
 onMounted(() => {
     watch(route, () => {
-        andml1.value = `
-${shuffle(samplewords).slice(0, 3).map(setAndml).join()}など気になるワードを検索してみてください。
-`
+        andml1.value = setSampleAndml(shuffle(samplewords))
     })
 })
 

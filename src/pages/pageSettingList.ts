@@ -520,8 +520,7 @@ export const pageSettingList: PageSetting[] = (
       img: "page-image/search.webp",
       lastmod: "2023/3/28",
       specialPage: true,
-      explain:
-        "当ウェブサイトのページ一覧の確認や、サイト内検索ができるページです。",
+      explain: "",
       tags: [],
     },
     {

@@ -58,12 +58,12 @@ const path = ref("")
 
 let originalHheadFlag = false
 const pageSetting = computed(() => {
-  const pageUrl = getNowPath()
+  let pageUrl = getNowPath()
   if (!pageUrl && pageUrl !== "") return
-  if (pageUrl.indexOf("/blog/") >= 0 || pageUrl === "/search") {
+
+  if (pageUrl.indexOf("/blog/") >= 0 || pageUrl.indexOf("/search") >= 0) {
+    // ブログや検索ページの時はヘッドをblog/[id]やsearchで決める
     originalHheadFlag = true
-  } else {
-    originalHheadFlag = false
   }
   const pageSetting: PageSetting & { pageUrl: string } = Object.assign($getPageSetting(pageUrl), { pageUrl })
   return pageSetting

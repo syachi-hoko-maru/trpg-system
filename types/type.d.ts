@@ -107,3 +107,6 @@ type LinkType =
   | "share"
   | "twitter_account"
   | "carousel";
+
+type SearchJSON = { [pageTo: string]: string };
+type SearchResult = { pageSetting: PageSetting; kanren: number };

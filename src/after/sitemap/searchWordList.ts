@@ -6,7 +6,7 @@ import { syuzoku } from "../../dict/syuzoku";
 export const searchWordList: { searchWord: string[]; lastmod: string }[] = [
   ...sampleWords.map((word) => ({
     searchWord: word.split(" "),
-    lastmod: "2023-09-12",
+    lastmod: "2023-09-14",
   })),
   // ...pageTags.map((tag) => ({
   //   searchWord: [tag],

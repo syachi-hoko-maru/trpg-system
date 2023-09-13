@@ -518,7 +518,7 @@ export const pageSettingList: PageSetting[] = (
       title: "検索・ページ一覧",
       to: "/search",
       img: "page-image/search.webp",
-      lastmod: "2023/9/12",
+      lastmod: "2023/9/14",
       specialPage: true,
       explain: "",
       tags: [],

@@ -4,7 +4,9 @@ import { pageSettingList } from "./src/pages/pageSettingList";
 import { searchWordList } from "./src/after/sitemap/searchWordList";
 let routes: string[] = [];
 
+let env: "DEVELOP" | "PRODUCTION" = "DEVELOP";
 if (process.argv.join().indexOf("generate") >= 0) {
+  env = "PRODUCTION";
   try {
     routes = ([] as string[]).concat(
       // ブログ
@@ -50,22 +52,6 @@ export default defineNuxtConfig({
         { name: "format-detection", content: "telephone=no" },
         { hid: "og:site_name", property: "og:site_name", content: title },
         { hid: "og:type", property: "og:type", content: "website" },
-        // {
-        //   hid: "og:url",
-        //   property: "og:url",
-        //   content: baseUrl,
-        // },
-        // { hid: "og:title", property: "og:title", content: title },
-        // {
-        //   hid: "og:description",
-        //   property: "og:description",
-        //   content: description,
-        // },
-        // {
-        //   hid: "og:image",
-        //   property: "og:image",
-        //   content: `${baseUrl}/ogp.png`,
-        // },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:site", content: "@syachi_hoko_trp" },
         // Google Search Console
@@ -79,6 +65,7 @@ export default defineNuxtConfig({
       ],
     },
   },
+  sourcemap: env === "DEVELOP",
   build: {
     transpile: ["vuetify"],
   },

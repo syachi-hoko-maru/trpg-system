@@ -5,6 +5,7 @@
 </template>
 
 <script setup lang="ts">
+const { ok } = useLoad()
 const count = ref(0)
 const getArr = (): string[] => {
     let arr: string[] = []
@@ -21,5 +22,8 @@ const getArr = (): string[] => {
 }
 onMounted(() => {
     count.value = getArr().length
+    watch(ok, () => {
+        count.value = getArr().length
+    })
 })
 </script>

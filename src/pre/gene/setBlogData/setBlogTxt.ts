@@ -7,12 +7,13 @@ export const setBlogTxt = async (): Promise<RawBlog[]> => {
     for (let type of ["code", "cms"]) {
       const blogList = readdirSync(`${blogTextDir}/${type}`);
       for (let fileName of blogList) {
+        if (!fileName.endsWith(".txt")) continue;
+        const id = fileName.replace(/\..txt$/, "");
         const file = readFileSync(
           `${blogTextDir}/${type}/${fileName}`,
           "utf-8"
         );
         const lines = file.split("\n");
-        const id = fileName.replace(/\..*$/, "");
         if (lines.length >= 4) {
           // OGPを指定する場合の処理
           let bodyStratLine = 3;

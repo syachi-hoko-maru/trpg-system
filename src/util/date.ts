@@ -3,9 +3,16 @@ type DateLike = string | Date | number;
 /**
  * 将来的にここは管理画面から切り替えたい……
  */
-const settedTime: { value: Date | null } = { value: null };
-export const nowDate = (): Date =>
-  settedTime.value ? settedTime.value : new Date();
+export const settedTime: { value: string; setValue: (s: string) => void } = {
+  value: "",
+  setValue: (s: string) => {
+    settedTime.value = s;
+  },
+};
+export const nowDate = (): Date => {
+  const settedDate = getDate(settedTime.value);
+  return settedDate ? settedDate : new Date();
+};
 
 /**
  * 2023/6/10のような形式を2023-06-10のような形式にする
@@ -19,7 +26,7 @@ export const formatDateString = (str: string, gmt: boolean = true): string => {
     .join("-");
   // 9/12追加分、9/31をエラーにする
   if (new Date(formatDate).getMonth() + 1 !== Number(splitedStr[1])) {
-    console.error(`ERROR: ${str}/${formatDate} is invalid date string!`);
+    // console.error(`ERROR: ${str}/${formatDate} is invalid date string!`);
     throw `ERROR: ${str}/${formatDate} is invalid date string!`;
   }
   if (!gmt || formatDate.endsWith("+0900")) {
@@ -27,6 +34,27 @@ export const formatDateString = (str: string, gmt: boolean = true): string => {
     return formatDate;
   } else {
     return `${formatDate}T00:00:00+0900`;
+  }
+};
+
+const getDate = (date: DateLike): Date | null => {
+  let result: Date;
+  try {
+    if (typeof date === "string") {
+      result = new Date(formatDateString(date));
+    } else if (typeof date === "object") {
+      result = date;
+    } else if (Number.isNaN(date)) {
+      result = new Date(date);
+    } else {
+      return null;
+    }
+    if (Number.isNaN(result.getDate())) {
+      return null;
+    }
+    return result;
+  } catch (e) {
+    return null;
   }
 };
 

@@ -1,6 +1,13 @@
 type DateLike = string | Date | number;
 
 /**
+ * 将来的にここは管理画面から切り替えたい……
+ */
+const settedTime: { value: Date | null } = { value: null };
+export const nowDate = (): Date =>
+  settedTime.value ? settedTime.value : new Date();
+
+/**
  * 2023/6/10のような形式を2023-06-10のような形式にする
  * @param str 元となる時間文字列
  * @returns
@@ -45,7 +52,7 @@ const getTimeNumber = (date: DateLike): number => {
  */
 export const isPast = (a: DateLike, b?: DateLike): boolean => {
   if (!b) {
-    b = new Date();
+    b = nowDate();
   }
   // aの方が小さい → aの方がbよりも過去
   return getTimeNumber(a) - getTimeNumber(b) < 0;

@@ -6,6 +6,8 @@
 </template>
 
 <script setup lang="ts">
+import { nowDate } from '~/src/util/date';
+
 type BurstFunction = (x: number, y: number) => void
 type Program = {
     fireworks: BurstFunction[][]
@@ -15,7 +17,7 @@ type Program = {
 type Mode = 'normal' | 'pink' | 'blue'
 
 const { nowPageSetting } = usePages()
-const today = new Date()
+const today = nowDate()
 const dayOfTheWeek = today.getDay()
 const mode: Mode =
     nowPageSetting.value.to === '/'

@@ -13,13 +13,15 @@
     </div>
     <div class="mt-5 mb-3">
       <span class="text-textbp">
-        &copy; {{ new Date().getFullYear() }} {{ $templateText.name }} <andml-inline-twitter color="text-textbp" />
+        &copy; {{ nowDate().getFullYear() }} {{ $templateText.name }} <andml-inline-twitter color="text-textbp" />
       </span>
     </div>
   </v-footer>
 </template>
 
 <script setup lang="ts">
+import { nowDate } from '~/src/util/date';
+
 interface Props {
   error?: boolean
 }

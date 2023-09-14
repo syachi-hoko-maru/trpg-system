@@ -1,9 +1,7 @@
 <template>
   <card-array-by-andml :andml="first" />
   <card-list v-if="images.length" title="歴代Twitterアイコン">
-    <card
-      v-for="image of images.filter(({ date }) => new Date().getTime() >= new Date(date.split('/').map(s => s.length >= 2 ? s : '0' + s).join('-')).getTime())"
-      :id="image.title">
+    <card v-for="image of images.filter(({ date }) => isPast(date))" :id="image.title">
       <template #tbefore>
         <item-img :src="`/icon-image/${image.date.split('/').map(s => s.length >= 2 ? s : '0' + s).join('')}.webp`"
           :alt="`${image.title}をイメージしたアイコン画像`" />
@@ -44,6 +42,7 @@
 </template>
 
 <script setup lang="ts">
+import { isPast } from '~/src/util/date';
 const { $templateText } = useNuxtApp()
 
 const first = `

@@ -1,5 +1,5 @@
 <template>
-  <template v-if="new Date().getMonth() === 9 || nowPageSetting.to === '/blog/halloween'">
+  <template v-if="nowDate().getMonth() === 9 || nowPageSetting.to === '/blog/halloween'">
     <item-button @click="toggleTheme" v-if="!icon" prepend-icon="mdi-ghost">
       ハロウィンデザインに切り替える
     </item-button>
@@ -11,6 +11,8 @@
 </template>
 
 <script setup lang="ts">
+import { nowDate } from '~/src/util/date';
+
 interface Props {
   icon?: boolean
 }

@@ -7,6 +7,7 @@
 
 <script setup lang="ts">
 import { formatToTimeZone } from "date-fns-timezone";
+import { nowDate } from "~/src/util/date";
 
 interface Props {
   props: string
@@ -18,7 +19,7 @@ const getDateText = (date: Date) => formatToTimeZone(date, "YYYY年M月D日", {
 });
 let dateText: string
 if (Props.props === "today") {
-  dateText = getDateText(new Date())
+  dateText = getDateText(nowDate())
 } else {
   dateText = getDateText(new Date(Props.props))
 }

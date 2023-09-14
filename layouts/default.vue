@@ -7,11 +7,11 @@
   </noscript>
   <v-app>
     <game-balloons v-if="pageSetting?.to === '/blog/matome' || pageSetting?.to === '/blog/5anni'
-      || new Date().getDate() === 23 && new Date().getMonth() + 1 === 5
+      || nowDate().getDate() === 23 && nowDate().getMonth() + 1 === 5
       // SW2.5の誕生日
-      || new Date().getDate() === 20 && new Date().getMonth() + 1 === 7
+      || nowDate().getDate() === 20 && nowDate().getMonth() + 1 === 7
       // SW2.0の誕生日
-      || new Date().getDate() === 18 && new Date().getMonth() + 1 === 4" />
+      || nowDate().getDate() === 18 && nowDate().getMonth() + 1 === 4" />
     <layouts-header />
     <aside>
       <layouts-dialogo />
@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTheme } from 'vuetify'
+import { nowDate } from '~/src/util/date';
 
 const route = useRoute();
 const router = useRouter();

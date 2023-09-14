@@ -3,6 +3,8 @@
 </template>
 
 <script setup lang="ts">
+import { isPast } from '~/src/util/date';
+
 const { nowPageSetting } = usePages()
 const andml1 = `
 &1 異世界冒険ガイドを紹介します！
@@ -20,7 +22,7 @@ const andml1 = `
 - 「異世界冒険ガイド きみならどうする!?　街での冒険」
 &amazon_異世界
 
-${new Date().getTime() < new Date("2023-5-23").getTime() ? `
+${!isPast(new Date("2023-5-23")) ? `
 &2 最新刊は5/19発売！
 シリーズ最新刊の「異世界冒険ガイド きみならどうする!?　街での冒険」は2023年5月19日発売予定です！
 &br

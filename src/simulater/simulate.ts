@@ -1,6 +1,7 @@
 import * as lodash from "lodash";
 const { cloneDeep } = lodash;
 import { toNumber } from "./util";
+import { nowDate } from "../util/date";
 
 export const simulate = async (
   simulateCount: number | string,
@@ -10,7 +11,7 @@ export const simulate = async (
 ): Promise<simulateResult> => {
   if (tabs.length !== args.length) throw "[Bug] tabs.length !== args.length";
   const argsClone = cloneDeep(args);
-  const date = new Date();
+  const date = nowDate();
   const arr: simulateFuncResult[] = [];
   const count = toNumber(simulateCount);
   console.log(`start ${count}`);

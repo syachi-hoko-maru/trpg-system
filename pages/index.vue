@@ -59,13 +59,13 @@
 </template>
 
 <script setup lang="ts">
-import { sortPagesByDate } from '~/src/util/date';
+import { nowDate, sortPagesByDate } from '~/src/util/date';
 
 const { $pageSettingList } = useNuxtApp()
 const { osusumePageArray } = usePages()
 
 // 花火関連ここから
-const now = new Date()
+const now = nowDate()
 const month = now.getMonth() + 1
 const date = now.getDate()
 const hour = now.getHours()

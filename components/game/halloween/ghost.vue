@@ -25,12 +25,14 @@
 </template>
 
 <script setup lang="ts">
+import { nowDate } from '~/src/util/date';
+
 const { setSnack } = useSnack()
 const { ok } = useLoad()
 const { getNowPage } = usePages()
 const { nowTheme } = useDesign()
 
-const held = new Date().getMonth() + 1 === 10
+const held = nowDate().getMonth() + 1 === 10
 const display = ref(false)
 const style = ref("")
 

@@ -18,6 +18,7 @@
 
 <script setup lang="ts">
 import { Ref } from 'vue';
+import { nowDate } from '~/src/util/date';
 
 interface Props {
   formSetting: FormSettingDate
@@ -25,7 +26,7 @@ interface Props {
 const Props = defineProps<Props>();
 
 
-const today = new Date()
+const today = nowDate()
 
 const setNumberArray = (end: number, start: number = 1) => {
   const result: string[] = []

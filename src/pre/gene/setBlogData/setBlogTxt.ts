@@ -8,7 +8,7 @@ export const setBlogTxt = async (): Promise<RawBlog[]> => {
       const blogList = readdirSync(`${blogTextDir}/${type}`);
       for (let fileName of blogList) {
         if (!fileName.endsWith(".txt")) continue;
-        const id = fileName.replace(/\..txt$/, "");
+        const id = fileName.replace(/\..*$/, "");
         const file = readFileSync(
           `${blogTextDir}/${type}/${fileName}`,
           "utf-8"

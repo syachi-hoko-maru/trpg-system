@@ -75,6 +75,7 @@ export const pageSettingList: PageSetting[] = [
     title: "ここが好き！ SW2.5  ゲスト：Dagonさん",
     to: "/sw25/fav/dagon",
     img: "page-image/fav_dagon.webp",
+    imgdirs: ["other/dagon"],
     osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5/ソドワ）というTRPGのさまざまな魅力を伝えるべく、「オリジナル大陸」「ソード・ワールド2.5雑談コミュニティ」などなどいろいろな活動をしていらっしゃる、アルヴを愛してやまないDagonさんにインタビューしました。",
@@ -450,6 +451,7 @@ export const pageSettingList: PageSetting[] = [
     to: "/me",
     lastmod: "2023/9/12",
     img: "page-image/me.webp",
+    imgdirs: ["other/me"],
     explain:
       "管理人しゃちほこ丸の自己紹介ページです。TRPGについてやTRPG以外の趣味（海外サッカー観戦やアニメ鑑賞など）をまとめています。",
     osusume: false,

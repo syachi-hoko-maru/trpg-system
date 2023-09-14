@@ -37,7 +37,6 @@ const setSampleAndml = (words: string[]) => {
     const setAndmlLink = (word: string) => `「 &link_/search/${word.replace(/\s/g, "/")},${word.replace(/\s/g, "¥s")} 」`
     andml1.value = `${(words).slice(0, 3).map(setAndmlLink).join()}など気になるワードを検索してみてください。`
 }
-setSampleAndml(shuffle(sampleWords))
 
 const clickTag = (pageTag: PageTag) => {
     const index = selectTags.value.indexOf(pageTag)
@@ -50,6 +49,7 @@ const clickTag = (pageTag: PageTag) => {
 
 const route = useRoute()
 onMounted(() => {
+    setSampleAndml(shuffle(sampleWords))
     watch(route, () => {
         setSampleAndml(shuffle(sampleWords))
     })

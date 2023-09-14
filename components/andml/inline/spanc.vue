@@ -60,7 +60,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 span.word {
-  border-bottom: 2px dashed #888;
+  border-bottom: 1.5px dashed #888;
   cursor: pointer;
 }
 

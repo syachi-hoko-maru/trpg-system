@@ -31,6 +31,7 @@
 
 <script setup lang="ts">
 import blogs from "@/assets/blog.json"
+import { isHidden } from "~/src/pages/getPageSetting";
 import { setBlogExplain } from "~~/src/pages/blogExplain";
 
 const { $templateText, $pageSettingList } = useNuxtApp()
@@ -92,6 +93,7 @@ if (!(
 const results = $pageSettingList.filter(pageSetting =>
   pageSetting.to.indexOf("/blog/") >= 0
   && pageSetting.osusume
+  && !isHidden(pageSetting)
   && pageSetting.to.indexOf(id) === -1
 ).slice(0, 3)
 

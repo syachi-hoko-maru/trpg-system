@@ -3,6 +3,7 @@
 </template>
 
 <script setup lang="ts">
+import { isHidden } from '~/src/pages/getPageSetting';
 import { isPast } from '~/src/util/date';
 
 const { $pageSettingList } = useNuxtApp()
@@ -15,7 +16,7 @@ const shuffle = <T>(array: Array<T>) => {
     return array;
 }
 
-const guestPageList = shuffle($pageSettingList.filter(page => page.osusume && isPast(page.lastmod) && page.to.indexOf("/sw25/fav/") === 0))
+const guestPageList = shuffle($pageSettingList.filter(page => !isHidden(page) && page.to.indexOf("/sw25/fav/") === 0))
 
 const andml0 = `
 &1 企画概要

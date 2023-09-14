@@ -44,8 +44,7 @@ import { useTheme } from 'vuetify'
 
 const route = useRoute();
 const router = useRouter();
-const theme = useTheme()
-
+const { setTheme } = useDesign()
 const { fixed } = useDialogo()
 const { getNowPath, nowPageSetting, getNowPagePage } = usePages()
 const { $getPageSetting, $templateText } = useNuxtApp()
@@ -128,13 +127,8 @@ const { ok } = useLoad()
 
 onMounted(() => {
   changePage()
-  // mountedPageSetting.value = pageSetting.value
-  theme.global.name.value =
-    localStorage.getItem('theme') === "light"
-      ? "myCustomLightTheme"
-      : localStorage.getItem('theme') === "halloween"
-        ? "myCustomHalloweenTheme"
-        : "myCustomDarkTheme"
+  // vuetifyテーマの設定
+  setTheme(localStorage.getItem('theme'))
   console.log(ok.value)
   watch(ok, () => {
     console.log(ok.value)

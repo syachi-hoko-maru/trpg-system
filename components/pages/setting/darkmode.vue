@@ -1,39 +1,27 @@
 <template>
-  <item-button @click="toggleTheme" v-if="!icon" prepend-icon="mdi-brightness-6">
-    {{ nowTheme === "light" ? "ダークモード" : "ライトモード" }}に切り替える
+  <item-button @click="click" v-if="!icon" prepend-icon="mdi-brightness-6">
+    {{ nowTheme !== "dark" ? "ダークモード" : "ライトモード" }}に切り替える
   </item-button>
-  <v-icon v-else @click="toggleTheme" icon="mdi-brightness-6" class="px-5 text-textbp" />
+  <v-icon v-else @click="click" icon="mdi-brightness-6" class="px-5 text-textbp" />
 </template>
 
 <script setup lang="ts">
-import { useTheme } from 'vuetify'
-
 interface Props {
   icon?: boolean
 }
 const Props = defineProps<Props>();
 
-const theme = useTheme()
 const { setSnack } = useSnack()
+const { toggleTheme, nowTheme } = useDesign()
 
-let nowTheme: string | null = null
-
-const toggleTheme = () => {
+const click = () => {
+  const theme = toggleTheme()
   try {
-    nowTheme = localStorage.getItem('theme')
-  } catch { }
-  theme.global.name.value = nowTheme === "light" ? "myCustomDarkTheme" : "myCustomLightTheme"
-  try {
-    const newtheme = nowTheme === "light" ? "dark" : "light"
-    localStorage.setItem('theme', newtheme);
-    nowTheme = newtheme
+    localStorage.setItem('theme', theme);
     setSnack("設定を保存しました")
   } catch {
+    console.error("設定の保存に失敗しました")
     setSnack("設定の保存に失敗しました")
   }
 }
-
-onMounted(() => {
-  nowTheme = localStorage.getItem('theme')
-})
 </script>

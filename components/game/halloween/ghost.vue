@@ -36,7 +36,7 @@ const held = nowDate().getMonth() + 1 === 10
 const display = ref(false)
 const style = ref("")
 
-const ghostStatus = ref(held ? "until" : "noheld" as "exist" | "found" | "error" | "until" | "noheld")
+const ghostStatus = ref("noheld" as "exist" | "found" | "error" | "until" | "noheld")
 const message = computed(() => {
     return ghostStatus.value === "noheld" ? "「ハロウィンデザイン」でないか切り替えた直後のため準備中です。ページを更新してください。" :
         ghostStatus.value === "until" ? "幽霊が隠れる準備中です。数秒で終わりますので、お待ちください。"
@@ -99,11 +99,9 @@ const setGhost = () => {
 }
 
 onMounted(() => {
-    if (held && nowTheme.value === "halloween") {
-        watch(ok, () => {
-            setGhost()
-        })
-    }
+    watch(ok, () => {
+        if (held && nowTheme.value === "halloween") setGhost()
+    })
 })
 </script>
 

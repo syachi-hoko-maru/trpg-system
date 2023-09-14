@@ -544,8 +544,8 @@ export const pageSettingList: PageSetting[] = (
     },
     {
       title: "コンタクト",
-      to: "/contact",
-      lastmod: "2023/3/15",
+      to: "/me/contact",
+      lastmod: "2023/9/14",
       specialPage: false,
       explain:
         "管理人しゃちほこ丸の連絡先メールアドレス及びTwitterアカウントを掲載しています。",

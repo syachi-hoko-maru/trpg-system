@@ -31,7 +31,7 @@ const { fixed } = useDialogo()
 const footerItemList = [
   { to: "/search", title: "ページ一覧・検索" },
   { to: "/policy", title: "サイトポリシー" },
-  { to: "/contact", title: "コンタクト" },
+  { to: "/me/contact", title: "コンタクト" },
   { to: "https://giftee.com/u/syachi_hoko_trp", title: "欲しいものリスト（giftee）" },
 ]
 </script>

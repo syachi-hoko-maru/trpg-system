@@ -35,7 +35,7 @@ declare type PageSetting = {
   readonly imgdirs?: string[];
   osusume?: boolean;
   readonly explain?: string | string[];
-  hidden?: boolean;
+  hiddenFlag?: boolean;
   readonly specialPage?: boolean;
   readonly tags: PageTag[];
   readonly noamazon?: boolean;

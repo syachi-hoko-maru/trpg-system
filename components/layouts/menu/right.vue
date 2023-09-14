@@ -29,7 +29,7 @@
       <template #before>
         <v-list density="compact" nav class="bg-background text-text">
           <template
-            v-for="page in $pageSettingList.filter(p => !p.hidden).sort((a, b) => -new Date(a.lastmod).getTime() + new Date(b.lastmod).getTime()).slice(0, 10)"
+            v-for="page in $pageSettingList.filter(p => !isHidden(p)).sort((a, b) => -new Date(a.lastmod).getTime() + new Date(b.lastmod).getTime()).slice(0, 10)"
             :key="page.to">
             <item-textlink :to="page.to">
               <v-list-item>
@@ -51,5 +51,7 @@
 </template>
 
 <script setup lang="ts">
+import { isHidden } from '~/src/pages/getPageSetting';
+
 const { osusumePageArray, nowPageSetting } = usePages()
 </script>

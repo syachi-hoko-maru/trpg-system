@@ -1,8 +1,8 @@
 <template>
   <div class="page-card-div" :class="virtical ? 'ma-2' : 'my-5'">
     <atom-link v-if="pageSettingData" :to="pageSettingData.to + (pageSettingData.page?.length ? '/1/' : '')"
-      :title="`ページ「${pageSettingData.title}」へのリンク（ページカード）`" type="pagecard" :disabled="pageSettingData.hidden">
-      <card :comingsoon="pageSettingData.hidden" :elevation="6">
+      :title="`ページ「${pageSettingData.title}」へのリンク（ページカード）`" type="pagecard" :disabled="isHidden(pageSettingData)">
+      <card :comingsoon="isHidden(pageSettingData)" :elevation="6">
         <template #tbefore>
           <div class="pagecard d-flex justify-start page-card-incard"
             :class="virtical ? 'pagecard-virtical flex-column' : 'pagecard-side'">
@@ -15,10 +15,10 @@
                 {{ pageSettingData.title }}
               </div>
               <div class="text-caption text-medium-emphasis">
-                <template v-if="!pageSettingData.hidden && pageSettingData.to.indexOf('/blog/') === 0">
+                <template v-if="!isHidden(pageSettingData) && pageSettingData.to.indexOf('/blog/') === 0">
                   投稿日：{{ pageSettingData.lastmod }}
                 </template>
-                <template v-else-if="!pageSettingData.hidden">
+                <template v-else-if="!isHidden(pageSettingData)">
                   最終更新日：{{ pageSettingData.lastmod }}
                 </template>
                 <template v-else>
@@ -38,6 +38,7 @@
 
 <script setup lang="ts">
 import { Ref } from 'vue';
+import { isHidden } from '~/src/pages/getPageSetting';
 
 interface Props {
   pageSetting?: PageSetting,

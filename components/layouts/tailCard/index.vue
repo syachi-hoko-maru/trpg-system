@@ -41,12 +41,14 @@
 </template>
 
 <script setup lang="ts">
+import { isHidden } from '~/src/pages/getPageSetting';
+
 const { $pageSettingList } = useNuxtApp()
 const { nowPageSetting } = usePages()
 const pageSetting = nowPageSetting
 
 const recent = $pageSettingList
-  .filter(p => !p.hidden)
+  .filter(p => !isHidden(p))
   .sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime())
   .slice(0, 10)
 
@@ -90,7 +92,7 @@ const sourceAndml = computed(() => `
 &br
 最近更新されたソード・ワールド2.5の新刊情報に関するページ3件
 ${$pageSettingList
-    .filter(page => !page.hidden && page.tags.indexOf("sw25_new") >= 0)
+    .filter(page => !isHidden(page) && page.tags.indexOf("sw25_new") >= 0)
     .sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime())
     .slice(0, 3)
     .map(page => `&button_${page.to}`)

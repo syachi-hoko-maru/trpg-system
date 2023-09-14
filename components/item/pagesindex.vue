@@ -1,6 +1,6 @@
 <template>
   <card-list :title="title">
-    <card v-for="page of pageSettingList" :key="page.to" :comingsoon="page.hidden">
+    <card v-for="page of pageSettingList" :key="page.to" :comingsoon="isHidden(page)">
       <template #tbefore v-if="page.img">
         <item-img :src="page.img" :alt="`ページ「${page.title}」のサムネイル画像`" />
       </template>
@@ -21,6 +21,8 @@
 </template>
 
 <script setup lang="ts">
+import { isHidden } from '~/src/pages/getPageSetting';
+
 interface Props {
   pageSettingList: PageSetting[]
   title?: string

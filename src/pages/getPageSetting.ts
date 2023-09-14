@@ -1,3 +1,4 @@
+import { isPast } from "../util/date";
 import { pageSettingList } from "./pageSettingList";
 
 export const getPageSetting = (url: string): PageSetting => {
@@ -29,4 +30,10 @@ export const getPageSetting = (url: string): PageSetting => {
   }
   // console.log(url, pageSetting.to);
   return pageSetting;
+};
+
+export const isHidden = (pageSetting: PageSetting): boolean => {
+  if (pageSetting.hiddenFlag) return true;
+  if (!isPast(pageSetting.lastmod)) return true;
+  return false;
 };

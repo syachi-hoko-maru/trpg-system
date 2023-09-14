@@ -1,5 +1,6 @@
 import { word4search } from "../after/word4search";
 import { wordList } from "../dict";
+import { isHidden } from "../pages/getPageSetting";
 import { pageSettingList } from "../pages/pageSettingList";
 import { isPageTag, pageTagSettings } from "../pages/pageTags";
 
@@ -138,12 +139,12 @@ export const search = (
 
   // 検索を行い、結果を取得する
   const results: SearchResult[] = pageSettingList
-    .filter(({ to, hidden }) => {
+    .filter((page) => {
       // 隠しページは表示しない
-      if (hidden) return false;
+      if (isHidden(page)) return false;
       // 検索・一覧ページやエラーページは表示しない
-      if (to === "/search") return false;
-      if (to === "error") return false;
+      if (page.to === "/search") return false;
+      if (page.to === "error") return false;
       return true;
     })
     .map((pageSetting) => {

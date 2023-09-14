@@ -2,6 +2,7 @@ import { readdirSync, statSync, writeFileSync } from "fs";
 import { pageSettingList } from "../../pages/pageSettingList";
 import { formatDateString } from "../../util/date";
 import { searchWordList } from "./searchWordList";
+import { isHidden } from "~/src/pages/getPageSetting";
 
 const outputDirs = [
   `${process.cwd()}/.output/public`,
@@ -14,7 +15,7 @@ export const setSitemap = () => {
   let result = "";
 
   pageSettingList
-    .filter((pageSetting) => !pageSetting.hidden)
+    .filter((pageSetting) => !isHidden(pageSetting))
     .forEach((pageSetting) => {
       result += setUrlBlock(pageSetting);
     });

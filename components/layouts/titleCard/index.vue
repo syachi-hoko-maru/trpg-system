@@ -1,6 +1,6 @@
 <template>
   <layouts-title-card-titlecard :page-setting="pageSetting" />
-  <v-alert v-if="pageSetting && pageSetting.hidden && pageSetting.to !== 'error'" class="my-5" type="error"
+  <v-alert v-if="pageSetting && isHidden(pageSetting) && pageSetting.to !== 'error'" class="my-5" type="error"
     :text="`このページは動作実験中の未公開ページです。見つけた方はそっと閉じてください。`" />
   <card v-if="pageSetting && !pageSetting.specialPage && pageSetting.img">
     <template #tbefore>
@@ -25,6 +25,8 @@
 </template>
 
 <script setup lang="ts">
+import { isHidden } from '~/src/pages/getPageSetting';
+
 const { nowPageSetting } = usePages()
 const pageSetting = nowPageSetting
 </script>

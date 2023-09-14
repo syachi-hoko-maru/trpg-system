@@ -7,9 +7,11 @@
 </template>
 
 <script setup lang="ts">
+import { isHidden } from '~/src/pages/getPageSetting';
+
 const { $pageSettingList } = useNuxtApp()
 
-const toolPages = $pageSettingList.filter(page => page.to.startsWith("/sw25/tool/") && !page.hidden)
+const toolPages = $pageSettingList.filter(page => page.to.startsWith("/sw25/tool/") && !isHidden(page))
 
 const andml1 = `
 &1 このページについて

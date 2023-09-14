@@ -26,7 +26,7 @@
       </template>
       <template #pbefore>
         <item-carousel
-          :page-setting-list="$pageSettingList.filter(p => p.osusume && p.img).sort(sortPagesByDate(true)).splice(0, 10)" />
+          :page-setting-list="$pageSettingList.filter(p => p.osusume && p.img && !isHidden(p)).sort(sortPagesByDate(true)).splice(0, 10)" />
       </template>
       <item-button to="/search?sort=recent">最近更新されたページ一覧はこちら</item-button>
     </card>
@@ -40,8 +40,7 @@
         Pick Up Pages
       </template>
       <template #pbefore>
-        <item-carousel :page-setting-list="osusumePageArray.filter(pageSetting => pageSetting.img)"
-          :hidden="!mounted || !osusumePageArray.length" />
+        <item-carousel :page-setting-list="osusumePageArray" :hidden="!mounted || !osusumePageArray.length" />
       </template>
     </card>
   </div>
@@ -59,6 +58,7 @@
 </template>
 
 <script setup lang="ts">
+import { isHidden } from '~/src/pages/getPageSetting';
 import { nowDate, sortPagesByDate } from '~/src/util/date';
 
 const { $pageSettingList } = useNuxtApp()
@@ -139,7 +139,7 @@ This site provides useful information and updates on Sword World 2.5.
 &button_/sw25/forbeginner/suppliment/1
 &button_/sw25/new
 &button_${$pageSettingList
-    .filter(page => !page.hidden && page.tags.indexOf("sw25_new") >= 0 && page.to !== "/sw25/new")
+    .filter(page => !isHidden(page) && page.tags.indexOf("sw25_new") >= 0 && page.to !== "/sw25/new")
     .sort(sortPagesByDate(true))[0].to
   }
 
@@ -158,7 +158,7 @@ This website offers Sword World 2.5 fanmade data.
 &&noandml
 I write about my thoughts on TRPGs on my blog.
 &&&
-${$pageSettingList.filter(page => !page.hidden && page.to.indexOf('/blog/') === 0).slice(0, 3).map(page => `&button_${page.to}`).join("\n")}
+${$pageSettingList.filter(page => !isHidden(page) && page.to.indexOf('/blog/') === 0).slice(0, 3).map(page => `&button_${page.to}`).join("\n")}
 &button_/blog? ブログ一覧はこちら
 
 &1 And More Contents

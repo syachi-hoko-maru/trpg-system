@@ -37,6 +37,7 @@
     <item-button v-if="pageSetting.to.indexOf('/blog/') === 0" url="/blog" normal-button>ブログトップへ</item-button>
     <item-button v-if="pageSetting.to !== '/'" url="/" normal-button>トップページへ</item-button>
   </card>
+  <game-halloween-ghost />
 </template>
 
 <script setup lang="ts">

@@ -52,13 +52,6 @@
         Search & Tags
       </template>
       <item-searchbox />
-      <!-- <template #pafter>
-        <item-head2>Tags</item-head2>
-        クリックでタグのついたページ一覧を見ることができます。
-      </template>
-      <template #after>
-        <item-tags-list />
-      </template> -->
     </card>
     <card-array-by-andml :andml="andml4" nobefore />
     <layouts-tail-card-aboutme nobefore />
@@ -196,6 +189,7 @@ We also welcome your comments and requests.
 Please follow me on twitter!
 &&&
 &ltwitter
+&button_/search?sort=recent 最近更新されたページ一覧はこちら
 `
 
 

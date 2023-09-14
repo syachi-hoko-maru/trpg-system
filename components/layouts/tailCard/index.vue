@@ -8,7 +8,7 @@
       ぜひTwitterなどでシェアしてこのウェブサイトを広めてください！
     </div>
   </card>
-  <item-banner-c102 />
+  <!-- <item-banner-c102 /> -->
   <item-notice title="しゃちほこ丸からのお知らせ" />
   <template v-if="!pageSetting.noamazon && pageSetting.tags.findIndex(tag => tag.indexOf('sw25') >= 0) >= 0">
     <card>
@@ -19,7 +19,7 @@
     </card>
     <item-amazon-sw25 />
   </template>
-  <item-amazon-box v-if="!pageSetting.noamazon" />
+  <!-- <item-amazon-box v-if="!pageSetting.noamazon" /> -->
   <card v-if="recent.length && mounted">
     <template #title>
       最近更新されたページ

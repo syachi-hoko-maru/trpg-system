@@ -63,62 +63,71 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-.pagecard {
-  .pagecard-text {
-    overflow: hidden;
-    margin: 8px;
+div.page-card-div {
+  transition: .3s;
 
-    &.no-image {
-      width: calc(100% - 16px) !important;
-      height: calc(100% - 16px) !important;
-    }
+  &:hover {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
 
-    .pagecard-title {
-      font-size: 1rem;
+  .pagecard {
+    .pagecard-text {
       overflow: hidden;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
+      margin: 8px;
 
-      @media screen and (max-width: 600px) {
-        font-size: 0.8rem;
+      &.no-image {
+        width: calc(100% - 16px) !important;
+        height: calc(100% - 16px) !important;
+      }
+
+      .pagecard-title {
+        font-size: 1rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+
+        @media screen and (max-width: 600px) {
+          font-size: 0.8rem;
+        }
       }
     }
-  }
 
-  &.pagecard-side {
-    aspect-ratio: 100/21;
+    &.pagecard-side {
+      aspect-ratio: 100/21;
 
-    .pagecard-image {
-      width: 40%;
-      height: 100%;
-    }
+      .pagecard-image {
+        width: 40%;
+        height: 100%;
+      }
 
-    .pagecard-text {
-      width: calc(60% - 16px);
-      height: calc(100% - 16px);
+      .pagecard-text {
+        width: calc(60% - 16px);
+        height: calc(100% - 16px);
 
-      @media screen and (max-width: 600px) {
-        margin: 4px;
-        width: calc(60% - 8px);
-        height: calc(100% - 8px);
+        @media screen and (max-width: 600px) {
+          margin: 4px;
+          width: calc(60% - 8px);
+          height: calc(100% - 8px);
+        }
       }
     }
-  }
 
-  &.pagecard-virtical {
-    aspect-ratio: 20/21;
-    max-width: 65vw;
-    width: 300px;
+    &.pagecard-virtical {
+      aspect-ratio: 20/21;
+      max-width: 65vw;
+      width: 300px;
 
-    .pagecard-image {
-      width: 100%;
-      height: 50%;
-    }
+      .pagecard-image {
+        width: 100%;
+        height: 50%;
+      }
 
-    .pagecard-text {
-      width: calc(100% - 16px);
-      height: calc(50% - 16px);
+      .pagecard-text {
+        width: calc(100% - 16px);
+        height: calc(50% - 16px);
+      }
     }
   }
 }

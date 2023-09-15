@@ -44,11 +44,11 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "ここが好き！ SW2.5",
     to: "/sw25/fav",
-    // img: "page-image/about.webp",
-    osusume: false,
+    img: "page-image/fav.webp",
+    osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5/ソドワ）というTRPGのさまざまな魅力を伝えるべく、いろいろな方法でソード・ワールド2.5を楽しんでいる皆さんにインタビューをしていくシリーズです。あなたなりの遊び方が見つかります！",
-    lastmod: "2023/8/5",
+    lastmod: "2023/9/15",
     tags: ["sw25"],
   },
   {

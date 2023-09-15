@@ -3,7 +3,7 @@
     <template #title>About Me</template>
     <div class="flex">
       <div class="left">
-        <item-img src="/icon-image/20221214.webp" class="radius" alt="アイコン" />
+        <item-img :src="icon" class="radius" alt="アイコン" />
       </div>
       <div class="right">
         <p class="my-1">
@@ -29,6 +29,9 @@ interface Props {
   nobefore?: boolean
 }
 const Props = defineProps<Props>();
+
+const { nowTheme } = useDesign()
+const icon = nowTheme.value === "halloween" ? "/icon-image/20231015.webp" : "/icon-image/20221214.webp"
 </script>
 
 <style lang="scss" scoped>

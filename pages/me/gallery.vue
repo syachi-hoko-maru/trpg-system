@@ -39,6 +39,15 @@
       <andml :andmls="image.explain" v-if="image.explain" />
     </card>
   </card-list>
+  <card-list title="いただいたイラスト！">
+    <card>
+      <template #tbefore>
+        <item-img src="/other/dagon/illust.webp" alt="Dagonさんからいただいた記念イラスト" />
+      </template>
+      <template #title>Dagonさんからいただいた記念イラスト</template>
+      <andml andmls="&link_/sw25/fav/dagon,こちらのインタビュー の記念でいただきました。ぜひインタビュー読んでください！" />
+    </card>
+  </card-list>
 </template>
 
 <script setup lang="ts">
@@ -59,7 +68,37 @@ const images = [
   {
     title: "通常",
     date: "2022/12/14",
-    explain: ""
+    explain: "2022年の年末にアイコンの大幅バージョンアップをしてこの形になりました。"
+  },
+  {
+    title: "ハロウィン",
+    date: "2023/10/15",
+    explain: "僕の大好きなイベント、ハロウィンです。このウェブサイトでもイベントをやっています！（ &link_/blog/halloween,詳しくはこちら ）"
+  },
+  {
+    title: "栗",
+    date: "2023/9/20",
+    explain: "食欲の秋ってことで、栗カラーです。"
+  },
+  {
+    title: "焼き芋",
+    date: "2023/9/1",
+    explain: "食欲の秋ってことで、焼き芋カラーです。"
+  },
+  {
+    title: "花火",
+    date: "2023/8/17",
+    explain: "このウェブサイトでも8月中旬〜9月中旬まで花火大会と称したイベントをしてます。"
+  },
+  {
+    title: "C102",
+    date: "2023/7/18",
+    explain: "2023年8月12日の夏コミ/C102に参加しました。 &link_/blog/c102_2,詳しくはこちら。"
+  },
+  {
+    title: "SW2.5 5周年",
+    date: "2023/7/15",
+    explain: "2023年7月20日はSW2.5の5周年でした。このウェブサイトでも &link_/sw25/tool/5anni,こんなこと をしたりしました。 &br ハーヴェスをイメージした背景です。"
   },
   {
     title: "夏",
@@ -171,6 +210,17 @@ const miimages = [
     src: "kashiwa",
     explain: ""
   },
+  {
+    title: "花火",
+    src: "fireworks",
+    explain: ""
+  },
+  {
+    title: "紅葉",
+    src: "koyo",
+    explain: ""
+  },
+
 ]
 
 const friends = [

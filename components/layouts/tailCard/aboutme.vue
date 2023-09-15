@@ -13,7 +13,7 @@
           ウェブサイト運営やブログは初心者です。ご感想をいただければ幸いです。<br>
           ご意見ご要望もお待ちしております！
         </p>
-        <item-button url="https://twitter.com/syachi_hoko_trp" color="blue" prepend-icon="mdi-twitter">
+        <item-button url="https://twitter.com/syachi_hoko_trp" class="bg-twitter" prepend-icon="mdi-twitter">
           しゃちほこ丸のTwitter
         </item-button>
         <item-button url="/me" />

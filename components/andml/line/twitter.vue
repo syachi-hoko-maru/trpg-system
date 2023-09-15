@@ -1,5 +1,5 @@
 <template>
-  <item-button url="https://twitter.com/syachi_hoko_trp" prepend-icon="mdi-twitter" color="blue">
+  <item-button url="https://twitter.com/syachi_hoko_trp" prepend-icon="mdi-twitter" class="bg-twitter">
     しゃちほこ丸のTwitter
   </item-button>
 </template>

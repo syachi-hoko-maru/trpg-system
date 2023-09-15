@@ -4,46 +4,67 @@ import * as directives from "vuetify/directives";
 
 const info = "#2a367a";
 
-const myCustomLightTheme: ThemeDefinition = {
+type MyThemeDifinition = ThemeDefinition & {
+  colors: {
+    background: string;
+    bbackground: string;
+    primary: string;
+    secondary: string;
+    link: string;
+    textbp: string;
+    text: string;
+    disabled: string;
+    error: string;
+    info: string;
+    surface: string;
+    accent: string;
+    warning: string;
+    success: string;
+  };
+};
+const myCustomLightTheme: MyThemeDifinition = {
   dark: false,
   colors: {
-    background: "#fff",
+    background: "#eee",
+    bbackground: "#ddd",
     primary: "#673ab7",
     secondary: "#381e66",
     link: info,
-    textbp: "#fff",
+    textbp: "#eee",
     text: "#333",
     disabled: "#888",
     error: "#910f31",
     info: info,
-    surface: "#fff",
+    surface: "#eee",
     accent: "#ffee8c",
     warning: "#ffeb3b",
     success: "#2196f3",
   },
 };
-const myCustomDarkTheme: ThemeDefinition = {
+const myCustomDarkTheme: MyThemeDifinition = {
   dark: true,
   colors: {
-    background: "#4c4c4c",
+    background: "#414141",
+    bbackground: "#3d3d3d",
     primary: "#2d1b4f",
     secondary: "#1b1c4f",
-    link: "#fff",
-    textbp: "#fff",
-    text: "#fff",
+    link: "#fdfdfd",
+    textbp: "#fdfdfd",
+    text: "#fdfdfd",
     disabled: "#888",
     error: "#910f31",
     info: info,
-    surface: "#4c4c4c",
+    surface: "#414141",
     accent: "#4d2694",
     warning: "#ffeb3b",
     success: "#2196f3",
   },
 };
-const myCustomHalloweenTheme: ThemeDefinition = {
+const myCustomHalloweenTheme: MyThemeDifinition = {
   dark: true,
   colors: {
     background: "#4b3c5c",
+    bbackground: "#524363",
     primary: "#c75e08",
     secondary: "#eba050",
     link: "#fff",
@@ -58,10 +79,11 @@ const myCustomHalloweenTheme: ThemeDefinition = {
     success: "#2196f3",
   },
 };
-const myCustomSakuraTheme: ThemeDefinition = {
+const myCustomSakuraTheme: MyThemeDifinition = {
   dark: false,
   colors: {
     background: "#fff5fe",
+    bbackground: "#fff0fd",
     primary: "#ff6ef0",
     secondary: "#e67adb",
     link: info,

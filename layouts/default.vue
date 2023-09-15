@@ -16,7 +16,7 @@
     <aside>
       <layouts-dialogo />
     </aside>
-    <div id="app" :class="fixed ? 'fixed' : ''" :style="fixed ? `top: -${top}px` : ''">
+    <div id="app" :class="fixed ? 'fixed' : ''" :style="fixed ? `top: -${top}px` : ''" class="bg-bbackground">
       <layouts-main>
         <article>
           <layouts-title-card />

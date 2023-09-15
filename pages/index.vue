@@ -130,7 +130,7 @@ This site has useful tools for Sword World 2.5.
 &button_/sw25/tool/material
 &button_/sw25/tool? ツール一覧はこちら
 
-&1 SW2.5 infomation
+&1 SW2.5 Infomation
 ソード・ワールド2.5のお役立ち情報・最新情報も掲載しています。
 &br
 &&noandml
@@ -142,6 +142,14 @@ This site provides useful information and updates on Sword World 2.5.
     .filter(page => !isHidden(page) && page.tags.indexOf("sw25_new") >= 0 && page.to !== "/sw25/new")
     .sort(sortPagesByDate(true))[0].to
   }
+
+&1 Various Ways to Enjoy SW2.5
+「ここが好き！¥sSW2.5」と題して、ゲストにインタビューをしながらソード・ワールド2.5のいろんな楽しみ方を探っています！
+&br
+&&noandml
+We explore various ways to enjoy Sword World 2.5 while interviewing guests!
+&&&
+&button_/sw25/fav
 
 &1 SW2.5 FANMADE Data
 ソード・ワールド2.5のオリジナルデータを作成・公開しています。

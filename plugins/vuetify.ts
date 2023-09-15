@@ -58,6 +58,24 @@ const myCustomHalloweenTheme: ThemeDefinition = {
     success: "#2196f3",
   },
 };
+const myCustomSakuraTheme: ThemeDefinition = {
+  dark: false,
+  colors: {
+    background: "#fff5fe",
+    primary: "#ff6ef0",
+    secondary: "#e67adb",
+    link: info,
+    textbp: "#fff5fe",
+    text: "#333",
+    disabled: "#888",
+    error: "#910f31",
+    info: info,
+    surface: "#fff5fe",
+    accent: "#ffee8c",
+    warning: "#ffeb3b",
+    success: "#2196f3",
+  },
+};
 
 export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
@@ -65,7 +83,12 @@ export default defineNuxtPlugin((nuxtApp) => {
     directives,
     theme: {
       defaultTheme: "myCustomDarkTheme",
-      themes: { myCustomLightTheme, myCustomDarkTheme, myCustomHalloweenTheme },
+      themes: {
+        myCustomLightTheme,
+        myCustomDarkTheme,
+        myCustomHalloweenTheme,
+        myCustomSakuraTheme,
+      },
     },
   });
 

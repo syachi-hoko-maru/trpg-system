@@ -1,11 +1,13 @@
 import { useTheme } from "vuetify/lib/framework.mjs";
+import { nowDate } from "~/src/util/date";
 
-const themeKeyList = ["light", "dark", "halloween"] as const;
+const themeKeyList = ["light", "dark", "halloween", "sakura"] as const;
 type ThemeKey = (typeof themeKeyList)[number];
-const themeDict: { [key in ThemeKey]: string } = {
-  light: "myCustomLightTheme",
-  dark: "myCustomDarkTheme",
-  halloween: "myCustomHalloweenTheme",
+const themeDict: { [key in ThemeKey]: { vuetify: string } } = {
+  light: { vuetify: "myCustomLightTheme" },
+  dark: { vuetify: "myCustomDarkTheme" },
+  halloween: { vuetify: "myCustomHalloweenTheme" },
+  sakura: { vuetify: "myCustomSakuraTheme" },
 };
 const isThemeKey = (T: string): T is ThemeKey => {
   return themeKeyList.some((k) => k === T);
@@ -22,12 +24,22 @@ export const useDesign = () => {
   const setTheme = (key: string | null): ThemeKey => {
     let themeKey: ThemeKey;
     if (key && isThemeKey(key)) {
+      // const month = themeDict[key].month;
+      // if (
+      //   Array.isArray(month) &&
+      //   month.indexOf(nowDate().getMonth() + 1) === -1
+      // ) {
+      //   // 期間外ならダークモードにする
+      //   themeKey = "dark";
+      // } else {
       themeKey = key;
+      // }
     } else {
       themeKey = "dark";
     }
+
     nowTheme.value = themeKey;
-    theme.global.name.value = themeDict[themeKey];
+    theme.global.name.value = themeDict[themeKey].vuetify;
     return themeKey;
   };
 

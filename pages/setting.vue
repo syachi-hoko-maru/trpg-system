@@ -4,7 +4,8 @@
       設定
     </template>
     <pages-setting-darkmode />
-    <pages-setting-halloween />
+    <pages-setting-event props="halloween" />
+    <pages-setting-event props="sakura" />
     <item-button v-if="pageArray && pageArray.length >= 2" :to="pageArray[1]">
       1つ前のページへ戻る
     </item-button>

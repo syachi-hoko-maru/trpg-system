@@ -1,6 +1,6 @@
 <template>
   <div class="area pa-3 mt-10 mb-5 ml-5 mr-2" :style="`border: solid 3px ${color};`">
-    <h4 class="title pa-2 pb-1" :style="`background-color: ${color}; color: ${$vuetify.theme.current.colors.text};`">
+    <h4 class="title pa-2 pb-1" :style="`background-color: ${color}; color: #fefefe;`">
       <slot name="title" />
     </h4>
     <div class="text-area pt-2">

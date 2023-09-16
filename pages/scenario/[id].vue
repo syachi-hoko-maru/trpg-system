@@ -2,8 +2,8 @@
   <card-array-by-andml :andml="caution" />
   <card>
     <template #title>ネタバレクッション</template>
-    以下にはシナリオのネタバレが含まれます。<br>
-    プレイヤーとして遊ぶ予定の方はご覧をお控えください。<br>
+    以下はシナリオ本編となり、遊ぶ上で致命的なシナリオのネタバレが含まれます。<br>
+    プレイヤーとして遊ぶ予定の方は閲覧をお控えください。<br>
     <br>
     見る場合には以下のボタンを押してください。
     <item-button @click="() => show = !show">

@@ -18,13 +18,19 @@ const Props = withDefaults(defineProps<Props>(), {
 
 // inlineの処理
 const andmlInlineScriptArray: AndmlScript[] = [
-  { script: "itwitter", component: resolveComponent("AndmlInlineTwitter") },
-  { script: "br", component: resolveComponent("AndmlInlineBr") },
-  { script: "info_", component: resolveComponent("AndmlInlineInfo") },
-  { script: "link_", component: resolveComponent("AndmlInlineLink") },
+  // 強調・打ち消し
   { script: "em_", component: resolveComponent("AndmlInlineEmc") },
   { script: "strike_", component: resolveComponent("AndmlInlineStrike") },
-  { script: "ruby_", component: resolveComponent("AndmlInlineRubyc") }
+  // ルビ
+  { script: "ruby_", component: resolveComponent("AndmlInlineRubyc") },
+  // 補足情報
+  { script: "info_", component: resolveComponent("AndmlInlineInfo") },
+  { script: "hantei_", component: resolveComponent("AndmlInlineEmc") },
+  // リンク
+  { script: "link_", component: resolveComponent("AndmlInlineLink") },
+  { script: "itwitter", component: resolveComponent("AndmlInlineTwitter") },
+  // 改行
+  { script: "br", component: resolveComponent("AndmlInlineBr") },
 ]
 
 const setInlineComponent = (andml: string): AndmlData => {

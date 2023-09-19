@@ -1,7 +1,9 @@
+import { isPast } from "../util/date";
+
 export const scenarioData: ScenarioData[] = [
   {
     title: "ウォフト=ルーバの研究所跡",
-    id: "hukyo",
+    scenarioId: "uoht",
     author: "しゃちほこ丸",
     system: "ソード・ワールド2.5",
     explain: [
@@ -18,12 +20,17 @@ export const scenarioData: ScenarioData[] = [
         site: "TALTO",
         url: "https://talto.cc/projects/NU47DZgkJ51cMVBsYv504",
       },
+      {
+        site: "シナリオ（サイト内）",
+        url: "/scenario/uoht",
+        hidden: !isPast("2023/10/1"),
+      },
     ],
     regulation: "初期作成",
   },
   {
     title: "ふきのとうを採りに",
-    id: "fukinotou",
+    scenarioId: "fukinotou",
     author: "しゃちほこ丸",
     system: "ソード・ワールド2.5",
     explain: [
@@ -38,7 +45,7 @@ export const scenarioData: ScenarioData[] = [
     img: "scenario-image/fukinotou.webp",
     url: [
       {
-        site: "シナリオ",
+        site: "シナリオ（サイト内）",
         url: "/scenario/fukinotou",
       },
     ],
@@ -46,7 +53,7 @@ export const scenarioData: ScenarioData[] = [
   },
   {
     title: "Magic Steam Festival",
-    id: "kitomaho",
+    scenarioId: "kitomaho",
     author: "しゃちほこ丸",
     system: "ソード・ワールド2.5",
     explain: [
@@ -65,7 +72,7 @@ export const scenarioData: ScenarioData[] = [
   },
   {
     title: "Canción Azul　蒼の歌",
-    id: "cancionAzul",
+    scenarioId: "cancionAzul",
     author: "しゃちほこ丸",
     system: "エモクロアTRPG",
     explain: [
@@ -82,7 +89,7 @@ export const scenarioData: ScenarioData[] = [
   },
   {
     title: "とろ〜りとした甘いやつ",
-    id: "pudding",
+    scenarioId: "pudding",
     author: "しゃちほこ丸",
     system: "ソード・ワールド2.5",
     explain: [
@@ -94,7 +101,7 @@ export const scenarioData: ScenarioData[] = [
     img: "scenario-image/pudding.webp",
     url: [
       {
-        site: "シナリオメモ",
+        site: "シナリオメモ（サイト内）",
         url: "/scenario/pudding",
       },
     ],

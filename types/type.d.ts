@@ -50,12 +50,16 @@ declare type PageTagSettings = {
 
 declare type ScenarioData = {
   title: string;
-  id: string;
+  scenarioId: string;
   author: string;
   system: "ソード・ワールド2.5" | "エモクロアTRPG";
   explain: string[];
   img: string;
-  url: { site: "TALTO" | "シナリオメモ" | "シナリオ"; url: string }[];
+  url: {
+    site: "TALTO" | "シナリオメモ（サイト内）" | "シナリオ（サイト内）";
+    url: string;
+    hidden?: boolean;
+  }[];
 } & (
   | {
       system: "ソード・ワールド2.5";

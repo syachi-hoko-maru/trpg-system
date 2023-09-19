@@ -1,7 +1,7 @@
 <template>
   <card-array-by-andml :andml="andml1" />
   <card-list>
-    <card v-for="sd of $scenarioData" :key="sd.id">
+    <card v-for="sd of $scenarioData" :key="sd.scenarioId">
       <template #tbefore>
         <item-img :src="sd.img" :alt="`シナリオ「${sd.title}」のサムネイル画像`" />
       </template>
@@ -12,7 +12,7 @@
       <div class="text">
         <andml :andmls="sd.explain" />
       </div>
-      <item-button v-for="u of sd.url" :url="u.url" :key="u.url" normal-button>
+      <item-button v-for="u of sd.url.filter(u => !u.hidden)" :url="u.url" :key="u.url" normal-button>
         {{ u.site }}
       </item-button>
     </card>
@@ -41,16 +41,17 @@ const andml1 = `
 `
 
 const andml2 = `
-&1 おすすめシナリオ一覧
-ソード・ワールド2.5の &em_おすすめのシナリオ一覧 を以下のページで公開しています。
-よければこちらも併せてご覧ください。
-&button_/sw25/forbeginner/scenario#おすすめシナリオ一覧 こちら
-
-&1 シナリオの探し方
+&1 シナリオの探し方・おすすめシナリオ
 ソード・ワールド2.5の &em_初心者GM 向けに、シナリオの探し方を掲載しています。
 よければこちらも併せてご覧ください。
-&button_/sw25/forbeginner/scenario こちら
-
+&button_/sw25/forbeginner/scenario
+&br
+また、ソード・ワールド2.5の &em_おすすめのシナリオ一覧 を以下で公開しています。
+&br
+こちらは &em_ハンドアウトを使うもの などもあり、ソード・ワールド2.5のシナリオを自作する方にもぜひ見ていただきたいものばかりです！
+&br
+よければこちらも併せてご覧ください。
+&button_/sw25/forbeginner/scenario#おすすめシナリオ一覧 こちら
 `
 
 </script>

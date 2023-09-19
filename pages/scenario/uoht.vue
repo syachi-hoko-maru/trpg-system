@@ -10,7 +10,7 @@
             {{ show ? "シナリオを閉じる" : "シナリオを見る" }}
         </item-button>
     </card>
-    <card-array-by-andml :andml="andml" v-if="true" />
+    <card-array-by-andml :andml="andml" v-if="show" />
     <card>
         <template #title>他のシナリオ</template>
         しゃちほこ丸のシナリオ一覧はこちら
@@ -98,8 +98,18 @@ const setsumei = `
 舞台を変更する場合には適宜読み替えてください。
 
 &2 トレーラー
-「剣と魔法の世界」
-「あなたの冒険が始まる」
+冒険者として踏み出すはじめの一歩
+遺跡探検で彼らは"奇跡"を目にする
+&br
+これは1800年続いた
+"たましい"の物語
+&br
+剣と魔法の世界
+あなたの冒険が始まる
+&img_/scenario-image/uoht/uoht1.webp,ソード・ワールド2.5初心者向けシナリオ「ウォフト=ルーバの研究所跡」トレーラー画像1
+&img_/scenario-image/uoht/uoht2.webp,ソード・ワールド2.5初心者向けシナリオ「ウォフト=ルーバの研究所跡」トレーラー画像2
+&img_/scenario-image/uoht/uoht3.webp,ソード・ワールド2.5初心者向けシナリオ「ウォフト=ルーバの研究所跡」トレーラー画像3
+&img_/scenario-image/uoht/uoht4.webp,ソード・ワールド2.5初心者向けシナリオ「ウォフト=ルーバの研究所跡」トレーラー画像4
 
 &2 シナリオの趣旨
 このシナリオは初心者GM、初心者PLが “TRPG” とソード・ワールド2.5の舞台であるラクシア世界を楽しめることを第一に執筆しました。

@@ -408,7 +408,7 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "シナリオ「ウォフト=ルーバの研究所跡」",
     to: "/scenario/uoht",
-    // img: "scenario-image/.webp",
+    img: "scenario-image/uoht/uoht4.webp",
     imddirs: ["scenario-image/uoht"],
     lastmod: "2023/10/1",
     osusume: true,

@@ -1,15 +1,10 @@
 <template>
-    <CardArrayByAndml :andml="andml0" />
-    <CardArrayByAndml :andml="andml1" />
+    <PagesFav>
+        <CardArrayByAndml :andml="andml1" />
+    </PagesFav>
 </template>
 
 <script setup lang="ts">
-const andml0 = `
-&1 企画概要
-「ここが好き！ SW2.5」とはTRPG「ソード・ワールド2.5」の &em_いろいろな楽しみ方・さまざまな魅力 をお伝えするため、いろいろな遊び方をしている方ゲストとしてお呼びし、インタビューをしていくものになっています！
-&br
-ぜひ &em_自分に合った遊び方・楽しみ方 を見つけて、ソード・ワールド2.5をより楽しんでください！
-`
 const andml1 = `
 &1 ゲスト紹介
 今回はゲストとして &em_Dagon さん（ &link_https://twitter.com/DagonUnder6Feet,@DagonUnder6Feet ）に来ていただきました。

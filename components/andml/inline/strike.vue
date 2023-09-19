@@ -1,6 +1,6 @@
 <template>
-  <span class="strike" :style="`color: ${$vuetify.theme.current.colors.error};`">
-    <span :style="`color: ${$vuetify.theme.current.colors.text};`">
+  <span class="strike text-error">
+    <span class="text-disabled">
       <andml-inline-spanc :props="props" />
     </span>
   </span>

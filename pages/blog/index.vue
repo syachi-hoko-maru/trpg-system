@@ -8,13 +8,32 @@
       最近の記事一覧
     </template>
     <template #pafter>
+      <item-form-boolean :form-setting="form" />
+      <andml :andmls="andml1" />
       <pages-search :results="results" />
+      <br>
     </template>
   </card>
 </template>
 
 <script setup lang="ts">
+import { isHidden } from '~/src/pages/getPageSetting';
 const { $pageSettingList } = useNuxtApp()
 
-const results = $pageSettingList.filter(pageSetting => pageSetting.to.indexOf("/blog/") >= 0)
+const form = ref({
+  name: "only",
+  label: "TRPG/ソード・ワールド2.5関連のみを表示",
+  type: "boolean",
+  value: false
+} as FormSettingBoolean)
+const andml1 = `
+&link_search,検索ページ にてキーワードやタグによる検索をすることも可能です。
+ぜひご活用ください。
+&br
+`
+const results = computed(() =>
+  $pageSettingList.filter(pageSetting =>
+    pageSetting.to.indexOf("/blog/") >= 0
+    && !isHidden(pageSetting)
+    && (form.value.value ? (pageSetting.tags.join().indexOf("sw25") >= 0 || pageSetting.tags.join().indexOf("trpg") >= 0) : true)))
 </script>

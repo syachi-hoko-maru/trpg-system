@@ -24,8 +24,6 @@
                 <v-select label="並び順" prepend-inner-icon="mdi-sort" v-model="sortSetting" :items="sortValues"
                     item-title="label" item-value="value" density="comfortable" v-if="mounted" />
                 <pages-search :results="showPageSettings" />
-                <item-head2>{{ results.length }}件中{{ showPageSettings.length }}件を表示中</item-head2>
-                <item-button v-if="results.length > showPageSettings.length" @click="showCount++">もっと見る</item-button>
             </template>
         </template>
     </card>
@@ -53,10 +51,8 @@ const description = ref("")
 const tags = ref([] as PageTag[])
 const words = ref([] as string[])
 const sortedResults = ref([] as SearchResult[])
-const showCount = ref(0)
 
-
-const showPageSettings = computed(() => sortedResults.value.map(({ pageSetting }) => pageSetting).slice(0, (showCount.value + 1) * 10))
+const showPageSettings = computed(() => sortedResults.value.map(({ pageSetting }) => pageSetting))
 
 const searchJSON = ref({} as SearchJSON)
 fetchSearchJSON().then(result => {
@@ -92,7 +88,6 @@ const changeHead = () => {
     })
 }
 const sortPages = () => {
-    showCount.value = 0
     sortedResults.value = sort(results.value, sortSetting.value, allFlag.value)
 }
 const searchPages = () => {

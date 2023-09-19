@@ -439,9 +439,9 @@ export const pageSettingList: PageSetting[] = [
     title: "ブログ",
     to: "/blog",
     img: "page-image/blog.webp",
-    lastmod: "2023/5/10",
+    lastmod: "2023/9/19",
     explain:
-      "ブログのトップページです。ブログでは管理人しゃちほこ丸がソード・ワールド2.5（SW2.5）などのTRPGの知見や感想、最新情報などを公開していきます。",
+      "ブログのトップページです。ブログでは管理人しゃちほこ丸がソード・ワールド2.5（SW2.5/ソドワ）などのTRPGの知見や感想、最新情報などを公開していきます。",
     tags: ["me"],
   },
   // ここにブログ記事をぶち込む

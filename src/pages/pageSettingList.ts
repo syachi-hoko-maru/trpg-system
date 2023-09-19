@@ -375,7 +375,7 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "SW2.5 シナリオの探し方とおすすめシナリオ【初心者GM向け】",
     to: "/sw25/forbeginner/scenario",
-    lastmod: "2023/7/31",
+    lastmod: "2023/9/19",
     img: "page-image/osusume-scenario.webp",
     osusume: true,
     explain:

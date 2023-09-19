@@ -60,7 +60,10 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 span.word {
-  border-bottom: 1.5px dashed #888;
+  background-image: linear-gradient(to right, #888, #888 6px, transparent 6px, transparent 15px);
+  background-size: 15px 1px;
+  background-position: left bottom;
+  background-repeat: repeat-x;
   cursor: pointer;
 }
 

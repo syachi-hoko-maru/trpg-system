@@ -17,6 +17,13 @@ sw25,scenario,me
 &br
 表紙イラストはたつみさん（ &link_https://twitter.com/dra5on_tatsumi,@dra5on_tatsumi ）です。
 
+&2 9/19追記
+C102ではご好評をいただき、通販でも多数ご購入いただき、ありがとうございます！！
+&br
+Boothにて電子版（PDFファイル）での頒布を開始しました！
+こちらもどうぞよろしくお願いします。
+&button_https://fantasiticden.booth.pm/items/4995890 Booth
+
 &1 掲載シナリオの一覧と紹介
 -ふきのとうを採りに（初期作成）　
 -浮遊石の廃坑と失われた記憶（3〜4レベル）　　　　　　　　　

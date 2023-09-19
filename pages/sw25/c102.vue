@@ -23,48 +23,56 @@ const andmls = `
 - 夢の道程（6〜7レベル）
 - 黎明のシンデレラ（5〜6レベル）
 - アーサー王の継承 （13〜14レベル・キャンペーン）
-&br
-今後、シナリオの紹介も行っていく予定です！
-
 
 &1 入手方法
 &img_/projects/c102/title.webp,ソード・ワールド2.5同人シナリオ集「冒険者の旅路」告知画像
-入手方法は2つあります。
+入手方法は &em_通販と電子版の2つ があります。
 ※増減する可能性があります。
 
 &3 夏コミ（C102）
-夏コミは1日目の8/12（土）、東地区¥s"Ｖ"¥sブロック¥s36bです！
-詳しくは以下の「コミケWebカタログ」をご覧ください。
+夏コミではご好評いただき、ありがとうございました！
+&br
+&strike_夏コミは1日目の8/12（土）、東地区¥s"Ｖ"¥sブロック¥s36bです！
+&strike_詳しくは以下の「コミケWebカタログ」をご覧ください。
 &button_https://webcatalog-free.circle.ms/Circle/17321634 コミケWebカタログ
 
-&3 通販（ &em_予約受付中 ）
-C102に行けないよって方のために、 &em_通販 も行うことになりました！
+&3 通販
+現在、 &em_通販 にて印刷された同人誌を入手可能です。
 ソード・ワールド2.5をしていらっしゃるハリィさん（ &link_https://twitter.com/swrpglove,Twitter ）のお店「HarryHarry」での通販です。
 &button_https://harryharry.base.shop/items/76512992 通販はこちら
+
+&3 電子版
+9/18より、Boothにて電子版（PDFファイル）での頒布を開始しました！
+こちらもどうぞよろしくお願いします。
+&button_https://fantasiticden.booth.pm/items/4995890 Booth
 
 
 &1 サンプルシナリオ無料公開
 &2 ふきのとうを採りに
 現在サンプルとして拙作「ふきのとうを採りに」を &em_無料公開 しています。
 ぜひご覧ください。
-（ネタバレクッションあります。）
+（リンク先にはネタバレクッションあります。）
 &button_/scenario/fukinotou
 &br
 よろしくお願いします。
 
 &2 黎明のシンデレラ
-Pixivでは「黎明のシンデレラ」も &em_無料公開 されています。
+Pixiv・TALTOでは「黎明のシンデレラ」も &em_無料公開 されています。
 こちらもぜひご覧ください。
-（ネタバレクッションあります。）
-&button_https://www.pixiv.net/novel/show.php?id=20250460 冒険者の旅路【無料公開シナリオ】
-
+（リンク先にはネタバレクッションあります。）
+&button_https://www.pixiv.net/novel/show.php?id=20250460 Pixiv
+&button_https://talto.cc/projects/9lQ2RBAbJOlfHXtyKvlfc TALTO
 
 &1 執筆者インタビュー
-通販を行っている「 &link_https://harryharry.base.shop/items/76512992,HarryHarry 」のBLOGで執筆者インタビューを行っていただいています。
+通販を行っている「 &link_https://harryharry.base.shop/items/76512992,HarryHarry 」のBLOGにて、 &em_執筆者インタビューを行っていただきました！
+インタビューをしていただけることなんて全然無いので、とってもうれしかったです！
 ぜひ読んでください！
 &button_https://harryharry.base.shop/items/76512992 通販はこちら
 &button_https://harryharry.base.shop/blog 執筆者インタビューはこちら
 
-
+&2 「ここが好き！SW2.5」について
+また、今回の主催のDKPさんや通販を担当してくださったハリィさんへのインタビューがありますので、こちらもぜひご覧ください！
+&button_/sw25/fav/dkp
+&button_/sw25/fav/harry
 `
 </script>

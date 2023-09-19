@@ -4,7 +4,7 @@
         <div :id="id">
             <slot />
         </div>
-        <item-button v-if="id" @click="copy">{{ title }}をコピーする</item-button>
+        <item-button v-if="id" @click="copy" prepend-icon="mdi-content-copy">{{ title }}をコピーする</item-button>
     </item-block>
 </template>
   
@@ -21,7 +21,7 @@ const Props = defineProps<Props>();
 const id = ref("")
 const copy = () => {
     const text: string[] = []
-    const el = document.getElementById(id.value)
+    const el = document.querySelector(`div#${id.value}`)
     el?.querySelectorAll("p,ul,h3,h4").forEach((e) => {
         if (e.tagName === "UL") {
             let t = ""
@@ -52,7 +52,7 @@ const copy = () => {
     else $copy(text.join("\n"))
 }
 onMounted(() => {
-    id.value = String(Math.floor(Math.random() * (10 ** 5)))
+    id.value = "div-copy-" + String(Math.floor(Math.random() * (10 ** 5)))
 })
 </script>
   

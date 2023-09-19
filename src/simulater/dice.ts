@@ -1,7 +1,7 @@
 const dice = (num: number) => {
   return Math.ceil(Math.random() * num);
 };
-const ndice = (count: number, num: number) => {
+export const ndice = (count: number, num: number) => {
   const resultArray: number[] = [];
   for (let i = 0; i < count; i++) {
     resultArray.push(dice(num));

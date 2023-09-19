@@ -25,7 +25,9 @@ const andmlInlineScriptArray: AndmlScript[] = [
   { script: "ruby_", component: resolveComponent("AndmlInlineRubyc") },
   // 補足情報
   { script: "info_", component: resolveComponent("AndmlInlineInfo") },
-  { script: "hantei_", component: resolveComponent("AndmlInlineEmc") },
+  // シナリオ
+  { script: "serif_", component: resolveComponent("AndmlInlineSerif") },
+  { script: "hantei_", component: resolveComponent("AndmlInlineHantei") },
   // リンク
   { script: "link_", component: resolveComponent("AndmlInlineLink") },
   { script: "itwitter", component: resolveComponent("AndmlInlineTwitter") },

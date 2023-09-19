@@ -409,6 +409,7 @@ export const pageSettingList: PageSetting[] = [
     title: "シナリオ「ウォフト=ルーバの研究所跡」",
     to: "/scenario/uoht",
     // img: "scenario-image/.webp",
+    imddirs: ["scenario-image/uoht"],
     lastmod: "2023/10/1",
     osusume: true,
     explain: "",
@@ -418,6 +419,7 @@ export const pageSettingList: PageSetting[] = [
     title: "シナリオ「ふきのとうを採りに」from 同人シナリオ集「冒険者の旅路」",
     to: "/scenario/fukinotou",
     img: "scenario-image/fukinotou.webp",
+    imddirs: ["scenario-image/fukinotou"],
     lastmod: "2023/7/12",
     osusume: true,
     explain:

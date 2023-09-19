@@ -27,6 +27,7 @@ const andmlLineScriptArray: AndmlScript[] = [
   { script: "button-share", component: resolveComponent("AndmlLineButtonShare") },
   { script: "button-dark", component: resolveComponent("PagesSettingDarkmode") },
   { script: "button-event_", component: resolveComponent("PagesSettingEvent") },
+  { script: "button-dice_", component: resolveComponent("AndmlLineButtonDice") },
   // 画像・動画
   { script: "img_", component: resolveComponent("AndmlLineImgc") },
   { script: "youtube_", component: resolveComponent("AndmlLineYoutube") },

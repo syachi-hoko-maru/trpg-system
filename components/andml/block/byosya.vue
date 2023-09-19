@@ -1,11 +1,14 @@
 <template>
-  <item-block :color="$vuetify.theme.current.colors.primary">
+  <item-block-copy :color="$vuetify.theme.current.colors.primary" title="描写">
     <template #title>描写</template>
     <i class="italic">
       <slot />
     </i>
-  </item-block>
+  </item-block-copy>
 </template>
+
+<script setup lang="ts">
+</script>
 
 <style lang="scss" scoped>
 .italic {

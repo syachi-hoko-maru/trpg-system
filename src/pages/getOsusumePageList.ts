@@ -1,14 +1,6 @@
 import { getPageSetting, isHidden } from "./getPageSetting";
 import { pageSettingList } from "./pageSettingList";
-import { scenarioData } from "./scenario";
-
-const shuffle = <T>(array: Array<T>) => {
-  for (let i = array.length - 1; i >= 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-};
+import { shuffle } from "~/src/util";
 
 export const getOsusumePageList = (
   pageSetting: PageSetting,

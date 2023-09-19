@@ -4,17 +4,9 @@
 
 <script setup lang="ts">
 import { isHidden } from '~/src/pages/getPageSetting';
-import { isPast } from '~/src/util/date';
+import { shuffle } from '~/src/util';
 
 const { $pageSettingList } = useNuxtApp()
-
-const shuffle = <T>(array: Array<T>) => {
-    for (let i = array.length - 1; i >= 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-}
 
 const guestPageList = shuffle($pageSettingList.filter(page => !isHidden(page) && page.to.indexOf("/sw25/fav/") === 0))
 

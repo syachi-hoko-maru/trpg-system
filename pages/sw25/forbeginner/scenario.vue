@@ -21,6 +21,8 @@
 </template>
 
 <script setup lang="ts">
+import { shuffle } from '~/src/util';
+
 const andml1 = `
 &1 このページでは
 このページではソード・ワールド2.5の初心者GM向けに、シナリオを探す方法と個人的な &em_おすすめシナリオ を掲載しています。
@@ -183,14 +185,6 @@ const andml3 = `
 &button_/blog/harula2
 
 `
-
-const shuffle = <T>(array: Array<T>) => {
-  for (let i = array.length - 1; i >= 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
 
 type s = {
   scenario: string,

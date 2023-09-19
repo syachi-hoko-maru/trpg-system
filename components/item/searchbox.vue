@@ -11,6 +11,7 @@
 
 <script setup lang="ts">
 import { sampleWords } from "~/src/search/sampleWords"
+import { shuffle } from '~/src/util';
 
 interface Props {
     word?: string,
@@ -24,14 +25,6 @@ const selectTags = ref(Array.isArray(Props.tag) ? Props.tag : []);
 const searchParams = computed(() => [...selectTags.value, ...word.value.split(" ")].join("/"))
 
 const andml1 = ref("")
-
-const shuffle = <T>(array: Array<T>) => {
-    for (let i = array.length - 1; i >= 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-}
 
 const setSampleAndml = (words: string[]) => {
     const setAndmlLink = (word: string) => `「 &link_/search/${word.replace(/\s/g, "/")},${word.replace(/\s/g, "¥s")} 」`

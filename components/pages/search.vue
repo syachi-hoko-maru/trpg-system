@@ -21,7 +21,7 @@ const showCount = ref(0)
 const arr = computed(() => Props.results.filter(r => !isHidden(r)))
 const showArr = computed(() => arr.value.slice(0, (showCount.value + 1) * 10))
 
-watch(Props, () => {
+watch(Props.results, () => {
   showCount.value = 0
 })
 

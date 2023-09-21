@@ -10,7 +10,7 @@
                 また、「ハロウィンデザイン」の間、各ページに幽霊が隠れるようになっています。<br>
                 <br>
                 ハロウィンデザインへの切り替えは以下のボタンから行えます。<br>
-                <pages-setting-halloween />
+                <pages-setting-Event props="halloween" />
             </template>
             <template v-else>
                 {{ message }}<br>

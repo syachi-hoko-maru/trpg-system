@@ -44,6 +44,7 @@ const andmlLineScriptArray: AndmlScript[] = [
   { script: "game", component: resolveComponent("Game") },
   { script: "fireworks", component: resolveComponent("GameFireworks") },
   { script: "halloween-score", component: resolveComponent("GameHalloweenScore") },
+  { script: "rpg", component: resolveComponent("GameRpg") },
 ]
 
 const setLineComponent = (andml: string): AndmlData => {

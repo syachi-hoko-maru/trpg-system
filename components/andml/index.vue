@@ -22,6 +22,7 @@ const andmlBlockScriptArray: AndmlScript[] = [
   // Block系
   { script: "byosya", component: resolveComponent("AndmlBlockByosya") },
   { script: "data_", component: resolveComponent("AndmlBlockData") },
+  { script: "dnc_", component: resolveComponent("AndmlBlockDatanocopy") },
   { script: "forgm", component: resolveComponent("AndmlBlockForgm") },
   { script: "info", component: resolveComponent("AndmlBlockInfo") },
   { script: "faq_", component: resolveComponent("AndmlBlockFaq") },

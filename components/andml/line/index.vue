@@ -49,6 +49,7 @@ const andmlLineScriptArray: AndmlScript[] = [
 
 const setLineComponent = (andml: string): AndmlData => {
   if (andml.startsWith("-")) {
+    // 箇条書きは特別扱い
     const reg = new RegExp(`^(-+)\s*([^-].*)$`)
     return {
       props: andml.replace(reg, "$1"),
@@ -57,6 +58,7 @@ const setLineComponent = (andml: string): AndmlData => {
     }
   }
   if (andml.startsWith(`//`)) {
+    // コメントアウトは特別扱い
     return {
       andml: "",
       component: resolveComponent("AndmlLineP")

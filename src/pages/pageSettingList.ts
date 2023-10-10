@@ -83,6 +83,16 @@ export const pageSettingList: PageSetting[] = [
     tags: ["sw25"],
   },
   {
+    title: "ここが好き！ SW2.5  ゲスト：たかはるさん",
+    to: "/sw25/fav/takaharu",
+    img: "page-image/fav_takaharu.webp",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5/ソドワ）というTRPGのさまざまな魅力を伝えるべく、「ハルーラガイド」「Welcome to らくしあ！」などなどいろいろな活動をしていらっしゃる、たかはるさんにインタビューしました。",
+    lastmod: "2023/10/13",
+    tags: ["sw25"],
+  },
+  {
     title: "ソード・ワールド2.5 ツール一覧",
     to: "/sw25/tool",
     lastmod: "2023/4/15",

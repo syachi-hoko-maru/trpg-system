@@ -353,6 +353,16 @@ export const pageSettingList: PageSetting[] = [
     tags: ["sw25"],
   },
   {
+    title: "ルールブック・サプリメントは紙と電子書籍、どちらが良いの？",
+    to: "/sw25/forbeginner/booktype",
+    lastmod: "2023/10/12",
+    img: "page-image/booktype.webp",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5/ソドワ）のルールブックやサプリメントは紙と電子書籍のどっちが良いのか。どちらも使っている視点からメリット・デメリットを解説します。",
+    tags: ["sw25"],
+  },
+  {
     title: "「異世界冒険者ガイド」ってどんな本？",
     to: "/sw25/forbeginner/isekai",
     lastmod: "2023/5/11",

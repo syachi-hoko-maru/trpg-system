@@ -237,6 +237,7 @@ export const pageSettingList: PageSetting[] = [
       "ソドワ初心者・TRPG初心者向けのソード・ワールド2.5（SW2.5）情報をまとめているページです。種族や技能の一覧と紹介、おすすめサプリメントの紹介、シナリオの準備の仕方などGM向けの情報もあります。FAQや便利なリンクも掲載してます。",
     tags: ["sw25"],
   },
+  /*
   {
     title: "SW2.5 キャラビルドのやり方をわかりやすく解説",
     to: "/sw25/forbeginner/build",
@@ -303,7 +304,7 @@ export const pageSettingList: PageSetting[] = [
     osusume: true,
     explain: "",
     tags: ["sw25"],
-  },
+  },*/
   {
     title: "SW2.5 種族の一覧と紹介",
     to: "/sw25/forbeginner/syuzoku",

@@ -216,6 +216,18 @@ export const pageSettingList: PageSetting[] = [
     tags: ["sw25_moso", "me"],
   },
   {
+    title: "SW2.5 銭湯（せんとう）ルール",
+    to: "/sw25/data/bath",
+    img: "page-image/bath.webp",
+    imgdirs: ["other/bath"],
+    lastmod: "2023/10/11",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5/ソドワ）のオリジナル「せんとう」ルールとして作成した「銭湯ルール」を紹介しています。銭湯・温泉・公衆浴場・サウナ……での情報収集を行うためのルールです。ぜひシナリオに組み込んで、遊んでみてください！！",
+    tags: ["sw25_moso", "me"],
+  },
+
+  {
     title: "SW2.5 初心者向け情報",
     to: "/sw25/forbeginner",
     img: "page-image/forbeginner.webp",

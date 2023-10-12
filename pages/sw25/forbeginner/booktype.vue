@@ -49,6 +49,14 @@ const andml0 = `
 &br
 また、本棚の場所を取り過ぎてしまいます。
 
+&3 SW2.5のルルブを買うならHarryHarry
+ソード・ワールド2.5のルールブックを買うならHarryHarryの通信販売がおすすめです。
+なんと、ルールブックを買うと店主のハリィさんがGMとしてセッションをしてくれます！
+&br
+ルールブックI〜IIIを売ってらっしゃいますので、ソード・ワールド2.5を初めてみたい方はぜひご利用ください。
+以下の画像をクリックすると飛べます！
+&harry
+
 
 &1 電子書籍のメリット/デメリット
 電子書籍のメリットには以下のようなものがあります！
@@ -121,5 +129,11 @@ BOOK¥sWALKERはPCからも見ることもできます。
 &br
 もし周りで困っている人がいれば広めてください！
 よろしくお願いします。
+
+&2 関連ページ
+&button_/sw25/forbeginner/suppliment/1
+&button_/sw25/forbeginner/suppliment/ranking
+&button_/sw25/forbeginner/isekai
+
 `
 </script>

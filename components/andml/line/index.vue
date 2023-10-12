@@ -36,8 +36,9 @@ const andmlLineScriptArray: AndmlScript[] = [
   // 告知・宣伝
   { script: "ltwitter", component: resolveComponent("AndmlLineTwitter") },
   { script: "amazon_", component: resolveComponent("AndmlLineAmazon") },
-  { script: "harry", component: resolveComponent("AndmlLineHarry") },
   { script: "c102", component: resolveComponent("ItemNoticeC102") },
+  // バナー
+  { script: "harry", component: resolveComponent("ItemBannerHarry") },
   // 名刺
   { script: "meishi", component: resolveComponent("AndmlLineMeishi") },
   // ゲーム関連

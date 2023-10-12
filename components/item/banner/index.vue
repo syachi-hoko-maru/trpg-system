@@ -1,7 +1,7 @@
 <template>
     <div class="banner my-5">
         <atom-link :to="to" :title="`バナー「${title}」`" button>
-            <card nobefore>
+            <card nobefore :elevation="6">
                 <template #tbefore>
                     <item-img :src="img" :alt="`バナー画像「${title}」`" />
                 </template>
@@ -23,6 +23,7 @@ const Props = defineProps<Props>();
 <style scoped lang="scss">
 .banner {
     transition: .3s;
+    padding: 0 7.5%;
 
     &:hover {
         opacity: 0.8;

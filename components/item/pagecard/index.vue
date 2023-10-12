@@ -2,7 +2,7 @@
   <div class="page-card-div" :class="virtical ? 'ma-2' : 'my-5'">
     <atom-link v-if="pageSettingData" :to="pageSettingData.to + (pageSettingData.page?.length ? '/1/' : '')"
       :title="`ページ「${pageSettingData.title}」へのリンク（ページカード）`" type="pagecard" :disabled="isHidden(pageSettingData)">
-      <card :comingsoon="isHidden(pageSettingData)" :elevation="6">
+      <card :comingsoon="isHidden(pageSettingData)" :elevation="6" nobefore>
         <template #tbefore>
           <div class="pagecard d-flex justify-start page-card-incard"
             :class="virtical ? 'pagecard-virtical flex-column' : 'pagecard-side'">

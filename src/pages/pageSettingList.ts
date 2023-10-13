@@ -89,7 +89,7 @@ export const pageSettingList: PageSetting[] = [
     osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5/ソドワ）というTRPGのさまざまな魅力を伝えるべく、「ハルーラガイド」「Welcome to らくしあ！」などなどいろいろな活動をしていらっしゃる、たかはるさんにインタビューしました。",
-    lastmod: "2023/10/13",
+    lastmod: "2023/10/15",
     tags: ["sw25"],
   },
   {

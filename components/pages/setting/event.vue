@@ -4,6 +4,9 @@
       {{ ev.name }}に切り替える
     </item-button>
     <v-icon v-else @click="toggleTheme" :icon="ev.icon" class="px-5 text-textbp" />
+    <!-- <v-theme-provider theme="myCustomLightTheme">
+      <card-array-by-andml :andml="colorSampleAndml" nobefore />
+    </v-theme-provider> -->
   </template>
   <template else>
     <!-- ハロウィンボタン（10月のみ出現） -->
@@ -49,4 +52,8 @@ const toggleTheme = () => {
     setSnack("設定の保存に失敗しました")
   }
 }
+
+const colorSampleAndml = `
+&1 カラーサンプル
+このようなデザインになります。`
 </script>

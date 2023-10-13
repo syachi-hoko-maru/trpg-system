@@ -24,7 +24,7 @@ export const setSitemap = () => {
   searchWordList.forEach(({ searchWord, lastmod }) => {
     const url = `https://syachi-hoko-maru.github.io/trpg-system/search/${searchWord
       .map(encodeURIComponent)
-      .join("/")}`;
+      .join("/")}/`;
     result += `<url><loc>${url}</loc><lastmod>${lastmod}</lastmod></url>`;
   });
 

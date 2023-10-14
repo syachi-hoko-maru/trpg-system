@@ -88,7 +88,7 @@ export const pageSettingList: PageSetting[] = [
     img: "page-image/fav_takaharu.webp",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5/ソドワ）というTRPGのさまざまな魅力を伝えるべく、「ハルーラガイド」「Welcome to らくしあ！」などなどいろいろな活動をしていらっしゃる、たかはるさんにインタビューしました。",
+      "ソード・ワールド2.5（SW2.5/ソドワ）というTRPGのさまざまな魅力を伝えるべく、「ハルーラガイド」「Welcome to らくしあ！」などなどいろいろな活動をしていらっしゃる、たかはるさんにインタビューしました。SW2.5のイラスト付きシナリオの無料公開もあります！",
     lastmod: "2023/10/15",
     tags: ["sw25"],
   },

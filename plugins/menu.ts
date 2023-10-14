@@ -56,12 +56,30 @@ const menuList: (MenuCategory | MenuPage)[] = [
       },
       {
         icon: "mdi-star",
-        title: "シナリオの探し方",
+        title: "おすすめシナリオ",
         to: "/sw25/forbeginner/scenario",
         // disabled: true,
       },
     ],
   },
+  {
+    categoryName: "SW2.5 特集",
+    // hidden: true,
+    pageList: [
+      {
+        icon: "mdi-heart",
+        title: "ここが好き！ SW2.5",
+        to: "/sw25/fav",
+      },
+
+      {
+        icon: "mdi-calendar",
+        title: "新刊情報",
+        to: "/sw25/new",
+      },
+    ],
+  },
+
   {
     categoryName: "シナリオ",
     pageList: [

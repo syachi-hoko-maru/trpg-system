@@ -9,6 +9,7 @@
     </div>
   </card>
   <!-- <item-banner-c102 /> -->
+  <item-banner-halloween />
   <item-notice title="しゃちほこ丸からのお知らせ" />
   <template v-if="!pageSetting.noamazon && pageSetting.tags.findIndex(tag => tag.indexOf('sw25') >= 0) >= 0">
     <card>
@@ -31,7 +32,8 @@
   <layouts-tail-card-aboutme />
   <layouts-tail-card-osusume type="osusume" />
   <layouts-tail-card-osusume type="popular" />
-  <item-banner-c102 />
+  <!-- <item-banner-c102 /> -->
+  <item-banner-halloween />
   <card>
     <item-button @click="scrollTop">上へ戻る</item-button>
     <item-button v-if="pageSetting.to.indexOf('/blog/') === 0" url="/blog" normal-button>ブログトップへ</item-button>

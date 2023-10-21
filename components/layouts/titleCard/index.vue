@@ -21,7 +21,8 @@
       </div>
     </template>
   </card>
-  <item-banner-c102 />
+  <!-- <item-banner-c102 /> -->
+  <item-banner-halloween />
 </template>
 
 <script setup lang="ts">

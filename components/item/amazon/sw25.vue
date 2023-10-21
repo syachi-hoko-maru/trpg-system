@@ -62,8 +62,8 @@ const items: { title: string, src: string }[] = [
     src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040751868&linkId=267fd8a2abcbf8e95f134363fbf2dc72"
   },
   {
-    title: "リプレイ 時の魔域と秘宝の守り人",
-    src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040750241&linkId=6d2bf0e7dbf9aaf6f8fa577e14236b7e"
+    title: "ギルドマスター・ウォーロックの依頼録",
+    src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040752325&linkId=17370b28e22e2f9795a586c466619def"
   },
   {
     title: "アーケインレリック",
@@ -71,6 +71,10 @@ const items: { title: string, src: string }[] = [
   }, {
     title: "ノベル+シナリオ 猫と星と秘宝",
     src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040751167&linkId=946eccfc502b3e03bee511b5111b2656"
+  },
+  {
+    title: "リプレイ 時の魔域と秘宝の守り人",
+    src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040750241&linkId=6d2bf0e7dbf9aaf6f8fa577e14236b7e"
   },
   {
     title: "異世界冒険ガイド2",

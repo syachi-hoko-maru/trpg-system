@@ -74,6 +74,14 @@ export const bannerList: Banner[] = [
     isValid: true,
   },
   {
+    name: "osusume-scenario",
+    title: "ソード・ワールド2.5シナリオの探し方とおすすめシナリオ！",
+    to: "/sw25/forbeginner/scenario",
+    img: "/banner-image/osusume-scenario.webp",
+    isValid: true,
+  },
+
+  {
     name: "data",
     title: "ソード・ワールド2.5オリジナルデータ公開中",
     to: "/sw25/data",

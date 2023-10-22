@@ -4,16 +4,16 @@
 
 <script setup lang="ts">
 import { bannerList } from "~/src/banner/banners"
-const { getBanner } = usePages()
-const route = useRoute()
+const { getBanner, nowPageSetting } = usePages()
 
 const banner = ref(bannerList[0])
 
 onMounted(() => {
     banner.value = getBanner()
-    watch(route, () => {
+    watch(nowPageSetting, () => {
         banner.value = getBanner()
-        if (banner.value.to + "/" === route.path) {
+        console.log(banner.value.to === nowPageSetting.value.to, banner.value.to, nowPageSetting.value.to)
+        if (banner.value.to === nowPageSetting.value.to) {
             banner.value = getBanner()
         }
     })

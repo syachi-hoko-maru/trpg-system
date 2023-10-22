@@ -1,5 +1,6 @@
 import { Ref } from "vue";
 import { Banner, bannerList } from "~/src/banner/banners";
+import { shuffle } from "~/src/util";
 
 export const usePages = () => {
   const route = useRoute();
@@ -61,9 +62,14 @@ export const usePages = () => {
   };
 
   // バナー関連
-  const nowBannerList = ref(
-    bannerList.filter(({ to }) => to !== pageArray.value[0])
-  );
+
+  const nowBannerList = ref();
+  const setNowBannerList = () => {
+    nowBannerList.value = shuffle(
+      bannerList.filter(({ to }) => to !== nowPageSetting.value.to)
+    );
+  };
+  setNowBannerList();
   const getBanner = (): Banner => {
     return nowBannerList.value[
       Math.floor(Math.random() * nowBannerList.value.length)
@@ -91,9 +97,7 @@ export const usePages = () => {
       "popular",
       pageArray.value
     );
-    nowBannerList.value = bannerList.filter(
-      ({ to }) => to !== pageArray.value[0]
-    );
+    setNowBannerList();
   };
   changeRoute();
   watch(route, changeRoute);

@@ -5,6 +5,7 @@
 <script setup lang="ts">
 
 const andml = `
+&1 Twitterコミュニティ！
 Twitterにはソード・ワールド2.5（SW2.5）に関するコミュニティがあります。
 &br
 Twitterの機能なので抜けるのも見ないのも簡単です。

@@ -16,7 +16,7 @@
     </template>
   </card>
 
-  <item-banner />
+  <item-banner name="halloween" />
   <game-fireworks v-if="holdingFireworks" />
 
   <div class="grid">
@@ -33,7 +33,9 @@
     </card>
     <item-notice title="Notice" nobefore />
   </div>
-  <item-banner />
+  <div class="mid-grid">
+    <item-banner />
+  </div>
   <div class="grid contents">
     <card-array-by-andml :andml="andml2" nobefore />
     <card nobefore>
@@ -45,7 +47,9 @@
       </template>
     </card>
   </div>
-  <item-banner />
+  <div class="mid-grid">
+    <item-banner />
+  </div>
   <div class="grid">
     <card nobefore>
       <template #title>
@@ -243,8 +247,6 @@ div.thumbnail-div {
     column-count: 1;
   }
 
-
-
   >section.card-div {
     margin-bottom: 20px;
     -webkit-column-break-inside: avoid;
@@ -273,6 +275,18 @@ div.thumbnail-div {
         }
       }
     }
+  }
+}
+
+.mid-grid {
+  padding: 0 25%;
+
+  @media screen and (max-width: 1920px) {
+    padding: 0 20%;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 0;
   }
 }
 </style>

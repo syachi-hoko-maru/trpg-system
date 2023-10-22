@@ -21,8 +21,7 @@
       </div>
     </template>
   </card>
-  <!-- <item-banner-c102 /> -->
-  <item-banner-halloween />
+  <item-banner v-if="!pageSetting.specialPage" />
 </template>
 
 <script setup lang="ts">

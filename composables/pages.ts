@@ -1,4 +1,5 @@
 import { Ref } from "vue";
+import { Banner, bannerList } from "~/src/banner/banners";
 
 export const usePages = () => {
   const route = useRoute();
@@ -46,19 +47,35 @@ export const usePages = () => {
     else return foundObj[query];
   };
 
-  const savePage = (path?: string) => {
+  const savePage = (path?: string): boolean => {
     const p = path ? path : route.fullPath;
-    if (!p) return;
+    if (!p) return false;
     const pageUrl = p.replace(/(.+)\/+$/, "$1");
     if (pageUrl !== pageArray.value[0]) {
       pageArray.value.unshift(pageUrl);
       console.log("save page", pageArray.value);
+      return true;
+    } else {
+      return false;
     }
   };
 
+  // バナー関連
+  const nowBannerList = ref(
+    bannerList.filter(({ to }) => to !== pageArray.value[0])
+  );
+  const getBanner = (): Banner => {
+    return nowBannerList.value[
+      Math.floor(Math.random() * nowBannerList.value.length)
+    ];
+  };
+
+  /**
+   * ページが変わった際の処理
+   */
   const changeRoute = () => {
+    const r = savePage();
     nowPageSetting.value = $getPageSetting(route.fullPath);
-    savePage();
     osusumePageArray.value = $getOsusumePageList(
       nowPageSetting.value,
       "osusume",
@@ -73,6 +90,9 @@ export const usePages = () => {
       nowPageSetting.value,
       "popular",
       pageArray.value
+    );
+    nowBannerList.value = bannerList.filter(
+      ({ to }) => to !== pageArray.value[0]
     );
   };
   changeRoute();
@@ -89,5 +109,6 @@ export const usePages = () => {
     getNowPath,
     getQuerys,
     getQueryValue,
+    getBanner,
   };
 };

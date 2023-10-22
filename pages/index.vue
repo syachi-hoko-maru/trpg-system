@@ -16,6 +16,7 @@
     </template>
   </card>
 
+  <item-banner />
   <game-fireworks v-if="holdingFireworks" />
 
   <div class="grid">
@@ -32,7 +33,7 @@
     </card>
     <item-notice title="Notice" nobefore />
   </div>
-
+  <item-banner />
   <div class="grid contents">
     <card-array-by-andml :andml="andml2" nobefore />
     <card nobefore>
@@ -44,7 +45,7 @@
       </template>
     </card>
   </div>
-
+  <item-banner />
   <div class="grid">
     <card nobefore>
       <template #title>

@@ -17,7 +17,7 @@ const andml_main = `
 このページの内容を使って遊んだり、さらに別のオリジナル設定を使う際は、 &em_以下を必ず記載してくださるよう、お願いします。
 &&gray
 TRPGギルド支部〈しゃちほこの尾びれ亭〉の内容を参考にしています。
-https://syachi-hoko-maru.github.io/trpg-system/sw25/data
+https://trpg.syachi.work/sw25/data
 &&&
 &br
 また、 &em_このページの内容は執筆中です。
@@ -409,7 +409,7 @@ GMやシナリオ制作者は他にも自由にシナリオを作って構いま
 このページの内容を使って遊んだり、さらに別のオリジナル設定を使う際は、 &em_以下を必ず記載してくださるよう、お願いします。
 &&gray
 TRPGギルド支部〈しゃちほこの尾びれ亭〉の内容を参考にしています。
-https://syachi-hoko-maru.github.io/trpg-system/sw25/data
+https://trpg.syachi.work/sw25/data
 &&&
 &br
 また、 &em_このページの内容は執筆中です。

@@ -37,12 +37,12 @@ if (process.argv.join().indexOf("generate") >= 0) {
 const title = "TRPGギルド支部〈しゃちほこの尾びれ亭〉";
 const description =
   "このサイトではTRPG 、特にSW2.5のシナリオの公開や、役立つツールの提供などを行なっています。";
-const baseUrl = "https://syachi-hoko-maru.github.io/trpg-system";
+const baseUrl = "https://trpg.syachi.work";
 
 export default defineNuxtConfig({
   css: ["vuetify/lib/styles/main.sass", "mdi/css/materialdesignicons.min.css"],
   app: {
-    baseURL: "/trpg-system/",
+    // baseURL: "/trpg-system/",
     head: {
       title,
       meta: [

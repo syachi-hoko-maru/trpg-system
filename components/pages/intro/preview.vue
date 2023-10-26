@@ -6,7 +6,7 @@
     確認の上、保存してください。PCなら右クリック、スマホなら長押しで保存ができます。
     <canvas id="canvas" :width="canvasWidth" :height="canvasHeight" style="display: none;" />
     <item-img v-if="imageUrl" alt="ソード・ワールド2.5自己紹介シート" :src="imageUrl" />
-    <item-share :text="shareMessage" url="https://syachi-hoko-maru.github.io/trpg-system/sw25/tool/intro/"
+    <item-share :text="shareMessage" url="https://trpg.syachi.work/sw25/tool/intro/"
       hashTag="sw25,sw25自己紹介シート,TRPG好きと繋がりたい,TRPG自己紹介シート">ツイート用ボタン</item-share>
   </card>
 </template>

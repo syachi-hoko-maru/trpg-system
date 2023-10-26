@@ -22,7 +22,7 @@ export const setSitemap = () => {
 
   // 検索関連
   searchWordList.forEach(({ searchWord, lastmod }) => {
-    const url = `https://syachi-hoko-maru.github.io/trpg-system/search/${searchWord
+    const url = `https://trpg.syachi.work/search/${searchWord
       .map(encodeURIComponent)
       .join("/")}/`;
     result += `<url><loc>${url}</loc><lastmod>${lastmod}</lastmod></url>`;
@@ -53,7 +53,7 @@ const setUrlBlock = (pageSetting: PageSetting): string => {
 };
 
 const setLocAndLastmod = (pageSetting: PageSetting, page?: number): string => {
-  const url = `https://syachi-hoko-maru.github.io/trpg-system
+  const url = `https://trpg.syachi.work
   ${pageSetting.to !== "/" ? pageSetting.to + "/" : "/"}
   ${page ? page + "/" : ""}`;
 
@@ -70,8 +70,8 @@ const publicPath = `${process.cwd()}/public/`;
 const setImages = (pageSetting: PageSetting): string => {
   let result = "";
   if (pageSetting.img) {
-    const webpUrl = `https://syachi-hoko-maru.github.io/trpg-system/webp/${pageSetting.img}`;
-    const pngUrl = `https://syachi-hoko-maru.github.io/trpg-system/image/${pageSetting.img.replace(
+    const webpUrl = `https://trpg.syachi.work/webp/${pageSetting.img}`;
+    const pngUrl = `https://trpg.syachi.work/image/${pageSetting.img.replace(
       /webp$/,
       "png"
     )}`;
@@ -90,9 +90,7 @@ const setImages = (pageSetting: PageSetting): string => {
         const itemStat = statSync(publicPath + path);
         if (!itemStat.isDirectory()) {
           // ディレクトリではない→画像として追加する
-          result += setImage(
-            `https://syachi-hoko-maru.github.io/trpg-system/${path}`
-          );
+          result += setImage(`https://trpg.syachi.work/${path}`);
         }
       });
   });

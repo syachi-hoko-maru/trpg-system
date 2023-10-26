@@ -200,7 +200,7 @@ SW2.0にいた種族のうち、まだSW2.5で出ていない種族は
 「ミストグレイヴ」は「ミストキャッスル」というソード・ワールド2.0のバトルブックサプリの第1弾の地下を冒険するストーリーだったので、 &em_ヴァイスシティの地下を冒険する バトルブックサプリが出るかも 知れません。
 
 &2 まとめ
-&link_http://localhost:3001/trpg-system/sw25/forbeginner/suppliment/1/#サプリメントの分類,サプリメントの分類 ごとに刊行予想をまとめました。
+&link_sw25/forbeginner/suppliment/1/#サプリメントの分類,サプリメントの分類 ごとに刊行予想をまとめました。
 &br
 - &link_/sw25/forbeginner/suppliment/2,大型サプリ or &link_/sw25/forbeginner/suppliment/3,キャラビルドサプリ
 -- 蛮族サプリメント

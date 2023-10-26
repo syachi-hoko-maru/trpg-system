@@ -11,7 +11,7 @@ export const fetchSearchJSON = async (maxCount = 5): Promise<SearchJSON> => {
   mainLoop: while (count < maxCount) {
     try {
       json = (
-        await useFetch("/trpg-system/search.json").catch((err) => {
+        await useFetch("/search.json").catch((err) => {
           console.error(err);
           return { data: ref({}) };
         })

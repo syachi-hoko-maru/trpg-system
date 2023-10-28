@@ -17,9 +17,8 @@
       </template>
       <andml :andmls="andml1" />
     </card>
-    <item-amazon-sw25 />
+    <item-amazon-zone v-if="!pageSetting.noamazon" />
   </template>
-  <!-- <item-amazon-box v-if="!pageSetting.noamazon" /> -->
   <card v-if="recent.length && mounted">
     <template #title>
       最近更新されたページ
@@ -78,7 +77,7 @@ const sourceAndml = computed(() => `
 -- &link_http://www.groupsne.co.jp/news/book.html,公式Twitter
 -- &link_http://www.groupsne.co.jp/products/magazine/GMW/index.html,グループSNEオフィシャルサイト「製品案内」
 - &link_https://twitter.com/dragonbook_game,富士見ドラゴンブック編集部Twitter
--- 書影の公開はここ（かAmazon）が最初になることが多いです。
+-- 書影（表紙イラスト）の公開はここ（かAmazon）が最初になることが多いです。
 - &link_https://www.kadokawa.co.jp/calendar/,KADOKAWA新刊カレンダー
 -- 毎月初めに来月分の新刊情報が公開されます。
 

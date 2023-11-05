@@ -53,9 +53,18 @@ const andml = `
 &button_https://yutorize.2-d.jp/ytsheet/sw2.5/?tag=%E3%81%97%E3%82%83%E3%81%A1%E3%81%BB%E3%81%93%E4%B8%B8%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B7%E3%82%BA%E5%A6%84%E6%83%B3%E9%8C%B2&type=i アイテム一覧
 
 &1 イベント系
+&2 ハロウィン
+アイデアベースの公開ですが、ハロウィン用の魔物データを公開しています。
+&button_/blog/halloween2
+
 &2 クリスマス
 クリスマスをテーマにしたシナリオに出てきそうな、クリスマスツリーモチーフの魔物（6レベルと16レベル）です。
 &button_https://yutorize.2-d.jp/ytsheet/sw2.5/?tag=%E3%81%97%E3%82%83%E3%81%A1%E3%81%BB%E3%81%93%E4%B8%B8%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%9E%E3%82%B9&type=m こちら
+
+&1 オリジナルルール
+&2 銭湯ルール
+銭湯で情報収集などをするためのルールです！
+&button_/sw25/data/bath
 
 `
 </script>

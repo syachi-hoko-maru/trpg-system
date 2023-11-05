@@ -23,11 +23,21 @@ export const setBlogTxt = async (): Promise<RawBlog[]> => {
             img = `page-image/${lines[3].replace("ogp=", "")}\.webp`;
           }
           // OGP処理ここまで
+          // 日付処理（2023/11/5追加、更新用）
+          const dates = lines[1].split(",");
+          const date = dates[0];
+          const date2 = dates[1] ? dates[1] : dates[0];
+          // 日付処理ここまで
           blogs.push({
             id,
+            // 1行目がタイトル
             title: lines[0],
-            date: lines[1],
+            // 2行目が日付
+            date: date,
+            date2: date2,
+            // 3行目がタグ
             tags: lines[2].split(","),
+            // 以降がブログ本文
             andml: lines.slice(bodyStratLine).join("\n"),
             img,
           });

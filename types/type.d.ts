@@ -31,6 +31,7 @@ declare type PageSetting = {
   readonly to: string;
   readonly page?: string[];
   readonly lastmod: string;
+  readonly created?: string;
   readonly img?: string;
   readonly imgdirs?: string[];
   osusume?: boolean;
@@ -81,6 +82,7 @@ declare type Blog = {
   title: string;
   tags: PageTag[];
   date: string;
+  date2: string;
   andml: string;
   img: string;
 };

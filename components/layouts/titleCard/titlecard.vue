@@ -13,7 +13,8 @@
         <item-share-page :page-setting="pageSetting" icon />
       </div>
     </template>
-    <template #subtitle v-if="pageSetting && pageSetting.to.indexOf('/blog/') === 0">{{ pageSetting?.lastmod }}</template>
+    <template #subtitle v-if="pageSetting && pageSetting.to.indexOf('/blog/') === 0">{{
+      pageSetting?.created ? pageSetting?.created : pageSetting?.lastmod }}</template>
     <template #after>
       <div class="tag">
         <template v-if="pageSetting && pageSetting.tags?.length">

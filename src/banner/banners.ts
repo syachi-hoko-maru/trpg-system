@@ -80,13 +80,19 @@ export const bannerList: Banner[] = [
     img: "/banner-image/osusume-scenario.webp",
     isValid: true,
   },
-
   {
     name: "data",
     title: "ソード・ワールド2.5オリジナルデータ公開中",
     to: "/sw25/data",
     img: "/banner-image/data.webp",
     isValid: true,
+  },
+  {
+    name: "comic",
+    title: "女子高生×部活×SW2.5 無料マンガ だいすろーる！ 紹介",
+    to: "/sw25/comic",
+    img: "/banner-image/comic.webp",
+    isValid: isPast("2023/11/17"),
   },
   {
     name: "scenario",

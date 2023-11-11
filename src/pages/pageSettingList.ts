@@ -417,6 +417,17 @@ export const pageSettingList: PageSetting[] = [
     noamazon: true,
   },
   {
+    title: "女子高生×部活×SW2.5 無料マンガ だいすろーる！ 紹介",
+    to: "/sw25/comic",
+    lastmod: "2023/11/17",
+    img: "page-image/comic.webp",
+    osusume: true,
+    explain:
+      "TRPGが登場する、グループSNE監修の無料マンガ「だいすろーる！」の紹介です！　ソード・ワールド2.5（SW2.5/ソドワ）がバンバン出てきます！　女子高生たちのゆるふわしたTRPGライフを漫画で読んで楽しみましょう。TRPGあるあるも多数！",
+    tags: ["sw25", "trpg"],
+  },
+
+  {
     title: "SW2.5同人シナリオ集「冒険者の旅路」【C102】",
     to: "/sw25/c102",
     lastmod: "2023/9/19",
@@ -426,7 +437,6 @@ export const pageSettingList: PageSetting[] = [
       "2023年の夏コミ（C102）でソード・ワールド2.5（SW2.5/ソドワ）の同人シナリオ集が出ました。現在、通販と電子版の頒布をしています。「冒険者の旅路」には4人の作者によるシナリオ6本とキャンペーン1本が掲載。初期作成〜14レベルまでの幅広いレベル帯で遊ぶことができます。企画：幻想書斎（DKP）、協力：灰かぶりのねずみ亭（たかはる）、後援：鳩麦開卓所（十一里あるく）。執筆：しゃちほこ丸・どっかのだれか・りあ・DKP、編集：DKP、表紙イラスト：たつみ。",
     tags: ["sw25", "scenario"],
   },
-
   {
     title: "公開シナリオ一覧",
     to: "/scenario",

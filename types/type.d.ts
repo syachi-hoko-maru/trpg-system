@@ -114,5 +114,5 @@ type LinkType =
   | "twitter_account"
   | "carousel";
 
-type SearchJSON = { [pageTo: string]: string };
+type SearchJSON = { [pageTo: string]: [string, number][] };
 type SearchResult = { pageSetting: PageSetting; kanren: number };

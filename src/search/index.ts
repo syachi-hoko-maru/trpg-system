@@ -1,4 +1,5 @@
-import { word4search } from "../after/word4search";
+import exp from "constants";
+import { word4search } from "../after/search/word4search";
 import { wordList } from "../dict";
 import { isHidden } from "../pages/getPageSetting";
 import { pageSettingList } from "../pages/pageSettingList";
@@ -57,7 +58,7 @@ export const search = (
       // タイトル用に検索文字列を追加
       wordsForTitle.push(query.replace(/and/g, " "));
       // 文字を整形して単語集に追加する
-      setWordForSearch(query).forEach((word) => wordsForSearch.push(word));
+      wordsForSearch.push(...word4search(query));
     }
   });
 
@@ -72,7 +73,7 @@ export const search = (
     searchFilters.push((pageSetting) => {
       if (pageSetting.tags.findIndex((t) => t.indexOf(tag) >= 0) >= 0) {
         // タグがないならフリーワードがどんなに揃っていても劣後なので、フリーワードの最大点数（7点）のフリーワード数分だけ足す
-        return (wordsForSearch.length + 1) * 7;
+        return (wordsForSearch.length + 1) * 17;
       } else {
         return 0;
       }
@@ -92,27 +93,63 @@ export const search = (
       // ページのタイトルと含まれる文字を取得する
       const { title, explain, json } = getPageWords(pageSetting, searchJSON);
       let point = 0;
-      if (title.indexOf(searchWord) >= 0) {
-        // タイトルに一致するものがある→2.5点を追加
-        point += 2.5;
+      // タイトルについてチェックする
+      if (title.join("").indexOf(searchWord) >= 0) {
+        // タイトルに一致するものがある→5〜8点を追加
+        point += 8;
+      } else {
+        for (let t of title) {
+          if (searchWord.indexOf(t)) {
+            point += 5;
+            break;
+          }
+        }
       }
-      if (explain.indexOf(searchWord) >= 0) {
-        // 説明（pageのdescriptionとタグの説明）に一致するものがある→1〜1.25点を追加
+      if (explain.join("").indexOf(searchWord) >= 0) {
+        // 説明（pageのdescriptionとタグの説明）に一致するものがある→3~4点を追加
+        point +=
+          3 +
+          Math.min(
+            ((explain.join("").match(new RegExp(searchWord, "g")) || [])
+              .length *
+              0.25) /
+              5,
+            1
+          );
+      } else {
+        for (let t of explain) {
+          if (searchWord.indexOf(t)) {
+            point += 3;
+            break;
+          }
+        }
+      }
+      if (
+        json
+          .map((s) => s[0])
+          .join("")
+          .indexOf(searchWord) >= 0
+      ) {
+        // 内容に一致するものがある→1〜2点を追加
+        // 「マッチ度」（=出現数/10）を入れる（9/12ページの長さに由来しないように修正した）
         point +=
           1 +
           Math.min(
-            ((explain.match(new RegExp(searchWord, "g")) || []).length * 0.25) /
-              5,
-            0.25
+            (
+              json
+                .map((s) => s[0])
+                .join("")
+                .match(new RegExp(searchWord, "g")) || []
+            ).length / 20,
+            1
           );
-      }
-      if (json.indexOf(searchWord) >= 0) {
-        // 内容に一致するものがある→0.05〜0.25点を追加
-        // 「マッチ度」（=出現数/10）を入れる（9/12ページの長さに由来しないように修正した）
-        point += Math.min(
-          (json.match(new RegExp(searchWord, "g")) || []).length / 20,
-          0.25
-        );
+      } else {
+        for (let t of json.map((s) => s[0])) {
+          if (searchWord.indexOf(t)) {
+            point += 1;
+            break;
+          }
+        }
       }
       if (point > 0) {
         // ポイントが少しでも入っている
@@ -132,10 +169,10 @@ export const search = (
    * 関連度合いの算出で使用する
    */
   const lineScore =
-    // 各タグの合格ライン = 7 * (wordsForSearch.length + 1)
-    tagsForSearch.length * 7 * (wordsForSearch.length + 1) +
+    // 各タグの合格ライン = 17 * (wordsForSearch.length + 1)
+    tagsForSearch.length * 17 * (wordsForSearch.length + 1) +
     // 各フリーワードの合格ライン = 3
-    wordsForSearch.length * 3;
+    wordsForSearch.length * 4;
 
   // 検索を行い、結果を取得する
   const results: SearchResult[] = pageSettingList
@@ -218,24 +255,6 @@ export const search = (
 };
 
 /**
- * フリーワード検索の入力を単語に分解する関数
- * @param word
- * @returns
- */
-const setWordForSearch = (word: string): string[] =>
-  // 検索用にワードを設定する
-  // カタカナを分離する
-  word
-    .replace(/([\u30A1-\u30FAー]+)/g, " $1 ")
-    // 英語を分離する
-    .replace(/([a-zA-Z]+)/g, " $1 ")
-    // 数字を分離する
-    .replace(/([0-9]+)/g, " $1 ")
-    .split(" ")
-    .map(word4search)
-    .filter((w) => w.length);
-
-/**
  * ページに含まれる文字を検索用に設定する
  * @param pageSetting
  * @param searchJSON
@@ -244,30 +263,33 @@ const setWordForSearch = (word: string): string[] =>
 const getPageWords = (
   pageSetting: PageSetting,
   searchJSON: SearchJSON
-): { title: string; explain: string; json: string } => {
+): { title: string[]; explain: string[]; json: [string, number][] } => {
   // タイトルは特別扱いで、別で追加しておく
   const title = word4search(pageSetting.title);
 
   // 次にページ設定から内容を追加していく
-  let explain = "";
-  // ブログの場合以外はページの説明を追加する
-  explain +=
-    pageSetting.to.indexOf("/blog/") === 0
-      ? Array.isArray(pageSetting.explain)
-        ? pageSetting.explain.join()
-        : pageSetting.explain
-      : "";
-  // ページのタグの表示名と説明を追加する
-  explain += pageSetting.tags
-    .map((tag) => pageTagSettings[tag].label + pageTagSettings[tag].explanation)
-    .join();
-  // ページ設定を整形する
-  explain = word4search(explain);
+  let explain: string[] = [
+    ...word4search(
+      pageSetting.to.indexOf("/blog/") === 0
+        ? Array.isArray(pageSetting.explain)
+          ? pageSetting.explain.join()
+          : pageSetting.explain
+          ? pageSetting.explain
+          : ""
+        : ""
+    ),
+    ...pageSetting.tags
+      .map(
+        (tag) => pageTagSettings[tag].label + pageTagSettings[tag].explanation
+      )
+      .map(word4search)
+      .flat(),
+  ];
 
-  let json = "";
+  let json: [string, number][] = [];
   // 検索結果からの追加を行う
   try {
-    json += searchJSON[pageSetting.to];
+    json.push(...searchJSON[pageSetting.to]);
   } catch {}
   return { title, explain, json };
 };

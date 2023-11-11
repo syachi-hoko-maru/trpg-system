@@ -1,5 +1,4 @@
-import exp from "constants";
-import { word4search } from "../after/search/word4search";
+import { word4search } from "../util/word4search";
 import { wordList } from "../dict";
 import { isHidden } from "../pages/getPageSetting";
 import { pageSettingList } from "../pages/pageSettingList";

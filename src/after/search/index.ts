@@ -1,5 +1,5 @@
-import { readdirSync, readFileSync, writeFileSync } from "fs";
-import { word4search } from "./word4search";
+import { readFileSync, writeFileSync } from "fs";
+import { word4search } from "../../util/word4search";
 import { getMainDataFromHTML, searchHTMLFiles } from "./getHTML";
 
 export const outputDir = `${process.cwd()}/.output/public`;

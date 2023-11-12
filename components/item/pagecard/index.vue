@@ -7,6 +7,9 @@
           <div class="pagecard d-flex justify-start page-card-incard"
             :class="virtical ? 'pagecard-virtical flex-column' : 'pagecard-side'">
             <div class="pagecard-image" v-if="pageSettingData.img">
+              <div v-if="isNew" class="new">
+                NEW
+              </div>
               <item-img :src="pageSettingData.img" :alt="`ページ「${pageSettingData.title}」のサムネイル画像`" height="100%" cover
                 class="ma-0" />
             </div>
@@ -39,6 +42,7 @@
 <script setup lang="ts">
 import { Ref } from 'vue';
 import { isHidden } from '~/src/pages/getPageSetting';
+import { isPast } from '~/src/util/date';
 
 interface Props {
   pageSetting?: PageSetting,
@@ -55,6 +59,9 @@ const pageSettingData: Ref<PageSetting | undefined> = computed(() => Props.pageS
     ? $getPageSetting(Props.pagePath)
     : undefined
 )
+
+// 14日以内ならNEWを表示する
+const isNew = Props.pageSetting?.created ? !isPast(new Date(new Date(Props.pageSetting?.created).getTime() + 14 * 24 * 60 * 60 * 1000)) : false
 
 const mounted = ref(false)
 onMounted(() => {
@@ -94,10 +101,43 @@ div.page-card-div {
       }
     }
 
+    .new {
+      position: absolute;
+      font-size: 1.25vw;
+      height: 1.25vw;
+      line-height: 1.25vw;
+      background-color: red;
+      padding: 0 0.5vw;
+      top: 0.5vw;
+      left: 0.5vw;
+      z-index: 10;
+
+      @media screen and (max-width: 1280px) {
+        font-size: 1.5vw;
+        height: 1.5vw;
+        line-height: 1.5vw;
+      }
+
+      @media screen and (max-width: 960px) {
+        font-size: 2.5vw;
+        height: 2.5vw;
+        line-height: 2.5vw;
+      }
+
+
+      @media screen and (max-width: 350px) {
+        font-size: 3vw;
+        height: 3vw;
+        line-height: 3vw;
+      }
+    }
+
+
     &.pagecard-side {
       aspect-ratio: 100/21;
 
       .pagecard-image {
+        position: static;
         width: 40%;
         height: 100%;
       }

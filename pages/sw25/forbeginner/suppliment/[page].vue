@@ -3,6 +3,7 @@
   <CardArrayByAndml :andml="first" v-if="page <= 1" />
   <PagesSuppliment v-if="page >= 2 && page <= pagemax" :num="page - 2" />
   <CardArrayByAndml :andml="end" v-if="page >= pagemax" />
+  <CardArrayByAndml :andml="add" />
 </template>
 
 <script setup lang="ts">
@@ -54,6 +55,7 @@ const first = `
 &3 新刊情報はこちら！
 &em_新刊情報と刊行予想 については以下のページをご覧ください。
 &button_/sw25/new
+&button_/search/?tag=sw25_new&sort=recent 新刊情報一覧
 
 &1 SW2.5の展開について
 執筆している2023年7月現在、 &info_sw25 は発売から5年の月日が流れており、この間に多数の関連書籍等が出版されています。
@@ -170,6 +172,14 @@ const end = `
 遊ぶ人を探す際は以下も参考にしてみてください。
 &button_/sw25/tool/intro
 &button_/sw25/tool/community
+`
+
+const add = `
+&1 最新情報はこちら！
+この「おすすめサプリメント紹介」は発売後、少し時間が経ってからの更新となります。
+&br
+「最新のサプリはどんな感じなの？」「新しく出るサプリは？」という方は、以下のボタンをクリックして最新の情報を探してください！
+&button_/search/?tag=sw25_new&sort=recent 新刊情報一覧
 `
 
 

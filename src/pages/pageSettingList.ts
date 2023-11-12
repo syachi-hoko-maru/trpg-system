@@ -335,7 +335,7 @@ export const pageSettingList: PageSetting[] = [
       "ツアーサプリ",
       "バトルブックサプリ",
     ],
-    lastmod: "2023/7/31",
+    lastmod: "2023/11/12",
     img: "page-image/suppliment.webp",
     osusume: true,
     explain:
@@ -345,7 +345,7 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "SW2.5のおすすめサプリメントをランキング形式で紹介！",
     to: "/sw25/forbeginner/suppliment/ranking",
-    lastmod: "2023/7/31",
+    lastmod: "2023/11/12",
     img: "page-image/ranking.webp",
     osusume: true,
     explain:
@@ -419,6 +419,7 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "女子高生×部活×SW2.5 無料マンガ だいすろーる！ 紹介",
     to: "/sw25/comic",
+    created: "2023/11/17",
     lastmod: "2023/11/17",
     img: "page-image/comic.webp",
     osusume: true,

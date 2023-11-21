@@ -8,7 +8,8 @@
 </template>
 
 <script setup lang="ts">
-import { isPast } from '~/src/util/date';
+import { pageSettingList } from '~/src/pages/pageSettingList';
+import { isPast, sortByDate } from '~/src/util/date';
 
 interface Props {
     title: string
@@ -16,50 +17,36 @@ interface Props {
 }
 const Props = defineProps<Props>();
 
+const newSW25NewPage: PageSetting | undefined = pageSettingList
+    .filter(p =>
+        p.tags.indexOf("sw25_new") >= 0
+        && isPast(p.lastmod)
+        && !isPast(p.lastmod, new Date(new Date().getTime() - 30 * 24 * 60 * 60 * 1000)))
+    .sort((a, b) => sortByDate(true)(a.lastmod, b.lastmod))[0]
 
 const andml1 =
-    (!isPast("2023/12/1") ? `
+    (!isPast("2023/12/10") ? `
+&3 『ハルーラガイド』の紙版が再販されます！
+ソード・ワールド2.5の同人誌『ハルーラガイド』の紙版の再販が決まり、 &em_12月10日まで 通販の予約が受付中とのことです！
+ぜひこの機会に確認・入手してください！
+&button_/sw25/harula
+`: "")
+    + (!isPast("2024/1/31") ? `
 &3 同人シナリオ集『冒険者の旅路』通販受付中
-夏コミで頒布したソード・ワールド2.5同人シナリオ集『冒険者の旅路』が &em_通販受付中 です。
-&em_シナリオ6本とキャンペーン1つが入ったシナリオ集 です。
+夏コミで頒布したソード・ワールド2.5同人シナリオ集『冒険者の旅路』が &em_通販 と &em_電子版 で頒布中です。
+&em_シナリオ6本とキャンペーン1つ が入ったシナリオ集です。
 &br
 詳しくは以下のページをご覧ください。
 &button_/sw25/c102
 `: "")
-    + (!isPast("2023/11/1") ? `
-&3 ハロウィンイベント開催中
-こちらのウェブサイトではハロウィンイベントを開催しています！
-詳しくは以下のページをご覧ください。
-&button_/blog/halloween
+    + (newSW25NewPage?.to ? `
+&3 ソード・ワールド2.5最新情報¥s続々更新中
+ソード・ワールド2.5の新刊情報（最新サプリメントやシナリオ集などの情報）を続々と更新しています！
+&br
+ぜひ見てみてください。
+&button_${newSW25NewPage.to}
+&button_/search/?tag=sw25_new&sort=recent 最新情報一覧（更新順）はこちら
+
 `: "")
 
-// +
-//     (!isPast("2023/10/29") ? `
-// &3 ラグビーW杯開催中！
-// ルールを知らなくても大迫力で楽しめると思います！
-// ハイライトだけでもご覧くだされば幸いです！
-// &youtube_https://www.youtube.com/watch?v=h1VSIKwU9UM
-//     ` : "") +
-//     (!isPast("2023/8/12") ? `
-// &3 C102にソード・ワールド2.5シナリオ集が出ます！
-// 2023年8月12日（土）東京ビックサイトで行われるコミックマーケットに、僕も執筆に参加しているソード・ワールド2.5同人誌『冒険者の旅路』がでます！
-// &em_シナリオ6本とキャンペーン1つが入ったシナリオ集 です。
-// &br
-// 詳しくは以下のページをご覧ください。
-// &button_/sw25/c102
-// // 現在サンプルとしてシナリオを無料公開中です。
-// // &button_/scenario/fukinotou
-// // // &button_/search?word=夏コミ&sort=recent 詳しくはこちら
-// `: "") +
-//     (isPast("2023/7/10") && !isPast("2023/7/27") ? `
-// &3 ソード・ワールド2.5の5周年記念フレーム！
-// 2023年7月20日（木）にソード・ワールド2.5が &em_5周年を迎える ことを記念して、アイコンフレームを作成する機能を公開しています。
-// ぜひ使ってください！
-// &button_/sw25/tool/5anni
-//     `: "") +
-//     (!isPast("2023/7/27") ? `
-// &3 最新サプリメント『アーケインレリック』特集中！
-// 2023年7月20日（木）発売のソード・ワールド2.5最新サプリメント『アーケインレリック』について最新情報をまとめています！
-// &button_/search?tag=sw25_new&sort=recent 詳しくはこちら
-// `: "") 
 </script>

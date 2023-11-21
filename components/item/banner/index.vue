@@ -17,8 +17,7 @@ onMounted(() => {
     banner.value = getBanner()
     watch(nowPageSetting, () => {
         banner.value = getBanner()
-        console.log(banner.value.to === nowPageSetting.value.to, banner.value.to, nowPageSetting.value.to)
-        if (banner.value.to === nowPageSetting.value.to) {
+        while (banner.value.to === nowPageSetting.value.to) {
             banner.value = getBanner()
         }
     })

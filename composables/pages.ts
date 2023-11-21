@@ -62,8 +62,7 @@ export const usePages = () => {
   };
 
   // バナー関連
-
-  const nowBannerList = ref();
+  const nowBannerList = ref(bannerList);
   const setNowBannerList = () => {
     nowBannerList.value = shuffle(
       bannerList.filter(({ to }) => to !== nowPageSetting.value.to)

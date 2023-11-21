@@ -6,9 +6,11 @@ export type Banner = {
   to: string;
   img: string;
   isValid: boolean;
+  weight?: number;
 };
 
-export const bannerList: Banner[] = [
+export const bannerList: Banner[] = [];
+const rawBannerList: Banner[] = [
   {
     name: "c102",
     title:
@@ -21,18 +23,18 @@ export const bannerList: Banner[] = [
     name: "harula_saihan",
     title:
       "ソード・ワールド2.5同人誌「ハルーラガイド」紙版 通販予約販売 再開！",
-    to: "/sw25/c102",
+    to: "/sw25/harula",
     img: "/banner-image/harula.webp",
     isValid: !isPast("2024/12/10"),
+    weight: 3,
   },
-
-  {
-    name: "halloween",
-    title: "ハロウィンイベント実施中",
-    to: "/blog/halloween",
-    img: "/banner-image/halloween.webp",
-    isValid: isPast("2023/9/30") && !isPast("2023/10/31"),
-  },
+  // {
+  //   name: "halloween",
+  //   title: "ハロウィンイベント実施中",
+  //   to: "/blog/halloween",
+  //   img: "/banner-image/halloween.webp",
+  //   isValid: isPast("2023/9/30") && !isPast("2023/10/31"),
+  // },
   {
     name: "fav",
     title: "ここが好き！ ソード・ワールド2.5展開中",
@@ -110,4 +112,14 @@ export const bannerList: Banner[] = [
     img: "/banner-image/scenario.webp",
     isValid: true,
   },
-].filter((b) => b.isValid);
+]
+  .filter((b) => b.isValid)
+  .map((b) => {
+    bannerList.push(b);
+    if (b.weight && b.weight > 1) {
+      for (let i = 0; i < b.weight - 1; i++) {
+        bannerList.push(b);
+      }
+    }
+    return b;
+  });

@@ -18,6 +18,15 @@ export const bannerList: Banner[] = [
     isValid: !isPast("2024/8/12"),
   },
   {
+    name: "harula_saihan",
+    title:
+      "ソード・ワールド2.5同人誌「ハルーラガイド」紙版 通販予約販売 再開！",
+    to: "/sw25/c102",
+    img: "/banner-image/harula.webp",
+    isValid: !isPast("2024/12/10"),
+  },
+
+  {
     name: "halloween",
     title: "ハロウィンイベント実施中",
     to: "/blog/halloween",
@@ -92,7 +101,7 @@ export const bannerList: Banner[] = [
     title: "女子高生×部活×SW2.5 無料マンガ だいすろーる！ 紹介",
     to: "/sw25/comic",
     img: "/banner-image/comic.webp",
-    isValid: isPast("2023/11/17"),
+    isValid: true,
   },
   {
     name: "scenario",

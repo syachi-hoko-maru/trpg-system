@@ -19,6 +19,11 @@ export const amazonItems: {
     genre: "sw25",
   },
   {
+    title: "ドーデン博物誌",
+    src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040753119&linkId=c7ba9089f7bd6250b948da838db86e1b",
+    genre: "sw25",
+  },
+  {
     title: "ノベル+シナリオ 猫と星と秘宝",
     src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040751167&linkId=946eccfc502b3e03bee511b5111b2656",
     genre: "sw25",

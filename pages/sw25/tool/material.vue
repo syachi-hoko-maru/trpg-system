@@ -3,6 +3,8 @@
 </template>
 
 <script setup lang="ts">
+import { isPast } from '~/src/util/date';
+
 const { $templateText } = useNuxtApp()
 const andml1 = `
 &1 このページについて
@@ -23,6 +25,12 @@ const andml1 = `
 &br
 ※ TRPGセッションでしたら、 &em_収益化された配信での使用 なども問題ありません。
 
+${isPast("2023/11/24") ? `
+&2 更新情報
+${!isPast("2024/1/24") ? `
+- 2023/11/24¥sSW2.5 ルールサマリーを公開しました` : ""}
+`: ""}
+
 &1 TRPG ダンジョンマップタイル
 &img_/material/map_tile.webp,TRPGダンジョンマップタイル
 TRPGでダンジョンマップを簡単に作れる画像素材です。
@@ -32,6 +40,19 @@ TRPGでダンジョンマップを簡単に作れる画像素材です。
 &br
 画像はココフォリアにスクリーンパネルとしておいたものですが、png画像ですので他のサービスでも使用可能です。
 &button_https://syachihokomaru.booth.pm/items/3401321 こちら（Booth）
+
+${isPast("2023/11/24") ? `
+&1 SW2.5 ルールサマリー
+&img_/material/sum_battle_start.webp,SW2.5ルールサマリー（戦闘開始）
+ソード・ワールド2.5のルールサマリーを作ってみました！
+全3種類、PNG形式での頒布です。
+&br
+${!isPast("2023/12/25") ? "2023年12月に公開予定のココフォリア用ルームデータに入れるためのルールサマリーの先行公開となります。 &br &br" : ""}
+ぜひ活用してください！
+&button_${$templateText.baseUrl}/image/material/sum_boken.png 冒険（SW2.5概要説明）はこちら
+&button_${$templateText.baseUrl}/image/material/sum_battle_start.png 戦闘開始処理はこちら
+&button_${$templateText.baseUrl}/image/material/sum_battle.png 戦闘はこちら
+`: ""}
 
 &1 SW2.5 冒険者登録証
 &img_/material/sheet_sample.webp,SW2.5冒険者登録証
@@ -78,8 +99,12 @@ TRPGでダンジョンマップを簡単に作れる画像素材です。
 使用したシナリオは以下のページ掲載の『ウォフト=ルーバの研究所跡』（など）です。
 こちらにはCCFOLIA用のルームデータもついてきます。
 &button_/scenario
-なお、このような &em_GMをする際の小技は同人誌「ハルーラガイド」に多く載っています！
-ハルーラガイドの感想と「自分ならどうする」は以下のページからどうぞ。
+
+&3 ハルーラガイド
+なお、このような &em_GMをする際の小技は同人誌『ハルーラガイド』に多く載っています！
+『ハルーラガイド』の紹介はこちらをみてください。
+&button_/sw25/harula
+『ハルーラガイド』の感想と「自分ならどうする」は以下のページからどうぞ。
 &button_/blog/harula
 `
 </script>

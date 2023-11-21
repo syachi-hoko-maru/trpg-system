@@ -1,4 +1,5 @@
-import { isPast } from "../util/date";
+import { iconImages } from "../dict/icons";
+import { isPast, sortByDate } from "../util/date";
 import { blogPageSettingList } from "./blogPageSettingList";
 
 export const pageSettingList: PageSetting[] = [
@@ -518,7 +519,10 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "しゃちほこ丸ギャラリー",
     to: "/me/gallery",
-    lastmod: "2023/9/15",
+    lastmod: iconImages
+      .map((i) => i.date)
+      .filter((d) => isPast(d))
+      .sort(sortByDate(true))[0],
     img: "page-image/gallery.webp",
     imgdirs: ["icon-image"],
     explain: "管理人しゃちほこ丸の歴代アイコンを紹介するページです。",

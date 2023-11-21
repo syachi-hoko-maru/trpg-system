@@ -1,7 +1,7 @@
 <template>
   <card-array-by-andml :andml="first" />
-  <card-list v-if="images.length" title="歴代Twitterアイコン">
-    <card v-for="image of images.filter(({ date }) => isPast(date))" :id="image.title">
+  <card-list v-if="iconImages.length" title="歴代Twitterアイコン">
+    <card v-for="image of iconImages.filter(({ date }) => isPast(date))" :id="image.title">
       <template #tbefore>
         <item-img :src="`/icon-image/${image.date.split('/').map(s => s.length >= 2 ? s : '0' + s).join('')}.webp`"
           :alt="`${image.title}をイメージしたアイコン画像`" />
@@ -51,8 +51,8 @@
 </template>
 
 <script setup lang="ts">
+import { iconImages } from '~/src/dict/icons';
 import { isPast } from '~/src/util/date';
-const { $templateText } = useNuxtApp()
 
 const first = `
 しゃちほこ丸と申します。
@@ -63,136 +63,6 @@ const first = `
 自己紹介はこちら。
 &button_/me
 `
-
-const images = [
-  {
-    title: "通常",
-    date: "2022/12/14",
-    explain: "2022年の年末にアイコンの大幅バージョンアップをしてこの形になりました。"
-  },
-  {
-    title: "ハロウィン",
-    date: "2023/10/15",
-    explain: "僕の大好きなイベント、ハロウィンです。このウェブサイトでもイベントをやっています！（ &link_/blog/halloween,詳しくはこちら ）"
-  },
-  {
-    title: "栗",
-    date: "2023/9/20",
-    explain: "食欲の秋ってことで、栗カラーです。"
-  },
-  {
-    title: "焼き芋",
-    date: "2023/9/1",
-    explain: "食欲の秋ってことで、焼き芋カラーです。"
-  },
-  {
-    title: "花火",
-    date: "2023/8/17",
-    explain: "このウェブサイトでも8月中旬〜9月中旬まで花火大会と称したイベントをしてます。"
-  },
-  {
-    title: "C102",
-    date: "2023/7/18",
-    explain: "2023年8月12日の夏コミ/C102に参加しました。 &link_/blog/c102_2,詳しくはこちら。"
-  },
-  {
-    title: "SW2.5 5周年",
-    date: "2023/7/15",
-    explain: "2023年7月20日はSW2.5の5周年でした。このウェブサイトでも &link_/sw25/tool/5anni,こんなこと をしたりしました。 &br ハーヴェスをイメージした背景です。"
-  },
-  {
-    title: "夏",
-    date: "2023/7/1",
-    explain: "みなさん、熱中症には気をつけてください。"
-  },
-  {
-    title: "梅雨",
-    date: "2023/6/24",
-    explain: "とりあえず折り畳み傘を持っておくと幸せになれる季節。"
-  },
-  {
-    title: "白いシャチ",
-    date: "2023/6/14",
-    explain: "知床に現れたという「白いシャチ」カラーです。"
-  },
-  {
-    title: "誕生日",
-    date: "2023/5/23",
-    explain: "誕生日ブログは &link_/blog/matome,こちら 。風船が飛びます。割って遊んでください。"
-  },
-  {
-    title: "こどもの日",
-    date: "2023/5/5",
-    explain: "こどもの日なので鯉のぼりバージョンになってみました。"
-  },
-  {
-    title: "ゴールデンウィーク",
-    date: "2023/5/2",
-    explain: "GWなので金色に。2023年のGWは「2日休めば最大9連休」です。"
-  },
-
-  {
-    title: "Misskey（TRPGがすきー！）",
-    date: "2023/4/16",
-    explain: "&link_https://trpger.us/@syachi_hoko_trp,MisskeyのTRPGがすきー！(TRPGer.us) に参加したのでその際のデフォルトアイコンの色を使ってアイコンを作りました。"
-  },
-  {
-    title: "夜桜",
-    date: "2023/4/2",
-    explain: "桜の一部色換えです。"
-  },
-  {
-    title: "WBC 侍ジャパン",
-    date: "2023/3/21",
-    explain: "準決勝メキシコ戦の逆転勝利祝い。翌日はアメリカに勝って優勝。最高でした。"
-  },
-  {
-    title: "桜",
-    date: "2023/3/15",
-    explain: "背景には &link_https://haikei.app/,こちら を使用させていただきました。"
-  },
-  {
-    title: "ホワイトデー",
-    date: "2023/3/14",
-    explain: "白にするか迷いましたが、「ホワイトデー」で画像検索すると水色が多かったので水色です。"
-  },
-  {
-    title: "ひな祭り",
-    date: "2023/3/3",
-    explain: "色だけ。"
-  },
-  {
-    title: "バレンタインデー",
-    date: "2023/2/14",
-    explain: ""
-  },
-  {
-    title: "雪うさぎ",
-    date: "2023/1/2",
-    explain: "卯年なので雪うさぎも。"
-  },
-  {
-    title: "正月",
-    date: "2023/1/1",
-    explain: "卯年なので……。もう少し可愛いうさみみを研究中。"
-  },
-  {
-    title: "大晦日",
-    date: "2022/12/31",
-    explain: "2022年の干支は寅でした。"
-  },
-  {
-    title: "クリスマス",
-    date: "2022/12/24",
-    explain: "2021年はサンタコスをしたので、2022年はトナカイコスをしました。"
-  },
-  {
-    title: "12月",
-    date: "2022/12/1",
-    explain: "冬っぽい色と、クリスマスツリーな「ほこ」"
-  },
-
-]
 
 const miimages = [
   {
@@ -220,7 +90,6 @@ const miimages = [
     src: "koyo",
     explain: ""
   },
-
 ]
 
 const friends = [

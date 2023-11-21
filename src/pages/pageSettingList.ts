@@ -438,7 +438,7 @@ export const pageSettingList: PageSetting[] = [
     tags: ["sw25", "scenario"],
   },
   {
-    title: "めちゃくちゃ役立つ同人誌 ハルーラガイドを手に入れろ！",
+    title: "めちゃくちゃ役立つ同人誌 『ハルーラガイド』を手に入れろ！",
     to: "/sw25/harula",
     created: "2023/11/21",
     lastmod: "2023/11/21",

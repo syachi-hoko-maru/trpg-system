@@ -121,10 +121,12 @@ onMounted(() => {
   }
 }
 
-section.card-div[id].before::before {
-  display: block;
-  height: 55px;
-  margin-top: -75px;
-  content: "";
+section.card-div[id] {
+  &.before::before {
+    display: block;
+    height: 55px;
+    margin-top: -75px;
+    content: "";
+  }
 }
 </style>

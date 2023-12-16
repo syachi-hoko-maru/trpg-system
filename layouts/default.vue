@@ -5,6 +5,7 @@
     あなたが現在使用しているブラウザではjavascriptの実行が許可されていませんので、許可してからご覧いただければ幸いです。
     よろしくお願いいたします。
   </noscript>
+  <!-- <LayoutsGlmDesign v-if="false" /> -->
   <v-app>
     <game-balloons v-if="pageSetting?.to === '/blog/matome' || pageSetting?.to === '/blog/5anni'
       || nowDate().getDate() === 23 && nowDate().getMonth() + 1 === 5

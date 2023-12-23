@@ -117,7 +117,7 @@ export const amazonItems: {
     genre: "sw25",
   },
   {
-    title: "リプレイ ALLグララン総進撃!",
+    title: "リプレイ ALLグララン総進撃！",
     src: "//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=syachihokotrp-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4040748549&linkId=13191204b52e8df9727f5079c4d977fe",
     genre: "sw25",
   },

@@ -106,10 +106,10 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "SW2.5 自己紹介シート 画像メイカー&配布",
     to: "/sw25/tool/intro",
-    lastmod: "2023/4/15",
+    // lastmod: "2023/4/15",
+    lastmod: "2023/12/27",
     img: "page-image/intro.webp",
     osusume: true,
-    hiddenFlag: false,
     explain:
       "ソード・ワールド2.5（SW2.5）の自己紹介シートを作ることができるページです。TwitterなどのSNSでシェアしてソドワに関する自己紹介をするのに使えます。ぜひ活用してください。",
     tags: ["sw25", "tool"],
@@ -171,7 +171,6 @@ export const pageSettingList: PageSetting[] = [
     lastmod: "2023/7/9",
     img: "page-image/5anni.webp",
     osusume: true,
-    hiddenFlag: false,
     explain:
       "ソード・ワールド2.5（SW2.5/ソドワ）は2023年7月20日に5周年を迎えます！　これを記念したフレームをTwitterなどの丸型アイコンに付けることができるページです。ウェブサイト上でつけることもできますし、ダウンロードして使うこともできます。ぜひご利用ください。一緒にソード・ワールド2.5の5周年を盛り上げましょう！",
     tags: ["sw25", "tool"],
@@ -416,6 +415,17 @@ export const pageSettingList: PageSetting[] = [
       "ソード・ワールド2.5（SW2.5/ソドワ）の初心者GM向けに、「シナリオを探す方法」と「無料公開されているおすすめシナリオ」9本を紹介しています。おすすめシナリオは初心者に限らず、経験者でも参考になるシナリオばかりです。「HO（ハンドアウト）」やオリジナル大陸などの要素を持つシナリオも紹介しています。「ソード・ワールド2.5のGMをやってみたい」「ソドワのおすすめシナリオが知りたい」という方は必見です。",
     tags: ["sw25", "scenario"],
     noamazon: true,
+  },
+  {
+    title: "SW2.5 2023年に発売されたサプリメントや関連本のまとめ！！",
+    to: "/sw25/feature/year2023",
+    created: "2023/12/29",
+    lastmod: "2023/12/29",
+    img: "page-image/.webp",
+    osusume: true,
+    explain:
+      "2023年に発売されたソード・ワールド2.5（SW2.5/ソドワ）のサプリメントやシナリオ集・リプレイ・関連本、計9冊をまとめて紹介します！　他にも2023年に起きたソード・ワールド関連のことをまとめています。",
+    tags: ["sw25"],
   },
   {
     title: "女子高生×部活×SW2.5 無料マンガ だいすろーる！ 紹介",

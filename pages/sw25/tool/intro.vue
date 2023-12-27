@@ -5,6 +5,8 @@
 </template>
 
 <script setup lang="ts">
+import { isPast } from '~/src/util/date';
+
 const { $templateText } = useNuxtApp()
 const andml1 = `
 &1 このページについて
@@ -16,6 +18,11 @@ const andml1 = `
 &br
 ※「ソード・ワールド2.5って何？」って方は &link_/sw25,こちら をご覧ください。
 
+${!isPast("2024/1/9") ? `
+&2 年末年始限定デザイン
+&em_2023年12月27日から2024年1月8日まで 、年末年始限定デザインということで、デザインをレッドverに変更しています！
+既に作っていただいた方も、 &em_この機会にぜひ作成し直してツイート し、知り合いの幅を広げていただければと思います！
+`: ""}
 &1 使い方
 1.¥s 以下の &link_#データ入力,「データ入力」 からデータを入力してください
 &br
@@ -56,8 +63,10 @@ const andml1 = `
 &3 SVG
 データが汚いのは我慢していただくようお願いします。
 ※文字は全てアウトライン化されております。
-&button_${$templateText.baseUrl}/sw25intro/intro.svg こちら
-
+&button_${$templateText.baseUrl}/image/sw25intro/intro.svg こちら
+${!isPast("2024/1/9") ? `
+&button_${$templateText.baseUrl}/image/sw25intro/intro_red.svg 年末年始限定デザインはこちら
+`: ""}
 `
 const andml2 = `
 &1 しゃちほこ丸のSW2.5自己紹介シート

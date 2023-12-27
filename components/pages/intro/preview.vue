@@ -3,15 +3,24 @@
     <template #title>
       プレビュー
     </template>
-    確認の上、保存してください。PCなら右クリック、スマホなら長押しで保存ができます。
+    <div class="mb-3">
+      確認の上、保存してください。PCなら右クリック、スマホなら長押しで保存ができます。
+    </div>
     <canvas id="canvas" :width="canvasWidth" :height="canvasHeight" style="display: none;" />
     <item-img v-if="imageUrl" alt="ソード・ワールド2.5自己紹介シート" :src="imageUrl" />
     <item-share :text="shareMessage" url="https://trpg.syachi.work/sw25/tool/intro/"
-      hashTag="sw25,sw25自己紹介シート,TRPG好きと繋がりたい,TRPG自己紹介シート">ツイート用ボタン</item-share>
+      hashTag="sw25,sw25自己紹介シート,TRPG好きと繋がりたい,TRPG自己紹介シート">
+      ツイート用ボタン
+    </item-share>
+    <div class="mt-3">
+      画像の添付は手動となっています。お手数をおかけしますがダウンロードして添付の上、ツイートしてください。
+    </div>
   </card>
 </template>
 
 <script setup lang="ts">
+import { isPast } from '~/src/util/date';
+
 interface Props {
   formSettings: FormSetting[]
 }
@@ -152,9 +161,15 @@ const setImage = async () => {
     if (!ctx) throw "no ctx"
     ctx.textBaseline = "bottom"
     ctx.fillStyle = "#222";
+
+    // 2023/12/27 期間限定色に対応用
+    let baseSvgPath: string = `${$templateText.basePath}/image/sw25intro/intro.svg`
+    if (!isPast("2024/1/9")) {
+      baseSvgPath = `${$templateText.basePath}/image/sw25intro/intro_red.svg`
+    }
     // 準備ここまで
 
-    await drawImage(ctx, `${$templateText.basePath}/image/sw25intro/intro.svg`, 0, 0, canvasWidth, canvasHeight)
+    await drawImage(ctx, baseSvgPath, 0, 0, canvasWidth, canvasHeight)
 
     const iconSrc = Props.formSettings.find((form) => form.name === "icon")?.value
     if (iconSrc && typeof iconSrc === "string") await drawImage(ctx, iconSrc, 92.07, 195.04, 92.07 + 291.58, 195.04 + 291.5, true)
@@ -199,7 +214,7 @@ onMounted(() => {
 
 const shareMessage = `SW2.5 自己紹介シートを作りました！
 
-（画像をダウンロードの上、添付して使用してください）
+（画像をダウンロードの上、添付してからツイートしてください）
 
 `
 </script>

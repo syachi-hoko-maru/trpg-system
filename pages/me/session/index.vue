@@ -12,7 +12,7 @@
 const andml1 = `
 ソード・ワールド2.5の最新情報はこちら！
 2023年7月20日発売予定のサプリメント『アーケインレリック』の情報もあります。
-&button_/sw25/new
+&button_/sw25/feature/new
 &button_/blog/arcane_relic
 
 ソード・ワールド2.5で役立つツールはこちら！

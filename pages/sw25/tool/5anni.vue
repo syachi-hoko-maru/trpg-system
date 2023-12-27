@@ -27,7 +27,7 @@ const andml1 = `
 &button_/sw25/tool/intro
 &button_/sw25/tool/bosyu
 また、公式による5周年記念のサプリメント『アーケインレリック』の発売などについては以下をご覧ください。
-&button_/sw25/new
+&button_/sw25/feature/new
 &button_/search?word=アーケインレリック&sort=recent アーケインレリック関連ページ
 
 &1 注意点
@@ -72,7 +72,7 @@ const andml2 = `
 &button_/sw25/forbeginner
 
 5周年記念のサプリメント『アーケインレリック』の発売などについては以下をご覧ください。
-&button_/sw25/new
+&button_/sw25/feature/new
 &button_/search?word=アーケインレリック&sort=recent アーケインレリック関連ページ
 
 「サプリメントってどんなのがあったっけ？」って方はこちらをどうぞ〜

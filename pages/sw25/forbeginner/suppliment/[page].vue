@@ -54,7 +54,7 @@ const first = `
 
 &3 新刊情報はこちら！
 &em_新刊情報と刊行予想 については以下のページをご覧ください。
-&button_/sw25/new
+&button_/sw25/feature/new
 &button_/search/?tag=sw25_new&sort=recent 新刊情報一覧
 
 &1 SW2.5の展開について
@@ -158,7 +158,7 @@ const end = `
 
 &3 今後のサプリメントについてはこちらへ
 また、 &em_新刊情報と刊行予想 については以下のページをご覧ください。
-&button_/sw25/new
+&button_/sw25/feature/new
 
 &1 最後に
 なお、繰り返しますが、 &em_全て私見 ですのでご注意ください。

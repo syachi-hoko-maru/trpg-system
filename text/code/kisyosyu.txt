@@ -14,7 +14,7 @@ sw25_moso
 &2 夏の大型サプリについて
 なお、新種族の詳細など、夏の大型サプリの情報は以下をご覧ください！
 &button_/blog/news230501
-&button_/sw25/new
+&button_/sw25/feature/new
 
 &2 &em_追記
 &link_https://twitter.com/yasudahitoshi2/status/1663395987111677952,安田先生のツイート によれば新サプリのタイトルは「アーケインレリック〜種族と秘宝」とのことです！

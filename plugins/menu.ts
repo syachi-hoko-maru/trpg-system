@@ -75,7 +75,7 @@ const menuList: (MenuCategory | MenuPage)[] = [
       {
         icon: "mdi-calendar",
         title: "新刊情報",
-        to: "/sw25/new",
+        to: "/sw25/feature/new",
       },
     ],
   },

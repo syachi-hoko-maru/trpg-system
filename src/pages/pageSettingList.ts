@@ -34,12 +34,12 @@ export const pageSettingList: PageSetting[] = [
   },
   {
     title: "ソード・ワールド2.5 新刊情報と刊行予想",
-    to: "/sw25/new",
+    to: "/sw25/feature/new",
     img: "page-image/new.webp",
     osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5/ソドワ）のサプリメントやリプレイなど関連書籍の新刊情報と刊行予想をまとめています。8月「ノベル+シナリオ」・7月大型サプリ（種族&秘宝）・6月リプレイ。「ソドワの新刊っていつ出るの？」「今後はどんなサプリが出そうなの？」って方、必見です。",
-    lastmod: "2023/10/15",
+    lastmod: "2023/12/27",
     tags: ["sw25_new", "sw25_moso"],
   },
   {
@@ -417,6 +417,16 @@ export const pageSettingList: PageSetting[] = [
     noamazon: true,
   },
   {
+    title: "SW2.5特集",
+    to: "/sw25/feature",
+    created: "2023/12/29",
+    lastmod: "2023/12/29",
+    // img: "page-image/.webp",
+    osusume: false,
+    explain: "ソード・ワールド2.5についての特集ページです。",
+    tags: ["sw25"],
+  },
+  {
     title: "SW2.5 2023年に発売されたサプリメントや関連本のまとめ！！",
     to: "/sw25/feature/year2023",
     created: "2023/12/29",
@@ -429,9 +439,9 @@ export const pageSettingList: PageSetting[] = [
   },
   {
     title: "女子高生×部活×SW2.5 無料マンガ だいすろーる！ 紹介",
-    to: "/sw25/comic",
+    to: "/sw25/feature/comic",
     created: "2023/11/17",
-    lastmod: "2023/11/21",
+    lastmod: "2023/12/27",
     img: "page-image/comic.webp",
     osusume: true,
     explain:
@@ -440,8 +450,8 @@ export const pageSettingList: PageSetting[] = [
   },
   {
     title: "SW2.5同人シナリオ集「冒険者の旅路」【C102】",
-    to: "/sw25/c102",
-    lastmod: "2023/9/19",
+    to: "/sw25/feature/c102",
+    lastmod: "2023/12/27",
     img: "projects/c102/book.webp",
     osusume: true,
     explain:
@@ -450,9 +460,9 @@ export const pageSettingList: PageSetting[] = [
   },
   {
     title: "めちゃくちゃ役立つ同人誌 『ハルーラガイド』を手に入れろ！",
-    to: "/sw25/harula",
+    to: "/sw25/feature/harula",
     created: "2023/11/21",
-    lastmod: "2023/11/21",
+    lastmod: "2023/12/27",
     img: isPast("2023/12/10")
       ? "page-image/harula.webp"
       : "page-image/harula_saihan.webp",

@@ -55,7 +55,7 @@ const text = `
 &br
 ソード・ワールド2.5のおすすめサプリメントや新刊情報については以下をご覧ください。
 &button_/sw25/forbeginner/suppliment/1 
-&button_/sw25/new
+&button_/sw25/feature/new
 `
 
 const rulebookGroups = ["CoC", "SW", "sfic", "bouki", "FEAR", "other", "dozin", "web"] as const

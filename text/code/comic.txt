@@ -75,7 +75,7 @@ sw25
 新種族に「希少種」「秘宝」が追加され、魔物データの追加もあるとのこと......。
 &br
 詳しくは以下をご覧ください！
-&button_/sw25/new
+&button_/sw25/feature/new
 &button_/search?word=アーケインレリック&sort=recent アーケインレリック関連ページ
 &br
 &amazon_アーケインレリック

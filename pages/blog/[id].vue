@@ -105,6 +105,6 @@ const aboutswnews = `
 「ソドワの最新情報が知りたい！」って方、ぜひ読んでください！
 &br
 なお、 &em_ソード・ワールド2.5の新刊情報は以下のページにまとめていますので併せてご覧ください。
-&button_/sw25/new
+&button_/sw25/feature/new
 `
 </script>

@@ -83,10 +83,10 @@ const sourceAndml = computed(() => `
 -- 毎月初めに来月分の新刊情報が公開されます。
 
 &2 リンク
-` + (pageSetting.value.to !== "/sw25/new" ? `
+` + (pageSetting.value.to !== "/sw25/feature/new" ? `
 ソード・ワールド2.5の新刊情報は以下のページでまとめています。
 あわせてご覧ください。
-&button_/sw25/new
+&button_/sw25/feature/new
 `: "") + `
 &button_/search?tag=sw25_new&sort=recent 新刊情報の一覧はこちら
 &br

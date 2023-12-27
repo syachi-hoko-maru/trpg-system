@@ -142,9 +142,9 @@ This site has useful tools for Sword World 2.5.
 This site provides useful information and updates on Sword World 2.5.
 &&&
 &button_/sw25/forbeginner/suppliment/1
-&button_/sw25/new
+&button_/sw25/feature/new
 &button_${$pageSettingList
-    .filter(page => !isHidden(page) && page.tags.indexOf("sw25_new") >= 0 && page.to !== "/sw25/new")
+    .filter(page => !isHidden(page) && page.tags.indexOf("sw25_new") >= 0 && page.to !== "/sw25/feature/new")
     .sort(sortPagesByDate(true))[0].to
   }
 

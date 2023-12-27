@@ -15,7 +15,7 @@ const rawBannerList: Banner[] = [
     name: "c102",
     title:
       "ソード・ワールド2.5同人シナリオ集「冒険者の旅路」通販&電子版、頒布中！",
-    to: "/sw25/c102",
+    to: "/sw25/feature/c102",
     img: "/banner-image/c102-2.webp",
     isValid: !isPast("2024/8/12"),
   },
@@ -23,7 +23,7 @@ const rawBannerList: Banner[] = [
     name: "harula_saihan",
     title:
       "ソード・ワールド2.5同人誌「ハルーラガイド」紙版 通販予約販売 再開！",
-    to: "/sw25/harula",
+    to: "/sw25/feature/harula",
     img: "/banner-image/harula.webp",
     isValid: !isPast("2024/12/10"),
     weight: 3,
@@ -101,7 +101,7 @@ const rawBannerList: Banner[] = [
   {
     name: "comic",
     title: "女子高生×部活×SW2.5 無料マンガ だいすろーる！ 紹介",
-    to: "/sw25/comic",
+    to: "/sw25/feature/comic",
     img: "/banner-image/comic.webp",
     isValid: true,
   },

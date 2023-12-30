@@ -9,18 +9,17 @@ const outputDirs = [
   `${process.cwd()}/public`,
 ];
 
-// const searchTagLastmod = "2023-04-10";
-
 export const setSitemap = () => {
   let result = "";
 
+  // ページ
   pageSettingList
     .filter((pageSetting) => !isHidden(pageSetting))
     .forEach((pageSetting) => {
       result += setUrlBlock(pageSetting);
     });
 
-  // 検索関連
+  // 検索ページ関連
   searchWordList.forEach(({ searchWord, lastmod }) => {
     const url = `https://trpg.syachi.work/search/${searchWord
       .map(encodeURIComponent)
@@ -28,15 +27,13 @@ export const setSitemap = () => {
     result += `<url><loc>${url}</loc><lastmod>${lastmod}</lastmod></url>`;
   });
 
-  result = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  ${result.replace(/\s+/g, "")}
+  result = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  ${result}
   </urlset>`;
 
   outputDirs.forEach((outputDir) => {
-    writeFileSync(
-      `${outputDir}/sitemap.xml`,
-      result.replace(/\n/g, "").replace(/\s+/g, " ")
-    );
+    writeFileSync(`${outputDir}/sitemap.xml`, result.replace(/\s+/g, " "));
   });
 };
 
@@ -69,14 +66,19 @@ const publicPath = `${process.cwd()}/public/`;
 
 const setImages = (pageSetting: PageSetting): string => {
   let result = "";
-  if (pageSetting.img) {
+  // pageSetting.imgの処理
+  if (pageSetting.img && pageSetting.img.endsWith(".webp")) {
     const webpUrl = `https://trpg.syachi.work/webp/${pageSetting.img}`;
     const pngUrl = `https://trpg.syachi.work/image/${pageSetting.img.replace(
       /webp$/,
       "png"
     )}`;
     result += setImage(webpUrl) + setImage(pngUrl);
+  } else {
+    const imgUrl = `https://trpg.syachi.work/webp/${pageSetting.img}`;
+    result += setImage(imgUrl);
   }
+  // pageSetting.imgDirsの処理
   pageSetting.imgdirs?.forEach((dir) => {
     const images = readdirSync(publicPath + "image/" + dir);
     const webps = readdirSync(publicPath + "webp/" + dir);

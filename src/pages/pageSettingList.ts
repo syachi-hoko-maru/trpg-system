@@ -419,8 +419,8 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "SW2.5特集",
     to: "/sw25/feature",
-    created: "2023/12/29",
-    lastmod: "2023/12/29",
+    created: "2023/12/30",
+    lastmod: "2023/12/30",
     // img: "page-image/.webp",
     osusume: false,
     explain: "ソード・ワールド2.5についての特集ページです。",
@@ -429,9 +429,9 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "SW2.5 2023年に発売されたサプリメントや関連本のまとめ！！",
     to: "/sw25/feature/year2023",
-    created: "2023/12/29",
-    lastmod: "2023/12/29",
-    img: "page-image/.webp",
+    created: "2023/12/30",
+    lastmod: "2023/12/30",
+    img: "page-image/2023.webp",
     osusume: true,
     explain:
       "2023年に発売されたソード・ワールド2.5（SW2.5/ソドワ）のサプリメントやシナリオ集・リプレイ・関連本、計9冊をまとめて紹介します！　他にも2023年に起きたソード・ワールド関連のことをまとめています。",

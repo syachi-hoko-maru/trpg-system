@@ -10,27 +10,28 @@ if (process.argv.join().indexOf("generate") >= 0) {
   try {
     routes = ([] as string[]).concat(
       // ブログ
-      getBlogList().map((blog) => `blog/${blog}`),
+      getBlogList().map((blog) => `/blog/${blog}`),
       // 検索
       searchWordList.map(
         ({ searchWord }) =>
-          `search/${searchWord.map(encodeURIComponent).join("/")}`
-      ),
-      // リダイレクト関連
-      Object.keys(redirectList)
+          `/search/${searchWord.map(encodeURIComponent).join("/")}`
+      )
+      // // リダイレクト関連
+      // Object.keys(redirectList)
     );
     // 複数ページあるページ関連
     pageSettingList
       .filter((page) => page.page?.length)
       .forEach((page) => {
         if (!page.page?.length) return;
-        routes.push(page.to.replace(/^\//, ""));
+        // routes.push(page.to.replace(/^\//, ""));
         for (let p = 1; p <= page.page.length; p++) {
-          routes.push((page.to + `/${p}`).replace(/^\//, ""));
+          routes.push(page.to + `/${p}`);
         }
       });
   } catch {
     console.error("error!?");
+    throw "route error";
   }
 }
 

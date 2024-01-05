@@ -30,7 +30,7 @@ const path = ref("")
 const redirect = () => {
   if (params.slug.length > 0) {
     path.value = (Array.isArray(params.slug) ? params.slug.join("/") : params.slug).replace(/\/$/, "")
-    console.log("target", path.value)
+    // console.log("target", path.value)
     if (Object.entries($redirectList).length > 0) {
       console.log(Object.entries($redirectList).length)
       Object.entries($redirectList).forEach(([key, value]) => {

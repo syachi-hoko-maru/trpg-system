@@ -54,7 +54,7 @@ export const usePages = () => {
     const pageUrl = p.replace(/(.+)\/+$/, "$1");
     if (pageUrl !== pageArray.value[0]) {
       pageArray.value.unshift(pageUrl);
-      console.log("save page", pageArray.value);
+      // console.log("save page", pageArray.value);
       return true;
     } else {
       return false;

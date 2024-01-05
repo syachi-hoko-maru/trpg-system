@@ -4,7 +4,7 @@ import { formatDateString } from "../../util/date";
 import { searchWordList } from "./searchWordList";
 import { isHidden } from "../../pages/getPageSetting";
 
-const outputDirs = [
+export const outputDirs = [
   `${process.cwd()}/.output/public`,
   `${process.cwd()}/public`,
 ];

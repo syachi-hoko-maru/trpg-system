@@ -28,13 +28,17 @@ export const setSitemap = () => {
   });
 
   result = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  ${result}
-  </urlset>`;
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${result}
+</urlset>`;
 
   outputDirs.forEach((outputDir) => {
-    writeFileSync(`${outputDir}/sitemap.xml`, result.replace(/\s+/g, " "));
+    writeFileSync(
+      `${outputDir}/sitemap.xml`,
+      result.replace(/\s+/g, " ").replace(/>\s*</g, ">\n<")
+    );
   });
+  console.log("  sitemap was created");
 };
 
 const setUrlBlock = (pageSetting: PageSetting): string => {
@@ -50,16 +54,17 @@ const setUrlBlock = (pageSetting: PageSetting): string => {
 };
 
 const setLocAndLastmod = (pageSetting: PageSetting, page?: number): string => {
-  const url = `https://trpg.syachi.work
-  ${pageSetting.to !== "/" ? pageSetting.to + "/" : "/"}
-  ${page ? page + "/" : ""}`;
+  const url = `https://trpg.syachi.work${
+    pageSetting.to !== "/" ? pageSetting.to + "/" : "/"
+  }${page ? page + "/" : ""}`;
 
   const lastmod = formatDateString(pageSetting.lastmod as string, false);
   return `
-  <url>
-    <loc>${url}</loc><lastmod>${lastmod}</lastmod>
-    ${setImages(pageSetting)}
-  </url>`;
+<url>
+  <loc>${url}</loc>
+  <lastmod>${lastmod}</lastmod>
+  ${setImages(pageSetting)}
+</url>`;
 };
 
 const publicPath = `${process.cwd()}/public/`;

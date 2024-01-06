@@ -8,6 +8,7 @@
       ぜひTwitterなどでシェアしてこのウェブサイトを広めてください！
     </div>
   </card>
+  <card-array-by-andml :andml="newbooks" />
   <item-banner />
   <item-notice title="しゃちほこ丸からのお知らせ" />
   <template v-if="!pageSetting.noamazon && pageSetting.tags.findIndex(tag => tag.indexOf('sw25') >= 0) >= 0">
@@ -41,7 +42,9 @@
 </template>
 
 <script setup lang="ts">
+import { bookList } from '~/src/dict/new';
 import { isHidden } from '~/src/pages/getPageSetting';
+import { isPast, sortByDate } from '~/src/util/date';
 
 const { $pageSettingList } = useNuxtApp()
 const { nowPageSetting } = usePages()
@@ -56,6 +59,41 @@ const scrollTop = () => {
   scrollTo(0, 0)
 }
 
+const newBook = bookList
+  .filter(b => !isPast(b.date))
+  .sort((a, b) => sortByDate(false)(a.date, b.date))
+[0]
+const recentBook = bookList
+  .filter(b => isPast(b.date))
+  .sort((a, b) => sortByDate(true)(a.date, b.date))
+[0]
+
+const newbooks = (newBook ? `
+&1 最新刊『${newBook.title}』（${newBook.dispDate ? newBook.dispDate : newBook.date}発売予定）特集中！
+当サイトでは &em_ソード・ワールド2.5（SW2.5/ソドワ） の最新刊となる &em_『${newBook.long ? newBook.long : newBook.title}』 （${newBook.dispDate ? newBook.dispDate : newBook.date}発売予定）を全力で特集中です！
+&br
+ぜひみていってください！
+&button_/search?word=${newBook.title} 『${newBook.title}』関連ページはこちら
+&br
+&3 ${recentBook.title}
+他にも最近発売された『${recentBook.long ? recentBook.long : recentBook.title}』（${newBook.dispDate ? newBook.dispDate : newBook.date}発売）などについての情報も多数あります！
+&button_/search?word=${recentBook.title} 『${recentBook.title}』関連ページはこちら
+&br
+&3 他にも新刊情報いろいろ！
+その他にもソード・ワールド2.5の最新情報を多数扱っています！
+&br
+新刊情報についてはこちらをご覧ください！
+&button_/sw25/feature/new
+&br
+`: "")
+  + (!pageSetting.value.noamazon ? `
+&amazon_${bookList
+      .map(b => [b.title, b.amazon ? b.amazon : ""])
+      .flat()
+      .filter(f => f)
+      .join("・")}
+`: "")
+
 const andml1 = `
 ソード・ワールド2.5（SW2.5/ソドワ）のルールブックを購入する際はぜひ「HarryHarry」をご利用ください！
 &br
@@ -68,6 +106,7 @@ const andml1 = `
 const sourceAndml = computed(() => `
 &1 ソース
 ソード・ワールド2.5（SW2.5/ソドワ）の新刊情報は主に以下より入手しています。
+&&tatami_詳しくみる
 &br
 - &link_http://www.groupsne.co.jp/news/book.html,グループSNEオフィシャルサイト「新刊情報」
 -- 毎月上旬にだいたい2か月後までの新刊情報が更新されます。
@@ -98,7 +137,7 @@ ${$pageSettingList
     .map(page => `&button_${page.to}`)
     .join("\n")
   }
-`)
+&&&`)
 
 const mounted = ref(false)
 onMounted(() => {

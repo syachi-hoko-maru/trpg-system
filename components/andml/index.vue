@@ -19,6 +19,8 @@ const andmlArray = computed(() => Array.isArray(Props.andmls) ? Props.andmls : P
 // lineの処理
 const andmlBlockScriptArray: AndmlScript[] = [
   { script: "noandml", component: resolveComponent("AndmlBlockNoandml") },
+  // たたみ
+  { script: "tatami_", component: resolveComponent("AndmlBlockTatami") },
   // Block系
   { script: "byosya", component: resolveComponent("AndmlBlockByosya") },
   { script: "data_", component: resolveComponent("AndmlBlockData") },

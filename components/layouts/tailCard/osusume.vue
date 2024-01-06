@@ -14,7 +14,7 @@
       <item-scrollx v-if="mounted && osusumePageList.length">
         <item-pagecard v-for="op of osusumePageList" :page-setting="op" virtical />
       </item-scrollx>
-      <item-button url="/search" normal-button>ページ一覧はこちら</item-button>
+      <item-button v-if="type === 'popular'" url="/search" normal-button>ページ一覧はこちら</item-button>
       <br>
     </template>
   </card>

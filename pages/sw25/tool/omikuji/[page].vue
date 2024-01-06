@@ -23,7 +23,7 @@ import { isPast } from "~/src/util/date";
 const { $templateText } = useNuxtApp()
 
 const route = useRoute()
-const andml1 = ref("")
+const andml1 = ref("システムエラーが発生しました。 &br &br もう一度実行してください。")
 const shareText = ref("")
 const shareUrl = ref("")
 
@@ -32,7 +32,7 @@ const main = async () => {
 
     let idNum: number = Number(id)
     if (!idNum || Number.isNaN(idNum) || !version) {
-        await navigateTo(omikujiBasePath)
+        return
         idNum = 0
         version = defaultVersion
     }
@@ -45,8 +45,7 @@ const main = async () => {
                 fortuneResult = getFortuneV1(idNum)
         }
     } catch {
-        await navigateTo(omikujiBasePath)
-        fortuneResult = { fortuneScore: "吉", messageList: [] }
+        return
     }
     // console.log("change", fortuneResult.fortuneScore, id)
     andml1.value = `

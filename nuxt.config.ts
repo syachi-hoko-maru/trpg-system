@@ -2,6 +2,7 @@ import { getBlogList } from "./src/pre/gene/getList";
 import { redirectList } from "./src/pages/redirect";
 import { pageSettingList } from "./src/pages/pageSettingList";
 import { searchWordList } from "./src/after/sitemap/searchWordList";
+import { fortuneScoreList } from "./src/simulater/omikuji";
 let routes: string[] = [];
 
 let env: "DEVELOP" | "PRODUCTION" = "DEVELOP";
@@ -15,7 +16,9 @@ if (process.argv.join().indexOf("generate") >= 0) {
       searchWordList.map(
         ({ searchWord }) =>
           `/search/${searchWord.map(encodeURIComponent).join("/")}`
-      )
+      ),
+      // おみくじ
+      fortuneScoreList.map((_, i) => `/sw25/tool/omikuji/result_${i}`)
       // // リダイレクト関連
       // Object.keys(redirectList)
     );

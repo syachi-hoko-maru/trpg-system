@@ -1,4 +1,5 @@
 import { iconImages } from "../dict/icons";
+import { fortuneScoreList } from "../simulater/omikuji";
 import { isPast, sortByDate } from "../util/date";
 import { blogPageSettingList } from "./blogPageSettingList";
 
@@ -165,6 +166,25 @@ export const pageSettingList: PageSetting[] = [
       "TRPG、特にソード・ワールド2.5（SW2.5/ソドワ）関連の「診断メイカー」をいろいろ作ってきたので、これらをまとめて紹介します！　ランダムシナリオメイカーや異世界転生診断、ChatGPTを使ったTRPGシステムのアイデアなど。",
     tags: ["sw25", "tool"],
   },
+  {
+    title: "謹賀新年！ ソドワおみくじ！！",
+    to: "/sw25/tool/omikuji",
+    lastmod: "2024/1/6",
+    img: "page-image/omikuji.webp",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5/ソドワ）の運勢を占う「ソドワおみくじ」です！ あなたの今年の運勢は？　相性の良い種族・技能は？　占ってみましょう。",
+    tags: ["sw25", "tool"],
+  },
+  ...fortuneScoreList.map((f, i) => ({
+    title: `謹賀新年！ SW2.ソドワおみくじ！！ ${f}`,
+    to: `/sw25/tool/omikuji/result_${i}`,
+    lastmod: "2024/1/6",
+    img: `page-image/omikuji_${i}.webp`,
+    osusume: false,
+    explain: `あなたの今年の運勢は${f}！？　ソード・ワールド2.5（SW2.5/ソドワ）の運勢を占う「ソドワおみくじ」です！`,
+    tags: ["sw25", "tool"],
+  })),
   {
     title: "「祝5周年！　SW2.5フレーム」をアイコンにつけよう",
     to: "/sw25/tool/5anni",

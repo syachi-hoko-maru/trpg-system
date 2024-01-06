@@ -178,6 +178,7 @@ export const search = (
     .filter((page) => {
       // 隠しページは表示しない
       if (isHidden(page)) return false;
+      if (page.noSearch) return false;
       // 検索・一覧ページやエラーページは表示しない
       if (page.to === "/search") return false;
       if (page.to === "error") return false;

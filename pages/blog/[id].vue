@@ -94,6 +94,7 @@ const results = $pageSettingList.filter(pageSetting =>
   pageSetting.to.indexOf("/blog/") >= 0
   && pageSetting.osusume
   && !isHidden(pageSetting)
+  && !pageSetting.noSearch
   && pageSetting.to.indexOf(id) === -1
 ).slice(0, 3)
 

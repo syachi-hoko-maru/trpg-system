@@ -182,6 +182,7 @@ export const pageSettingList: PageSetting[] = [
     lastmod: "2024/1/6",
     img: `page-image/omikuji_${i}.webp`,
     osusume: false,
+    noSearch: true,
     explain: `あなたの今年の運勢は${f}！？　ソード・ワールド2.5（SW2.5/ソドワ）の運勢を占う「ソドワおみくじ」です！`,
     tags: ["sw25", "tool"],
   })),
@@ -575,6 +576,7 @@ export const pageSettingList: PageSetting[] = [
     // img: "page-image/me.webp",
     explain: "管理人しゃちほこ丸が主催するTRPGセッションに関するページです。",
     osusume: false,
+    noSearch: true,
     tags: ["me", "trpg"],
   },
   {
@@ -585,6 +587,7 @@ export const pageSettingList: PageSetting[] = [
     explain:
       "ネタバレ無。ソード・ワールド2.5（SW2.5/ソドワ）×マーダーミステリー（マダミス）という最強の掛け算、『断ち切られるべき呪い』（ゲームマスタリーマガジン VOL.10 付録）をしゃちほこ丸が主催する際に確認していただくページです。",
     osusume: false,
+    noSearch: true,
     tags: ["me", "sw25"],
   },
   {
@@ -622,6 +625,7 @@ export const pageSettingList: PageSetting[] = [
     img: "page-image/search.webp",
     lastmod: "2023/9/14",
     specialPage: true,
+    noSearch: true,
     explain: "",
     tags: [],
   },
@@ -630,6 +634,7 @@ export const pageSettingList: PageSetting[] = [
     to: "/setting",
     lastmod: "2023/3/1",
     specialPage: true,
+    noSearch: true,
     explain:
       "当ウェブサイトのライトモード/ダークモードの切り替え設定ができるページです。",
     tags: [],
@@ -639,6 +644,7 @@ export const pageSettingList: PageSetting[] = [
     to: "/policy",
     lastmod: "2023/3/29",
     specialPage: true,
+    noSearch: true,
     explain:
       "当ウェブサイトのサイトポリシーを掲載しています。本サイトはTRPGのファンサイトです。本サイトへのリンクは自由に掲載できます。Googleアナリティクスを使用しています。",
     tags: [],
@@ -649,6 +655,7 @@ export const pageSettingList: PageSetting[] = [
     to: "/me/contact",
     lastmod: "2023/9/14",
     specialPage: false,
+    noSearch: true,
     explain:
       "管理人しゃちほこ丸の連絡先メールアドレス及びTwitterアカウントを掲載しています。",
     tags: [],
@@ -659,6 +666,7 @@ export const pageSettingList: PageSetting[] = [
     to: "error",
     lastmod: "2023/3/1",
     hiddenFlag: true,
+    noSearch: true,
     explain: "エラーが発生した際に表示されるページです。",
     tags: [],
     noamazon: true,

@@ -1,3 +1,4 @@
+import { Agent } from "http";
 import { getPageSetting, isHidden } from "./getPageSetting";
 import { pageSettingList } from "./pageSettingList";
 import { shuffle } from "~/src/util";
@@ -10,7 +11,11 @@ export const getOsusumePageList = (
   // 隠しページでなく説明があり、かつ今表示していないページ
   const dataList = pageSettingList.filter(
     (page) =>
-      !isHidden(page) && page.explain && page.img && page.to !== pageSetting.to
+      !isHidden(page) &&
+      !page.noSearch &&
+      page.explain &&
+      page.img &&
+      page.to !== pageSetting.to
   );
   // 関連ならtagの一致を調べる
   if (type === "kanren") {

@@ -51,7 +51,7 @@ const { nowPageSetting } = usePages()
 const pageSetting = nowPageSetting
 
 const recent = $pageSettingList
-  .filter(p => !isHidden(p))
+  .filter(p => !isHidden(p) && !p.noSearch)
   .sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime())
   .slice(0, 10)
 

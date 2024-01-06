@@ -8,7 +8,7 @@ import { shuffle } from '~/src/util';
 
 const { $pageSettingList } = useNuxtApp()
 
-const guestPageList = shuffle($pageSettingList.filter(page => !isHidden(page) && page.to.indexOf("/sw25/fav/") === 0))
+const guestPageList = shuffle($pageSettingList.filter(page => !isHidden(page) && !page.noSearch && page.to.indexOf("/sw25/fav/") === 0))
 
 const andml0 = `
 &1 企画概要

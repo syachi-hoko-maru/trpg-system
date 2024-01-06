@@ -19,7 +19,13 @@ const andml0 = `
 ぜひ &em_自分に合った遊び方・楽しみ方 を見つけて、ソード・ワールド2.5をもっともっと楽しんでください！
 `
 
-const guestPageList = shuffle($pageSettingList.filter(page => !isHidden(page) && page.to.indexOf("/sw25/fav/") === 0 && page.to !== nowPageSetting.value.to))
+const guestPageList = shuffle(
+    $pageSettingList
+        .filter(page =>
+            !isHidden(page)
+            && !page.noSearch
+            && page.to.indexOf("/sw25/fav/") === 0
+            && page.to !== nowPageSetting.value.to))
 
 const andml1 = `
 &1 他のインタビュー

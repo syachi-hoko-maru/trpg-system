@@ -35,5 +35,6 @@ const results = computed(() =>
   $pageSettingList.filter(pageSetting =>
     pageSetting.to.indexOf("/blog/") >= 0
     && !isHidden(pageSetting)
+    && !pageSetting.noSearch
     && (form.value.value ? (pageSetting.tags.join().indexOf("sw25") >= 0 || pageSetting.tags.join().indexOf("trpg") >= 0) : true)))
 </script>

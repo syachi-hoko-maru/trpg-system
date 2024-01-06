@@ -11,7 +11,7 @@ import { isHidden } from '~/src/pages/getPageSetting';
 
 const { $pageSettingList } = useNuxtApp()
 
-const toolPages = $pageSettingList.filter(page => page.to.startsWith("/sw25/tool/") && !isHidden(page))
+const toolPages = $pageSettingList.filter(page => page.to.startsWith("/sw25/tool/") && !isHidden(page) && !page.noSearch)
 
 const andml1 = `
 &1 このページについて

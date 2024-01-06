@@ -1,6 +1,6 @@
 <template>
   <card-list :title="title">
-    <card v-for="page of pageSettingList" :key="page.to" :comingsoon="isHidden(page)">
+    <card v-for="page of pageSettingList.filter(p => !p.noSearch)" :key="page.to" :comingsoon="isHidden(page)">
       <template #tbefore v-if="page.img">
         <item-img :src="page.img" :alt="`ページ「${page.title}」のサムネイル画像`" />
       </template>

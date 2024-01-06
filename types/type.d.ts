@@ -37,6 +37,7 @@ declare type PageSetting = {
   osusume?: boolean;
   readonly explain?: string | string[];
   hiddenFlag?: boolean;
+  noSearch?: boolean;
   readonly specialPage?: boolean;
   readonly tags: PageTag[];
   readonly noamazon?: boolean;

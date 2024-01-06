@@ -18,16 +18,17 @@ const rawBannerList: Banner[] = [
     to: "/sw25/feature/c102",
     img: "/banner-image/c102-2.webp",
     isValid: !isPast("2024/8/12"),
+    weight: 2,
   },
-  {
-    name: "harula_saihan",
-    title:
-      "ソード・ワールド2.5同人誌「ハルーラガイド」紙版 通販予約販売 再開！",
-    to: "/sw25/feature/harula",
-    img: "/banner-image/harula.webp",
-    isValid: !isPast("2024/12/10"),
-    weight: 3,
-  },
+  // {
+  //   name: "harula_saihan",
+  //   title:
+  //     "ソード・ワールド2.5同人誌「ハルーラガイド」紙版 通販予約販売 再開！",
+  //   to: "/sw25/feature/harula",
+  //   img: "/banner-image/harula.webp",
+  //   isValid: !isPast("2024/12/10"),
+  //   weight: 3,
+  // },
   // {
   //   name: "halloween",
   //   title: "ハロウィンイベント実施中",

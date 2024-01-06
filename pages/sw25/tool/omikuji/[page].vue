@@ -77,6 +77,11 @@ main()
 
 watch(route, main)
 
+onMounted(async () => {
+    await main()
+    console.log("omikuji done")
+})
+
 const andml2 = `
 &3 コミュニティを広げるか！　って方向け
 &button_/sw25/tool/intro

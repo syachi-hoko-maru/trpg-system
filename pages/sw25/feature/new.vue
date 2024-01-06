@@ -1,36 +1,45 @@
 <template>
   <CardArrayByAndml :andml="aboutThisPage" />
-  <card>
+  <Card>
     <template #title>
       新刊情報
     </template>
-    <div v-for="book of bookList.filter(({ title }) => title)" class="py-3">
-      <item-head2>{{ book.title }}</item-head2>
-      <div class="my-2">
-        <dl class="d-flex my-1"
-          v-for="[key, value] of Object.entries(book).filter(([key]) => key !== 'title' && key !== 'amazon')">
-          <dt>{{ langList[key as Attr] }}</dt>
-          <dd>{{ value }}</dd>
-        </dl>
-      </div>
-      <andml v-if="book.type === 'GMウォーロック'" :andmls="aboutgmw" />
-      <andml v-if="book.type === '異世界冒険ガイド'" :andmls="aboutisekai" />
-      <item-amazon-sw25 :item="[book.title || '', book.amazon || '']" mini />
-      <item-button v-if="!book.explain" :url="`/search/?word=${book.title}&tag=sw25_new`">
-        詳細・紹介はこちら
-      </item-button>
-    </div>
-    <andml :andmls="blogs" />
-  </card>
+    <template v-for="book of bookList
+      .filter(a => !isPast(a.date))
+      .sort((a, b) => sortByDate(false)(a.date, b.date))" class="py-3">
+      <PagesNew :book="book" />
+    </template>
+    <br>
+    <Andml :andmls="blogs" />
+  </Card>
+  <Card>
+    <template #title>
+      最近発売されたサプリメント/関連本
+    </template>
+    <template v-for="book of bookList
+      .filter(a => isPast(a.date) && !isPast(new Date(a.date).getTime() + 1000 * 60 * 60 * 24 * 185))
+      .sort((a, b) => sortByDate(true)(a.date, b.date))" class="py-3">
+      <PagesNew :book="book" />
+    </template>
+  </Card>
   <CardArrayByAndml :andml="yosou" />
 </template>
 
 <script setup lang="ts">
+import { bookList } from '~/src/dict/new';
+import { isPast, sortByDate, } from '~/src/util/date';
+
 const aboutThisPage = `
 &1 このページについて
-このページではソード・ワールド2.5（SW2.5）の &em_新刊情報 と管理人のしゃちほこ丸による &em_刊行予想 をまとめています。
-「ソドワの新刊っていつ出るの？」「今後はどんなサプリが出そうなの？」って方、必見です！
-刊行予想は旧版であるソード・ワールド2.0のサプリメントも元に予想しています。
+このページではソード・ワールド2.5（SW2.5/ソドワ）の &em_新刊情報 と最近発売になったサプリメント等の情報、管理人のしゃちほこ丸による &em_刊行予想 をまとめています。
+&br
+- 「ソドワの新刊っていつ出るの？」
+- 「今後はどんなサプリが出そうなの？」
+- 「最近はどんなサプリメントが出たの？」
+&br
+って方、 &em_必見 です！
+&br
+刊行予想は旧版である「ソード・ワールド2.0」のサプリメントの発売順も元に予想しています。
 &br
 また、ページの下には「ソース」として &em_ソード・ワールド2.5の最新の情報を入手するための情報源 をまとめているので、こちらも参考にしてください！
 
@@ -44,87 +53,14 @@ const aboutThisPage = `
 &button_/sw25/forbeginner/suppliment
 `
 
-const aboutgmw = `
-※ GMウォーロックとはグループSNEが刊行している雑誌。
-ソード・ワールド2.5に関しても &em_サポート情報 や &em_シナリオ・ソロアドベンチャー（GM不要な1人用シナリオ） 、 &em_新刊情報 などが掲載される。 
-&link_https://www.fujisan.co.jp/product/1281702551/,定期購読の申し込みはこちら
-&link_https://sne-ec.com/category/item/supportmagazine/gm_warlock/,購入はこちら（グループSNE公式アンテナショップ「SNE-EC」）
-`
-const aboutisekai = `
-「異世界冒険ガイド」シリーズについては &link_/sw25/forbeginner/isekai,こちら で詳しく解説しています！
-`
-
 const blogs = `
 &2 ブログに最新情報があるかも！？
-こちらのページもなるべく最新情報を掲載するようにしていますが、 &em_ブログの方が更新が早かったり、詳しかったりする場合 があります。
+こちらのページもなるべく最新情報を掲載するようにしています！
+が、 &em_ブログの方が更新が早かったり、詳しかったりする場合 があります。
+&br
 以下からタグ「ソード・ワールド2.5¥s最新情報」のついたページ一覧を見てみてください！
 &button_/search?tag=sw25_new&sort=recent こちら
 `
-
-const attr = ["title", "long", "date", "type", "explain", "amazon"] as const
-type Attr = typeof attr[number]
-
-const langList: {
-  [key in Attr]: string
-} = {
-  title: "タイトル",
-  long: "正式名称",
-  date: "発売日",
-  type: "タイプ",
-  explain: "紹介",
-  amazon: ""
-}
-
-const bookList: {
-  [key in Attr]?: string
-}[] = [
-    // {
-    //   title: "異世界冒険ガイド きみならどうする!?　街での冒険",
-    //   date: "2023/5/19",
-    //   type: "異世界冒険ガイド",
-    //   explain: "ファンタジーで遊ぶ際、どうすればいいかを紹介してくれる「異世界冒険ガイド」の2冊目で、シティアドベンチャー向けとのこと。",
-    //   amazon: "異世界冒険ガイド"
-    // },
-    // {
-    //   title: "時の魔域と秘宝の守り人",
-    //   date: "2023/6/20",
-    //   type: "リプレイ",
-    //   explain: "夏の大型サプリを使ったリプレイが発売されるようです。",
-    //   amazon: "時の魔域と秘宝の守り人"
-    // },
-    {
-      title: "アーケインレリック",
-      long: "アーケインレリック -種族と秘宝-",
-      date: "2023/7/20",
-      type: "サプリメント（大型サプリ）",
-    },
-    {
-      title: "猫と星と秘宝",
-      long: "ノベル+シナリオ 猫と星と秘宝",
-      date: "2023/8/19",
-      type: "シナリオ集",
-      explain: "夏の大型サプリを使えるシナリオ集が発売予定。昨年秋に発売された『ストーリーフラグメンツ』のように文庫本サイズとのこと。",
-    },
-    {
-      title: "ラクシアライフ",
-      long: "ラクシアライフ -街の人たちと一般技能-",
-      date: "2023/10/20",
-      type: "サプリメント（新ジャンル？）",
-    },
-    {
-      title: "ギルドマスター・ウォーロックの依頼録",
-      long: "ソロ＆マルチシナリオ集 ギルドマスター・ウォーロックの依頼録",
-      date: "2023/11/20",
-      type: "サプリメント（シナリオ集）",
-    },
-    // {
-    //   title: "BOXセット（？）",
-    //   long: "BOXセット（正式名称不明）",
-    //   date: "2023/10/20",
-    //   type: "ボードゲーム",
-    // },
-
-  ]
 
 const yosou = `
 &1 刊行予想
@@ -215,14 +151,3 @@ SW2.0にいた種族のうち、まだSW2.5で出ていない種族は
 `
 </script>
 
-<style lang="scss" scoped>
-dl {
-  dt {
-    width: 30%;
-  }
-
-  dd {
-    width: 70%;
-  }
-}
-</style>

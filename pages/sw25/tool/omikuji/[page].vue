@@ -77,9 +77,22 @@ main()
 
 watch(route, main)
 
-onMounted(async () => {
+const mainLoop = async () => {
     await main()
-    console.log("omikuji done")
+    if (
+        !andml1.value
+        && route.query.id
+        && Number(route.query.id)
+        && !Number.isNaN(Number(route.query.id))
+    ) {
+        setTimeout(main, 500)
+    } else {
+        console.log("omikuji done")
+    }
+}
+
+onMounted(async () => {
+    mainLoop()
 })
 
 const andml2 = `

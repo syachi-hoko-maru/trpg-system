@@ -87,7 +87,7 @@ const mainLoop = async () => {
     ) {
         setTimeout(main, 500)
     } else {
-        console.log("omikuji done")
+        console.log("omikuji done", route.query.id)
     }
 }
 

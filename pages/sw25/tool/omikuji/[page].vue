@@ -23,7 +23,7 @@ import { isPast } from "~/src/util/date";
 const { $templateText } = useNuxtApp()
 
 const route = useRoute()
-const andml1 = ref("システムエラーが発生しました。 &br &br もう一度実行してください。")
+const andml1 = ref(["システムエラーが発生しました。 &br &br もう一度実行してください。"])
 const shareText = ref("")
 const shareUrl = ref("")
 
@@ -48,10 +48,9 @@ const main = async () => {
         return
     }
     // console.log("change", fortuneResult.fortuneScore, id)
-    andml1.value = `
-&2 今年のSW2.5運は「 &em_${fortuneResult.fortuneScore} 」！
-
-${fortuneResult
+    andml1.value = [
+        `&2 今年のSW2.5運は「 &em_${fortuneResult.fortuneScore} 」！`,
+        ...`${fortuneResult
             .messageList
             .map(m => m
                 .split(sep)
@@ -66,8 +65,7 @@ ${fortuneResult
                     }
                 })
             )
-            .flat()
-            .join("\n")}`
+            .flat()}`]
 
     shareText.value = `〈しゃちほこの尾びれ亭〉のソドワおみくじ！
 今年のSW2.5運は「${fortuneResult.fortuneScore}」！

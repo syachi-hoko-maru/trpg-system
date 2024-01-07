@@ -2,6 +2,7 @@ import { syuzoku } from "../../dict/syuzoku";
 import { ginou } from "../../dict/ginou";
 import { FortuneFunction, FortuneResult, FortuneScore, sep } from ".";
 import { Random } from "./random";
+import { formatGod, godList } from "../../dict/god";
 
 export const fortuneTypeListV1 = [
   "コミュニティ",
@@ -116,6 +117,17 @@ export const getFortuneV1: FortuneFunction = (id: number): FortuneResult => {
 
   const aveScore =
     score / fortuneTypeListV1.length + (random.nextInt(0, 16) - 6) / 16;
+
+  // 神
+  const godArr = godList.filter(
+    ({ sword, game }) => (sword === 1 || sword === 3) && game !== 20
+  );
+  messageList.push(
+    `信仰${sep}${formatGod(
+      godArr[random.nextInt(0, godArr.length - 1)]
+    )}を信仰せよ。`
+  );
+
   if (aveScore > 4.375) {
     fortuneScore = "超大吉";
   } else if (aveScore > 4) {

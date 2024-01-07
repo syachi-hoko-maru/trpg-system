@@ -50,7 +50,8 @@ const main = async () => {
     // console.log("change", fortuneResult.fortuneScore, id)
     andml1.value = [
         `&2 今年のSW2.5運は「 &em_${fortuneResult.fortuneScore} 」！`,
-        ...`${fortuneResult
+        ...
+        fortuneResult
             .messageList
             .map(m => m
                 .split(sep)
@@ -65,7 +66,8 @@ const main = async () => {
                     }
                 })
             )
-            .flat()}`]
+            .flat(1)
+    ]
 
     shareText.value = `〈しゃちほこの尾びれ亭〉のソドワおみくじ！
 今年のSW2.5運は「${fortuneResult.fortuneScore}」！

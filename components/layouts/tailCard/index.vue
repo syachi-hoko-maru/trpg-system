@@ -59,14 +59,14 @@ const scrollTop = () => {
   scrollTo(0, 0)
 }
 
-const newBook = bookList
+const newBooks = bookList
   .filter(b => !isPast(b.date))
   .sort((a, b) => sortByDate(false)(a.date, b.date))
-[0]
-const recentBook = bookList
+const newBook = newBooks[0]
+const recentBooks = bookList
   .filter(b => isPast(b.date))
   .sort((a, b) => sortByDate(true)(a.date, b.date))
-[0]
+const recentBook = recentBooks[0]
 
 const newbooks = (newBook ? `
 &1 最新刊『${newBook.title}』（${newBook.dispDate ? newBook.dispDate : newBook.date}発売予定）特集中！
@@ -75,15 +75,43 @@ const newbooks = (newBook ? `
 ぜひみていってください！
 &button_/search?word=${newBook.title} 『${newBook.title}』関連ページはこちら
 &br
-&3 ${recentBook.title}
-他にも最近発売された『${recentBook.long ? recentBook.long : recentBook.title}』（${newBook.dispDate ? newBook.dispDate : newBook.date}発売）などについての情報も多数あります！
-&button_/search?word=${recentBook.title} 『${recentBook.title}』関連ページはこちら
 &br
-&3 他にも新刊情報いろいろ！
-その他にもソード・ワールド2.5の最新情報を多数扱っています！
+他にも
 &br
-新刊情報についてはこちらをご覧ください！
+${newBooks
+    .map(r =>
+      `- 『${r.long ? r.long : r.title}』（${r.dispDate ? r.dispDate : r.date}発売）`
+    )
+    .join("\n")
+  }
+&br
+についても特集中です！！
 &button_/sw25/feature/new
+&br
+&3 新刊『${recentBook.title}』なども特集してます！
+他にも最近発売された
+&br
+${recentBooks
+    .filter((_, i) =>
+      i < 3
+    )
+    .map(r =>
+      `- 『${r.long ? r.long : r.title}』（${r.dispDate ? r.dispDate : r.date}発売）`
+    )
+    .join("\n")
+  }
+&br
+などについての情報も多数あります！
+${recentBooks
+    .filter((_, i) =>
+      i < 3
+    )
+    .map(r =>
+      `&button_/search?word=${r.title} 『${r.title}』関連ページはこちら`
+    )
+    .join("\n")
+  }
+&br
 &br
 `: "")
   + (!pageSetting.value.noamazon ? `

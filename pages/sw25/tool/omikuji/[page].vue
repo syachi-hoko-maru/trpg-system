@@ -106,6 +106,9 @@ const mainLoop = async () => {
 onMounted(async () => {
     mainLoop()
 })
+window.addEventListener('DOMContentLoaded', mainLoop)
+
+
 
 const andml2 = `
 &3 コミュニティを広げるか！　って方向け

@@ -99,7 +99,7 @@ const mainLoop = async () => {
         count++
         // } 
     } else {
-        console.log("omikuji done", route.query.id, count)
+        console.log("omikuji done", route.query.id, count, andml1.value.length)
     }
 }
 

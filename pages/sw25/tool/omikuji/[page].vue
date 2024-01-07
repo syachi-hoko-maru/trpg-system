@@ -88,7 +88,8 @@ let count = 0
 const mainLoop = async () => {
     await main()
     if (
-        count < 10
+        count < 10 &&
+        andml1.value.length < 20
     ) {
         // if (route.query.id
         //     && Number(route.query.id)
@@ -98,7 +99,7 @@ const mainLoop = async () => {
         count++
         // } 
     } else {
-        console.log("omikuji done", route.query.id)
+        console.log("omikuji done", route.query.id, count)
     }
 }
 

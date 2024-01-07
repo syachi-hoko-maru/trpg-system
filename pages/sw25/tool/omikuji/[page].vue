@@ -51,16 +51,23 @@ const main = async () => {
     andml1.value = `
 &2 今年のSW2.5運は「 &em_${fortuneResult.fortuneScore} 」！
 
-${fortuneResult.messageList.map(m => m.split(sep).map((t, i) => {
-        switch (i) {
-            case 0:
-                return `&3 ${t}`
-            case 1:
-                return `${t}`
-            default:
-                return ""
-        }
-    })).flat().join("\n")}`
+${fortuneResult
+            .messageList
+            .map(m => m
+                .split(sep)
+                .map((t, i) => {
+                    switch (i) {
+                        case 0:
+                            return `&3 ${t}`
+                        case 1:
+                            return `${t}`
+                        default:
+                            return ""
+                    }
+                })
+            )
+            .flat()
+            .join("\n")}`
 
     shareText.value = `〈しゃちほこの尾びれ亭〉のソドワおみくじ！
 今年のSW2.5運は「${fortuneResult.fortuneScore}」！
@@ -77,15 +84,19 @@ main()
 
 watch(route, main)
 
+let count = 0
 const mainLoop = async () => {
     await main()
     if (
-        !andml1.value
-        && route.query.id
-        && Number(route.query.id)
-        && !Number.isNaN(Number(route.query.id))
+        count < 10
     ) {
-        setTimeout(main, 500)
+        // if (route.query.id
+        //     && Number(route.query.id)
+        //     && !Number.isNaN(Number(route.query.id))
+        // ) {
+        setTimeout(main, 250 * count)
+        count++
+        // } 
     } else {
         console.log("omikuji done", route.query.id)
     }

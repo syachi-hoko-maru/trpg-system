@@ -67,7 +67,7 @@ const maxChoiceCount = Math.max(
   ...Object.values(fortuneList).map((f) => f.length)
 );
 export const getFortuneV1: FortuneFunction = (id: number): FortuneResult => {
-  if (!id) {
+  if (id === 0) {
     throw "error";
   }
   const messageList: string[] = [];

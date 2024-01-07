@@ -549,7 +549,7 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "管理人プロフィール",
     to: "/me",
-    lastmod: "2023/9/12",
+    lastmod: "2024/1/7",
     img: "page-image/me.webp",
     imgdirs: ["other/me"],
     explain:

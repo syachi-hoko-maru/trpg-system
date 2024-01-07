@@ -78,38 +78,49 @@ TRPG自己紹介シートは &link_https://create-now.vercel.app/trpg-manual,こ
 
 &2 好きなもの
 &3 Minecraft
--遊ぶのも見るのも好きです
--JavaもBEもやります
--Mod開発してみたいな……と思いつつ……
+- 遊ぶのも見るのも好きです
+- JavaもBEもやります
+// - Mod開発してみたいな……と思いつつ……
+- 最近ちょっとずつMod開発をしています
 
 &3 ポケモン
--一番好きなポケモンは最初の相棒のラグラージ（ &link_https://zukan.pokemon.co.jp/detail/0260,公式ポケモンずかんはこちら ）
--好きなタイプは「みず」
--好きなジムリーダーはアダン（ホウエン地方ルネシティ、エメラルド限定）
+- 初めて遊んだゲーム
+-- ポケットモンスター¥sエメラルド
+- 一番好きなポケモン
+-- ラグラージ
+--- &link_https://zukan.pokemon.co.jp/detail/0260,公式ポケモンずかんはこちら
+--- 最初の相棒です
+- 好きなタイプ
+-- 「みず」
+- 好きなジムリーダー
+-- アダン：ホウエン地方ルネシティ（エメラルド限定）
 // -今度スカーレットを買って遊ぶ予定
 
 &3 ライトノベル＆アニメ
--2010年台の作品をよく見ていました
---東京レイヴンズ（あざの耕平先生）
---とある魔術の禁書目録（鎌池和馬先生）
---変態王子と笑わない猫（さがら総先生）
---やはり俺の青春ラブコメは間違っている（渡航先生）
---さくら荘のペットな彼女（鴨志田一先生）
---ノーゲーム・ノーライフ（榎宮祐先生）
---魔法科高校の劣等生（佐島勤先生）
---アクセル・ワールド（川原礫）
+2010年台の作品をよく読んで・見ていました
+&br
+-東京レイヴンズ（あざの耕平先生）
+-とある魔術の禁書目録（鎌池和馬先生）
+-変態王子と笑わない猫（さがら総先生）
+-やはり俺の青春ラブコメは間違っている（渡航先生）
+-さくら荘のペットな彼女（鴨志田一先生）
+-ノーゲーム・ノーライフ（榎宮祐先生）
+-魔法科高校の劣等生（佐島勤先生）
+-アクセル・ワールド（川原礫先生）
 
-&3 デュエマ
--1年ほど前まではデュエプレをしていました &br 最近は全くできていません
--デュエチューブ追ったりしてます
+// &3 デュエマ
+// -1年ほど前まではデュエプレをしていました &br 最近は全くできていません
 &3 YouTube視聴
 - Minecraft
 --&link_https://www.youtube.com/@Nichijo_Gumi,日常組
 --&link_https://www.youtube.com/@bellsworkshop2,Bell's¥sWorkshop（方向音痴の人）
--シミュレーションゲーム
+- シミュレーションゲーム
 --&link_https://www.youtube.com/@hayayabo,ハヤトの野望
 --&link_https://www.youtube.com/@kohmagame,コーマ
 --&link_https://www.youtube.com/@anaguma,あなぐま
+- デュエル・マスターズ
+-- &link_https://www.youtube.com/channel/UCGm5NSZFeb7q54h52bvX80g,デュエチューブ
+-- &link_https://www.youtube.com/@hondhu,本日のデュエルマスターズ（本デュ）
 -その他
 --&link_https://www.youtube.com/@napolimens,ナポリの男たち
 --&link_https://www.youtube.com/@omocorochannel,オモコロチャンネル
@@ -124,18 +135,27 @@ TRPG自己紹介シートは &link_https://create-now.vercel.app/trpg-manual,こ
 // 最近はまっているもの
 
 &1 リンク
+&3 SNS
 -&itwitter
 -- このウェブサイトへのご意見・ご感想等もこちらへお願いします
 -&link_https://trpger.us/@syachi_hoko_trp,Misskey（@syachi_hoko_trp@trpger.us）
 -- Misskey（TRPGがすきー！）に参加しました
+
+&3 シナリオ投稿サイト
 -&link_https://talto.cc/users/DVUC9LjUviekGgXrbqXaJWAcLCm1,TALTO
 -- シナリオを公開しています
 -- シナリオ一覧は &link_/scenario,こちら へどうぞ
+-&link_http://scenarch.com/userpages/14630,scenarch
+-- 現在はTALTOへのリンクを掲載しているのみとなっています
+
+&3 素材公開
+-&link_https://syachihokomaru.booth.pm/,BOOTH
+-- オンラインセッション素材などを公開しています
+-- &link_/sw25/tool/material,こちら で配布素材の紹介をしています！
+
+&3 その他
 -&link_https://kakuyomu.jp/works/16816927859758100588,カクヨム
 -- SW2.5に関する雑多なことを書いています
 -- 最近は &link_/blog,ブログ があるので更新少なめです
--&link_https://syachihokomaru.booth.pm/,BOOTH
--- オンラインセッション素材などを公開しています
--- &link_/sw25/tool/material,こちらで配布素材の紹介をしています！
 `
 </script>

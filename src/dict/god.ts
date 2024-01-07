@@ -1,4 +1,4 @@
-type God = {
+export type God = {
   sword: 0 | 1 | 2 | 3;
   hn: string;
   name: string;

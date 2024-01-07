@@ -343,9 +343,20 @@ export const pageSettingList: PageSetting[] = [
     img: "page-image/ginou.webp",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5）でキャラクターが使える技能の一覧と、その紹介をしているページです。どのルールブック・サプリメントに載っているかも掲載しています。",
+      "ソード・ワールド2.5（SW2.5/ソドワ）でキャラクターが使える技能の一覧と、その紹介をしているページです。どのルールブック・サプリメントに載っているかも掲載しています。",
     tags: ["sw25"],
   },
+  {
+    title: "SW2.5 ラクシアの神の一覧と紹介",
+    to: "/sw25/forbeginner/god",
+    lastmod: "2024/1/12",
+    img: "page-image/god.webp",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5/ソドワ）の舞台「ラクシア」の神の一覧と紹介のページです",
+    tags: ["sw25"],
+  },
+
   {
     title: "SW2.5 おすすめサプリメント紹介",
     to: "/sw25/forbeginner/suppliment",

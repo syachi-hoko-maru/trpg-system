@@ -3,23 +3,32 @@ export type God = {
   hn: string;
   name: string;
   game: 20 | 25 | 2025;
-  book?: string[];
   area?: string;
   description?: string[];
 } & (
   | {
-      type: 0 | 1;
-    }
-  | {
-      type: 2;
-      game: 20;
-    }
-  | {
-      type: 2;
       game: 25 | 2025;
-      area: string;
+      book: string[];
     }
-);
+  | {
+      game: 20;
+      book?: string[];
+    }
+) &
+  (
+    | {
+        type: 0 | 1;
+      }
+    | {
+        type: 2;
+        game: 20;
+      }
+    | {
+        type: 2;
+        game: 25 | 2025;
+        area: string;
+      }
+  );
 export const godList: God[] = [
   {
     sword: 1,
@@ -210,7 +219,14 @@ export const godList: God[] = [
     book: ["ルールブックI〜", "メイガスアーツ"],
   },
   { sword: 3, type: 0, hn: "戦勝神", name: "ユリスカロア", game: 20 },
-  { sword: 3, type: 0, hn: "秘隠神", name: "クス", game: 2025 },
+  {
+    sword: 3,
+    type: 0,
+    hn: "秘隠神",
+    name: "クス",
+    game: 2025,
+    book: ["メイガスアーツ"],
+  },
   {
     sword: 3,
     type: 1,

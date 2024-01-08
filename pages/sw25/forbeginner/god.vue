@@ -20,7 +20,9 @@ const format = (god: God) => [
   god.sword
     ? `"${god.hn}"¥s${god.name}は第${getSword(god.sword)}の剣に由来する${getType(god.type)}です。`
     : `"${god.hn}"¥s${god.name}は全てが謎であり、異界の神なのではないかとも言われる${getType(god.type)}です。`,
-  god.area ? `${god.area}で信仰されています。` : ""
+  god.area ? `${god.area}で信仰されています。` : "",
+  god.book ? `${god.book.map(b => `「${b}」`).join("・")}に登場します。` : "",
+  god.description ? "&br\n" + god.description.join("\n") : ""
 ]
 const godAndml = `
 &1 このページについて

@@ -1,4 +1,5 @@
 import { iconImages } from "../dict/icons";
+import { bookList } from "../dict/new";
 import { fortuneScoreList } from "../simulater/omikuji";
 import { isPast, sortByDate } from "../util/date";
 import { blogPageSettingList } from "./blogPageSettingList";
@@ -38,8 +39,14 @@ export const pageSettingList: PageSetting[] = [
     to: "/sw25/feature/new",
     img: "page-image/new.webp",
     osusume: true,
-    explain:
-      "ソード・ワールド2.5（SW2.5/ソドワ）のサプリメントやリプレイなど関連書籍の新刊情報と刊行予想をまとめています。8月「ノベル+シナリオ」・7月大型サプリ（種族&秘宝）・6月リプレイ。「ソドワの新刊っていつ出るの？」「今後はどんなサプリが出そうなの？」って方、必見です。",
+    explain: `ソード・ワールド2.5（SW2.5/ソドワ）のサプリメントやリプレイなど関連書籍の新刊情報と刊行予想をまとめています。${bookList
+      .filter((b) => !isPast(b.date))
+      .map(
+        (b) => `『${b.title}』（${b.dispDate ? b.dispDate : b.date}発売予定）`
+      )
+      .join(
+        "・"
+      )}。「ソドワの新刊っていつ出るの？」「今後はどんなサプリが出そうなの？」って方、必見です。`,
     lastmod: "2024/1/6",
     tags: ["sw25_new", "sw25_moso"],
   },

@@ -1,3 +1,12 @@
+type GodBook =
+  | "ルールブックI〜III"
+  | "ルールブックII〜III"
+  | "メイガスアーツ"
+  | "剣と荒野と放浪者2"
+  | "フェアリーガーデン"
+  | "エンドレスメイズ"
+  | "ラクシアゴッドブック";
+
 export type God = {
   sword: 0 | 1 | 2 | 3;
   hn: string;
@@ -8,11 +17,11 @@ export type God = {
 } & (
   | {
       game: 25 | 2025;
-      book: string[];
+      book: GodBook[];
     }
   | {
       game: 20;
-      book?: string[];
+      book?: GodBook[];
     }
 ) &
   (
@@ -36,7 +45,7 @@ export const godList: God[] = [
     hn: "始祖神",
     name: "ライフォス",
     game: 2025,
-    book: ["ルールブックI〜", "メイガスアーツ"],
+    book: ["ルールブックI〜III", "メイガスアーツ"],
     description: [
       "最初に第一の剣ルミエルに触れた人族で、調和を大切にしていたと言われます。",
     ],
@@ -47,7 +56,7 @@ export const godList: God[] = [
     hn: "太陽神",
     name: "ティダン",
     game: 2025,
-    book: ["ルールブックI〜", "メイガスアーツ"],
+    book: ["ルールブックI〜III", "メイガスアーツ"],
     description: [
       "ライフォスの仲間だったとされます。",
       "アンデッドを嫌っていたり、ソレイユが眷属と言われていたりするのが特徴です。",
@@ -59,7 +68,7 @@ export const godList: God[] = [
     hn: "妖精神",
     name: "アステリア",
     game: 2025,
-    book: ["ルールブックII〜", "メイガスアーツ"],
+    book: ["ルールブックII〜III", "メイガスアーツ"],
     description: [
       "ライフォスの仲間だったとされます。",
       "エルフの先祖とされます。",
@@ -71,7 +80,7 @@ export const godList: God[] = [
     hn: "炎武帝",
     name: "グレンダール",
     game: 2025,
-    book: ["ルールブックII〜", "メイガスアーツ"],
+    book: ["ルールブックII〜III", "メイガスアーツ"],
     description: [
       "ライフォスの仲間だったとされます。",
       "ドワーフの先祖とされます。",
@@ -93,7 +102,7 @@ export const godList: God[] = [
     hn: "月神",
     name: "シーン",
     game: 2025,
-    book: ["ルールブックI〜", "メイガスアーツ"],
+    book: ["ルールブックI〜III", "メイガスアーツ"],
   },
   {
     sword: 1,
@@ -101,7 +110,7 @@ export const godList: God[] = [
     hn: "神の指先",
     name: "ミルタバル",
     game: 25,
-    book: ["ルールブックI〜", "メイガスアーツ"],
+    book: ["ルールブックI〜III", "メイガスアーツ"],
   },
   {
     sword: 1,
@@ -109,7 +118,7 @@ export const godList: God[] = [
     hn: "奈落の盾神",
     name: "イーヴ",
     game: 25,
-    book: ["ルールブックI〜", "メイガスアーツ"],
+    book: ["ルールブックI〜III", "メイガスアーツ"],
   },
   {
     sword: 1,
@@ -117,7 +126,7 @@ export const godList: God[] = [
     hn: "導きの星神",
     name: "ハルーラ",
     game: 25,
-    book: ["ルールブックI〜", "メイガスアーツ"],
+    book: ["ルールブックI〜III", "メイガスアーツ"],
   },
   {
     sword: 1,
@@ -125,7 +134,7 @@ export const godList: God[] = [
     hn: "樹神",
     name: "ダリオン",
     game: 25,
-    book: ["ルールブックII〜", "メイガスアーツ"],
+    book: ["ルールブックII〜III", "メイガスアーツ"],
   },
   {
     sword: 1,
@@ -133,7 +142,7 @@ export const godList: God[] = [
     hn: "慈愛と復讐の女神",
     name: "ミリッツァ",
     game: 25,
-    book: ["ルールブックII〜", "メイガスアーツ"],
+    book: ["ルールブックII〜III", "メイガスアーツ"],
   },
   {
     sword: 1,
@@ -168,7 +177,7 @@ export const godList: God[] = [
     name: "フルシル",
     game: 25,
     area: "ブルライト地方",
-    book: ["ルールブックI〜", "メイガスアーツ"],
+    book: ["ルールブックI〜III", "メイガスアーツ"],
   },
   {
     sword: 1,
@@ -177,7 +186,7 @@ export const godList: God[] = [
     name: "ストラスフォード",
     game: 25,
     area: "ドーデン地方",
-    book: ["ルールブックII〜", "メイガスアーツ"],
+    book: ["ルールブックII〜III", "メイガスアーツ"],
   },
   {
     sword: 1,
@@ -216,7 +225,7 @@ export const godList: God[] = [
     hn: "賢神",
     name: "キルヒア",
     game: 2025,
-    book: ["ルールブックI〜", "メイガスアーツ"],
+    book: ["ルールブックI〜III", "メイガスアーツ"],
   },
   { sword: 3, type: 0, hn: "戦勝神", name: "ユリスカロア", game: 20 },
   {
@@ -254,7 +263,7 @@ export const godList: God[] = [
     hn: "戦神",
     name: "ダルクレム",
     game: 2025,
-    book: ["ルールブックII〜", "メイガスアーツ"],
+    book: ["ルールブックII〜III", "メイガスアーツ"],
   },
   { sword: 2, type: 0, hn: "死の神", name: "ザールギアス", game: 20 },
   { sword: 2, type: 0, hn: "惑いと偽りの神", name: "ソーンダーク", game: 20 },
@@ -264,7 +273,7 @@ export const godList: God[] = [
     hn: "海掠神",
     name: "エイリャーク",
     game: 25,
-    book: ["ルールブックII〜", "メイガスアーツ"],
+    book: ["ルールブックII〜III", "メイガスアーツ"],
   },
   {
     sword: 2,
@@ -272,7 +281,7 @@ export const godList: God[] = [
     hn: "不死の女王",
     name: "ツァイデス",
     game: 25,
-    book: ["ルールブックII〜", "メイガスアーツ"],
+    book: ["ルールブックII〜III", "メイガスアーツ"],
   },
   {
     sword: 2,
@@ -343,7 +352,7 @@ export const godList: God[] = [
     hn: "狂神",
     name: "ラーリス",
     game: 2025,
-    book: ["ルールブックII〜", "メイガスアーツ"],
+    book: ["ルールブックII〜III", "メイガスアーツ"],
   },
 ];
 

@@ -14,14 +14,14 @@ godList.sort((a, b) => {
 })
 
 const getSword = (sword: 1 | 2 | 3) => [, "一", "ニ", "三"][sword]
-const getType = (type: 0 | 1 | 2) => ["古代神", "大神", "小神"][type]
+const getType = (type: 0 | 1 | 2) => [" &ruby_古代神,エンシェントゴッド ", " &ruby_大神,メジャーゴッド ", " &ruby_小神,マイナーゴッド "][type]
 const format = (god: God) => [
   `&3 "${god.hn}"¥s${god.name}`,
   god.sword
-    ? `"${god.hn}"¥s${god.name}は第${getSword(god.sword)}の剣に由来する${getType(god.type)}です。`
-    : `"${god.hn}"¥s${god.name}は全てが謎であり、異界の神なのではないかとも言われる${getType(god.type)}です。`,
+    ? `"${god.hn}"¥s${god.name}は第${getSword(god.sword)}の剣に由来する ${getType(god.type)} です。`
+    : `"${god.hn}"¥s${god.name}は全てが謎であり、異界の神なのではないかとも言われる ${getType(god.type)} です。`,
   god.area ? `${god.area}で信仰されています。` : "",
-  god.book ? `${god.book.map(b => `「${b}」`).join("・")}に登場します。` : "",
+  god.book ? `&br ${god.book.map(b => `『${b}』`).join("・")}に登場します。` : "",
   god.description ? "&br\n" + god.description.join("\n") : ""
 ]
 const godAndml = `

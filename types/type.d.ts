@@ -92,10 +92,10 @@ type SupplimentGroup = {
   id: string;
   type: string;
   explain: string;
-  items: Suppliment[];
+  items: SupplimentData[];
 };
 
-type Suppliment = {
+type SupplimentData = {
   name: string;
   ossusume: number;
   explain: string;

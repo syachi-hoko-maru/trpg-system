@@ -9,7 +9,8 @@
     "after": "ts-node --files --project ba.tsconfig.jsonc src/after/index.ts",
     "generate": "NODE_OPTIONS=\"--max-old-space-size=5600\" nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test": "ts-node --files --project ba.tsconfig.jsonc src/yesno/test.ts"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.1.1",

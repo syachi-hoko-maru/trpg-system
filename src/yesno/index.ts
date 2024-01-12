@@ -1,0 +1,179 @@
+import { getEntries, getKeys } from "../util";
+
+const setParent = <Def extends YesnoDefine>(
+  yesnoTags: Readonly<(keyof Def)[]>,
+  yesnoDefine: Def
+): (keyof Def)[] => {
+  return yesnoTags.flatMap((t) => {
+    const parent = yesnoDefine[t].parent;
+    if (parent && parent.length > 0) {
+      return [t, ...setParent(parent, yesnoDefine)];
+    }
+    return t;
+  });
+};
+/**
+ * @param dict YesNoDict
+ * @param arr 現在の候補
+ */
+const getTag = <Key extends string, Def extends YesnoDefine>(
+  dict: YesNoDict<Key, Def>,
+  arr: Key[],
+  tagHistory: YesNoTagHistory<Def>
+): keyof Def | null => {
+  if (arr.length <= 1) return null;
+  /** 各yesnoTagがどれだけ出現するか */
+  const tagCounts: { [key in keyof Def]?: number } = {};
+  arr.forEach((key) => {
+    dict[key].forEach((tag) => {
+      // 既出のタグは対象外とする
+      if (tagHistory[tag] || tagHistory[tag] === 0) return;
+      const value = tagCounts[tag];
+      if (!value) tagCounts[tag] = 1;
+      else tagCounts[tag] = value + 1;
+    });
+  });
+  if (!getKeys(tagCounts).length) return null;
+  const mid = arr.length / 2;
+  const resultTag: keyof Def = getEntries(tagCounts).sort((a, b) => {
+    const aValue: number | undefined = a[1];
+    const bValue: number | undefined = b[1];
+    if (!aValue) return -1;
+    if (!bValue) return 1;
+    const aD = Math.abs(mid - aValue);
+    const bD = Math.abs(mid - bValue);
+    if (aD > bD) return 1;
+    if (aD < bD) return -1;
+    return Math.random() - 1 / 2;
+  })[0][0];
+  return resultTag;
+};
+
+const setScore = <Key extends string, Def extends YesnoDefine>(
+  score: YesNoScore<Key>,
+  dict: YesNoDict<Key, Def>,
+  tag: keyof Def,
+  flag: boolean,
+  phase: number
+): void => {
+  getEntries(dict).forEach(([key, yesnoTags]) => {
+    const value = score[key];
+    if (flag === yesnoTags.includes(tag)) {
+      if (!value) score[key] = 1;
+      else if (value > 0) score[key] = value * 2;
+      else score[key] = value + 1;
+    } else {
+      if (!value) score[key] = -1;
+      else score[key] = value - 1;
+    }
+  });
+};
+
+const setArr = <Key extends string>(score: YesNoScore<Key>): Key[] => {
+  //   const forAverageScore: [number, number] = getEntries(score).reduce(
+  //     (prev, [_, num]) => {
+  //       if (!num || num <= 0) return prev;
+  //       return [(prev[0] += num), (prev[1] += 1)];
+  //     },
+  //     [0, 0]
+  //   );
+  //   const averageScore: number = forAverageScore[0] / forAverageScore[1];
+  let maxScore = 0;
+  return getEntries(score).reduce((prev, [key, num]) => {
+    if (num && num > maxScore) {
+      maxScore = num;
+      return [key];
+    }
+    if (num && num === maxScore) {
+      return [...prev, key];
+    }
+    return prev;
+  }, [] as Key[]);
+};
+
+const getResult = <Key extends string>(
+  yesnoScore: YesNoScore<Key>
+): YesNoResult<Key> => {
+  let maxScore = 0;
+  const list: Key[] = getEntries(yesnoScore).reduce((prev, [key, score]) => {
+    if (score && score > maxScore) {
+      maxScore = score;
+      return [key];
+    }
+    if (score && score === maxScore) {
+      return [...prev, key];
+    }
+    return prev;
+  }, [] as Key[]);
+  const foryou = list[Math.floor(Math.random() * list.length)];
+  const other: Key[] = getEntries(yesnoScore)
+    .filter(([key, _]) => key !== foryou)
+    .sort((a, b) => {
+      const aValue: number | undefined = a[1];
+      const bValue: number | undefined = b[1];
+      if (!aValue) return bValue || 1;
+      if (!bValue) return -aValue;
+      if (aValue > bValue) return -1;
+      if (aValue < bValue) return 1;
+      return Math.random() - 1 / 2;
+    })
+    .map((a) => a[0])
+    .slice(0, 5);
+  return { foryou, other };
+};
+
+export const yesnoQuestion = function* <
+  Key extends string,
+  Def extends YesnoDefine
+>(
+  data: {
+    [key in Key]: {
+      yesnoTags: (keyof Def)[];
+    } & {
+      [k: string]: any;
+    };
+  },
+  yesnoDefine: Def
+): Generator<
+  { question: string; arr: Key[] },
+  YesNoResult<Key> | null,
+  "yes" | "no" | "?"
+> {
+  const yesnoDict: YesNoDict<Key, Def> = Object.fromEntries(
+    getEntries(data).map(([key, val]) => [
+      key,
+      val.yesnoTags.flatMap((t) => {
+        const parent = yesnoDefine[t].parent;
+        if (parent && parent.length > 0) {
+          return [t, ...parent];
+        }
+        return t;
+      }),
+    ])
+  ) as YesNoDict<Key, Def>;
+  const yesnoScore: YesNoScore<Key> = {};
+  const tagHistory: YesNoTagHistory<Def> = {};
+  let arr: Key[] = getKeys(yesnoDict);
+  let tag: keyof Def | null = getTag(yesnoDict, arr, tagHistory);
+  let count = 0;
+  while (count < 1000) {
+    if (tag === null) {
+      const result = getResult(yesnoScore);
+      return result;
+    }
+    count++;
+    const answer = yield { question: yesnoDefine[tag].question, arr };
+    if (answer === "yes" || answer === "no" || answer === "?") {
+      tagHistory[tag] = answer === "yes" ? 1 : answer === "no" ? -1 : 0;
+      if (answer !== "?") {
+        const flag: boolean = (answer === "yes") === !yesnoDefine[tag].reverse;
+        setScore(yesnoScore, yesnoDict, tag, flag, count);
+        arr = setArr(yesnoScore);
+      }
+      tag = getTag(yesnoDict, arr, tagHistory);
+    } else {
+      continue;
+    }
+  }
+  return getResult(yesnoScore);
+};

@@ -71,7 +71,7 @@ ${godList
 また、公式リプレイ等のネタバレになりますので閲覧は自己責任でお願いします。
 &&tatami_ネタバレの可能性あり
 ${godList
-    .filter(god => god.game !== 20 && god.sword !== 2)
+    .filter(god => god.game !== 20 && (god.sword === 2 || god.sword === 0))
     .map(format)
     .flat()
     .join("\n")}

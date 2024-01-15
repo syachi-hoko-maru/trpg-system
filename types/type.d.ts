@@ -88,15 +88,15 @@ declare type Blog = {
   img: string;
 };
 
-type SupplimentGroup = {
+type SupplimentGroup<SupplimentList extends string> = {
   id: string;
   type: string;
   explain: string;
-  items: SupplimentData[];
+  items: SupplimentData<SupplimentList>[];
 };
 
-type SupplimentData = {
-  name: string;
+type SupplimentData<SupplimentList extends string> = {
+  name: SupplimentList;
   ossusume: number;
   explain: string;
 };

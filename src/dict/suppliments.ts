@@ -1,4 +1,4 @@
-const big: SupplimentGroup = {
+const big: SupplimentGroup<string> = {
   id: "big",
   type: "大型サプリ",
   explain: `
@@ -21,7 +21,7 @@ const big: SupplimentGroup = {
       name: "エピックトレジャリー",
       ossusume: 5,
       explain: `
-最初にして &em_おすすめ度は最大の5 、初心者は &em_困ったらこれを買っておけば無難 って感じです。
+&em_おすすめ度は最大の5 、初心者は &em_困ったらこれを買っておけば無難 って感じです。
 &br
 メインとしてはルルブI〜IIIの &em_アイテム がまとまっており、アイテムの追加もあります。
 まずアイテムがまとまっているのが &em_遊ぶ上でとても便利 です。
@@ -43,7 +43,7 @@ const big: SupplimentGroup = {
 この冒険者技能の解説、 &em_発祥や社会での存在など についても書かれています。かなり読み応えがあり、今後の冒険が楽しくなること間違いなしです。
 &br
 最初に言った通りですが、困ったらこれを買っておけば無難って感じはあります。
-以下を読んで「これが欲しい！」ってならない限り、このエピックトレジャリーを買うといいでしょう。
+「これが欲しい！」というサプリメントがなければ、このエピックトレジャリーを買うといいでしょう。
       `,
     },
     {
@@ -158,7 +158,7 @@ SW2.5の種族については以下でまとめているので参考にしてく
     },
   ],
 };
-const cb: SupplimentGroup = {
+const cb: SupplimentGroup<string> = {
   id: "cb",
   type: "キャラビルドサプリ",
   explain: `
@@ -233,7 +233,7 @@ const cb: SupplimentGroup = {
     },
   ],
 };
-const tour: SupplimentGroup = {
+const tour: SupplimentGroup<string> = {
   id: "tour",
   type: "ツアーサプリ",
   explain: `
@@ -367,7 +367,7 @@ SW2.5で &em_鉄道に関する冒険をしたい人 にはオススメです。
     },
   ],
 };
-const bb: SupplimentGroup = {
+const bb: SupplimentGroup<string> = {
   id: "bb",
   type: "バトルブックサプリ",
   explain: `
@@ -462,4 +462,4 @@ PLは2人（1人でも可能、ルールブックがあれば3人以上も可能
   ],
 };
 
-export const suppliments: SupplimentGroup[] = [big, cb, tour, bb];
+export const suppliments: SupplimentGroup<string>[] = [big, cb, tour, bb];

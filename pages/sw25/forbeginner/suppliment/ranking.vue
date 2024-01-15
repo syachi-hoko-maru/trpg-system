@@ -17,7 +17,7 @@
 <script setup lang="ts">
 const { $suppliments } = useNuxtApp()
 
-type RankingData = SupplimentData & {
+type RankingData = SupplimentData<string> & {
   gname: string
   gnum: number;
   rank: number;

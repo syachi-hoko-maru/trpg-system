@@ -1,4 +1,4 @@
-type DateLike = string | Date | number;
+export type DateLike = string | Date | number;
 
 /**
  * 将来的にここは管理画面から切り替えたい……

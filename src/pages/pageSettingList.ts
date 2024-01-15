@@ -363,7 +363,15 @@ export const pageSettingList: PageSetting[] = [
       "ソード・ワールド2.5（SW2.5/ソドワ）の舞台「ラクシア」の神の一覧と紹介のページです。ライフォス・ティダン・アステリア・ハルーラ・エイリャークなどなど……。掲載ルールブック・サプリメントも紹介！　旧版である「ソード・ワールド2.0」に登場した神も紹介！",
     tags: ["sw25"],
   },
-
+  {
+    title: "SW2.5 流派の一覧と紹介",
+    to: "/sw25/forbeginner/ryuha",
+    lastmod: "2024/1/30",
+    img: "page-image/ryuha.webp",
+    osusume: true,
+    explain: "ソード・ワールド2.5（SW2.5/ソドワ）の",
+    tags: ["sw25"],
+  },
   {
     title: "SW2.5 おすすめサプリメント紹介",
     to: "/sw25/forbeginner/suppliment",
@@ -585,6 +593,17 @@ export const pageSettingList: PageSetting[] = [
     img: "page-image/gallery.webp",
     imgdirs: ["icon-image"],
     explain: "管理人しゃちほこ丸の歴代アイコンを紹介するページです。",
+    tags: ["me"],
+  },
+  {
+    title: "しゃちほこ丸のスキル・経験",
+    to: "/me/skills",
+    lastmod: "2024/1/15",
+    img: "page-image/me.webp",
+    osusume: false,
+    noSearch: true,
+    explain:
+      "しゃちほこ丸（@syachi_hoko_trp）のスキルや経験に関するページ。ウェブプログラミング（Node.js/TypeScript/Vue）など。",
     tags: ["me"],
   },
   {

@@ -6,20 +6,20 @@
     <andml :andmls="syuzokuAndml" />
   </card>
   <div v-if="Object.entries($ginou).length" id="各技能の紹介">
-    <card v-for="[ginou, { explain, debut, type, magic }] of Object.entries($ginou)" :key="ginou">
+    <card v-for="value of $ginou" :key="value.name">
       <template #title>
-        {{ ginou }}
+        {{ value.name }}
       </template>
       <template #subtitle>
-        初出：{{ debut }}
+        初出：{{ value.debut }}
       </template>
       <template #pbefore>
-        <item-tags-chip v-for="t of type" :label="t" />
+        <item-tags-chip v-for="t of value.type" :label="t" />
       </template>
-      <div v-if="magic">
-        使用魔法：{{ magic }}
+      <div v-if="'magic' in value && value.magic">
+        使用魔法：{{ value.magic }}
       </div>
-      <andml v-if="explain" :andmls="explain" />
+      <andml v-if="value.explain" :andmls="value.explain" />
       <div v-else>
         現在解説を準備中です。
       </div>
@@ -40,13 +40,13 @@ const syuzokuAndml = `
 &br
 ソード・ワールド2.5については &link_/sw25,こちら をご覧ください。
 またソード・ワールド2.5初心者向け情報は &link_/sw25/forbeginner,こちら にまとめてありますので合わせてご覧ください。
-` + Object.entries($ginou).map(([syuzoku, { debut, type }]) => {
+` + ($ginou).map(({ name, debut, type }) => {
   let str = ""
   if (debut !== currentDebut) {
     str += `&2 ${debut} \n`
     currentDebut = debut
   }
-  str += `- &link_#${syuzoku},${syuzoku}（${type.join("・")}）`
+  str += `- &link_#${name},${name}（${type.join("・")}）`
   return str
 }).join("\n") + `
 &br

@@ -1,5 +1,5 @@
 import { syuzoku } from "../../dict/syuzoku";
-import { ginou } from "../../dict/ginou";
+import { Gino, ginou } from "../../dict/ginou";
 import { FortuneFunction, FortuneResult, FortuneScore, sep } from ".";
 import { Random } from "./random";
 import { formatGod, godList } from "../../dict/god";
@@ -100,7 +100,7 @@ export const getFortuneV1: FortuneFunction = (id: number): FortuneResult => {
   messageList.push(syuzokuArr[random.nextInt(0, syuzokuArr.length - 1)]);
 
   // 技能
-  const ginouList = Object.keys(ginou);
+  const ginouList: Gino[] = ginou.map(({ name }) => name);
   const ginou1 = ginouList[random.nextInt(0, ginouList.length - 1)];
   let ginou2 = ginouList[random.nextInt(0, ginouList.length - 1)];
   while (ginou1 === ginou2) {

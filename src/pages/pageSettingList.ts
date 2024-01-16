@@ -598,13 +598,14 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "しゃちほこ丸のスキル・経験",
     to: "/me/skills",
-    lastmod: "2024/1/15",
+    created: "2024/1/15",
+    lastmod: "2024/1/16",
     img: "page-image/me.webp",
     osusume: false,
     noSearch: true,
     explain:
       "しゃちほこ丸（@syachi_hoko_trp）のスキルや経験に関するページ。ウェブプログラミング（Node.js/TypeScript/Vue）など。",
-    tags: ["me"],
+    tags: ["me", "tech"],
   },
   {
     title: "セッション",

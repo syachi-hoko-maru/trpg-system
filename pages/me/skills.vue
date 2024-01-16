@@ -57,6 +57,7 @@ const andml1 = `
 -- Google¥sApps¥sScriptとGitHub¥sActionsを使用した独自CMS
 --- Google¥sFormの送信時にGoogle¥sApps¥sScriptからGitHub¥sActionsを呼び、自動デプロイを行う
 -- 通勤時間にスマホで書きやすいように作成した独自マークアップ言語
+-- 静的サイトで完結する &link_/search,サイト内検索システム
 &button_https://github.com/syachi-hoko-maru/trpg-system/ GitHub
 
 &1 その他
@@ -71,5 +72,8 @@ const andml1 = `
 &3 SW2.5同人誌『冒険者の旅路』表紙・裏表紙編集
 表紙イラストはたつみ先生
 &button_/sw25/feature/c102
+
+&1 技術系のページ
+&button_/search?tag=tech こちら
 `
 </script>

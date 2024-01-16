@@ -4,7 +4,7 @@ import { blogImgDir, blogJSON, RawBlog } from "../../index";
 
 import { createCanvas, registerFont } from "canvas";
 
-type OGPType = "normal" | "sw25" | "rm" | "rugby";
+type OGPType = "normal" | "sw25" | "rm" | "rugby" | "tech";
 
 export const geneImage = async () => {
   // const blogImgs = readdirSync(blogImgDir);
@@ -23,7 +23,9 @@ export const geneImage = async () => {
       try {
         const tagList = tags.join("");
         const ogpType: OGPType =
-          tagList.indexOf("rugby") >= 0
+          tagList.indexOf("tech") >= 0
+            ? "tech"
+            : tagList.indexOf("rugby") >= 0
             ? "rugby"
             : tagList.indexOf("rm") >= 0
             ? "rm"
@@ -47,6 +49,7 @@ const typeDict: {
   sw25: { image: "ogp_sw25.svg", color: "#222", lineColor: "#5e3012" },
   rm: { image: "ogp_rm.svg", color: "#004B98", lineColor: "#FFD700" },
   rugby: { image: "ogp_rugby.svg", color: "#fff", lineColor: "#fff" },
+  tech: { image: "ogp_tech.svg", color: "#fff", lineColor: "#fff" },
 };
 
 const generateImage = async (

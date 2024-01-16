@@ -17,14 +17,15 @@ declare type MenuPage = {
 };
 
 declare type PageTag =
-  | "sw25"
-  | "sw25_new"
-  | "sw25_moso"
-  | "tool"
-  | "scenario"
+  | "me"
   | "rm"
   | "rugby"
-  | "me"
+  | "scenario"
+  | "sw25"
+  | "sw25_moso"
+  | "sw25_new"
+  | "tech"
+  | "tool"
   | "trpg";
 declare type PageSetting = {
   readonly title: string;

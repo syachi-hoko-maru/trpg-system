@@ -36,6 +36,10 @@ export const pageTagSettings: PageTagSettings = {
     label: "しゃちほこ丸",
     explanation: "管理人のしゃちほこ丸に関するタグ",
   },
+  tech: {
+    label: "技術系",
+    explanation: "プログラミングなどに関するタグ",
+  },
 };
 export const pageTags: PageTag[] = [
   "sw25",
@@ -47,6 +51,7 @@ export const pageTags: PageTag[] = [
   "rm",
   "rugby",
   "me",
+  "tech",
 ];
 export const isPageTag = (a: unknown): a is PageTag => {
   return pageTags.some((pageTag) => pageTag === a);

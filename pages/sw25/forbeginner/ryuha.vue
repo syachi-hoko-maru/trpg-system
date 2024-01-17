@@ -71,7 +71,8 @@ ${ryuhaList
 
 ソード・ワールド2.5に登場する &em_技能 については以下をご覧ください。
 &button_/sw25/forbeginner/ginou
-
+&br
+&amazon_バトルマスタリー・博物誌・ユーシズ
 `
 
 </script>

@@ -25,6 +25,7 @@
       </div>
     </card>
   </div>
+  <card-array-by-andml :andml="andmlend" />
 </template>
 
 <script setup lang="ts">
@@ -53,9 +54,19 @@ const syuzokuAndml = `
 以下では &em_各技能について 簡単にですが紹介します。
 なお、サプリメントについては以下をご覧ください。
 &button_/sw25/forbeginner/suppliment/1 
-&br
+`
+const andmlend = `
+&1 まとめ
 ソード・ワールド2.5に登場する &em_種族 については以下をご覧ください。
 &button_/sw25/forbeginner/syuzoku
-`
 
+プリースト技能を使う際に重要となる、ソード・ワールド2.5に登場する &em_神 については以下をご覧ください。
+&button_/sw25/forbeginner/god
+
+技能以上にキャラクターを際立たせられるルールとして「 &em_流派 」があります。
+ソード・ワールド2.5に登場する &em_流派 については以下をご覧ください。
+&button_/sw25/forbeginner/ryuha
+&br
+&amazon_モンストラスロア・メイガスアーツ・バトルマスタリー
+`
 </script>

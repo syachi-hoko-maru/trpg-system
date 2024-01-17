@@ -366,10 +366,12 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "SW2.5 流派の一覧と紹介",
     to: "/sw25/forbeginner/ryuha",
-    lastmod: "2024/1/30",
+    created: "2024/1/18",
+    lastmod: "2024/1/18",
     img: "page-image/ryuha.webp",
     osusume: true,
-    explain: "ソード・ワールド2.5（SW2.5/ソドワ）の",
+    explain:
+      "ソード・ワールド2.5（SW2.5/ソドワ）の流派の一覧と紹介ページです。戦闘特技などを拡張し、より複雑な戦闘スタイル等をデータで表わせるルール「流派」。登場ルルブも全て掲載。",
     tags: ["sw25"],
   },
   {

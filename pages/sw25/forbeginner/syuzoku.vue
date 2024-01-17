@@ -89,5 +89,8 @@ const syuzokuAndml2 = `
 &1 関連リンク
 出版社のサイトである「富士見書房TRPG¥sONLINE」では &em_イラスト付きで各種族を紹介 してくれていますので、こちらもご確認ください。
 &button_https://fujimi-trpg-online.jp/game/sw25-character.html こちら
+&br
+&br
+&amazon_アーケインレリック・アウトロープロファイルブック
 `
 </script>

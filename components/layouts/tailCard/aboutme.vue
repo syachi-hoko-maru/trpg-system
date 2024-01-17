@@ -3,13 +3,18 @@
     <template #title>About Me</template>
     <div class="flex">
       <div class="left">
-        <item-img :src="icon" class="radius" alt="アイコン" />
+        <atom-link to="/me/gallery" title="アイコン">
+          <item-img :src="icon" class="radius" alt="アイコン" />
+        </atom-link>
       </div>
       <div class="right">
         <p class="my-1">
-          しゃちほこ丸と申します。ソード・ワールド2.5でファンタジー世界を冒険するのが大好きです。他にもいろいろなTRPGが好きです。
+          しゃちほこ丸と申します。ソード・ワールド2.5でファンタジー世界を冒険するのが大好きです。
         </p>
-        <p class="my-1">
+        <p class="my-3">
+          他にもいろいろなTRPGが好きです。
+        </p>
+        <p class="my-3">
           ウェブサイト運営やブログは初心者です。ご感想をいただければ幸いです。<br>
           ご意見ご要望もお待ちしております！
         </p>

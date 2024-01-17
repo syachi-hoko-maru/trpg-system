@@ -1,8 +1,10 @@
 <template>
-  <div>
-    {{ dateText }}
-    <slot />
-  </div>
+  <dl>
+    <dt>{{ dateText }}</dt>
+    <dd>
+      <slot />
+    </dd>
+  </dl>
 </template>
 
 <script setup lang="ts">
@@ -24,3 +26,17 @@ if (Props.props === "today") {
   dateText = getDateText(new Date(Props.props))
 }
 </script>
+
+<style lang="scss" scoped>
+dl {
+  display: flex;
+
+  dt {
+    width: 10em;
+  }
+
+  dd {
+    width: calc(100% - 10rem);
+  }
+}
+</style>

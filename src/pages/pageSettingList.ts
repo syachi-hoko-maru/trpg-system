@@ -8,7 +8,7 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "トップページ",
     to: "/",
-    lastmod: "2023/9/12",
+    lastmod: "2024/1/18",
     img: "page-image/main.webp",
     specialPage: true,
     tags: [],
@@ -346,7 +346,7 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "SW2.5 技能の一覧と紹介",
     to: "/sw25/forbeginner/ginou",
-    lastmod: "2023/4/5",
+    lastmod: "2024/1/18",
     img: "page-image/ginou.webp",
     osusume: true,
     explain:

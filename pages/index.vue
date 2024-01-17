@@ -64,7 +64,7 @@
 
 <script setup lang="ts">
 import { isHidden } from '~/src/pages/getPageSetting';
-import { nowDate, sortPagesByDate } from '~/src/util/date';
+import { nowDate, sortByDate, sortPagesByDate } from '~/src/util/date';
 
 const { $pageSettingList } = useNuxtApp()
 const { osusumePageArray } = usePages()
@@ -184,12 +184,17 @@ This site also has a variety of other TRPG-related contents!
 &button_/search
 `
 
+const lastmodPage: PageSetting = $pageSettingList
+  .filter(p => !isHidden(p) && !p.noSearch && p.tags.join("").indexOf("sw25") >= 0)
+  .sort((a, b) => sortByDate(true)(a.lastmod, b.lastmod))[0]
 const andml4 = `
 &1 History & News
 &date_today 随時更新中
+&date_${lastmodPage.lastmod} &link_${lastmodPage.to},「${lastmodPage.title.replace(/\s/g, "¥s")}」 更新
 &date_2023/6/2 本公開
 &date_2023/3/1 仮公開
 // &date_2023/1/11 更新準備開始
+&date_2022/2/16 前身「しゃちほこ丸のTRPGシステム」公開
 &br
 最新の更新情報はTwitterにて発信します！
 また、ご意見ご要望などもお待ちしております。

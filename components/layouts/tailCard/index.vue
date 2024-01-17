@@ -116,8 +116,8 @@ ${recentBooks
 `: "")
   + (!pageSetting.value.noamazon ? `
 &amazon_${bookList
-      .map(b => [b.title, b.amazon ? b.amazon : ""])
-      .flat()
+      .sort((a, b) => sortByDate(true)(a.date, b.date))
+      .flatMap(b => [b.title, b.amazon ? b.amazon : ""])
       .filter(f => f)
       .join("・")}
 `: "")

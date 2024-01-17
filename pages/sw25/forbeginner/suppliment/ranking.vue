@@ -42,13 +42,12 @@ const checkTie = (rankingData: RankingData): "タイ" | "" => $suppliments.flatM
 const setExplainAndml = (rankingData: RankingData) => {
   const top = rankingData.rank === 1
   return `
-  ${top ? "そして、" : ""}おすすめサプリメントランキングの${top ? "栄えある" : ""}第${rankingData.rank}位${checkTie(rankingData)}は &em_「おすすめ度：${rankingData.ossusume}」 の『 &em_${rankingData.name} 』です！
-  サプリメント『${rankingData.name}』は &em_「${rankingData.gname}」に分類されるサプリ です。
-  &br
-  ${top ? "1位に輝いた" : ""}『${rankingData.name}』の &em_内容やおすすめのポイント は以下のページで紹介しています！
-  併せてご覧ください。
-&button_/sw25/forbeginner/suppliment/${rankingData.gnum + 2}/#${rankingData.name} こちら
+${top ? "そして、" : ""}おすすめサプリメントランキングの${top ? "栄えある" : ""}第${rankingData.rank}位${checkTie(rankingData)}は &em_「おすすめ度：${rankingData.ossusume}」 の『 &em_${rankingData.name} 』です！
+サプリメント『${rankingData.name}』は &em_「${rankingData.gname}」に分類されるサプリ です。
 &amazon_${rankingData.name}
+${top ? "1位に輝いた" : ""}『${rankingData.name}』の &em_内容やおすすめのポイント は以下のページで紹介しています！
+併せてご覧ください。
+&button_/sw25/forbeginner/suppliment/${rankingData.gnum + 2}/#${rankingData.name.replace(/\s/, "¥s")} こちら
   `
 }
 
@@ -91,7 +90,7 @@ const andml2 = `
 順位が低いものも &em_初心者におすすめではないだけ でとても良いサプリメントなので、ぜひ最終的には全部揃えてください！
 最初はルールブックだけで十分楽しめますが、ハマって揃えていくのも楽しいですよ……。
 &br
-` + ranking.map(r => `第${r.rank}位${checkTie(r)}¥s &link_/sw25/forbeginner/suppliment/${r.gnum + 2}/#${r.name},${r.name}（${r.gname}）`).join("\n")
+` + ranking.map(r => `第${r.rank}位${checkTie(r)}¥s &link_/sw25/forbeginner/suppliment/${r.gnum + 2}/#${r.name.replace(/\s/, "¥s")},${r.name.replace(/\s/, "¥s")}（${r.gname}）`).join("\n")
   + `
 &br
 それぞれのサプリについて &em_「詳しく知りたい！」 って方はそれぞれのリンクへ飛ぶか、以下のページをご覧ください。

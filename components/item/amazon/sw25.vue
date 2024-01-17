@@ -1,6 +1,6 @@
 <template>
   <div v-if="mini && items.length" class="my-5">
-    <item-scrollx>
+    <item-scrollx :nobutton="items.length >= 3">
       <div v-for="item of items" :key="item.name" class="mx-2">
         <item-amazon-core :item="item" />
         <!-- <iframe :title="`${item.title}のAmazonリンク`" loading="lazy"
@@ -70,10 +70,12 @@ const items: AmazonSearchResult<string>[] =
   Array.isArray(amazonItems) ?
     Array.isArray(kohoList) ?
       kohoList.reduce((prev, koho) => {
-        prev.push(
-          ...amazonItems
-            .filter(({ name }) => !prev.find(p => p.name === name) && name.indexOf(koho) >= 0)
-        )
+        if (koho) {
+          prev.push(
+            ...amazonItems
+              .filter(({ name }) => !prev.find(p => p.name === name) && name.indexOf(koho) >= 0)
+          )
+        }
         return prev
       }, [] as AmazonSearchResult<string>[])
       : // 一旦ランダムで10個を表示するように

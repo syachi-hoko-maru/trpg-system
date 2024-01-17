@@ -58,7 +58,7 @@ export const bookList: Book[] = [
   },
   {
     title: "モノクロマティカ",
-    long: "モノクロマティカ",
+    long: "泡沫世界モノクロマティカ",
     date: "2024/3/20",
     dispDate: "2024/3/?",
     type: "サプリメント（バトルブック系）",

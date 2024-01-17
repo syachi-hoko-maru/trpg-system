@@ -21,6 +21,7 @@ type MyThemeDifinition = ThemeDefinition & {
     warning: string;
     success: string;
     twitter: string;
+    amazon: string;
   };
 };
 const myCustomLightTheme: MyThemeDifinition = {
@@ -41,6 +42,7 @@ const myCustomLightTheme: MyThemeDifinition = {
     warning: "#ffeb3b",
     success: "#2196f3",
     twitter: "#2196F3",
+    amazon: "#f74a00",
   },
 };
 const myCustomDarkTheme: MyThemeDifinition = {
@@ -61,6 +63,7 @@ const myCustomDarkTheme: MyThemeDifinition = {
     warning: "#ffeb3b",
     success: "#2196f3",
     twitter: "#2196F3",
+    amazon: "#f74a00",
   },
 };
 const myCustomHalloweenTheme: MyThemeDifinition = {
@@ -81,6 +84,7 @@ const myCustomHalloweenTheme: MyThemeDifinition = {
     warning: "#ffeb3b",
     success: "#2196f3",
     twitter: "#c75e08",
+    amazon: "#f74a00",
   },
 };
 const myCustomSakuraTheme: MyThemeDifinition = {
@@ -101,6 +105,7 @@ const myCustomSakuraTheme: MyThemeDifinition = {
     warning: "#ffeb3b",
     success: "#2196f3",
     twitter: "#2196F3",
+    amazon: "#f74a00",
   },
 };
 

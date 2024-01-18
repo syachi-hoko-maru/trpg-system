@@ -18,6 +18,7 @@ declare type MenuPage = {
 
 declare type PageTag =
   | "me"
+  | "otrpg"
   | "rm"
   | "rugby"
   | "scenario"

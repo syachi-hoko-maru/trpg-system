@@ -1,6 +1,6 @@
 国立天文台のTRPG！？ サンドキャッスルTRPGを 紹介してみる！
 2023/6/4
-trpg
+trpg,otrpg
 &1 国立天文台って？
 国立天文台は日本の天文学に関する研究機関です。
 &button_https://www.nao.ac.jp/ ウェブサイト

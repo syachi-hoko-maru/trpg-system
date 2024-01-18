@@ -1,6 +1,6 @@
 革命的はちゃめちゃTRPG 『マモノスクランブル』を 遊んできました！
 2023/10/3
-trpg
+trpg,otrpg
 &1 マモノスクランブルってどんなTRPG？
 『マモノスクランブル』は「マモノ」になって、人間とマモノが共生する街「東京」で遊ぶTRPGです。
 作者はゲームクリエイター＆シナリオライターのからすば晴先生（ &link_https://twitter.com/karasu_wing,Twitter（@karasu_wing） ）！

@@ -24,6 +24,10 @@ export const pageTagSettings: PageTagSettings = {
     label: "TRPG全般",
     explanation: "TRPG全般に関するタグ",
   },
+  otrpg: {
+    label: "TRPGいろいろ",
+    explanation: "いろいろなTRPG（ソード・ワールド2.5以外）に関するタグ",
+  },
   rm: {
     label: "レアル・マドリード",
     explanation: "スペインのサッカークラブ「レアル・マドリード」に関するタグ",
@@ -48,6 +52,7 @@ export const pageTags: PageTag[] = [
   "scenario",
   "tool",
   "trpg",
+  "otrpg",
   "rm",
   "rugby",
   "me",

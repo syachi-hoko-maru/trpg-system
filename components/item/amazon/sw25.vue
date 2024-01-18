@@ -46,6 +46,8 @@
 import amazonItems from '~/src/temp/amazon.json';
 import { AmazonSearchResult } from "~/src/amazon-paapi/types";
 import { shuffle } from '~/src/util';
+import { bookList } from '~/src/dict/new';
+import { sortByDate } from '~/src/util/date';
 
 interface Props {
   mini?: boolean,
@@ -66,6 +68,13 @@ const andml2 = `
 &button_/sw25/forbeginner/suppliment
 `
 const kohoList: string[] | undefined = Props.item
+if (kohoList && kohoList[0] === "recent") {
+  kohoList.unshift(...bookList
+    .sort((a, b) => sortByDate(true)(a.date, b.date))
+    .flatMap(b => [b.title, b.amazon ? b.amazon : ""])
+    .filter(f => f)
+  )
+}
 const items: AmazonSearchResult<string>[] =
   Array.isArray(amazonItems) ?
     Array.isArray(kohoList) ?

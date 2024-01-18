@@ -1,0 +1,43 @@
+AmazonPA-API 導入について 自分用メモ
+2024/1/18
+tech
+&1 Amazon PA-APIとは
+Amazon¥sProduct¥sAdvertising¥sAPI（PA-API）5.0を導入しました。
+このAPIはAmazonアソシエイト専用で、商品データ（画像などなど）を取得することができます。
+&br
+このサイトでは以下のような画像を表示するために使用しています。
+&amazon_recent
+
+&1 導入の背景
+Amazonアソシエイトではこれまで画像付きのiframeが簡単に使用できたため、そちらを使ってサプリメントなどの書影（表紙画像）を表示していたのですが、2024年1月から使用できなくなってしまいました。
+&br
+また昨年夏頃からは &link_https://www.hanmoto.com/,版元ドットコム からの書影提供が制限されるようになってしまいました。
+&br
+ということで、急遽Amazon¥sProduct¥sAdvertising¥sAPI（PA-API）5.0を導入することになりました。
+
+&1 やったこと
+&3 Scratchpadで確認
+まずはScratchpadが提供されているので、これを使って何ができるかを確認しました。
+&button_https://webservices.amazon.com/paapi5/scratchpad/index.html Scratchpad
+&br
+&3 SDKをダウンロード
+次に以下のドキュメントのSDKのページからNode.js用のsdk-and-sampleをダウンロードしました。
+&button_https://webservices.amazon.com/paapi5/documentation/quick-start/using-sdk.html PA-API¥sDocumentation
+&br
+&3 改造
+あとは少しずつ変えながら動かしてみて、関数化したり仮で型をつけたりして、このレポジトリにあうようにしました。
+ゴリ押しですが、jsonとして保存しています。
+実装は以下の通りです。
+&button_https://github.com/syachi-hoko-maru/trpg-system/tree/main/src/amazon-paapi GitHub
+&br
+&3 フロントエンド
+jsonをimportしています。
+型保管があって便利です（……後々バグらないか心配ですが……）。
+&button_https://github.com/syachi-hoko-maru/trpg-system/blob/main/components/item/amazon/sw25.vue GitHub
+&br
+&3 今後の展望
+現状動作は手動ですが、この辺はGitHub¥sActionsで定期的に実行するようにする予定です。
+schedule機能で週2回くらい更新すれば十分でしょう。
+&br
+以下に追加されているはずです。
+&button_https://github.com/syachi-hoko-maru/trpg-system/blob/main/.github/workflow

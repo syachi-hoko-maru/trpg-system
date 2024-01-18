@@ -9,7 +9,8 @@ export const blogPageSettingList: PageSetting[] = (blogSettingList as Blog[])
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   .map((b, i) => {
     const osusumeTagFlag =
-      b.tags.filter((tag) => tag !== "me" && tag !== "rm").length > 0;
+      b.tags.filter((tag) => tag !== "me" && tag !== "rm" && tag !== "tech")
+        .length > 0;
     if (osusumeTagFlag && isPast(b.date)) count++;
     return {
       title: b.title,

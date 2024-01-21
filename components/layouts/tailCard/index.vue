@@ -76,9 +76,10 @@ const newbooks = (newBook ? `
 &button_/search?word=${newBook.title} 『${newBook.title}』関連ページはこちら
 &br
 &br
-他にも
+他にも今後発売が予鈴されている
 &br
 ${newBooks
+    .splice(1)
     .map(r =>
       `- 『${r.long ? r.long : r.title}』（${r.dispDate ? r.dispDate : r.date}発売）`
     )
@@ -89,11 +90,14 @@ ${newBooks
 &button_/sw25/feature/new
 &br
 &3 新刊『${recentBook.title}』なども特集してます！
-他にも最近発売された
+当サイトでは${recentBook.dispDate ? recentBook.dispDate : recentBook.date}に発売された『${recentBook.title}』についても特集中です！
+買った人もまだの人も、ぜひ見ていってください！
+&br
+さらに、最近発売された
 &br
 ${recentBooks
     .filter((_, i) =>
-      i < 3
+      i >= 1 && i < 4
     )
     .map(r =>
       `- 『${r.long ? r.long : r.title}』（${r.dispDate ? r.dispDate : r.date}発売）`
@@ -101,7 +105,7 @@ ${recentBooks
     .join("\n")
   }
 &br
-などについての情報も多数あります！
+などについての情報も多数書いています！
 ${recentBooks
     .filter((_, i) =>
       i < 3
@@ -111,7 +115,6 @@ ${recentBooks
     )
     .join("\n")
   }
-&br
 &br
 `: "")
   + (!pageSetting.value.noamazon ? `

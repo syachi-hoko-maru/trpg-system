@@ -2,7 +2,10 @@ import { iconImages } from "../dict/icons";
 import { bookList } from "../dict/new";
 import { fortuneScoreList } from "../simulater/omikuji";
 import { isPast, sortByDate } from "../util/date";
-import { blogPageSettingList } from "./blogPageSettingList";
+import {
+  blogPageSettingList,
+  secretgPageSettingList,
+} from "./blogPageSettingList";
 
 export const pageSettingList: PageSetting[] = [
   {
@@ -711,6 +714,7 @@ export const pageSettingList: PageSetting[] = [
     tags: [],
     noamazon: true,
   },
+  ...secretgPageSettingList,
 ] as PageSetting[];
 // .map((page) => {
 //   // 未来に公開予定のページはおすすめにせず、hiddenFlagにする

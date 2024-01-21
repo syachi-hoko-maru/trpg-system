@@ -11,7 +11,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "test": "ts-node --files --project ba.tsconfig.jsonc src/yesno/test.ts",
-    "test-paapi": "ts-node --files --project ba.tsconfig.jsonc src/amazon-paapi/update.ts"
+    "test-paapi": "ts-node --files --project ba.tsconfig.jsonc src/amazon-paapi/update.ts",
+    "test-sec": "ts-node --files --project ba.tsconfig.jsonc src/pre/setSecret.ts"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.1.1",

@@ -89,6 +89,17 @@ declare type Blog = {
   andml: string;
   img: string;
 };
+declare type BufferData = { type: "Buffer"; data: number[] };
+declare type Secret = {
+  id: string;
+  title: BufferData;
+  andml: BufferData;
+};
+declare type SecretJson = {
+  list: Secret[];
+  iv: BufferData;
+  salt: BufferData;
+};
 
 type SupplimentGroup<SupplimentList extends string> = {
   id: string;

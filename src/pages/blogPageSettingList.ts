@@ -1,4 +1,5 @@
 import blogSettingList from "../../assets/blog.json";
+import secretSettingList from "../../assets/secret.json";
 import { isPast } from "../util/date";
 import { setBlogExplain } from "./blogExplain";
 import { isPageTag } from "./pageTags";
@@ -24,3 +25,17 @@ export const blogPageSettingList: PageSetting[] = (blogSettingList as Blog[])
       explain: setBlogExplain(b, 100),
     };
   });
+
+export const secretgPageSettingList: PageSetting[] = (
+  secretSettingList as SecretJson
+).list.map((b, i) => {
+  return {
+    title: "隠しページ",
+    to: "/secret/" + b.id,
+    lastmod: "1900/1/1",
+    tags: ["me"] as PageTag[],
+    osusume: false,
+    hiddenFlag: false,
+    explain: "隠しページです",
+  };
+});

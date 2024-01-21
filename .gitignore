@@ -10,3 +10,5 @@ dist
 public/search.json
 public/sitemap.xml
 public/sitemap.txt
+
+text/secret

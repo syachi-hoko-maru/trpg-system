@@ -58,7 +58,12 @@ ${ryuhaList
       }
       return prev
     }, [] as { book: RyuhaBook, list: RyuhaData["name"][] }[])
-    .map(d => [`&3 ${d.book}`, ...d.list.map(l => `- ${l}`)])
+    .map(d => [
+      `&3 ${d.book}`,
+      `${d.book}の流派は以下の${d.list.length}つです。`,
+      "&br",
+      ...d.list.map(l => `- ${l}`)
+    ])
     .flat()
     .join("\n")}
 

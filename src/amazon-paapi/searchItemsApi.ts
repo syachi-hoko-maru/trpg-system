@@ -1,5 +1,9 @@
 import "dotenv/config";
-import { AmazonSearchFunction, TypeProductAdvertisingAPIv1 } from "./types";
+import {
+  AmazonSearchFunction,
+  SearchObj,
+  TypeProductAdvertisingAPIv1,
+} from "./types";
 
 const ProductAdvertisingAPIv1 =
   require("./src/index") as TypeProductAdvertisingAPIv1;
@@ -20,19 +24,24 @@ const api = new ProductAdvertisingAPIv1.DefaultApi();
 const searchItemsRequest = new ProductAdvertisingAPIv1.SearchItemsRequest();
 searchItemsRequest["PartnerTag"] = "syachihokotrp-22";
 searchItemsRequest["PartnerType"] = "Associates";
-searchItemsRequest["SearchIndex"] = "Books";
 
-export const searchItemImage: AmazonSearchFunction = <Word extends string>(
-  keyword: Word
+export const searchItemImage: AmazonSearchFunction = (
+  searchItem: SearchObj
 ) => {
-  searchItemsRequest["Keywords"] = keyword;
+  const searchWord = getSearchWord(searchItem);
+  searchItemsRequest["Keywords"] = searchWord;
   searchItemsRequest["ItemCount"] = 1;
-  searchItemsRequest["Resources"] = ["Images.Primary.Large"];
+  searchItemsRequest["Resources"] = [
+    "Images.Primary.Large",
+    // "ItemInfo.Title"
+  ];
+  searchItemsRequest["SearchIndex"] = searchItem.index;
 
   return api.searchItems(searchItemsRequest).then(
     (data) => {
+      // console.log(JSON.stringify(data.SearchResult.Items, null, 1));
       return {
-        name: keyword,
+        name: searchWord,
         url: data.SearchResult.Items[0].DetailPageURL,
         image: data.SearchResult.Items[0].Images.Primary.Large,
       };
@@ -42,3 +51,7 @@ export const searchItemImage: AmazonSearchFunction = <Word extends string>(
     }
   );
 };
+
+export const getSearchWord = (searchItem: SearchObj): string =>
+  (searchItem.prefix ? searchItem.prefix + " " : "") +
+  searchItem.word.replace("-", "");

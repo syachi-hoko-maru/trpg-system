@@ -1,26 +1,56 @@
 import { createWriteStream, readFileSync, WriteStream } from "fs";
 import { suppliments } from "../dict/suppliments";
-import { searchItemImage } from "./searchItemsApi";
+import { getSearchWord, searchItemImage } from "./searchItemsApi";
 import { wait } from "../util";
-import { AmazonSearchResult } from "./types";
+import { AmazonSearchResult, SearchIndex, SearchObj } from "./types";
 import { bookList } from "../dict/new";
 import { isPast } from "../util/date";
 
 const amazonJsonPath = `${process.cwd()}/src/temp/amazon.json`;
 
 const allFlag = process.argv[2] === "true";
-const supplimentNames: string[] = suppliments.reduce((prev, { items }) => {
-  prev.push(...items.map((i) => i.name));
+// searchListの作成
+const searchList: SearchObj[] = suppliments.reduce((prev, { items }) => {
+  prev.push(
+    ...items.map(
+      (i) =>
+        ({
+          prefix: "ソード・ワールド2.5",
+          word: i.name,
+          index: "Books",
+        } as const)
+    )
+  );
   return prev;
-}, [] as string[]);
+}, [] as SearchObj[]);
 bookList.forEach((book) => {
   if (
-    supplimentNames.find((s) => s.indexOf(book.title) >= 0) ||
+    searchList.find((s) => s.word.indexOf(book.title) >= 0) ||
     !isPast(book.date, new Date().getTime() + 1.5 * 30 * 24 * 60 * 60 * 1000)
   )
     return;
-  else supplimentNames.push(book.title);
+  else
+    searchList.push({
+      prefix: "ソード・ワールド2.5",
+      word: book.title,
+      index: "Books",
+    });
 });
+searchList.push(
+  ...([
+    {
+      prefix: "あらたとしひら",
+      word: "だいすろーる！1",
+      index: "Books",
+    },
+    {
+      prefix: "",
+      word: "ダンジョンズ&ドラゴンズ アウトローたちの誇り",
+      index: "AmazonVideo",
+    },
+  ] as SearchObj[])
+);
+// searchListの作成ここまで
 
 let data: AmazonSearchResult<string>[] = [];
 if (!allFlag) {
@@ -37,13 +67,11 @@ let firstLine = true;
 const writable: WriteStream = createWriteStream(amazonJsonPath);
 writable.write("[\n");
 (async () => {
-  for (let supplimentTitle of supplimentNames) {
-    const searchWord =
-      "ソード・ワールド2.5 " + supplimentTitle.replace("-", "");
-    const d = data.find((d) => d.name === searchWord);
+  for (let searchItem of searchList) {
+    const d = data.find((d) => d.name === getSearchWord(searchItem));
     if (!d) {
-      console.log(`INFO: search ${supplimentTitle}`);
-      await searchItemImage(searchWord)
+      console.log(`INFO: search ${searchItem.word}`);
+      await searchItemImage(searchItem)
         .then((r) => {
           if (firstLine) {
             firstLine = false;

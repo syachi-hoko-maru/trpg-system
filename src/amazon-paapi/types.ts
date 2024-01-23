@@ -3,9 +3,9 @@ export type TypeProductAdvertisingAPIv1 = {
   DefaultApi: DefaultApi;
   SearchItemsRequest: SearchItemsRequest;
 };
-export type AmazonSearchFunction = <Word extends string>(
-  word: Word
-) => Promise<AmazonSearchResult<Word>>;
+export type AmazonSearchFunction = (
+  word: SearchObj
+) => Promise<AmazonSearchResult<string>>;
 export type AmazonSearchResult<T extends string> = {
   name: T;
   url: string;
@@ -44,13 +44,22 @@ type AmazonImage = {
   Height: number;
   Width: number;
 };
+// https://webservices.amazon.com/paapi5/documentation/locale-reference/japan.html
+export type SearchIndex = "All" | "Books" | "AmazonVideo";
 type SearchItemsRequest = {
   new (): {
     PartnerTag: string;
     PartnerType: "Associates";
     Keywords: string;
     ItemCount: number;
-    Resources: "Images.Primary.Large"[];
-    SearchIndex: "Books";
+    // https://webservices.amazon.com/paapi5/documentation/resources.html
+    Resources: ("Images.Primary.Large" | string)[];
+    SearchIndex: SearchIndex;
   };
+};
+
+export type SearchObj = {
+  prefix?: string;
+  word: string;
+  index: SearchIndex;
 };

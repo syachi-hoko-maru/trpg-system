@@ -68,7 +68,9 @@ const writable: WriteStream = createWriteStream(amazonJsonPath);
 writable.write("[\n");
 (async () => {
   for (let searchItem of searchList) {
-    const d = data.find((d) => d.name === getSearchWord(searchItem));
+    const d = data.find(
+      (d) => d.name === searchItem.word && d.prefix === searchItem.prefix
+    );
     if (!d) {
       console.log(`INFO: search ${searchItem.word}`);
       await searchItemImage(searchItem)

@@ -7,6 +7,7 @@ export type AmazonSearchFunction = (
   word: SearchObj
 ) => Promise<AmazonSearchResult<string>>;
 export type AmazonSearchResult<T extends string> = {
+  prefix?: string;
   name: T;
   url: string;
   image: AmazonImage;

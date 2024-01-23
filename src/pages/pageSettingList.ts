@@ -479,6 +479,17 @@ export const pageSettingList: PageSetting[] = [
     tags: ["sw25"],
   },
   {
+    title: "女子高生×部活×SW2.5 無料マンガ だいすろーる！ 紹介",
+    to: "/sw25/feature/comic",
+    created: "2023/11/17",
+    lastmod: "2024/1/23",
+    img: "page-image/comic.webp",
+    osusume: true,
+    explain:
+      "TRPGが登場する、グループSNE監修の無料マンガ「だいすろーる！」の紹介です！　ソード・ワールド2.5（SW2.5/ソドワ）がバンバン出てきます！　女子高生たちのゆるふわしたTRPGライフを漫画で読んで楽しみましょう。TRPGあるあるも多数！　ついにコミック単行本も発売！！",
+    tags: ["sw25", "trpg"],
+  },
+  {
     title: "SW2.5 2023年に発売されたサプリメントや関連本のまとめ！！",
     to: "/sw25/feature/year2023",
     created: "2023/12/30",
@@ -488,17 +499,6 @@ export const pageSettingList: PageSetting[] = [
     explain:
       "2023年に発売されたソード・ワールド2.5（SW2.5/ソドワ）のサプリメントやシナリオ集・リプレイ・関連本、計9冊をまとめて紹介します！　他にも2023年に起きたソード・ワールド関連のことをまとめています。",
     tags: ["sw25"],
-  },
-  {
-    title: "女子高生×部活×SW2.5 無料マンガ だいすろーる！ 紹介",
-    to: "/sw25/feature/comic",
-    created: "2023/11/17",
-    lastmod: "2023/12/27",
-    img: "page-image/comic.webp",
-    osusume: true,
-    explain:
-      "TRPGが登場する、グループSNE監修の無料マンガ「だいすろーる！」の紹介です！　ソード・ワールド2.5（SW2.5/ソドワ）がバンバン出てきます！　女子高生たちのゆるふわしたTRPGライフを漫画で読んで楽しみましょう。TRPGあるあるも多数！",
-    tags: ["sw25", "trpg"],
   },
   {
     title: "SW2.5同人シナリオ集「冒険者の旅路」【C102】",

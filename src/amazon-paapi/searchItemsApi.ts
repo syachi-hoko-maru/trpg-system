@@ -41,7 +41,8 @@ export const searchItemImage: AmazonSearchFunction = (
     (data) => {
       // console.log(JSON.stringify(data.SearchResult.Items, null, 1));
       return {
-        name: searchWord,
+        prefix: searchItem.prefix,
+        name: searchItem.word,
         url: data.SearchResult.Items[0].DetailPageURL,
         image: data.SearchResult.Items[0].Images.Primary.Large,
       };

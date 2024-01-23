@@ -88,7 +88,7 @@ const items: AmazonSearchResult<string>[] =
         return prev
       }, [] as AmazonSearchResult<string>[])
       : // 一旦ランダムで10個を表示するように
-      shuffle(amazonItems).slice(0, 10)
+      shuffle(amazonItems.filter(i => i.prefix.indexOf("ソード・ワールド") >= 0)).slice(0, 10)
     : []
 
 </script>

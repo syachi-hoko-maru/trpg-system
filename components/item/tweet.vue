@@ -4,6 +4,9 @@
       <a :href="pathCheck(Props.path)"></a>
     </blockquote>
   </div>
+  <div v-else>
+    <ItemTextlink :to="Props.path">{{ Props.path }}</ItemTextlink>
+  </div>
 </template>
 <script setup lang="ts">
 interface Props {
@@ -21,8 +24,12 @@ useHead({
 
 const regExp = /(https:\/\/twitter.com\/[A-Za-z01-9_-]+\/status\/\d+)[^\d]*.*/
 const pathCheck = (path: string | undefined): string | undefined => {
-  if (path && regExp.test(path)) {
-    return path.replace(regExp, "$1")
+
+  if (path) {
+    path = path.replace("x.com", "twitter.com")
+    if (regExp.test(path)) {
+      return path.replace(regExp, "$1")
+    }
   }
   return undefined
 }

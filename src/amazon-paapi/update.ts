@@ -45,6 +45,11 @@ searchList.push(
     },
     {
       prefix: "",
+      word: "本当は〇〇な物語メーカー ヨタバナ",
+      index: "Books",
+    },
+    {
+      prefix: "",
       word: "ダンジョンズ&ドラゴンズ アウトローたちの誇り",
       index: "AmazonVideo",
     },

@@ -180,6 +180,15 @@ const add = `
 &br
 「最新のサプリはどんな感じなの？」「新しく出るサプリは？」という方は、以下のボタンをクリックして最新の情報を探してください！
 &button_/search/?tag=sw25_new&sort=recent 新刊情報一覧
+
+&1 ソード・ワールド2.5の初心者の方にはこちらもおすすめ！
+&3 一緒に遊ぶ人を探そう！
+&button_/sw25/tool/intro
+&button_/sw25/tool/community
+
+&3 お役立ち情報まとめてます
+&button_/sw25/forbeginner
+
 `
 
 

@@ -32,7 +32,7 @@ const main = async () => {
 
     let idNum: number = Number(id)
     if (!idNum || Number.isNaN(idNum) || !version) {
-        return
+        return;
         idNum = 0
         version = defaultVersion
     }

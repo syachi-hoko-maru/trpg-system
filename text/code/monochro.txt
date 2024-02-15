@@ -29,7 +29,7 @@ sw25_new
 バイオーム・Mobなどいろいろと作っています！
 &br
 今後公開に向けて告知などもして行く予定ですので、もし興味があれば以下のTwiiterもフォローしてください！
-&button_https://twitter.com/SyachiModding twitter
+&tweet_https://twitter.com/SyachiModding/status/1753377282981560796
 &&&
 &br
 これから数日間は毎日ブログを投稿予定ですので、よければ &itwitter をフォローしたり、このサイトをブックマークしたりして、ぜひ見てください！！

@@ -82,6 +82,9 @@ TRPG自己紹介シートは &link_https://create-now.vercel.app/trpg-manual,こ
 - JavaもBEもやります
 // - Mod開発してみたいな……と思いつつ……
 - 最近ちょっとずつMod開発をしています
+&br
+Minecraft用のTwitterアカウントあるのでよければフォローしてください。
+&tweet_https://twitter.com/SyachiModding/status/1753377282981560796
 
 &3 ポケモン
 - 初めて遊んだゲーム

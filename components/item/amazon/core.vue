@@ -2,7 +2,7 @@
     <AtomLink :to="item.url" :title="`${item.name}の画像リンク（Amazon）`" button>
         <Card>
             <template #tbefore>
-                <ItemImg :src="item.image.URL" :alt="`${item.name}の画像（Amazon）`" width="170px" />
+                <ItemImg :src="item.image.URL" :alt="`${item.name}の画像（Amazon）`" width="170px" height="240px" />
             </template>
             <template #before>
                 <div class="amazon-string">

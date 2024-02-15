@@ -44,6 +44,11 @@ searchList.push(
       index: "Books",
     },
     {
+      prefix: "グループSNE",
+      word: "GMウォーロックvol.12",
+      index: "Books",
+    },
+    {
       prefix: "",
       word: "本当は〇〇な物語メーカー ヨタバナ",
       index: "Books",

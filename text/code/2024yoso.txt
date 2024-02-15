@@ -46,7 +46,7 @@ sw25
 
 &3 2023年のソード・ワールド2.5はすごい！
 先日、 &link_https://twitter.com/YS_RPGSHOP,イエローサブマリン秋葉原RPGショップのTwitter にて、 &em_2023年1月1日〜2023年12月31日までのボードゲーム・TRPGの販売数ランキング（イエローサブマリン全店舗） が発表されました。
-&button_https://x.com/YS_RPGSHOP/status/1743929395642016112 該当ツイート
+&tweet_https://x.com/YS_RPGSHOP/status/1743929395642016112
 &br
 これによれば
 &br

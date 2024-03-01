@@ -4,7 +4,7 @@ import { blogTextDir, RawBlog, blogJSON, scenarioJson } from "../index";
 export const setBlogTxt = async (): Promise<RawBlog[]> => {
   try {
     const blogs: RawBlog[] = [];
-    for (let type of ["code", "cms"]) {
+    for (let type of ["code", "code2", "cms"]) {
       const blogList = readdirSync(`${blogTextDir}/${type}`);
       for (let fileName of blogList) {
         if (!fileName.endsWith(".txt")) continue;

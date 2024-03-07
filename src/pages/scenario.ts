@@ -45,12 +45,38 @@ export const scenarioData: ScenarioData[] = [
     img: "scenario-image/fukinotou.webp",
     url: [
       {
+        site: "TALTO",
+        url: "https://talto.cc/projects/3kmo2tDekm599g4q4k-Yz",
+      },
+      {
         site: "シナリオ（サイト内）",
         url: "/scenario/fukinotou",
       },
     ],
     regulation: "3〜4レベル想定",
   },
+  {
+    title: "護送列車とガブディランガの秘宝",
+    scenarioId: "gavderunga",
+    author: "しゃちほこ丸",
+    system: "ソード・ワールド2.5",
+    explain: [
+      "キングスフォールのいくつかの冒険者ギルド支部へ、貴族から秘密の依頼がくる。",
+      "彼の持つ秘宝が狙われているため、秘密裏にキングスフォールから離れた彼の別邸へと移したいのだという。",
+      "ギルド支部長の信頼があついPCたちは依頼を受け、他の冒険者ギルド支部所属の冒険者たちとともに魔動列車による秘宝輸送の護衛にあたることになる。",
+      "&br",
+      "このシナリオはシナリオ一斉投稿企画「#ドーデン冒険録」に参加しています。",
+    ],
+    img: "scenario-image/gavderunga.webp",
+    url: [
+      {
+        site: "シナリオ（サイト内）",
+        url: "/scenario/gavderunga",
+      },
+    ],
+    regulation: "3〜4レベル想定",
+  },
+
   {
     title: "Magic Steam Festival",
     scenarioId: "kitomaho",

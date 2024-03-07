@@ -526,7 +526,7 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "公開シナリオ一覧",
     to: "/scenario",
-    lastmod: "2023/7/12",
+    lastmod: "2023/3/20",
     img: "page-image/scenario2.webp",
     imddirs: ["scenario-image"],
     osusume: true,
@@ -541,7 +541,8 @@ export const pageSettingList: PageSetting[] = [
     imddirs: ["scenario-image/uoht"],
     lastmod: "2023/10/1",
     osusume: true,
-    explain: "",
+    explain:
+      "ソード・ワールド2.5（SW2.5/ソドワ）のシナリオ『ウォフト=ルーバの研究所跡』を無料公開中。初心者向けシナリオ。布教用シナリオ。初期作成。ネタバレフィルターあり。",
     tags: ["sw25", "scenario"],
   },
   {
@@ -552,9 +553,23 @@ export const pageSettingList: PageSetting[] = [
     lastmod: "2023/7/12",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5/ソドワ）のシナリオ『ふきのとうを採りに』を無料公開中です。初心者向けシナリオで、2023年の夏コミ（C102）で頒布する同人誌『冒険者の旅路』のサンプルとなっています。ネタバレフィルターあり。",
+      "ソード・ワールド2.5（SW2.5/ソドワ）のシナリオ『ふきのとうを採りに』を無料公開中。初心者向けシナリオで、2023年の夏コミ（C102）で頒布する同人誌『冒険者の旅路』のサンプルとなっています。ネタバレフィルターあり。",
     tags: ["sw25", "scenario"],
   },
+  {
+    title:
+      "シナリオ「護送列車とガブディランガの秘宝」from シナリオ一斉投稿企画「#ドーデン冒険録」",
+    to: "/scenario/gavderunga",
+    img: "scenario-image/gavderunga.webp",
+    imddirs: ["scenario-image/gavderunga"],
+    created: "2024/3/20",
+    lastmod: "2024/3/20",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5/ソドワ）のシナリオ『護送列車とガブディランガの秘宝』を無料公開中。舞台はドーデン地方。貴族の持つ秘宝を魔動列車で移動する。ネタバレフィルターあり。",
+    tags: ["sw25", "scenario"],
+  },
+
   {
     title: "シナリオメモ「とろ〜りとした甘いやつ」",
     to: "/scenario/pudding",

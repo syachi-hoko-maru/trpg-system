@@ -22,7 +22,7 @@ export type RyuhaData = {
   description: string[];
   tags: (keyof typeof ryuhaYesNo)[];
 };
-export const ryuhaList: RyuhaData[] = [
+export const ryuhaList = [
   {
     name: "『七色のマナ』特別魔法行使学",
     book: "ユーシズ",
@@ -251,4 +251,6 @@ export const ryuhaList: RyuhaData[] = [
     description: [],
     tags: ["特殊魔法"],
   },
-];
+] as const satisfies RyuhaData[];
+
+export type RyuhaNames = (typeof ryuhaList)[number]["name"];

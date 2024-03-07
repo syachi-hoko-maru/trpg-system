@@ -1,18 +1,12 @@
 import { syuzokuYesNo } from "./yesno/syuzokuYesNo";
 
-export const syuzoku: {
-  [key: string]: {
-    explain: string;
-    debut: string;
-    rare?: string[];
-    yesnoTags: (keyof typeof syuzokuYesNo)[];
-  };
-} = {
+export const syuzoku = {
   人間: {
     explain:
       "我々とほぼ同じ「人間」。運命に強く愛されており、1日に1回、ダイスの出目を反転させられる。",
     debut: "ルールブックI",
     yesnoTags: ["剣の加護"],
+    rare: [],
   },
   エルフ: {
     explain: "高身長で尖った耳を持ち、水に強い。知力が高いため魔法が得意。",
@@ -24,6 +18,7 @@ export const syuzoku: {
     explain: "低身長で男性は髭もじゃ、女性は幼い体型。炎に強い。",
     debut: "ルールブックI",
     yesnoTags: ["剣の加護", "小さめ", "ファンタジー常連"],
+    rare: [],
   },
   タビット: {
     explain:
@@ -92,56 +87,76 @@ export const syuzoku: {
       "別の大陸出身とされる種族。傭兵をやることが多いとされる。高身長スレンダー。",
     debut: "アウトロープロファイルブック（アーケインレリックにも掲載）",
     yesnoTags: [],
+    rare: [],
   },
   ソレイユ: {
     explain:
       "太陽に愛されし種族で、高身長マッチョ。多くの場合、脳筋。ソレイユ語はボディランゲージで、歌う代わりに踊る。",
     debut: "アウトロープロファイルブック（アーケインレリックにも掲載）",
     yesnoTags: ["大きめ"],
+    rare: [],
   },
   アルヴ: {
     explain:
       "吸血鬼が神の導きで転生した姿とされる。ナイトメア同様に穢れを持つ。ひ弱で他の人族からMPを吸わないと生きれない。",
     debut: "アウトロープロファイルブック（アーケインレリックにも掲載）",
     yesnoTags: ["穢れ", "青白い肌"],
+    rare: [],
   },
   ウィークリング: {
     explain:
       "弱く生まれ、蛮族社会を追われて人族と共に生きることを選んだ蛮族。4種類（バジリスク・ガルーダ・タンノズ・ミノタウロス）が存在する。",
     debut: "アウトロープロファイルブック（アーケインレリックにも掲載）",
     yesnoTags: ["穢れ", "蛮族"],
+    rare: [],
   },
   スプリガン: {
     explain:
       "普段は人間の子供くらいのサイズだが、3mほどの姿に巨人化することができる。秘宝の守り手となることが多い種族。",
     debut: "アーケインレリック",
     yesnoTags: ["小さめ", "大きめ"],
+    rare: [],
   },
   アビスボーン: {
     explain:
       "アビスで生まれた人間。生まれつきアビスに関する特殊な能力［奈落の落とし子/〜］を持つが、代償としてアビスカースを持って生まれる。",
     debut: "アーケインレリック",
     yesnoTags: ["魔神関連"],
+    rare: [],
   },
   ハイマン: {
     explain:
       "魔法文明時代に作られた魔法のエリート。体が弱い。前世の記憶を持つと言われ、たまに［デジャブ］を見る。",
     debut: "アーケインレリック",
     yesnoTags: ["人造"],
+    rare: [],
   },
   フロウライト: {
     explain:
       "岩でできた体を持つ「生きる魔晶石」。防護点とMPが高いが、「硬くて脆い」のでHPは低め。",
     debut: "アーケインレリック",
     yesnoTags: ["岩"],
+    rare: [],
   },
   ダークドワーフ: {
     explain:
       "神の時代に人族を裏切り、蛮族側についたドワーフの子孫。暗い世界で生きていたことで体は青白くなっている。イグニタイト加工の技術を持つ。",
     debut: "アーケインレリック",
     yesnoTags: ["小さめ", "青白い肌"],
+    rare: [],
   },
+} as const satisfies {
+  [key: string]: {
+    explain: string;
+    debut: string;
+    rare: string[];
+    yesnoTags: (keyof typeof syuzokuYesNo)[];
+  };
 };
+
+export type Syuzoku = keyof typeof syuzoku;
+export type RareSyuzoku = (typeof syuzoku)[Syuzoku]["rare"][number];
+export type SyuzokuWithRare = Syuzoku | RareSyuzoku;
 
 const wordList: WordList = {};
 Object.entries(syuzoku).forEach(([key, value]) => {

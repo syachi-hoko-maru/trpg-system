@@ -1,19 +1,17 @@
-
 <template>
-  <span v-for="data, i of dataArray" :key="i">
+  <span v-for="(data, i) of dataArray" :key="i">
     <component :is="data.component" :props="data.props" />
   </span>
 </template>
-
 
 <script setup lang="ts">
 import { AndmlScript, AndmlData } from "~~/types/andml";
 
 interface Props {
-  andml: string
+  andml: string;
 }
 const Props = withDefaults(defineProps<Props>(), {
-  andml: ""
+  andml: "",
 });
 
 // inlineの処理
@@ -25,6 +23,7 @@ const andmlInlineScriptArray: AndmlScript[] = [
   { script: "ruby_", component: resolveComponent("AndmlInlineRubyc") },
   // 補足情報
   { script: "info_", component: resolveComponent("AndmlInlineInfo") },
+  { script: "npcInfo_", component: resolveComponent("AndmlInlineNpcInfo") },
   // シナリオ
   { script: "serif_", component: resolveComponent("AndmlInlineSerif") },
   { script: "hantei_", component: resolveComponent("AndmlInlineHantei") },
@@ -33,35 +32,41 @@ const andmlInlineScriptArray: AndmlScript[] = [
   { script: "itwitter", component: resolveComponent("AndmlInlineTwitter") },
   // 改行
   { script: "br", component: resolveComponent("AndmlInlineBr") },
-]
+];
 
 const setInlineComponent = (andml: string): AndmlData => {
   for (let script of andmlInlineScriptArray) {
     if (andml.startsWith(`&${script.script}`)) {
       if (script.script.endsWith("_")) {
-        const reg = new RegExp(`&${script.script}([^\\s]+)`)
+        const reg = new RegExp(`&${script.script}([^\\s]+)`);
         // console.log(andml, reg)
-        const matchArray = andml.match(reg)
-        if (!matchArray) throw createError(`[Error] AndmInlLineScript "${andml}" is not found`)
+        const matchArray = andml.match(reg);
+        if (!matchArray)
+          throw createError(
+            `[Error] AndmInlLineScript "${andml}" is not found`
+          );
         return {
           props: matchArray[1],
-          component: script.component
-        }
+          component: script.component,
+        };
       } else {
-        const reg = new RegExp(`&${script.script}`)
-        const matchArray = andml.match(reg)
-        if (!matchArray) throw createError(`[Error] AndmInlLineScript "${andml}" is not found`)
+        const reg = new RegExp(`&${script.script}`);
+        const matchArray = andml.match(reg);
+        if (!matchArray)
+          throw createError(
+            `[Error] AndmInlLineScript "${andml}" is not found`
+          );
         return {
-          component: script.component
-        }
+          component: script.component,
+        };
       }
     }
   }
   return {
     props: andml,
-    component: resolveComponent("AndmlInlineSpanc")
-  }
-}
+    component: resolveComponent("AndmlInlineSpanc"),
+  };
+};
 
-const dataArray: AndmlData[] = Props.andml.split(" ").map(setInlineComponent)
+const dataArray: AndmlData[] = Props.andml.split(" ").map(setInlineComponent);
 </script>

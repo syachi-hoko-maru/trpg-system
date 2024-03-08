@@ -1,4 +1,3 @@
-import { Agent } from "http";
 import { getPageSetting, isHidden } from "./getPageSetting";
 import { pageSettingList } from "./pageSettingList";
 import { shuffle } from "~/src/util";

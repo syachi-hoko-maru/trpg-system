@@ -1,15 +1,22 @@
 <template>
-    <CardArrayByAndml :andml="andml0" />
-    <slot />
-    <CardArrayByAndml :andml="andml1" />
+  <CardArrayByAndml :andml="andml0" />
+  <slot />
+  <CardArrayByAndml :andml="andml1" />
 </template>
 
 <script setup lang="ts">
-import { isHidden } from '~/src/pages/getPageSetting';
-import { shuffle } from '~/src/util';
+import { getPageSetting, isHidden } from "~/src/pages/getPageSetting";
+import { shuffle } from "~/src/util";
 
-const { $pageSettingList } = useNuxtApp()
-const { nowPageSetting } = usePages()
+const { $pageSettingList } = useNuxtApp();
+const route = useRoute();
+const pageSetting = ref(getPageSetting(route.fullPath));
+watch(
+  () => route.fullPath,
+  () => {
+    pageSetting.value = getPageSetting(route.fullPath);
+  }
+);
 
 const andml0 = `
 &1 企画概要
@@ -17,19 +24,23 @@ const andml0 = `
 いろいろな遊び方をしている方をゲストとしてお呼びし、インタビューをしていきます！
 &br
 ぜひ &em_自分に合った遊び方・楽しみ方 を見つけて、ソード・ワールド2.5をもっともっと楽しんでください！
-`
+`;
 
 const guestPageList = shuffle(
-    $pageSettingList
-        .filter(page =>
-            !isHidden(page)
-            && !page.noSearch
-            && page.to.indexOf("/sw25/fav/") === 0
-            && page.to !== nowPageSetting.value.to))
+  $pageSettingList.filter(
+    (page) =>
+      !isHidden(page) &&
+      !page.noSearch &&
+      page.to.indexOf("/sw25/fav/") === 0 &&
+      page.to !== pageSetting.value.to
+  )
+);
 
 const andml1 = `
 &1 他のインタビュー
-現在、他にも${guestPageList.length}人のゲストにインタビューしています！（表示順はランダムです。）
+現在、他にも${
+  guestPageList.length
+}人のゲストにインタビューしています！（表示順はランダムです。）
 ${guestPageList.map((page) => `&button_${page.to}`).join("\n")}
 
 &2 ゲスト募集
@@ -39,6 +50,5 @@ ${guestPageList.map((page) => `&button_${page.to}`).join("\n")}
 興味がある方は &itwitter までDMいただければ幸いです。
 他薦もお待ちしています。
 
-`
-
+`;
 </script>

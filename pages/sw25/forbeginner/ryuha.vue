@@ -3,15 +3,19 @@
 </template>
 
 <script setup lang="ts">
-import { RyuhaBook, RyuhaData, ryuhaList } from '~/src/dict/ryuha';
+import type { RyuhaBook, RyuhaData } from "~/src/dict/ryuha";
+import { ryuhaList } from "~/src/dict/ryuha";
 
-const format = (ryuha: RyuhaData) => [
-  `&3 ${ryuha.name}`,
-  `「${ryuha.name}」はサプリメント『 &em_${ryuha.book} 』に掲載されている流派です。`,
-  ryuha.area ? `&br &em_${ryuha.area} に伝わっています。` : "",
-  ryuha.description.length ? ["&br", ...ryuha.description] : "",
-  ryuha.gino.length ? `&br 主に &em_${ryuha.gino.join("・")} と相性が良い流派です。` : ""
-].flat()
+const format = (ryuha: RyuhaData) =>
+  [
+    `&3 ${ryuha.name}`,
+    `「${ryuha.name}」はサプリメント『 &em_${ryuha.book} 』に掲載されている流派です。`,
+    ryuha.area ? `&br &em_${ryuha.area} に伝わっています。` : "",
+    ryuha.description.length ? ["&br", ...ryuha.description] : "",
+    ryuha.gino.length
+      ? `&br 主に &em_${ryuha.gino.join("・")} と相性が良い流派です。`
+      : "",
+  ].flat();
 
 const ryuhaAndml = `
 &1 このページについて
@@ -46,35 +50,32 @@ const ryuhaAndml = `
 現在、 &em_${ryuhaList.length} の流派のデータがあります！
 &br
 ${ryuhaList
-    .reduce((prev, curr) => {
-      const obj = prev.find(p => p.book === curr.book)
-      if (obj) {
-        obj.list.push(curr.name)
-      } else {
-        prev.push({
-          book: curr.book,
-          list: [curr.name]
-        })
-      }
-      return prev
-    }, [] as { book: RyuhaBook, list: RyuhaData["name"][] }[])
-    .map(d => [
-      `&3 ${d.book}`,
-      `${d.book}の流派は以下の${d.list.length}つです。`,
-      "&br",
-      ...d.list.map(l => `- ${l}`)
-    ])
-    .flat()
-    .join("\n")}
+  .reduce((prev, curr) => {
+    const obj = prev.find((p) => p.book === curr.book);
+    if (obj) {
+      obj.list.push(curr.name);
+    } else {
+      prev.push({
+        book: curr.book,
+        list: [curr.name],
+      });
+    }
+    return prev;
+  }, [] as { book: RyuhaBook; list: RyuhaData["name"][] }[])
+  .map((d) => [
+    `&3 ${d.book}`,
+    `${d.book}の流派は以下の${d.list.length}つです。`,
+    "&br",
+    ...d.list.map((l) => `- ${l}`),
+  ])
+  .flat()
+  .join("\n")}
 
 &1 ソード・ワールド2.5の流派詳細
 &&tatami_準備中
 （準備中）
 &br
-${ryuhaList
-    .map(format)
-    .flat()
-    .join("\n")}
+${ryuhaList.map(format).flat().join("\n")}
 &&
 
 &1 他のページ
@@ -85,6 +86,5 @@ ${ryuhaList
 &button_/sw25/forbeginner/ginou
 &br
 &amazon_バトルマスタリー・博物誌・ユーシズ
-`
-
+`;
 </script>

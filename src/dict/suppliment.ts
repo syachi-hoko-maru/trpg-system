@@ -1,4 +1,4 @@
-import { DateLike } from "../util/date";
+import type { DateLike } from "../util/date";
 import { supplimentYesNo } from "./yesno/supplimentYesNo";
 
 export const supplimentList = [

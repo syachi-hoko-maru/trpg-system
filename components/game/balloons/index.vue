@@ -5,28 +5,42 @@
 </template>
 
 <script setup lang="ts">
-const { nowPageSetting } = usePages()
-const show = ref(false)
-const count = ref(20)
+import { getPageSetting } from "~/src/pages/getPageSetting";
+
+const show = ref(false);
+const count = ref(20);
 
 const set = () => {
-  if (show.value) return
-  if (nowPageSetting.value.to === "/me" || nowPageSetting.value.to === "/blog/matome") {
-    count.value = 30
+  if (show.value) return;
+  if (
+    pageSetting.value.to === "/me" ||
+    pageSetting.value.to === "/blog/matome"
+  ) {
+    count.value = 30;
   }
-  show.value = true
+  show.value = true;
   setTimeout(() => {
-    show.value = false
-    count.value = 20
-  }, 30 * 1000)
-}
+    show.value = false;
+    count.value = 20;
+  }, 30 * 1000);
+};
 
 onMounted(() => {
-  set()
-  watch(nowPageSetting, () => {
-    if (nowPageSetting.value.to === "/me" || nowPageSetting.value.to === "/blog/matome") {
-      set()
+  set();
+});
+
+const route = useRoute();
+const pageSetting = ref(getPageSetting(route.fullPath));
+watch(
+  () => route.fullPath,
+  () => {
+    pageSetting.value = getPageSetting(route.fullPath);
+    if (
+      pageSetting.value.to === "/me" ||
+      pageSetting.value.to === "/blog/matome"
+    ) {
+      set();
     }
-  })
-})
+  }
+);
 </script>

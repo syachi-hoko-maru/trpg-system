@@ -2,6 +2,7 @@ import { isPast } from "../util/date";
 import { pageSettingList } from "./pageSettingList";
 
 export const getPageSetting = (url: string): PageSetting => {
+  console.log(url);
   const path = url
     // #以下を無視
     .replace(/#.*$/, "")

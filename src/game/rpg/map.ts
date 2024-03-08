@@ -1,14 +1,7 @@
-import { GameEvent } from ".";
+import type { GameEvent } from ".";
 import { basicSize, centerX, centerY, maxX } from "./setting";
-import {
-  Pos,
-  addPos,
-  eqPos,
-  getRandomInt,
-  isInArea,
-  multPos,
-  subPos,
-} from "./util";
+import type { Pos } from "./util";
+import { addPos, eqPos, getRandomInt, isInArea, multPos, subPos } from "./util";
 
 export type GameMapSetting = {
   name: string;

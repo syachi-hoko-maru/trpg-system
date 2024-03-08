@@ -1,6 +1,8 @@
 import { syuzoku } from "../../dict/syuzoku";
-import { Gino, ginou } from "../../dict/ginou";
-import { FortuneFunction, FortuneResult, FortuneScore, sep } from ".";
+import type { Gino } from "../../dict/ginou";
+import { ginou } from "../../dict/ginou";
+import type { FortuneFunction, FortuneResult, FortuneScore } from ".";
+import { sep } from ".";
 import { Random } from "./random";
 import { formatGod, godList } from "../../dict/god";
 

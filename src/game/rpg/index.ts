@@ -2,7 +2,7 @@ import { Entity } from "./entity";
 import { Me } from "./entity/me";
 import { GameMap } from "./map";
 import { height, width } from "./setting";
-import { Pos } from "./util";
+import type { Pos } from "./util";
 
 export type Gaming = "gaming" | "stop" | "terminate";
 export type GameEvent =
@@ -22,7 +22,7 @@ export class Game {
    */
   private gamespeed: number;
   private ctx: CanvasRenderingContext2D;
-  private intervalId: NodeJS.Timer | null = null;
+  private intervalId: NodeJS.Timeout | null = null;
   private level: number = 0;
   constructor(ctx: CanvasRenderingContext2D, gamespeed: number = 16) {
     this.ctx = ctx;

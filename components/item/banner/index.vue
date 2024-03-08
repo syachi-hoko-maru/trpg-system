@@ -1,25 +1,42 @@
 <template>
-    <ItemBannerBase v-if="banner" :title="banner.title" :img="banner.img" :to="banner.to" />
+  <ItemBannerBase
+    v-if="banner"
+    :title="banner.title"
+    :img="banner.img"
+    :to="banner.to"
+  />
 </template>
 
 <script setup lang="ts">
-import { bannerList } from "~/src/banner/banners"
+import { bannerList } from "~/src/banner/banners";
+import { getPageSetting } from "~/src/pages/getPageSetting";
 interface Props {
-    name?: string
+  name?: string;
 }
 const Props = defineProps<Props>();
-const { getBanner, nowPageSetting } = usePages()
+const { getBanner } = usePages();
 
-const banner = ref(Props.name ? bannerList.find(({ name }) => name === Props.name) : bannerList[0])
+const banner = ref(
+  Props.name
+    ? bannerList.find(({ name }) => name === Props.name)
+    : bannerList[0]
+);
 
 onMounted(() => {
-    if (Props.name) return
-    banner.value = getBanner()
-    watch(nowPageSetting, () => {
-        banner.value = getBanner()
-        while (banner.value.to === nowPageSetting.value.to) {
-            banner.value = getBanner()
-        }
-    })
-})
+  if (Props.name) return;
+  banner.value = getBanner();
+});
+
+const route = useRoute();
+const pageSetting = ref(getPageSetting(route.fullPath));
+watch(
+  () => route.fullPath,
+  () => {
+    pageSetting.value = getPageSetting(route.fullPath);
+    banner.value = getBanner();
+    while (banner.value.to === pageSetting.value.to) {
+      banner.value = getBanner();
+    }
+  }
+);
 </script>

@@ -2,28 +2,45 @@
   <item-share :text="shareSetting.text" :url="shareSetting.url" :icon="icon">
     <slot />
   </item-share>
-  <item-button v-if="withcopy" prepend-icon="mdi-content-copy" @click.stop="() => $copy(shareSetting.url)">
+  <item-button
+    v-if="withcopy"
+    prepend-icon="mdi-content-copy"
+    @click.stop="() => $copy(shareSetting.url)"
+  >
     このページのURLをコピー
   </item-button>
 </template>
 
 <script setup lang="ts">
+import { getPageSetting } from "~/src/pages/getPageSetting";
+
 interface Props {
-  icon?: boolean
-  withcopy?: boolean
+  icon?: boolean;
+  withcopy?: boolean;
 }
 const Props = defineProps<Props>();
 
-const { nowPageSetting } = usePages()
-const { $templateText } = useNuxtApp()
+const { $templateText } = useNuxtApp();
+const route = useRoute();
+const pageSetting = ref(getPageSetting(route.fullPath));
+watch(
+  () => route.fullPath,
+  () => {
+    pageSetting.value = getPageSetting(route.fullPath);
+  }
+);
 
 const shareSetting = computed(() => {
-  const text = nowPageSetting.value.to.indexOf("blog/") >= 0 ? `ブログ「${nowPageSetting.value.title}」` : nowPageSetting.value.title
-  const url = $templateText.baseUrl + (nowPageSetting.value.to !== "/" ? nowPageSetting.value.to + "/" : "/")
+  const text =
+    pageSetting.value.to.indexOf("blog/") >= 0
+      ? `ブログ「${pageSetting.value.title}」`
+      : pageSetting.value.title;
+  const url =
+    $templateText.baseUrl +
+    (pageSetting.value.to !== "/" ? pageSetting.value.to + "/" : "/");
   return {
     text,
-    url
-  }
-})
+    url,
+  };
+});
 </script>
-

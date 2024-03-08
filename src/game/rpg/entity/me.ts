@@ -1,6 +1,6 @@
 import { Entity } from ".";
-import { CheckFunc } from "..";
-import { Angle, Pos } from "../util";
+import type { CheckFunc } from "..";
+import type { Angle, Pos } from "../util";
 
 export class Me extends Entity {
   constructor() {

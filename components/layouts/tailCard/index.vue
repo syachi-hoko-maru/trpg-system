@@ -1,6 +1,12 @@
 <template>
-  <card-array-by-andml v-if="pageSetting.tags.indexOf('sw25_new') >= 0" :andml="sourceAndml" />
-  <layouts-tail-card-osusume v-if="pageSetting.to !== '/policy' && pageSetting.to !== '/'" type="kanren" />
+  <card-array-by-andml
+    v-if="pageSetting.tags.indexOf('sw25_new') >= 0"
+    :andml="sourceAndml"
+  />
+  <layouts-tail-card-osusume
+    v-if="pageSetting.to !== '/policy' && pageSetting.to !== '/'"
+    type="kanren"
+  />
   <card>
     <item-pagetree class="mt-3" />
     <item-share-page withcopy>このページをツイート</item-share-page>
@@ -11,23 +17,26 @@
   <card-array-by-andml :andml="newbooks" />
   <item-banner />
   <item-notice title="しゃちほこ丸からのお知らせ" />
-  <template v-if="!pageSetting.noamazon && pageSetting.tags.findIndex(tag => tag.indexOf('sw25') >= 0) >= 0">
+  <template
+    v-if="
+      !pageSetting.noamazon &&
+      pageSetting.tags.findIndex((tag) => tag.indexOf('sw25') >= 0) >= 0
+    "
+  >
     <card>
-      <template #title>
-        ルールブックを買うならHarry Harry
-      </template>
+      <template #title> ルールブックを買うならHarry Harry </template>
       <andml :andmls="andml1" />
     </card>
     <item-amazon-sw25 />
   </template>
   <!-- <item-amazon-box v-if="!pageSetting.noamazon" /> -->
   <card v-if="recent.length && mounted">
-    <template #title>
-      最近更新されたページ
-    </template>
+    <template #title> 最近更新されたページ </template>
     最近更新されたページ{{ recent.length }}件を表示中
     <item-pagecard v-for="r of recent" :page-setting="r" />
-    <item-button to="/search?sort=recent">最近更新されたページ一覧はこちら</item-button>
+    <item-button to="/search?sort=recent"
+      >最近更新されたページ一覧はこちら</item-button
+    >
   </card>
   <layouts-tail-card-aboutme />
   <layouts-tail-card-osusume type="osusume" />
@@ -35,42 +44,63 @@
   <item-banner />
   <card>
     <item-button @click="scrollTop">上へ戻る</item-button>
-    <item-button v-if="pageSetting.to.indexOf('/blog/') === 0" url="/blog" normal-button>ブログトップへ</item-button>
-    <item-button v-if="pageSetting.to !== '/'" url="/" normal-button>トップページへ</item-button>
+    <item-button
+      v-if="pageSetting.to.indexOf('/blog/') === 0"
+      url="/blog"
+      normal-button
+      >ブログトップへ</item-button
+    >
+    <item-button v-if="pageSetting.to !== '/'" url="/" normal-button
+      >トップページへ</item-button
+    >
   </card>
   <game-halloween-ghost />
 </template>
 
 <script setup lang="ts">
-import { bookList } from '~/src/dict/new';
-import { isHidden } from '~/src/pages/getPageSetting';
-import { isPast, sortByDate } from '~/src/util/date';
+import { bookList } from "~/src/dict/new";
+import { getPageSetting, isHidden } from "~/src/pages/getPageSetting";
+import { isPast, sortByDate } from "~/src/util/date";
 
-const { $pageSettingList } = useNuxtApp()
-const { nowPageSetting } = usePages()
-const pageSetting = nowPageSetting
+const { $pageSettingList } = useNuxtApp();
+const route = useRoute();
+const pageSetting = ref(getPageSetting(route.fullPath));
+watch(
+  () => route.fullPath,
+  () => {
+    pageSetting.value = getPageSetting(route.fullPath);
+  }
+);
 
 const recent = $pageSettingList
-  .filter(p => !isHidden(p) && !p.noSearch)
+  .filter((p) => !isHidden(p) && !p.noSearch)
   .sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime())
-  .slice(0, 10)
+  .slice(0, 10);
 
 const scrollTop = () => {
-  scrollTo(0, 0)
-}
+  scrollTo(0, 0);
+};
 
 const newBooks = bookList
-  .filter(b => !isPast(b.date))
-  .sort((a, b) => sortByDate(false)(a.date, b.date))
-const newBook = newBooks[0]
+  .filter((b) => !isPast(b.date))
+  .sort((a, b) => sortByDate(false)(a.date, b.date));
+const newBook = newBooks[0];
 const recentBooks = bookList
-  .filter(b => isPast(b.date))
-  .sort((a, b) => sortByDate(true)(a.date, b.date))
-const recentBook = recentBooks[0]
+  .filter((b) => isPast(b.date))
+  .sort((a, b) => sortByDate(true)(a.date, b.date));
+const recentBook = recentBooks[0];
 
-const newbooks = (newBook ? `
-&1 最新刊『${newBook.title}』（${newBook.dispDate ? newBook.dispDate : newBook.date}発売予定）特集中！
-当サイトでは &em_ソード・ワールド2.5（SW2.5/ソドワ） の最新刊となる &em_『${newBook.long ? newBook.long : newBook.title}』 （${newBook.dispDate ? newBook.dispDate : newBook.date}発売予定）を全力で特集中です！
+const newbooks =
+  (newBook
+    ? `
+&1 最新刊『${newBook.title}』（${
+        newBook.dispDate ? newBook.dispDate : newBook.date
+      }発売予定）特集中！
+当サイトでは &em_ソード・ワールド2.5（SW2.5/ソドワ） の最新刊となる &em_『${
+        newBook.long ? newBook.long : newBook.title
+      }』 （${
+        newBook.dispDate ? newBook.dispDate : newBook.date
+      }発売予定）を全力で特集中です！
 &br
 ぜひみていってください！
 &button_/search?word=${newBook.title} 『${newBook.title}』関連ページはこちら
@@ -79,51 +109,55 @@ const newbooks = (newBook ? `
 他にも今後発売が予鈴されている
 &br
 ${newBooks
-    .splice(1)
-    .map(r =>
-      `- 『${r.long ? r.long : r.title}』（${r.dispDate ? r.dispDate : r.date}発売）`
-    )
-    .join("\n")
-  }
+  .splice(1)
+  .map(
+    (r) =>
+      `- 『${r.long ? r.long : r.title}』（${
+        r.dispDate ? r.dispDate : r.date
+      }発売）`
+  )
+  .join("\n")}
 &br
 についても特集中です！！
 &button_/sw25/feature/new
 &br
 &3 新刊『${recentBook.title}』なども特集してます！
-当サイトでは${recentBook.dispDate ? recentBook.dispDate : recentBook.date}に発売された『${recentBook.title}』についても特集中です！
+当サイトでは${
+        recentBook.dispDate ? recentBook.dispDate : recentBook.date
+      }に発売された『${recentBook.title}』についても特集中です！
 買った人もまだの人も、ぜひ見ていってください！
 &br
 さらに、最近発売された
 &br
 ${recentBooks
-    .filter((_, i) =>
-      i >= 1 && i < 4
-    )
-    .map(r =>
-      `- 『${r.long ? r.long : r.title}』（${r.dispDate ? r.dispDate : r.date}発売）`
-    )
-    .join("\n")
-  }
+  .filter((_, i) => i >= 1 && i < 4)
+  .map(
+    (r) =>
+      `- 『${r.long ? r.long : r.title}』（${
+        r.dispDate ? r.dispDate : r.date
+      }発売）`
+  )
+  .join("\n")}
 &br
 などについての情報も多数書いています！
 ${recentBooks
-    .filter((_, i) =>
-      i < 3
-    )
-    .map(r =>
-      `&button_/search?word=${r.title} 『${r.title}』関連ページはこちら`
-    )
-    .join("\n")
-  }
+  .filter((_, i) => i < 3)
+  .map(
+    (r) => `&button_/search?word=${r.title} 『${r.title}』関連ページはこちら`
+  )
+  .join("\n")}
 &br
-`: "")
-  + (!pageSetting.value.noamazon ? `
+`
+    : "") +
+  (!pageSetting.value.noamazon
+    ? `
 &amazon_${bookList
-      .sort((a, b) => sortByDate(true)(a.date, b.date))
-      .flatMap(b => [b.title, b.amazon ? b.amazon : ""])
-      .filter(f => f)
-      .join("・")}
-`: "")
+        .sort((a, b) => sortByDate(true)(a.date, b.date))
+        .flatMap((b) => [b.title, b.amazon ? b.amazon : ""])
+        .filter((f) => f)
+        .join("・")}
+`
+    : "");
 
 const andml1 = `
 ソード・ワールド2.5（SW2.5/ソドワ）のルールブックを購入する際はぜひ「HarryHarry」をご利用ください！
@@ -132,9 +166,11 @@ const andml1 = `
 &harry
 ハリィさんについて詳しくは以下のページをご覧ください。
 &button_/sw25/fav/harry
-`
+`;
 
-const sourceAndml = computed(() => `
+const sourceAndml = computed(
+  () =>
+    `
 &1 ソース
 ソード・ワールド2.5（SW2.5/ソドワ）の新刊情報は主に以下より入手しています。
 &&tatami_詳しくみる
@@ -153,27 +189,31 @@ const sourceAndml = computed(() => `
 -- 毎月初めに来月分の新刊情報が公開されます。
 
 &2 リンク
-` + (pageSetting.value.to !== "/sw25/feature/new" ? `
+` +
+    (pageSetting.value.to !== "/sw25/feature/new"
+      ? `
 ソード・ワールド2.5の新刊情報は以下のページでまとめています。
 あわせてご覧ください。
 &button_/sw25/feature/new
-`: "") + `
+`
+      : "") +
+    `
 &button_/search?tag=sw25_new&sort=recent 新刊情報の一覧はこちら
 &br
 最近更新されたソード・ワールド2.5の新刊情報に関するページ3件
 ${$pageSettingList
-    .filter(page => !isHidden(page) && page.tags.indexOf("sw25_new") >= 0)
-    .sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime())
-    .slice(0, 3)
-    .map(page => `&button_${page.to}`)
-    .join("\n")
-  }
-&&&`)
+  .filter((page) => !isHidden(page) && page.tags.indexOf("sw25_new") >= 0)
+  .sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime())
+  .slice(0, 3)
+  .map((page) => `&button_${page.to}`)
+  .join("\n")}
+&&&`
+);
 
-const mounted = ref(false)
+const mounted = ref(false);
 onMounted(() => {
-  mounted.value = true
-})
+  mounted.value = true;
+});
 </script>
 
 <style scoped>

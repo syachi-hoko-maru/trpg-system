@@ -1,5 +1,5 @@
 import { Entity } from ".";
-import { CheckFunc } from "..";
+import type { CheckFunc } from "..";
 import { randomPos } from "../util";
 
 export class Npc extends Entity {

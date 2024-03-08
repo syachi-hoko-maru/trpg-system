@@ -3,27 +3,41 @@
 </template>
 
 <script setup lang="ts">
-import { God, godList } from '~/src/dict/god';
+import type { God } from "~/src/dict/god";
+import { godList } from "~/src/dict/god";
 
 godList.sort((a, b) => {
-  if (a.sword > b.sword) return 1
-  if (a.sword < b.sword) return -1
-  if (a.type > b.type) return 1
-  if (a.type < b.type) return -1
-  return 0
-})
+  if (a.sword > b.sword) return 1;
+  if (a.sword < b.sword) return -1;
+  if (a.type > b.type) return 1;
+  if (a.type < b.type) return -1;
+  return 0;
+});
 
-const getSword = (sword: 1 | 2 | 3) => [, "一", "ニ", "三"][sword]
-const getType = (type: 0 | 1 | 2) => [" &ruby_古代神,エンシェントゴッド ", " &ruby_大神,メジャーゴッド ", " &ruby_小神,マイナーゴッド "][type]
+const getSword = (sword: 1 | 2 | 3) => [, "一", "ニ", "三"][sword];
+const getType = (type: 0 | 1 | 2) =>
+  [
+    " &ruby_古代神,エンシェントゴッド ",
+    " &ruby_大神,メジャーゴッド ",
+    " &ruby_小神,マイナーゴッド ",
+  ][type];
 const format = (god: God) => [
   `&3 "${god.hn}"¥s${god.name}`,
   god.sword
-    ? `"${god.hn}"¥s${god.name}は第${getSword(god.sword)}の剣に由来する ${getType(god.type)} です。`
-    : `"${god.hn}"¥s${god.name}は全てが謎であり、異界の神なのではないかとも言われる ${getType(god.type)} です。`,
+    ? `"${god.hn}"¥s${god.name}は第${getSword(
+        god.sword
+      )}の剣に由来する ${getType(god.type)} です。`
+    : `"${god.hn}"¥s${
+        god.name
+      }は全てが謎であり、異界の神なのではないかとも言われる ${getType(
+        god.type
+      )} です。`,
   god.area ? `${god.area}で信仰されています。` : "",
-  god.book ? `&br ${god.book.map(b => `『${b}』`).join("・")}に登場します。` : "",
-  god.description ? "&br\n" + god.description.join("\n") : ""
-]
+  god.book
+    ? `&br ${god.book.map((b) => `『${b}』`).join("・")}に登場します。`
+    : "",
+  god.description ? "&br\n" + god.description.join("\n") : "",
+];
 const godAndml = `
 &1 このページについて
 このページはソード・ワールド2.5（SW2.5/ソドワ）に登場する、「ラクシア」の神の一覧です。
@@ -48,20 +62,20 @@ const godAndml = `
 &1 ラクシアの神の一覧（第一の剣）
 以下はソード・ワールド2.5に登場している神のうち、 &em_第一の剣ルミエル に由来する神の一覧です。
 ${godList
-    .filter(god => god.game !== 20 && god.sword === 1)
-    .map(format)
-    .flat()
-    .join("\n")}
+  .filter((god) => god.game !== 20 && god.sword === 1)
+  .map(format)
+  .flat()
+  .join("\n")}
 
 &1 ラクシアの神の一覧（第三の剣）
 以下はソード・ワールド2.5に登場している神のうち、 &em_第三の剣カルディア に由来する神の一覧です。
 &br
 知的な神が多いのが特徴です。
 ${godList
-    .filter(god => god.game !== 20 && god.sword === 3)
-    .map(format)
-    .flat()
-    .join("\n")}
+  .filter((god) => god.game !== 20 && god.sword === 3)
+  .map(format)
+  .flat()
+  .join("\n")}
 
 &1 ラクシアの神の一覧（第ニの剣）
 以下はソード・ワールド2.5に登場している神のうち、 &em_第ニの剣イグニス に由来する神とその他の神の一覧です。
@@ -71,10 +85,10 @@ ${godList
 また、公式リプレイ等のネタバレになりますので閲覧は自己責任でお願いします。
 &&tatami_ネタバレの可能性あり
 ${godList
-    .filter(god => god.game !== 20 && (god.sword === 2 || god.sword === 0))
-    .map(format)
-    .flat()
-    .join("\n")}
+  .filter((god) => god.game !== 20 && (god.sword === 2 || god.sword === 0))
+  .map(format)
+  .flat()
+  .join("\n")}
 &&&
 
 &1 ラクシアの神の一覧（ソード・ワールド2.0）
@@ -86,10 +100,10 @@ ${godList
 
 &&tatami_ネタバレの可能性あり
 ${godList
-    .filter(god => god.game === 20)
-    .map(format)
-    .flat()
-    .join("\n")}
+  .filter((god) => god.game === 20)
+  .map(format)
+  .flat()
+  .join("\n")}
 &&&
 
 &1 他のページ
@@ -100,6 +114,5 @@ ${godList
 &button_/sw25/forbeginner/ginou
 &br
 &amazon_メイガスアーツ・剣と荒野と放浪者
-`
-
+`;
 </script>

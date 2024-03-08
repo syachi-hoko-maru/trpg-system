@@ -1,6 +1,7 @@
-import { CheckFunc } from "..";
+import type { CheckFunc } from "..";
 import { basicSize, centerX, centerY } from "../setting";
-import { Pos, addPos, eqPos, isInArea, multPos, subPos } from "../util";
+import type { Pos } from "../util";
+import { addPos, eqPos, isInArea, multPos, subPos } from "../util";
 
 type Img =
   | {

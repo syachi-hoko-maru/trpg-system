@@ -34,10 +34,10 @@
           <div id="page">
             <slot />
           </div>
-          <lazy-layouts-paging />
+          <layouts-paging />
         </article>
         <aside>
-          <lazy-layouts-tail-card v-if="pageSetting?.to !== '/'" />
+          <layouts-tail-card v-if="pageSetting?.to !== '/'" />
         </aside>
       </layouts-main>
     </div>
@@ -45,7 +45,7 @@
       <layouts-snack />
     </aside>
     <footer>
-      <lazy-layouts-footer />
+      <layouts-footer />
     </footer>
   </v-app>
 </template>
@@ -57,7 +57,7 @@ const route = useRoute();
 const router = useRouter();
 const { setTheme } = useDesign();
 const { fixed } = useDialogo();
-const { getNowPath, nowPageSetting, getNowPagePage } = usePages();
+const { getNowPath, getNowPagePage } = usePages();
 const { $getPageSetting, $templateText } = useNuxtApp();
 
 // const mountedPageSetting: Ref<PageSetting | undefined> = ref(undefined)
@@ -156,18 +156,29 @@ onMounted(() => {
   // vuetifyテーマの設定
   setTheme(localStorage.getItem("theme"));
   console.log(ok.value);
-  watch(ok, () => {
+});
+watch(
+  () => ok,
+  () => {
     console.log(ok.value);
     if (ok.value)
       router.replace(
         route.fullPath.replace(route.fullPath, decodeURI(route.fullPath))
       );
-  });
-  watch(route, () => {
+  }
+);
+watch(
+  () => route.fullPath,
+  () => {
     changePage();
+    console.log("aaa");
     // mountedPageSetting.value = pageSetting.value
-  });
-  watch(fixed, () => {
+  }
+);
+
+watch(
+  () => fixed,
+  () => {
     if (fixed.value) {
       top.value = window.scrollY;
       path.value = route.fullPath;
@@ -181,8 +192,8 @@ onMounted(() => {
       }, 0.01 * 1000);
     }
     console.log(top.value);
-  });
-});
+  }
+);
 </script>
 
 <style lang="scss" scoped>

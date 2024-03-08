@@ -23,7 +23,7 @@ export const usePages = () => {
 
   const getNowPage = () => route.fullPath;
 
-  const nowPageSetting: Ref<PageSetting> = ref($getPageSetting(route.fullPath));
+  const nowPageSetting = ref($getPageSetting(route.fullPath));
 
   const getNowPagePage = (): number => {
     const qp = Number(
@@ -98,6 +98,7 @@ export const usePages = () => {
       pageArray.value
     );
     setNowBannerList();
+    console.log(nowPageSetting.value.to);
   };
   changeRoute();
   watch(route, changeRoute);

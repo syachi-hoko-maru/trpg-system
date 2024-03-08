@@ -1,4 +1,4 @@
-import { ComputedOptions, ConcreteComponent, MethodOptions } from "vue";
+import type { ComputedOptions, ConcreteComponent, MethodOptions } from "vue";
 
 type Component =
   | string

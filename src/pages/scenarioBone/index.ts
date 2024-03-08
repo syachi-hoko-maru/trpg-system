@@ -1,7 +1,7 @@
 import { title } from "process";
-import { Gino } from "~/src/dict/ginou";
-import { RyuhaNames } from "~/src/dict/ryuha";
-import { SyuzokuWithRare } from "~/src/dict/syuzoku";
+import type { Gino } from "~/src/dict/ginou";
+import type { RyuhaNames } from "~/src/dict/ryuha";
+import type { SyuzokuWithRare } from "~/src/dict/syuzoku";
 
 export type NpcData = {
   name: string;

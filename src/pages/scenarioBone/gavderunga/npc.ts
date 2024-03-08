@@ -1,4 +1,4 @@
-import { NpcData } from "..";
+import type { NpcData } from "..";
 
 type Info = {
   title: string;

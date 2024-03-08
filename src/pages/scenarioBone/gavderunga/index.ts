@@ -1,4 +1,6 @@
-import { ScenarioBone, ScenarioEvent, getNpcAndml, getNpcString } from "..";
+import type { ScenarioBone, ScenarioEvent } from "..";
+import { getNpcAndml, getNpcString } from "..";
+
 import { mainNpcList } from "./npc";
 
 const mainNpcNames: string[] = mainNpcList.map((n) => n.name);

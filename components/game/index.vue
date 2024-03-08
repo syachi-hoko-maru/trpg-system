@@ -296,7 +296,7 @@ const doCanvas = () => {
     entityArray.push(mine);
 
     let count = 0;
-    let intervalId: NodeJS.Timer;
+    let intervalId: NodeJS.Timeout;
     const interval = 25;
 
     const gameover = () => {

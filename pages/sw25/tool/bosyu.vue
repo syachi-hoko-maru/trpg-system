@@ -134,7 +134,7 @@ const saveSetting = () => {
   }
 };
 
-let intervalId: NodeJS.Timer;
+let intervalId: NodeJS.Timeout;
 onMounted(() => {
   colorFormSetting.value = {
     name: "color" as const,

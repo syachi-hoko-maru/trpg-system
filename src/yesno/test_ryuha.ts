@@ -12,7 +12,6 @@ const ryuhaObj: {
     return [r.name, { yesnoTags: [...r.tags, ...r.gino] }];
   })
 );
-console.log(ryuhaObj);
 const gene = yesnoQuestion(ryuhaObj, ryuhaYesNo, false, 2);
 const yesno = () =>
   (["yes", "no", "?"] as const)[Math.floor(Math.random() * 3)];

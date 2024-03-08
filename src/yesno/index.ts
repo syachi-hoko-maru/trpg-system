@@ -148,7 +148,6 @@ export const yesnoQuestion = function* <
       pre.push([
         key,
         val.yesnoTags.flatMap((t) => {
-          console.log(t);
           const parent = yesnoDefine[t].parent;
           if (parent && parent.length > 0) {
             return [t, ...parent];

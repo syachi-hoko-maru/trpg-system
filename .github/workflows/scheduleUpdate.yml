@@ -26,6 +26,11 @@ jobs:
         run: yarn
       - name: Use PA API
         run: yarn paapi
+      - name: Cash
+        uses: actions/cache/save@v3
+        with:
+          path: "src/temp/amazon.json"
+          key: paapi-${{ github.sha }}
   deploy:
     needs: paapi
-    uses: ./.github/workflows/deploy.yml
+    uses: ./.github/workflows/_deploy.yml

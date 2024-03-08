@@ -149,8 +149,8 @@ export const syuzoku = {
   [key: string]: {
     explain: string;
     debut: string;
-    rare: string[];
-    yesnoTags: (keyof typeof syuzokuYesNo)[];
+    rare: readonly string[];
+    yesnoTags: readonly (keyof typeof syuzokuYesNo)[];
   };
 };
 

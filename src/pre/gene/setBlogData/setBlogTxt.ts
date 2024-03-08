@@ -1,5 +1,6 @@
 import { readdirSync, readFileSync, writeFileSync } from "fs";
 import { blogTextDir, RawBlog, blogJSON, scenarioJson } from "../index";
+import { createHash } from "crypto";
 
 export const setBlogTxt = async (): Promise<RawBlog[]> => {
   try {
@@ -15,26 +16,33 @@ export const setBlogTxt = async (): Promise<RawBlog[]> => {
         );
         const lines = file.split("\n");
         if (lines.length >= 4) {
-          // OGPを指定する場合の処理
-          let bodyStratLine = 3;
-          let img: string = `blog-image/${id}\.webp`;
-          if (lines[3].startsWith("ogp=")) {
-            bodyStratLine = 4;
-            img = `page-image/${lines[3].replace("ogp=", "")}\.webp`;
-          }
-          // OGP処理ここまで
+          const title = lines[0];
           // 日付処理（2023/11/5追加、更新用）
           const dates = lines[1].split(",");
           const date = dates[0];
           const date2 = dates[1] ? dates[1] : dates[0];
           // 日付処理ここまで
+          // OGPを指定する場合の処理
+          let bodyStratLine = 3;
+          let img: string = `blog-image/${
+            id.slice(0, 10) +
+            "_" +
+            createHash("md5")
+              .update(title.slice(0, 50) + date.slice(0, 10))
+              .digest("hex")
+          }\.webp`;
+          if (lines[3].startsWith("ogp=")) {
+            bodyStratLine = 4;
+            img = `page-image/${lines[3].replace("ogp=", "")}\.webp`;
+          }
+          // OGPの指定処理ここまで
           blogs.push({
             id,
             // 1行目がタイトル
-            title: lines[0],
+            title,
             // 2行目が日付
-            date: date,
-            date2: date2,
+            date,
+            date2,
             // 3行目がタグ
             tags: lines[2].split(","),
             // 以降がブログ本文

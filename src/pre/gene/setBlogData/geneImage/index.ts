@@ -12,14 +12,12 @@ export const geneImage = async () => {
     readFileSync(blogJSON, "utf-8")
   ) as unknown as RawBlog[];
 
-  for (let { id, title, tags, date, img } of blogs) {
+  for (let { title, tags, date, img } of blogs) {
+    const pngImg = img.replace(/\.webp$/, ".png");
     // imgがあるか調べる
-    const imgPath = `${process.cwd()}/public/image/${img.replace(
-      /\.webp$/,
-      ".png"
-    )}`;
+    const imgPath = `${process.cwd()}/public/image/${pngImg}`;
     if (!existsSync(imgPath)) {
-      console.log(`start generate image ${id}.png`);
+      console.log(`start generate image ${pngImg}`);
       try {
         const tagList = tags.join("");
         const ogpType: OGPType =
@@ -32,7 +30,7 @@ export const geneImage = async () => {
             : tagList.indexOf("sw25") >= 0
             ? "sw25"
             : "normal";
-        await generateImage(id, title, ogpType, date).catch((err) => {
+        await generateImage(pngImg, title, ogpType, date).catch((err) => {
           console.error(err);
         });
       } catch (err) {
@@ -53,7 +51,7 @@ const typeDict: {
 };
 
 const generateImage = async (
-  id: string,
+  pngImg: string,
   title: string,
   ogpType: OGPType,
   date: string
@@ -145,5 +143,5 @@ const generateImage = async (
   await sharp(img)
     .composite([{ input: canvas.toBuffer(), top: 0, left: 0 }])
     .png()
-    .toFile(`${blogImgDir}/${id}.png`);
+    .toFile(`${blogImgDir}/${pngImg.replace("blog-image/", "")}`);
 };

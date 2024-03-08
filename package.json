@@ -11,7 +11,8 @@
     "generate": "NODE_OPTIONS=\"--max-old-space-size=5600\" nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "test": "ts-node --files --project ba.tsconfig.jsonc src/yesno/test.ts",
+    "test-yesno": "ts-node --files --project ba.tsconfig.jsonc src/yesno/test.ts",
+    "test-yesno2": "ts-node --files --project ba.tsconfig.jsonc src/yesno/test_ryuha.ts",
     "test-paapi": "ts-node --files --project ba.tsconfig.jsonc src/amazon-paapi/update.ts",
     "test-sec": "ts-node --files --project ba.tsconfig.jsonc src/pre/setSecret.ts"
   },

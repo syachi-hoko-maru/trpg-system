@@ -370,7 +370,7 @@ export const pageSettingList: PageSetting[] = [
     title: "SW2.5 流派の一覧と紹介",
     to: "/sw25/forbeginner/ryuha",
     created: "2024/1/21",
-    lastmod: "2024/1/21",
+    lastmod: "2024/3/8",
     img: "page-image/ryuha.webp",
     osusume: true,
     explain:

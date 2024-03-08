@@ -9,7 +9,10 @@ import { ryuhaList } from "~/src/dict/ryuha";
 const format = (ryuha: RyuhaData) =>
   [
     `&3 ${ryuha.name}`,
-    `「${ryuha.name}」はサプリメント『 &em_${ryuha.book} 』に掲載されている流派です。`,
+    `「${ryuha.name}」はサプリメント『 &em_${ryuha.book.replace(
+      /（.*）/,
+      ""
+    )} 』に掲載されている流派です。`,
     ryuha.area ? `&br &em_${ryuha.area} に伝わっています。` : "",
     ryuha.description.length ? ["&br", ...ryuha.description] : "",
     ryuha.gino.length
@@ -72,11 +75,9 @@ ${ryuhaList
   .join("\n")}
 
 &1 ソード・ワールド2.5の流派詳細
-&&tatami_準備中
-（準備中）
+個別の詳細な解説は現在準備中です。
 &br
 ${ryuhaList.map(format).flat().join("\n")}
-&&
 
 &1 他のページ
 ソード・ワールド2.5に登場する &em_種族 については以下をご覧ください。

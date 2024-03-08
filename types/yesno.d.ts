@@ -1,10 +1,12 @@
-type YesnoDefine = Readonly<{
+type YesnoDefine = Readonly<YesnoDefineFree>;
+type YesnoDefineFree = {
   [key in string]: {
     question: string;
     parent?: readonly T[];
     reverse?: boolean;
   };
-}>;
+};
+
 type YesNoDict<K extends string, T extends YesnoDefine> = {
   [key in K]: (keyof T)[];
 };

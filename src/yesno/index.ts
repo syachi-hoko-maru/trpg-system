@@ -53,8 +53,7 @@ const setScore = <Key extends string, Def extends YesnoDefine>(
   score: YesNoScore<Key>,
   dict: YesNoDict<Key, Def>,
   tag: keyof Def,
-  flag: boolean,
-  phase: number
+  flag: boolean
 ): void => {
   getEntries(dict).forEach(([key, yesnoTags]) => {
     const value = score[key];
@@ -127,29 +126,38 @@ export const yesnoQuestion = function* <
   Def extends YesnoDefine
 >(
   data: {
-    [key in Key]: {
-      yesnoTags: (keyof Def)[];
+    [key in Key]?: {
+      yesnoTags: readonly (keyof Def)[];
     } & {
       [k: string]: any;
     };
   },
-  yesnoDefine: Def
+  yesnoDefine: Def,
+  haita: boolean = true,
+  answerCount: number = 1
 ): Generator<
   { question: string; arr: Key[] },
   YesNoResult<Key> | null,
   "yes" | "no" | "?"
 > {
   const yesnoDict: YesNoDict<Key, Def> = Object.fromEntries(
-    getEntries(data).map(([key, val]) => [
-      key,
-      val.yesnoTags.flatMap((t) => {
-        const parent = yesnoDefine[t].parent;
-        if (parent && parent.length > 0) {
-          return [t, ...parent];
-        }
-        return t;
-      }),
-    ])
+    getEntries(data).reduce((pre, arr) => {
+      if (!arr) return pre;
+      const [key, val] = arr;
+      if (!val || !val.yesnoTags) return pre;
+      pre.push([
+        key,
+        val.yesnoTags.flatMap((t) => {
+          console.log(t);
+          const parent = yesnoDefine[t].parent;
+          if (parent && parent.length > 0) {
+            return [t, ...parent];
+          }
+          return t;
+        }),
+      ]);
+      return pre;
+    }, [] as [Key, (keyof Def)[]][])
   ) as YesNoDict<Key, Def>;
   const yesnoScore: YesNoScore<Key> = {};
   const tagHistory: YesNoTagHistory<Def> = {};
@@ -157,7 +165,7 @@ export const yesnoQuestion = function* <
   let tag: keyof Def | null = getTag(yesnoDict, arr, tagHistory);
   let count = 0;
   while (count < 1000) {
-    if (tag === null) {
+    if (tag === null || arr.length <= answerCount) {
       const result = getResult(yesnoScore);
       return result;
     }
@@ -165,9 +173,9 @@ export const yesnoQuestion = function* <
     const answer = yield { question: yesnoDefine[tag].question, arr };
     if (answer === "yes" || answer === "no" || answer === "?") {
       tagHistory[tag] = answer === "yes" ? 1 : answer === "no" ? -1 : 0;
-      if (answer !== "?") {
+      if (answer === "yes" || (haita && answer === "no")) {
         const flag: boolean = (answer === "yes") === !yesnoDefine[tag].reverse;
-        setScore(yesnoScore, yesnoDict, tag, flag, count);
+        setScore(yesnoScore, yesnoDict, tag, flag);
         arr = setArr(yesnoScore);
       }
       tag = getTag(yesnoDict, arr, tagHistory);

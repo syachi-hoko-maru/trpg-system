@@ -27,4 +27,5 @@ jobs:
       - name: Use PA API
         run: yarn paapi
   deploy:
+    needs: paapi
     uses: ./.github/workflows/deploy.yml

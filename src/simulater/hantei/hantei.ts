@@ -1,5 +1,4 @@
-import * as lodash from "lodash";
-const { isEqual } = lodash;
+import { isEqual } from "lodash";
 
 import dice from "../dice";
 import { getBoolean, getNumber } from "../util";

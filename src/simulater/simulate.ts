@@ -1,5 +1,4 @@
-import * as lodash from "lodash";
-const { cloneDeep } = lodash;
+import { cloneDeep } from "lodash";
 import { toNumber } from "./util";
 import { nowDate } from "../util/date";
 

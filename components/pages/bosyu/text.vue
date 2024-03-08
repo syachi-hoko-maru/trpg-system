@@ -3,65 +3,99 @@
     <template #title>
       <div class="pb-0">テキスト出力</div>
     </template>
-    以下をコピーするか、下にある『コピー』ボタンを押してください。
-    <v-textarea label="テキスト出力結果" v-model="text" density="comfortable" readonly auto-grow class="my-5" />
-    <item-button prepend-icon="mdi-arrow-down-bold-circle" @click.stop="() => $copy(text)">コピー</item-button>
+    <item-button @click="show">表示する</item-button>
+    <template v-if="showFlag">
+      <p class="mt-5">
+        以下をコピーするか、下にある『コピー』ボタンを押してください。
+      </p>
+      <v-textarea
+        label="テキスト出力結果"
+        v-model="text"
+        density="comfortable"
+        readonly
+        auto-grow
+        class="my-5"
+      />
+      <item-button
+        prepend-icon="mdi-arrow-down-bold-circle"
+        @click.stop="() => $copy(text)"
+      >
+        コピー
+      </item-button>
+    </template>
   </card>
 </template>
 
 <script setup lang="ts">
-interface Props {
-  bosyuSettingsWithDisable: BosyuSetting
-}
-const Props = defineProps<Props>();
+const { bosyuSettings } = useBosyu();
+const { $setDisable } = useNuxtApp();
 
-const text = ref("")
-
-const { bosyuSettings } = useBosyu()
+const text = ref("");
+const showFlag = ref(false);
 
 const getFormSetting = (itemName: string): FormSetting | null => {
-  let result: FormSetting | null = null
-  bosyuSettings.forEach(d => {
-    const item = d.value.items.find(i => i.name === itemName)
-    if (item) result = item
-  })
-  return result
-}
+  let result: FormSetting | null = null;
+  bosyuSettings.forEach((d) => {
+    const item = d.value.items.find((i) => i.name === itemName);
+    if (item) result = item;
+  });
+  return result;
+};
 
 const bosyuType = computed(() => {
-  const type = getFormSetting("type")
-  if (type?.type === "combo" && ["ボイセ", "テキセ", "半テキセ"].indexOf(type?.value) >= 0) {
-    return type.value
+  const type = getFormSetting("type");
+  if (
+    type?.type === "combo" &&
+    ["ボイセ", "テキセ", "半テキセ"].indexOf(type?.value) >= 0
+  ) {
+    return type.value;
   }
-  return "オンセ"
-})
+  return "オンセ";
+});
 
 const setText = () => {
-  const arr: string[] = []
-  arr.push(`『SW2.5 ${bosyuType.value}募集』`)
-  Props.bosyuSettingsWithDisable.forEach(formSettingGroup => {
-    arr.push(`\n◇ ${formSettingGroup.label}`)
-    formSettingGroup.items.forEach(formSetting => {
+  const arr: string[] = [];
+  const bosyuSettingsWithDisable = bosyuSettings.map((bosyuSetting) => {
+    bosyuSetting.value.items = $setDisable(bosyuSetting.value.items);
+    return bosyuSetting.value;
+  });
+
+  arr.push(`『SW2.5 ${bosyuType.value}募集』`);
+  bosyuSettingsWithDisable.forEach((formSettingGroup) => {
+    arr.push(`\n◇ ${formSettingGroup.label}`);
+    formSettingGroup.items.forEach((formSetting) => {
       if (formSetting.value) {
         if (formSetting.value === true) {
-          arr.push(`${formSetting.label}`)
-        } else if (Array.isArray(formSetting.value) && formSetting.type==="slider" && formSetting.name === "count") {
-          arr.push(`${formSetting.label}: ${formSetting.selects[formSetting.value[0]]}〜${formSetting.selects[formSetting.value[1]]}`)
-        } else if (typeof formSetting.value === "string" && (formSetting.value.length > 10 || formSetting.value.indexOf("\n") >= 0)) {
-          arr.push(`${formSetting.label}: \n${formSetting.value}`)
+          arr.push(`${formSetting.label}`);
+        } else if (
+          Array.isArray(formSetting.value) &&
+          formSetting.type === "slider" &&
+          formSetting.name === "count"
+        ) {
+          arr.push(
+            `${formSetting.label}: ${
+              formSetting.selects[formSetting.value[0]]
+            }〜${formSetting.selects[formSetting.value[1]]}`
+          );
+        } else if (
+          typeof formSetting.value === "string" &&
+          (formSetting.value.length > 10 ||
+            formSetting.value.indexOf("\n") >= 0)
+        ) {
+          arr.push(`${formSetting.label}: \n${formSetting.value}`);
         } else {
-          arr.push(`${formSetting.label}: ${formSetting.value}`)
+          arr.push(`${formSetting.label}: ${formSetting.value}`);
         }
       }
-    })
-  })
-  text.value = arr.join("\n")
-}
+    });
+  });
+  text.value = arr.join("\n");
+};
 
-onMounted(() => {
-  setText()
-  watch(Props.bosyuSettingsWithDisable, setText)
-})
+const show = () => {
+  setText();
+  showFlag.value = true;
+};
 </script>
 
 <style scoped lang="scss">
@@ -85,52 +119,48 @@ onMounted(() => {
 
     &.white {
       background-color: #fff;
-      color: #333
+      color: #333;
     }
 
     &.black {
       background-color: #333;
-      color: #fff
+      color: #fff;
     }
-
 
     &.navy {
       background-color: rgb(0, 0, 111);
-      color: #fff
+      color: #fff;
     }
 
     &.green {
       background-color: rgb(10, 62, 0);
-      color: #fff
+      color: #fff;
     }
 
     &.yellow {
       background-color: rgb(255, 235, 165);
-      color: #333
+      color: #333;
     }
 
     &.sakura {
-      background: linear-gradient(to right,
-          rgb(255, 183, 183), 40%,
-          #ffd6d6);
-      color: #333
+      background: linear-gradient(to right, rgb(255, 183, 183), 40%, #ffd6d6);
+      color: #333;
     }
 
     &.sunset {
       background: linear-gradient(rgb(0, 0, 104), 70%, rgb(216, 58, 58));
-      color: #fff
+      color: #fff;
     }
 
     &.lavender {
       background: linear-gradient(rgb(201, 196, 244), 50%, #fff);
-      color: #9c7c3d
+      color: #9c7c3d;
     }
 
     &.wine {
       background: linear-gradient(#633142, 50%, rgb(191, 0, 29));
-      color: #fff
+      color: #fff;
     }
-
   }
 }
 </style>

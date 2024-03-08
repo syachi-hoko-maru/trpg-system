@@ -14,17 +14,16 @@
     </div>
   </card>
   <card>
-    <item-form-select
-      v-if="colorFormSetting.value"
-      :form-setting="colorFormSetting"
-    />
-    <item-button @click="showResult"> 画像を表示する </item-button>
+    <div class="my-5">
+      <item-form-select
+        v-if="colorFormSetting.value"
+        :form-setting="colorFormSetting"
+      />
+      <item-button @click="showResult"> 画像を表示する </item-button>
+    </div>
   </card>
   <pages-bosyu-result :bosyuSettingsWithDisable="result" :color="color" />
-  <pages-bosyu-text
-    v-if="bosyuSettingsWithDisable.length"
-    :bosyuSettingsWithDisable="bosyuSettingsWithDisable"
-  />
+  <pages-bosyu-text />
 </template>
 
 <script setup lang="ts">
@@ -35,7 +34,7 @@ const { setSnack } = useSnack();
 
 const { $setDisable } = useNuxtApp();
 
-const saveSec = 10;
+const saveSec = 15;
 const andmls1 = `
 &1 このページについて
 ソード・ワールド2.5（SW2.5）のオンラインセッション募集時に、 &em_過不足なく情報を伝える ための画像・テキストが作れるページです。

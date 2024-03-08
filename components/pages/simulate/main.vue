@@ -77,7 +77,9 @@ const simulateErrorMessage = (error: any) => `
 入力を見直してください。
 もしバグの場合、 &itwitter まで連絡いただければ幸いです。
 ${error ? "&br" : ""}
+&&noandml
 ${error}
+&&&
 `;
 
 const getResult = () => {
@@ -94,6 +96,7 @@ const getResult = () => {
     .catch((err) => {
       loading.value = false;
       openDialogo(simulateErrorMessage(err), "error");
+      console.error(err);
     });
 };
 

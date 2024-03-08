@@ -98,7 +98,7 @@ export const usePages = () => {
       pageArray.value
     );
     setNowBannerList();
-    console.log(nowPageSetting.value.to);
+    // console.log(nowPageSetting.value.to);
   };
   changeRoute();
   watch(route, changeRoute);

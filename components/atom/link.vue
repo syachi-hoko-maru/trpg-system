@@ -56,7 +56,6 @@ let decoClass: string = "text-decoration-none";
 if (Props.deco) decoClass = "text-decoration-underline";
 
 const click = () => {
-  console.log("click");
   event("link_click", {
     link: link.value,
     title: Props.title,

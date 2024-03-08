@@ -412,7 +412,6 @@ const doCanvas = () => {
 };
 
 const keyHandler = (key: string, mode: "down" | "up") => {
-  console.log(key, mode);
   if (key === "Right" || key === "ArrowRight") {
     leftPressed = false;
     if (mode === "down") rightPressed = true;

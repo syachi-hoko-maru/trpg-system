@@ -171,7 +171,7 @@ watch(
   () => route.fullPath,
   () => {
     changePage();
-    console.log("aaa");
+    // console.log("aaa");
     // mountedPageSetting.value = pageSetting.value
   }
 );

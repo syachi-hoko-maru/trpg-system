@@ -14,7 +14,8 @@
         </div>
       </v-menu>
       <span v-else>
-        {{ w.replace(/¥s/g, " ").replace(/^&/, "") }} {{ wordList[w.replace(/^&/, "")] }}
+        {{ w.replace(/¥s/g, " ").replace(/^&/, "") }}
+        {{ wordList[w.replace(/^&/, "")] }}
       </span>
     </template>
     <span v-else>
@@ -27,40 +28,45 @@
 </template>
 
 <script setup lang="ts">
-import { Ref } from 'vue';
+import type { Ref } from "vue";
 
 interface Props {
-  props: string
+  props: string;
 }
 const Props = defineProps<Props>();
 
-const { $wordList } = useNuxtApp()
+const { $wordList } = useNuxtApp();
 
-const words: Ref<string[]> = ref([])
-const wordList: Ref<WordList> = ref({})
+const words: Ref<string[]> = ref([]);
+const wordList: Ref<WordList> = ref({});
 
 const setWords = () => {
-  wordList.value = $wordList()
-  let word = Props.props
+  wordList.value = $wordList();
+  let word = Props.props;
   Object.keys(wordList.value).forEach((key) => {
     if (word.indexOf(key) >= 0) {
-      word = word.split(key).join("$$$&" + key + "$$$")
+      word = word.split(key).join("$$$&" + key + "$$$");
     }
-  })
-  words.value = word.split("$$$")
-}
+  });
+  words.value = word.split("$$$");
+};
 
-
-const mounted = ref(false)
+const mounted = ref(false);
 onMounted(() => {
-  mounted.value = true
-  setWords()
-})
+  mounted.value = true;
+  setWords();
+});
 </script>
 
 <style lang="scss" scoped>
 span.word {
-  background-image: linear-gradient(to right, #888, #888 6px, transparent 6px, transparent 15px);
+  background-image: linear-gradient(
+    to right,
+    #888,
+    #888 6px,
+    transparent 6px,
+    transparent 15px
+  );
   background-size: 15px 1px;
   background-position: left bottom;
   background-repeat: repeat-x;

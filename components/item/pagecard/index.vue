@@ -1,24 +1,44 @@
 <template>
   <div class="page-card-div" :class="virtical ? 'ma-2' : 'my-5'">
-    <atom-link v-if="pageSettingData" :to="pageSettingData.to + (pageSettingData.page?.length ? '/1/' : '')"
-      :title="`ページ「${pageSettingData.title}」へのリンク（ページカード）`" type="pagecard" :disabled="isHidden(pageSettingData)">
+    <atom-link
+      v-if="pageSettingData"
+      :to="pageSettingData.to + (pageSettingData.page?.length ? '/1/' : '')"
+      :title="`ページ「${pageSettingData.title}」へのリンク（ページカード）`"
+      type="pagecard"
+      :disabled="isHidden(pageSettingData)"
+    >
       <card :comingsoon="isHidden(pageSettingData)" :elevation="6" nobefore>
         <template #tbefore>
-          <div class="pagecard d-flex justify-start page-card-incard"
-            :class="virtical ? 'pagecard-virtical flex-column' : 'pagecard-side'">
+          <div
+            class="pagecard d-flex justify-start page-card-incard"
+            :class="
+              virtical ? 'pagecard-virtical flex-column' : 'pagecard-side'
+            "
+          >
             <div class="pagecard-image" v-if="pageSettingData.img">
-              <div v-if="isNew" class="new">
-                NEW
-              </div>
-              <item-img :src="pageSettingData.img" :alt="`ページ「${pageSettingData.title}」のサムネイル画像`" height="100%" cover
-                class="ma-0" />
+              <div v-if="isNew" class="new">NEW</div>
+              <item-img
+                :src="pageSettingData.img"
+                :alt="`ページ「${pageSettingData.title}」のサムネイル画像`"
+                height="100%"
+                cover
+                class="ma-0"
+              />
             </div>
-            <div class="pagecard-text" :class="!pageSettingData.img ? 'no-image' : ''">
+            <div
+              class="pagecard-text"
+              :class="!pageSettingData.img ? 'no-image' : ''"
+            >
               <div class="pagecard-title">
                 {{ pageSettingData.title }}
               </div>
               <div class="text-caption text-medium-emphasis">
-                <template v-if="!isHidden(pageSettingData) && pageSettingData.to.indexOf('/blog/') === 0">
+                <template
+                  v-if="
+                    !isHidden(pageSettingData) &&
+                    pageSettingData.to.indexOf('/blog/') === 0
+                  "
+                >
                   投稿日：{{ pageSettingData.lastmod }}
                 </template>
                 <template v-else-if="!isHidden(pageSettingData)">
@@ -29,7 +49,11 @@
                 </template>
               </div>
               <div class="text-caption text-medium-emphasis my-1">
-                {{ (Array.isArray(pageSettingData.explain) ? pageSettingData.explain.join() : pageSettingData.explain) }}
+                {{
+                  Array.isArray(pageSettingData.explain)
+                    ? pageSettingData.explain.join()
+                    : pageSettingData.explain
+                }}
               </div>
             </div>
           </div>
@@ -40,38 +64,46 @@
 </template>
 
 <script setup lang="ts">
-import { Ref } from 'vue';
-import { isHidden } from '~/src/pages/getPageSetting';
-import { isPast } from '~/src/util/date';
+import type { Ref } from "vue";
+import { isHidden } from "~/src/pages/getPageSetting";
+import { isPast } from "~/src/util/date";
 
 interface Props {
-  pageSetting?: PageSetting,
-  pagePath?: string
-  virtical?: boolean
+  pageSetting?: PageSetting;
+  pagePath?: string;
+  virtical?: boolean;
 }
 const Props = defineProps<Props>();
 
-const { $getPageSetting } = useNuxtApp()
+const { $getPageSetting } = useNuxtApp();
 
-const pageSettingData: Ref<PageSetting | undefined> = computed(() => Props.pageSetting
-  ? Props.pageSetting
-  : Props.pagePath
+const pageSettingData: Ref<PageSetting | undefined> = computed(() =>
+  Props.pageSetting
+    ? Props.pageSetting
+    : Props.pagePath
     ? $getPageSetting(Props.pagePath)
     : undefined
-)
+);
 
 // 14日以内ならNEWを表示する
-const isNew = Props.pageSetting?.created ? !isPast(new Date(new Date(Props.pageSetting?.created).getTime() + 14 * 24 * 60 * 60 * 1000)) : false
+const isNew = Props.pageSetting?.created
+  ? !isPast(
+      new Date(
+        new Date(Props.pageSetting?.created).getTime() +
+          14 * 24 * 60 * 60 * 1000
+      )
+    )
+  : false;
 
-const mounted = ref(false)
+const mounted = ref(false);
 onMounted(() => {
-  mounted.value = true
-})
+  mounted.value = true;
+});
 </script>
 
 <style lang="scss">
 div.page-card-div {
-  transition: .3s;
+  transition: 0.3s;
 
   &:hover {
     opacity: 0.8;
@@ -124,14 +156,12 @@ div.page-card-div {
         line-height: 2.5vw;
       }
 
-
       @media screen and (max-width: 350px) {
         font-size: 3vw;
         height: 3vw;
         line-height: 3vw;
       }
     }
-
 
     &.pagecard-side {
       aspect-ratio: 100/21;
@@ -172,4 +202,3 @@ div.page-card-div {
   }
 }
 </style>
-

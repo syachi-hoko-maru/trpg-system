@@ -35,8 +35,6 @@
 </template>
 
 <script setup lang="ts">
-import { template } from "lodash";
-
 interface Props {
   props: string;
 }

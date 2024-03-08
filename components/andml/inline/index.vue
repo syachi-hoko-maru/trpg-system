@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { AndmlScript, AndmlData } from "~~/types/andml";
+import type { AndmlScript, AndmlData } from "~~/types/andml";
 
 interface Props {
   andml: string;

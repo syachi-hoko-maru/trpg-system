@@ -1,5 +1,6 @@
 import { readdirSync, readFileSync, writeFileSync } from "fs";
-import { blogTextDir, RawBlog, blogJSON, scenarioJson } from "../index";
+import { blogTextDir, blogJSON, scenarioJson } from "../index";
+import type { RawBlog } from "../index";
 import { createHash } from "crypto";
 
 export const setBlogTxt = async (): Promise<RawBlog[]> => {

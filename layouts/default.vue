@@ -7,17 +7,27 @@
   </noscript>
   <!-- <LayoutsGlmDesign v-if="false" /> -->
   <v-app>
-    <game-balloons v-if="pageSetting?.to === '/blog/matome' || pageSetting?.to === '/blog/5anni'
-      || nowDate().getDate() === 23 && nowDate().getMonth() + 1 === 5
-      // SW2.5の誕生日
-      || nowDate().getDate() === 20 && nowDate().getMonth() + 1 === 7
-      // SW2.0の誕生日
-      || nowDate().getDate() === 18 && nowDate().getMonth() + 1 === 4" />
+    <game-balloons
+      v-if="
+        pageSetting?.to === '/blog/matome' ||
+        pageSetting?.to === '/blog/5anni' ||
+        (nowDate().getDate() === 23 && nowDate().getMonth() + 1 === 5) ||
+        // SW2.5の誕生日
+        (nowDate().getDate() === 20 && nowDate().getMonth() + 1 === 7) ||
+        // SW2.0の誕生日
+        (nowDate().getDate() === 18 && nowDate().getMonth() + 1 === 4)
+      "
+    />
     <layouts-header />
     <aside>
       <layouts-dialogo />
     </aside>
-    <div id="app" :class="fixed ? 'fixed' : ''" :style="fixed ? `top: -${top}px` : ''" class="bg-bbackground">
+    <div
+      id="app"
+      :class="fixed ? 'fixed' : ''"
+      :style="fixed ? `top: -${top}px` : ''"
+      class="bg-bbackground"
+    >
       <layouts-main>
         <article>
           <layouts-title-card />
@@ -41,121 +51,138 @@
 </template>
 
 <script setup lang="ts">
-import { nowDate } from '~/src/util/date';
+import { nowDate } from "~/src/util/date";
 
 const route = useRoute();
 const router = useRouter();
-const { setTheme } = useDesign()
-const { fixed } = useDialogo()
-const { getNowPath, nowPageSetting, getNowPagePage } = usePages()
-const { $getPageSetting, $templateText } = useNuxtApp()
+const { setTheme } = useDesign();
+const { fixed } = useDialogo();
+const { getNowPath, nowPageSetting, getNowPagePage } = usePages();
+const { $getPageSetting, $templateText } = useNuxtApp();
 
 // const mountedPageSetting: Ref<PageSetting | undefined> = ref(undefined)
 
-const top = ref(0)
-const path = ref("")
+const top = ref(0);
+const path = ref("");
 
-
-let originalHheadFlag = false
+let originalHheadFlag = false;
 const pageSetting = computed(() => {
-  let pageUrl = getNowPath()
-  if (!pageUrl && pageUrl !== "") return
+  let pageUrl = getNowPath();
+  if (!pageUrl && pageUrl !== "") return;
 
   if (pageUrl.indexOf("/blog/") >= 0 || pageUrl.indexOf("/search") >= 0) {
     // ブログや検索ページの時はヘッドをblog/[id]やsearchで決める
-    originalHheadFlag = true
+    originalHheadFlag = true;
   }
-  const pageSetting: PageSetting & { pageUrl: string } = Object.assign($getPageSetting(pageUrl), { pageUrl })
-  return pageSetting
-})
+  const pageSetting: PageSetting & { pageUrl: string } = Object.assign(
+    $getPageSetting(pageUrl),
+    { pageUrl }
+  );
+  return pageSetting;
+});
 
 const changePage = () => {
-  if (!pageSetting.value) return
+  if (!pageSetting.value) return;
   if (originalHheadFlag) {
     // console.log("blog!!")
-    return
+    return;
   }
 
-  let pageSubTitle = (pageSetting.value.page?.length && pageSetting.value.page[getNowPagePage() - 1] ? pageSetting.value.page[getNowPagePage() - 1] : "")
-  const title = (pageSetting.value.title ? `${pageSetting.value.title} ${pageSubTitle} - ` : "") + $templateText.title;
+  let pageSubTitle =
+    pageSetting.value.page?.length &&
+    pageSetting.value.page[getNowPagePage() - 1]
+      ? pageSetting.value.page[getNowPagePage() - 1]
+      : "";
+  const title =
+    (pageSetting.value.title
+      ? `${pageSetting.value.title} ${pageSubTitle} - `
+      : "") + $templateText.title;
 
   const meta = [
     {
       hid: "og:url",
-      name: 'og:url',
+      name: "og:url",
       content: $templateText.baseUrl + pageSetting.value.to,
-    }, {
+    },
+    {
       hid: "og:title",
-      name: 'og:title',
+      name: "og:title",
       content: title,
-    }
-  ]
+    },
+  ];
   const description = pageSetting.value.explain?.length
-    ? (Array.isArray(pageSetting.value.explain) ? pageSetting.value.explain.join("\n") : pageSetting.value.explain)
-    : "このサイトではTRPG、特にソード・ワールド2.5（SW2.5/ソドワ）で役立つツールの提供や、最新情報の掲載、シナリオの公開などを行なっています。"
+    ? Array.isArray(pageSetting.value.explain)
+      ? pageSetting.value.explain.join("\n")
+      : pageSetting.value.explain
+    : "このサイトではTRPG、特にソード・ワールド2.5（SW2.5/ソドワ）で役立つツールの提供や、最新情報の掲載、シナリオの公開などを行なっています。";
   meta.push({
     hid: "og:description",
     name: "og:description",
-    content: description
-  })
+    content: description,
+  });
   meta.push({
     hid: "description",
     name: "description",
-    content: description
-  })
+    content: description,
+  });
   if (pageSetting.value.img) {
     meta.push({
       hid: "og:image",
       name: "og:image",
-      content: $templateText.baseUrl + "/image/" + pageSetting.value.img.replace(".webp", ".png")
-    })
+      content:
+        $templateText.baseUrl +
+        "/image/" +
+        pageSetting.value.img.replace(".webp", ".png"),
+    });
   } else {
     meta.push({
       hid: "og:image",
       name: "og:image",
-      content: $templateText.baseUrl + "/ogp.png"
-    })
+      content: $templateText.baseUrl + "/ogp.png",
+    });
   }
   useHead({
     title,
-    meta
+    meta,
   });
-}
+};
 
-changePage()
+changePage();
 
-const { ok } = useLoad()
+const { ok } = useLoad();
 
 onMounted(() => {
-  changePage()
+  changePage();
   // vuetifyテーマの設定
-  setTheme(localStorage.getItem('theme'))
-  console.log(ok.value)
+  setTheme(localStorage.getItem("theme"));
+  console.log(ok.value);
   watch(ok, () => {
-    console.log(ok.value)
-    if (ok.value) router.replace(route.fullPath.replace(route.fullPath, decodeURI(route.fullPath)))
-  })
+    console.log(ok.value);
+    if (ok.value)
+      router.replace(
+        route.fullPath.replace(route.fullPath, decodeURI(route.fullPath))
+      );
+  });
   watch(route, () => {
-    changePage()
+    changePage();
     // mountedPageSetting.value = pageSetting.value
-  })
+  });
   watch(fixed, () => {
     if (fixed.value) {
-      top.value = window.scrollY
-      path.value = route.fullPath
-    }
-    else {
+      top.value = window.scrollY;
+      path.value = route.fullPath;
+    } else {
       setTimeout(() => {
         if (path.value === route.fullPath) {
-          window.scrollTo(0, top.value)
+          window.scrollTo(0, top.value);
         } else {
-          window.scrollTo(0, 0)
+          window.scrollTo(0, 0);
         }
-      }, 0.01 * 1000)
+      }, 0.01 * 1000);
     }
-    console.log(top.value)
-  })
-})
+    console.log(top.value);
+  });
+});
 </script>
 
 <style lang="scss" scoped>

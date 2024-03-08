@@ -1,19 +1,24 @@
 <template>
   <card>
-    <template #title>
-      ルールブック一覧
-    </template>
+    <template #title> ルールブック一覧 </template>
     <andml :andmls="text" />
   </card>
-  <card v-for="group, g of groups" :key="group.group">
-    <div v-for="sys, s of group.system" :key="sys.rulebook">
+  <card v-for="(group, g) of groups" :key="group.group">
+    <div v-for="(sys, s) of group.system" :key="sys.rulebook">
       <item-head2>
         {{ sys.rulebook }}
       </item-head2>
       <div v-if="sys.supplements.length">
-        <div v-if="sys.supplements.length < 4 || show[g] && show[g][s]">
-          <div class="pl-5" v-for="supplement of sys.supplements"
-            :key="typeof supplement === 'string' ? supplement : supplement.supplements[0]">
+        <div v-if="sys.supplements.length < 4 || (show[g] && show[g][s])">
+          <div
+            class="pl-5"
+            v-for="supplement of sys.supplements"
+            :key="
+              typeof supplement === 'string'
+                ? supplement
+                : supplement.supplements[0]
+            "
+          >
             <template v-if="typeof supplement === 'string'">
               {{ supplement }}
             </template>
@@ -21,16 +26,24 @@
               <div class="mt-3 mb-1">
                 {{ supplement.group }}
               </div>
-              <div class="pl-5" v-for="suppl of supplement.supplements" :key="suppl">
+              <div
+                class="pl-5"
+                v-for="suppl of supplement.supplements"
+                :key="suppl"
+              >
                 {{ suppl }}
               </div>
             </template>
           </div>
-
         </div>
-        <item-button v-if="sys.supplements.length >= 4" @click.stop="() => showSuppliment(g, s)">
-          {{ show[g] && show[g][s]
-            ? "サプリメントを非表示" : "サプリメントを表示する"
+        <item-button
+          v-if="sys.supplements.length >= 4"
+          @click.stop="() => showSuppliment(g, s)"
+        >
+          {{
+            show[g] && show[g][s]
+              ? "サプリメントを非表示"
+              : "サプリメントを表示する"
           }}
         </item-button>
       </div>
@@ -39,16 +52,15 @@
 </template>
 
 <script setup lang="ts">
-import { Ref } from 'vue';
+import type { Ref } from "vue";
 
-const show: Ref<boolean[][]> = ref([])
+const show: Ref<boolean[][]> = ref([]);
 const showSuppliment = (g: number, s: number) => {
-  if (!show.value[g] || !show.value[g].length) show.value[g] = []
+  if (!show.value[g] || !show.value[g].length) show.value[g] = [];
   if (!show.value[g][s]) {
-    show.value[g][s] = true
-  }
-  else show.value[g][s] = false
-}
+    show.value[g][s] = true;
+  } else show.value[g][s] = false;
+};
 
 const text = `
 以下では管理人のしゃちほこ丸が所有するルールブック・サプリメントの一覧を掲載しています。
@@ -56,17 +68,26 @@ const text = `
 ソード・ワールド2.5のおすすめサプリメントや新刊情報については以下をご覧ください。
 &button_/sw25/forbeginner/suppliment/1 
 &button_/sw25/feature/new
-`
+`;
 
-const rulebookGroups = ["CoC", "SW", "sfic", "bouki", "FEAR", "other", "dozin", "web"] as const
-type RulebookGroup = typeof rulebookGroups[number]
+const rulebookGroups = [
+  "CoC",
+  "SW",
+  "sfic",
+  "bouki",
+  "FEAR",
+  "other",
+  "dozin",
+  "web",
+] as const;
+type RulebookGroup = (typeof rulebookGroups)[number];
 type Rulebook = {
-  readonly group: RulebookGroup,
+  readonly group: RulebookGroup;
   readonly system: {
-    readonly rulebook: string,
-    readonly supplements: (string | { group: string, supplements: string[] })[]
-  }[]
-}
+    readonly rulebook: string;
+    readonly supplements: (string | { group: string; supplements: string[] })[];
+  }[];
+};
 const groups: Readonly<Rulebook[]> = [
   {
     group: "CoC",
@@ -78,8 +99,8 @@ const groups: Readonly<Rulebook[]> = [
       {
         rulebook: "新クトゥルフ神話TRPG（第7版）",
         supplements: [],
-      }
-    ]
+      },
+    ],
   },
   {
     group: "SW",
@@ -94,14 +115,12 @@ const groups: Readonly<Rulebook[]> = [
               "モンストラスロア",
               "メイガスアーツ",
               "バトルマスタリー",
-              "アーケインレリック"
-            ]
+              "アーケインレリック",
+            ],
           },
           {
             group: "キャラクタービルディングブック系サプリ",
-            supplements: [
-              "アウトロープロファイルブック",
-            ]
+            supplements: ["アウトロープロファイルブック"],
           },
           {
             group: "ツアー系サプリ",
@@ -111,7 +130,7 @@ const groups: Readonly<Rulebook[]> = [
               "星座の町サイレックオード",
               "魔導の学府ユーシズ",
               "ブルライト博物誌",
-            ]
+            ],
           },
           {
             group: "バトルブック系サプリ・シナリオ集",
@@ -122,8 +141,8 @@ const groups: Readonly<Rulebook[]> = [
               "エンシェントブルー -七王群島の夜明け-",
               "煌日の姫と冴月の王子",
               "ストーリーフラグメンツ",
-              "猫と星と秘宝"
-            ]
+              "猫と星と秘宝",
+            ],
           },
           {
             group: "データ付き大判リプレイ",
@@ -131,7 +150,7 @@ const groups: Readonly<Rulebook[]> = [
               "剣と荒野と放浪者",
               "剣と荒野と放浪者2",
               "冒険者たちの幻獣戦線",
-            ]
+            ],
           },
           {
             group: "非公式サプリメント",
@@ -139,8 +158,8 @@ const groups: Readonly<Rulebook[]> = [
               "ハルーラガイド－ゲームマスターズアーカイブ－",
               "日出ずる国天津国",
               "八百万ノ国天津国",
-            ]
-          }
+            ],
+          },
         ],
       },
       {
@@ -152,7 +171,7 @@ const groups: Readonly<Rulebook[]> = [
               "ルールブックEX",
               "バルバロスブック",
               "ラクシアゴッドブック",
-            ]
+            ],
           },
           {
             group: "大型サプリ",
@@ -163,7 +182,7 @@ const groups: Readonly<Rulebook[]> = [
               "ルミエルレガシィ",
               "フォルトナコード",
               "エイジ・オブ・グリモワール",
-            ]
+            ],
           },
           {
             group: "ツアー系サプリ",
@@ -174,7 +193,7 @@ const groups: Readonly<Rulebook[]> = [
               "ダグニア博物誌",
               "ディルフラム博物誌",
               "イスカイア博物誌",
-            ]
+            ],
           },
           {
             group: "バトルブック系サプリ・シナリオ集",
@@ -185,7 +204,7 @@ const groups: Readonly<Rulebook[]> = [
               "彷徨ノ塔　‐フォビドゥンタワー‐",
               "アシュラウトの無限工房",
               "モンスター☆ハッカーズ",
-            ]
+            ],
           },
         ],
       },
@@ -193,7 +212,7 @@ const groups: Readonly<Rulebook[]> = [
         rulebook: "ソード・ワールドRPG（完全版）",
         supplements: [],
       },
-    ]
+    ],
   },
   {
     group: "sfic",
@@ -209,8 +228,8 @@ const groups: Readonly<Rulebook[]> = [
       {
         rulebook: "艦これRPG 抜錨ノ書",
         supplements: [],
-      }
-    ]
+      },
+    ],
   },
   {
     group: "bouki",
@@ -222,7 +241,8 @@ const groups: Readonly<Rulebook[]> = [
       {
         rulebook: "誰かのために成りかわるTRPG バケノカワ",
         supplements: [],
-      },]
+      },
+    ],
   },
   {
     group: "FEAR",
@@ -235,14 +255,14 @@ const groups: Readonly<Rulebook[]> = [
         rulebook: "ダブルクロスThe3rdEdition（1・2）",
         supplements: ["上級ルールブック"],
       },
-    ]
+    ],
   },
   {
     group: "other",
     system: [
       {
         rulebook: "ふしぎもののけRPGゆうやけこやけ",
-        supplements: []
+        supplements: [],
       },
       {
         rulebook: "常夜国騎士譚RPG ドラクルージュ",
@@ -254,13 +274,13 @@ const groups: Readonly<Rulebook[]> = [
       },
       {
         rulebook: "マモノスクランブル",
-        supplements: []
+        supplements: [],
       },
       {
         rulebook: "ログ・ホライズンTRPG",
         supplements: [],
       },
-    ]
+    ],
   },
   {
     group: "dozin",
@@ -285,7 +305,7 @@ const groups: Readonly<Rulebook[]> = [
         supplements: [
           "ランダムプレイ拡張パック",
           "ステージ拡張：海洋",
-          "スキル＆コンパニオン拡張"
+          "スキル＆コンパニオン拡張",
         ],
       },
       {
@@ -294,21 +314,23 @@ const groups: Readonly<Rulebook[]> = [
       },
       {
         rulebook: "愛用品と対話するソロＲＰＧ「つくもさんぽ」",
-        supplements: []
-      }
-    ]
+        supplements: [],
+      },
+    ],
   },
   {
     group: "web",
-    system: [{
-      rulebook: "エモクロアTRPG",
-      supplements: [{
-        group: "非公式サプリメント",
-        supplements: ["マギアスエイジ"]
-      }],
-    }
-    ]
+    system: [
+      {
+        rulebook: "エモクロアTRPG",
+        supplements: [
+          {
+            group: "非公式サプリメント",
+            supplements: ["マギアスエイジ"],
+          },
+        ],
+      },
+    ],
   },
-]
-
+];
 </script>

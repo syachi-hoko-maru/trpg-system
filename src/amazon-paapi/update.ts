@@ -2,7 +2,7 @@ import { createWriteStream, readFileSync, WriteStream } from "fs";
 import { suppliments } from "../dict/suppliments";
 import { getSearchWord, searchItemImage } from "./searchItemsApi";
 import { wait } from "../util";
-import { AmazonSearchResult, SearchIndex, SearchObj } from "./types";
+import type { AmazonSearchResult, SearchIndex, SearchObj } from "./types";
 import { bookList } from "../dict/new";
 import { isPast } from "../util/date";
 

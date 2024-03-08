@@ -1,10 +1,12 @@
 <template>
   <card :loading="loading" v-if="index.length && index.length > 1">
-    <template #title>
-      目次
-    </template>
-    <div v-for="title, i of index" :key="title" class="index-item-border">
-      <atom-link :to="`#${title}`" :title="`ページ内の見出し「${title}」へのリンク`" type="pageindex">
+    <template #title> 目次 </template>
+    <div v-for="(title, i) of index" :key="title" class="index-item-border">
+      <atom-link
+        :to="`#${title}`"
+        :title="`ページ内の見出し「${title}」へのリンク`"
+        type="pageindex"
+      >
         <div class="index-item">
           <span class="circle">
             <span class="number">
@@ -21,39 +23,41 @@
 </template>
 
 <script setup lang="ts">
-import { Ref } from 'vue';
+import type { Ref } from "vue";
 
 interface Props {
-  pageSetting: PageSetting
+  pageSetting: PageSetting;
 }
 const Props = defineProps<Props>();
 
-const loading = ref(true)
-const index: Ref<string[]> = ref([])
+const loading = ref(true);
+const index: Ref<string[]> = ref([]);
 
 const { ok } = useLoad();
 
 const setIndex = () => {
-  loading.value = true
-  index.value = []
-  const documents = document.getElementById("page")?.querySelectorAll(".card-div .card-title:not(.card-list .card-title)")
+  loading.value = true;
+  index.value = [];
+  const documents = document
+    .getElementById("page")
+    ?.querySelectorAll(".card-div .card-title:not(.card-list .card-title)");
   if (documents) {
     for (let d of documents) {
-      if (d.textContent) index.value.push(d.textContent.replace(/^\s*([^\s].*[^\s])\s*$/, "$1"))
+      if (d.textContent)
+        index.value.push(d.textContent.replace(/^\s*([^\s].*[^\s])\s*$/, "$1"));
     }
   }
-  loading.value = false
-}
+  loading.value = false;
+};
 
 onMounted(() => {
-  setIndex()
-  watch(Props, setIndex)
-})
+  setIndex();
+  watch(Props, setIndex);
+});
 watch(ok, () => {
-  if (ok.value) loading.value = true
-  setIndex()
-})
-
+  if (ok.value) loading.value = true;
+  setIndex();
+});
 </script>
 
 <style lang="scss" scoped>

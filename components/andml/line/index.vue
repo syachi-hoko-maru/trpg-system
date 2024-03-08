@@ -10,8 +10,8 @@
 </template>
 
 <script setup lang="ts">
-import { Ref } from "vue";
-import { AndmlData, AndmlScript } from "~~/types/andml";
+import type { Ref } from "vue";
+import type { AndmlData, AndmlScript } from "~~/types/andml";
 
 interface Props {
   andmls: string[];

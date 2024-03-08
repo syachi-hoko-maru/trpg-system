@@ -23,7 +23,6 @@
 </template>
 
 <script setup lang="ts">
-import { template } from "lodash";
 import { getNpcAndml, getSceneTitle } from "~/src/pages/scenarioBone";
 import { gavderungaBone } from "~/src/pages/scenarioBone/gavderunga";
 

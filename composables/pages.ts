@@ -1,5 +1,6 @@
-import { Ref } from "vue";
-import { Banner, bannerList } from "~/src/banner/banners";
+import type { Ref } from "vue";
+import type { Banner } from "~/src/banner/banners";
+import { bannerList } from "~/src/banner/banners";
 import { shuffle } from "~/src/util";
 
 export const usePages = () => {

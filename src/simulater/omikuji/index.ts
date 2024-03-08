@@ -1,4 +1,4 @@
-import { RouteLocationRaw } from "../../../.nuxt/vue-router";
+import type { RouteLocationRaw } from "vue-router";
 import { getFortuneV1 } from "./v1";
 
 export const fortuneScoreList = [

@@ -526,7 +526,7 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "公開シナリオ一覧",
     to: "/scenario",
-    lastmod: "2023/3/20",
+    lastmod: "2023/3/8",
     img: "page-image/scenario2.webp",
     imddirs: ["scenario-image"],
     osusume: true,
@@ -562,8 +562,8 @@ export const pageSettingList: PageSetting[] = [
     to: "/scenario/gavderunga",
     img: "scenario-image/gavderunga.webp",
     imddirs: ["scenario-image/gavderunga"],
-    created: "2024/3/20",
-    lastmod: "2024/3/20",
+    created: "2024/4/1",
+    lastmod: "2024/4/1",
     osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5/ソドワ）のシナリオ『護送列車とガブディランガの秘宝』を無料公開中。舞台はドーデン地方。貴族の持つ秘宝を魔動列車で移動する。ネタバレフィルターあり。",

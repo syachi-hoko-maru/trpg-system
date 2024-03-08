@@ -23,7 +23,7 @@ export const scenarioData: ScenarioData[] = [
       {
         site: "シナリオ（サイト内）",
         url: "/scenario/uoht",
-        hidden: !isPast("2023/10/1"),
+        hidden: false,
       },
     ],
     regulation: "初期作成",
@@ -66,12 +66,14 @@ export const scenarioData: ScenarioData[] = [
       "ギルド支部長の信頼があついPCたちは依頼を受け、他の冒険者ギルド支部所属の冒険者たちとともに魔動列車による秘宝輸送の護衛にあたることになる。",
       "&br",
       "このシナリオはシナリオ一斉投稿企画「#ドーデン冒険録」に参加しています。",
+      !isPast("2024/4/1") ? "&br 2024年春公開予定" : "",
     ],
     img: "scenario-image/gavderunga.webp",
     url: [
       {
         site: "シナリオ（サイト内）",
         url: "/scenario/gavderunga",
+        hidden: !isPast("2024/4/1"),
       },
     ],
     regulation: "3〜4レベル想定",

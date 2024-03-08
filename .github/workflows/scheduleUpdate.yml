@@ -13,7 +13,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  install:
+    uses: ./.github/workflows/_install.yml
+  pre:
+    needs: install
+    uses: ./.github/workflows/_pre.yml
   paapi:
+    needs: install
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -22,15 +28,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Install dependencies
-        run: yarn
+      - name: Restore Cash Module
+        uses: actions/cache/restore@v4
+        with:
+          path: "node_modules"
+          key: module-${{ github.sha }}
       - name: Use PA API
         run: yarn paapi
       - name: Cash
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: "src/temp/amazon.json"
           key: paapi-${{ github.sha }}
   deploy:
-    needs: paapi
+    needs:
+      - pre
+      - paapi
     uses: ./.github/workflows/_deploy.yml

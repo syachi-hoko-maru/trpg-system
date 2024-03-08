@@ -1,0 +1,32 @@
+name: _install
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js env
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Restore Cash Module
+        uses: actions/cache/restore@v4
+        with:
+          path: "node_modules"
+          key: module-${{ github.sha }}
+      - name: Pre-Generate
+        run: yarn pre
+      - name: Cash Assets
+        uses: actions/cache/save@v4
+        with:
+          path: "assets"
+          key: assets-${{ github.sha }}
+      - name: Cash Public
+        uses: actions/cache/save@v4
+        with:
+          path: "public"
+          key: public-${{ github.sha }}

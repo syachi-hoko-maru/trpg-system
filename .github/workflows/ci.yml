@@ -18,5 +18,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  install:
+    uses: ./.github/workflows/_install.yml
+  pre:
+    needs: install
+    uses: ./.github/workflows/_pre.yml
   deploy:
+    needs: pre
     uses: ./.github/workflows/_deploy.yml

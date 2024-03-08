@@ -9,8 +9,6 @@ on:
     types:
       - my-custom-type
   workflow_dispatch:
-  schedule:
-    - cron: "30 19 * * *"
 permissions:
   contents: read
   pages: write

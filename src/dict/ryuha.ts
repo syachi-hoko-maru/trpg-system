@@ -1,4 +1,4 @@
-import { Gino } from "./ginou";
+import type { Gino } from "./ginou";
 import { ryuhaYesNo } from "./yesno/ryuhaYesNo";
 
 export type RyuhaBook =

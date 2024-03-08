@@ -16,7 +16,7 @@ export const ryuhaYesNo = {
   // 武器の詳細
   近接武器: {
     question: "近接武器（剣・斧・槍など）を使って戦いたいですか？",
-    parent: ["武器"],
+    parent: ["武器", "近距離"],
   },
   拳: {
     question: "パンチやキックなどで戦いたいですか？",

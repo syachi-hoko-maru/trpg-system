@@ -13,7 +13,7 @@ const accessKey = process.env.ACCESS_KEY;
 const secretKey = process.env.SECRET_KEY;
 if (!accessKey || !secretKey) {
   console.error("no accessKey or secretKey");
-  process.exit(0);
+  process.exit(1);
 }
 defaultClient.accessKey = accessKey;
 defaultClient.secretKey = secretKey;

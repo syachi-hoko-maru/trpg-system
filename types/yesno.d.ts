@@ -3,6 +3,7 @@ type YesnoDefineFree = {
   [key in string]: {
     question: string;
     parent?: readonly T[];
+    kaburi?: readonly T[];
     reverse?: boolean;
   };
 };

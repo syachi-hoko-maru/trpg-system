@@ -7,6 +7,7 @@ export const ryuhaYesNo = {
   },
   魔法: {
     question: "魔法を使って戦いたいですか？",
+    parent: ["全ての魔法使い系技能"],
   },
   // 距離
   近距離: {
@@ -22,15 +23,15 @@ export const ryuhaYesNo = {
   },
   格闘: {
     question: "パンチやキックなどで戦いたいですか？",
-    parent: ["近距離"],
+    parent: ["近距離", "グラップラー"],
   },
   弓弩: {
     question: "弓や弩を使って戦いたいですか？",
-    parent: ["武器"],
+    parent: ["武器", "シューター"],
   },
   銃: {
     question: "銃を使って戦いたいですか？",
-    parent: ["武器"],
+    parent: ["武器", "マギシュー"],
   },
   大型武器: {
     question: "大きな武器を使って戦いたいですか？",
@@ -56,7 +57,7 @@ export const ryuhaYesNo = {
   // その他
   ライダー強化: {
     question: "ライダー技能を強化したいですか？",
-    parent: [],
+    parent: ["ライダー"],
   },
   // 技能
   ...ginou.reduce((pre, g) => {
@@ -67,25 +68,37 @@ export const ryuhaYesNo = {
           ? "全ての戦士系技能"
           : (g.type as readonly string[]).find((t) => t === "魔法使い系")
           ? "全ての魔法使い系技能"
-          : "全ての技能",
-      ],
+          : null,
+      ].filter((s) => s),
+      kaburi:
+        (g.type as readonly string[]).find((t) => t === "前衛") &&
+        (g.type as readonly string[]).find((t) => t === "戦士系")
+          ? ginou
+              .filter(
+                (s) =>
+                  s.name != g.name &&
+                  (s.type as readonly string[]).find((st) => st === "前衛") &&
+                  (s.type as readonly string[]).find((st) => st === "戦士系")
+              )
+              .map((s) => s.name)
+          : [],
     };
     return pre;
   }, {} as YesnoDefineFree),
   マギシュー: {
     question: "マギテック技能とシューター技能でガンを撃ちたいですか？",
-    parent: ["全ての技能"],
+    parent: ["マギテック", "シューター"],
   },
   全ての戦士系技能: {
     question: "戦士系技能を使用したいですか？",
-    parent: ["全ての技能"],
+    parent: [],
   },
   全ての魔法使い系技能: {
     question: "魔法使い系技能を使用したいですか？",
-    parent: ["全ての技能"],
+    parent: [],
   },
   全ての技能: {
-    question: "全ての技能で使用可能な流派を使用したいですか？",
+    question: "全ての技能で使用できる流派をしようしたいですか",
     parent: [],
   },
 } as const satisfies YesnoDefine;

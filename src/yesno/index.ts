@@ -2,12 +2,22 @@ import { getEntries, getKeys } from "../util";
 
 const setParent = <Def extends YesnoDefine>(
   yesnoTags: Readonly<(keyof Def)[]>,
-  yesnoDefine: Def
+  yesnoDefine: Def,
+  history: (keyof Def)[] = []
 ): (keyof Def)[] => {
   return yesnoTags.flatMap((t) => {
     const parent = yesnoDefine[t].parent;
     if (parent && parent.length > 0) {
-      return [t, ...setParent(parent, yesnoDefine)];
+      return [
+        t,
+        ...setParent(
+          // 既出を除いたparent（ループ阻止）
+          parent.filter((p) => history.indexOf(p) === -1),
+          yesnoDefine,
+          // 記述の引き継ぎ
+          [t, ...history]
+        ),
+      ];
     }
     return t;
   });
@@ -19,11 +29,13 @@ const setParent = <Def extends YesnoDefine>(
 const getTag = <Key extends string, Def extends YesnoDefine>(
   dict: YesNoDict<Key, Def>,
   arr: Key[],
-  tagHistory: YesNoTagHistory<Def>
+  tagHistory: YesNoTagHistory<Def>,
+  first?: true
 ): keyof Def | null => {
   if (arr.length <= 1) return null;
   /** 各yesnoTagがどれだけ出現するか */
   const tagCounts: { [key in keyof Def]?: number } = {};
+  // tagCountsをカウント
   arr.forEach((key) => {
     dict[key].forEach((tag) => {
       // 既出のタグは対象外とする
@@ -34,8 +46,11 @@ const getTag = <Key extends string, Def extends YesnoDefine>(
     });
   });
   if (!getKeys(tagCounts).length) return null;
+  // 中間値を取得する
   const mid = arr.length / 2;
-  const resultTag: keyof Def = getEntries(tagCounts).sort((a, b) => {
+  const resultTags: [keyof Def, number | undefined][] = getEntries(
+    tagCounts
+  ).sort((a, b) => {
     const aValue: number | undefined = a[1];
     const bValue: number | undefined = b[1];
     if (!aValue) return -1;
@@ -45,8 +60,18 @@ const getTag = <Key extends string, Def extends YesnoDefine>(
     if (aD > bD) return 1;
     if (aD < bD) return -1;
     return Math.random() - 1 / 2;
-  })[0][0];
-  return resultTag;
+  });
+  if (!first) {
+    return resultTags[0][0];
+  } else {
+    //最初なら上位からランダムで選ぶ
+    return resultTags[
+      Math.floor(
+        Math.random() *
+          Math.min(resultTags.length > 20 ? 5 : 3, resultTags.length)
+      )
+    ][0];
+  }
 };
 
 const setScore = <Key extends string, Def extends YesnoDefine>(
@@ -148,6 +173,10 @@ export const yesnoQuestion = function* <
       pre.push([
         key,
         val.yesnoTags.flatMap((t) => {
+          const question = yesnoDefine[t].question;
+          if (!question) {
+            return [];
+          }
           const parent = yesnoDefine[t].parent;
           if (parent && parent.length > 0) {
             return [t, ...parent];
@@ -161,7 +190,7 @@ export const yesnoQuestion = function* <
   const yesnoScore: YesNoScore<Key> = {};
   const tagHistory: YesNoTagHistory<Def> = {};
   let arr: Key[] = getKeys(yesnoDict);
-  let tag: keyof Def | null = getTag(yesnoDict, arr, tagHistory);
+  let tag: keyof Def | null = getTag(yesnoDict, arr, tagHistory, true);
   let count = 0;
   while (count < 1000) {
     if (tag === null || arr.length <= answerCount) {
@@ -171,7 +200,27 @@ export const yesnoQuestion = function* <
     count++;
     const answer = yield { question: yesnoDefine[tag].question, arr };
     if (answer === "yes" || answer === "no" || answer === "?") {
+      // 履歴の更新
       tagHistory[tag] = answer === "yes" ? 1 : answer === "no" ? -1 : 0;
+      if (answer === "yes") {
+        // yes→親も履歴を更新する
+        yesnoDefine[tag].parent?.forEach((p) => {
+          tagHistory[p] = 1;
+        });
+        // yes→被りを0にする
+        yesnoDefine[tag].kaburi?.forEach((p) => {
+          // console.log(`${String(tag)}の被り${p}を0にしました`);
+          tagHistory[p] = 0;
+        });
+      } else if (answer === "no") {
+        // no→子も履歴を更新する
+        getEntries(yesnoDefine).forEach(([key, val]) => {
+          // 親にtagを持つ（=子）ならnoが伝播
+          if (val.parent && val.parent.indexOf(tag) >= 0) {
+            tagHistory[key] = -1;
+          }
+        });
+      }
       if (answer === "yes" || (haita && answer === "no")) {
         const flag: boolean = (answer === "yes") === !yesnoDefine[tag].reverse;
         setScore(yesnoScore, yesnoDict, tag, flag);

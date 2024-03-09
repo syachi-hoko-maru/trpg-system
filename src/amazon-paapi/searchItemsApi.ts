@@ -1,5 +1,5 @@
 import "dotenv/config";
-import {
+import type {
   AmazonSearchFunction,
   SearchObj,
   TypeProductAdvertisingAPIv1,

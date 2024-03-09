@@ -5,6 +5,13 @@
       <template v-if="phase === 0">
         <template v-if="result">
           <Andml :andmls="result" />
+          <ItemShare
+            url="https://trpg.syachi.work/sw25/forbeginner/ryuha/"
+            :text="shareText"
+            hash-tag="ソドワ流派YesNo診断"
+          >
+            結果をツイートする
+          </ItemShare>
           <item-button @click="start">もう一度診断する</item-button>
         </template>
         <template v-else>
@@ -125,6 +132,7 @@ const ryuhaObj: {
 const phase = ref(0);
 const question = ref("");
 const result = ref("");
+const shareText = ref("");
 const explain = `「YES」「NO」を答えるだけで、あなたにおすすめの流派を紹介します。 &br &br なお、 &em_実験中の機能 なため、変な流派をおすすめするかもしれません。その際は &itwitter までフィードバックいただければ幸いです。`;
 
 let gene: ReturnType<typeof yesnoQuestion> | null = null;
@@ -165,6 +173,13 @@ const answer = (ans: "yes" | "no" | "?") => {
 あなたにオススメの流派は【${res}】です。
 流派【${res}】はサプリメント『${book}』に掲載されています。
 詳しくは下記の詳細もご覧ください。`;
+        // Twitter用
+        shareText.value = `あなたにオススメの流派は……
+【${res}】
+※『${book}』掲載
+
+ソード・ワールド2.5のおすすめ流派がYesNo診断でわかる！
+`;
       }
     }
     return;

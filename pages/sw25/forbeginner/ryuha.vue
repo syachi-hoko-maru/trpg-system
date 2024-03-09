@@ -8,7 +8,7 @@
           <item-button @click="start">もう一度診断する</item-button>
         </template>
         <template v-else>
-          <Andml :andmls="result" />
+          <Andml :andmls="explain" />
           <item-button @click="start">開始する</item-button>
         </template>
       </template>
@@ -124,9 +124,8 @@ const ryuhaObj: {
 
 const phase = ref(0);
 const question = ref("");
-const result = ref(
-  "「YES」「NO」を答えるだけで、あなたにおすすめの流派を紹介します。 &br &br なお、 &em_実験中の機能 なため、変な流派をおすすめするかもしれません。その際は &itwitter までフィードバックいただければ幸いです。"
-);
+const result = ref("");
+const explain = `「YES」「NO」を答えるだけで、あなたにおすすめの流派を紹介します。 &br &br なお、 &em_実験中の機能 なため、変な流派をおすすめするかもしれません。その際は &itwitter までフィードバックいただければ幸いです。`;
 
 let gene: ReturnType<typeof yesnoQuestion> | null = null;
 

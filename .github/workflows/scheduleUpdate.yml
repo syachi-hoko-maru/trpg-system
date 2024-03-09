@@ -34,6 +34,9 @@ jobs:
           path: "node_modules"
           key: module-${{ github.sha }}
       - name: Use PA API
+        env:
+          ACCESS_KEY: ${{secrets.ACCESS_KEY}}
+          SECRET_KEY: ${{secrets.SECRET_KEY}}
         run: yarn paapi
       - name: Cash
         uses: actions/cache/save@v4

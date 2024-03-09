@@ -98,7 +98,7 @@ writable.write("[\n");
           writable.end();
           process.exit(1);
         });
-      await wait(1000);
+      await wait(1500);
     } else {
       if (firstLine) {
         firstLine = false;

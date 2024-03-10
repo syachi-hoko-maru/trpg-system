@@ -1,0 +1,51 @@
+流派YesNo診断公開と Nuxt3.10.xへの更新
+2024/3/11
+tech
+&1 流派YesNo診断を公開しました
+ソード・ワールド2.5（SW2.5/ソドワ）のおすすめ流派が、質問に「YES」「NO」と答えるだけでわかる「流派YesNo診断」を公開しました。
+&br
+以下からぜひ遊んでみてください。
+&button_/sw25/forbeginner/ryuha
+
+実は『ドーデン博物誌』発売のちょっと前から作り始めていたのですが、つい最近になって「えいやっ！」と一旦公開まで行きつけました。
+&br
+コードはこの辺をご覧ください。
+......もう少しsrcディレクトリ以下を整理すべきだとは思ってます......Nuxt3のPoCの頃の雑なコードも多数残っており......
+&button_https://github.com/syachi-hoko-maru/trpg-system/blob/main/src/yesno/index.ts GitHub
+&br
+割とTypeScriptの型パズルを上手くできた......つもりだったのですが公開直前の調整でReadonlyを外してしまったりして、敗北感が残ります。
+&br
+まぁいつかリファクタリングします。
+&br
+「種族YesNo診断」「サプリメントYesNo診断」も準備中......というかほぼ出来ているので、こちらもお楽しみに！
+
+&1 Nuxt3.10.xへのアップデート
+GitHub¥sActionsくんから「Node.js¥s16を使うなNode.js¥s20を使え」と指示されたので、ついでに本体のコードもNode.js¥s18からNode.js¥s20.11.1（LTS）にアップデートしました。
+&br
+node_modules等々を消して再インストールを行い、Nuxtは3.10.xへとアップデートされました。
+&br
+大きな変更はないと思うのですが、typeをimportする際にtypeを明記しないと怒られたり、これまでのようにcomposablesが使えなかったり（根本原因は調査中）と、ちょいちょい変更点があって時間は吸われました。
+&br
+まぁ何はともあれバージョンアップしましたという報告です。
+&br
+利用にあたっては影響はないはずです。
+&br
+&br
+Github¥sActionsのアップデートの影響か、Nuxtのアップデートの影響か、ビルド時間が少し早くなって嬉しいです。
+
+&1 GitHub Actionsのファイル分割
+Github¥sActionsのバージョンアップついでに、Github¥sActionsのファイルを分割し、一部を並列処理にしました。
+&br
+詳しくは以下をご覧ください。
+&button_https://github.com/syachi-hoko-maru/trpg-system/tree/main/.github/workflows GitHub
+&button_https://github.com/syachi-hoko-maru/trpg-system/actions/runs/8216744743 GitHub
+
+&1 おまけ：もしくは今日公開した理由
+今年は「釣り」は禁止されたようなので、ぜひ各自調べてください。
+&strike_LINEヤフー株式会社のお金を使いまくりましょう。
+&button_https://www.search311.jp これからも、できること。
+&button_https://m.yahoo.co.jp/ 検索はこちらから
+&br
+&br
+また、みなさんもぜひ防災を......！！
+僕も最近、防災グッズを買いました。

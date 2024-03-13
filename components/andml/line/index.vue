@@ -43,6 +43,7 @@ const andmlLineScriptArray: AndmlScript[] = [
   },
   // 画像・動画・ツイート埋め込み
   { script: "img_", component: resolveComponent("AndmlLineImgc") },
+  { script: "camera_", component: resolveComponent("AndmlLineCamera") },
   { script: "youtube_", component: resolveComponent("AndmlLineYoutube") },
   { script: "tweet_", component: resolveComponent("AndmlLineTweet") },
   // 更新日時用

@@ -247,6 +247,26 @@ export const pageSettingList: PageSetting[] = [
     tags: ["sw25_moso", "me"],
   },
   {
+    title: "ライのハーヴェスWALKER（ソード・ワールド2.5）",
+    to: "/sw25/data/walker",
+    img: "page-image/walker.webp",
+    lastmod: "2024/3/14",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5/ソドワ）のハーヴェス周辺を、オリジナル設定たっぷりで、冒険者「ライ」が紹介します！",
+    tags: ["sw25_moso"],
+  },
+  {
+    title: '"ラグーンの村" ブラーラ @ライのハーヴェスWALKER',
+    to: "/sw25/data/walker/blara",
+    img: "page-image/walker_blara.webp",
+    lastmod: "2024/3/14",
+    osusume: true,
+    explain:
+      "ソード・ワールド2.5（SW2.5/ソドワ）のハーヴェス周辺を、オリジナル設定たっぷりで、冒険者「ライ」が紹介します！",
+    tags: ["sw25_moso"],
+  },
+  {
     title: "SW2.5 銭湯（せんとう）ルール",
     to: "/sw25/data/bath",
     img: "page-image/bath.webp",
@@ -257,7 +277,6 @@ export const pageSettingList: PageSetting[] = [
       "ソード・ワールド2.5（SW2.5/ソドワ）のオリジナル「せんとう」ルールとして作成した「銭湯ルール」を紹介しています。銭湯・温泉・公衆浴場・サウナ……での情報収集を行うためのルールです。ぜひシナリオに組み込んで、遊んでみてください！！",
     tags: ["sw25_moso", "me"],
   },
-
   {
     title: "SW2.5 初心者向け情報",
     to: "/sw25/forbeginner",

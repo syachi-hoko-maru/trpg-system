@@ -103,3 +103,16 @@ export const sortByDate =
 export const sortPagesByDate =
   (recent?: boolean) => (a: PageSetting, b: PageSetting) =>
     sortByDate(recent)(a.lastmod, b.lastmod);
+
+/**
+ * aがb（aより過去）から何日が経っているか（整数）
+ */
+export const getDateCount = (a: DateLike, b: DateLike) =>
+  Math.floor(
+    (new Date(a).getTime() - new Date(b).getTime()) / (24 * 60 * 60 * 1000)
+  );
+
+/**
+ * サイトができてから何年が経ったか（整数）
+ */
+export const siteYearCount = Math.floor(getDateCount("", "2023-03-01") / 365);

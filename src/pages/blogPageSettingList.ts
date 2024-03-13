@@ -20,7 +20,14 @@ export const blogPageSettingList: PageSetting[] = (blogSettingList as Blog[])
       created: b.date,
       lastmod: b.date2,
       tags: b.tags.filter(isPageTag) as PageTag[],
-      osusume: count <= 10 && osusumeTagFlag ? true : false,
+      osusume:
+        // 「TRPGいろいろ」は常におすすめ
+        b.tags.indexOf("otrpg") >= 0
+          ? true
+          : // オススメにならないタグを持つ最新10記事
+          count <= 10 && osusumeTagFlag
+          ? true
+          : false,
       hiddenFlag: false, // dateFlag ? false : true,
       explain: setBlogExplain(b, 100),
     };

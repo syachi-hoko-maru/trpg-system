@@ -1,6 +1,11 @@
 <template>
   <div v-if="flag" class="bg-white tweet">
-    <blockquote class="twitter-tweet" data-lang="ja" data-dnt="true" data-theme="dark">
+    <blockquote
+      class="twitter-tweet"
+      data-lang="ja"
+      data-dnt="true"
+      data-theme="dark"
+    >
       <a :href="pathCheck(Props.path)"></a>
     </blockquote>
   </div>
@@ -13,26 +18,27 @@ interface Props {
   path: string;
 }
 const Props = defineProps<Props>();
-const flag = ref(false)
+const flag = ref(false);
 
 useHead({
-  script: [{
-    async: true,
-    src: "https://platform.twitter.com/widgets.js",
-  }]
+  script: [
+    {
+      async: true,
+      src: "https://platform.twitter.com/widgets.js",
+    },
+  ],
 });
 
-const regExp = /(https:\/\/twitter.com\/[A-Za-z01-9_-]+\/status\/\d+)[^\d]*.*/
+const regExp = /(https:\/\/twitter.com\/[A-Za-z01-9_-]+\/status\/\d+)[^\d]*.*/;
 const pathCheck = (path: string | undefined): string | undefined => {
-
   if (path) {
-    path = path.replace("x.com", "twitter.com")
+    path = path.replace("x.com", "twitter.com");
     if (regExp.test(path)) {
-      return path.replace(regExp, "$1")
+      return path.replace(regExp, "$1");
     }
   }
-  return undefined
-}
+  return undefined;
+};
 
 onMounted(() => {
   flag.value = true;

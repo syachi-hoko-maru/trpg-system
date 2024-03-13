@@ -156,7 +156,7 @@ const other = `
 &1 他のブログ記事もぜひ！！
 ${index >= 1 ? `&3 次の記事 \n&button_${blogList[index - 1].to}` : ""}
 ${
-  index < blogList.length - 1 && index !== -1
+  blogList[index + 1]?.to
     ? `&3 前の記事 \n&button_${blogList[index + 1].to}`
     : ""
 }

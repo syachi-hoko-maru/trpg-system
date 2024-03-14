@@ -1,8 +1,8 @@
 import { readdirSync, readFileSync, rmSync, statSync } from "fs";
 import type { RawBlog } from "./gene/index";
 import { blogImgDir, blogJSON, imageDir, webpDir } from "../util/pathList";
-import { getFileListFromDir } from "../util";
 import { isSameWebpImage } from "./setwebps";
+import { getFileListFromDir } from "../util/file";
 
 // 不要なブログ画像の削除
 /** ブログリスト */

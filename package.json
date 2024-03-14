@@ -23,14 +23,14 @@
     "@types/dom-to-image": "^2.6.4",
     "@types/lodash": "^4.14.191",
     "@types/node": "^18.15.3",
-    "@types/sharp": "^0.31.1",
+    "@types/sharp": "^0.32.0",
     "eslint": "^8.31.0",
     "nodemon": "^2.0.21",
     "nuxt": "^3.10.3",
     "sass": "^1.57.1",
-    "sharp": "^0.31.3",
-    "ts-node": "^10.9.1",
-    "semver": "^7.5.2"
+    "semver": "^7.5.2",
+    "sharp": "^0.33.2",
+    "ts-node": "^10.9.1"
   },
   "dependencies": {
     "@mdi/font": "^2.2.43",

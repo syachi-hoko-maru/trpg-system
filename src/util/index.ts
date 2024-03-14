@@ -1,5 +1,3 @@
-import { readdirSync, statSync } from "fs";
-
 /**
  * 一定時間、待つasync関数
  * @param ms 待つ時間（ms）
@@ -73,23 +71,4 @@ export const getValues = <T extends Record<string, unknown>>(
   obj: T
 ): Values<T> => {
   return Object.values(obj) as Values<T>;
-};
-
-/** 再起的にファイルを取得する関数 */
-export const getFileListFromDir = (
-  dir: string,
-  predicate: (s: string) => boolean
-): string[] => {
-  const result: string[] = [];
-  const ds = readdirSync(dir);
-  ds.forEach((d) => {
-    const dd = dir + "/" + d;
-    if (statSync(dd).isDirectory()) {
-      // ディレクトリーなら
-      result.push(...getFileListFromDir(dd, predicate));
-    } else if (predicate(dd)) {
-      result.push(dd);
-    }
-  });
-  return result;
 };

@@ -1,5 +1,5 @@
 import { readdirSync } from "fs";
-import { blogTextDir } from ".";
+import { blogTextDir } from "../../util/pathList";
 
 export const getBlogList = (): string[] => {
   return getList([`${blogTextDir}/cms`, `${blogTextDir}/code`]);

@@ -18,3 +18,11 @@ export const getFileListFromDir = (
   });
   return result;
 };
+
+// 画像関連
+export const isImage = (s: string) =>
+  s.endsWith(".png") || s.endsWith(".jpeg") || s.endsWith(".jpg");
+export const renameImage2webp = (s: string): string =>
+  s.replace(".png", "").replace(".jpeg", "").replace(".jpg", "") + ".webp";
+export const isSameWebpImage = (webp: string, image: string): boolean =>
+  webp === renameImage2webp(image);

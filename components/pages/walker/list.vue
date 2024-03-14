@@ -1,6 +1,7 @@
 <template>
   <Card>
     <template #title> 一覧 </template>
+    <Andml :andmls="andml" />
     <AtomLink
       v-for="page of walkerPages"
       :to="page.to"
@@ -34,4 +35,9 @@ const walkerPages = pageSettingList.filter(
     !isHidden(page) &&
     !page.noSearch
 );
+
+const andml = `
+このシリーズは不定期更新です。
+&br
+`;
 </script>

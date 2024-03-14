@@ -12,7 +12,7 @@ export const geneImage = async () => {
     readFileSync(blogJSON, "utf-8")
   ) as unknown as RawBlog[];
 
-  for (let { title, tags, date, img } of blogs) {
+  for (let { title, tags, date, date2, img } of blogs) {
     const pngImg = img.replace(/\.webp$/, ".png");
     // imgがあるか調べる
     const imgPath = `${process.cwd()}/public/image/${pngImg}`;
@@ -30,9 +30,11 @@ export const geneImage = async () => {
             : tagList.indexOf("sw25") >= 0
             ? "sw25"
             : "normal";
-        await generateImage(pngImg, title, ogpType, date).catch((err) => {
-          console.error(err);
-        });
+        await generateImage(pngImg, title, ogpType, date, date2).catch(
+          (err) => {
+            console.error(err);
+          }
+        );
       } catch (err) {
         console.error(err);
       }
@@ -54,7 +56,8 @@ const generateImage = async (
   pngImg: string,
   title: string,
   ogpType: OGPType,
-  date: string
+  date: string,
+  date2: string
 ) => {
   const width = 1200;
   const height = 630;
@@ -117,7 +120,8 @@ const generateImage = async (
 
   const lineHeight = fontSize * 1.2;
 
-  const x = width / 2;
+  /** 横方向の中心 */
+  const centerX = width / 2;
   context.textAlign = "center";
 
   resultLines.forEach((line, index) => {
@@ -125,7 +129,7 @@ const generateImage = async (
       index * lineHeight +
       height / 2 -
       (lineHeight / 2) * (resultLines.length - 1);
-    context.fillText(line, x, y);
+    context.fillText(line, centerX, y);
   });
   context.restore();
 
@@ -133,7 +137,9 @@ const generateImage = async (
   context.font = `20px font`;
   context.fillStyle = dict.lineColor;
   context.textAlign = "center";
-  context.fillText(date, x, 105);
+  context.fillText(date, centerX, 105);
+  if (date2 && date2 !== date)
+    context.fillText(`最終更新：${date2}`, centerX, 130);
   context.restore();
 
   const img = `${process.cwd()}/src/pre/gene/setBlogData/geneImage/${

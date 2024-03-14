@@ -17,24 +17,29 @@ export const setBlogTxt = async (): Promise<RawBlog[]> => {
         );
         const lines = file.split("\n");
         if (lines.length >= 4) {
+          /** ブログタイトル */
           const title = lines[0];
           // 日付処理（2023/11/5追加、更新用）
           const dates = lines[1].split(",");
+          /** 作成日 */
           const date = dates[0];
+          /** 更新日 */
           const date2 = dates[1] ? dates[1] : dates[0];
           // 日付処理ここまで
           // OGPを指定する場合の処理
           let bodyStratLine = 3;
-          let img: string = `blog-image/${
-            id.slice(0, 10) +
-            "_" +
-            createHash("md5")
-              .update(title.slice(0, 50) + date.slice(0, 10))
-              .digest("hex")
-          }\.webp`;
+          let img: string;
           if (lines[3].startsWith("ogp=")) {
             bodyStratLine = 4;
             img = `page-image/${lines[3].replace("ogp=", "")}\.webp`;
+          } else {
+            img = `blog-image/${
+              id.slice(0, 10) +
+              "_" +
+              createHash("md5")
+                .update(title.slice(0, 50) + date + date2)
+                .digest("hex")
+            }\.webp`;
           }
           // OGPの指定処理ここまで
           blogs.push({

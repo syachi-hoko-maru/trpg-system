@@ -18,6 +18,9 @@ jobs:
   pre:
     needs: install
     uses: ./.github/workflows/_pre.yml
+  deleteImage:
+    needs: install
+    uses: ./.github/workflows/_deleteImage.yml
   paapi:
     needs: install
     runs-on: ubuntu-latest
@@ -49,4 +52,5 @@ jobs:
     needs:
       - pre
       - paapi
+      - deleteImage
     uses: ./.github/workflows/_deploy.yml

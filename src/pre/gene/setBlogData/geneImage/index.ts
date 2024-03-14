@@ -1,8 +1,8 @@
 import { existsSync, readdirSync, readFileSync } from "fs";
 import sharp from "sharp";
-import { blogImgDir, blogJSON } from "../../index";
 import type { RawBlog } from "../../index";
 import { createCanvas, registerFont } from "canvas";
+import { blogImgDir, blogJSON } from "../../../../util/pathList";
 
 type OGPType = "normal" | "sw25" | "rm" | "rugby" | "tech";
 

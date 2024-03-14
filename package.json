@@ -6,6 +6,7 @@
     "devblog:once": "ts-node --project ba.tsconfig.jsonc src/pre/index.ts onlyblog",
     "devblog": "npx nodemon",
     "pre": "ts-node --project ba.tsconfig.jsonc src/pre/index.ts",
+    "pre-del": "ts-node --project ba.tsconfig.jsonc src/pre/deleteImage.ts",
     "after": "ts-node --files --project ba.tsconfig.jsonc src/after/index.ts",
     "paapi": "ts-node --files --project ba.tsconfig.jsonc src/amazon-paapi/update.ts true",
     "generate": "NODE_OPTIONS=\"--max-old-space-size=5600\" nuxt generate",

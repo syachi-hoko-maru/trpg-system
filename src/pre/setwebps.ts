@@ -1,8 +1,6 @@
 import { mkdirSync, readdirSync, statSync } from "fs";
 import sharp from "sharp";
-
-const imageDir = `${process.cwd()}/public/image`;
-const webpDir = `${process.cwd()}/public/webp`;
+import { imageDir, webpDir } from "../util/pathList";
 
 const imgDirList = readdirSync(imageDir);
 
@@ -12,11 +10,7 @@ const setwebp = (dirname: string) => {
 
   itemList.forEach((itemName) => {
     // 画像ファイルの場合、imageListにぶち込む
-    if (
-      itemName.endsWith(".png") ||
-      itemName.endsWith(".jpeg") ||
-      itemName.endsWith(".jpg")
-    ) {
+    if (isImage(itemName)) {
       imageList.push(itemName);
     } else {
       // ディレクトリならその階層に対してsetwebpをする
@@ -38,10 +32,7 @@ const setwebp = (dirname: string) => {
   const sharps: Promise<void>[] = [];
 
   imageList.forEach((imageFileName) => {
-    const webpFileName = `${imageFileName
-      .replace(".png", "")
-      .replace(".jpeg", "")
-      .replace(".jpg", "")}.webp`;
+    const webpFileName = renameImage2webp(imageFileName);
     if (webpList.indexOf(webpFileName) !== -1) return;
     sharps.push(
       sharp(`${imageDir}/${dirname}/${imageFileName}`)
@@ -63,3 +54,10 @@ const setwebp = (dirname: string) => {
 export const setwebps = () => {
   return Promise.all(imgDirList.map(setwebp));
 };
+
+export const isImage = (s: string) =>
+  s.endsWith(".png") || s.endsWith(".jpeg") || s.endsWith(".jpg");
+export const renameImage2webp = (s: string): string =>
+  s.replace(".png", "").replace(".jpeg", "").replace(".jpg", "") + ".webp";
+export const isSameWebpImage = (webp: string, image: string): boolean =>
+  webp === renameImage2webp(image);

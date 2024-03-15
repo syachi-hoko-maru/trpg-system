@@ -2,6 +2,9 @@
   <div>
     <Card>
       <template #title>流派YesNo診断</template>
+      <Andml
+        andmls="「YES」「NO」を答えるだけで、あなたにおすすめの流派を紹介します。"
+      />
       <ItemButton @click="openDialogoYesNo('ryuha')">開始する</ItemButton>
     </Card>
     <CardArrayByAndml :andml="ryuhaAndml" />

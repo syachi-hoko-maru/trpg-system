@@ -1,27 +1,38 @@
 <template>
   <template v-for="w of words" :key="w">
+    <!-- 辞書がある単語の場合 -->
     <template v-if="w.startsWith('&')">
+      <!-- 辞書（mountedした場合） -->
       <v-menu open-on-hover v-if="mounted">
+        <!-- 通常表示される部分 -->
         <template v-slot:activator="{ props }">
           <span v-bind="props" class="word">
             {{ w.replace(/¥s/g, " ").replace(/^&/, "") }}
           </span>
         </template>
+        <!-- クリック・ホバー時に表示される部分 -->
         <div class="word-card">
           <card>
+            <div class="word-card-title my-2">
+              <v-icon icon="mdi-book" size="large" />
+              {{ w.replace(/¥s/g, " ").replace(/^&/, "") }}
+            </div>
             <div v-html="wordList[w.replace(/^&/, '')]" />
           </card>
         </div>
       </v-menu>
+      <!-- mounted前の場合のみ使用する -->
       <span v-else>
         {{ w.replace(/¥s/g, " ").replace(/^&/, "") }}
         {{ wordList[w.replace(/^&/, "")] }}
       </span>
     </template>
+    <!-- 何でもない単語の場合 -->
     <span v-else>
       {{ w.replace(/¥s/g, " ") }}
     </span>
   </template>
+  <!-- 文字がない場合 -->
   <template v-if="words.length === 0">
     {{ props.replace(/¥s/g, " ") }}
   </template>
@@ -77,5 +88,8 @@ div.word-card {
   width: 300px;
   min-width: 15vw;
   max-width: 80vw;
+  div.word-card-title {
+    font-size: 1.25rem;
+  }
 }
 </style>

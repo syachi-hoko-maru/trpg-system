@@ -16,3 +16,5 @@ type YesNoTagHistory<T extends YesnoDefine> = {
   [key in keyof Tag]?: 1 | -1 | 0;
 };
 type YesNoResult<K extends string> = { foryou: Key; other: Key[] };
+
+type YesNoType = "ryuha";

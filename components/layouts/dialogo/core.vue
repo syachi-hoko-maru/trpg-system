@@ -1,12 +1,30 @@
 <template>
   <div class="dialogo" v-if="dialogoArray.length">
     <v-container class="dialogoContainer py-0">
-      <v-row justify="center" align="center" class="dialogoRow" @click.self="closeDialogo">
-        <v-col cols="12" md="8" @click.self="closeDialogo" class="overflow-y-auto dialogoCol">
-          <card-array-by-andml :andml="dialogoArray[0].andml" :class="`${bgClass} text-textbp`" />
+      <v-row
+        justify="center"
+        align="center"
+        class="dialogoRow"
+        @click.self="closeDialogo"
+      >
+        <v-col
+          cols="12"
+          md="8"
+          @click.self="closeDialogo"
+          class="overflow-y-auto dialogoCol"
+        >
+          <slot />
         </v-col>
       </v-row>
-      <v-btn depressed elevation="2" fab size="large" icon :class="`${bgClass} closeButton`" @click.stop="closeDialogo">
+      <v-btn
+        depressed
+        elevation="2"
+        fab
+        size="large"
+        icon
+        :class="`${bgClass} closeButton`"
+        @click.stop="closeDialogo"
+      >
         <v-icon icon="mdi-close" />
       </v-btn>
     </v-container>
@@ -15,18 +33,20 @@
 
 <script setup lang="ts">
 const route = useRoute();
-const { dialogoArray, closeDialogo } = useDialogo()
+const { dialogoArray, closeDialogo } = useDialogo();
 
 const bgClass = computed(() => {
   switch (dialogoArray.value[0].type) {
-    case "info": return "bg-info";
-    case "error": return "bg-error";
+    case "info":
+      return "bg-info";
+    case "error":
+      return "bg-error";
   }
-})
+});
 
 watch(route, () => {
-  if (dialogoArray.value.length) closeDialogo()
-})
+  if (dialogoArray.value.length) closeDialogo();
+});
 </script>
 
 <style scoped lang="scss">
@@ -49,12 +69,12 @@ watch(route, () => {
       text-align: left;
 
       .dialogoCol {
-        max-height: 60vh;
+        max-height: 80vh;
       }
     }
 
     .closeButton {
-      bottom: 15vw;
+      bottom: 10vh;
     }
   }
 }

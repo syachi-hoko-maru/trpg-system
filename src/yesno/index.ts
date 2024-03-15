@@ -198,7 +198,10 @@ export const yesnoQuestion = function* <
       return result;
     }
     count++;
-    const answer = yield { question: yesnoDefine[tag].question, arr };
+    const answer = yield {
+      question: yesnoDefine[tag]?.question ? yesnoDefine[tag]?.question : "",
+      arr,
+    };
     if (answer === "yes" || answer === "no" || answer === "?") {
       // 履歴の更新
       tagHistory[tag] = answer === "yes" ? 1 : answer === "no" ? -1 : 0;

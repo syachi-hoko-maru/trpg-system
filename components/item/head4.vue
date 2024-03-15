@@ -9,13 +9,13 @@ h5.head4 {
   font-size: 1.05em;
   line-height: 1.2rem;
   font-weight: bold;
-  margin-left: 1.3rem;
+  margin-left: 1.6rem;
 
   &::before {
     content: "■";
     display: block;
     position: absolute;
-    transform: translate(-1.1rem, 0);
+    transform: translate(-1.5rem, 0);
   }
 }
 </style>

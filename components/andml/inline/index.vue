@@ -16,6 +16,8 @@ const Props = withDefaults(defineProps<Props>(), {
 
 // inlineの処理
 const andmlInlineScriptArray: AndmlScript[] = [
+  // id
+  { script: "id_", component: resolveComponent("AndmlInlineId") },
   // 強調・打ち消し
   { script: "em_", component: resolveComponent("AndmlInlineEmc") },
   { script: "strike_", component: resolveComponent("AndmlInlineStrike") },

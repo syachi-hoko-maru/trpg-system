@@ -19,7 +19,7 @@ jobs:
           path: "node_modules"
           key: module-${{ github.sha }}
       - name: Pre-Generate
-        run: yarn pre
+        run: yarn pre-a
       - name: Cash Assets
         uses: actions/cache/save@v4
         with:

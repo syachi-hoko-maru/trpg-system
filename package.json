@@ -5,7 +5,8 @@
     "dev": "nuxt dev",
     "devblog:once": "ts-node --project ba.tsconfig.jsonc src/pre/index.ts onlyblog",
     "devblog": "npx nodemon",
-    "pre": "yarn add sharp --ignore-engines && ts-node --project ba.tsconfig.jsonc src/pre/index.ts",
+    "pre-a": "yarn add sharp --ignore-engines && ts-node --project ba.tsconfig.jsonc src/pre/index.ts",
+    "pre": "ts-node --project ba.tsconfig.jsonc src/pre/index.ts",
     "pre-del": "ts-node --files --project ba.tsconfig.jsonc src/pre/deleteImage.ts",
     "after": "ts-node --files --project ba.tsconfig.jsonc src/after/index.ts",
     "paapi": "ts-node --files --project ba.tsconfig.jsonc src/amazon-paapi/update.ts true",
@@ -42,6 +43,7 @@
     "dotenv": "^16.3.1",
     "html2canvas": "^1.4.1",
     "lodash": "^4.17.21",
+    "lottie-web": "^5.12.2",
     "superagent": "^8.1.2",
     "vue-gtag": "2.0.1",
     "vuetify": "^3.5.8"

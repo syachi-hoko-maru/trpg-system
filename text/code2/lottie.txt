@@ -1,0 +1,44 @@
+Nuxt3にLottieを導入し アニメーションを使う for¥sYesNo診断
+2024/3/22
+tech
+&1 Lottieとは
+Airbnbが開発しているアニメーションライブラリです。
+以下のようなアニメーションをWeb上で動かすことができます。
+&lottie_tanuki
+&br
+動画ファイルがjson形式（+画像ファイル）であるため、読み込みが軽く、javascript（やTypeScript）から容易に編集できるのが特徴です。
+&br
+今回のアニメーションは以下のjsonファイルでできています。
+&link_https://github.com/syachi-hoko-maru/trpg-system/tree/main/public/animations/tanuki/data.json,animations/tanuki/data.json¥s(GitHub)
+
+&3 Lottie¥s+¥sAfter¥sEffects
+以下の「AEで作ったアニメーションをLottieでお手軽にWebで使う」を参考にしました。
+&link_https://zenn.dev/getgotgoto/articles/7db64306a93193,AEで作ったアニメーションをLottieでお手軽にWebで使う
+
+&3 After¥sEffectsが使えない方も！
+Adobe¥sAfter¥sEffectsが使えない方もLottieのファイルを取得したりなんだりでいろいろできます。
+いっぱい情報がネットにあるので、興味があればぐぐってください。
+
+&1 Nuxt3とは
+ウェブサイト構築用のフレームワークVue.jsのフレームワークNuxtの最新版です。
+いっぱい情報がネットにあるので、興味があればぐぐってください。
+&3 Lottie¥s+¥s+Nuxt3
+以下の「Nuxt.jsでLottieを使う」を参考にしました。
+&link_https://qiita.com/natsu_mikan/items/dde4dfe33b7675327caf,Nuxt.jsでLottieを使う
+&br
+Nuxt3への実装は以下のようにしています。
+&link_https://github.com/syachi-hoko-maru/trpg-system/blob/main/components/item/Lottie.vue,Lottie.vue¥s(GitHub)
+
+&1 補足：YesNo診断
+今回のアニメーションは以前のブログで書いたYesNo診断用です。
+&br
+今回はLottieのお試しとして作りましたが、少しずつ改造していく予定です。
+&button_/blog/yesno
+
+&1 おまけ：OGP自動生成
+当ブログではOGP自動生成をしています。
+sharpというnpmパッケージを使用しています。
+&br
+読みにくいコードですが、一応紹介しておきます。
+……いつかリファクタリングします。
+&link_https://github.com/syachi-hoko-maru/trpg-system/blob/main/src/pre/gene/setBlogData/geneImage/index.ts,geneImage/index.ts¥s(GitHub)

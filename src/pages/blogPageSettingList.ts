@@ -14,7 +14,7 @@ export const blogPageSettingList: PageSetting[] = (blogSettingList as Blog[])
         .length > 0;
     if (osusumeTagFlag && isPast(b.date)) count++;
     return {
-      title: b.title,
+      title: b.title.replace(/¥s/g, " "),
       to: "/blog/" + b.id,
       img: b.img,
       created: b.date,

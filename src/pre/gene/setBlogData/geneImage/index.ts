@@ -129,7 +129,8 @@ const generateImage = async (
       index * lineHeight +
       height / 2 -
       (lineHeight / 2) * (resultLines.length - 1);
-    context.fillText(line, centerX, y);
+    // 空白の処理
+    context.fillText(line.replace(/¥s/g, " "), centerX, y);
   });
   context.restore();
 

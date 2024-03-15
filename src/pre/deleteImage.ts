@@ -11,11 +11,14 @@ const blogs = JSON.parse(
 // blogJSONに記載がない画像を削除する
 readdirSync(blogImgDir).forEach((img) => {
   /** ブログリストにあるか */
-  const index = blogs.findIndex((b) => b.img === img);
+  const index = blogs.findIndex(
+    (b) => b.img.replace(/blog-image\/(.+)\.webp/, "$1.png") === img
+  );
   if (index >= 0) {
     return;
   } else {
     // 削除する
+    console.log(`delete ${img}`);
     rmSync(blogImgDir + "/" + img);
   }
 });

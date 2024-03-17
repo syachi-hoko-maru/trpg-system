@@ -1,12 +1,22 @@
 <template>
   <CardArrayByAndml :andml="andml1" />
-  <card v-for="(suppliment, i) of ranking.filter(r => r.rank <= 5).sort((a, b) => - a.rank + b.rank)">
+  <card
+    v-for="(suppliment, i) of ranking
+      .filter((r) => r.rank <= 5)
+      .sort((a, b) => -a.rank + b.rank)"
+  >
     <template #title>
       第{{ suppliment.rank }}位{{ checkTie(suppliment) }} {{ suppliment.name }}
     </template>
     <template #before>
       <div class="d-flex flex-column align-center">
-        <v-rating v-model="suppliment.ossusume" readonly size="x-small" class="px-5" half-increments />
+        <v-rating
+          v-model="suppliment.ossusume"
+          readonly
+          size="x-small"
+          class="px-5"
+          half-increments
+        />
       </div>
     </template>
     <andml :andmls="setExplainAndml(suppliment)" />
@@ -15,42 +25,71 @@
 </template>
 
 <script setup lang="ts">
-const { $suppliments } = useNuxtApp()
+import type { Gino } from "~/src/dict/ginou";
+import type { BookSmallType } from "~/src/dict/suppliments/bookType";
+import { getContents } from "~/src/dict/suppliments/getExplain";
+import type { Syuzoku } from "~/src/dict/syuzoku";
 
-type RankingData = SupplimentData<string> & {
-  gname: string
+const { $suppliments } = useNuxtApp();
+
+type RankingData = SupplimentData<
+  string,
+  Gino,
+  Syuzoku,
+  string,
+  BookSmallType
+> & {
+  gname: string;
   gnum: number;
   rank: number;
-}
+};
 
-let nowScore = 0
-let nowRank = 0
+let nowScore = 0;
+let nowRank = 0;
 const ranking: RankingData[] = $suppliments
-  .map((sg, i) => sg.items.map(s => Object.assign(s, { gname: sg.type, gnum: i })))
+  .map((sg, i) =>
+    sg.items.map((s) => Object.assign(s, { gname: sg.type, gnum: i }))
+  )
   .flat()
   .sort((a, b) => -a.ossusume + b.ossusume)
   .map((s, i) => {
     if (s.ossusume !== nowScore) {
-      nowScore = s.ossusume
-      nowRank = i + 1
+      nowScore = s.ossusume;
+      nowRank = i + 1;
     }
-    return Object.assign(s, { rank: nowRank })
-  })
+    return Object.assign(s, { rank: nowRank });
+  });
 
-const checkTie = (rankingData: RankingData): "タイ" | "" => $suppliments.flatMap(({ items }) => items).filter(({ ossusume }) => ossusume === rankingData.ossusume).length > 1 ? "タイ" : ""
+const checkTie = (rankingData: RankingData): "タイ" | "" =>
+  $suppliments
+    .flatMap(({ items }) => items)
+    .filter(({ ossusume }) => ossusume === rankingData.ossusume).length > 1
+    ? "タイ"
+    : "";
 
 const setExplainAndml = (rankingData: RankingData) => {
-  const top = rankingData.rank === 1
+  const top = rankingData.rank === 1;
   return `
-${top ? "そして、" : ""}おすすめサプリメントランキングの${top ? "栄えある" : ""}第${rankingData.rank}位${checkTie(rankingData)}は &em_「おすすめ度：${rankingData.ossusume}」 の『 &em_${rankingData.name} 』です！
-サプリメント『${rankingData.name}』は &em_「${rankingData.gname}」に分類されるサプリ です。
+${top ? "そして、" : ""}おすすめサプリメントランキングの${
+    top ? "栄えある" : ""
+  }第${rankingData.rank}位${checkTie(rankingData)}は &em_「おすすめ度：${
+    rankingData.ossusume
+  }」 の『 &em_${rankingData.name.replace(/ /g, "¥s")} 』です！
+サプリメント『${rankingData.name.replace(/ /g, "¥s")}』は &em_「${
+    rankingData.gname
+  }」に分類されるサプリ です。
 &amazon_${rankingData.name}
-${top ? "1位に輝いた" : ""}『${rankingData.name}』の &em_内容やおすすめのポイント は以下のページで紹介しています！
+${top ? "1位に輝いた" : ""}『${rankingData.name.replace(
+    / /g,
+    "¥s"
+  )}』の &em_初心者向けのおすすめのポイント は以下のページで紹介しています！
 併せてご覧ください。
-&button_/sw25/forbeginner/suppliment/${rankingData.gnum + 2}/#${rankingData.name.replace(/\s/, "¥s")} こちら
-  `
-}
-
+&button_/sw25/forbeginner/suppliment/${
+    rankingData.gnum + 2
+  }/#${rankingData.name.replace(/\s/g, "¥s")} 初心者向けのおすすめ度紹介はこちら
+&br
+${getContents(rankingData).join("\n")}`;
+};
 
 const andml1 = `
 &1 このページについて
@@ -79,9 +118,10 @@ const andml1 = `
 &br
 なお、この下では発売済みの &em_全${ranking.length}つのサプリメントの順位表 を掲載しています！
 最後まで見ていってください！
-`
+`;
 
-const andml2 = `
+const andml2 =
+  `
 &1 発売済み全${ranking.length}つのサプリの順位表
 では、ソード・ワールド2.5の全${ranking.length}つのサプリのおすすめ度順位表を紹介します。
 &br
@@ -90,8 +130,18 @@ const andml2 = `
 順位が低いものも &em_初心者におすすめではないだけ でとても良いサプリメントなので、ぜひ最終的には全部揃えてください！
 最初はルールブックだけで十分楽しめますが、ハマって揃えていくのも楽しいですよ……。
 &br
-` + ranking.map(r => `第${r.rank}位${checkTie(r)}¥s &link_/sw25/forbeginner/suppliment/${r.gnum + 2}/#${r.name.replace(/\s/, "¥s")},${r.name.replace(/\s/, "¥s")}（${r.gname}）`).join("\n")
-  + `
+` +
+  ranking
+    .map(
+      (r) =>
+        `第${r.rank}位${checkTie(r)}¥s &link_/sw25/forbeginner/suppliment/${
+          r.gnum + 2
+        }/#${r.name.replace(/\s/g, "¥s")},${r.name.replace(/\s/g, "¥s")}（${
+          r.gname
+        }）`
+    )
+    .join("\n") +
+  `
 &br
 それぞれのサプリについて &em_「詳しく知りたい！」 って方はそれぞれのリンクへ飛ぶか、以下のページをご覧ください。
 &button_/sw25/forbeginner/suppliment/1/
@@ -101,30 +151,38 @@ const andml2 = `
 これを見て購入して何らかの不利益を被ったとしても、責任を取れません。
 &br
 &em_相談は大歓迎 です。 &itwitter へ、 &em_お気軽にリプとかDM してください。
-&amazon_${ranking.filter(r => r.rank <= 5).map(r => r.name).join("・")}
+&amazon_${ranking
+    .filter((r) => r.rank <= 5)
+    .map((r) => r.name)
+    .join("・")}
 あと、すごく大事なことですが、サプリなんて持ってなくても遊べます。
 &em_ルルブIだけでも遊べます 。
 &br
 まずはルールブックIを読み込んでみるのもおすすめです。
 特に「ワールド」の部分は読み応えがありますよ。
 &br
-&br
+&3 一緒に遊ぶ仲間を探す
 遊ぶ人を探す際は以下も参考にしてみてください。
 &button_/sw25/tool/intro
 &button_/sw25/tool/community
 
+&3 一覧を見る
 種族・技能についてはこちらをチェックしてください。
 どのルールブック・サプリメントに載っているのかも解説してます！
 &button_/sw25/forbeginner/syuzoku
 &button_/sw25/forbeginner/ginou
+&button_/sw25/forbeginner/god
+&button_/sw25/forbeginner/ryuha
 
+&3 新刊情報
 また、 &em_新刊情報と刊行予想 については以下のページをご覧ください。
 次に出るサプリメントの情報や、僕の予想などがあります。
 &button_/sw25/feature/new
 
+&3 便利なページ
 他にもこのウェブサイトには初心者向けの情報や、ソード・ワールド2.5用のツールを公開しているのでぜひご覧ください。
 &button_/sw25/forbeginner
 &button_/sw25/tool
 
-`
+`;
 </script>

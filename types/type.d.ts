@@ -101,16 +101,61 @@ declare type SecretJson = {
   salt: BufferData;
 };
 
-type SupplimentGroup<SupplimentList extends string> = {
+type SupplimentBigContents =
+  | "item"
+  | "monster"
+  | "magic"
+  | "skill"
+  | "tokugi"
+  | "ippan"
+  | "kisyoSyu";
+type SupplimentContentsStr<Gino extends string, Syuzoku extends string> =
+  | SupplimentBigContents
+  | "god"
+  | "miniMagic"
+  | "ryuha"
+  | "kizyu"
+  | "syuzoku"
+  | "sampleCharacter"
+  | "npc";
+type SupplimentContentsObj<Gino extends string, Syuzoku extends string> =
+  | { type: "gino"; list: Gino[] }
+  | { type: "scenario"; list?: { title: string; reguration: number }[] };
+type SupplimentContents<Gino extends string, Syuzoku extends string> =
+  | SupplimentContentsStr<Gino, Syuzoku>
+  | SupplimentContentsObj<Gino, Syuzoku>;
+type SupplimentGroup<
+  SupplimentList extends string,
+  Gino extends string,
+  Syuzoku extends string,
+  Area extends string,
+  BookType extends string
+> = {
   id: string;
   type: string;
   explain: string;
-  items: SupplimentData<SupplimentList>[];
+  items: SupplimentData<SupplimentList, Gino, Syuzoku, Area, BookType>[];
 };
 
-type SupplimentData<SupplimentList extends string> = {
+type SupplimentData<
+  SupplimentList extends string,
+  Gino extends string,
+  Syuzoku extends string,
+  Area extends string,
+  BookType extends string
+> = {
   name: SupplimentList;
   ossusume: number;
+  bookType: BookType;
+  contents?: {
+    bigData?: SupplimentBigContents[];
+    data?: SupplimentContents<Gino, Syuzoku>[];
+    guide?: (
+      | { type: "world"; list: Area[] }
+      | { type: "setting"; list: string[] }
+    )[];
+    rule?: { name: string; detail?: string[] }[];
+  };
   explain: string;
 };
 

@@ -106,7 +106,7 @@ const newbooks =
 &button_/search?word=${newBook.title} 『${newBook.title}』関連ページはこちら
 &br
 &br
-他にも今後発売が予鈴されている
+他にも今後発売が予定されている
 &br
 ${newBooks
   .splice(1)

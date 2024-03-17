@@ -406,7 +406,7 @@ export const pageSettingList: PageSetting[] = [
       "ツアーサプリ",
       "バトルブックサプリ",
     ],
-    lastmod: "2024/1/18",
+    lastmod: "2024/3/17",
     img: "page-image/suppliment.webp",
     osusume: true,
     explain:
@@ -416,7 +416,7 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "SW2.5のおすすめサプリメントをランキング形式で紹介！",
     to: "/sw25/forbeginner/suppliment/ranking",
-    lastmod: "2024/1/18",
+    lastmod: "2024/3/17",
     img: "page-image/ranking.webp",
     osusume: true,
     explain:

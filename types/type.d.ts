@@ -43,6 +43,7 @@ declare type PageSetting = {
   readonly specialPage?: boolean;
   readonly tags: PageTag[];
   readonly noamazon?: boolean;
+  readonly category?: "list" | "bookIntro" | "forgm";
 };
 declare type PageTagSetting = {
   readonly label: string;
@@ -137,6 +138,7 @@ type SupplimentGroup<
   items: SupplimentData<SupplimentList, Gino, Syuzoku, Area, BookType>[];
 };
 
+type SupplimentOptionrule = { name: string; detail?: string[] };
 type SupplimentData<
   SupplimentList extends string,
   Gino extends string,
@@ -154,7 +156,7 @@ type SupplimentData<
       | { type: "world"; list: Area[] }
       | { type: "setting"; list: string[] }
     )[];
-    rule?: { name: string; detail?: string[] }[];
+    rule?: SupplimentOptionrule[];
   };
   explain: string;
 };

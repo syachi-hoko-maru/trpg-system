@@ -60,7 +60,7 @@ const myCustomDarkTheme: MyThemeDifinition = {
     error: "#910f31",
     info: info,
     surface: "#414141",
-    accent: "#4d2694",
+    accent: "#551fb8",
     warning: "#ffeb3b",
     success: "#2196f3",
     twitter: "#2196F3",

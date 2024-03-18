@@ -1,15 +1,14 @@
 <template>
-  <item-block
-    :color="$vuetify.theme.current.dark ? $vuetify.theme.current.colors.text : $vuetify.theme.current.colors.info">
+  <item-block :color="$vuetify.theme.current.colors.info">
     <template #title>
-      Q&A
+      <span> Q&A </span>
     </template>
     <dl>
-      <dt> Q. </dt>
+      <dt>Q.</dt>
       <dd class="title">{{ title }}</dd>
     </dl>
     <dl>
-      <dt>A. </dt>
+      <dt>A.</dt>
       <dd>
         <slot />
       </dd>
@@ -19,10 +18,9 @@
 
 <script setup lang="ts">
 interface Props {
-  title: string
+  title: string;
 }
-const Props = defineProps<Props>()
-
+const Props = defineProps<Props>();
 </script>
 
 <style lang="scss" scoped>
@@ -33,7 +31,7 @@ dl {
 
   dt {
     font-size: 1.3rem;
-    width: 2rem
+    width: 2rem;
   }
 
   dd {

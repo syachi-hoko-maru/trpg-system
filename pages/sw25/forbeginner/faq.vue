@@ -1,46 +1,45 @@
 <template>
-  <card>
-    <template #title>
-      よくある質問
-    </template>
-    <item-block-faq v-for="faq, i of faqs" :key="faq.title" :title="faq.title">
-      <andml :andmls="faq.explain" />
-    </item-block-faq>
-  </card>
+  <CardArrayByAndml :andml="andml1" />
 </template>
 
 <script setup lang="ts">
 const faqs = [
   {
-    title: "SW2.5って何の略ですか？　他にソード・ワールド2.5の略称はありますか？",
+    title:
+      "SW2.5って何の略ですか？　他にソード・ワールド2.5の略称はありますか？",
     explain: [
-      "SW2.5はTRPG「ソード・ワールド2.5」の略称の1つです。",
+      "「SW2.5」はTRPG「ソード・ワールド2.5」の略称の1つです。",
       "他にも「sw25」や「ソドワ」「そどわ」などが使われます。",
-      "関連して、 &link_https://twitter.com/syachi_hoko_trp/status/1651153511491715074,こんなツイート もしました。"
+      "関連して、 &link_https://twitter.com/syachi_hoko_trp/status/1651153511491715074,こんなツイート もしました。",
     ],
   },
   {
-    title: "SW2.5ってどんなTRPGですか？",
+    title: "「SW2.5」ってどんなTRPGですか？",
     explain: [
-      "このウェブサイトでは以下で紹介しています。",
+      "このウェブサイトの以下のページで紹介しているので読んでください！",
       "&button_/sw25 ",
-      "また、以下の「便利なリンク」 の上の方にもソード・ワールド2.5について紹介しているスライドやページを紹介しています。参考にしてください。",
-      "&button_/sw25/forbeginner/links"
+      "また、以下の「便利なリンク」 の上の方にもソード・ワールド2.5について紹介しているスライドやページを紹介しています。",
+      "こちらもぜひ参考にしてください。",
+      "&button_/sw25/forbeginner/links",
     ],
   },
   {
-    title: "SW2.5はクトゥルフ神話TRPGとはどういう関係ですか？",
+    title: "「SW2.5」と「クトゥルフ神話TRPG」はどういう関係ですか？",
     explain: [
-      "「ソード・ワールド2.5」（SW2.5）も「クトゥルフ神話TRPG」（CoC）も &em_TRPGのシステムの1つ です。",
-      "トークによって物語を遊ぶというTRPGの本質は同じですが、世界観やルールに違いがあります。"
+      "「ソード・ワールド2.5」（SW2.5/ソドワ）も「クトゥルフ神話TRPG」（CoC）も &em_TRPGのシステムの1つ です。",
+      "トークによって物語を遊ぶというTRPGの本質は同じですが、世界観やルールに違いがあります。",
+      "TRPGについて詳しくは以下のページをご覧ください。",
+      "&button_/trpg",
     ],
   },
   {
     title: "SW2.5を始めるにはどうすればいいですか？",
     explain: [
       "まずはルールブックを買いましょう！　990円で買えるので、まずは買って読んでみるのがおすすめです。",
+      "特にHarryHarry（通販サイト）で購入すると、店主のハリィさんがGMをしてくれるのでおすすめです。",
+      "&harryharry",
       "あとは、「便利なリンク」 を順に読んでくだされば始められます！",
-      "&button_/sw25/forbeginner/links"
+      "&button_/sw25/forbeginner/links",
     ],
   },
   {
@@ -48,29 +47,30 @@ const faqs = [
     explain: [
       "&em_「ソード・ワールド2.5」 のルールブックIを書いましょう。",
       "&br",
-      "「ソード・ワールド2.0」や数字のついていない「ソード・ワールド」「ソード・ワールド完全版」は旧版にあたります。 &em_間違って買わないように 気をつけましょう。",
-      "※ ただし、今でも旧版で遊び続けている人もいるため、一緒に遊ぶ予定の人がいればその人に確認しましょう。",
+      "「ソード・ワールド2.0」や数字のついていない「ソード・ワールド」「ソード・ワールド完全版」は &em_旧版 にあたります。",
+      "&em_間違って買わないように 気をつけましょう。",
+      "※ ただし、今でも旧版で遊び続けている人もいます。 &em_一緒に遊ぶ予定の人がいればその人に確認 しましょう。",
       "&br",
       "まずは &em_ルールブックIだけで大丈夫 です。",
-      "&&harry",
+      "&harryharry",
       "&br",
       "もし &em_〇〇という種族/技能を使いたいけどどのルールブックに載っているの……？ 　という方がいれば、以下のページをご覧ください。",
       "&button_/sw25/forbeginner/syuzoku",
-      "&button_/sw25/forbeginner/ginou"
+      "&button_/sw25/forbeginner/ginou",
     ],
   },
   {
     title: "SW2.5のルールブックは必要ですか？",
     explain: [
       "オンラインで遊ぶなら、 &em_手元にあったほうが良い でしょう。",
-      "&em_990円とお手軽価格 なので買うことを強くお勧めします。",
+      "&em_990円とお手軽価格 なので買うことを強くおすすめします。",
       "&br",
       "「1回遊んでから買いたい」という方はルールブック未所持でも参加可能なセッションを探しましょう。",
       "特に記述がない募集を見つけた場合、 &em_トラブル防止のため、必ず主催者に確認 しましょう。",
       "&br",
       "なお、僕がGMをする場合、ルールブックを持っていない方には &link_https://fujimi-trpg-online.jp/download/sw25.html#sample,サンプルキャラクター を使っての参加をお願いしています。",
       "&br",
-      "ただ、ルールブックを「ワールド」だけでも読んで臨んだほうが &em_よりソード・ワールド2.5を楽しめると思う ので、買っておくことをお勧めです。"
+      "ただ、ルールブックを「ワールド」だけでも読んで臨んだほうが &em_よりソード・ワールド2.5を楽しめる と思います。なので買っておくことのがおすすめです。",
     ],
   },
   {
@@ -80,7 +80,7 @@ const faqs = [
       "&br",
       "その上で、「俺はサプリメントを買うぜ！」という場合には以下を参照ください。",
       "&button_/sw25/forbeginner/suppliment/1",
-      "&button_/sw25/forbeginner/suppliment/ranking"
+      "&button_/sw25/forbeginner/suppliment/ranking",
     ],
   },
   {
@@ -89,10 +89,41 @@ const faqs = [
       "日本のファンタジー系TRPGの中では、比較すると、わかりやすい違いは、ルールブックが安いという &em_「手軽さ」と、毎年複数冊のサプリメントが出る「サポートの手厚さ」 です。",
       "&br",
       "さまざまなルールの違いに関しては &link_https://www.youtube.com/@Baketsusan,バケツさん（YouTube） のシリーズ「ファンタジーTRPGを比べてみよう！」がおすすめです。ぜひみて見てください！",
-      "&button_https://www.youtube.com/watch?v=2ibJQwxapyE&list=PLKNsDN1V6QW66JwABhpATxu9uySNjOP-1&index=1 YouTube"
+      "&youtube_https://www.youtube.com/watch?v=2ibJQwxapyE&list=PLKNsDN1V6QW66JwABhpATxu9uySNjOP-1&index=1 YouTube",
     ],
   },
+];
 
-]
+const andml1 = `
+&1 よくある質問一覧
+このページでは以下のような、ソード・ワールド2.5（SW2.5/ソドワ）初心者が抱くだろう「よくある質問」を解説します！
+もし他に気になることがあれば、ぜひぜひお気軽に &itwitter まで教えてください……！
+&br
+${faqs
+  .map(
+    (f) => `- &link_#${f.title.split(/\s/)[0]},${f.title.replace(/\s/, "¥s")}`
+  )
+  .join("\n")}
+&br
+クリックすると、その「よくある質問」へ飛ぶことができます。
 
+&1 よくある質問
+${faqs
+  .map((f) => [
+    `&id_${f.title.split(/\s/)[0]},¥s`,
+    `&&faq_${f.title}`,
+    ...f.explain,
+    "&&&",
+  ])
+  .flat()
+  .join("\n")}
+
+もし他に気になることがあれば、ぜひぜひお気軽に &itwitter まで教えてください……！
+答えられる限り答えますし、こちらのページを充実させていきたいと思います！
+
+&1 初心者向けお役立ちページ
+初心者向けのページは以下にまとまっています！
+ぜひ他のページも参考にして、良きソドワライフを！！
+&button_/sw25/forbeginner
+`;
 </script>

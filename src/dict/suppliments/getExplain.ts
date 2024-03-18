@@ -12,7 +12,7 @@ export const getExplain = (
   // 途中の改行にamazonのリンクを入れる
   result.splice(result.indexOf("&br"), 0, `&amazon_${item.name}`);
   // 内容紹介
-
+  result.push(...getContents(item));
   return result;
 };
 
@@ -33,7 +33,7 @@ export const getContents = (
         : []),
       ...(item.contents.data?.length
         ? [
-            "&3 データ集",
+            "&3 データ追加",
             ...item.contents.data
               .map((bd) => [
                 // データの名前

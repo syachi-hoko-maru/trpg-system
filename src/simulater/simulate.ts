@@ -1,6 +1,8 @@
-import { cloneDeep } from "lodash";
+import * as lodash from "lodash";
 import { toNumber } from "./util";
 import { nowDate } from "../util/date";
+
+const { cloneDeep } = lodash;
 
 export const simulate = async (
   simulateCount: number | string,

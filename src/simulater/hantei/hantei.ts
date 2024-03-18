@@ -1,8 +1,8 @@
-import { isEqual } from "lodash";
-
+import * as lodash from "lodash";
 import dice from "../dice";
 import { getBoolean, getNumber } from "../util";
 
+const { isEqual } = lodash;
 const simpleHantei = (hanteiSettings: FormSetting[]): SimpleHanteiResult => {
   const kizyun = getNumber<HanteiCoreSettingName>("kizyun", hanteiSettings);
   const kotei = getNumber<HanteiCoreSettingName>("kotei", hanteiSettings);

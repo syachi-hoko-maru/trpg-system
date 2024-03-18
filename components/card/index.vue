@@ -1,12 +1,29 @@
 <template>
   <section class="card-div" :class="nobefore ? '' : 'before'" :id="title">
-    <v-card class="my-5" :class="Props.class ? Props.class : 'bg-background text-text'"
-      :elevation="elevation ? elevation : $vuetify.theme.current.dark ? 5 : 3">
-      <v-row v-if="Props.loading || Props.comingsoon" class="card-cover align-center justify-center">
-        <v-progress-circular v-if="Props.loading" :size="70" :width="7" indeterminate color="primary"
-          class="card-cover-item" />
-        <div v-if="Props.comingsoon" class="comingsoon card-cover-item">Coming Soon</div>
-        <div class="background" :style="`background-color: ${$vuetify.theme.current.colors.background};`" />
+    <v-card
+      class="my-5"
+      :class="Props.class ? Props.class : 'bg-background text-text'"
+      :elevation="elevation ? elevation : $vuetify.theme.current.dark ? 5 : 3"
+    >
+      <v-row
+        v-if="Props.loading || Props.comingsoon"
+        class="card-cover align-center justify-center"
+      >
+        <v-progress-circular
+          v-if="Props.loading"
+          :size="70"
+          :width="7"
+          indeterminate
+          color="primary"
+          class="card-cover-item"
+        />
+        <div v-if="Props.comingsoon" class="comingsoon card-cover-item">
+          Coming Soon
+        </div>
+        <div
+          class="background"
+          :style="`background-color: ${$vuetify.theme.current.colors.background};`"
+        />
       </v-row>
       <slot name="tbefore" />
       <div class="px-4" v-if="$slots.ptbefore">
@@ -41,83 +58,94 @@
 
 <script setup lang="ts">
 interface Props {
-  class?: string
-  comingsoon?: boolean
-  loading?: boolean
-  nobefore?: boolean
-  elevation?: number
+  class?: string;
+  comingsoon?: boolean;
+  loading?: boolean;
+  nobefore?: boolean;
+  elevation?: number;
 }
-const Props = defineProps<Props>()
+const Props = defineProps<Props>();
 
-const slots = useSlots()
-const { setLoad } = useLoad()
+const slots = useSlots();
+const { setLoad } = useLoad();
 
-const id = ref("")
-const title = ref("")
+const id = ref("");
+const title = ref("");
 
-let count = 0
+let count = 0;
 
 const setTitle = (finish: () => void) => {
   try {
-    if (!slots.title) throw 0
-    const element = document.getElementById(id.value)
-    if (!element) throw 1
-    const rowtext = element.textContent
-    if (!rowtext) throw 0
-    const text = rowtext?.replace(/^\s*([^\s].*[^\s])\s*$/, "$1")
+    if (!slots.title) throw 0;
+    const element = document.getElementById(id.value);
+    if (!element) throw 1;
+    const rowtext = element.textContent;
+    if (!rowtext) throw 0;
+    const text = rowtext?.replace(/^\s*([^\s].*[^\s])\s*$/, "$1");
     // console.log(count, text)
-    title.value = text
-    finish()
+    title.value = text;
+    finish();
   } catch (err) {
     if (err === 0 || count >= 10) {
-      finish()
-      return
+      finish();
+      return;
     }
     // console.log("error", count, err, id.value)
-    setTimeout(() => setTitle(finish), 0.5 * count * 1000)
-    count++
+    setTimeout(() => setTitle(finish), 0.5 * count * 1000);
+    count++;
   }
-}
+};
 
 onMounted(() => {
-  const finish = setLoad()
-  id.value = `randId_${String(Math.floor(Math.random() * 10 ** 6))}`
-  setTitle(finish)
-})
+  const finish = setLoad();
+  id.value = `randId_${String(Math.floor(Math.random() * 10 ** 6))}`;
+  setTitle(finish);
+});
 </script>
 
 <style lang="scss" scoped>
-.head1 {
-  font-size: 1.75em;
-  line-height: 1.3em;
-  font-weight: normal;
-}
-
-.card-cover {
-  position: absolute;
-  z-index: 1021;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  .card-cover-item {
-    z-index: 1021;
-
-    &.comingsoon {
-      font-size: 2rem;
-      font-weight: bold;
-    }
+section.card-div {
+  font-size: 0.875rem;
+  line-height: 1.5em;
+  .v-card-text {
+    font-size: 0.875rem;
+    line-height: 1.5em;
+  }
+  p {
+    margin-bottom: 0.125rem;
+  }
+  h2.head1 {
+    font-size: 1.75em;
+    line-height: 1.3em;
+    font-weight: normal;
   }
 
-  div.background {
+  .card-cover {
     position: absolute;
-    z-index: 1020;
+    z-index: 1021;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    opacity: 67%;
+
+    .card-cover-item {
+      z-index: 1021;
+
+      &.comingsoon {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+    }
+
+    div.background {
+      position: absolute;
+      z-index: 1020;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 67%;
+    }
   }
 }
 

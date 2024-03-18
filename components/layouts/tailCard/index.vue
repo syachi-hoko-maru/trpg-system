@@ -104,8 +104,7 @@ const newbooks =
 &br
 ぜひみていってください！
 &button_/search?word=${newBook.title} 『${newBook.title}』関連ページはこちら
-&br
-&br
+&3 他にも新刊情報！
 他にも今後発売が予定されている
 &br
 ${newBooks
@@ -114,7 +113,7 @@ ${newBooks
     (r) =>
       `- 『${r.long ? r.long : r.title}』（${
         r.dispDate ? r.dispDate : r.date
-      }発売）`
+      }発売予定）`
   )
   .join("\n")}
 &br
@@ -126,22 +125,20 @@ ${newBooks
         recentBook.dispDate ? recentBook.dispDate : recentBook.date
       }に発売された『${recentBook.title}』についても特集中です！
 買った人もまだの人も、ぜひ見ていってください！
+&button_/search?word=${recentBook.title} 『${
+        recentBook.title
+      }』関連ページはこちら
 &br
 さらに、最近発売された
 &br
 ${recentBooks
   .filter((_, i) => i >= 1 && i < 4)
-  .map(
-    (r) =>
-      `- 『${r.long ? r.long : r.title}』（${
-        r.dispDate ? r.dispDate : r.date
-      }発売）`
-  )
+  .map((r) => `- 『${r.long ? r.long : r.title}』`)
   .join("\n")}
 &br
 などについての情報も多数書いています！
 ${recentBooks
-  .filter((_, i) => i < 3)
+  .filter((_, i) => i > 0 && i < 4)
   .map(
     (r) => `&button_/search?word=${r.title} 『${r.title}』関連ページはこちら`
   )

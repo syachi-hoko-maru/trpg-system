@@ -50,7 +50,7 @@ export const pageSettingList: PageSetting[] = [
       .join(
         "・"
       )}。「ソドワの新刊っていつ出るの？」「今後はどんなサプリが出そうなの？」って方、必見です。`,
-    lastmod: "2024/1/18",
+    lastmod: "2024/3/18",
     tags: ["sw25_new", "sw25_moso"],
   },
   {

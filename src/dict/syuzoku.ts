@@ -154,6 +154,31 @@ export const syuzoku = {
   };
 };
 
+export const syuzoku20 = {
+  フィー: {
+    explain: [
+      "古代種妖精でありながら特に強い自我に目覚め、人族扱いを受ける不思議な種族",
+      "1000年に一度だけ姿を表すと言われている",
+    ],
+  },
+  ヴァルキリー: {
+    explain: ["ナイトメアの逆で、祝福を受けて生まれた存在", "女性しかいない"],
+  },
+  ミアキス: { explain: ["猫になれる人……というか人になれる猫"] },
+  センティアン: {
+    explain: ["神像が神の命を受けて動き出した種族", "人族も蛮族もいる"],
+  },
+  "ノーブルエルフ（魔法文明時代）": {
+    explain: [
+      "魔法文明時代にいた、より魔法に特化したエルフ",
+      "ソード・ワールド2.5でも少しだけ言及されている",
+    ],
+  },
+  "マナフレア（魔法文明時代）": {
+    explain: ["魔法文明時代にいた、マナが溢れ3つの手を持つ人族"],
+  },
+};
+
 export type Syuzoku = keyof typeof syuzoku;
 export type RareSyuzoku = (typeof syuzoku)[Syuzoku]["rare"][number];
 export type SyuzokuWithRare = Syuzoku | RareSyuzoku;
@@ -163,6 +188,13 @@ Object.entries(syuzoku).forEach(([key, value]) => {
   wordList[
     key
   ] = `${key}はソード・ワールド2.5でキャラクターとして使える種族の1つ。<br>${value.explain}<br>（初出：${value.debut}）`;
+});
+Object.entries(syuzoku20).forEach(([key, value]) => {
+  wordList[
+    key.replace("（魔法文明時代）", "")
+  ] = `${key}はソード・ワールド2.0でキャラクターとして使えた種族の1つ。<br>${value.explain
+    .map((e) => `${e}。`)
+    .join("")}`;
 });
 
 export const syuzokuWordList = () => wordList;

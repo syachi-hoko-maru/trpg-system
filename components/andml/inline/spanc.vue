@@ -40,6 +40,7 @@
 
 <script setup lang="ts">
 import type { Ref } from "vue";
+import { getKeys } from "~/src/util";
 
 interface Props {
   props: string;
@@ -54,9 +55,14 @@ const wordList: Ref<WordList> = ref({});
 const setWords = () => {
   wordList.value = $wordList();
   let word = Props.props;
-  Object.keys(wordList.value).forEach((key) => {
-    if (word.indexOf(key) >= 0) {
-      word = word.split(key).join("$$$&" + key + "$$$");
+  const keys: string[] = [];
+  // keyごとに探していく
+  getKeys(wordList.value).forEach((key) => {
+    // keyがkeysに含まれていれば飛ばす
+    if (keys.findIndex((k) => k.indexOf(key.toString()) >= 0) >= 0) return;
+    if (word.indexOf(key.toString()) >= 0) {
+      word = word.split(key.toString()).join("$$$&" + key + "$$$");
+      keys.push(key.toString());
     }
   });
   words.value = word.split("$$$");

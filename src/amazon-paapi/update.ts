@@ -1,8 +1,8 @@
 import { createWriteStream, readFileSync, WriteStream } from "fs";
-import { suppliments } from "../dict/suppliments";
-import { getSearchWord, searchItemImage } from "./searchItemsApi";
+import { supplimentList } from "../dict/suppliments/suppliment";
+import { searchItemImage } from "./searchItemsApi";
 import { wait } from "../util";
-import type { AmazonSearchResult, SearchIndex, SearchObj } from "./types";
+import type { AmazonSearchResult, SearchObj } from "./types";
 import { bookList } from "../dict/new";
 import { isPast } from "../util/date";
 
@@ -10,22 +10,20 @@ const amazonJsonPath = `${process.cwd()}/src/temp/amazon.json`;
 
 const allFlag = process.argv[2] === "true";
 // searchListの作成
-const searchList: SearchObj[] = suppliments.reduce((prev, { items }) => {
-  prev.push(
-    ...items.map(
-      (i) =>
-        ({
-          prefix: "ソード・ワールド2.5",
-          word: i.name,
-          index: "Books",
-        } as const)
-    )
-  );
+/** 検索文字列のリスト */
+const searchList: SearchObj[] = supplimentList.reduce((prev, suppliment) => {
+  prev.push({
+    prefix: "ソード・ワールド2.5",
+    word: suppliment.name,
+    index: "Books",
+  } as const);
   return prev;
 }, [] as SearchObj[]);
+// 新刊情報から取得
 bookList.forEach((book) => {
   if (
     searchList.find((s) => s.word.indexOf(book.title) >= 0) ||
+    // 発売1.5ヶ月前以降なら
     !isPast(book.date, new Date().getTime() + 1.5 * 30 * 24 * 60 * 60 * 1000)
   )
     return;
@@ -36,6 +34,7 @@ bookList.forEach((book) => {
       index: "Books",
     });
 });
+// その他
 searchList.push(
   ...([
     {
@@ -62,6 +61,7 @@ searchList.push(
 );
 // searchListの作成ここまで
 
+/** 検索結果 */
 let data: AmazonSearchResult<string>[] = [];
 if (!allFlag) {
   console.log("INFO: try to get amazon.json");

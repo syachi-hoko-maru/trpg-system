@@ -5,7 +5,7 @@ export type TypeProductAdvertisingAPIv1 = {
 };
 export type AmazonSearchFunction = (
   word: SearchObj
-) => Promise<AmazonSearchResult<string>>;
+) => Promise<AmazonSearchResult<string> | {}>;
 export type AmazonSearchResult<T extends string> = {
   prefix?: string;
   name: T;
@@ -23,7 +23,7 @@ type ApiClient = {
 type DefaultApi = {
   new (): {
     searchItems: (searchItemsRequest: {}) => Promise<{
-      SearchResult: SearchResult;
+      SearchResult?: SearchResult;
     }>;
   };
 };

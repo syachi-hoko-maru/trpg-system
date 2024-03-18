@@ -40,6 +40,7 @@ export const searchItemImage: AmazonSearchFunction = (
   return api.searchItems(searchItemsRequest).then(
     (data) => {
       // console.log(JSON.stringify(data.SearchResult.Items, null, 1));
+      if (!data.SearchResult) return {};
       return {
         prefix: searchItem.prefix,
         name: searchItem.word,

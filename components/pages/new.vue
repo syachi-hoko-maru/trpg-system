@@ -17,13 +17,13 @@
     </div>
     <andml v-if="book.type === 'GMウォーロック'" :andmls="aboutgmw" />
     <andml v-if="book.type === '異世界冒険ガイド'" :andmls="aboutisekai" />
-    <item-amazon-sw25 :item="[book.title || '', book.amazon || '']" mini />
     <item-button
-      v-if="!book.explain"
+      v-if="!book.dispDate || book.dispDate === book.date"
       :url="`/search/?word=${book.title}&tag=sw25_new`"
     >
-      詳細・紹介はこちら
+      『{{ book.title }}』関連ページはこちら
     </item-button>
+    <item-amazon-sw25 :item="[book.title || '', book.amazon || '']" mini />
   </div>
 </template>
 

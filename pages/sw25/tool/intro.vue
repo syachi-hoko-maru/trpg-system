@@ -5,9 +5,9 @@
 </template>
 
 <script setup lang="ts">
-import { isPast } from '~/src/util/date';
+import { isPast } from "~/src/util/date";
 
-const { $templateText } = useNuxtApp()
+const { $templateText } = useNuxtApp();
 const andml1 = `
 &1 このページについて
 このページでは「SW2.5 自己紹介シート」を &em_ウェブサイト上で内容を入力し、入力済み画像をダウンロード することができます。
@@ -18,11 +18,15 @@ const andml1 = `
 &br
 ※「ソード・ワールド2.5って何？」って方は &link_/sw25,こちら をご覧ください。
 
-${!isPast("2024/1/9") ? `
+${
+  !isPast("2024/1/9")
+    ? `
 &2 年末年始限定デザイン
 &em_2023年12月27日から2024年1月8日まで 、年末年始限定デザインということで、デザインをレッドverに変更しています！
 既に作っていただいた方も、 &em_この機会にぜひ作成し直してツイート し、知り合いの幅を広げていただければと思います！
-`: ""}
+`
+    : ""
+}
 &1 使い方
 1.¥s 以下の &link_#データ入力,「データ入力」 からデータを入力してください
 &br
@@ -64,10 +68,14 @@ ${!isPast("2024/1/9") ? `
 データが汚いのは我慢していただくようお願いします。
 ※文字は全てアウトライン化されております。
 &button_${$templateText.baseUrl}/image/sw25intro/intro.svg こちら
-${!isPast("2024/1/9") ? `
+${
+  !isPast("2024/1/9")
+    ? `
 &button_${$templateText.baseUrl}/image/sw25intro/intro_red.svg 年末年始限定デザインはこちら
-`: ""}
 `
+    : ""
+}
+`;
 const andml2 = `
 &1 しゃちほこ丸のSW2.5自己紹介シート
 これを作った僕しゃちほこ丸（ &itwitter ）の自己紹介シートはTwitterと以下のページで公開しています。
@@ -82,7 +90,7 @@ const andml2 = `
 &button_/sw25/forbeginner/suppliment
 &button_/sw25/forbeginner/suppliment/ranking
 
-他にもソード・ワールド2.5（SW2.5）さまざまなツールを公開しています。
+他にもソード・ワールド2.5（SW2.5/ソドワ）さまざまなツールを公開しています。
 ぜひご活用ください。
 &button_/sw25/tool
 
@@ -92,6 +100,5 @@ Twitterで一緒に遊ぶ人を集める場合に便利なTwitterコミュニテ
 さらに &em_ソード・ワールド2.5に関する情報をまとめたり考察をしたり しているページは多々あります。
 ぜひご覧ください。
 &button_/search?word=sw25 こちら
-`
-
+`;
 </script>

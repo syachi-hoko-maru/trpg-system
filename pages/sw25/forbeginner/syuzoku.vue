@@ -1,18 +1,17 @@
 <template>
   <card>
-    <template #title>
-      SW2.5の種族一覧
-    </template>
+    <template #title> SW2.5の種族一覧 </template>
     <andml :andmls="syuzokuAndml" />
   </card>
   <div v-if="Object.entries($syuzoku).length" id="各種族の紹介">
-    <card v-for="[syuzoku, { explain, debut, rare }] of Object.entries($syuzoku)" :key="syuzoku">
+    <card
+      v-for="[syuzoku, { explain, debut, rare }] of Object.entries($syuzoku)"
+      :key="syuzoku"
+    >
       <template #title>
         {{ syuzoku }}
       </template>
-      <template #subtitle>
-        初出：{{ debut }}
-      </template>
+      <template #subtitle> 初出：{{ debut }} </template>
       <andml :andmls="setExplain(explain, rare)" />
     </card>
   </div>
@@ -20,28 +19,33 @@
 </template>
 
 <script setup lang="ts">
-import exp from 'constants';
+import exp from "constants";
 
-const { $syuzoku } = useNuxtApp()
+const { $syuzoku } = useNuxtApp();
 
-let currentDebut = ""
-const syuzokuAndml = `
-以下はソード・ワールド2.5（SW2.5）に登場する種族の一覧です。
+let currentDebut = "";
+const syuzokuAndml =
+  `
+以下はソード・ワールド2.5（SW2.5/ソドワ）に登場する種族の一覧です。
 「ソドワにはどんな種族がいるの？」「〇〇って種族はどのルルブ（ルールブック）に載っているの？」という方向けに情報まとめています。
 &br
 ソード・ワールド2.5については &link_/sw25,こちら をご覧ください。
 またソード・ワールド2.5初心者向け情報は &link_/sw25/forbeginner,こちら にまとめてありますので合わせてご覧ください。
 &br
 各種属名をクリックすると、簡単な紹介に飛びます。
-` + Object.entries($syuzoku).map(([syuzoku, { debut }]) => {
-  let str = ""
-  if (debut !== currentDebut) {
-    str += `&3 ${debut} \n`
-    currentDebut = debut
-  }
-  str += `- &link_#${syuzoku},${syuzoku}`
-  return str
-}).join("\n") + `
+` +
+  Object.entries($syuzoku)
+    .map(([syuzoku, { debut }]) => {
+      let str = "";
+      if (debut !== currentDebut) {
+        str += `&3 ${debut} \n`;
+        currentDebut = debut;
+      }
+      str += `- &link_#${syuzoku},${syuzoku}`;
+      return str;
+    })
+    .join("\n") +
+  `
 &br
 以下では &em_各種族について 簡単にですが紹介します。
 どんな希少種がいるかも合わせて紹介します！
@@ -51,18 +55,18 @@ const syuzokuAndml = `
 &br
 ソード・ワールド2.5に登場する &em_技能 については以下をご覧ください。
 &button_/sw25/forbeginner/ginou
-`
+`;
 
 const setExplain = (explain: string, rare: string[] | undefined): string[] => {
-  const result = [explain]
+  const result = [explain];
   if (rare?.length) {
-    result.push("&3 希少種")
+    result.push("&3 希少種");
     for (let r of rare) {
-      result.push(`- ${r}`)
+      result.push(`- ${r}`);
     }
   }
-  return result
-}
+  return result;
+};
 
 const syuzokuAndml2 = `
 &1 サプリメントについて
@@ -78,7 +82,9 @@ const syuzokuAndml2 = `
 - ソレイユ（初出は『アウトロープロファイルブック』）
 - ウィークリング（初出は『アウトロープロファイルブック』）
 &br
-&button_/sw25/forbeginner/suppliment/2#${encodeURIComponent("アーケインレリック")} こちら
+&button_/sw25/forbeginner/suppliment/2#${encodeURIComponent(
+  "アーケインレリック"
+)} こちら
 &amazon_アーケインレリック
 
 &1 希少種について
@@ -92,5 +98,5 @@ const syuzokuAndml2 = `
 &br
 &br
 &amazon_アーケインレリック・アウトロープロファイルブック
-`
+`;
 </script>

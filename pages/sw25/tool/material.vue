@@ -134,5 +134,17 @@ ${
 &button_/sw25/feature/harula
 『ハルーラガイド』の感想と「自分ならどうする」は以下のページからどうぞ。
 &button_/blog/harula
+
+&1 『モノクロマティカ』マス戦闘用マップ
+サプリメント『泡沫世界モノクロマティカ』の「マス戦闘ルール」用の透過戦闘用マップです。
+どちらもPNG形式です。
+モノクロマティカについて詳しくは以下のページをご覧ください。
+&button_/blog/monochro3
+&3 黒
+&img_/material/monochro_battle_field_black.png,『モノクロマティカ』マス戦闘用マップ（黒枠）
+&3 白
+&img_/material/monochro_battle_field_white.png,『モノクロマティカ』マス戦闘用マップ（白枠）
+&amazon_モノクロマティカ
+
 `;
 </script>

@@ -144,7 +144,7 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "TRPG/SW2.5 オンラインセッション用素材",
     to: "/sw25/tool/material",
-    lastmod: isPast("2023/11/24") ? "2023/11/24" : "2023/11/21",
+    lastmod: "2024/3/19",
     img: "page-image/material.webp",
     imgdirs: ["material"],
     osusume: true,

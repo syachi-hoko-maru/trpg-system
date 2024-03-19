@@ -15,6 +15,7 @@
 import { ginou } from "~/src/dict/ginou";
 import type { RyuhaBook, RyuhaData } from "~/src/dict/ryuha";
 import { ryuhaList } from "~/src/dict/ryuha";
+import { pageSettingList } from "~/src/pages/pageSettingList";
 
 const { openDialogoYesNo } = useDialogo();
 
@@ -158,12 +159,12 @@ ${ginou
   .flat()
   .join("\n")}
 
-&1 他のページ
-ソード・ワールド2.5に登場する &em_種族 については以下をご覧ください。
-&button_/sw25/forbeginner/syuzoku
-
-ソード・ワールド2.5に登場する &em_技能 については以下をご覧ください。
-&button_/sw25/forbeginner/ginou
+&1 他の「一覧」ページ
+種族・技能からオプションルールなど、いろいろな一覧をまとめています。
+${pageSettingList
+  .filter((p) => p.category === "list")
+  .map((p) => `&button_${p.to}`)
+  .join("\n")}
 &br
 &amazon_バトルマスタリー・博物誌・ユーシズ
 `;

@@ -35,7 +35,7 @@ const andml2 = `
 &1 ソード・ワールド2.5の「一覧」ページ
 いろいろな一覧をまとめています。
 掲載されているルールブック・サプリメントについても載っているので、ぜひご活用ください。
-${pageSettingList
+${forbeginnerPages
   .filter((p) => p.category === "list")
   .map((p) => `&button_${p.to}`)
   .join("\n")}

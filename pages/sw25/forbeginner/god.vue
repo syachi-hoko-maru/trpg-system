@@ -5,6 +5,7 @@
 <script setup lang="ts">
 import type { God } from "~/src/dict/god";
 import { godList } from "~/src/dict/god";
+import { pageSettingList } from "~/src/pages/pageSettingList";
 
 godList.sort((a, b) => {
   if (a.sword > b.sword) return 1;
@@ -58,6 +59,10 @@ const godAndml = `
 &br
 なお、おまけで旧版であるソード・ワールド2.0に登場した神についても掲載しています。
 抜け漏れがあるかもしれませんがご容赦ください。
+&br
+なお、泡沫世界の1つ「モノクロマティカ」の神は以下にまとめています。
+合わせてご覧ください。
+&button_/sw25/list/monochroGod
 
 &1 ラクシアの神の一覧（第一の剣）
 以下はソード・ワールド2.5に登場している神のうち、 &em_第一の剣ルミエル に由来する神の一覧です。
@@ -106,13 +111,11 @@ ${godList
   .join("\n")}
 &&&
 
-&1 他のページ
-ソード・ワールド2.5に登場する &em_種族 については以下をご覧ください。
-&button_/sw25/forbeginner/syuzoku
-
-ソード・ワールド2.5に登場する &em_技能 については以下をご覧ください。
-&button_/sw25/forbeginner/ginou
-&br
-&amazon_メイガスアーツ・剣と荒野と放浪者
+&1 他の「一覧」ページ
+種族・技能からオプションルールなど、いろいろな一覧をまとめています。
+${pageSettingList
+  .filter((p) => p.category === "list")
+  .map((p) => `&button_${p.to}`)
+  .join("\n")}
 `;
 </script>

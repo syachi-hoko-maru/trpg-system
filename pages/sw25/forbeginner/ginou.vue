@@ -23,6 +23,8 @@
 </template>
 
 <script setup lang="ts">
+import { pageSettingList } from "~/src/pages/pageSettingList";
+
 const { $ginou } = useNuxtApp();
 
 let currentDebut = "";
@@ -52,19 +54,15 @@ const syuzokuAndml =
 &br
 以下では &em_各技能について 簡単にですが紹介します。
 なお、サプリメントについては以下をご覧ください。
-&button_/sw25/forbeginner/suppliment/1 
+&button_/sw25/forbeginner/suppliment/1
 `;
 const andmlend = `
-&1 まとめ
-ソード・ワールド2.5に登場する &em_種族 については以下をご覧ください。
-&button_/sw25/forbeginner/syuzoku
-
-プリースト技能を使う際に重要となる、ソード・ワールド2.5に登場する &em_神 については以下をご覧ください。
-&button_/sw25/forbeginner/god
-
-技能以上にキャラクターを際立たせられるルールとして「 &em_流派 」があります。
-ソード・ワールド2.5に登場する &em_流派 については以下をご覧ください。
-&button_/sw25/forbeginner/ryuha
+&1 他の「一覧」ページ
+種族・技能からオプションルールなど、いろいろな一覧をまとめています。
+${pageSettingList
+  .filter((p) => p.category === "list")
+  .map((p) => `&button_${p.to}`)
+  .join("\n")}
 &br
 &amazon_モンストラスロア・メイガスアーツ・バトルマスタリー
 `;

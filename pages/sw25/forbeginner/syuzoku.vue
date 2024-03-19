@@ -20,6 +20,7 @@
 
 <script setup lang="ts">
 import exp from "constants";
+import { pageSettingList } from "~/src/pages/pageSettingList";
 
 const { $syuzoku } = useNuxtApp();
 
@@ -57,7 +58,10 @@ const syuzokuAndml =
 &button_/sw25/forbeginner/ginou
 `;
 
-const setExplain = (explain: string, rare: string[] | undefined): string[] => {
+const setExplain = (
+  explain: string,
+  rare: readonly string[] | string[] | undefined
+): string[] => {
   const result = [explain];
   if (rare?.length) {
     result.push("&3 希少種");
@@ -96,7 +100,13 @@ const syuzokuAndml2 = `
 出版社のサイトである「富士見書房TRPG¥sONLINE」では &em_イラスト付きで各種族を紹介 してくれていますので、こちらもご確認ください。
 &button_https://fujimi-trpg-online.jp/game/sw25-character.html こちら
 &br
-&br
 &amazon_アーケインレリック・アウトロープロファイルブック
+
+&3 他の「一覧」ページ
+種族・技能からオプションルールなど、いろいろな一覧をまとめています。
+${pageSettingList
+  .filter((p) => p.category === "list")
+  .map((p) => `&button_${p.to}`)
+  .join("\n")}
 `;
 </script>

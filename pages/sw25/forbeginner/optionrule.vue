@@ -6,6 +6,7 @@
 
 <script setup lang="ts">
 import { supplimentList } from "~/src/dict/suppliments/suppliment";
+import { pageSettingList } from "~/src/pages/pageSettingList";
 
 const optionruleSupplimentList = supplimentList.filter(
   (suppliment) =>
@@ -82,6 +83,13 @@ ${optionruleSupplimentList
       : []
   )
   .flat(2)
+  .join("\n")}
+
+&1 他の「一覧」ページ
+種族・技能からオプションルールなど、いろいろな一覧をまとめています。
+${pageSettingList
+  .filter((p) => p.category === "list")
+  .map((p) => `&button_${p.to}`)
   .join("\n")}
 `;
 </script>

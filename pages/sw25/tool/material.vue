@@ -140,9 +140,9 @@ ${
 どちらもPNG形式です。
 モノクロマティカについて詳しくは以下のページをご覧ください。
 &button_/blog/monochro3
-&3 黒
-&img_/material/monochro_battle_field_black.png,『モノクロマティカ』マス戦闘用マップ（黒枠）
 &3 白
+&img_/material/monochro_battle_field_black.png,『モノクロマティカ』マス戦闘用マップ（黒枠）
+&3 黒
 &img_/material/monochro_battle_field_white.png,『モノクロマティカ』マス戦闘用マップ（白枠）
 &amazon_モノクロマティカ
 

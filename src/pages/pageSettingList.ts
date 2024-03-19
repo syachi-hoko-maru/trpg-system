@@ -591,17 +591,6 @@ export const pageSettingList: PageSetting[] = [
     tags: ["sw25"],
     category: "list",
   },
-  // {
-  //   title: "SW2.5特集",
-  //   to: "/sw25/feature",
-  //   created: "2024/12/30",
-  //   lastmod: "2024/12/30",
-  //   img: "page-image/monochroGift.webp",
-  //   osusume: false,
-  //   explain: "ソード・ワールド2.5についての特集ページです。",
-  //   tags: ["sw25"],
-  //   category: "list"
-  // },
   {
     title: "公開シナリオ一覧",
     to: "/scenario",

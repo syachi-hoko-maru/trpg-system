@@ -409,7 +409,7 @@ export const pageSettingList: PageSetting[] = [
       "ツアーサプリ",
       "バトルブックサプリ",
     ],
-    lastmod: "2024/3/17",
+    lastmod: "2024/3/18",
     img: "page-image/suppliment.webp",
     osusume: true,
     explain:

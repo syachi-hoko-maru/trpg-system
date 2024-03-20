@@ -79,17 +79,21 @@ const items: AmazonSearchResult<string>[] = Array.isArray(amazonItems)
     ? kohoList.reduce((prev, koho) => {
         if (koho) {
           prev.push(
-            ...amazonItems.filter(
-              ({ name }) =>
-                !prev.find((p) => p.name === name) && name.indexOf(koho) >= 0
-            )
+            ...(amazonItems.filter(
+              (item) =>
+                !prev.find((p) => p.name === item.name) &&
+                typeof item.name === "string" &&
+                item.name.indexOf(koho) >= 0
+            ) as AmazonSearchResult<string>[])
           );
         }
         return prev;
       }, [] as AmazonSearchResult<string>[])
     : // 一旦ランダムで10個を表示するように
-      shuffle(
-        amazonItems.filter((i) => i.prefix.indexOf("ソード・ワールド") >= 0)
-      ).slice(0, 10)
+      (shuffle(
+        amazonItems.filter(
+          (i) => i.prefix && i.prefix.indexOf("ソード・ワールド") >= 0
+        )
+      ).slice(0, 10) as AmazonSearchResult<string>[])
   : [];
 </script>

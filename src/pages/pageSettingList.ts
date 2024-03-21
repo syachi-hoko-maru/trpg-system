@@ -577,7 +577,7 @@ export const pageSettingList: PageSetting[] = [
     // img: "page-image/.webp",
     osusume: false,
     explain:
-      "ソード・ワールド2.5について、いろいろなものの一覧ページです。種族・技能・神・流派・オプションルールなどの一覧を紹介します！",
+      "ソード・ワールド2.5（SW2.5/ソドワ）について、いろいろなものの一覧ページです。種族・技能・神・流派・オプションルールなどの一覧を紹介します！",
     tags: ["sw25"],
   },
   {
@@ -588,7 +588,19 @@ export const pageSettingList: PageSetting[] = [
     img: "page-image/supplimentlist.webp",
     osusume: false,
     explain:
-      "ソード・ワールド2.5のサプリメント（拡張ルールブック）やシナリオ集の一覧と内容紹介をするページです。",
+      "ソード・ワールド2.5（SW2.5/ソドワ）のサプリメント（拡張ルールブック）やシナリオ集の一覧と内容紹介をするページです。",
+    tags: ["sw25"],
+    category: "list",
+  },
+  {
+    title: "SW2.5公式シナリオの一覧と紹介",
+    to: "/sw25/list/scenariolist",
+    created: "2024/4/5",
+    lastmod: "2024/4/5",
+    img: "page-image/scenariolist.webp",
+    osusume: false,
+    explain:
+      "ソード・ワールド2.5（SW2.5/ソドワ）のサプリメント（拡張ルールブック）やシナリオ集に掲載されている公式シナリオの一覧とレギュレーション（成長回数）を紹介をするページです。",
     tags: ["sw25"],
     category: "list",
   },

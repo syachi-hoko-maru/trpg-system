@@ -20,9 +20,6 @@ const andml1 = `
 ぜひ合わせてご覧ください。
 &button_/sw25/forbeginner/suppliment/1
 &button_/sw25/forbeginner/suppliment/ranking
-
-&button_/sw25/forbeginner/suppliment/1
-&button_/sw25/forbeginner/suppliment/ranking
 &id_一覧,¥s
 
 &1 サプリメントとシナリオ集の一覧

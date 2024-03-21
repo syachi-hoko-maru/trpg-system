@@ -63,9 +63,9 @@ ${optionruleSupplimentList
   .join("\n")}
 
 &1 サプリメント別オプションルール一覧
-以下にサプリメント別に、オプションルール${
+以下ではサプリメント別に、 &em_オプションルール${
   optionruleList.length
-}種類を全て紹介します！
+}種類 を全て紹介します！
 ${optionruleSupplimentList
   .map((suppliment) =>
     suppliment.contents?.rule && suppliment.contents.rule.length >= 1

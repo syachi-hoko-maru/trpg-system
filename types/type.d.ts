@@ -150,7 +150,11 @@ type SupplimentGroup<
   items: SupplimentData<SupplimentList, Gino, Syuzoku, Area, BookType>[];
 };
 
-type SupplimentOptionrule = { name: string; detail?: string[] };
+type SupplimentOptionrule = {
+  name: string;
+  detail?: string[];
+  customize?: boolean;
+};
 type GameType = "ランダムマップ" | "固定マップ" | "ストーリー";
 type SupplimentData<
   SupplimentList extends string,

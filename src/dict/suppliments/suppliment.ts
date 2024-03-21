@@ -17,7 +17,7 @@ export const supplimentList: SupplimentData<
     bookType: "大型サプリ",
     contents: {
       bigData: ["item"],
-      data: ["kizyu"],
+      data: ["item", "kizyu"],
       guide: [{ type: "setting", list: ["各技能の紹介"] }],
       rule: [
         {
@@ -75,7 +75,10 @@ export const supplimentList: SupplimentData<
     bookType: "大型サプリ",
     contents: {
       bigData: ["monster"],
-      data: [{ type: "gino", list: ["ドルイド", "デーモンルーラー"] }],
+      data: [
+        "monster",
+        { type: "gino", list: ["ドルイド", "デーモンルーラー"] },
+      ],
       guide: [{ type: "setting", list: ["魔物"] }],
     },
     explain: `
@@ -108,10 +111,27 @@ export const supplimentList: SupplimentData<
       bigData: ["magic", "skill"],
       data: [
         { type: "gino", list: ["ジオマンサー", "ウォーリーダー"] },
+        "magic",
         "miniMagic",
         "god",
       ],
       guide: [{ type: "setting", list: ["魔法", "神"] }],
+      rule: [
+        {
+          name: "深智魔法",
+          detail: [
+            "ソーサラー技能とコンジャラー技能の双方を習得したキャラクターが使える特殊な魔法。",
+            "使用者は「ウィザード」と呼ばれる。が、「ウィザード技能」は存在しない。",
+          ],
+        },
+        {
+          name: "妖精との契約パターン",
+          detail: [
+            "『ルールブックII』記載の4系統との契約のほかに、「3系統」と「全系統」の2種類の契約パターンが追加される。",
+            "これに伴い「特殊妖精魔法」が追加される。",
+          ],
+        },
+      ],
     },
     explain: `
 こちらはメインとしてルルブI〜IIIの &em_魔法 と &em_練技・呪歌・終律・騎芸・賦術 がまとまっています。
@@ -610,6 +630,7 @@ SW2.5で &em_鉄道に関する冒険をしたい人 にはオススメです。
             "「呪刻点」によって効果が強くなる。",
             "使用すると「呪刻点」がランダムに減少してしまうが、その分、強力な効果も多い。",
           ],
+          customize: true,
         },
       ],
     },
@@ -648,6 +669,7 @@ SW2.5で &em_鉄道に関する冒険をしたい人 にはオススメです。
         {
           name: "アビス強化（拡張）",
           detail: ["36個のアビスカースが追加されている。"],
+          customize: true,
         },
         {
           name: "アビススキル",
@@ -655,6 +677,7 @@ SW2.5で &em_鉄道に関する冒険をしたい人 にはオススメです。
             "アビス強化より強い武具の強化「アビススキル」が追加されている。",
             "使用の際に条件を満たしてしまうとアビスカースより重い「アビス侵蝕」を受けることになる。",
           ],
+          customize: true,
         },
         {
           name: "アビストリガー",

@@ -5,17 +5,17 @@
 </template>
 
 <script setup lang="ts">
-import { supplimentList } from "~/src/dict/suppliments/suppliment";
+import { rulebooksAndSuppliments } from "~/src/dict/suppliments/rulebook";
 import { pageSettingList } from "~/src/pages/pageSettingList";
 
-const optionruleSupplimentList = supplimentList.filter(
+const optionruleSupplimentList = rulebooksAndSuppliments.filter(
   (suppliment) =>
     suppliment.contents?.rule && suppliment.contents.rule.length >= 1
 );
 type Optionrule = SupplimentOptionrule & {
-  book: (typeof supplimentList)[number]["name"];
+  book: (typeof rulebooksAndSuppliments)[number]["name"];
 };
-const optionruleList: Optionrule[] = optionruleSupplimentList.reduce(
+const optionruleList: Optionrule[] = rulebooksAndSuppliments.reduce(
   (pre, suppliment) => {
     suppliment.contents?.rule?.forEach((rule) => {
       pre.push({ ...rule, book: suppliment.name });
@@ -28,8 +28,8 @@ const optionruleList: Optionrule[] = optionruleSupplimentList.reduce(
 const optionruleAndml = `
 &1 このページについて
 このページはソード・ワールド2.5（SW2.5/ソドワ）に登場する、オプションルールの一覧と紹介です。
-追加ルールが掲載されている &em_サプリメント${
-  optionruleSupplimentList.length
+追加ルールが掲載されているルールブックと &em_サプリメント${
+  optionruleSupplimentList.filter((r) => r.bookType !== "ルールブック").length
 }冊 に掲載されている &em_${
   optionruleList.length
 }種類 のオプションルール全てを掲載しています！
@@ -55,26 +55,25 @@ const optionruleAndml = `
 
 &1 オプションルールが掲載されているサプリメント一覧
 以下にオプションルールが掲載されているサプリメント${
-  optionruleSupplimentList.length
+  optionruleSupplimentList.filter((r) => r.bookType !== "ルールブック").length
 }冊を紹介します。
 &br
 ${optionruleSupplimentList
+  .filter((r) => r.bookType !== "ルールブック")
   .map((suppliment) => `- ${suppliment.name}`)
   .join("\n")}
 
-&1 サプリメント別オプションルール一覧
-以下ではサプリメント別に、 &em_オプションルール${
-  optionruleList.length
-}種類 を全て紹介します！
+&1 ルールブックII・III掲載のオプションルール一覧
 ${optionruleSupplimentList
+  .filter((r) => r.bookType === "ルールブック")
   .map((suppliment) =>
     suppliment.contents?.rule && suppliment.contents.rule.length >= 1
       ? [
           `&3 ${suppliment.name}`,
           ...suppliment.contents.rule.map((rule, i, all) => [
-            `&4 ${rule.name}`,
+            `- ${rule.name}`,
             ...(rule.detail
-              ? rule.detail.map((d) => `- ${d}`)
+              ? rule.detail.map((d) => `-- ${d}`)
               : i === all.length - 1
               ? ["&br"]
               : []),
@@ -83,6 +82,40 @@ ${optionruleSupplimentList
       : []
   )
   .flat(2)
+  .join("\n")}
+
+&1 サプリメント別オプションルール一覧
+以下ではサプリメント別に、 &em_オプションルール${
+  optionruleList.length
+}種類 を全て紹介します！
+${optionruleSupplimentList
+  .filter((r) => r.bookType !== "ルールブック")
+  .map((suppliment) =>
+    suppliment.contents?.rule && suppliment.contents.rule.length >= 1
+      ? [
+          `&3 ${suppliment.name}`,
+          ...suppliment.contents.rule.map((rule, i, all) => [
+            `- ${rule.name}`,
+            ...(rule.detail ? rule.detail.map((d) => `-- ${d}`) : []),
+          ]),
+        ]
+      : []
+  )
+  .flat(2)
+  .join("\n")}
+
+&1 武器や防具の強化に関するルールの一覧
+武器や防具の強化に関する ${
+  optionruleList.filter((op) => op.customize).length
+}個のルールについて一覧で紹介します。
+${optionruleList
+  .filter((op) => op.customize)
+  .map((op) => [
+    `&4 ${op.name}`,
+    `- 『${op.book}』掲載。`,
+    ...(op.detail ? op.detail.map((d) => `- ${d}`) : []),
+  ])
+  .flat()
   .join("\n")}
 
 &1 他の「一覧」ページ

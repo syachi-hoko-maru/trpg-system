@@ -378,12 +378,12 @@ export const pageSettingList: PageSetting[] = [
   {
     title: "SW2.5 オプションルールの一覧と紹介",
     to: "/sw25/forbeginner/optionrule",
-    created: "2024/3/20",
-    lastmod: "2024/3/20",
+    created: "2024/3/21",
+    lastmod: "2024/3/21",
     img: "page-image/optionrule.webp",
     osusume: true,
     explain:
-      "ソード・ワールド2.5（SW2.5/ソドワ）のオプションルールを紹介するです。サプリメントで追加された追加ルールの一覧を掲載。『エピックトレジャリー』掲載の「熟練戦闘」「ポイント割り振り」「トレジャードロップ」など。",
+      "ソード・ワールド2.5（SW2.5/ソドワ）のオプションルールを紹介するです。サプリメントで追加された追加ルールの一覧を掲載。『エピックトレジャリー』掲載の「熟練戦闘」「ポイント割り振り」「トレジャードロップ」など。武具（武器・防具）の加工",
     tags: ["sw25"],
     category: "list",
   },

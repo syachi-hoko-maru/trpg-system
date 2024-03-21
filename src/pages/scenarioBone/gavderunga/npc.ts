@@ -10,6 +10,7 @@ export const mainNpcList = [
     name: "ヴェイネス",
     gender: "男",
     syuzoku: "人間",
+    age: 18,
     gino: [
       ["プリースト", 5],
       ["ファイター", 3],
@@ -61,6 +62,7 @@ export const mainNpcList = [
     name: "グレーシャー",
     gender: "女",
     syuzoku: "エルフ",
+    age: 17,
     gino: [
       ["コンジャラー", 5],
       ["ソーサラー", 5],
@@ -114,6 +116,7 @@ export const mainNpcList = [
     gender: "男",
     syuzoku: "リカント",
     syuzokuDetail: "キツネ",
+    age: 17,
     gino: [
       ["バトルダンサー", 4],
       ["スカウト", 4],
@@ -171,6 +174,7 @@ export const mainNpcList = [
     name: "サーレル",
     gender: "男",
     syuzoku: "レプラカーン",
+    age: 15,
     gino: [
       ["マギテック", 5],
       ["シューター", 4],
@@ -230,4 +234,42 @@ export const mainNpcList = [
 ] as const satisfies (NpcData & {
   selfDescription: string;
   info: [Info, Info, Info];
+})[];
+
+export const allNpcList = [
+  ...mainNpcList,
+  {
+    name: "セバン",
+    gender: "男",
+    syuzoku: "人間",
+    age: 27,
+    gino: [
+      ["マギテック", 8],
+      ["シューター", 9],
+      ["スカウト", 7],
+      ["セージ", 6],
+      ["アルケミスト", 6],
+    ],
+    description: "依頼主の執事にして、魔動列車〈鉄の黒獅子号〉車掌",
+    selfDescription:
+      "あなたたちへの依頼は極秘の超重要任務です。くれぐれも間違いがないよう、よろしくお願いしますよ。",
+    img: "/scenario-image/gavderunga/npc5.webp",
+  },
+  {
+    name: "ギルド支部長",
+    gender: "男",
+    syuzoku: "人間",
+    age: 48,
+    gino: [
+      ["プリースト", 6],
+      ["ファイター", 5],
+      ["セージ", 4],
+      ["レンジャー", 4],
+    ],
+    description: "冒険者ギルドの支部長",
+    selfDescription: "今回の依頼もよろしく頼むぜ。",
+    // img: "/scenario-image/gavderunga/npc5.webp",
+  },
+] as const satisfies (NpcData & {
+  selfDescription: string;
 })[];

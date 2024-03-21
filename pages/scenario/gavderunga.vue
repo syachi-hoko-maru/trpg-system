@@ -13,6 +13,7 @@
 
   <template v-if="show">
     <card-array-by-andml :andml="scenarioFlow" />
+    <item-npc-cards title="NPC一覧" :list="allNpcList" />
     <card-array-by-andml :andml="scenarioFromBone" />
   </template>
   <card>
@@ -25,6 +26,7 @@
 <script setup lang="ts">
 import { getNpcAndml, getSceneTitle } from "~/src/pages/scenarioBone";
 import { gavderungaBone } from "~/src/pages/scenarioBone/gavderunga";
+import { allNpcList } from "~/src/pages/scenarioBone/gavderunga/npc";
 
 const show = ref(true);
 
@@ -74,7 +76,7 @@ PCはとある「秘宝」を護送する魔動列車に乗り、そこで起こ
 
 &3 舞台
 このシナリオはアルフレイム大陸西部、ドーデン地方を舞台にして進行します。
-"鉄と鋼の盟主"キングスレイ鉄鋼共和国の首都キングスフォール（『ルールブックⅠI』p.？？？）で依頼を受け、魔動列車（『ルールブックⅠI』p.）に乗り込むことになります。。
+"鉄と鋼の盟主"キングスレイ鉄鋼共和国の首都キングスフォール（『ルールブックⅠI』p.319）で依頼を受け、魔動列車（『ルールブックⅠI』p.333）に乗り込むことになります。
 
 &3 シナリオの着地点・趣旨
 ？？？
@@ -115,4 +117,3 @@ ${Array.isArray(e.description) ? e.description.join("\n") : e.description}
     .join("\n")
 );
 </script>
-~/src/pages/scenarioBone/gavderunga/gavderunga

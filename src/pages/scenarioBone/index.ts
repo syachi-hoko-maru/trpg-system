@@ -13,6 +13,7 @@ export type NpcData = {
   ryuha?: RyuhaNames;
   img?: string;
   description?: string;
+  selfDescription?: string;
 };
 
 export type ScenarioBone<Place extends string, Npc extends string | NpcData> = {

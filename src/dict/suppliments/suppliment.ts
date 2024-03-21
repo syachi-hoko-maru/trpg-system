@@ -802,7 +802,7 @@ GMなしで1人から遊べるので &em_「遊ぶ人がいない！」って人
       campaign: {
         gameType: "ストーリー",
         explain: [
-          "目的達成のため、グリフォンとともに生活するキャラバンに参加しつつ、荒野の広がるオーレルム地方を冒険するバトルブックです。",
+          "プロローグで設定された目的を達成するため、グリフォンとともに生活するキャラバンに参加しつつ、荒野の広がるオーレルム地方を冒険するバトルブックです。",
         ],
       },
     },
@@ -960,8 +960,37 @@ PLは2人（1人でも可能、ルールブックがあれば3人以上も可能
     bookType: "シナリオ集",
     contents: {
       data: [
-        { type: "scenario", count: 13 },
-        { type: "soloAdventure", count: 4 },
+        {
+          type: "scenario",
+          list: [
+            { title: "知恵の三玉迷宮", reguration: 0 },
+            { title: "狙われたカントリーフェスタ", reguration: 0 },
+            { title: "お宝ざくざく、夢の魔域", reguration: 2 },
+            { title: "絢爛鉄道際の大暴走！", reguration: 2 },
+            { title: "偽りは真実の鏡", reguration: 5 },
+            { title: "ブラックギルドへようこそ", reguration: 5 },
+            { title: "恐竜レースをぶっちぎれ！", reguration: 5 },
+            { title: "魔術王国の蒼穹", reguration: 5 },
+            { title: "魔域が暴走る環状線", reguration: 9 },
+            { title: "傲慢なる女王の試練場", reguration: 9 },
+            { title: "フクロウ魔神の魔域", reguration: 17 },
+            { title: "折れた権威の鉄道計画", reguration: 22 },
+            { title: "ゴブリン討伐の真相", reguration: 34 },
+          ],
+        },
+        {
+          type: "soloAdventure",
+          list: [
+            { title: "汚れた雨の誘惑", reguration: 0, ruleless: true },
+            { title: "水際に潜む危険", reguration: 0, ruleless: true },
+            { title: "奈落に至る記憶", reguration: 2, ruleless: true },
+            {
+              title: "大樹が穢されゆく前に",
+              reguration: 5,
+              createdCharacter: true,
+            },
+          ],
+        },
       ],
     },
     explain: `
@@ -999,4 +1028,18 @@ export const supplimentContentsDict: {
   soloAdventure: { name: "ソロアドベンチャー" },
   syuzoku: { name: "種族" },
   tokugi: { name: "戦闘特技" },
+};
+
+export const gameTypeDict: { [key in GameType]: readonly string[] } = {
+  ランダムマップ: [
+    "ランダムマップ形式では、マップの枠に「タイル」をルールに従ってランダムに配置し、そうして作ったマップを移動しながら冒険をします。",
+    "遊ぶたびに少し違ったマップで遊べたり、未知のタイルへ行くワクワクが楽しめます。",
+  ],
+  固定マップ: [
+    "固定マップ形式はマップが用意されている形式です。",
+    "マップを移動しながら冒険をします。",
+  ],
+  ストーリー: [
+    "ストーリー形式では、マップを移動するのではなく、ストーリーに沿って起こるイベントを追っていく冒険ができます。",
+  ],
 };

@@ -123,18 +123,16 @@ type SupplimentContentsObj<Gino extends string, Syuzoku extends string> =
   | { type: "gino"; list: Gino[] }
   | {
       type: "scenario";
-      count?: number;
       list: { title: string; reguration: number }[];
     }
   | {
-      type: "scenario";
-      count: number;
-      list?: { title: string; reguration: number }[];
-    }
-  | {
       type: "soloAdventure";
-      count: number;
-      list?: { title: string; reguration: number }[];
+      list: {
+        title: string;
+        reguration: number;
+        ruleless?: boolean;
+        createdCharacter?: boolean;
+      }[];
     };
 type SupplimentContents<Gino extends string, Syuzoku extends string> =
   | SupplimentContentsStr<Gino, Syuzoku>
@@ -153,6 +151,7 @@ type SupplimentGroup<
 };
 
 type SupplimentOptionrule = { name: string; detail?: string[] };
+type GameType = "ランダムマップ" | "固定マップ" | "ストーリー";
 type SupplimentData<
   SupplimentList extends string,
   Gino extends string,
@@ -172,7 +171,7 @@ type SupplimentData<
     )[];
     rule?: SupplimentOptionrule[];
     campaign?: {
-      gameType: "ランダムマップ" | "固定マップ" | "ストーリー";
+      gameType: GameType;
       explain: string[];
     };
   };

@@ -1,3 +1,4 @@
+import { title } from "process";
 import type { Gino } from "../ginou";
 import type { Syuzoku } from "../syuzoku";
 import type { BookSmallType } from "./bookType";
@@ -284,7 +285,7 @@ SW2.5の種族については以下でまとめているので参考にしてく
   },
   // ラクシアライフ
   {
-    name: "ラクシアライフ -街の人たちと一般技能",
+    name: "ラクシアライフ -街の人たちと一般技能-",
     // ossusume: 2.5,
     ossusume: 3.5,
     bookType: "ラクシアライフ",
@@ -330,7 +331,15 @@ SW2.5の種族については以下でまとめているので参考にしてく
     ossusume: 1.5,
     bookType: "ツアーサプリ",
     contents: {
-      data: [{ type: "scenario" }],
+      data: [
+        {
+          type: "scenario",
+          list: [
+            { title: "魔剣の迷宮〈欠片喰らい〉の冒険", reguration: 2 },
+            { title: "夜の目を追え", reguration: 4 },
+          ],
+        },
+      ],
       guide: [
         { type: "world", list: ["グランゼール"] },
         { type: "setting", list: ["プレイヤーへのアドバイスとサポート"] },
@@ -349,7 +358,16 @@ SW2.5の種族については以下でまとめているので参考にしてく
     ossusume: 2,
     bookType: "ツアーサプリ",
     contents: {
-      data: [{ type: "scenario" }, "monster"],
+      data: [
+        {
+          type: "scenario",
+          list: [
+            { title: "ラブソングの行方", reguration: 0 },
+            { title: "地下鉄遺跡にて", reguration: 2 },
+          ],
+        },
+        "monster",
+      ],
       guide: [{ type: "world", list: ["キングスフォール"] }],
     },
     explain: `
@@ -369,7 +387,18 @@ SW2.5で &em_鉄道に関する冒険をしたい人 にはオススメです。
     ossusume: 2,
     bookType: "ツアーサプリ",
     contents: {
-      data: [{ type: "scenario" }, "item", "kizyu", "monster"],
+      data: [
+        {
+          type: "scenario",
+          list: [
+            { title: "ガザトオリコに消える", reguration: 0 },
+            { title: "サイレックオードを飛ぶ", reguration: 1 },
+          ],
+        },
+        "item",
+        "kizyu",
+        "monster",
+      ],
       guide: [{ type: "world", list: ["サイレックオード"] }],
     },
     explain: `
@@ -385,7 +414,18 @@ SW2.5で &em_鉄道に関する冒険をしたい人 にはオススメです。
     ossusume: 2.5,
     bookType: "ツアーサプリ",
     contents: {
-      data: [{ type: "scenario" }, "item", "ryuha", "monster"],
+      data: [
+        {
+          type: "scenario",
+          list: [
+            { title: "知られざる天地使いの野望", reguration: 0 },
+            { title: "自由の名の下に", reguration: 2 },
+          ],
+        },
+        "item",
+        "ryuha",
+        "monster",
+      ],
       guide: [{ type: "world", list: ["ユーシズ"] }],
       rule: [
         { name: "授業判定" },
@@ -421,7 +461,15 @@ SW2.5で &em_鉄道に関する冒険をしたい人 にはオススメです。
     ossusume: 2,
     bookType: "博物誌",
     contents: {
-      data: [{ type: "scenario" }, "item", "ryuha", "monster"],
+      data: [
+        {
+          type: "scenario",
+          list: [{ title: "マカジャハットの闇", reguration: 9 }],
+        },
+        "item",
+        "ryuha",
+        "monster",
+      ],
       guide: [{ type: "world", list: ["ブルライト地方"] }],
     },
     explain: `
@@ -435,7 +483,15 @@ SW2.5で &em_鉄道に関する冒険をしたい人 にはオススメです。
     ossusume: 2,
     bookType: "博物誌",
     contents: {
-      data: [{ type: "scenario" }, "item", "ryuha", "monster"],
+      data: [
+        {
+          type: "scenario",
+          list: [{ title: "崩壊トンネルの彼方", reguration: 0 }],
+        },
+        "item",
+        "ryuha",
+        "monster",
+      ],
       guide: [{ type: "world", list: ["ドーデン地方"] }],
     },
     explain: `
@@ -576,7 +632,12 @@ SW2.5で &em_鉄道に関する冒険をしたい人 にはオススメです。
     ossusume: 1,
     bookType: "リプレイ&サプリ",
     contents: {
-      data: [{ type: "scenario" }],
+      data: [
+        {
+          type: "scenario",
+          list: [{ title: "勇気と一人前の証", reguration: 5 }],
+        },
+      ],
       guide: [
         {
           type: "world",
@@ -619,6 +680,35 @@ SW2.5で &em_鉄道に関する冒険をしたい人 にはオススメです。
     name: "ヴァイスシティ",
     ossusume: 3,
     bookType: "バトルブック",
+    contents: {
+      data: ["item", "monster"],
+      rule: [
+        {
+          name: "足手まとい",
+          detail: ["一般人や怪我人を護衛していると不利になるルールです。"],
+        },
+        {
+          name: "逃亡判定",
+          detail: [
+            "一部の魔物との戦闘は「逃亡」できます。",
+            "失敗するとダメージを受けます。",
+          ],
+        },
+        {
+          name: "魔神化",
+          detail: [
+            "〈魔神化血清〉をもって死亡したときなどに「魔神化」され、「魔神化影響点」と「魔神化能力」を得ます。",
+            "「魔神化能力」によってかなり強力になりますが、「魔神化影響点」が溜まってくると完全に魔神となってPCロストとなります。",
+          ],
+        },
+      ],
+      campaign: {
+        gameType: "ランダムマップ",
+        explain: [
+          "コルガナ地方にある、蛮族と魔人が跋扈する危険な街「ヴァイスシティ」を舞台に冒険するバトルブックです。",
+        ],
+      },
+    },
     explain: `
 魔神と蛮族によって &em_ぐっちゃぐちゃにされた街 を舞台に冒険できるサプリです。
 &br
@@ -636,6 +726,39 @@ GMなしで1人から遊べるので &em_「遊ぶ人がいない！」って人
     name: "デモンズライン",
     ossusume: 3.5,
     bookType: "バトルブック",
+    contents: {
+      data: ["item", "monster"],
+      rule: [
+        {
+          name: "疲労度",
+        },
+        {
+          name: "イベント戦闘",
+          detail: [
+            "弱い魔物の集団を、簡易的な戦闘によって討伐するためのルールです。",
+          ],
+        },
+        {
+          name: "逃亡判定",
+          detail: [
+            "一部の魔物との戦闘は「逃亡」できます。",
+            "失敗するとダメージを受けます。",
+          ],
+        },
+        {
+          name: "守人フェロー",
+          detail: [
+            'かつてこの地で活躍した英雄です。"奈落の魔域"の中でのみ、力を貸してくれる強力な存在です。',
+          ],
+        },
+      ],
+      campaign: {
+        gameType: "固定マップ",
+        explain: [
+          "コルガナ地方にある北西部を「守人」とともに踏破し、魔神の襲撃を食い止めるバトルブックです。",
+        ],
+      },
+    },
     explain: `
 個人的な所感としては一番 &em_ルールがわかりやすいかも です。
 &br
@@ -649,6 +772,40 @@ GMなしで1人から遊べるので &em_「遊ぶ人がいない！」って人
     name: "グリフォンロード",
     ossusume: 2,
     bookType: "バトルブック",
+    contents: {
+      data: ["item", "monster"],
+      rule: [
+        {
+          name: "チャレンジ",
+          detail: [
+            "さまざまなイベントを、判定などによって簡易的に処理するためのルールです。",
+          ],
+        },
+        {
+          name: "疲労点",
+        },
+        {
+          name: "バトルギミック",
+          detail: [
+            "基本戦闘にも「場所による有利不利」や「戦っている場所らしさ」を導入するルールです。",
+            "『グリフォンロード』には35個のバトルギミックが載っており、通常のシナリオで使用できそうなものもいくつもあります。",
+          ],
+        },
+        {
+          name: "プラトーン",
+          detail: [
+            "味方NPCをプラトーンとしてまとめ、戦闘に参加させるルールです。",
+            "戦闘時に運用するデータが少なく済むとともに、プラトーン構築を考えるのが楽しくなります。",
+          ],
+        },
+      ],
+      campaign: {
+        gameType: "ストーリー",
+        explain: [
+          "目的達成のため、グリフォンとともに生活するキャラバンに参加しつつ、荒野の広がるオーレルム地方を冒険するバトルブックです。",
+        ],
+      },
+    },
     explain: `
 「剣と荒野と放浪者」で紹介された &em_荒野の広がるオーレルム地方で冒険をする 物語です。
 &em_グリフォンと共に移動するキャラバン に助けられながら冒険するストーリーは &em_独特で、大変面白い です。
@@ -661,6 +818,44 @@ GMなしで1人から遊べるので &em_「遊ぶ人がいない！」って人
     name: "エンシェントブルー",
     ossusume: 0.5,
     bookType: "バトルブック",
+    contents: {
+      data: ["item", "monster"],
+      rule: [
+        {
+          name: "スイッチ",
+          detail: [
+            "プレイヤー1人がPCを2人扱い、戦闘時は「スイッチ」を駆使して戦うという方法です。",
+            "これまでのバトルブックにあった、ソロで遊ぶ場合に判定などのために構築が縛られすぎるという問題を減らしてくれます。",
+            "「スイッチ効果」を活用することで、これまでと少し違った戦闘が楽しめます。",
+          ],
+        },
+        {
+          name: "疲労点",
+        },
+        {
+          name: "チャレンジ",
+          detail: [
+            "さまざまなイベントを、判定などによって簡易的に処理するためのルールです。",
+          ],
+        },
+        {
+          name: "逃亡判定",
+          detail: [
+            "一部の魔物との戦闘は「逃亡」できます。",
+            "失敗するとダメージを受けます。",
+          ],
+        },
+        {
+          name: "足手まとい",
+          detail: ["一般人や怪我人を護衛していると不利になるルールです。"],
+        },
+      ],
+      campaign: {
+        gameType: "ランダムマップ",
+        explain: ["七王群島を冒険し、謎を解き明かすバトルブックです。"],
+      },
+    },
+
     explain: `
 ハーヴェスから出航し、海賊や蛮族によって荒らされている七王群島を舞台に冒険する物語です。
 七王群島はかつては魔法王によって支配されていた土地で、そんなお宝も残っていて……。
@@ -683,6 +878,23 @@ GMなしで1人から遊べるので &em_「遊ぶ人がいない！」って人
     name: "煌日の姫と冴月の王子",
     ossusume: 0.5,
     bookType: "デュオアドベンチャー",
+    contents: {
+      rule: [
+        {
+          name: "支持ポイント",
+        },
+        {
+          name: "ソード・ワールド2.5簡易ルール",
+          detail: [
+            "この『煌日の姫と冴月の王子』はルールブックなしでも遊べるよう、少し簡略化されたルールがついています！",
+          ],
+        },
+      ],
+      campaign: {
+        gameType: "ストーリー",
+        explain: ["姫と王子の2人が次の王の候補となり、冒険をする物語です。"],
+      },
+    },
     explain: `
 ルールブックなしGMなしで遊べることが特徴の関連書籍です。
 PLは2人（1人でも可能、ルールブックがあれば3人以上も可能）の作成済みキャラクターを使用して遊びます。
@@ -698,7 +910,67 @@ PLは2人（1人でも可能、ルールブックがあれば3人以上も可能
     `,
   },
   // シナリオ集
-  // ToDo
+  {
+    name: "ストーリーフラグメンツ",
+    ossusume: 2.5,
+    bookType: "シナリオ集",
+    contents: {
+      data: [
+        {
+          type: "scenario",
+          list: [
+            { title: "過去からの来訪者", reguration: 0 },
+            { title: "砂鷲団潜入調査", reguration: 9 },
+          ],
+        },
+      ],
+    },
+    explain: `
+シナリオを元にしたノベル（バッドエンド）とそのシナリオが2セット載っています。
+シナリオはGMなしでもプレイすることができます。
+が、ちょっとシナリオの難易度が高いです。
+    `,
+  },
+  {
+    name: "猫と星と秘宝",
+    ossusume: 3.5,
+    bookType: "シナリオ集",
+    contents: {
+      data: [
+        {
+          type: "scenario",
+          list: [
+            { title: "沈むゆく街", reguration: 0 },
+            { title: "昇る凶星、堕ちる新星", reguration: 2 },
+            { title: "謎かけ人形の迷宮", reguration: 5 },
+          ],
+        },
+      ],
+    },
+    explain: `
+シナリオを元にしたノベル（バッドエンド）とそのシナリオが3セット載っています。
+シナリオはGMなしでもプレイすることができます。
+&br
+「GMなしで、1人で遊んでみたい！」という方にはおすすめの1冊です。
+    `,
+  },
+  {
+    name: "ギルドマスター・ウォーロックの依頼録",
+    ossusume: 1,
+    bookType: "シナリオ集",
+    contents: {
+      data: [
+        { type: "scenario", count: 13 },
+        { type: "soloAdventure", count: 4 },
+      ],
+    },
+    explain: `
+13本のシナリオと、GMレスで1人で遊べる4本のソロアドベンチャーからなるシナリオ集です。
+&br
+詳しくは以下をご覧ください。
+&button_/blog/irairoku
+`,
+  },
 ];
 
 export const supplimentContentsDict: {
@@ -724,6 +996,7 @@ export const supplimentContentsDict: {
   sampleCharacter: { name: "サンプルキャラクター" },
   scenario: { name: "シナリオ" },
   skill: { name: "練技・呪歌・騎芸などのデータ" },
+  soloAdventure: { name: "ソロアドベンチャー" },
   syuzoku: { name: "種族" },
   tokugi: { name: "戦闘特技" },
 };

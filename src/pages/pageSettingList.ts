@@ -570,7 +570,7 @@ export const pageSettingList: PageSetting[] = [
     category: "forgm",
   },
   {
-    title: "SW2.5特集",
+    title: "SW2.5いろいろな「一覧」",
     to: "/sw25/list",
     created: "2024/3/22",
     lastmod: "2024/3/22",
@@ -581,13 +581,26 @@ export const pageSettingList: PageSetting[] = [
     tags: ["sw25"],
   },
   {
+    title: "SW2.5サプリメントとシナリオ集の一覧と紹介",
+    to: "/sw25/list/supplimentlist",
+    created: "2024/3/29",
+    lastmod: "2024/3/29",
+    img: "page-image/supplimentlist.webp",
+    osusume: false,
+    explain:
+      "ソード・ワールド2.5のサプリメント（拡張ルールブック）やシナリオ集の一覧と内容紹介をするページです。",
+    tags: ["sw25"],
+    category: "list",
+  },
+  {
     title: "SW2.5モノクロマティカの神の一覧と紹介",
     to: "/sw25/list/monochroGod",
     created: "2024/3/22",
     lastmod: "2024/3/22",
     img: "page-image/monochroGod.webp",
     osusume: false,
-    explain: "ソード・ワールド2.5についての特集ページです。",
+    explain:
+      "ソーど・ワールド2.5サプリメント『泡沫世界モノクロマティカ』の舞台である「モノクロマティカ」に登場する5柱の神々について、契約印や祝福も含めて紹介します。",
     tags: ["sw25"],
     category: "list",
   },

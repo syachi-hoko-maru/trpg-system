@@ -17,12 +17,13 @@ export const getExplain = (
 };
 
 export const getContents = (
-  item: SupplimentData<string, Gino, Syuzoku, string, BookSmallType>
+  item: SupplimentData<string, Gino, Syuzoku, string, BookSmallType>,
+  noTitle: boolean = false
 ) => {
   const result: string[] = [];
   if (item.contents) {
     result.push(
-      `&2 『${item.name.replace(/ /g, "¥s")}』のコンテンツ`,
+      noTitle ? "" : `&2 『${item.name.replace(/ /g, "¥s")}』のコンテンツ`,
       ...(item.contents.bigData?.length
         ? [
             "&3 データ集",
@@ -40,7 +41,11 @@ export const getContents = (
                 `- ${
                   supplimentContentsDict[typeof bd === "string" ? bd : bd.type]
                     .name
-                }の追加`,
+                }${
+                  typeof bd !== "string" && bd.type === "scenario"
+                    ? `掲載（${bd.count ? bd.count : bd.list?.length}本）`
+                    : "の追加"
+                }`,
                 // listを持つ時
                 ...(typeof bd !== "string" && bd.list
                   ? bd.list?.map((l) =>
@@ -48,7 +53,11 @@ export const getContents = (
                         ? ""
                         : typeof l === "string"
                         ? `--${l}`
-                        : `--「${l.title}」（成長回数${l.reguration}回）`
+                        : `--「${l.title}」（${
+                            l.reguration
+                              ? `成長回数${l.reguration}回`
+                              : `初期作成`
+                          }）`
                     )
                   : ""),
                 //　種族の場合

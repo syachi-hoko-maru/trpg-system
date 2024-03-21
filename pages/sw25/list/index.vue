@@ -20,7 +20,8 @@ ${pageSettingList
 
 
 &1 サプリメントの紹介
-&em_サプリメント （拡張ルールブック）については以下のページで紹介しています！
+&em_初心者の方のおすすめ のサプリメント （拡張ルールブック）の紹介は以下のページでしています！
+ぜひ合わせてご覧ください。
 &button_/sw25/forbeginner/suppliment/1
 &button_/sw25/forbeginner/suppliment/ranking
 

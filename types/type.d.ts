@@ -121,7 +121,21 @@ type SupplimentContentsStr<Gino extends string, Syuzoku extends string> =
   | "npc";
 type SupplimentContentsObj<Gino extends string, Syuzoku extends string> =
   | { type: "gino"; list: Gino[] }
-  | { type: "scenario"; list?: { title: string; reguration: number }[] };
+  | {
+      type: "scenario";
+      count?: number;
+      list: { title: string; reguration: number }[];
+    }
+  | {
+      type: "scenario";
+      count: number;
+      list?: { title: string; reguration: number }[];
+    }
+  | {
+      type: "soloAdventure";
+      count: number;
+      list?: { title: string; reguration: number }[];
+    };
 type SupplimentContents<Gino extends string, Syuzoku extends string> =
   | SupplimentContentsStr<Gino, Syuzoku>
   | SupplimentContentsObj<Gino, Syuzoku>;
@@ -149,7 +163,7 @@ type SupplimentData<
   name: SupplimentList;
   ossusume: number;
   bookType: BookType;
-  contents?: {
+  contents: {
     bigData?: SupplimentBigContents[];
     data?: SupplimentContents<Gino, Syuzoku>[];
     guide?: (
@@ -157,6 +171,10 @@ type SupplimentData<
       | { type: "setting"; list: string[] }
     )[];
     rule?: SupplimentOptionrule[];
+    campaign?: {
+      gameType: "ランダムマップ" | "固定マップ" | "ストーリー";
+      explain: string[];
+    };
   };
   explain: string;
 };

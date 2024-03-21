@@ -3,7 +3,11 @@
     <template #title> {{ group.type }}について </template>
     <andml v-model:andmls="explain" v-if="explain" />
   </card>
-  <card v-for="item of group.items" :key="item.name" :id="item.name">
+  <card
+    v-for="item of group.items"
+    :key="item.name"
+    :id="item.name.replace(/\s/g, '')"
+  >
     <template #title>
       {{ item.name }}
     </template>

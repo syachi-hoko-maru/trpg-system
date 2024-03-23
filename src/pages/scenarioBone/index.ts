@@ -42,6 +42,16 @@ export type ScenarioEvent<
   npc: Npc[];
 };
 
+export type Monster = {
+  name: string;
+  initiative?: number;
+  externalUrl?: string;
+  /** ダウンロードしたHTMLのリンク（「html/ytsheet/」は省略する） */
+  myUrl?: string;
+  status: { label: string; value?: number; max: number }[];
+  commands?: string;
+};
+
 export const timeBandList = [
   "未明（0時〜3時）",
   "早朝（3時〜6時）",

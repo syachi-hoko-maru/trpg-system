@@ -41,6 +41,10 @@ const andmlLineScriptArray: AndmlScript[] = [
     script: "button-dice_",
     component: resolveComponent("AndmlLineButtonDice"),
   },
+  {
+    script: "copy_",
+    component: resolveComponent("AndmlLineButtonCopy"),
+  },
   // 画像・動画・ツイート埋め込み
   { script: "img_", component: resolveComponent("AndmlLineImgc") },
   { script: "camera_", component: resolveComponent("AndmlLineCamera") },

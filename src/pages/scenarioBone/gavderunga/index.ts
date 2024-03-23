@@ -1,5 +1,7 @@
 import type { ScenarioBone, ScenarioEvent } from "..";
 import { getNpcAndml, getNpcString } from "..";
+import { setMonsterButtons } from "../exportMonster";
+import { gavderungaGolem } from "./monster";
 
 import { mainNpcList } from "./npc";
 
@@ -26,9 +28,31 @@ const researchPart: ScenarioEvent<Place, MainNpcType> = {
       &br
       もし正体を看破したり【バニッシュ】などを使用した場合にはオーガ（『II』p.377『ML』p.77）1体と戦闘になります。
       詳しくは後述の「オーガとの戦闘」を確認してください。`,
+    "&&data_プレイヤーに共有すべき情報",
+    "◇情報収集のルール",
+    "4人のNPCが、各3つの情報を持ちます。1つは当人について、1つは秘宝についてです。もう1つは、そのNPCの情報を2つとも取得するまで、タイトルもわかりません。",
+    "情報の取得によって、今後の展開が変わることがあります。",
+    "4回、情報収集を行うか、ある条件を満たすとイベントが発生します。ひとまず4回は調査できるものとして、どの情報を聞くか決めてください。",
+    "&br",
+    "◇NPCと得られる情報",
     ...mainNpcList
       .reduce((p, n) => {
-        p.push(`&3 ${n.name}`, getNpcString(n)[1]);
+        p.push(`${n.name}（${getNpcString(n)[1]}）`);
+        n.info.forEach((i) => {
+          if (Object.hasOwn(i, "secret")) {
+            p.push(`・？？？`);
+          } else {
+            p.push(`・${i.title}`);
+          }
+        });
+        return p;
+      }, [] as string[])
+      .filter((s) => s),
+    "&&&",
+    "&3 各NPCの情報リスト",
+    ...mainNpcList
+      .reduce((p, n) => {
+        p.push(`&4 ${n.name}`, getNpcString(n)[1]);
         n.info.forEach((i) => {
           if (Object.hasOwn(i, "secret")) {
             p.push(
@@ -74,7 +98,8 @@ export const gavderungaBone: ScenarioBone<
       {
         name: "依頼を受ける",
         place: "冒険者ギルド支部",
-        description: "",
+        description:
+          "PCたちは冒険者ギルド支部〈 &ruby_薫風,くんぷう の空〉で幾度か冒険をし、手柄を立てた冒険者だ。 &br そんな君たちは、支部長から「ちょっと来てくれ」と声をかけられ、支部の応接室で「秘密の依頼」について説明される。 &br とある貴族からの依頼で、彼が持つ秘宝をキングスフォールから彼の別荘まで運ぶため、魔動列車に載って護衛をして欲しい、という依頼だ。 &br 受けることにすれば、明日朝5時にグランドターミナル駅へ向かい、依頼人の執事の「セバン」と会って指示を仰ぐように言われる。",
         npc: ["冒険者ギルド支部長"],
       },
     ],
@@ -86,7 +111,8 @@ export const gavderungaBone: ScenarioBone<
       {
         name: "列車に乗り込む",
         place: "グランドターミナル駅",
-        description: "",
+        description:
+          "朝早く起きたPCたちは、支部長が用意した馬車に乗って始発前ののグランドターミナル駅へ向かう。依頼人の執事の「セバン」の案内で、ドーデン横断鉄道のホームに止まっている臨時列車〈鉄の黒獅子号〉に乗り込む。",
         npc: mainNpcList,
       },
     ],
@@ -99,9 +125,10 @@ export const gavderungaBone: ScenarioBone<
         name: "列車の乗員と自己紹介をかわす",
         place: "魔動列車",
         description: [
-          `魔動列車に乗ると、 ${getNpcAndml(
+          "魔動列車に乗り込むと、セバンが「私が依頼人の執事で、臨時列車〈鉄の黒獅子号〉の車掌も務める「セバン」です。あなたたちへの依頼は極秘の超重要任務です。くれぐれも間違いがないよう、よろしくお願いしますよ。」と挨拶をする。",
+          `その後、 ${getNpcAndml(
             mainNpcList[0]
-          )} が真っ先に口を開き、自己紹介を始めます。`,
+          )} が真っ先に口を開き、自己紹介を始める。`,
           "&br",
           mainNpcList
             .map((n) => `${n.name}「${n.selfDescription}」`)
@@ -113,8 +140,9 @@ export const gavderungaBone: ScenarioBone<
         name: "列車内で秘宝を確認",
         place: "魔動列車",
         description: [
-          "依頼主の執事で車掌の「セバン」の案内で秘宝を確認します。",
-          "秘宝は直径50cmほどの球体で、見たものはまがまがしいオーラを感じることでしょう。",
+          "セバンの案内で、隣の客車へ行き、秘宝を確認する。",
+          "秘宝は直径15cmほどの球体で、見たものはまがまがしいオーラを感じる。",
+          "セバンは「私が、この客車で秘宝を見張っておきますので、皆さんは隣の客車で過ごしてください。」と言い、PCたちを元の客車へ案内する。",
         ],
         npc: mainNpcList,
       },
@@ -138,14 +166,19 @@ export const gavderungaBone: ScenarioBone<
           )} が神聖魔法【バニッシュ】を使用し、オーガとの戦闘になる。`,
           monster,
           "&3 戦闘後",
-          "もし戦闘が昼の時間に行われていたなら、まだ行っていない分の情報調査を行うことができる。",
+          "",
         ],
         npc: mainNpcList,
       },
       {
         name: "秘宝がなくなる",
         place: "魔動列車",
-        description: [""],
+        description: [
+          "戦闘後、魔動列車に影響があり、軽い火災となる。",
+          "15分ほど、他の車両にある水などを使いながら、消化活動を行う。",
+          "消化が終わり、魔動列車が再び動き出した後、秘宝のある客車へ戻ったセバンが「秘宝が！」と叫ぶ。",
+          "セバンが戻ってきて「犯人はあなたたちの中にいます。2時間以内に犯人が見つからなければ、全員を処して秘宝をお返しいただきます。」と言う。PCは2時間以内に犯人を指摘しなければならない。",
+        ],
         npc: mainNpcList,
       },
     ],
@@ -157,7 +190,10 @@ export const gavderungaBone: ScenarioBone<
       {
         name: "犯人を推理する（調査パート）",
         place: "魔動列車",
-        description: "",
+        description: [
+          "さらに追加で2回、調査を行うことができる。",
+          "もし戦闘が昼の時間に行われていたなら、まだ行っていない分の情報調査回数分も含め行うことができる。",
+        ],
         npc: mainNpcList,
       },
       {
@@ -180,6 +216,7 @@ export const gavderungaBone: ScenarioBone<
           "&br",
           "－戦闘開始－",
           "&br",
+          setMonsterButtons(gavderungaGolem),
         ],
         npc: mainNpcList,
       },

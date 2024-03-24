@@ -40,6 +40,8 @@ declare type PageSetting = {
   readonly explain?: string | string[];
   hiddenFlag?: boolean;
   noSearch?: boolean;
+  /** 検索ページなどを考え、noSearchとは別で必要 */
+  noGoogleIndex?: boolean;
   readonly specialPage?: boolean;
   readonly tags: PageTag[];
   readonly noamazon?: boolean;

@@ -180,6 +180,7 @@ export const pageSettingList: PageSetting[] = [
     img: `page-image/omikuji_${i}.webp`,
     osusume: false,
     noSearch: true,
+    noGoogleIndex: true,
     explain: `あなたの今年の運勢は${f}！？　ソード・ワールド2.5（SW2.5/ソドワ）の運勢を占う「ソドワおみくじ」です！`,
     tags: ["sw25", "tool"],
   })),
@@ -586,6 +587,7 @@ export const pageSettingList: PageSetting[] = [
     created: "2024/3/29",
     lastmod: "2024/3/29",
     img: "page-image/supplimentlist.webp",
+    noGoogleIndex: true,
     osusume: false,
     explain:
       "ソード・ワールド2.5（SW2.5/ソドワ）のサプリメント（拡張ルールブック）やシナリオ集の一覧と内容紹介をするページです。",
@@ -716,6 +718,7 @@ export const pageSettingList: PageSetting[] = [
     img: "page-image/me.webp",
     osusume: false,
     noSearch: true,
+    noGoogleIndex: true,
     explain:
       "しゃちほこ丸（@syachi_hoko_trp）のスキルや経験に関するページ。ウェブプログラミング（Node.js/TypeScript/Vue）など。",
     tags: ["me", "tech"],
@@ -728,6 +731,7 @@ export const pageSettingList: PageSetting[] = [
     explain: "管理人しゃちほこ丸が主催するTRPGセッションに関するページです。",
     osusume: false,
     noSearch: true,
+    noGoogleIndex: true,
     tags: ["me", "trpg"],
   },
   {
@@ -739,6 +743,7 @@ export const pageSettingList: PageSetting[] = [
       "ネタバレ無。ソード・ワールド2.5（SW2.5/ソドワ）×マーダーミステリー（マダミス）という最強の掛け算、『断ち切られるべき呪い』（ゲームマスタリーマガジン VOL.10 付録）をしゃちほこ丸が主催する際に確認していただくページです。",
     osusume: false,
     noSearch: true,
+    noGoogleIndex: true,
     tags: ["me", "sw25"],
   },
   {
@@ -786,6 +791,7 @@ export const pageSettingList: PageSetting[] = [
     lastmod: "2023/3/1",
     specialPage: true,
     noSearch: true,
+    noGoogleIndex: true,
     explain:
       "当ウェブサイトのライトモード/ダークモードの切り替え設定ができるページです。",
     tags: [],
@@ -796,6 +802,7 @@ export const pageSettingList: PageSetting[] = [
     lastmod: "2023/3/29",
     specialPage: true,
     noSearch: true,
+    noGoogleIndex: true,
     explain:
       "当ウェブサイトのサイトポリシーを掲載しています。本サイトはTRPGのファンサイトです。本サイトへのリンクは自由に掲載できます。Googleアナリティクスを使用しています。",
     tags: [],
@@ -807,6 +814,7 @@ export const pageSettingList: PageSetting[] = [
     lastmod: "2023/9/14",
     specialPage: false,
     noSearch: true,
+    noGoogleIndex: true,
     explain:
       "管理人しゃちほこ丸の連絡先メールアドレス及びTwitterアカウントを掲載しています。",
     tags: [],
@@ -818,6 +826,7 @@ export const pageSettingList: PageSetting[] = [
     lastmod: "2023/3/1",
     hiddenFlag: true,
     noSearch: true,
+    noGoogleIndex: true,
     explain: "エラーが発生した際に表示されるページです。",
     tags: [],
     noamazon: true,

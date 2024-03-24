@@ -51,6 +51,7 @@
 </template>
 
 <script setup lang="ts">
+import { isHidden } from "~/src/pages/getPageSetting";
 import { nowDate } from "~/src/util/date";
 
 const route = useRoute();
@@ -99,6 +100,14 @@ const changePage = () => {
       : "") + $templateText.title;
 
   const meta = [
+    {
+      hid: "robots",
+      name: "robots",
+      content:
+        pageSetting.value?.noGoogleIndex || isHidden(pageSetting.value)
+          ? "noindex"
+          : "all",
+    },
     {
       hid: "og:url",
       name: "og:url",

@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /animations/
+Disallow: /html/
+Disallow: /sound/
+Sitemap: https://trpg.syachi.work/sitemap.xml
+Sitemap: https://trpg.syachi.work/sitemap.txt

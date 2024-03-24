@@ -655,7 +655,7 @@ SW2.5で &em_鉄道に関する冒険をしたい人 にはオススメです。
     contents: {
       data: [
         {
-          type: "scenario",
+          type: "soloAdventure",
           list: [{ title: "勇気と一人前の証", reguration: 5 }],
         },
       ],

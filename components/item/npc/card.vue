@@ -22,7 +22,9 @@
                   .join("/ ")
               }}
             </div>
-            <div class="desc my-2">{{ npc.description }}</div>
+            <div class="desc my-2">
+              <Andml :andmls="npc.description ? npc.description : ''" />
+            </div>
           </div>
         </div>
         <div class="mb-3" v-else>
@@ -39,7 +41,9 @@
                 .join("/ ")
             }}
           </div>
-          <div class="desc my-2">{{ npc.description }}</div>
+          <div class="desc my-2">
+            <Andml :andmls="npc.description ? npc.description : ''" />
+          </div>
         </div>
         <div class="serif">「{{ npc.selfDescription }}」</div>
       </div>

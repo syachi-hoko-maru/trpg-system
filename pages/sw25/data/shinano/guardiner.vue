@@ -6,7 +6,11 @@
       <template v-for="d of onmyojutsuData">
         <ItemHead3>{{ d.level }}レベル陰陽術データ</ItemHead3>
         <div class="onmyojutsu-table">
-          <table class="onmyojutsu" v-for="l of d.list">
+          <table
+            class="onmyojutsu"
+            :class="$vuetify.theme.current.dark ? '' : 'light'"
+            v-for="l of d.list"
+          >
             <tr>
               <td class="level">{{ d.level }}</td>
               <td colspan="5" class="name long py-2">
@@ -115,22 +119,29 @@ div.onmyojutsu-table {
   table.onmyojutsu {
     table-layout: fixed;
     margin: 0.7rem 0;
+    &.light {
+      tr {
+        td {
+          background-color: #ddd;
+        }
+      }
+    }
+
     tr {
       td {
         min-width: 2.5rem;
         max-width: 2.5rem;
         padding: 0.2rem;
         text-align: center;
+        background-color: #393939;
         &.long {
           text-align: left;
         }
         &.level {
-          background-color: #3d3d3d;
-          color: #fff;
         }
         &.name {
           font-size: 1.25rem;
-          background-color: #333;
+          background-color: #2c2c2c;
           color: #fff;
         }
         &.label {

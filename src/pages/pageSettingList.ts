@@ -208,7 +208,7 @@ export const pageSettingList: PageSetting[] = [
     title: "SW2.5 同人サプリメント「シナノシマ 妖との戦い」（仮）",
     to: "/sw25/data/shinano",
     img: "page-image/shinano.webp",
-    lastmod: "2023/6/20",
+    lastmod: "2024/3/27",
     // osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5/ソドワ）で和風ファンタジーを遊ぶために管理人が考えた舞台「シナノシマ」（いわゆるオリジナル大陸）の世界設定、そのオリジナル技能・オリジナル種族・オリジナル流派などを紹介します。ソード・ワールドにおけるオリジナル設定やオリジナル要素が好きな方はぜひご覧ください。",
@@ -218,7 +218,7 @@ export const pageSettingList: PageSetting[] = [
     title: "SW2.5 オリジナル技能「ガーディナー」と陰陽術",
     to: "/sw25/data/shinano/guardiner",
     img: "page-image/shinano.webp",
-    lastmod: "2023/6/20",
+    lastmod: "2024/3/27",
     // osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5/ソドワ）におけるオリジナル技能、陰陽術という魔法を使って戦う「ガーディナー」技能についての解説ページです。ソード・ワールドにおけるオリジナル設定やオリジナル要素が好きな方はぜひご覧ください。",

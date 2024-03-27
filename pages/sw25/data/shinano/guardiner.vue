@@ -11,7 +11,7 @@
               <td class="level">{{ d.level }}</td>
               <td colspan="5" class="name long py-2">
                 【
-                <ruby>
+                <ruby :id="`table_${l.name}`">
                   {{ l.name }}
                   <rp>(</rp>
                   <rt>{{ l.ruby }}</rt>
@@ -76,6 +76,7 @@
         </div>
       </template>
     </Card>
+    <card-array-by-andml :andml="onmyojutsuIndex" />
   </pages-shinano>
 </template>
 
@@ -84,6 +85,22 @@ import { onmyojutsuData } from "~/src/shinano/data/guardiner";
 import { guardinerAndml } from "~/src/shinano/pages/guardiner";
 
 const andml_main = guardinerAndml;
+const onmyojutsuIndex = `
+&1 陰陽術索引
+${onmyojutsuData
+  .map((a) => a.list.map((l) => ({ ...l, level: a.level })))
+  .flat()
+  .sort((a, b) => {
+    return a.ruby.localeCompare(b.ruby, "ja");
+  })
+  .map(
+    (s) =>
+      `- &link_#table_${s.name},【${s.name}】（陰陽/${
+        s.type === "-" ? "特殊" : s.type
+      }¥s${s.level}）`
+  )
+  .join("\n")}
+`;
 </script>
 
 <style lang="scss" scoped>
@@ -130,9 +147,9 @@ div.onmyojutsu-table {
           max-width: 3.5rem;
         }
         &.target {
-          width: 8rem;
-          min-width: 8rem;
-          max-width: 8rem;
+          width: 8.5rem;
+          min-width: 8.5rem;
+          max-width: 8.5rem;
         }
         &.range {
           width: 6rem;

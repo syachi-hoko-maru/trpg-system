@@ -7,11 +7,11 @@ type EffectLikeMagicTarget =
 type EffectLikeMagic = {
   move: "主" | "補助" | "補助（戦闘準備）";
   mp: number;
-  time: number | "一瞬";
+  time: number | "一瞬" | "特殊";
   teiko: "必中" | "半減" | "消滅" | "任意" | "なし";
 } & (
   | {
-      target: "術者";
+      target: "術者" | { range: number; max: number };
       range: "術者";
       form: "-";
     }
@@ -154,7 +154,7 @@ export const onmyojutsuData: {
         form: "起点指定",
         time: 3,
         teiko: "任意",
-        effect: "対象は妖から受けるダメージを全て-2点します。",
+        effect: "対象が妖から受けるダメージを全て-2点します。",
       },
       {
         name: "水幻泡",
@@ -215,6 +215,73 @@ export const onmyojutsuData: {
         teiko: "なし",
         effect:
           "儀式の儀式達成値を「2d+ガーディナー技能レベル+精神抵抗力ボーナス」点上昇させます。",
+      },
+    ],
+  },
+  {
+    level: 3,
+    list: [
+      {
+        name: "水行清泉",
+        ruby: "スイギョウセイセン",
+        type: "水・氷",
+        gishiki: true,
+        hatsudo: 9,
+        shiyo: 4,
+        gaiyo: "儀式による水の力で味方を癒す。",
+        move: "主",
+        mp: 2,
+        target: { range: 20, max: 10 },
+        range: 10,
+        form: "起点指定",
+        time: 3,
+        teiko: "任意",
+        effect:
+          "対象の受けている効果を、儀式達成値を達成値として解除を試みることができます。",
+      },
+      {
+        name: "土幻根",
+        ruby: "ドゲンコン",
+        type: "土",
+        gaiyo: "土の幻で根を張り回復する。",
+        move: "主",
+        mp: 3,
+        target: "術者",
+        range: "術者",
+        form: "-",
+        time: "特殊",
+        teiko: "任意",
+        effect: "対象は次の手番の開始時にHPを10点かMPを5点、回復します。",
+      },
+      {
+        name: "火幻纏",
+        ruby: "カゲンテン",
+        type: "火",
+        gaiyo: "火の幻を纏う。",
+        move: "補助",
+        mp: 3,
+        target: "1体",
+        range: "接触",
+        form: "-",
+        time: 1,
+        teiko: "消滅",
+        effect:
+          "対象による近接攻撃または陰陽術を使用してダメージの決定に威力表を使用する時、威力を10増やす。",
+      },
+      {
+        name: "風幻波",
+        ruby: "フウゲンハ",
+        type: "風",
+        gaiyo: "風の幻で妖の存在を把握する。",
+        move: "補助",
+        mp: 3,
+        target: { range: 50, max: 100 },
+        range: "術者",
+        form: "-",
+        time: "一瞬",
+        teiko: "必中",
+        effect:
+          "対象範囲内に妖がいるかどうかがわかります。どこにいるか、何体いるか、どんな妖かは分かりません。",
       },
     ],
   },

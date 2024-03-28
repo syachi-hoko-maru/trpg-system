@@ -94,7 +94,7 @@
             </tr>
             <tr>
               <td class="label">効果</td>
-              <td colspan="7" class="long">{{ l.effect }}</td>
+              <td colspan="7" class="long"><Andml :andmls="l.effect" /></td>
             </tr>
           </table>
         </div>

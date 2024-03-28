@@ -51,6 +51,8 @@ const andmlLineScriptArray: AndmlScript[] = [
   { script: "youtube_", component: resolveComponent("AndmlLineYoutube") },
   { script: "tweet_", component: resolveComponent("AndmlLineTweet") },
   { script: "lottie_", component: resolveComponent("ItemLottie") },
+  // ソドワ用
+  { script: "weapon_", component: resolveComponent("ItemSw25Weapon") },
   // 更新日時用
   { script: "date_", component: resolveComponent("AndmlLineDate") },
   // 告知・宣伝

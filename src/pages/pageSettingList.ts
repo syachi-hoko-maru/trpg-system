@@ -228,7 +228,7 @@ export const pageSettingList: PageSetting[] = [
     title: "SW2.5 オリジナル種族「クローリー」",
     to: "/sw25/data/shinano/crawley",
     img: "page-image/shinano.webp",
-    lastmod: "2023/6/20",
+    lastmod: "2024/3/28",
     // osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5/ソドワ）におけるオリジナル種族、鳥の姿を持つ「クローリー」についての解説ページです。ソード・ワールドにおけるオリジナル設定やオリジナル要素が好きな方はぜひご覧ください。",

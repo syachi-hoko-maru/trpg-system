@@ -5,6 +5,7 @@
 </template>
 
 <script setup lang="ts">
+import { crawleyAndml } from "~/src/shinano/pages/crawley";
 import { guardinerAndml } from "~/src/shinano/pages/guardiner";
 import { mainAndml } from "~/src/shinano/pages/main";
 
@@ -18,7 +19,12 @@ const andml1 = `
 const pages = [
   { title: "メインページ", andml: mainAndml, page: "/sw25/data/shinano" },
   {
-    title: "「ガーディナー」と陰陽術",
+    title: "種族クローリー",
+    andml: crawleyAndml,
+    page: "/sw25/data/shinano/crawley",
+  },
+  {
+    title: "ガーディナー技能と陰陽術",
     andml: guardinerAndml,
     page: "/sw25/data/shinano/guardiner",
   },

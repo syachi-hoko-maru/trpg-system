@@ -56,6 +56,8 @@ export const mainNpcList = [
         secret: true,
       },
     ],
+    dm: "俺は",
+    bonus: [4, 4],
     img: "/scenario-image/gavderunga/npc1.webp",
   },
   {
@@ -109,6 +111,8 @@ export const mainNpcList = [
         secret: true,
       },
     ],
+    dm: "俺は",
+    bonus: [2, 6],
     img: "/scenario-image/gavderunga/npc2.webp",
   },
   {
@@ -169,6 +173,8 @@ export const mainNpcList = [
         secret: true,
       },
     ],
+    dm: "俺は",
+    bonus: [8, 0],
     img: "/scenario-image/gavderunga/npc3.webp",
   },
   {
@@ -230,11 +236,15 @@ export const mainNpcList = [
         secret: true,
       },
     ],
+    dm: "俺は",
+    bonus: [6, 2],
     img: "/scenario-image/gavderunga/npc4.webp",
   },
 ] as const satisfies (NpcData & {
   selfDescription: string;
   info: [Info, Info, Info];
+  dm: string;
+  bonus: [number, number];
 })[];
 
 export const allNpcList = [

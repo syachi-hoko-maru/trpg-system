@@ -218,7 +218,7 @@ export const pageSettingList: PageSetting[] = [
     title: "SW2.5 オリジナル技能「ガーディナー」と陰陽術",
     to: "/sw25/data/shinano/guardiner",
     img: "page-image/shinano.webp",
-    lastmod: "2024/3/27",
+    lastmod: "2024/3/28",
     // osusume: true,
     explain:
       "ソード・ワールド2.5（SW2.5/ソドワ）におけるオリジナル技能、陰陽術という魔法を使って戦う「ガーディナー」技能についての解説ページです。ソード・ワールドにおけるオリジナル設定やオリジナル要素が好きな方はぜひご覧ください。",

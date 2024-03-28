@@ -14,6 +14,15 @@
             <tr>
               <td class="level">{{ d.level }}</td>
               <td colspan="5" class="name long py-2">
+                <span>
+                  {{
+                    l.move === "補助（戦闘準備）"
+                      ? "▸▸△"
+                      : l.move === "補助"
+                      ? "▸▸"
+                      : ""
+                  }}
+                </span>
                 【
                 <ruby :id="`table_${l.name}`">
                   {{ l.name }}
@@ -50,13 +59,16 @@
                       : "2〜3"
                   }}エリア
                   <br />
-                  （半径{{ l.target.range }}m）/{{ l.target.max }}
+                  <span class="small">
+                    （半径{{ l.target.range }}m）/{{ l.target.max }}
+                  </span>
                 </template>
               </td>
               <td class="label">射程<br />/形状</td>
               <td class="range">
                 <template v-if="typeof l.range === 'number'">
-                  {{ l.range <= 10 ? "1" : "2" }}（{{ l.range }}m）
+                  {{ l.range <= 10 ? "1" : "2" }}
+                  <span class="small">（{{ l.range }}m）</span>
                 </template>
                 <template v-else>
                   {{ l.range }}
@@ -64,7 +76,15 @@
                 <br />/{{ l.form }}
               </td>
               <td class="label">時間</td>
-              <td>{{ l.time }}</td>
+              <td class="time">
+                <template v-if="getTimeString(l.time).length >= 2">
+                  {{ getTimeString(l.time)[0] }}<br />
+                  <span class="small"> {{ getTimeString(l.time)[1] }} </span>
+                </template>
+                <template v-else>
+                  {{ getTimeString(l.time)[0] }}
+                </template>
+              </td>
               <td class="label">抵抗</td>
               <td>{{ l.teiko }}</td>
             </tr>
@@ -85,6 +105,7 @@
 </template>
 
 <script setup lang="ts">
+import { getTimeString } from "~/src/shinano/data";
 import { onmyojutsuData } from "~/src/shinano/data/guardiner";
 import { guardinerAndml } from "~/src/shinano/pages/guardiner";
 
@@ -134,23 +155,28 @@ div.onmyojutsu-table {
         padding: 0.2rem;
         text-align: center;
         background-color: #393939;
+        span.small {
+          font-size: 0.75rem;
+        }
         &.long {
           text-align: left;
         }
         &.level {
+          background-color: #333;
+          color: #fff;
         }
         &.name {
           font-size: 1.25rem;
-          background-color: #2c2c2c;
+          background-color: #222;
           color: #fff;
         }
         &.label {
           background-color: #555;
           color: #ddd;
           padding: 0.3rem 0;
-          width: 3rem;
-          min-width: 3rem;
-          max-width: 3rem;
+          width: 2.7rem;
+          min-width: 2.7rem;
+          max-width: 2.7rem;
         }
         &.mp {
           width: 3.5rem;
@@ -158,14 +184,19 @@ div.onmyojutsu-table {
           max-width: 3.5rem;
         }
         &.target {
-          width: 8.5rem;
-          min-width: 8.5rem;
-          max-width: 8.5rem;
+          width: 7.25rem;
+          min-width: 7.25rem;
+          max-width: 7.25rem;
         }
         &.range {
-          width: 6rem;
-          min-width: 6rem;
-          max-width: 6rem;
+          width: 5.75rem;
+          min-width: 5.75rem;
+          max-width: 5.75rem;
+        }
+        &.time {
+          width: 4.5rem;
+          min-width: 4.5rem;
+          max-width: 4.5rem;
         }
       }
     }

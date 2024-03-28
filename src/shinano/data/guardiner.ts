@@ -1,38 +1,12 @@
-type EffectLikeMagicTarget =
-  | "1体"
-  | "1体全"
-  | "1体X"
-  | "儀式"
-  | { range: number; max: number };
-type EffectLikeMagic = {
-  move: "主" | "補助" | "補助（戦闘準備）";
-  mp: number;
-  time: number | "一瞬" | "特殊";
-  teiko: "必中" | "半減" | "消滅" | "任意" | "なし";
-} & (
-  | {
-      target: "術者" | { range: number; max: number };
-      range: "術者";
-      form: "-";
-    }
-  | {
-      target: EffectLikeMagicTarget;
-      range: number;
-      form: "起点指定" | "射撃" | "貫通" | "突進";
-    }
-  | {
-      target: EffectLikeMagicTarget;
-      range: "接触";
-      form: "-";
-    }
-);
+import type { EffectLikeMagic, EffectLikeMagicTarget } from ".";
+
 type Onmyojutsu = {
   name: string;
   ruby: string;
   type: "-" | "土" | "水・氷" | "火" | "風" | "光" | "闇";
   gaiyo: string;
   effect: string;
-} & EffectLikeMagic &
+} & EffectLikeMagic<EffectLikeMagicTarget | "儀式"> &
   (
     | { gishiki?: false }
     | {
@@ -266,7 +240,7 @@ export const onmyojutsuData: {
         time: 1,
         teiko: "消滅",
         effect:
-          "対象による近接攻撃または陰陽術を使用してダメージの決定に威力表を使用する時、威力を10増やす。",
+          "対象による近接攻撃または陰陽術を使用してダメージの決定に威力表を使用する時、威力を10増やします。",
       },
       {
         name: "風幻波",
@@ -282,6 +256,72 @@ export const onmyojutsuData: {
         teiko: "必中",
         effect:
           "対象範囲内に妖がいるかどうかがわかります。どこにいるか、何体いるか、どんな妖かは分かりません。",
+      },
+    ],
+  },
+  {
+    level: 4,
+    list: [
+      {
+        name: "火行炎渦",
+        ruby: "カギョウエンカ",
+        type: "火",
+        gishiki: true,
+        hatsudo: 25,
+        shiyo: 20,
+        gaiyo: "儀式による火の力で敵を焼き尽くす。",
+        move: "主",
+        mp: 5,
+        target: "1体",
+        range: 50,
+        form: "射撃",
+        time: "一瞬",
+        teiko: "半減",
+        effect: "対象に「儀式達成値」点の火属性の魔法ダメージを与えます。",
+      },
+      {
+        name: "土幻震",
+        ruby: "ドゲンシン",
+        type: "土",
+        gaiyo: "土の幻で地を震わせ敵を攻撃する。",
+        move: "主",
+        mp: 6,
+        target: { range: 20, max: 5 },
+        range: 20,
+        form: "起点指定",
+        time: "一瞬",
+        teiko: "消滅",
+        effect:
+          "対象に「威力30+魔力」点の物理ダメージを与えます。この魔法に対する抵抗は生命抵抗判定で行います。",
+      },
+      {
+        name: "水幻生",
+        ruby: "スイゲンショウ",
+        type: "水・氷",
+        gaiyo: "水の幻で癒す。",
+        move: "補助",
+        mp: 3,
+        target: "1体",
+        range: "接触",
+        form: "-",
+        time: "一瞬",
+        teiko: "消滅",
+        effect: "対象のHPを「魔力/2」点（端数切り上げ）だけ回復します。",
+      },
+      {
+        name: "風幻追",
+        ruby: "フウゲンツイ",
+        type: "風",
+        gaiyo: "風の幻で追い風を吹かせる。",
+        move: "補助（戦闘準備）",
+        mp: 3,
+        target: { range: 10, max: 5 },
+        range: "術者",
+        form: "-",
+        time: 1,
+        teiko: "必中",
+        effect:
+          "対象は移動力が+3され、先制判定の達成値に+1のボーナス修正を与えます。",
       },
     ],
   },

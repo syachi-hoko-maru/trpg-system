@@ -115,6 +115,7 @@ div.sw25-table {
         background-color: #555;
         color: #ddd;
         padding: 0.3rem 0;
+        text-align: center;
         width: 2.7rem;
         min-width: 2.7rem;
         max-width: 2.7rem;

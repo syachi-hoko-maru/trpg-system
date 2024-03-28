@@ -7,12 +7,18 @@ type ItemCategory =
   | Accessory;
 export type Item<Category extends ItemCategory> = {
   name: string;
+  /** 内部識別用 */
+  group?: string;
   price: number | "-";
   known: number;
-  shape?: string;
   category: Category;
-  gaiyo?: string;
-  effect?: string;
+} & ({ shape?: false } | ItemDetails);
+export type ItemDetail = Item<ItemCategory> & ItemDetails;
+
+type ItemDetails = {
+  shape: string;
+  gaiyo: string;
+  effect: string[];
 };
 
 export type WeaponArmorRank = "B" | "A" | "S" | "SS";
@@ -47,7 +53,9 @@ const armorTypeList = [...yoroiList, "盾"] as const;
 /** 薬草類・ポーション類 */
 type YakusoPotion = "薬草" | "ポーション";
 /** 冒険者技能用アイテム */
-type BokenGino = "冒険者技能用アイテム" | "冒険者技能用アイテム（消耗品）";
+export type BokenGino =
+  | "冒険者技能用アイテム"
+  | "冒険者技能用アイテム（消耗品）";
 /** 冒険道具類 */
 type BokenDogu = "冒険道具類" | "冒険道具類（消耗品）";
 /** 装飾品 */

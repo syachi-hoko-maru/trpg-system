@@ -13,7 +13,7 @@ export const mainNpcList = [
     age: 18,
     gino: [
       ["プリースト", 5],
-      ["ファイター", 3],
+      ["ファイター", 4],
       ["セージ", 2],
     ],
     description:
@@ -118,8 +118,9 @@ export const mainNpcList = [
     syuzokuDetail: "キツネ",
     age: 17,
     gino: [
-      ["バトルダンサー", 4],
-      ["スカウト", 4],
+      ["バトルダンサー", 5],
+      ["スカウト", 5],
+      ["エンハンサー", 4],
     ],
     description: "キツネのリカントの男。舞うように戦う戦舞士。",
     selfDescription:

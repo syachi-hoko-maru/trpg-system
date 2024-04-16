@@ -19,6 +19,8 @@ jobs:
     outputs:
       token: ${{ steps.generate.outputs.token }}
     steps:
+      - name: Checkout Main Repo
+        uses: actions/checkout@v4
       - name: Generate GitHub Apps token
         id: generate
         env:

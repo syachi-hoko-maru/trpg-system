@@ -1,0 +1,67 @@
+name: _deploy
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # プライベートリポジトリを指定
+          repository: syachi-hoko-maru/trpg-system
+          # 秘密鍵を指定
+          ssh-key: ${{ secrets.PRIVATE_REPO_SSH_KEY }}
+      - name: Setup Node.js env
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+        # Cashから諸々を取得する
+      - name: Restore Cash Module
+        uses: actions/cache/restore@v4
+        with:
+          path: "node_modules"
+          key: module-${{ github.sha }}
+      - name: Restore Cash PAAPI
+        uses: actions/cache/restore@v4
+        with:
+          path: "src/temp/amazon.json"
+          key: paapi-${{ github.sha }}
+      - name: Restore Cash Assets
+        uses: actions/cache/restore@v4
+        with:
+          path: "assets"
+          key: assets-${{ github.sha }}
+      - name: Restore Cash Public
+        uses: actions/cache/restore@v4
+        with:
+          path: "public"
+          key: public-${{ github.sha }}
+        # generate / after generate
+      - name: Generate
+        run: yarn generate
+      - name: After-Generate
+        run: yarn after
+        # pagesの設定
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: github-pages
+          path: "./.output/public"
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

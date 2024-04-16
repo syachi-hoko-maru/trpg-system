@@ -1,0 +1,24 @@
+name: deploy-v20
+
+on:
+  repository_dispatch:
+    types:
+      - my-custom-type
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  install:
+    uses: ./.github/workflows/_install.yml
+  pre:
+    needs: install
+    uses: ./.github/workflows/_pre.yml
+  deploy:
+    needs: pre
+    uses: ./.github/workflows/_deploy.yml

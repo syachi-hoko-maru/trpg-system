@@ -1,0 +1,27 @@
+name: _install
+
+on:
+  workflow_call:
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # プライベートリポジトリを指定
+          repository: syachi-hoko-maru/trpg-system
+          # 秘密鍵を指定
+          ssh-key: ${{ secrets.PRIVATE_REPO_SSH_KEY }}
+      - name: Setup Node.js env
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: yarn
+      - name: Cash Module
+        uses: actions/cache/save@v4
+        with:
+          path: "node_modules"
+          key: module-${{ github.sha }}

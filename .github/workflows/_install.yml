@@ -3,6 +3,10 @@ name: _install
 on:
   workflow_call:
 
+env:
+  APP_ID: ${{ secrets.APP_ID }}
+  PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+
 jobs:
   install:
     runs-on: ubuntu-latest
@@ -11,9 +15,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Generate GitHub Apps token
         id: generate
-        env:
-          APP_ID: ${{ secrets.APP_ID }}
-          P_KEY: ${{ secrets.APP_ID }}
         run: |
           ./script.sh
       - name: Checkout Main Repo

@@ -11,12 +11,12 @@ jobs:
   install:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Core Repo
-        uses: actions/checkout@v4
-      - name: Generate GitHub Apps token
+      - name: Generate token
         id: generate
-        run: |
-          ./script.sh
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
       - name: Checkout Main Repo
         uses: actions/checkout@v4
         with:

@@ -13,7 +13,7 @@ jobs:
         id: generate
         env:
           APP_ID: ${{ secrets.APP_ID }}
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          PRIVATE_KEY: ${{ secrets.APP_ID }}
         run: |
           ./script.sh
       - name: Checkout Main Repo

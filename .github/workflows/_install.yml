@@ -16,7 +16,7 @@ jobs:
         id: generate
         uses: tibdex/github-app-token@v1
         with:
-          app_id: ${{ secrets.APP_ID }}
+          app_id: ${{ secrets.MY_APP_ID }}
           private_key: ${{ secrets.PRIVATE_KEY }}
       - name: Checkout Main Repo
         uses: actions/checkout@v4

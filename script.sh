@@ -39,3 +39,5 @@ token="$(curl --location --silent --request POST \
 )"
 echo "::add-mask::${token}"
 echo "token=${token}" >>"${GITHUB_OUTPUT}"
+
+# 参考：https://zenn.dev/tmknom/articles/github-apps-token

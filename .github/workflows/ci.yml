@@ -16,9 +16,21 @@ concurrency:
 jobs:
   install:
     uses: ./.github/workflows/_install.yml
+    secrets:
+      APP_ID: ${{ secrets.APP_ID }}
+      PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      PRIVATE_REPO_SSH_KEY: ${{ secrets.PRIVATE_REPO_SSH_KEY }}
   pre:
     needs: install
     uses: ./.github/workflows/_pre.yml
+    secrets:
+      APP_ID: ${{ secrets.APP_ID }}
+      PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      PRIVATE_REPO_SSH_KEY: ${{ secrets.PRIVATE_REPO_SSH_KEY }}
   deploy:
     needs: pre
     uses: ./.github/workflows/_deploy.yml
+    secrets:
+      APP_ID: ${{ secrets.APP_ID }}
+      PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      PRIVATE_REPO_SSH_KEY: ${{ secrets.PRIVATE_REPO_SSH_KEY }}

@@ -2,10 +2,15 @@ name: _install
 
 on:
   workflow_call:
-
+    secrets:
+      APP_ID:
+        required: true
+      PRIVATE_KEY:
+        required: true
+      PRIVATE_REPO_SSH_KEY:
+        required: true
 permissions:
   contents: write
-  id-token: write
 
 jobs:
   install:
@@ -17,7 +22,7 @@ jobs:
         id: generate
         uses: tibdex/github-app-token@v1
         with:
-          app_id: ${{ secrets.MY_APP_ID }}
+          app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.PRIVATE_KEY }}
       - name: Checkout Main Repo
         uses: actions/checkout@v4

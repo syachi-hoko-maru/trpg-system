@@ -14,6 +14,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  test:
+    uses: tibdex/github-app-token@v1
+    with:
+      app_id: ${{ secrets.MY_APP_ID }}
+      private_key: ${{ secrets.PRIVATE_KEY }}
   install:
     uses: ./.github/workflows/_install.yml
   pre:

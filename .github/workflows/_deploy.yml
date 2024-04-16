@@ -2,41 +2,21 @@ name: _deploy
 
 on:
   workflow_call:
-    secrets:
-      APP_ID:
-        required: true
-      PRIVATE_KEY:
-        required: true
-      PRIVATE_REPO_SSH_KEY:
-        required: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Core Repo
-        uses: actions/checkout@v4
-      - name: Generate GitHub Apps token
-        id: generate
-        env:
-          APP_ID: ${{ secrets.APP_ID }}
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        run: |
-          ./script.sh
-      - name: Checkout Main Repo
-        uses: actions/checkout@v4
-        with:
-          # プライベートリポジトリを指定
-          repository: syachi-hoko-maru/trpg-system
-          # 秘密鍵を指定
-          ssh-key: ${{ secrets.PRIVATE_REPO_SSH_KEY }}
-          token: ${{ steps.generate.outputs.token }}
-          ref: main
       - name: Setup Node.js env
         uses: actions/setup-node@v4
         with:
           node-version: 20
         # Cashから諸々を取得する
+      - name: Restore Cash Main
+        uses: actions/cache/restore@v4
+        with:
+          path: .
+          key: main-repo-${{ github.sha }}
       - name: Restore Cash Module
         uses: actions/cache/restore@v4
         with:

@@ -3,6 +3,9 @@ name: _install
 on:
   workflow_call:
 
+permissions:
+  contents: write
+
 jobs:
   install:
     runs-on: ubuntu-latest

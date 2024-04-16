@@ -15,21 +15,21 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .
-          key: main-repo-${{ github.sha }}
+          key: main-repo-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Restore Cash Module
         uses: actions/cache/restore@v4
         with:
           path: "node_modules"
-          key: module-${{ github.sha }}
+          key: module-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Pre-Generate
         run: yarn pre-a
       - name: Cash Assets
         uses: actions/cache/save@v4
         with:
           path: "assets"
-          key: assets-${{ github.sha }}
+          key: assets-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Cash Public
         uses: actions/cache/save@v4
         with:
           path: "public"
-          key: public-${{ github.sha }}
+          key: public-${{ github.run_id }}-${{ github.run_attempt }}

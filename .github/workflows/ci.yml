@@ -41,7 +41,7 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .
-          key: main-repo-${{ github.sha }}
+          key: main-repo-${{ github.run_id }}-${{ github.run_attempt }}
   install:
     needs: get-main-repo
     uses: ./.github/workflows/_install.yml

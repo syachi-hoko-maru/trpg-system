@@ -18,11 +18,11 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .
-          key: main-repo-${{ github.sha }}
+          key: main-repo-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Install dependencies
         run: yarn
       - name: Cash Module
         uses: actions/cache/save@v4
         with:
           path: "node_modules"
-          key: module-${{ github.sha }}
+          key: module-${{ github.run_id }}-${{ github.run_attempt }}

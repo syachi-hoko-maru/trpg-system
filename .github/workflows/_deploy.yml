@@ -7,13 +7,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Core Repo
+        uses: actions/checkout@v4
+      - name: Generate GitHub Apps token
+        id: generate
+        env:
+          APP_ID: ${{ secrets.APP_ID }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        run: |
+          ./script.sh
+      - name: Checkout Main Repo
         uses: actions/checkout@v4
         with:
           # プライベートリポジトリを指定
           repository: syachi-hoko-maru/trpg-system
           # 秘密鍵を指定
           ssh-key: ${{ secrets.PRIVATE_REPO_SSH_KEY }}
+          token: ${{ steps.generate.outputs.token }}
           ref: main
       - name: Setup Node.js env
         uses: actions/setup-node@v4

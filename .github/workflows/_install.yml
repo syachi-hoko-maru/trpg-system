@@ -3,10 +3,6 @@ name: _install
 on:
   workflow_call:
 
-env:
-  APP_ID: ${{ secrets.APP_ID }}
-  PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-
 jobs:
   install:
     runs-on: ubuntu-latest

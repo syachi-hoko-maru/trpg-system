@@ -32,7 +32,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           # プライベートリポジトリを指定
-          repository: syachi-hoko-maru/trpg-system
+          repository: syachi-hoko-maru/trpg-system-code
           # 秘密鍵を指定
           ssh-key: ${{ secrets.PRIVATE_REPO_SSH_KEY }}
           token: ${{ steps.generate.outputs.token }}

@@ -1,4 +1,4 @@
-name: deploy-v20
+name: deploy-v22
 
 on:
   repository_dispatch:

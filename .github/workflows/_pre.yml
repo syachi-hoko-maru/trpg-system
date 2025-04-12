@@ -21,6 +21,8 @@ jobs:
         with:
           path: "node_modules"
           key: module-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Install libvips
+        run: apt-get install -y libvips-dev
       - name: Pre-Generate
         run: yarn pre-a
       - name: Cash Assets
